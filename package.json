@@ -12,7 +12,7 @@
     "ship-state": "node scripts/ship_state.mjs",
     "lint:handoff": "node scripts/handoff_lint.mjs",
     "check:paths": "node scripts/check_paths.mjs",
-    "test:harness": "node --test tests/harness/ship_state.test.mjs tests/harness/handoff_lint.test.mjs tests/harness/check_paths_and_guard.test.mjs"
+    "test:harness": "node --test \"tests/**/*.test.mjs\""
   },
   "gate": {
     "npmScripts": []

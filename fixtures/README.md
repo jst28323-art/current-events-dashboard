@@ -20,8 +20,8 @@ cases a parser must reject without emitting events.
 | `senate.pressgallery` | `dailypress_posts.json`, `periodicalpress_posts.json` | Senate press galleries' WordPress REST posts (human-written floor logs, schedules) | |
 | `wh.feeds` | `presidential-actions_feed.xml`, `news_feed.xml` | whitehouse.gov RSS (presidential actions; umbrella news feed) | site-wide ETag changes without new items: dedupe by GUID |
 | `wh.live` | `live_page_not_live.html` | whitehouse.gov/live/ while NOT live | the live flag is the `data-live-duplex` attribute; a live-state sample still needs recording |
-| `fr.api` | `pi_current.json`, `documents_newest20.json`, `documents_executive_orders.json` | Federal Register API: Public Inspection desk today; newest documents; newest executive orders | API only (the website blocks scripts) |
+| `fr.api` | `pi_current.json`, `documents_newest20.json`, `documents_executive_orders.json`, `documents_2026-99999_NEGATIVE_404_html_body.html` | Federal Register API: Public Inspection desk today; newest documents; newest executive orders; a missing document | API only (the website blocks scripts); the JSON API answers a missing document with an HTML 404 page, not JSON |
 | `members` | `legislators-current.json` | unitedstates/congress-legislators current members (bioguide ↔ LIS ↔ names) | CC0 dataset; refresh when membership changes |
 
-Not recorded on purpose: supremecourt.gov RSS (its robots.txt disallows `/rss/`; that needs an owner decision first),
+Not recorded on purpose: supremecourt.gov RSS (its robots.txt disallows `/rss/`; D-016: never use it),
 C-SPAN (its terms forbid bots and AI use), YouTube (detect-and-embed only), anything that needs an API key.

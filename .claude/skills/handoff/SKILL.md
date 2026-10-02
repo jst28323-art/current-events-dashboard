@@ -16,10 +16,12 @@ The runbook is `docs/HANDOFF_PROCEDURE.md`. Short form, in order:
    then write `## ⚑ LATEST #N+1 (YYYY-MM-DD) — title`. Keep exactly one `### ` action under `## NEXT ACTION`. Name no
    sha; never restate a number that lives elsewhere, link to it instead.
 5. **Commit** each carrier as you write it.
-6. `node scripts/ship_state.mjs` → obey → `node scripts/gate.mjs` → `git push origin main` (Windows git; G-003).
+6. `node scripts/ship_state.mjs` → obey → `node scripts/gate.mjs` → `git push origin main` (Windows git; G-003; the
+   pre-push hook refuses main without a gate stamp). Don't edit the tree while the gate or a round runs.
 7. **If the page was replaced:** `ship_state` prints `ROUND-DUE` with the exact Workflow call
    (`.claude/workflows/coldstart-validate.js`). Run it, read `docs/coldstart/r<R>/RESULT.json`, act on it
-   (routing FAIL → one page fix + re-round; content finding → fix, set `CONTENT-FIXED` with `content_fixes`;
+   (routing FAIL → one page fix + re-round; content finding → fix, set `CONTENT-FIXED` with `content_fixes` and
+   `content_fix_blob` (`git hash-object HANDOFF.md`), or re-round; any other page edit needs a re-round;
    TREE blockers → fix before stopping), commit the round directory, gate, push, until `ship_state` says
    `SHIPPED-CLEAN`. **Never surface the resume prompt before the round passes.**
 8. **Surface** the canonical resume prompt from `CLAUDE.md` in a fenced block with the verdict line, e.g.

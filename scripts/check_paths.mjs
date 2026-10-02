@@ -12,7 +12,7 @@
 // directory (PLANNED_TOP) until that directory exists: the phase that creates it makes its references checkable. Runtime/ignored paths (.gate/, node_modules/, scratch/, dist/) and placeholders (<x>, *, {}) are skipped.
 import { existsSync, readdirSync } from 'node:fs'
 import { join, dirname, posix } from 'node:path'
-import { REPO_ROOT, readText, isMain } from './lib/git.mjs'
+import { REPO_ROOT, readText, isMain, git } from './lib/git.mjs'
 
 const EXT = /\.(md|mjs|cjs|js|ts|tsx|json|jsonl|ya?ml|html|css|py|sh|toml|svelte|txt|xml|webmanifest)$/
 const SKIP_PREFIX = ['.gate/', 'node_modules/', 'scratch/', 'dist/', 'build/', 'origin/', 'refs/', '/', '~', 'C:', 'c:', 'http', 'www.']
@@ -23,7 +23,7 @@ export function rootEntries() {
 }
 
 export function docsToScan() {
-  const top = ['README.md', 'CLAUDE.md', 'HANDOFF.md', 'MAP.md', 'TESTING.md', 'KNOWN_FAILING.md']
+  const top = ['README.md', 'CLAUDE.md', 'HANDOFF.md', 'MAP.md', 'TESTING.md', 'KNOWN_FAILING.md', 'fixtures/README.md']
   const docs = existsSync(join(REPO_ROOT, 'docs'))
     ? readdirSync(join(REPO_ROOT, 'docs')).filter((f) => f.endsWith('.md')).map((f) => `docs/${f}`) : []
   const skillsDir = join(REPO_ROOT, '.claude', 'skills')
@@ -68,8 +68,21 @@ export function checkDoc(rel, text, exists, roots = rootEntries()) {
   return missing
 }
 
+// Existence as git sees it (tracked + untracked-but-not-ignored), exact case: the filesystem is case-insensitive on
+// Windows and also sees ignored files, so a path that passes here would still fail on Linux CI (2026-10-02 review).
+export function gitExists(root = REPO_ROOT) {
+  const r = git(['ls-files', '--cached', '--others', '--exclude-standard'], { cwd: root })
+  const set = new Set()
+  for (const f of r.out.split('\n').filter(Boolean)) {
+    set.add(f)
+    const parts = f.split('/')
+    for (let i = 1; i < parts.length; i++) set.add(parts.slice(0, i).join('/'))
+  }
+  return (p) => set.has(p.replace(/\/+$/, ''))
+}
+
 function main() {
-  const exists = (p) => existsSync(join(REPO_ROOT, p))
+  const exists = gitExists()
   const missing = []
   const files = docsToScan()
   for (const f of files) missing.push(...checkDoc(f, readText(f), exists))

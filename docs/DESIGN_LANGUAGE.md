@@ -72,10 +72,12 @@ Shadows: one soft window shadow (`0 10px 30px rgb(0 0 0 / 0.12)`), nothing else.
 ## Feed item anatomy
 
 ```
-● LIVE  Senate · Roll call vote 256                         2 min ago
-On passage of H.R. 2347 — Agreed to, 52–47
+Senate · Roll call vote 256                                  Sep 30, 9:29 PM ET
+On the Nomination PN1129 (Secretary of Labor) — Confirmed, 47–41
 [official · Senate LIS]  [F5 F6]                      Details ›
 ```
+
+(The example is the real vote in `fixtures/senate.lis.votes/`; never put invented results in examples or tests.)
 
 - Line 1: kind icon (Lucide) or live dot · source · relative time (absolute time on hover/long-press, in the user's
   time zone with the zone shown).

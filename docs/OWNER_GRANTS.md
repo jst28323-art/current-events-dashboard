@@ -8,8 +8,11 @@ Anything not granted here is ask-first. When unsure whether an action is covered
 
 - **Never delete any repository**, local or on GitHub, under any circumstances. If a repo looks wrong or duplicated,
   tell the owner and let them decide.
-- **Never force-push, never delete a branch on the remote, never skip hooks** (`--no-verify`). The pre-push hook and
-  `scripts/hooks/push_guard.mjs` enforce the first two.
+- **Never force-push, never delete a branch on the remote, never skip hooks** (`--no-verify`). The git pre-push hook
+  refuses force updates of main, deletion of any remote branch, and updating main to a commit without a gate stamp
+  (for every push from a clone with hooks enabled); `scripts/hooks/push_guard.mjs` also refuses force, deletion and
+  `--no-verify` in Claude sessions launched from the repo. `--no-verify` itself can only be refused by that Claude hook,
+  so it stays a rule you keep.
 - **Never commit a secret.** API keys and tokens live in GitHub Actions secrets, Cloudflare secrets, or a local `.env`
   (gitignored). The gate scans tracked files for secret shapes.
 - **Never spend money** or start a paid plan, trial or subscription (D-001: budget is $0 for now).
@@ -34,3 +37,6 @@ Anything not granted here is ask-first. When unsure whether an action is covered
 | G-003 | 2026-10-02 | Push to `main` without asking **when `node scripts/gate.mjs` has passed at HEAD** (`node scripts/ship_state.mjs` says `PUSH`). Each push redeploys the public site. List the session's pushes in the wrap-up message. | standing, until the owner revokes it or `docs/STATUS.json` sets `push_hold` | D-011 |
 | G-004 | 2026-10-02 | Use undocumented official APIs, labeled partisan sources, and labeled third-party sources (third-party: terms checked first; link out until then) | standing | D-009 |
 | G-005 | 2026-10-02 | Ingest the third-party sources (Factba.se, BNO pool reports, the Truth Social archive) now, without a terms check, showing facts only with source credit and link; this narrows G-004's "link out until then" for these sources | standing | D-017 |
+
+Note (2026-10-02): G-002 was carried out by the owner by hand in the repo's Pages settings, because the local token
+lacked "Administration: write" (`docs/TRAPS.md`). G-001's push needed the owner to add "Workflows" to the token first.

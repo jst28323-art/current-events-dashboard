@@ -27,8 +27,15 @@ export function defaultName(url, contentType) {
   return base.replace(/[^A-Za-z0-9._-]/g, '_')
 }
 
+// Refuses a URL if ANY query parameter whose name looks like a credential has a non-empty value other than DEMO_KEY
+// (the 2026-10-02 review got access_token, api-key, client_secret and "DEMO_KEY plus a real token" past the old regex).
 export function refuseSecrets(url) {
-  return /[?&](api_key|apikey|key|token)=/i.test(url) && !/[?&](api_key|apikey|key|token)=(DEMO_KEY)?(&|$)/i.test(url)
+  let params
+  try { params = new URL(url).searchParams } catch { return true }
+  for (const [name, value] of params) {
+    if (/key|token|secret|sig|password|passwd|auth|credential/i.test(name) && value && value !== 'DEMO_KEY') return true
+  }
+  return /\/\/[^/@]+:[^/@]+@/.test(url) // user:password@host
 }
 
 async function main() {

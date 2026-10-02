@@ -56,8 +56,10 @@ language is macOS: minimal, clean, intuitive. The owner's brief, verbatim, is in
   first, every time:** any GitHub admin/settings action, creating any external account, adding a secret, anything
   that keeps running on the owner's home PC (`docs/OWNER_GRANTS.md` lists all of it).
 - Enable the client-side hooks in every fresh clone: `git config core.hooksPath enforcement/git-hooks`
-  (pre-commit secret scan; pre-push refuses force-push and branch deletion). Claude Code hooks in
-  `.claude/settings.json` run `ship_state` at session start and guard `git push`.
+  (pre-commit secret scan; pre-push refuses force updates of main, deleting any remote branch, and updating main to a
+  commit without a gate stamp). `ship_state` reports SETUP-ERROR until they are enabled. Claude Code hooks in
+  `.claude/settings.json` run `ship_state` at session start and guard `git push`, but only when Claude Code is launched
+  from the repo directory (`docs/TRAPS.md`); otherwise run `node scripts/ship_state.mjs` yourself before every push.
 
 ## Polite polling (applies to every source adapter)
 

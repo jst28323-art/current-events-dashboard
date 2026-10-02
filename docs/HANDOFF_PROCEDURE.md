@@ -47,7 +47,7 @@ place and left its duplicate wrong in another.
 
 ## PART 2 — Cold start
 
-1. Read `CLAUDE.md`, then `HANDOFF.md`.
+1. Read `HANDOFF.md` (it routes you), then `CLAUDE.md`.
 2. Run `node scripts/ship_state.mjs` and obey its verdict. A dead reference (path, decision id) is HALT-AND-ASK.
 3. Open what `## NEXT ACTION` names (a ROADMAP task, usually). Read the `docs/TRAPS.md` entries for whatever you are
    about to touch, and `grep docs/DECISIONS.md` for its terms before proposing anything.
@@ -66,16 +66,22 @@ must stay self-sufficient under that prompt alone.
 **Trigger:** `ship_state` says `ROUND-DUE` (the page number has no accepted round). Run it after the page is pushed:
 
     Workflow({ scriptPath: "C:/Users/j/claude/current-events-dashboard/.claude/workflows/coldstart-validate.js",
-               args: { round: R, page_n: N, sha: "<pushed HEAD>", date: "YYYY-MM-DD" } })
+               args: { round: R, page_n: N, sha: "<pushed HEAD>", repo: "C:/Users/j/claude/current-events-dashboard",
+                       date: "YYYY-MM-DD" } })
 
-`ship_state` prints the exact call. Use `scriptPath`, not `name`: a workflow is found by name only when Claude Code was
+**Do not edit the working tree while a round runs**: the resumers read it live. `ship_state` prints the exact call.
+Use `scriptPath`, not `name`: a workflow is found by name only when Claude Code was
 launched from the repo itself (`docs/TRAPS.md`). A round is **N ≥ 3 blind resumers** (given only the canonical prompt plus harness
 facts) and **exactly one fact-checker**. It returns two verdicts that are never merged:
 
-- **ROUTING** — PASS when every resumer names the same first action, sees the pushed sha as HEAD, could execute without
-  asking, and filed no PAGE-scoped BLOCKER / CONTRADICTION / HARMFUL defect.
+- **ROUTING** — PASS when every resumer names the same first action, reports the pushed sha as HEAD (a resumer that
+  could not see HEAD does not count), could execute without asking, did not itself return FAIL, and filed no
+  PAGE-scoped BLOCKER / CONTRADICTION / HARMFUL defect and no PAGE-scoped FATAL of any kind.
 - **CONTENT** — PASS when every factual claim on the page re-derives from the repo. A content catch that you fix becomes
-  `CONTENT-FIXED`: edit `content_verdict` in that round's RESULT.json and list the fixes under `content_fixes`.
+  `CONTENT-FIXED`: in that round's RESULT.json set `content_verdict`, list the fixes under `content_fixes`, and record
+  `content_fix_blob` = the output of `git hash-object HANDOFF.md` for the fixed page. **A round covers only the page text
+  it validated** (or that text plus a recorded content fix): `ship_state` compares HANDOFF.md's blob, so any other edit
+  to the page, even of the NEXT ACTION line alone, makes `ROUND-DUE` again (re-round, or rotate to a new page number).
 
 On a routing FAIL: make ONE fix confined to the page (HANDOFF.md and what it routes to), commit, gate, push, re-round.
 After two routing FAILs at n ≥ 3 on the same page, `ship_state` accepts the page "with the split" by itself: the newest

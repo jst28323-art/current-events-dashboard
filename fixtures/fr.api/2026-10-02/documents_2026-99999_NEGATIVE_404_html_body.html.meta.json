@@ -1,0 +1,23 @@
+{
+  "source_id": "fr.api",
+  "url": "https://www.federalregister.gov/api/v1/documents/2026-99999.json",
+  "final_url": "https://www.federalregister.gov/api/v1/documents/2026-99999.json",
+  "fetched_at": "2026-10-02T19:23:30.586Z",
+  "status": 404,
+  "elapsed_ms": 193,
+  "bytes": 4569,
+  "sha256": "7d80334cd926333e2ad7bec254d8b787c397ef2b9dd0f6f944168b300e340edf",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "cache-control": "no-store, no-cache, must-revalidate, private",
+    "content-length": "4569",
+    "content-type": "text/html",
+    "date": "Fri, 02 Oct 2026 19:23:28 GMT",
+    "etag": "\"6a8ec45a-11d9\"",
+    "pragma": "no-cache",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+  }
+}

@@ -83,6 +83,7 @@ needs them (`docs/ROADMAP.md`).
 | question | default | decided by |
 |---|---|---|
 | Serve the app from GitHub Pages or from the Worker? | Pages (D-013 default) unless the probe shows a concrete reason | build session; record a D-row |
-| Long-term archive (beyond ~90 days hot in the HubDO) | transcripts are kept forever (D-018): R2 via the Worker binding (free tier) is the default; events: a nightly JSONL archive when needed | Phase 5 (transcripts), Phase 4+ (events) |
+| Long-term archive (beyond ~90 days hot in the HubDO) | transcripts are kept forever (D-018): R2 via the Worker binding (free tier) is the default, but enabling R2 may require
+  a payment method on file (UNVERIFIED): check, and ask the owner before enabling (D-001); events: a nightly JSONL archive when needed | Phase 5 (transcripts), Phase 4+ (events) |
 | Senate caption capture: in a DO alarm loop or on the home PC? | try the DO first (it is small text, 12-second segments) | Phase 5 probe |
 | Workers Paid ($5/mo) if the free CPU limit binds | stay free; ask the owner with the measured evidence | owner (D-001) |

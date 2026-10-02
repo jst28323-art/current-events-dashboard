@@ -22,9 +22,9 @@ shown in one calm, macOS-style feed as things happen.
 Start with [HANDOFF.md](HANDOFF.md), then [CLAUDE.md](CLAUDE.md) and [MAP.md](MAP.md).
 
 ```
-node scripts/ship_state.mjs     # where the tree stands, and the one command to run next
+node scripts/ship_state.mjs     # where the tree stands, and the next step
 node scripts/gate.mjs           # the full check suite; writes the stamp a push needs
-git config core.hooksPath enforcement/git-hooks   # once per clone: secret scan + no force-push
+git config core.hooksPath enforcement/git-hooks   # once per clone: secret scan, no force-push, gate stamp required to push main
 ```
 
 Requires Node 22 or newer. The research behind the design is in [docs/research/](docs/research/).

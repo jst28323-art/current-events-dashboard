@@ -21,7 +21,8 @@ export function run(cmd, args, { cwd = REPO_ROOT, timeoutMs = 60_000, input, she
   return {
     ok: r.status === 0,
     code: r.status,
-    out: (r.stdout || '').replace(/\r/g, '').trim(),
+    // trim the END only: a porcelain status line starts with a meaningful space (" M path")
+    out: (r.stdout || '').replace(/\r/g, '').replace(/\s+$/, ''),
     err: (r.stderr || '').replace(/\r/g, '').trim() + (r.error ? ` ${r.error.message}` : ''),
   }
 }

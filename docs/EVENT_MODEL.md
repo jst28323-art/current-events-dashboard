@@ -39,7 +39,7 @@ source of truth. Full rationale, worked examples and standards mapping: `docs/re
   "features": ["F5", "F6"],                // docs/VISION.md feature ids (filters + coverage reports)
   "title": "Senate confirms … , 47-41",    // our plain-words line (rule-generated, never AI in v1)
   "official_text": "On the Nomination PN1129 - Nomination Confirmed (47-41)",
-  "importance": { "tier": 1, "reasons": ["vote.category=nomination"] },  // P0..P4, rules only (below)
+  "importance": { "tier": "P0", "reasons": ["confirmation", "office=cabinet"] },  // P0..P4, rules only (below)
   "times": {
     "occurred_at": "2026-10-01T01:29:00Z",
     "scheduled_for": null,
@@ -54,7 +54,7 @@ source of truth. Full rationale, worked examples and standards mapping: `docs/re
   "media": [],                              // { kind: video_live|video_archive|audio|pdf|html, url, is_live, provider }
   "transcript": null,                       // { status: none|live|partial|final, segments_ref, license }
   "sources": [{
-    "source_id": "senate.lis.vote_xml",
+    "source_id": "senate.lis.votes",        // the docs/SOURCES.md row id
     "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00256.xml",
     "retrieved_at": "2026-10-01T03:31:12Z",
     "license": "us-gov-public-domain",
@@ -113,12 +113,13 @@ filing) uses the normalized-title + date-window rule in the research §2.4.
 ## Importance tiers (rules first; no AI in v1)
 
 The default view shows **every** item (D-019). Tiers never hide anything by default: they drive alerts, ordering,
-emphasis and the filters a user chooses to turn on.
+emphasis and the filters a user chooses to turn on. **P0 is exactly the owner's alert classes (D-012); narrowing it is
+the owner's call.**
 
 | tier | meaning | used for | examples |
 |---|---|---|---|
-| P0 breaking | alert-worthy (D-012 classes) | push at any hour (D-023) + banner | final passage of major bills, veto/override, confirmations of cabinet officials, first sighting of an EO, President/Press Secretary live, SCOTUS opinion |
-| P1 major | emphasized | Today view, bold rows | other passage and cloture votes, other presidential actions, significant FR rules, press briefing live |
+| P0 alert | exactly the D-012 classes | push at any hour (D-023) + banner | executive orders, proclamations, memoranda and presidential documents filed at Public Inspection; final passage votes, confirmation votes, vetoes and veto overrides; the President or the Press Secretary going live; Supreme Court opinions and major orders |
+| P1 major | emphasized | Today view, bold rows | cloture and other significant votes, significant FR rules, other officials going live (D-020 list), other presidential actions |
 | P2 notable | normal | feed | amendment votes, other nominations, proposed rules, CBO/GAO reports, floor convened/adjourned |
 | P3 routine | de-emphasized | feed (lighter row) | procedural votes, routine rules, bill referrals, agency releases |
 | P4 low | de-emphasized | feed (lighter row), optional "hide routine" filter | FR notices (~82% of FR volume), pro forma sessions, corrections |

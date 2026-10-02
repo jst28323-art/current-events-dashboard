@@ -21,9 +21,9 @@ owner asked.
 - **Evidence:** `docs/research/` holds six live-verified reports and `docs/research/SYNTHESIS.md`, all dated 2026-10-02.
   Re-measure before relying on any number.
 - **Test data:** `fixtures/` holds real upstream responses (see `fixtures/README.md`), because Congress is in recess
-  until Nov 9 (`docs/TRAPS.md`).
+  (dates: `docs/TRAPS.md`).
 - **Harness:** `scripts/ship_state.mjs`, `scripts/gate.mjs`, `scripts/handoff_lint.mjs`, the cold-start workflow, and the
-  `handoff` and `add-source` skills (`docs/HANDOFF_PROCEDURE.md`).
+  skills in `.claude/skills/` (`handoff`, `add-source`); the procedure is `docs/HANDOFF_PROCEDURE.md`.
 
 ## SHIP STATE
 
@@ -31,7 +31,8 @@ owner asked.
 
 Run it first, from the harness Bash in the repo directory, and obey its one verdict line. It fetches origin (`--no-fetch`
 skips that) and asks GitHub for the CI result (`--offline` skips that too). `SHIPPED-CLEAN` means nothing is owed, so go
-to NEXT ACTION. Any other verdict prints the one command to run first. Never reason about the tree from prose.
+to NEXT ACTION. Any other verdict prints its next step on the `next:` line (a command, or an instruction to wait, stop,
+fix or ask the owner): do that first. Never reason about the tree from prose.
 
 ## NEXT ACTION
 
@@ -39,16 +40,18 @@ to NEXT ACTION. Any other verdict prints the one command to run first. Never rea
 
 Phase 1 (a thin slice: two live sources on the owner's phone) and its exit criteria are in `docs/ROADMAP.md`. In order:
 1. **Ask before building**, as the canonical prompt says: one AskUserQuestion call (multiselect where it fits), plus a
-   PushNotification. Ask (a) whether the owner will do the free Cloudflare signup now and allow an API token as a
-   GitHub secret, and (b) the same for the free api.data.gov key. Both are ask-first (`docs/OWNER_GRANTS.md`).
-   Walk them through it, and record the answers and grants in the same session. Don't re-ask what
-   `docs/DECISIONS.md` already settles.
-2. **P1.2 workspace scaffold** (needs no account, so start it even if the owner is away): npm workspaces with
+   PushNotification, asking every question ROADMAP P1.1 lists (the Cloudflare signup and API token, the api.data.gov
+   key, whether sessions may deploy Workers when the gate passes, the workers.dev subdomain). All are ask-first
+   (`docs/OWNER_GRANTS.md`); ROADMAP P1.1 also says how secrets get in. Walk the owner through it, and record the
+   answers and grants in the same session. Don't re-ask what `docs/DECISIONS.md` already settles.
+2. **P1.2 workspace scaffold** (needs no account, so start it even if the owner is away; P1.4 likewise): npm workspaces with
    `packages/schema`, `packages/adapters`, `workers/api` and `apps/web`, as ROADMAP P1.2 specifies. Check current tool
    versions before pinning them. Every new suite goes into `package.json` → `gate.npmScripts`, and the gate stays green.
-3. Continue down Phase 1 (P1.3 probe once the Cloudflare account exists, then P1.4–P1.6). **Time-boxed exception:**
-   ROADMAP P2.3 (record live pro forma fixtures, Mon 2026-10-05 around 16:00–17:00 ET) runs whenever that window falls.
-4. End with the `handoff` skill. It includes the cold-start round when you replace this page.
+3. Continue down Phase 1. P1.4 (adapters) needs no account and may come before the P1.3 probe; P1.3, P1.5 and P1.6
+   need the Cloudflare account. **Time-boxed exception:** ROADMAP P2.3 (record live pro forma fixtures in its stated
+   window) runs whenever that window falls, whatever phase is current.
+4. End with the `handoff` skill (`.claude/skills/handoff/SKILL.md`; read it by path if it is not listed). It includes
+   the cold-start round when you replace this page.
 
 ## WHERE THINGS ARE
 

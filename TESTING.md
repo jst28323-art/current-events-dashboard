@@ -9,7 +9,7 @@ Bugs are caught at the step that made them, never carried forward.
 | layer | what it proves | how | where it runs |
 |---|---|---|---|
 | 1. Harness tests | the handoff/ship/gate machinery behaves | `npm run test:harness` (`node:test`) | gate + CI |
-| 2. Parser unit tests | a source adapter turns a **recorded upstream response** into the right events | fixture files under each adapter's `fixtures/` + `node:test`/Vitest | gate + CI |
+| 2. Parser unit tests | a source adapter turns a **recorded upstream response** into the right events | fixture files under `fixtures/<source_id>/<YYYY-MM-DD>/` + `node:test`/Vitest | gate + CI |
 | 3. Contract tests | the normalized events match `docs/EVENT_MODEL.md` (schema, required fields, IDs, UTC times) | schema validation over every adapter's fixture output | gate + CI |
 | 4. Live smoke (non-gating) | the upstream still answers in the shape we recorded | `scripts/` probe per source, run by hand or on a schedule; a diff from the fixture shape is a TRAP or a fix | manual / scheduled |
 | 5. End-to-end | ingest → store → API → page works on a phone-width screen | Playwright at 390×844 and 1440×900, light + dark | gate + CI (once the UI exists) |
@@ -17,8 +17,8 @@ Bugs are caught at the step that made them, never carried forward.
 
 ## Rules
 
-1. **Fixtures first.** Before writing a parser, record real upstream responses (status, headers, body) into the
-   adapter's `fixtures/` with the capture date in the filename. Include an error case (the 200-with-error-body shapes in
+1. **Fixtures first.** Before writing a parser, record real upstream responses (status, headers, body) with
+   `node scripts/record_fixture.mjs` into `fixtures/<source_id>/<YYYY-MM-DD>/` (layout: `fixtures/README.md`). Include an error case (the 200-with-error-body shapes in
    `docs/TRAPS.md`) and an empty case. Parsers are tested only against fixtures; tests never hit the network.
 2. **The test must fail without the change.** For a bug fix, write the failing test first (replay the bug), then fix.
    A test that cannot fail is not a test.
@@ -37,4 +37,5 @@ Bugs are caught at the step that made them, never carried forward.
 
 `node scripts/gate.mjs` runs layers 1–3 (and 5 once it exists) plus the harness checks, and writes a stamp naming HEAD on
 PASS. Product checks are declared as npm script names in `package.json` → `gate.npmScripts`; add each new suite there.
-CI runs the same gate (`node scripts/gate.mjs --ci`) on every push and pull request.
+CI runs the same gate (`node scripts/gate.mjs --ci`) on every push to `main` and on pull requests; the Pages deploy
+runs only after CI passes.

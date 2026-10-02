@@ -1,37 +1,38 @@
 #!/usr/bin/env bash
-# enforcement/wiring/git-hooks/pre-push   [HOST: git client-side; dependency-free]
-# =============================================================================
-# SAFE-GUARDS client-side enforcement (no GitHub plan / no public repo needed).
-# Refuses a FORCE (non-fast-forward) push to a protected branch and refuses
-# DELETION of a protected branch. Normal fast-forward pushes are ALLOWED, so it
-# does NOT change a direct-to-default-branch workflow (this is the "safe guards"
-# level, not "require PR"). Bypassable with --no-verify by design: it is local
-# friction, not a server guarantee -- pair it with branch-protection.ruleset.json
-# (server-side) once the repo is public or on a paid plan (two-defense pattern).
+# enforcement/git-hooks/pre-push — the git-layer push guard. Git runs it for EVERY push from this clone, whatever tool,
+# shell or launch directory issued the push (the Claude Code hook in .claude/settings.json only fires when Claude Code
+# is launched from the repo itself; docs/TRAPS.md). It refuses:
+#   1. deleting ANY branch on the remote;
+#   2. a non-fast-forward (force) update of a protected branch (main);
+#   3. updating main to a commit that has no gate PASS stamp (.gate/stamps/<sha>.json, written by scripts/gate.mjs).
+# Normal fast-forward pushes of a gated commit pass untouched. Never bypass with --no-verify (CLAUDE.md, OWNER_GRANTS).
+# Adapted from the agent-protocol bundle's enforcement/ hooks.
 #
-# ENABLE (in a clone):  git config core.hooksPath enforcement/wiring/git-hooks
-# SELF-TEST (hermetic): bash enforcement/wiring/git-hooks/pre-push --self-test
-# ADAPT: set PROTECTED_BRANCHES to your default branch name(s).
-# =============================================================================
+# ENABLE (once per clone):  git config core.hooksPath enforcement/git-hooks
+# SELF-TEST (hermetic):     bash enforcement/git-hooks/pre-push --self-test
 set -u
-PROTECTED="${PROTECTED_BRANCHES:-main master}"
+PROTECTED="${PROTECTED_BRANCHES:-main}"
 ZERO='0000000000000000000000000000000000000000'
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 
 is_protected() { local b="$1" p; for p in $PROTECTED; do [ "$b" = "$p" ] && return 0; done; return 1; }
 
-# Decide one ref update. Returns 1 (and prints reason) to REJECT, 0 to allow.
+# Decide one ref update. Returns 1 (and prints the reason) to REJECT, 0 to allow.
 check_one() {
   local local_sha="$1" remote_ref="$2" remote_sha="$3" branch
   case "$remote_ref" in refs/heads/*) ;; *) return 0 ;; esac
   branch="${remote_ref#refs/heads/}"
-  is_protected "$branch" || return 0
   if [ "$local_sha" = "$ZERO" ]; then
-    echo "pre-push: REFUSED deletion of protected branch '$branch'." >&2
+    echo "pre-push: REFUSED — deleting the remote branch '$branch' (branches are never deleted from a session)." >&2
     return 1
   fi
+  is_protected "$branch" || return 0
   if [ "$remote_sha" != "$ZERO" ] && ! git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null; then
-    echo "pre-push: REFUSED non-fast-forward (force) push to protected branch '$branch'." >&2
-    echo "          rewriting protected history is blocked; use a normal push, or --no-verify to bypass." >&2
+    echo "pre-push: REFUSED — non-fast-forward (force) update of '$branch'. Rewriting published history is not allowed." >&2
+    return 1
+  fi
+  if [ ! -f "$ROOT/.gate/stamps/$local_sha.json" ]; then
+    echo "pre-push: REFUSED — $local_sha has no gate PASS stamp. Run: node scripts/gate.mjs (then node scripts/ship_state.mjs)." >&2
     return 1
   fi
   return 0
@@ -44,24 +45,31 @@ if [ "${1:-}" = "--self-test" ]; then
   git -C "$tmp" config user.email t@t; git -C "$tmp" config user.name t
   echo a > "$tmp/f"; git -C "$tmp" add f; git -C "$tmp" commit -qm A; A="$(git -C "$tmp" rev-parse HEAD)"
   echo b >> "$tmp/f"; git -C "$tmp" commit -qam B; B="$(git -C "$tmp" rev-parse HEAD)"
-  ( cd "$tmp"
-    check_one "$B" refs/heads/main "$A" 2>/dev/null && echo FF_OK     || echo FF_BAD
-    check_one "$A" refs/heads/main "$B" 2>/dev/null && echo FORCE_BAD || echo FORCE_OK
-    check_one "$ZERO" refs/heads/main "$B" 2>/dev/null && echo DEL_BAD || echo DEL_OK
-    check_one "$A" refs/heads/feature "$B" 2>/dev/null && echo NP_OK  || echo NP_BAD
+  echo c >> "$tmp/f"; git -C "$tmp" commit -qam C; C="$(git -C "$tmp" rev-parse HEAD)"
+  mkdir -p "$tmp/.gate/stamps"; echo '{}' > "$tmp/.gate/stamps/$B.json"   # B is gated; C is not
+  ( cd "$tmp"; ROOT="$tmp"
+    check_one "$B" refs/heads/main "$A" 2>/dev/null && echo FF_STAMPED_OK || echo FF_STAMPED_BAD
+    check_one "$C" refs/heads/main "$A" 2>/dev/null && echo UNSTAMPED_BAD  || echo UNSTAMPED_OK
+    check_one "$A" refs/heads/main "$B" 2>/dev/null && echo FORCE_BAD      || echo FORCE_OK
+    check_one "$ZERO" refs/heads/main "$B" 2>/dev/null && echo DELMAIN_BAD || echo DELMAIN_OK
+    check_one "$ZERO" refs/heads/feature "$B" 2>/dev/null && echo DELFEAT_BAD || echo DELFEAT_OK
+    check_one "$C" refs/heads/feature "$A" 2>/dev/null && echo FEAT_OK     || echo FEAT_BAD
+    check_one "$B" refs/tags/v1 "$ZERO" 2>/dev/null && echo TAG_OK         || echo TAG_BAD
   ) > "$tmp/res" 2>/dev/null
-  grep -q '^FF_OK$'    "$tmp/res" && ok "fast-forward push allowed"        || bad "fast-forward wrongly rejected"
-  grep -q '^FORCE_OK$' "$tmp/res" && ok "force push rejected"              || bad "force push NOT rejected"
-  grep -q '^DEL_OK$'   "$tmp/res" && ok "branch deletion rejected"         || bad "deletion NOT rejected"
-  grep -q '^NP_OK$'    "$tmp/res" && ok "non-protected branch allowed"     || bad "non-protected wrongly rejected"
+  grep -q '^FF_STAMPED_OK$' "$tmp/res" && ok "fast-forward of a gated commit to main allowed" || bad "gated fast-forward wrongly rejected"
+  grep -q '^UNSTAMPED_OK$'  "$tmp/res" && ok "ungated commit to main rejected"                || bad "ungated commit NOT rejected"
+  grep -q '^FORCE_OK$'      "$tmp/res" && ok "force update of main rejected"                  || bad "force update NOT rejected"
+  grep -q '^DELMAIN_OK$'    "$tmp/res" && ok "deleting main rejected"                         || bad "deleting main NOT rejected"
+  grep -q '^DELFEAT_OK$'    "$tmp/res" && ok "deleting another branch rejected"               || bad "deleting another branch NOT rejected"
+  grep -q '^FEAT_OK$'       "$tmp/res" && ok "ordinary push of a non-main branch allowed"     || bad "non-main push wrongly rejected"
+  grep -q '^TAG_OK$'        "$tmp/res" && ok "non-branch ref passes through"                  || bad "tag push wrongly rejected"
   rm -rf "$tmp"
   echo "----"
   [ "$fails" -eq 0 ] && { echo "pre-push self-test: PASS"; exit 0; }
   echo "pre-push self-test: FAIL ($fails)"; exit 1
 fi
 
-# Normal invocation: git feeds ref updates on stdin as
-#   <local_ref> <local_sha> <remote_ref> <remote_sha>
+# Normal invocation: git feeds ref updates on stdin as  <local_ref> <local_sha> <remote_ref> <remote_sha>
 rc=0
 while read -r _lref local_sha remote_ref remote_sha; do
   [ -z "${remote_ref:-}" ] && continue

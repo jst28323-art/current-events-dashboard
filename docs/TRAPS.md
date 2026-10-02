@@ -6,8 +6,8 @@ strike it through with a dated note and keep it. Each source trap cites the rese
 
 ## Calendar
 
-- **Congress is in recess until Mon 2026-11-09.** The House is in a district work period and the Senate holds only
-  pro forma sessions, so there are no recorded votes before Nov 9. Build and test against **recorded fixtures** from the
+- **Congress is in recess until Mon 2026-11-09.** Both chambers hold only short pro forma sessions (the House is in a
+  district work period), so there are no recorded votes before Nov 9. Build and test against **recorded fixtures** from the
   Sep 15–16 (House) and Sep 28–30 (Senate) session days. Measure live latency from Nov 9.
   (`docs/research/congress_floor_votes.md`, `docs/research/curation_priorart_future.md`)
 
@@ -55,6 +55,10 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   "Constraints that shape the code"). Whether Durable Object alarms get the same limit on Free is undocumented: probe it
   (ROADMAP P1.3) before building on it.
 
+- **JSON-Schema validators that compile with `new Function` / `eval` do not run inside Cloudflare Workers**
+  (UNVERIFIED general knowledge, 2026-10-02: Ajv's default compile is one). Use a validator without code generation, or
+  precompile standalone validators at build time; prove it in a Workers-pool test before relying on it.
+
 ## This machine and harness
 
 - **The harness Bash tool is git-bash on Windows.** It sees `C:/Users/...`, not `/mnt/c/...`. Push from Windows git
@@ -69,7 +73,12 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   in `.claude/settings.json` fire (ship_state at session start, the push guard, the dirty-handoff warning) and workflows
   resolve by name. Launched from the parent `C:\Users\j\claude` (as the canonical prompt implies), those hooks do NOT
   fire: run `node scripts/ship_state.mjs` yourself before every push (the push grant requires its `PUSH` verdict anyway),
-  and call workflows by absolute `scriptPath`. The git hooks (`core.hooksPath`) fire either way.
+  and call workflows by absolute `scriptPath`. The git hooks (`core.hooksPath`) fire either way, and the pre-push hook
+  refuses to update main to a commit without a gate stamp, so an ungated push fails even from a parent-launched session. The repo's skills may
+  not appear in the skill list either: read them by path (`.claude/skills/handoff/SKILL.md`,
+  `.claude/skills/add-source/SKILL.md`) and follow them as written.
+- **Secrets go in through GitHub's web UI.** Whether the local token has the "Secrets" permission is unrecorded
+  (assume not); the owner pastes keys into Settings → Secrets and variables → Actions themselves.
 - **Long heredocs containing apostrophes or backticks fail in the harness Bash.** Write files with the Write tool.
 - **`node --test <directory>` fails on Node 26** ("test failed" on the directory itself): pass the test files
   explicitly (`npm run test:harness` and `scripts/gate.mjs` already do).

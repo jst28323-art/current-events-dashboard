@@ -1,0 +1,405 @@
+{
+  "round": 1,
+  "page_n": 1,
+  "sha": "fada8917faca",
+  "date": "2026-10-02",
+  "n_resumers": 3,
+  "routing_verdict": "PASS",
+  "content_verdict": "CONTENT-FIXED",
+  "routing_axes": {
+    "first_actions_agree": true,
+    "compare_note": "All three agents name the same first action. Each sends one multiselect AskUserQuestion call plus a PushNotification asking the owner the two P1.1 questions from HANDOFF.md NEXT ACTION step 1: (a) a free Cloudflare signup with a Workers API token saved as the GitHub secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID, and (b) a free api.data.gov key saved as API_DATA_GOV_KEY. The only differences come after that step. Each agent says the P1.2 workspace scaffold comes next, and the executor adds that it would start with `npm view` version checks. Those are later steps, so they don't change the first action.",
+    "heads_ok": true,
+    "could_execute_all": true,
+    "page_blockers": 0
+  },
+  "first_actions": [
+    {
+      "lens": "straight",
+      "cmd": "AskUserQuestion (multiSelect) + PushNotification: P1.1 (a) free Cloudflare signup now + Workers-scoped API token as GitHub secrets CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID, (b) free api.data.gov key as secret API_DATA_GOV_KEY  [HANDOFF.md ## NEXT ACTION step 1; docs/ROADMAP.md P1.1]",
+      "what": "Send one AskUserQuestion call (multiselect) plus a PushNotification asking the owner the P1.1 account questions (Cloudflare signup + token secret; api.data.gov key secret). It is first because the page says \"Ask before building\", the canonical prompt asks for questions before development, and P1.1 is the first unticked Phase 1 task; if the owner is away, P1.2 (the workspace scaffold) follows without waiting.",
+      "head": "fada891",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "skeptic",
+      "cmd": "AskUserQuestion (one call, multiselect) asking the P1.1 questions from HANDOFF.md:41-44: (a) Cloudflare signup now + Workers API token as GitHub secrets CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID; (b) free api.data.gov key as API_DATA_GOV_KEY. Plus a PushNotification. Then P1.2 scaffold per docs/ROADMAP.md:29-34",
+      "what": "Ask the owner the P1.1 account questions (Cloudflare signup + API token secret, api.data.gov key secret) in one multiselect AskUserQuestion with a PushNotification. Both are ask-first under OWNER_GRANTS and the page's NEXT ACTION puts this first, before the account-free P1.2 workspace scaffold.",
+      "head": "fada891",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "executor",
+      "cmd": "AskUserQuestion (one multiselect call) + PushNotification: HANDOFF.md NEXT ACTION step 1, the P1.1 questions (a) free Cloudflare signup now + API token as secrets CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID, (b) free api.data.gov key as API_DATA_GOV_KEY",
+      "what": "Ask the owner the two P1.1 account questions in one AskUserQuestion call with a PushNotification. It comes first because the canonical prompt says to ask before development and OWNER_GRANTS makes account creation and adding secrets ask-first; then start the account-free P1.2 workspace scaffold straight away, beginning with `npm view` version checks.",
+      "head": "fada891",
+      "verdict": "PASS-WITH-NOTES"
+    }
+  ],
+  "blocking": [],
+  "blocking_offpage": [
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The add-source skill restates D-009's 'check terms first; link out until then' rule for third-party sources, which D-017/G-005 superseded.",
+      "where": ".claude/skills/add-source/SKILL.md:12-13 'third-party terms checked and recorded in docs/DECISIONS.md before ingesting; link out until then' vs docs/DECISIONS.md:27 D-017 'SUPERSEDES D-009's \"check terms first; link out until then\" for these sources: ingest them now' and docs/OWNER_GRANTS.md:36 G-005",
+      "evidence": "Read both files; affects factbase/bno.pool/trumpstruth in Phases 3/7, not Phase 1",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "Docs disagree on where fixtures live: per-adapter fixtures/ folders vs the top-level fixtures/<source_id>/<date>/. This affects the P1.2 packages/adapters replay harness design.",
+      "where": "TESTING.md:12 'fixture files under each adapter's `fixtures/`' and TESTING.md:20-21 'record real upstream responses ... into the adapter's `fixtures/`' vs fixtures/README.md:3 'Layout: `fixtures/<source_id>/<YYYY-MM-DD>/<name>`', .claude/skills/add-source/SKILL.md:18, docs/ARCHITECTURE.md:53 'tests replay `fixtures/<source_id>/…`', docs/ROADMAP.md:30 'a harness that replays `fixtures/`'",
+      "evidence": "The fixtures that exist are all top-level under fixtures/<source_id>/2026-10-02/; no per-adapter fixtures dir exists.",
+      "lens": "executor"
+    }
+  ],
+  "backlog": [
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "No grant covers deploying Workers to the owner's Cloudflare account (P1.3 probe, P1.5), and step 1's question doesn't ask for one. The deploy route is also unspecified: there is no deploy workflow, and ci.yml has contents: read only.",
+      "where": "HANDOFF.md:42-43 \"(a) whether the owner will do the free Cloudflare signup now and allow an API token as a GitHub secret\" + HANDOFF.md:49 \"Continue down Phase 1 (P1.3 probe once the Cloudflare account exists\" vs docs/OWNER_GRANTS.md:4 \"Anything not granted here is ask-first\" and G-003 (OWNER_GRANTS.md:34) covers only push to main",
+      "evidence": "OWNER_GRANTS Granted table has G-001..G-005 only; none mention Cloudflare/Worker deploys; .github/workflows has only ci.yml and pages.yml",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The page refers to the `handoff` and `add-source` skills as invocable skills, but neither appeared in this session's skill list. TRAPS covers the hooks and workflows lost when launching from the parent dir, but not skills. Workaround: read the SKILL.md files by path (MAP.md:42-43).",
+      "where": "HANDOFF.md:26 \"the `handoff` and `add-source` skills\"; HANDOFF.md:51 \"End with the `handoff` skill\" vs docs/TRAPS.md:68-72 (mentions hooks and workflows only)",
+      "evidence": "Session skill listing contains no 'handoff' or 'add-source' entry although the repo's CLAUDE.md loaded",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "CI never installs npm dependencies, so once P1.2 adds TS/Vitest/Vite suites to gate.npmScripts, CI goes red. Phase 1 exit (1) requires a green gate in CI, and nothing tells P1.2 to add an install step.",
+      "where": "HANDOFF.md:48 \"Every new suite goes into package.json → gate.npmScripts, and the gate stays green\" vs .github/workflows/ci.yml (only step: `node scripts/gate.mjs --ci`, no npm ci)",
+      "evidence": "scripts/gate.mjs runs `npm run --silent <name>` for each gate.npmScripts entry; ci.yml has checkout, setup-node and Gate steps only",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The docs disagree on where fixtures live: per-adapter fixtures/ vs repo-root fixtures/<source_id>/<date>/. The P1.2 replay harness needs one answer.",
+      "where": "TESTING.md:12 \"fixture files under each adapter's `fixtures/`\" and TESTING.md:21 \"into the adapter's `fixtures/`\" vs fixtures/README.md:3 \"Layout: `fixtures/<source_id>/<YYYY-MM-DD>/<name>`\", .claude/skills/add-source/SKILL.md:18, docs/ARCHITECTURE.md:53",
+      "evidence": "Existing fixtures are at repo-root fixtures/<source_id>/2026-10-02/",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The add-source skill still says third-party terms must be checked before ingesting, with link-out until then. D-017/G-005 superseded that for Factba.se, BNO and the Truth Social archive.",
+      "where": ".claude/skills/add-source/SKILL.md:12-13 \"third-party terms checked and recorded in docs/DECISIONS.md before ingesting; link out until then\" vs docs/DECISIONS.md:27 D-017 \"SUPERSEDES D-009's 'check terms first; link out until then' for these sources: ingest them now\"",
+      "evidence": "OWNER_GRANTS.md:36 G-005 narrows G-004 for these sources",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "SYNTHESIS §8.2 'Still open' lists seven owner questions, all since settled by D-016..D-023. Two of its recommendations lost: permission emails vs D-017, hide routine vs D-019. MAP says to start with SYNTHESIS, so a reader could re-ask or draft outward-facing emails.",
+      "where": "docs/research/SYNTHESIS.md:9 \"(D-001 to D-015)… §8 lists only what is still open\" and :562 \"### 8.2 Still open\", :98 \"link out until checked (D-009)\", :417 \"after their terms are checked\" vs docs/DECISIONS.md:26-33 (D-016..D-023)",
+      "evidence": "D-016 SCOTUS, D-017 third parties, D-018 transcripts, D-019 show everything, D-020 administration, D-021 lower courts, D-022 pins",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "Two SOURCES.md cross-references are stale: the Tier 1 heading says 'Phases 2–3', but fr.api and wh.feeds are built in Phase 1 (D-024); and 're-measure live (ROADMAP P3.4)' points to the Supreme Court task instead of the latency harness (P3.6).",
+      "where": "docs/SOURCES.md:13 \"Tier 1 — build first (Phases 2–3)\" vs docs/ROADMAP.md:40-42 (P1.4 fr.api, wh.feeds); docs/SOURCES.md:5 \"(ROADMAP P3.4)\" vs docs/ROADMAP.md:82 \"P3.4 Supreme Court\" / :84 \"P3.6 Latency harness\"",
+      "evidence": "grep output for both files",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "PROGRESS #1 promises an entry #2 with the gate, push, Pages deploy and cold-start results, but there is none. Later commits d10c813 and fada891 (the Pages deploy fix, token-permission trap) appear nowhere in PROGRESS. It may still be written after this round.",
+      "where": "PROGRESS.md:50-51 \"The gate, the first push, the Pages deploy and the cold-start round happen after this entry is committed; their results are entry #2.\"",
+      "evidence": "git log: PROGRESS.md last touched in 4f7ab98 (13:37); d10c813 13:38 and fada891 14:03 came after",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "CLAUDE.md says the Claude Code hooks always run, but TRAPS says they do not fire when Claude Code is launched from the parent dir, which the canonical prompt implies.",
+      "where": "CLAUDE.md:59-60 \"Claude Code hooks in .claude/settings.json run ship_state at session start and guard git push\" vs docs/TRAPS.md:68-72 \"Launched from the parent C:\\Users\\j\\claude (as the canonical prompt implies), those hooks do NOT fire\"",
+      "evidence": "Both lines read in this session; page step says to run ship_state manually so no routing impact",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "fixtures/README.md says the SCOTUS RSS still needs an owner decision, but D-016 settled it (never /rss/). The conclusion not to record it is unchanged.",
+      "where": "fixtures/README.md:26 \"that needs an owner decision first\" vs docs/DECISIONS.md:26 D-016 \"never /rss/\"",
+      "evidence": "grep",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "CI has no dependency-install step, so the first P1.2 product suite added to gate.npmScripts will fail CI even though HANDOFF says 'the gate stays green'. CI runs Node 22 while the local machine runs Node 26.3.0.",
+      "where": ".github/workflows/ci.yml:17-23 (checkout, setup-node 22, 'node scripts/gate.mjs --ci'; no npm ci) vs HANDOFF.md:47-48 'Every new suite goes into package.json -> gate.npmScripts, and the gate stays green.'; scripts/gate.mjs:73 runs 'npm run <s>'",
+      "evidence": "Read ci.yml and gate.mjs; package.json gate.npmScripts is []; no package-lock.json; node --version v26.3.0",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The add-source skill restates D-009's 'check terms first; link out until then' rule for third-party sources, which D-017/G-005 superseded.",
+      "where": ".claude/skills/add-source/SKILL.md:12-13 'third-party terms checked and recorded in docs/DECISIONS.md before ingesting; link out until then' vs docs/DECISIONS.md:27 D-017 'SUPERSEDES D-009's \"check terms first; link out until then\" for these sources: ingest them now' and docs/OWNER_GRANTS.md:36 G-005",
+      "evidence": "Read both files; affects factbase/bno.pool/trumpstruth in Phases 3/7, not Phase 1",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The add-source skill implies G-003 covers 'deploy', but G-003 only grants pushing to main (which deploys Pages). No grant covers deploying Cloudflare Workers, and anything ungranted is ask-first. P1.3 and P1.5 need Worker deploys.",
+      "where": ".claude/skills/add-source/SKILL.md:32 '7. Gate, push, deploy (G-003)' vs docs/OWNER_GRANTS.md:34 G-003 'Push to main without asking...' and docs/OWNER_GRANTS.md:4 'Anything not granted here is ask-first.'",
+      "evidence": "Read OWNER_GRANTS grants table and ask-first list; no Worker-deploy grant exists",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The route for P1.1 secrets is unspecified. The grant says 'the owner pastes keys in' without saying where, and TRAPS lists the local token's permissions without Secrets, so 'gh secret set' may 403.",
+      "where": "docs/OWNER_GRANTS.md:22-23 'the owner pastes keys in, never into chat history that gets committed' vs docs/TRAPS.md:63-67 (token: code, Workflows, Pages; lacks Administration and Actions write; Secrets unmentioned)",
+      "evidence": "Read both; not probed (read-only sandbox)",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "The two Phase-1 sources (fr.api, wh.feeds) have no NEGATIVE/EMPTY fixtures, though add-source requires them, the Phase 1 exit leans on NEGATIVE fixtures, and fixtures may not be hand-edited.",
+      "where": "fixtures/README.md:21,23 (only happy-path files for wh.feeds and fr.api) vs .claude/skills/add-source/SKILL.md:18-19 'Always include an error case ... and an empty / no-new-items case' and fixtures/README.md:5 'Never edit a fixture by hand'",
+      "evidence": "ls fixtures/fr.api/2026-10-02 and fixtures/wh.feeds: no NEGATIVE/EMPTY files",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The step order suggests P1.4 waits on the P1.3 probe (which needs the Cloudflare account), but P1.4 is pure fixture-tested adapters that need no account. It is unclear whether a session may go P1.2 -> P1.4 if the owner defers signup. This does not change the first action.",
+      "where": "HANDOFF.md:49 'Continue down Phase 1 (P1.3 probe once the Cloudflare account exists, then P1.4–P1.6)' vs docs/ROADMAP.md:40-42 (P1.4 adapters are pure functions with golden fixture tests)",
+      "evidence": "Read both",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The SOURCES tier header predates D-024: Tier 1 is labeled 'Phases 2–3', but fr.api and wh.feeds (Tier 1) are built in Phase 1.",
+      "where": "docs/SOURCES.md:13 'Tier 1 — build first (Phases 2–3)' vs docs/ROADMAP.md:40-42 P1.4 fr.api + wh.feeds and docs/DECISIONS.md:34 D-024",
+      "evidence": "Read both",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "A wrong ROADMAP task pointer for live latency re-measurement.",
+      "where": "docs/SOURCES.md:5 're-measure live (ROADMAP P3.4)' vs docs/ROADMAP.md:82 'P3.4 Supreme Court' and docs/ROADMAP.md:84 'P3.6 Latency harness'",
+      "evidence": "Read both",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The fixtures README says SCOTUS RSS 'needs an owner decision first', but D-016 already decided never to use /rss/.",
+      "where": "fixtures/README.md:26 'supremecourt.gov RSS (its robots.txt disallows /rss/; that needs an owner decision first)' vs docs/DECISIONS.md:26 D-016 'never /rss/'",
+      "evidence": "Read both",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "TESTING describes a different fixture layout from the one actually used.",
+      "where": "TESTING.md:47 'fixture files under each adapter's fixtures/' and TESTING.md:55-56 'with the capture date in the filename' vs fixtures/README.md:3 'fixtures/<source_id>/<YYYY-MM-DD>/<name>'",
+      "evidence": "Read both; ls fixtures/",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The event-model example mixes tier encodings (numeric tier vs P0..P4) and uses a source_id that is not in the catalog; P1.2 turns this file into the schema.",
+      "where": "docs/EVENT_MODEL.md:42 '\"importance\": { \"tier\": 1 ...}' vs docs/EVENT_MODEL.md:118-124 tiers 'P0..P4' and docs/ARCHITECTURE.md:61 'tier=P0,P1'; docs/EVENT_MODEL.md:57 'senate.lis.vote_xml' vs docs/SOURCES.md:20 'senate.lis.votes'",
+      "evidence": "Read both; importance is outside the Phase-1 minimum (EVENT_MODEL.md:69-71)",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "PROGRESS #1 promises an entry #2 for the gate/push/Pages/cold-start results, but two later commits (TRAPS token trap, pages.yml) are not logged anywhere. This is expected while the round runs; the closing session owes #2.",
+      "where": "PROGRESS.md:50-51 'The gate, the first push, the Pages deploy and the cold-start round happen after this entry is committed; their results are entry #2.'",
+      "evidence": "git log: d10c813 and fada891 postdate PROGRESS entry #1 (4f7ab98); no entry #2",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "A number is duplicated outside its one home, against the CLAUDE.md docs discipline.",
+      "where": ".claude/skills/add-source/SKILL.md:23 'the Worker free tier allows 10 ms of CPU' vs docs/ARCHITECTURE.md:71 '10 ms CPU per Worker invocation on Free'",
+      "evidence": "Read both",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "CI has no dependency install step and the repo has no lockfile. Once P1.2 adds entries to gate.npmScripts, `gate.mjs --ci` will run `npm run <x>` with no node_modules and CI will go red. The page says only 'Every new suite goes into package.json -> gate.npmScripts, and the gate stays green'.",
+      "where": ".github/workflows/ci.yml:18-23 (checkout, setup-node, then straight to 'node scripts/gate.mjs --ci'); HANDOFF.md:48; package.json gate.npmScripts []",
+      "evidence": "ci.yml steps: actions/checkout@v7, actions/setup-node@v7 (node 22), then 'run: node scripts/gate.mjs --ci'. There is no npm ci. gate.mjs:73 runs npm run --silent <script> for each gate.npmScripts entry.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "If the owner defers Cloudflare, it is unclear whether P1.4 (pure adapters on fixtures, no account needed) may start before P1.3. The page reads as strictly sequential; ROADMAP gates only P1.3 on P1.1. This does not change the first action.",
+      "where": "HANDOFF.md:49 'P1.3 probe once the Cloudflare account exists, then P1.4–P1.6' vs docs/ROADMAP.md:35 '**P1.3 Probe Worker** (needs P1.1)' and ROADMAP.md:40-42 (P1.4 has no dependency)",
+      "evidence": "The P1.4 adapters are 'pure functions with golden fixture tests' (ROADMAP.md:40); add-source SKILL.md:21-22 says no network inside the adapter.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "Docs disagree on where fixtures live: per-adapter fixtures/ folders vs the top-level fixtures/<source_id>/<date>/. This affects the P1.2 packages/adapters replay harness design.",
+      "where": "TESTING.md:12 'fixture files under each adapter's `fixtures/`' and TESTING.md:20-21 'record real upstream responses ... into the adapter's `fixtures/`' vs fixtures/README.md:3 'Layout: `fixtures/<source_id>/<YYYY-MM-DD>/<name>`', .claude/skills/add-source/SKILL.md:18, docs/ARCHITECTURE.md:53 'tests replay `fixtures/<source_id>/…`', docs/ROADMAP.md:30 'a harness that replays `fixtures/`'",
+      "evidence": "The fixtures that exist are all top-level under fixtures/<source_id>/2026-10-02/; no per-adapter fixtures dir exists.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "SYNTHESIS claims its §8.2 lists only open questions, but D-016..D-023 settle all of §8.2 items 1-7 and 9. Three of those rulings went against the synthesis recommendation (D-017, D-019, D-023). A resumer who follows MAP's 'start with SYNTHESIS' could re-ask settled questions or act on overruled advice: permission emails or link-outs only, hiding routine items, quiet hours. HANDOFF.md:14-15 mitigates this.",
+      "where": "docs/research/SYNTHESIS.md:9-10 'Owner rulings live in DECISIONS.md (D-001 to D-015). This synthesis respects them, and §8 lists only what is still open' + SYNTHESIS.md:562 '### 8.2 Still open' vs docs/DECISIONS.md:26-33 (D-016..D-023)",
+      "evidence": "§8.2 item 2 recommends '(a) ... permission emails ... Until replies arrive, show link-outs only' vs D-017 'just use them for now'; item 5 recommends '(a) hide routine items' vs D-019 'Show everything'; item 9 recommends overnight silence vs D-023 'Any hour'.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "SOURCES.md sends latency re-measurement to the wrong ROADMAP task: P3.4 is the Supreme Court; the latency harness is P3.6.",
+      "where": "docs/SOURCES.md:5 're-measure live (ROADMAP P3.4)' vs docs/ROADMAP.md:82 '**P3.4 Supreme Court**' and ROADMAP.md:84 '**P3.6 Latency harness**'",
+      "evidence": "grep of ROADMAP.md: P3.4 = Supreme Court (D-016); P3.6 = pre-register and run the latency measurement on Nov 9-10.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The add-source skill still says third-party sources need a terms check and link-out first. D-017/G-005 removed that for Factba.se, BNO and the Truth Social archive. Not relevant until Phase 3/7.",
+      "where": ".claude/skills/add-source/SKILL.md:12-13 'third-party terms checked and recorded in `docs/DECISIONS.md` before ingesting; link out until then' vs docs/DECISIONS.md:27 D-017 'SUPERSEDES D-009's \"check terms first; link out until then\" ... ingest them now' and docs/OWNER_GRANTS.md:36 G-005",
+      "evidence": "D-017 answer verbatim: 'just use them for now. this is only for my personal use.'",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "Nothing names a JSON Schema validator for packages/schema. From general knowledge (not verified in this repo), Ajv's default compile uses new Function, which Cloudflare Workers block; that would bite when the HubDO or /ingest validates inside the Worker (P1.5). TRAPS has no entry for it.",
+      "where": "docs/ROADMAP.md:29-30 'packages/schema (EVENT_MODEL v0.1 Phase-1 minimum → TS types + JSON Schema + validator)'; docs/TRAPS.md (no entry); docs/ARCHITECTURE.md:66 '/api/v1/ingest ... schema-validated'",
+      "evidence": "grep -i 'ajv|new Function|@cfworker|zod|typebox' over docs/, TESTING.md, CLAUDE.md, .claude/skills returned nothing.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The mechanism for storing the P1.1 secrets is unstated. The owner pastes keys in, but whether the local token can run `gh secret set` (Secrets permission) is not recorded, so the walkthrough has to guess between the owner using the GitHub UI and a token change.",
+      "where": "docs/ROADMAP.md:25-27 'stored as GitHub Actions secrets'; docs/OWNER_GRANTS.md:22-23 'the owner pastes keys in'; docs/TRAPS.md:63-67 (lists Workflows, Pages; lacks Administration and Actions write; Secrets not mentioned)",
+      "evidence": "TRAPS.md:63-67 enumerates token permissions without Secrets.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "A tier heading predates D-024: Tier 1 says it is built in Phases 2-3, but fr.api and wh.feeds are built in Phase 1.",
+      "where": "docs/SOURCES.md:13 '## Tier 1 — build first (Phases 2–3)' vs docs/ROADMAP.md:40-42 (P1.4 fr.api, wh.feeds) and docs/DECISIONS.md:34 D-024",
+      "evidence": "D-024: 'Phase 1 = ... two live sources (FR + White House)'.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The EVENT_MODEL example uses a source_id that is not in the catalog. If P1.2 copies the example into a schema test, the id will drift from the catalog.",
+      "where": "docs/EVENT_MODEL.md:57 '\"source_id\": \"senate.lis.vote_xml\"' vs docs/SOURCES.md:20 '`senate.lis.votes`' and fixtures/README.md:17",
+      "evidence": "No source_id 'senate.lis.vote_xml' appears in SOURCES.md or under fixtures/.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Docs disagree on who turned Pages on: TRAPS says the owner did it by hand; the grant rows say the one-time grant was used. Historical only.",
+      "where": "docs/TRAPS.md:64-66 'cannot change repo settings such as turning Pages on; the owner did that by hand' vs docs/OWNER_GRANTS.md:33 G-002 'one-time, used 2026-10-02' and docs/DECISIONS.md:16 D-006 'One-time settings grant, used 2026-10-02'",
+      "evidence": "Both texts quoted.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "PROGRESS #1 promises an entry #2 with the gate, first push, Pages deploy and cold-start results. It does not exist, and the later commits d10c813 and fada891 are unlogged. Expected while this round runs; the authoring session still owes it.",
+      "where": "PROGRESS.md entry #1, 'How verified' last bullet: 'The gate, the first push, the Pages deploy and the cold-start round happen after this entry is committed; their results are entry #2.'",
+      "evidence": "git log -- PROGRESS.md shows only 4f7ab98; HEAD is fada891.",
+      "lens": "executor"
+    }
+  ],
+  "would_ask": [
+    "[straight] P1.1(a): Will you do the free Cloudflare signup now (walked through), and allow a Workers-only API token plus the account ID as GitHub secrets CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID? (You paste them into GitHub's secret settings yourself.)",
+    "[straight] P1.1(b): Will you get the free api.data.gov key now and allow it as GitHub secret API_DATA_GOV_KEY (later also a Worker secret)?",
+    "[straight] Once Cloudflare exists, may I deploy Workers (the P1.3 probe, then the P1.5 data Worker; each is a public workers.dev URL, free and deletable) without asking each time when the gate passes, or should I ask each time? No grant in docs/OWNER_GRANTS.md covers this.",
+    "[skeptic] P1.1a: Will you do the free Cloudflare signup now (I walk you through it) and store a Workers-scoped API token + account id as GitHub Actions secrets CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID? (now / later today / not this session; $0, revocable)",
+    "[skeptic] P1.1b: Same for the free api.data.gov key as secret API_DATA_GOV_KEY (needed by the P1.3 probe for Congress.gov, later a Worker secret)? (now / later / not this session)",
+    "[skeptic] How do secrets get in: you paste them into GitHub Settings -> Secrets yourself (recommended; keys never pass through chat), or grant my GitHub token 'Secrets: write' (a settings change, ask-first)? TRAPS lists the token's permissions without Secrets.",
+    "[skeptic] May sessions deploy the probe Worker (P1.3) and Worker v0 (P1.5) to your Cloudflare account without asking each time, gated like the push grant G-003, or is each Cloudflare deploy ask-first? No grant covers it today.",
+    "[skeptic] Mon 2026-10-05 3-4 pm CT (4-5 pm ET): both chambers hold seconds-long pro forma sessions. Will a session be running then to record live fixtures (ROADMAP P2.3), or skip it?",
+    "[executor] Cloudflare (free, $0): create the account now with me walking you through it, then add a Workers-edit API token and your account ID as GitHub secrets CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID? Choices: now / later today / not yet, build offline first.",
+    "[executor] api.data.gov key (free): sign up now and store it as the secret API_DATA_GOV_KEY? Phase 1's FR and White House sources don't need it; the P1.3 probe of Congress.gov does.",
+    "[executor] How should the secrets get into GitHub: you paste them yourself in Settings -> Secrets, or you give the local token 'Secrets: write' so I can run `gh secret set`? TRAPS lists the token's permissions but not Secrets.",
+    "[executor] Cloudflare will ask for a *.workers.dev subdomain, which becomes part of the public API address. Do you have a preference?",
+    "[executor] (Optional) Do you want a session open on Mon 2026-10-05, 16:00-17:00 ET, to record live pro forma fixtures (ROADMAP P2.3)?"
+  ],
+  "content_findings": [
+    {
+      "claim": "Any other verdict prints the one command to run first.",
+      "where": "HANDOFF.md, ## SHIP STATE, second-to-last sentence",
+      "truth": "Every verdict prints a `next:` line, but for several verdicts that line is not a command. GATE-RUNNING-WAIT says to wait and run nothing. NO-REMOTE says to ask the owner. PUSH-HOLD-STOP says to commit locally only because the owner lifts holds. GATE-FAILED-STOP says to read .gate/last.json, fix the cause, commit and re-gate. Only some verdicts give a single command (REGATE, PUSH, ROUND-DUE, DIRTY-COMMIT-FIRST, DIVERGED-STOP). Suggested fix: 'Any other verdict prints the next step (a command, or an instruction to stop or ask).'",
+      "evidence": "scripts/ship_state.mjs decide() at fada8917faca. I ran decide() from a git-archive extract of the frozen tree on synthetic measurements and got these texts. GATE-RUNNING-WAIT: 'A gate is running. Wait for it; start nothing and commit nothing meanwhile.' NO-REMOTE: 'No origin. Creating a GitHub repo is an admin action: ask the owner (docs/OWNER_GRANTS.md)...' PUSH-HOLD-STOP: 'Push hold in docs/STATUS.json (...). Commit locally only; the owner lifts holds.'"
+    }
+  ],
+  "notes": "C:/Users/j/claude/current-events-dashboard/docs/coldstart/r1/",
+  "content_fixes": [
+    "HANDOFF.md SHIP STATE: \"Any other verdict prints the one command to run first\" was false (GATE-RUNNING-WAIT, NO-REMOTE, PUSH-HOLD-STOP, GATE-FAILED-STOP print instructions, not commands). Now: \"prints its next step on the next: line (a command, or an instruction to wait, stop, fix or ask the owner)\"."
+  ],
+  "fix_note": "Fixed 2026-10-02 by the authoring session after the round; the page also gained three PAGE-backlog clarifications (Cloudflare deploy question, secrets route, P1.4-before-P1.3), so a confirmation round r2 re-validates the final text."
+}

@@ -17,29 +17,36 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
 
 - [x] Repo, harness (ship_state, gate, handoff lint, path check, hooks, cold-start workflow), CI, Pages placeholder
 - [x] Verified research on sources, live media, hosting, curation (`docs/research/`, summary in `docs/research/SYNTHESIS.md`)
-- [x] Owner decisions D-001…D-024; vision, architecture, event model, design language, source catalog, traps
+- [x] Decisions D-001…D-024 (owner rulings plus three agent choices); vision, architecture, event model, design language, source catalog, traps
 - [x] Recess-proof fixture set (`fixtures/README.md`)
 
 ## Phase 1 — A thin vertical slice: two live sources on the owner's phone
 
 - [ ] **P1.1 Accounts (owner-led; ask first, walk through each).** Free Cloudflare account → an API token scoped to
   Workers edits, stored as GitHub Actions secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`; free api.data.gov
-  key → secret `API_DATA_GOV_KEY` (a Worker secret too, later). Record the grants in `docs/OWNER_GRANTS.md`. If the owner
-  is away, do P1.2 first (it needs no account).
+  key → secret `API_DATA_GOV_KEY` (a Worker secret too, later). The owner pastes secrets into GitHub's Settings →
+  Secrets page themselves (keys never pass through chat; the local token may lack the Secrets permission). Also ask:
+  may sessions deploy Workers to that account when the gate passes (a Cloudflare analogue of G-003), and which
+  `*.workers.dev` subdomain to use. Record the answers and grants in `docs/OWNER_GRANTS.md`. If the owner is away, do
+  P1.2 and P1.4 first (neither needs an account).
 - [ ] **P1.2 Workspace scaffold.** npm workspaces + TypeScript: `packages/schema` (EVENT_MODEL v0.1 Phase-1 minimum →
   TS types + JSON Schema + validator), `packages/adapters` (registry type + a harness that replays `fixtures/`),
   `workers/api` (Worker + one Durable Object skeleton, wrangler config, the Vitest Workers pool), `apps/web` (Vite +
   Preact + signals shell carrying the design tokens from `site/index.html`). Check current versions and pin them (the
   synthesis notes Preact 11.0.0 was only two days old; stay on 10.x unless there is a reason). Add each suite to
-  `package.json` → `gate.npmScripts`.
+  `package.json` → `gate.npmScripts` and commit `package-lock.json` (`.github/workflows/ci.yml` runs `npm ci` only
+  when that lockfile exists, so without it CI cannot run the new suites). Pick a JSON-Schema validator
+  that works inside Workers (`docs/TRAPS.md`).
 - [ ] **P1.3 Probe Worker** (needs P1.1). From Cloudflare's network, fetch every Tier 1–2 source in `docs/SOURCES.md`
   and record status, which validator gets a 304, bytes, wall time and head-only parse CPU; also measure the Durable
   Object alarm CPU limit on Free (a deliberate ~20 ms busy loop) and alarm timing jitter. Results go into
   `docs/SOURCES.md` ("CF reachable", "parse CPU") and DECISIONS rows (which sources must move to the home PC; whether
   the free CPU limit binds).
-- [ ] **P1.4 Adapters** (each via the `add-source` skill, pure functions with golden fixture tests): `fr.api` (Public
-  Inspection `current.json` with a cache-buster on every call, and the newest `documents.json`) and `wh.feeds` (the
-  `/news/feed/` umbrella, deduped by GUID).
+- [ ] **P1.4 Adapters** (needs no account; may run before P1.3; each via the `add-source` skill, pure functions with
+  golden fixture tests): `fr.api` (Public Inspection `current.json` with a cache-buster on every call, and the newest
+  `documents.json`) and `wh.feeds` (the `/news/feed/` umbrella, deduped by GUID). Each has its error/empty
+  cases: `fr.api` has a NEGATIVE fixture (an HTML 404 from the JSON API); for `wh.feeds`, "no new items" is the same
+  feed replayed twice (record a malformed-feed case if the parser needs one).
 - [ ] **P1.5 Worker v0.** A 1-minute cron runs the two adapters into a HubDO (SQLite): dedupe/merge by `dedup_key`,
   `first_seen_at`, the latency ledger, per-source state (validators, errors). Serve `GET /api/v1/events?since=`,
   `/api/v1/status` and `/feed.json` with CORS for the Pages origin. (DO alarms and WebSockets wait for Phase 2.)
@@ -58,7 +65,7 @@ shows "live data unavailable", never an empty feed. (5) The probe table is in `d
 
 - [ ] **P2.1 Adapters:** `senate.lis.votes`, `house.clerk.votes`, `house.clerk.floor` (per-day file), `senate.schedule`,
   `senate.pressgallery`, joined to `members`; member-vote side records (one per roll call) and a vote inspector.
-- [ ] **P2.2 Real-time plumbing:** PollerDOs on alarms (hot ~20–30 s, warm ~60 s) with a supervisor cron;
+- [ ] **P2.2 Real-time plumbing:** PollerDOs on alarms (hot and warm cadences as in `docs/ARCHITECTURE.md`) with a supervisor cron;
   `/api/v1/live` over a hibernating WebSocket (falling back to `?since=` polling); calendar-aware staleness (recess,
   weekends, FR publication days).
 - [ ] **P2.3 Opportunistic, Mon 2026-10-05 ~16:00–17:00 ET:** both chambers hold short pro forma sessions. If one is
@@ -76,8 +83,8 @@ page in < 2 s over the WebSocket; during recess the status page says "in recess 
   docs.house.gov weekly schedule, House and Senate committee meetings, Senate Democrats RSS (labeled partisan).
 - [ ] **P3.2 Today view (F7)**: floor schedules, hearings, the President's schedule (Factba.se, facts only with credit,
   D-017).
-- [ ] **P3.3 White House + officials live:** the `wh.live` detector + YouTube `videos.list` + the embedded official
-  player; a hand-curated officials registry for the wider tracking list (D-020); agency live signals where they exist
+- [ ] **P3.3 White House + officials live:** the `wh.live` detector + YouTube `videos.list` (needs a free Google API key:
+  ask the owner first) + the embedded official player; a hand-curated officials registry for the wider tracking list (D-020); agency live signals where they exist
   (Fed calendar, DVIDS, State schedule).
 - [ ] **P3.4 Supreme Court** (D-016): slip-opinion and orders-list HTML pages only (never `/rss/`).
 - [ ] **P3.5 Research gap:** find sources for congressional leadership press conferences (F3; no source was researched).
@@ -125,6 +132,9 @@ labels shown only above an agreed bar.
 **Exit:** each new source has golden tests, a health row and a measured latency.
 
 ## Phase 8 — F12: financial + world news (plugins, off by default)
+
+(Off by default means the owner opts each new SOURCE in; D-019's show-everything applies to the items of enabled
+sources. If the owner wants F12 sources on by default, that is a new decision row.)
 
 - [ ] SEC EDGAR, Federal Reserve, BLS/BEA/Census release calendars, Treasury, GDELT, UN, Bluesky. No market prices
   without a licensing decision.

@@ -9,8 +9,9 @@ Adding sources is this project's most repeated task. Every step exists because s
 
 0. **Prior art first.** Find the source's row in `docs/SOURCES.md` and its section in `docs/research/` (what was
    measured: URL, validator, cadence, traps). `grep docs/TRAPS.md` and `docs/DECISIONS.md` for its host and name.
-   Partisan and third-party sources are allowed only as D-009 says (labeled; facts only; third-party terms checked and
-   recorded in `docs/DECISIONS.md` before ingesting; link out until then).
+   Partisan and third-party sources are allowed as D-009 and D-017 say: labeled by origin, facts only (with a visible
+   source credit and link for third-party items); the named third-party sources may be ingested without a terms check
+   (D-017 superseded D-009's link-out rule for them).
 1. **Catalog row.** The row in `docs/SOURCES.md` must name: `source_id`, URL, features (F-ids), affiliation, license
    or terms, robots status, which cache validator it honours, cadence, rate budget, and known traps. Add or fix the row
    first; it is the source's one home.
@@ -19,8 +20,8 @@ Adding sources is this project's most repeated task. Every step exists because s
    (e.g. a 200 whose body is an error page) and an **empty / no-new-items case**. During the recess (until Nov 9) use
    the recorded September session days.
 3. **Write the adapter as a pure function**: parsed response in, `Event[]` out, no network or platform APIs inside, so
-   it runs in a Cloudflare Worker and in Node alike. Parse only what is new (head-only parsing; the Worker free tier
-   allows 10 ms of CPU). Validate the body's shape and **fail closed**: on unexpected structure, emit a
+   it runs in a Cloudflare Worker and in Node alike. Parse only what is new (head-only parsing: the Worker free-tier
+   CPU limit is tiny, see `docs/ARCHITECTURE.md`). Validate the body's shape and **fail closed**: on unexpected structure, emit a
    `system.source_health` drift event and publish nothing from that payload.
 4. **Tests**: each fixture → golden normalized events (schema-validated); the error and empty fixtures produce no
    events and the right health signal; at least one non-default case (tie vote, revision, DST-boundary time…). The test
@@ -29,7 +30,8 @@ Adding sources is this project's most repeated task. Every step exists because s
    validator to send (ETag vs If-Modified-Since), rate budget, User-Agent override if needed, and freshness SLO.
 6. **Live smoke** once from the dev machine (and from Cloudflare once the probe Worker exists): status, validator
    behaviour, bytes, parse time. Record the result in the PROGRESS entry; a surprise becomes a `docs/TRAPS.md` entry.
-7. **Gate, push, deploy** (G-003), then confirm on the deployed system that the source's health shows a successful
+7. **Gate, push** (G-003; a push redeploys the Pages site), **deploy the Worker** only under a Cloudflare deploy grant
+   in `docs/OWNER_GRANTS.md` (none exists until the owner gives one; until then ask), then confirm on the deployed system that the source's health shows a successful
    poll (quiet is fine during recess; say why in PROGRESS).
 8. **Measure latency** the first time a real event flows: `first_seen_at − occurred_at` (n, date) into the source's
    `docs/SOURCES.md` row. Until then, the row says "latency: unmeasured".

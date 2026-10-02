@@ -3,10 +3,11 @@
  * paid for. Runbook: docs/HANDOFF_PROCEDURE.md PART 4 and .claude/skills/handoff/SKILL.md.
  *
  * Invoke (from the interactive session that REPLACED the HANDOFF.md page, after the page is committed + pushed):
- *   Workflow({ scriptPath: "C:/Users/j/claude/current-events-dashboard/.claude/workflows/coldstart-validate.js",
- *              args: { round: <R>, page_n: <N>, sha: "<pushed HEAD, 12 chars>", date: "YYYY-MM-DD" } })
- * (name: "coldstart-validate" also works, but only when Claude Code was launched from the repo directory itself.)
- * `node scripts/ship_state.mjs` prints the exact call (with the next round number) when it says ROUND-DUE.
+ *   Workflow({ scriptPath: "<repo>/.claude/workflows/coldstart-validate.js",
+ *              args: { round: <R>, page_n: <N>, sha: "<pushed HEAD, 12 chars>", repo: "<repo>", date: "YYYY-MM-DD" } })
+ * `node scripts/ship_state.mjs` prints this call with every value filled in when it says ROUND-DUE. (name:
+ * "coldstart-validate" also works, but only when Claude Code was launched from the repo directory itself.)
+ * Do not edit the working tree while a round runs: resumers read it live.
  *
  * TWO CRITERIA, TWO VERDICTS, NEVER MERGED:
  *   ROUTING  N>=3 blind resumers get ONLY the canonical prompt (verbatim from CLAUDE.md; handoff_lint L7 keeps the two
@@ -44,8 +45,9 @@ if (!ROUND || !PAGE_N || SHA.length < 7) {
   throw new Error(`args needs {round, page_n, sha(>=7 chars), date}; got ${JSON.stringify(A)}. A round with no frozen sha audits a moving tree.`)
 }
 
-const REPO = 'C:/Users/j/claude/current-events-dashboard'
-const OUT = `${REPO}/docs/coldstart/r${ROUND}`
+const REPO = String(A.repo || 'C:/Users/j/claude/current-events-dashboard').split('\\').join('/')
+const OUT = `${REPO}/docs/coldstart/r${ROUND}` // RESULT.json + copied notes, written only in the Record phase
+const NOTES = `${REPO}/scratch/coldstart/r${ROUND}` // gitignored: notes written DURING the round must not dirty the tree
 
 // Verbatim from CLAUDE.md's canonical-prompt block. scripts/handoff_lint.mjs (L7) fails the gate if they differ.
 const CANONICAL =
@@ -57,11 +59,12 @@ const RUNTIME = [
   `- The repo is at ${REPO} on a Windows 11 machine. The harness Bash tool is git-bash; node and git are on PATH.`,
   '- READ-ONLY: no edits, no commits, no pushes, no installs, no deploys, no gate runs. Running read-only repo scripts',
   '  (e.g. node scripts/ship_state.mjs, node scripts/handoff_lint.mjs) and reading any file is fine.',
-  `- The ONLY file you may write is your own notes file under ${OUT}/ (named in your instructions).`,
+  `- The ONLY file you may write is your own notes file under ${NOTES}/ (named in your instructions; that folder is gitignored).`,
   '- You cannot ask the owner anything: where the prompt says to ask, write down what you WOULD ask instead (would_ask).',
   '- You have NO Workflow tool and you do NOT run cold-start validation rounds. If ship_state says ROUND-DUE for the',
   '  page you are reading, that is THIS round in progress — a property of this sandbox, not a defect; carry on as if',
-  '  it had said SHIPPED-CLEAN.',
+  '  it had said SHIPPED-CLEAN. Likewise if it says DIRTY-COMMIT-FIRST and every listed path is under docs/coldstart/ or',
+  '  scratch/ (the bookkeeping of this round). Any OTHER dirty path, or any other verdict, is real: report what it says.',
   '- Do not start development. Stop at the moment you would begin and report the first action you would take.',
 ].join('\n')
 
@@ -104,7 +107,7 @@ const RESUME_SCHEMA = {
 phase('Resume')
 const resumerJobs = LENSES.map((lens, i) => () => agent(
   `${CANONICAL}\n\n${RUNTIME}\n\nLENS (${lens}): ${LENS_NOTE[lens]}\n\n` +
-  `When you have oriented and identified your first action, write your full notes to ${OUT}/resumer-${i + 1}-${lens}.md, then return the structured result.\n` +
+  `When you have oriented and identified your first action, write your full notes to ${NOTES}/resumer-${i + 1}-${lens}.md, then return the structured result.\n` +
   'Two questions matter most — answer both explicitly in your notes and as defects where they apply:\n' +
   '(1) Is anything AMBIGUOUS, CONTRADICTORY or STALE? Quote BOTH sides with file:line.\n' +
   '(2) Did the handoff (or a doc it routes to) tell you to do anything that would be HARMFUL — destructive, outward-facing ' +
@@ -131,7 +134,7 @@ const contentJob = () => agent(
   'the decision in docs/DECISIONS.md, check the grant in docs/OWNER_GRANTS.md, confirm a command exists and takes the stated ' +
   'flags). Also check that the NEXT ACTION is not already done (git log) and not contradicted by docs/ROADMAP.md. ' +
   'content_verdict is FAIL if any claim is false; a finding is a false claim only (not style). ' +
-  `READ-ONLY except your notes: write them to ${OUT}/content-factcheck.md, then return the structured result.`,
+  `READ-ONLY except your notes: write them to ${NOTES}/content-factcheck.md (gitignored), then return the structured result.`,
   { label: 'content:factcheck', phase: 'Content', schema: CONTENT_SCHEMA }
 )
 
@@ -158,13 +161,20 @@ if (!agree && resumers.length >= 3) {
 }
 
 const sha7 = SHA.slice(0, 7).toLowerCase()
-const headsOk = resumers.length > 0 && resumers.every((r) => String(r.observed_head || '').toLowerCase().startsWith(sha7) || sha7.startsWith(String(r.observed_head || '').toLowerCase().slice(0, 7)))
+// A resumer that never observed HEAD (empty, short or non-hex) does NOT count as agreeing (2026-10-02 review).
+const headOk = (r) => {
+  const h = String(r.observed_head || '').trim().toLowerCase()
+  return /^[0-9a-f]{7,40}$/.test(h) && (h.startsWith(sha7) || SHA.toLowerCase().startsWith(h))
+}
+const headsOk = resumers.length > 0 && resumers.every(headOk)
 const execOk = resumers.length > 0 && resumers.every((r) => r.could_execute === true)
 const defects = resumers.flatMap((r) => (r.defects || []).map((d) => ({ ...d, lens: r.lens })))
-const blocking = defects.filter((d) => d.scope === 'PAGE' && ['BLOCKER', 'CONTRADICTION', 'HARMFUL'].includes(d.kind))
+// PAGE-scoped BLOCKER/CONTRADICTION/HARMFUL block routing, and so does ANY PAGE-scoped FATAL ("NEXT ACTION already done").
+const blocking = defects.filter((d) => d.scope === 'PAGE' && (['BLOCKER', 'CONTRADICTION', 'HARMFUL'].includes(d.kind) || d.severity === 'FATAL'))
 const blockingOffpage = defects.filter((d) => d.scope === 'TREE' && ['BLOCKER', 'CONTRADICTION', 'HARMFUL'].includes(d.kind))
 const backlog = defects.filter((d) => d.scope !== 'HARNESS' && !blocking.includes(d))
-const routing = resumers.length >= 3 && agree && headsOk && execOk && blocking.length === 0 ? 'PASS' : 'FAIL'
+const resumerFails = resumers.filter((r) => r.verdict === 'FAIL').length
+const routing = resumers.length >= 3 && agree && headsOk && execOk && blocking.length === 0 && resumerFails === 0 ? 'PASS' : 'FAIL'
 
 const RESULT = {
   round: ROUND,
@@ -174,21 +184,22 @@ const RESULT = {
   n_resumers: resumers.length,
   routing_verdict: routing,
   content_verdict: content ? content.content_verdict : 'FAIL',
-  routing_axes: { first_actions_agree: agree, compare_note: compareNote, heads_ok: headsOk, could_execute_all: execOk, page_blockers: blocking.length },
+  routing_axes: { first_actions_agree: agree, compare_note: compareNote, heads_ok: headsOk, could_execute_all: execOk, page_blockers: blocking.length, resumer_fails: resumerFails },
   first_actions: resumers.map((r) => ({ lens: r.lens, cmd: r.first_action_cmd, what: r.first_action, head: r.observed_head, verdict: r.verdict })),
   blocking,
   blocking_offpage: blockingOffpage,
   backlog,
   would_ask: resumers.flatMap((r) => (r.would_ask || []).map((q) => `[${r.lens}] ${q}`)),
   content_findings: content ? content.findings : [],
-  notes: `${OUT}/`,
+  notes: `${OUT}/ (copied from ${NOTES}/ at record time)`,
 }
 
 phase('Record')
 const rec = await agent(
-  `Write the following JSON EXACTLY (pretty-printed, 2-space indent, trailing newline) to ${OUT}/RESULT.json using the Write ` +
-  'tool, creating the directory if needed. Then Read it back and confirm it parses and its "round", "page_n", ' +
-  '"routing_verdict" and "content_verdict" match. Change nothing.\n\n' + JSON.stringify(RESULT, null, 2),
+  `(1) Copy every .md file in ${NOTES}/ into ${OUT}/ unchanged (create ${OUT}/ if needed). (2) Write the following JSON ` +
+  `EXACTLY (pretty-printed, 2-space indent, trailing newline) to ${OUT}/RESULT.json using the Write tool. Then Read it ` +
+  'back and confirm it parses and its "round", "page_n", "routing_verdict" and "content_verdict" match. Change nothing ' +
+  'else.\n\n' + JSON.stringify(RESULT, null, 2),
   { label: 'record', phase: 'Record', effort: 'low', schema: { type: 'object', required: ['written', 'path'], properties: { written: { type: 'boolean' }, path: { type: 'string' } } } }
 )
 if (!rec || !rec.written) log(`WARNING: RESULT.json was not confirmed written — write it yourself from the returned object to ${OUT}/RESULT.json`)

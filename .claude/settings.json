@@ -37,6 +37,17 @@
             "statusMessage": "push_guard"
           }
         ]
+      },
+      {
+        "matcher": "PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR:-.}/scripts/hooks/push_guard.mjs\"",
+            "timeout": 150,
+            "statusMessage": "push_guard"
+          }
+        ]
       }
     ],
     "Stop": [

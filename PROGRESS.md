@@ -5,6 +5,49 @@ entry; correct it with a new one. Rotate the oldest entries to `PROGRESS_ARCHIVE
 
 ---
 
+## #2 — 2026-10-02 — first push, Pages live, cold-start r1, adversarial reviews, harness hardening
+
+**Shipped:** the public repo `jst28323-art/current-events-dashboard` (G-001) and the Pages site
+<https://jst28323-art.github.io/current-events-dashboard/> (G-002). Verified: `curl` of the site → 200 with
+`<title>Current Events Dashboard</title>`; the `ci` and `pages` workflow runs on the pushed commit both succeeded.
+
+**What failed on the way (all now in `docs/TRAPS.md`):** the first push was rejected because the local token lacked the
+"Workflows" permission (the owner added it); turning Pages on needs "Pages" AND "Administration: write" on the token,
+so the owner set the Pages source by hand; `gh workflow run` fails (no "Actions: write"); the Pages path filter skipped
+the first deploy. Separately, this PC took 4–11 s to start any process this afternoon, so the gate took minutes.
+
+**Cold-start round r1** (page #1 at the pushed commit; `docs/coldstart/r1/`): routing PASS (3/3 resumers named the same
+first action), content FAIL on one false sentence (SHIP STATE said every other verdict prints "one command"; several
+print instructions). Fixed and recorded as CONTENT-FIXED. The resumers' backlog (stale cross-references after
+D-016…D-024, the fixture layout in TESTING.md, no Cloudflare deploy grant, CI without `npm ci`) was fixed in the tree.
+Caveat: the tree was being edited while r1 ran, so its resumers read a moving tree; r2 runs on a still tree.
+
+**Adversarial harness review** (2 skeptics, every finding reproduced in a throwaway clone with a fake remote) found real
+bugs, all fixed with a test that replays the repro (harness tests 33 → 47):
+- push_guard let any command containing ` -n` (e.g. `| tail -n 5`) through unchecked, force pushes included → rewritten
+  to parse each command segment and allow only `git push [-u] origin main`; fails closed on any error; PowerShell hooked too.
+- the gate's tracked-secrets check could never fire (`git grep` read the pattern as an option) → fixed with `-e`, fails
+  closed on git errors, scans unpushed history too; one shared pattern file `enforcement/secret-patterns.txt` for the gate
+  and the pre-commit hook (which also lacked the Anthropic-key shape).
+- ship_state said PUSH on a non-main branch, said SHIPPED-CLEAN after an ungated push, and accepted a round by page number
+  even after the page was edited → OFF-MAIN-STOP, PUSHED-UNVERIFIED-STOP / CI-PENDING-WAIT, rounds keyed on the page's
+  blob, SETUP-ERROR until git hooks are enabled, stale gate locks recovered.
+- the git pre-push hook now refuses updating main to a commit without a gate stamp and deleting any remote branch, so the
+  core rule holds even when Claude Code's own hooks don't fire (launch from the parent directory).
+- the gate now fails if HEAD or the tree changed while it ran, discovers tests recursively, and fails on an ungated
+  test/build script; the cold-start workflow no longer counts a resumer that never saw HEAD, a resumer FAIL, or a
+  PAGE-scoped FATAL as passing, and writes notes to gitignored `scratch/` during the round; Pages deploys only after CI
+  passes; `record_fixture` refuses any credential-like URL parameter.
+
+**Docs critic** (cross-document consistency): P0 alert tier narrowed D-012 (proclamations, memoranda, SCOTUS orders
+would never alert) → P0 is now exactly the D-012 classes; a design mock-up showed an invented vote result → replaced with
+the real fixture vote; plus stale pointers, a duplicated question list and figures, and hook messages that advised
+`--no-verify` → all fixed.
+
+**Next:** cold-start round r2 on the final page (result: `docs/coldstart/r2/RESULT.json`), then the session closes.
+
+---
+
 ## #1 — 2026-10-02 — Phase 0: groundwork (no product code)
 
 **Asked for:** a new repo and the groundwork for a live US-government tracker (brief verbatim in `docs/VISION.md`):
