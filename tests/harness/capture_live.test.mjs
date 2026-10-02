@@ -55,3 +55,13 @@ test('dueIn honours the per-URL cadence', () => {
   assert.equal(dueIn(s, 'houseHistory', 1_010_000), 20)
   assert.ok(dueIn(s, 'houseHistory', 1_030_000) <= 0)
 })
+
+test('smoke fails closed: the cloud proxy 403 seen on 2026-10-02 is BLOCKED, never "reachable"', async () => {
+  const { smokeTargets, smokeVerdict } = await import('../../scripts/capture_live.mjs')
+  const targets = smokeTargets('2026-10-05')
+  assert.equal(targets.length, 5)
+  for (const t of targets) assert.equal(smokeVerdict(t, 403), 'blocked', t.url)
+  for (const t of targets) assert.equal(smokeVerdict(t, 500), 'blocked', t.url)
+  // the real pre-session answers from this PC: schedule 200, stream master 404 (not up yet), history 200, clerk 404, press 200
+  assert.deepEqual(targets.map((t, i) => smokeVerdict(t, [200, 404, 200, 404, 200][i])), ['ok', 'ok', 'ok', 'ok', 'ok'])
+})

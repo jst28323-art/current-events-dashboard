@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-// scripts/capture_live.mjs — record a live congressional session day as fixtures (ROADMAP P2.3; D-028).
-// Built for the Mon 2026-10-05 pro forma sessions (Senate ~16:00 ET, House ~16:30 ET), run by a one-time cloud agent
-// (grant G-008). A cloud shell call is capped at 10 minutes, so the script runs in chunks of at most --max-run-s and
-// resumes from a state file; the caller simply runs it again until it exits 10.
+// scripts/capture_live.mjs — record a live congressional session day as fixtures (ROADMAP P2.3; D-028, D-033).
+// Built for the Mon 2026-10-05 pro forma sessions (Senate ~16:00 ET, House ~16:30 ET), run once by a Windows scheduled
+// task on the home PC (grant G-011; a cloud routine cannot reach these hosts: docs/TRAPS.md). It runs in chunks of at
+// most --max-run-s and resumes from a state file, so a caller with a time cap can simply run it again until it exits 10.
 //
 // Usage:
 //   node scripts/capture_live.mjs --date 2026-10-05 --until 2026-10-05T21:30:00Z [--max-run-s 540] [--state <file>]
 //   [--out-root <dir>]   dry run: write fixtures under <dir>/fixtures/ instead of the repo
 //   node scripts/capture_live.mjs --date 2026-10-05 --smoke    one request per host, writes nothing: can this box reach them?
 // Exit: 0 = chunk done, window still open (run again) · 10 = window closed, final snapshots recorded (stop) · 1 = error
-//       · smoke: 0 = every host answered over HTTP, 1 = at least one host could not be reached.
+//       · smoke: 0 = every target answered with an expected status, 1 = a target was blocked (e.g. a proxy 403) or unreachable.
 //
 // What it records (fixtures/<source_id>/<date>/; layout: fixtures/README.md), politely (CLAUDE.md polite polling: one
 // request at a time, >= 15 s between polls of one URL, the project User-Agent):
@@ -194,28 +194,40 @@ async function finalSnapshots(state) {
   state.finalDone = true
 }
 
-async function smoke(date) {
+// Expected statuses per smoke target. Any other answer (e.g. a sandbox proxy's 403 with a ~100-byte body, seen from
+// the cloud on 2026-10-02) means BLOCKED: the smoke must fail closed, never report "reachable" for a block.
+export function smokeTargets(date) {
   const day = date.replace(/-/g, '')
-  const targets = [
-    SENATE_SCHEDULE,
-    `${SENATE_FLOOR_STREAM}/${stvFilename(date)}/master.m3u8`,
-    `${FLOORCAST}/latest/history`,
-    `https://clerk.house.gov/floor/${day}.xml`,
-    PRESS_GALLERY,
+  return [
+    { url: SENATE_SCHEDULE, ok: [200, 304] },
+    { url: `${SENATE_FLOOR_STREAM}/${stvFilename(date)}/master.m3u8`, ok: [200, 404] }, // 404 until the stream exists
+    { url: `${FLOORCAST}/latest/history`, ok: [200, 304] },
+    { url: `https://clerk.house.gov/floor/${day}.xml`, ok: [200, 404] }, // 404 until the day's file exists
+    { url: PRESS_GALLERY, ok: [200] },
   ]
-  let unreachable = 0
-  for (const url of targets) {
+}
+
+/** 'ok' | 'blocked' for one smoke answer. */
+export function smokeVerdict(target, status) {
+  return target.ok.includes(status) ? 'ok' : 'blocked'
+}
+
+async function smoke(date) {
+  let bad = 0
+  for (const t of smokeTargets(date)) {
     try {
-      const r = await politeGet(url)
-      console.log(`smoke ${r.status} ${String(r.text.length).padStart(7)}B server=${r.headers.get('server') || '-'} ${url}`)
+      const r = await politeGet(t.url)
+      const v = smokeVerdict(t, r.status)
+      if (v !== 'ok') bad++
+      console.log(`smoke ${v === 'ok' ? 'ok     ' : 'BLOCKED'} ${r.status} ${String(r.text.length).padStart(7)}B server=${r.headers.get('server') || '-'} ${t.url}${v === 'ok' ? '' : ` body=${JSON.stringify(r.text.slice(0, 120))}`}`)
     } catch (e) {
-      unreachable++
-      console.log(`smoke UNREACHABLE ${url}: ${e.message}${e.cause ? ` (${e.cause.code || e.cause.message})` : ''}`)
+      bad++
+      console.log(`smoke UNREACHABLE ${t.url}: ${e.message}${e.cause ? ` (${e.cause.code || e.cause.message})` : ''}`)
     }
     await sleep(500)
   }
-  console.log(unreachable ? `smoke: ${unreachable} host(s) unreachable from this machine` : 'smoke: every host answered over HTTP')
-  return unreachable ? 1 : 0
+  console.log(bad ? `smoke: FAIL: ${bad} target(s) blocked or unreachable from this machine` : 'smoke: PASS: every target answered with an expected status')
+  return bad ? 1 : 0
 }
 
 async function main() {

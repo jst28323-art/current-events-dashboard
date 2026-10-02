@@ -6,3 +6,5 @@
 *.woff2 binary
 # Fixtures are upstream bytes: never normalize them (their sha256 is recorded in each .meta.json).
 fixtures/** -text
+# Windows batch files need CRLF
+*.cmd text eol=crlf

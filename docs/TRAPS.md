@@ -92,6 +92,14 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   repo (so it cannot change repo settings such as turning Pages on; the owner did that by hand) and "Actions: write"
   (so `gh workflow run` fails with 403; to re-run a workflow, push a commit). A 403 response's
   `X-Accepted-GitHub-Permissions` header names exactly what a call needs (`gh api -i …`).
+- **Claude cloud routines (claude.ai "Default" environment) cannot reach the .gov sources** (2026-10-02, smoke run of
+  the D-028 routine, session `cse_01UeHciy55xURehwQHjizF5R`): senate.gov, the Senate Akamai stream host, the HouseLive
+  Azure backend, clerk.house.gov and dailypress.senate.gov all answered HTTP 403 with a ~100-byte body and no `server`
+  header (the sandbox's outbound proxy). The same URLs answered 200/404 from this PC. A cloud session also runs the
+  repo's Claude Code hooks, so `scripts/hooks/push_guard.mjs` refuses any push except `git push origin main`, even a
+  `--dry-run` to a side branch. Anything that must fetch upstream on a schedule runs on Cloudflare or on the home PC
+  (D-033), never in a cloud routine; and a smoke check must fail on 403, not count it as "reachable" (fixed in
+  `scripts/capture_live.mjs`).
 - **Where Claude Code is launched decides what the repo's `.claude/` does.** Launched from the repo directory, the hooks
   in `.claude/settings.json` fire (ship_state at session start, the push guard, the dirty-handoff warning) and workflows
   resolve by name. Launched from the parent `C:\Users\j\claude` (as the canonical prompt implies), those hooks do NOT
