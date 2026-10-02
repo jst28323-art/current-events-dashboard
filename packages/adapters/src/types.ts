@@ -1,7 +1,9 @@
 // The adapter contract. An adapter is a PURE function (no network, no clock, no platform APIs): one recorded or live
 // HTTP response in, normalized events + one health signal out. The same code runs in the Cloudflare Worker, in Node
 // on the home PC, and in tests that replay fixtures/ (docs/ARCHITECTURE.md, .claude/skills/add-source/SKILL.md).
-import type { Affiliation, CedEvent, FeatureId } from '@ced/schema'
+import type { Affiliation, CedEvent, FeatureId, HealthStatus } from '@ced/schema'
+
+export type { HealthStatus }
 
 /** One HTTP response as the poller saw it (or as a fixture recorded it). */
 export interface FetchedResponse {
@@ -15,13 +17,6 @@ export interface FetchedResponse {
   /** When the response arrived (UTC, Z). Becomes first_seen_at / retrieved_at of every event in it. */
   fetchedAt: string
 }
-
-export type HealthStatus =
-  | 'ok' // parsed, and at least one item seen
-  | 'empty' // parsed, a valid "nothing here" answer (e.g. an empty Public Inspection desk)
-  | 'not_modified' // 304: nothing to parse
-  | 'drift' // the body is not the shape we recorded: publish NOTHING from it (fail closed)
-  | 'error' // HTTP error status, or an error page posing as data
 
 /** Drives /api/v1/status and the "stale" label; it is never a feed item. */
 export interface HealthSignal {

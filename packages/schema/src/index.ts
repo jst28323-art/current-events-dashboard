@@ -3,3 +3,4 @@ export type * from './types.js'
 export { eventId, finalizeEvent, sha256Hex } from './id.js'
 export { validateEvent, isRealInstant, type ValidationResult } from './validate.js'
 export { default as eventJsonSchema } from './event.schema.json' with { type: 'json' }
+export type { EventsResponse, HealthStatus, SourceStatus, StatusResponse } from './api.js'
