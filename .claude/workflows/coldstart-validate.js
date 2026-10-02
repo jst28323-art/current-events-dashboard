@@ -3,7 +3,9 @@
  * paid for. Runbook: docs/HANDOFF_PROCEDURE.md PART 4 and .claude/skills/handoff/SKILL.md.
  *
  * Invoke (from the interactive session that REPLACED the HANDOFF.md page, after the page is committed + pushed):
- *   Workflow({ name: "coldstart-validate", args: { round: <R>, page_n: <N>, sha: "<pushed HEAD, 12 chars>", date: "YYYY-MM-DD" } })
+ *   Workflow({ scriptPath: "C:/Users/j/claude/current-events-dashboard/.claude/workflows/coldstart-validate.js",
+ *              args: { round: <R>, page_n: <N>, sha: "<pushed HEAD, 12 chars>", date: "YYYY-MM-DD" } })
+ * (name: "coldstart-validate" also works, but only when Claude Code was launched from the repo directory itself.)
  * `node scripts/ship_state.mjs` prints the exact call (with the next round number) when it says ROUND-DUE.
  *
  * TWO CRITERIA, TWO VERDICTS, NEVER MERGED:

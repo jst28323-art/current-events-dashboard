@@ -94,7 +94,7 @@ export function decide(m) {
   if (!rs.accepted) {
     return {
       verdict: 'ROUND-DUE',
-      next: `Run the cold-start round for page #${m.pageN}: Workflow({name: "coldstart-validate", args: {round: ${rs.nextRound}, page_n: ${m.pageN}, sha: "${m.head.slice(0, 12)}"}}) — see .claude/skills/handoff/SKILL.md`,
+      next: `Run the cold-start round for page #${m.pageN}: Workflow({scriptPath: "${REPO_ROOT.replace(/\\/g, '/')}/.claude/workflows/coldstart-validate.js", args: {round: ${rs.nextRound}, page_n: ${m.pageN}, sha: "${m.head.slice(0, 12)}", date: "<YYYY-MM-DD>"}}) — see .claude/skills/handoff/SKILL.md`,
       notes,
       round: rs,
     }
