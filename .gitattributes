@@ -1,0 +1,8 @@
+# LF everywhere: the harness compares files across Windows git, WSL and CI (Linux).
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+# Fixtures are upstream bytes: never normalize them (their sha256 is recorded in each .meta.json).
+fixtures/** -text

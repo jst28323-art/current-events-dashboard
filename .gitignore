@@ -1,0 +1,35 @@
+# gate runtime (local, head-pinned; never committed)
+.gate/
+
+# scratch space for probes, downloads, agent temp files
+scratch/
+
+# dependencies / builds
+node_modules/
+dist/
+build/
+.svelte-kit/
+.astro/
+.wrangler/
+coverage/
+playwright-report/
+test-results/
+
+# python (home-PC transcriber, later)
+__pycache__/
+*.pyc
+.venv/
+
+# secrets — never commit; use GitHub Actions secrets / Cloudflare secrets / a local .env
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+*.key
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

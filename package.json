@@ -1,0 +1,20 @@
+{
+  "name": "current-events-dashboard",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A live feed of the US federal government: floor activity, votes, briefings, presidential actions, the Federal Register.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "gate": "node scripts/gate.mjs",
+    "ship-state": "node scripts/ship_state.mjs",
+    "lint:handoff": "node scripts/handoff_lint.mjs",
+    "check:paths": "node scripts/check_paths.mjs",
+    "test:harness": "node --test tests/harness/ship_state.test.mjs tests/harness/handoff_lint.test.mjs tests/harness/check_paths_and_guard.test.mjs"
+  },
+  "gate": {
+    "npmScripts": []
+  }
+}

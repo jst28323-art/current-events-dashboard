@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# enforcement/wiring/git-hooks/pre-commit   [HOST: git client-side; dependency-free]
+# =============================================================================
+# SAFE-GUARDS secret scan (D13). Blocks a commit that STAGES a high-confidence
+# secret, before it can reach git history (which must be treated as permanently
+# leaked -- deletion does not un-cache). Dependency-free fallback for when
+# gitleaks / the pre-commit framework are not installed; gitleaks has higher
+# recall, so prefer .pre-commit-config.yaml when those tools are available.
+# Scans STAGED additions only. False positive? Append a trailing
+#   pragma: allowlist secret
+# comment to the line. Bypassable with --no-verify.
+#
+# ENABLE (in a clone):  git config core.hooksPath enforcement/wiring/git-hooks
+# SELF-TEST (hermetic): bash enforcement/wiring/git-hooks/pre-commit --self-test
+# =============================================================================
+set -u
+
+# High-confidence secret shapes. Kept narrow on purpose (precision over recall)
+# so it does not false-positive on prose that merely discusses secrets.
+secret_re() {
+  printf '%s' '-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{60,}|xox[baprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}'  # pragma: allowlist secret
+}
+# stdin -> prints offending lines; exit 0 if a secret IS found, 1 if clean.
+scan() { grep -v 'pragma: allowlist secret' | grep -En -- "$(secret_re)"; }
+
+if [ "${1:-}" = "--self-test" ]; then
+  fails=0; ok(){ printf '  ok   %s\n' "$1"; }; bad(){ printf '  FAIL %s\n' "$1"; fails=$((fails+1)); }
+  printf 'aws=AKIAIOSFODNN7EXAMPLE\n' | scan >/dev/null && ok "real key flagged"        || bad "real key NOT flagged"          # pragma: allowlist secret
+  printf 'aws=AKIAIOSFODNN7EXAMPLE  # pragma: allowlist secret\n' | scan >/dev/null && bad "allowlist ignored" || ok "allowlisted line passes"  # pragma: allowlist secret
+  printf 'a normal config value = 42, discussing a token in prose\n' | scan >/dev/null && bad "clean wrongly flagged" || ok "clean prose passes"
+  echo "----"
+  [ "$fails" -eq 0 ] && { echo "pre-commit secret-scan self-test: PASS"; exit 0; }
+  echo "pre-commit secret-scan self-test: FAIL ($fails)"; exit 1
+fi
+
+# Normal invocation: scan staged ADDITIONS only.
+hits="$(git diff --cached --no-color --unified=0 -- | grep -E '^\+' | grep -Ev '^\+\+\+' | scan)"
+if [ -n "$hits" ]; then
+  echo "pre-commit: a staged change looks like it contains a secret:" >&2
+  printf '%s\n' "$hits" >&2
+  echo "remove it; or append 'pragma: allowlist secret' to the line if it is a false positive; or bypass with --no-verify." >&2
+  exit 1
+fi
+exit 0

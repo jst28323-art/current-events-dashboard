@@ -1,0 +1,54 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/ship_state.mjs*)",
+      "Bash(node scripts/handoff_lint.mjs*)",
+      "Bash(node scripts/check_paths.mjs*)",
+      "Bash(node scripts/gate.mjs*)",
+      "Bash(node --test*)",
+      "Bash(git status*)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git show*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-.}\" && node scripts/ship_state.mjs --offline --brief 2>&1 | sed 's/^/[ship_state] /'; exit 0",
+            "timeout": 60,
+            "statusMessage": "ship_state"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git *)",
+            "command": "node \"${CLAUDE_PROJECT_DIR:-.}/scripts/hooks/push_guard.mjs\"",
+            "timeout": 150,
+            "statusMessage": "push_guard"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR:-.}/scripts/hooks/dirty_warn.mjs\"",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
