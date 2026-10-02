@@ -34,6 +34,9 @@ strike it through with a dated note and keep it. Each source trap cites the rese
 - **api.data.gov `DEMO_KEY` is useless for real work.** The observed limit was 10 requests per UTC day per API (separate
   counters for Congress.gov and GovInfo), shared by everything on the same IP. Never use DEMO_KEY in CI; use the owner's
   free key (5,000/h on Congress.gov) from a secret. (`docs/research/architecture_hosting_frontend.md`, `docs/research/congress_legislation_committees_courts.md`)
+- **HouseLive hangs on a day that has not happened yet** (2026-10-02, n=1 each): `/broadcastevents/20261005` and
+  `/transcripts/2026-10-05` sent no response within 30 s, while `/floor/2026-10-05` answered 200 `[]` at once. Give every
+  FloorCast call a timeout and treat a timeout as "not yet", never as an outage. (`scripts/capture_live.mjs` dry run)
 - **The HouseLive backend is undocumented** (row `house.floorcast` in `docs/SOURCES.md`): it can change without notice,
   so the official Clerk XML stays the fallback and the adapter must fail closed on drift.
 - **Senate floor caption playlists disappear (404) after the day ends.** Capture live or lose it.

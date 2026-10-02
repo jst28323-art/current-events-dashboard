@@ -1,0 +1,58 @@
+# Deploys the Cloudflare Workers (workers/*) only after the ci workflow has PASSED on a push to main (D-026; grant G-007
+# in docs/OWNER_GRANTS.md). Same trigger shape as pages.yml: never from a red, ungated or pull-request run, and it checks
+# out the exact commit CI passed. No Cloudflare credential lives on any PC: the token comes from GitHub secrets.
+# While the secrets are absent (before ROADMAP P1.1), the job skips with a notice instead of failing.
+name: deploy-workers
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: deploy-workers
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Check for Cloudflare secrets
+        id: secrets
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Cloudflare secrets are not set yet; skipping the Worker deploy (docs/ROADMAP.md P1.1)."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v7
+        if: steps.secrets.outputs.ready == 'true'
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v7
+        if: steps.secrets.outputs.ready == 'true'
+        with:
+          node-version: 22
+      - name: Install dependencies
+        if: steps.secrets.outputs.ready == 'true'
+        run: npm ci
+      - name: Deploy each Worker (pinned wrangler from package-lock.json)
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          for dir in workers/*/; do
+            if [ -f "${dir}wrangler.jsonc" ]; then
+              echo "::group::deploy ${dir}"
+              (cd "$dir" && npx --no-install wrangler deploy)
+              echo "::endgroup::"
+            fi
+          done
+      - name: Deployed check (TESTING.md layer 6)
+        if: steps.secrets.outputs.ready == 'true'
+        run: node scripts/deployed_check.mjs

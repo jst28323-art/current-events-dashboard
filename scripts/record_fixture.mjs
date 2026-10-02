@@ -38,6 +38,30 @@ export function refuseSecrets(url) {
   return /\/\/[^/@]+:[^/@]+@/.test(url) // user:password@host
 }
 
+// Records one response under fixtures/<sourceId>/<date>/<name> (+ .meta.json) and returns the meta and body, so a
+// caller (scripts/capture_live.mjs) can act on what it got. extraHeaders adds request headers (e.g. If-None-Match).
+export async function recordFixture({ sourceId, url, name, date, extraHeaders = {}, root = REPO_ROOT, timeoutMs = 30_000 }) {
+  if (refuseSecrets(url)) throw new Error('REFUSED — the URL carries a key; this repo is public.')
+  const headers = { 'User-Agent': USER_AGENT, Accept: '*/*', ...extraHeaders }
+  const t0 = Date.now()
+  const res = await fetch(url, { headers, redirect: 'follow', signal: AbortSignal.timeout(timeoutMs) })
+  const buf = Buffer.from(await res.arrayBuffer())
+  const ms = Date.now() - t0
+  const hdrs = Object.fromEntries([...res.headers.entries()].filter(([k]) => !/^set-cookie$/i.test(k)))
+  const file = name || defaultName(res.url || url, hdrs['content-type'])
+  const day = date || new Date().toISOString().slice(0, 10)
+  const dir = join(root, 'fixtures', sourceId, day)
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, file), buf)
+  const meta = {
+    source_id: sourceId, url, final_url: res.url, fetched_at: new Date().toISOString(), status: res.status,
+    elapsed_ms: ms, bytes: buf.length, sha256: createHash('sha256').update(buf).digest('hex'),
+    request_headers: headers, response_headers: hdrs,
+  }
+  writeFileSync(join(dir, `${file}.meta.json`), JSON.stringify(meta, null, 2) + '\n')
+  return { meta, body: buf, path: `fixtures/${sourceId}/${day}/${file}` }
+}
+
 async function main() {
   const [sourceId, url, ...rest] = process.argv.slice(2)
   if (!sourceId || !url) {
@@ -46,25 +70,9 @@ async function main() {
   }
   if (refuseSecrets(url)) { console.error('record_fixture: REFUSED — the URL carries a key; this repo is public.'); process.exit(2) }
   const opt = (k) => { const i = rest.indexOf(k); return i >= 0 ? rest[i + 1] : undefined }
-  const date = opt('--date') || new Date().toISOString().slice(0, 10)
-  const headers = { 'User-Agent': USER_AGENT, Accept: '*/*' }
-  if (opt('--ims')) headers['If-Modified-Since'] = opt('--ims')
-  const t0 = Date.now()
-  const res = await fetch(url, { headers, redirect: 'follow', signal: AbortSignal.timeout(30_000) })
-  const buf = Buffer.from(await res.arrayBuffer())
-  const ms = Date.now() - t0
-  const hdrs = Object.fromEntries([...res.headers.entries()].filter(([k]) => !/^set-cookie$/i.test(k)))
-  const name = opt('--name') || defaultName(res.url || url, hdrs['content-type'])
-  const dir = join(REPO_ROOT, 'fixtures', sourceId, date)
-  mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, name), buf)
-  const meta = {
-    source_id: sourceId, url, final_url: res.url, fetched_at: new Date().toISOString(), status: res.status,
-    elapsed_ms: ms, bytes: buf.length, sha256: createHash('sha256').update(buf).digest('hex'),
-    request_headers: headers, response_headers: hdrs,
-  }
-  writeFileSync(join(dir, `${name}.meta.json`), JSON.stringify(meta, null, 2) + '\n')
-  console.log(`${res.status} ${buf.length}B ${ms}ms  fixtures/${sourceId}/${date}/${name}`)
+  const extraHeaders = opt('--ims') ? { 'If-Modified-Since': opt('--ims') } : {}
+  const { meta, path } = await recordFixture({ sourceId, url, name: opt('--name'), date: opt('--date'), extraHeaders })
+  console.log(`${meta.status} ${meta.bytes}B ${meta.elapsed_ms}ms  ${path}`)
 }
 
 if (isMain(import.meta.url)) main().catch((e) => { console.error(`record_fixture: ${e.message}`); process.exit(1) })
