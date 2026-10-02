@@ -1,0 +1,290 @@
+{
+  "round": 2,
+  "page_n": 1,
+  "sha": "b5dcb44c29f9",
+  "date": "2026-10-02",
+  "n_resumers": 3,
+  "routing_verdict": "PASS",
+  "content_verdict": "PASS",
+  "routing_axes": {
+    "first_actions_agree": true,
+    "compare_note": "All three agents name the same first action: one multiSelect AskUserQuestion call plus a PushNotification that asks the owner the four ROADMAP P1.1 questions. Those questions are (1) Cloudflare signup and a Workers-scoped token saved as the CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID secrets, (2) an api.data.gov key saved as API_DATA_GOV_KEY, (3) whether sessions may deploy Workers when the gate passes, and (4) which *.workers.dev subdomain to use. All three cite HANDOFF NEXT ACTION step 1 and docs/ROADMAP.md:25-31. Their wording differs only trivially. The executor also names a later step (npm view preact@10 version for the P1.2 scaffold), and the other two also say the P1.2 scaffold comes next. That step comes after the first action, so it does not change the order or the first step.",
+    "heads_ok": true,
+    "could_execute_all": true,
+    "page_blockers": 0,
+    "resumer_fails": 0
+  },
+  "first_actions": [
+    {
+      "lens": "straight",
+      "cmd": "AskUserQuestion (one call, multiSelect where it fits) + PushNotification asking the four docs/ROADMAP.md P1.1 questions: (1) free Cloudflare signup + Workers-scoped API token pasted by the owner as GitHub secrets CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID, (2) free api.data.gov key as secret API_DATA_GOV_KEY, (3) may sessions deploy Workers when the gate passes, (4) which *.workers.dev subdomain  [HANDOFF.md ## NEXT ACTION step 1; docs/ROADMAP.md:25-31]",
+      "what": "Send one multiselect AskUserQuestion with a PushNotification that asks the owner the four ROADMAP P1.1 account and grant questions. This comes first because the page says \"Ask before building\", the canonical prompt says to ask before development, P1.1 is the first unticked Phase 1 task, and creating accounts or secrets is ask-first under OWNER_GRANTS. The account-free P1.2 workspace scaffold comes next.",
+      "head": "b5dcb44",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "skeptic",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification: the ROADMAP P1.1 questions (docs/ROADMAP.md:25-31): free Cloudflare signup + Workers-scoped API token -> GitHub secrets CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID; api.data.gov key -> API_DATA_GOV_KEY; may sessions deploy Workers when the gate passes; which *.workers.dev subdomain  [HANDOFF.md ## NEXT ACTION step 1]",
+      "what": "Ask the owner the four ROADMAP P1.1 questions in one multiselect AskUserQuestion with a PushNotification. It comes first because HANDOFF NEXT ACTION step 1 says \"ask before building\", the canonical prompt asks for questions before development, P1.1 is the first unticked Phase 1 task, and account creation, secrets and a deploy grant are all ask-first under OWNER_GRANTS. The account-free P1.2 scaffold then starts without waiting for answers.",
+      "head": "b5dcb44",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "executor",
+      "cmd": "AskUserQuestion (multiSelect) + PushNotification asking every ROADMAP P1.1 question: (1) free Cloudflare signup + Workers-scoped API token and account ID pasted by the owner into GitHub Settings -> Secrets as CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID; (2) free api.data.gov key -> secret API_DATA_GOV_KEY; (3) may sessions deploy Workers when the gate passes; (4) which *.workers.dev subdomain  [HANDOFF.md:39-46 NEXT ACTION step 1; docs/ROADMAP.md:25-31]. Then P1.2 starts with: npm view preact@10 version",
+      "what": "Send one multiselect AskUserQuestion call plus a PushNotification with the four P1.1 account questions. It comes first because HANDOFF NEXT ACTION step 1 and the canonical prompt both say to ask before building, and P1.1 is the first unticked Phase 1 task. After that, the P1.2 workspace scaffold (version checks, then the npm workspaces) goes ahead without waiting, since it needs no account.",
+      "head": "b5dcb44",
+      "verdict": "PASS-WITH-NOTES"
+    }
+  ],
+  "blocking": [],
+  "blocking_offpage": [
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "HANDOFF_PROCEDURE disagrees with itself about what triggers ROUND-DUE. Two passages say a round on record for the page NUMBER clears it, and step 4 offers a NEXT-ACTION-only edit as the light path. PART 4 and ship_state key rounds on the page BLOB, so any edit needs a re-round.",
+      "where": "docs/HANDOFF_PROCEDURE.md:39-40 'ship_state prints ROUND-DUE until a round is on record for the page number' and :66 '(the page number has no accepted round)' vs docs/HANDOFF_PROCEDURE.md:83-84 'ship_state compares HANDOFF.md's blob, so any other edit to the page, even of the NEXT ACTION line alone, makes ROUND-DUE again' and scripts/ship_state.mjs:29 'no accepted cold-start round covers the CURRENT HANDOFF.md text'",
+      "evidence": "docs/coldstart/r1/RESULT.json is on record for page_n 1, yet node scripts/ship_state.mjs prints ROUND-DUE 'r1 validated an earlier text of page #1; the page changed since'",
+      "lens": "skeptic"
+    }
+  ],
+  "backlog": [
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 1 has the session ask in one AskUserQuestion call, which blocks until the owner answers. Step 2 says to start P1.2 'even if the owner is away', but the page never says how a session finds out the owner is away or how long to wait. The first action is the same either way.",
+      "where": "HANDOFF.md:42 '**Ask before building** ... one AskUserQuestion call' vs HANDOFF.md:47 'needs no account, so start it even if the owner is away'",
+      "evidence": "Read HANDOFF.md NEXT ACTION steps 1-2. In Claude Code, AskUserQuestion waits for an answer and has no timeout.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "ROADMAP P1.1 says to record the P1.1 answers in OWNER_GRANTS.md only. CLAUDE.md says every answer goes verbatim into DECISIONS.md, with grants also in OWNER_GRANTS.md. HANDOFF names no file.",
+      "where": "docs/ROADMAP.md:30 'Record the answers and grants in `docs/OWNER_GRANTS.md`' vs CLAUDE.md:42 'Record every answer verbatim as a new row in `docs/DECISIONS.md` (and a grant in `docs/OWNER_GRANTS.md` if it grants authority)'",
+      "evidence": "grep -n 'Record the answers' docs/ROADMAP.md HANDOFF.md, and CLAUDE.md:42",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "Nothing in the repo says how a Worker gets deployed. The Cloudflare token is stored only as a GitHub Actions secret, the local token cannot dispatch workflows, and no deploy workflow exists. P1.3 and P1.5 therefore need either a new push-triggered deploy workflow or a local wrangler token, and P1.1 does not ask which.",
+      "where": "docs/ROADMAP.md:26-28 'stored as GitHub Actions secrets ... keys never pass through chat' vs docs/TRAPS.md:69-70 'lacks ... \"Actions: write\" (so `gh workflow run` fails with 403; to re-run a workflow, push a commit)'; .github/workflows/ holds only ci.yml and pages.yml",
+      "evidence": "ls .github/workflows → ci.yml pages.yml; grep -rn 'wrangler deploy|deploy the worker' found only the add-source step 7 grant rule",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "MAP.md still marks cold-start records as planned, but round r1's RESULT.json has landed.",
+      "where": "MAP.md:47 '`docs/coldstart/r<R>/RESULT.json` (planned until the first round lands)' vs the existing docs/coldstart/r1/RESULT.json",
+      "evidence": "ls docs/coldstart/r1 → RESULT.json plus four notes files",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "HANDOFF_PROCEDURE says ROUND-DUE is keyed on the page number in two places. The code and a later paragraph key it on HANDOFF.md's blob.",
+      "where": "docs/HANDOFF_PROCEDURE.md:39-40 '`ship_state` prints `ROUND-DUE` until a round is on record for the page number' (and :66 'the page number has no accepted round') vs docs/HANDOFF_PROCEDURE.md:83-84 '`ship_state` compares HANDOFF.md's blob' and scripts/ship_state.mjs:57 covers() comparing _blob / content_fix_blob",
+      "evidence": "ship_state today printed 'r1 validated an earlier text of page #1; the page changed since' for the same page number",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Two parts of SYNTHESIS read as still open even though they are settled. §5's 'pick one and record it' was settled by D-024, and two 'terms first (D-009)' lines lack inline superseded notes (D-017 replaced that rule). The file header already says DECISIONS wins, so a careful reader is not misled.",
+      "where": "docs/research/SYNTHESIS.md:433 'The build session should pick one and record it' vs docs/DECISIONS.md:34 D-024 'Adopt the synthesis cut'; SYNTHESIS.md:296 'third-party; terms first (D-009)' and :496 'Link out until terms are checked (D-009)' vs docs/DECISIONS.md:27 D-017",
+      "evidence": "grep -n 'link out|D-009|Superseded' docs/research/SYNTHESIS.md; header at SYNTHESIS.md:10-12",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "In ARCHITECTURE's 'Decisions still open' table, the 'Long-term archive' row is split across two source lines, so that row renders broken.",
+      "where": "docs/ARCHITECTURE.md:86-87",
+      "evidence": "cat -n docs/ARCHITECTURE.md: line 86 ends mid-cell with 'may require' and line 87 continues the cell",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "Nothing says how a Worker gets deployed. The Cloudflare token is stored only as GitHub Actions secrets, but there is no deploy workflow, and the local token cannot dispatch workflows. P1.3 needs a deployed probe Worker. The choice between a push-triggered Actions deploy and wrangler from this PC is unstated, so it should go into the P1.1 deploy-grant question.",
+      "where": "docs/ROADMAP.md:25-27 'an API token scoped to Workers edits, stored as GitHub Actions secrets CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID' vs .github/workflows/ (only ci.yml, pages.yml) and docs/TRAPS.md:67-70 'lacks ... \"Actions: write\" (so gh workflow run fails with 403...)'; docs/ROADMAP.md:40 P1.3 needs a probe Worker",
+      "evidence": "ls .github/workflows -> ci.yml, pages.yml; ci.yml permissions contents: read; r1 backlog flagged the same gap. The grant question was added since, but the route was not.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "HANDOFF_PROCEDURE disagrees with itself about what triggers ROUND-DUE. Two passages say a round on record for the page NUMBER clears it, and step 4 offers a NEXT-ACTION-only edit as the light path. PART 4 and ship_state key rounds on the page BLOB, so any edit needs a re-round.",
+      "where": "docs/HANDOFF_PROCEDURE.md:39-40 'ship_state prints ROUND-DUE until a round is on record for the page number' and :66 '(the page number has no accepted round)' vs docs/HANDOFF_PROCEDURE.md:83-84 'ship_state compares HANDOFF.md's blob, so any other edit to the page, even of the NEXT ACTION line alone, makes ROUND-DUE again' and scripts/ship_state.mjs:29 'no accepted cold-start round covers the CURRENT HANDOFF.md text'",
+      "evidence": "docs/coldstart/r1/RESULT.json is on record for page_n 1, yet node scripts/ship_state.mjs prints ROUND-DUE 'r1 validated an earlier text of page #1; the page changed since'",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The page says the handoff skill runs the cold-start round 'when you replace this page'. That is incomplete: any edit to the page makes ROUND-DUE. ship_state enforces this anyway, and the first action is unaffected.",
+      "where": "HANDOFF.md:53-54 'It includes the cold-start round when you replace this page.' (also .claude/skills/handoff/SKILL.md:21 'If the page was replaced') vs docs/HANDOFF_PROCEDURE.md:83-84 'any other edit to the page, even of the NEXT ACTION line alone, makes ROUND-DUE again'",
+      "evidence": "ship_state keys rounds on git hash-object HANDOFF.md (current f60b9ba7...)",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "ROADMAP P1.2 names only the Preact pin. The latest Vitest (5.0.3) does not satisfy the Workers test pool's peer range, so installing Vitest unpinned would conflict with @cloudflare/vitest-pool-workers. The Vitest 4.x pin appears only in SYNTHESIS.",
+      "where": "docs/ROADMAP.md:35-36 'Check current versions and pin them (the synthesis notes Preact 11.0.0 was only two days old; stay on 10.x...)' vs docs/research/SYNTHESIS.md:332 'Vitest 4.x for the Workers test pool'",
+      "evidence": "npm view (2026-10-02): vitest dist-tags.latest 5.0.3; @cloudflare/vitest-pool-workers latest 0.22.0 peerDependencies vitest ^4.1.0; preact latest 11.0.0; wrangler 4.147.0 engines node >=22",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "This PC runs Node 26 / npm 11, while CI runs Node 22, which ships a different npm major. Once P1.2 adds dependencies and a lockfile, a package can pass locally and fail CI's npm ci or tests. There is no TRAPS entry for this. r1 flagged it and it is still open.",
+      "where": ".github/workflows/ci.yml:21 'node-version: 22' vs local `node --version` v26.3.0 (npm 11.16.0); package.json engines '>=22'; docs/TRAPS.md:83-84 covers Node 26 only for `node --test <directory>`",
+      "evidence": "node --version -> v26.3.0; npm --version -> 11.16.0",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The P1.3 probe is told to fetch every Tier 1-2 source, but some Tier 2 sources need keys that P1.1 never asks for (the Google/YouTube key, the DVIDS key). The probe must either skip them or add more sign-ups.",
+      "where": "docs/ROADMAP.md:40-41 'fetch every Tier 1–2 source in docs/SOURCES.md' vs docs/SOURCES.md Tier 2 rows youtube.api 'needs a free Google API key (ask-first signup, ROADMAP P3.3)' and war.feeds 'DVIDS API needs a free key'",
+      "evidence": "grep key in docs/SOURCES.md:13-48; ROADMAP P1.1 asks only for Cloudflare and api.data.gov",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "ROADMAP P1.1 says to record the answers in OWNER_GRANTS only. CLAUDE.md requires every answer verbatim in DECISIONS, plus a grant row in OWNER_GRANTS when the answer grants authority.",
+      "where": "docs/ROADMAP.md:30 'Record the answers and grants in docs/OWNER_GRANTS.md' vs CLAUDE.md 'Record every answer verbatim as a new row in docs/DECISIONS.md (and a grant in docs/OWNER_GRANTS.md if it grants authority)'",
+      "evidence": "read both files",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "MAP still marks the cold-start records as planned, but the first round has landed.",
+      "where": "MAP.md:47 'docs/coldstart/r<R>/RESULT.json (planned until the first round lands)'",
+      "evidence": "ls docs/coldstart/r1 -> RESULT.json plus four notes files",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "check_paths exempts packages/, workers/ and apps/ only until each directory exists. Once packages/ exists, the living docs' citations of all four scaffold paths are checked, so a partial scaffold that is gated fails doc-paths. Scaffold all four directories before the first gate.",
+      "where": "scripts/check_paths.mjs:10-11 '...any path under a planned top-level directory (PLANNED_TOP) until that directory exists' vs HANDOFF.md:48 and docs/ROADMAP.md:32-34 citing packages/schema, packages/adapters, workers/api, apps/web",
+      "evidence": "grep of backticked planned-dir paths in the living docs: HANDOFF.md:48, ROADMAP.md:32-34,53, EVENT_MODEL.md:4, MAP.md:26",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "HANDOFF restates ROADMAP P1.1's question list, which goes against CLAUDE.md's one-home rule. The two copies agree today.",
+      "where": "HANDOFF.md:43-45 '(the Cloudflare signup and API token, the api.data.gov key, whether sessions may deploy Workers when the gate passes, the workers.dev subdomain)' vs docs/ROADMAP.md:25-30",
+      "evidence": "compared both texts; CLAUDE.md Docs discipline: 'Every fact lives in exactly one place'",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "No doc says how a Worker gets deployed. P1.1 stores the Cloudflare token only as GitHub Actions secrets, but the repo has no deploy workflow and no doc mentions `wrangler deploy` or a local `wrangler login`. So the deploy-grant question on the page cannot name its mechanism, and P1.3 does not know whether it must first build a deploy workflow. The first action is unchanged.",
+      "where": "HANDOFF.md:44 \"whether sessions may deploy Workers when the gate passes\" + docs/ROADMAP.md:26-27 \"stored as GitHub Actions secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`\" vs .github/workflows/ (only ci.yml, with `permissions: contents: read` at ci.yml:8-9, and pages.yml)",
+      "evidence": "ls .github/workflows -> ci.yml, pages.yml; grep -rn wrangler over the docs (excluding research and coldstart) -> only docs/ARCHITECTURE.md:54 and docs/ROADMAP.md:34 (config and test pool), nothing on deploys",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The docs disagree on what a NEGATIVE or error fixture should return. One says zero events; another says to emit a system.source_health drift event, which EVENT_MODEL lists as an event type. P1.4's golden tests and the P1.2 adapter registry type both depend on whether health is an Event in the returned Event[] or a separate channel.",
+      "where": ".claude/skills/add-source/SKILL.md:24-25 \"on unexpected structure, emit a `system.source_health` drift event and publish nothing from that payload\" (and :26-27 \"produce no events and the right health signal\") vs docs/ROADMAP.md:58 \"every NEGATIVE fixture emits zero events\" and docs/EVENT_MODEL.md:111 \"system | `system.source_health` (drives the status page)\"",
+      "evidence": "grep -rn 'source_health|zero events|no events' --include=*.md finds these three places, and none of them settles it",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "The gate's 'no ungated suite' check and its gate.npmScripts list read only the ROOT package.json. Once P1.2 adds npm workspaces, a workspace's own test, typecheck or build script that no root script calls is never run and never flagged, so the check fails open. The page says 'package.json' without saying which one.",
+      "where": "scripts/gate.mjs:79-82 `ungatedScripts(pkg)` over root `pkg.scripts`; gate.mjs:87 `readJson('package.json')` vs HANDOFF.md:48-49 \"Every new suite goes into `package.json` → `gate.npmScripts`\"",
+      "evidence": "Read scripts/gate.mjs: MUST_GATE is ['test','typecheck','build','e2e','lint'], checked only against the root package.json; nothing walks the workspaces",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "MAP still marks the cold-start records as planned, though round r1 has landed.",
+      "where": "MAP.md:47 \"`docs/coldstart/r<R>/RESULT.json` (planned until the first round lands)\" vs docs/coldstart/r1/RESULT.json (exists; PROGRESS.md:19 \"Cold-start round r1 ... `docs/coldstart/r1/`\")",
+      "evidence": "ls docs/coldstart -> r1/RESULT.json",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "A markdown table row in ARCHITECTURE is split across two lines. Rendered as GFM, the R2 payment-method caveat becomes its own row under the 'question' column, and the original row's 'decided by' cell is empty.",
+      "where": "docs/ARCHITECTURE.md:86-87 (line 86 ends mid-cell \"enabling R2 may require\"; line 87 starts \"  a payment method on file (UNVERIFIED)...\" with no leading pipe)",
+      "evidence": "sed -n 84,88p docs/ARCHITECTURE.md | cat -A shows line 87 begins with two spaces, not '|'",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The secrets-handling wording differs between two docs. The grant text could be read as allowing a key in chat if the chat is never committed; ROADMAP forbids keys in chat at all. The stricter rule governs, so this is harmless, but one rule is stated two ways.",
+      "where": "docs/OWNER_GRANTS.md:25-26 \"the owner pastes keys in, never into chat history that gets committed\" vs docs/ROADMAP.md:27-28 \"keys never pass through chat\"",
+      "evidence": "Read both files",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The Node version to pin against is unstated. CI runs Node 22 and the local machine runs Node 26; P1.2 says to check versions and pin them but not against which Node. A Node-26-only behaviour has already bitten once.",
+      "where": ".github/workflows/ci.yml:21 `node-version: 22` vs local `node --version` v26.3.0 and docs/TRAPS.md:83-84 (`node --test <directory>` fails on Node 26); docs/ROADMAP.md:35-36 \"Check current versions and pin them\"",
+      "evidence": "node --version -> v26.3.0; package.json engines \">=22\"",
+      "lens": "executor"
+    }
+  ],
+  "would_ask": [
+    "[straight] Cloudflare (free): sign up now with me walking you through it, then create an API token limited to editing Workers and paste CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID into GitHub Settings > Secrets and variables > Actions yourself? (now / later today / not yet; $0, reversible)",
+    "[straight] api.data.gov (free): sign up now and paste the key as API_DATA_GOV_KEY (the P1.3 probe needs it for Congress.gov; DEMO_KEY is useless)? (now / later / not yet)",
+    "[straight] May sessions deploy Workers to that Cloudflare account without asking when the gate passes, like the GitHub push grant G-003? (standing yes / ask before each deploy / only the throwaway probe Worker for now). Also: deploy only through GitHub Actions using the secrets, or also from a local gitignored .env for wrangler?",
+    "[straight] Which *.workers.dev subdomain should we use (e.g. current-events / ced / your GitHub handle / other)?",
+    "[straight] (in the notification or option text, since the call takes at most 4 questions) Can a session be running Mon 2026-10-05 around 16:00-17:00 ET, so it can record the pro forma session fixtures (ROADMAP P2.3)?",
+    "[skeptic] Cloudflare: create the free account now (walked through), make a Workers-scoped API token, and paste it plus the account ID into GitHub Settings > Secrets > Actions as CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID? (now / later today / not yet)",
+    "[skeptic] api.data.gov: sign up for the free key now and paste it as API_DATA_GOV_KEY (later also a Worker secret)?",
+    "[skeptic] Worker deploys: may sessions deploy Workers to that account without asking when the gate passes (a Cloudflare version of G-003)? Which route: a push-triggered GitHub Actions deploy job that uses the secrets, or wrangler from this PC with the token in a gitignored .env?",
+    "[skeptic] Which *.workers.dev subdomain name should we use?",
+    "[skeptic] Will a session be running Mon 2026-10-05 from about 15:55 ET (14:55 CDT) to record the pro forma fixtures (ROADMAP P2.3)? The Senate convenes at 16:00 ET and the House at 16:30 ET, and the Oct 1 Senate pro forma lasted 35 s.",
+    "[skeptic] For the P1.3 probe: skip the Tier 2 sources that need a key (YouTube, DVIDS), or sign up for those free keys too?",
+    "[executor] Cloudflare (free, $0): will you sign up now with me walking you through it, then paste a Workers-edit API token and your account ID into GitHub Settings -> Secrets as CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID? Options: now / later today / not yet (I build offline first: the P1.2 scaffold and the P1.4 adapters).",
+    "[executor] api.data.gov key (free): will you sign up now and paste it as API_DATA_GOV_KEY? In Phase 1 only the P1.3 probe of Congress.gov needs it; the FR and White House sources need no key. Options: now / with Cloudflare / later.",
+    "[executor] Worker deploys: may sessions deploy Workers (the P1.3 probe and the P1.5 Worker v0, which are public *.workers.dev URLs, free and deletable) without asking whenever the gate passes, or should I ask each time? And by which route: a GitHub Actions workflow that deploys after CI passes, like Pages does, using the secrets above (my recommendation), or a local `wrangler login` on your PC?",
+    "[executor] Which *.workers.dev subdomain do you want? It becomes part of the public API address. Options: a name you give / let me pick.",
+    "[executor] (Optional; merge it into another question if the tool caps a call at 4 questions.) Will a session be open on Mon 2026-10-05, 16:00-17:00 ET, to record live pro forma fixtures (ROADMAP P2.3), or should we skip it?"
+  ],
+  "content_findings": [],
+  "notes": "C:/Users/j/claude/current-events-dashboard/docs/coldstart/r2/ (copied from C:/Users/j/claude/current-events-dashboard/scratch/coldstart/r2/ at record time)"
+}

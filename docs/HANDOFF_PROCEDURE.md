@@ -29,15 +29,16 @@ place and left its duplicate wrong in another.
 2. **PROGRESS entry** (prepend): what changed, how it was verified (commands + results), what failed, your own
    corrections. Compare it with its sources for dropped caveats before committing: summaries delete hedges.
 3. **ROADMAP**: tick finished tasks; make sure the next task is concrete enough to start cold.
-4. **HANDOFF.md.** Either edit the NEXT ACTION line only (no rotation), or REPLACE the page (a rotation):
+4. **HANDOFF.md.** Either edit the page in place (any edit, even of the NEXT ACTION line alone, needs a new cold-start
+   round, PART 4), or REPLACE the page (a rotation):
    append the old page WHOLE to `HANDOFF_ARCHIVE.md` under `## ARCHIVED #N (date)`, then write the new page as
    `## ⚑ LATEST #N+1 (YYYY-MM-DD) — title`. Replace the page whenever the state paragraph or NEXT ACTION changed
    materially — which is most sessions.
 5. **Commit as you write.** Each state carrier (PROGRESS, ROADMAP, HANDOFF) is committed when written, not batched.
 6. **Gate, then push.** `node scripts/ship_state.mjs` → obey → `node scripts/gate.mjs` → `git push origin main`
    (only under the push grant in `docs/OWNER_GRANTS.md`). Never push a red gate; never force-push.
-7. **Cold-start round if the page was replaced** (PART 4). `ship_state` prints `ROUND-DUE` until a round is on record
-   for the page number. The session that replaced the page runs the round. **The session is not done while
+7. **Cold-start round if HANDOFF.md changed at all** (PART 4). `ship_state` prints `ROUND-DUE` until an accepted round
+   on record validated exactly the current page text. The session that replaced the page runs the round. **The session is not done while
    `ship_state` says `ROUND-DUE`.**
 8. **Surface the canonical resume prompt** (from `CLAUDE.md`) in a fenced block, with the validation verdict ("READY and
    FULLY VALIDATED: routing PASS 3/3, content PASS"). Never surface it before the round has passed.
@@ -63,7 +64,7 @@ must stay self-sufficient under that prompt alone.
 
 ## PART 4 — Cold-start validation
 
-**Trigger:** `ship_state` says `ROUND-DUE` (the page number has no accepted round). Run it after the page is pushed:
+**Trigger:** `ship_state` says `ROUND-DUE` (no accepted round validated the current HANDOFF.md text). Run it after the page is pushed:
 
     Workflow({ scriptPath: "C:/Users/j/claude/current-events-dashboard/.claude/workflows/coldstart-validate.js",
                args: { round: R, page_n: N, sha: "<pushed HEAD>", repo: "C:/Users/j/claude/current-events-dashboard",

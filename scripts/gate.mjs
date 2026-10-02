@@ -76,9 +76,36 @@ export function secretScan({ cwd = REPO_ROOT, ci = false } = {}) {
   return { ok: hits.length === 0, detail: hits.length ? hits.slice(0, 8).join('\n') : 'no secret shapes in tracked files or unpushed history' }
 }
 
-export function ungatedScripts(pkg) {
-  const declared = new Set(((pkg && pkg.gate && pkg.gate.npmScripts) || []))
-  return Object.keys((pkg && pkg.scripts) || {}).filter((s) => MUST_GATE.includes(s) && !declared.has(s))
+// Workspace package.json files (supports "dir" and "dir/*" patterns in package.json "workspaces").
+export function workspacePackages(pkg, root = REPO_ROOT) {
+  const out = []
+  for (const pat of (pkg && Array.isArray(pkg.workspaces) ? pkg.workspaces : [])) {
+    const dirs = pat.endsWith('/*')
+      ? (existsSync(join(root, pat.slice(0, -2))) ? readdirSync(join(root, pat.slice(0, -2)), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => `${pat.slice(0, -2)}/${d.name}`) : [])
+      : [pat]
+    for (const d of dirs) {
+      const j = readJson(`${d}/package.json`)
+      if (j && !j.__parse_error) out.push({ dir: d, pkg: j })
+    }
+  }
+  return out
+}
+
+// Scripts named test/typecheck/build/e2e/lint that the gate would never run: root scripts not listed in
+// gate.npmScripts, and workspace scripts that no gated root script reaches (via --workspaces/-ws, or by naming the
+// workspace with --workspace/-w). A suite nobody runs is a guard that fails open (2026-10-02 review).
+export function ungatedScripts(pkg, workspaces = []) {
+  const declared = ((pkg && pkg.gate && pkg.gate.npmScripts) || [])
+  const out = Object.keys((pkg && pkg.scripts) || {}).filter((s) => MUST_GATE.includes(s) && !declared.includes(s))
+  const gatedCmds = declared.map((n) => String(((pkg && pkg.scripts) || {})[n] || ''))
+  for (const ws of workspaces) {
+    for (const s of Object.keys(ws.pkg.scripts || {}).filter((x) => MUST_GATE.includes(x))) {
+      const reached = gatedCmds.some((c) => new RegExp(`\\b${s}\\b`).test(c) && (/(--workspaces|\s-ws\b)/.test(c) ||
+        c.includes(ws.dir) || (ws.pkg.name && c.includes(ws.pkg.name))))
+      if (!reached) out.push(`${ws.dir}:${s}`)
+    }
+  }
+  return out
 }
 
 export function checks({ ci }) {
@@ -117,7 +144,10 @@ export function checks({ ci }) {
     {
       name: 'npm-scripts-gated',
       why: 'a test/typecheck/build/e2e/lint script that the gate does not run is a suite nobody runs',
-      fn: () => { const u = ungatedScripts(pkg); return { ok: u.length === 0, detail: u.length ? `add to package.json gate.npmScripts: ${u.join(', ')}` : 'ok' } },
+      fn: () => {
+        const u = ungatedScripts(pkg, workspacePackages(pkg))
+        return { ok: u.length === 0, detail: u.length ? `not run by the gate (list root scripts in package.json gate.npmScripts; reach workspace scripts from a gated root script, e.g. "npm run test --workspaces"): ${u.join(', ')}` : 'ok' }
+      },
     },
     ...npmScripts.map((s) => ({ name: `npm:${s}`, why: 'product check declared in package.json gate.npmScripts', cmd: [process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', '--silent', s]], shell: process.platform === 'win32' })),
   ]

@@ -22,8 +22,8 @@ Anything not granted here is ask-first. When unsure whether an action is covered
 - **GitHub admin actions:** creating, renaming, archiving or changing the visibility of a repo; repo settings
   (including Pages settings); collaborators; branch protection or rulesets; webhooks; deploy keys.
 - **Accounts and secrets:** creating any external account (Cloudflare, api.data.gov, Oracle, ntfy, Apple, etc.), or
-  adding/rotating a secret. Walk the owner through the signup; the owner pastes keys in, never into chat history
-  that gets committed.
+  adding/rotating a secret. Walk the owner through the signup; the owner pastes keys into the service's own settings
+  page (GitHub / Cloudflare) themselves: keys never pass through chat.
 - **Anything running on the owner's home PC** that keeps running after the session ends (services, scheduled tasks,
   startup entries), and anything that uses its GPU (D-003: it also runs other GPU work).
 - **Contacting anyone** outside the repo (emailing a data provider to ask permission, filing issues on other repos).

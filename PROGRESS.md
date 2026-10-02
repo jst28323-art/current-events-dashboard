@@ -5,6 +5,24 @@ entry; correct it with a new one. Rotate the oldest entries to `PROGRESS_ARCHIVE
 
 ---
 
+## #3 — 2026-10-02 — cold-start r2 PASS on the final page; session closes
+
+**Cold-start round r2** (page #1 as pushed after the hardening; `docs/coldstart/r2/`, tree untouched while it ran):
+routing PASS (3/3 resumers named the same first action: one multiselect AskUserQuestion + PushNotification with the
+ROADMAP P1.1 questions), content PASS (0 false claims). `node scripts/ship_state.mjs` had correctly refused r1 for the
+edited page ("r1 validated an earlier text of page #1").
+
+**r2 backlog fixed in the tree** (TREE-scoped, so no re-round; HANDOFF.md itself unchanged): HANDOFF_PROCEDURE and the
+handoff skill now say rounds key on the page text, not the number; ROADMAP P1.1 asks HOW Workers get deployed (deploy
+workflow vs `wrangler login`) and records answers in DECISIONS + grants in OWNER_GRANTS; P1.2 notes the Vitest pin, the
+all-four-directories rule and Node 22 (CI) vs 26 (local); P1.3 skips sources whose keys aren't granted; the gate now
+also fails on workspace test/build scripts that no gated root script runs (harness tests 47 → 48); a split ARCHITECTURE
+table row, a stale MAP row and more SYNTHESIS notes superseded by D-017/D-024 were fixed.
+Left as leads (PAGE-scoped, minor, first action unaffected): the page restates ROADMAP P1.1's question list in short
+form; AskUserQuestion blocks, so "start P1.2 even if the owner is away" applies after the owner has answered or declined.
+
+---
+
 ## #2 — 2026-10-02 — first push, Pages live, cold-start r1, adversarial reviews, harness hardening
 
 **Shipped:** the public repo `jst28323-art/current-events-dashboard` (G-001) and the Pages site

@@ -26,18 +26,24 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   Workers edits, stored as GitHub Actions secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`; free api.data.gov
   key → secret `API_DATA_GOV_KEY` (a Worker secret too, later). The owner pastes secrets into GitHub's Settings →
   Secrets page themselves (keys never pass through chat; the local token may lack the Secrets permission). Also ask:
-  may sessions deploy Workers to that account when the gate passes (a Cloudflare analogue of G-003), and which
-  `*.workers.dev` subdomain to use. Record the answers and grants in `docs/OWNER_GRANTS.md`. If the owner is away, do
+  may sessions deploy Workers to that account when the gate passes (a Cloudflare analogue of G-003), HOW Workers get
+  deployed (recommended: a deploy workflow that runs on pushes to main after CI passes, using the GitHub secrets, so no
+  key lives on this PC; alternative: `wrangler login` on this PC), and which `*.workers.dev` subdomain to use. Record
+  every answer verbatim as a `docs/DECISIONS.md` row and each grant as a `docs/OWNER_GRANTS.md` row. If the owner is away, do
   P1.2 and P1.4 first (neither needs an account).
 - [ ] **P1.2 Workspace scaffold.** npm workspaces + TypeScript: `packages/schema` (EVENT_MODEL v0.1 Phase-1 minimum →
   TS types + JSON Schema + validator), `packages/adapters` (registry type + a harness that replays `fixtures/`),
   `workers/api` (Worker + one Durable Object skeleton, wrangler config, the Vitest Workers pool), `apps/web` (Vite +
   Preact + signals shell carrying the design tokens from `site/index.html`). Check current versions and pin them (the
-  synthesis notes Preact 11.0.0 was only two days old; stay on 10.x unless there is a reason). Add each suite to
+  synthesis notes Preact 11.0.0 was only two days old: stay on 10.x unless there is a reason; Vitest must stay on the
+  major that `@cloudflare/vitest-pool-workers` supports, 4.x per the synthesis: check its peer range). Create all four
+  directories in the same commit (`scripts/check_paths.mjs` starts checking a planned directory's paths once it exists).
+  CI runs Node 22 while this PC runs Node 26 (`docs/TRAPS.md`): CI is the judge. Add each suite to
   `package.json` → `gate.npmScripts` and commit `package-lock.json` (`.github/workflows/ci.yml` runs `npm ci` only
   when that lockfile exists, so without it CI cannot run the new suites). Pick a JSON-Schema validator
   that works inside Workers (`docs/TRAPS.md`).
-- [ ] **P1.3 Probe Worker** (needs P1.1). From Cloudflare's network, fetch every Tier 1–2 source in `docs/SOURCES.md`
+- [ ] **P1.3 Probe Worker** (needs P1.1). From Cloudflare's network, fetch every Tier 1–2 source in `docs/SOURCES.md` that needs no key the owner has not yet
+  granted (skip e.g. YouTube and DVIDS until their keys exist; list them as skipped)
   and record status, which validator gets a 304, bytes, wall time and head-only parse CPU; also measure the Durable
   Object alarm CPU limit on Free (a deliberate ~20 ms busy loop) and alarm timing jitter. Results go into
   `docs/SOURCES.md` ("CF reachable", "parse CPU") and DECISIONS rows (which sources must move to the home PC; whether

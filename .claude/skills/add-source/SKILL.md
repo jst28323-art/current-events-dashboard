@@ -24,7 +24,7 @@ Adding sources is this project's most repeated task. Every step exists because s
    CPU limit is tiny, see `docs/ARCHITECTURE.md`). Validate the body's shape and **fail closed**: on unexpected structure, emit a
    `system.source_health` drift event and publish nothing from that payload.
 4. **Tests**: each fixture → golden normalized events (schema-validated); the error and empty fixtures produce no
-   events and the right health signal; at least one non-default case (tie vote, revision, DST-boundary time…). The test
+   FEED events (a `system.source_health` signal is allowed: it drives the status page, it is not a feed item); at least one non-default case (tie vote, revision, DST-boundary time…). The test
    must fail if the parser is broken (TESTING.md rule 2).
 5. **Register** the adapter with its cadence (business hours vs off-hours, calendar-aware for recess/weekends), the
    validator to send (ETag vs If-Modified-Since), rate budget, User-Agent override if needed, and freshness SLO.

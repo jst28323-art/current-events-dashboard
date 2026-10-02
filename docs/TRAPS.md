@@ -80,6 +80,8 @@ strike it through with a dated note and keep it. Each source trap cites the rese
 - **Secrets go in through GitHub's web UI.** Whether the local token has the "Secrets" permission is unrecorded
   (assume not); the owner pastes keys into Settings → Secrets and variables → Actions themselves.
 - **Long heredocs containing apostrophes or backticks fail in the harness Bash.** Write files with the Write tool.
+- **This PC runs Node 26 (npm 11); CI runs Node 22.** Something can pass locally and fail in CI (or the reverse), and
+  `package.json` says `>=22`. Avoid Node-26-only APIs; CI is the judge.
 - **`node --test <directory>` fails on Node 26** ("test failed" on the directory itself): pass the test files
   explicitly (`npm run test:harness` and `scripts/gate.mjs` already do).
 - **This PC can get slow at starting processes.** On 2026-10-02 afternoon every launch (`node -e 0`, `git --version`)

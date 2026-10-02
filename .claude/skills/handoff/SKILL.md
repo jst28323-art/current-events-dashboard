@@ -18,7 +18,7 @@ The runbook is `docs/HANDOFF_PROCEDURE.md`. Short form, in order:
 5. **Commit** each carrier as you write it.
 6. `node scripts/ship_state.mjs` → obey → `node scripts/gate.mjs` → `git push origin main` (Windows git; G-003; the
    pre-push hook refuses main without a gate stamp). Don't edit the tree while the gate or a round runs.
-7. **If the page was replaced:** `ship_state` prints `ROUND-DUE` with the exact Workflow call
+7. **If HANDOFF.md changed at all** (replaced or edited): `ship_state` prints `ROUND-DUE` with the exact Workflow call
    (`.claude/workflows/coldstart-validate.js`). Run it, read `docs/coldstart/r<R>/RESULT.json`, act on it
    (routing FAIL → one page fix + re-round; content finding → fix, set `CONTENT-FIXED` with `content_fixes` and
    `content_fix_blob` (`git hash-object HANDOFF.md`), or re-round; any other page edit needs a re-round;

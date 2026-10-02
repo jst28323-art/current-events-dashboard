@@ -44,7 +44,7 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | What counts as tested? | `TESTING.md` |
 | Known-broken checks, registered with evidence | `KNOWN_FAILING.md` |
 | Machine-read flags (push hold) | `docs/STATUS.json` |
-| Cold-start validation records | `docs/coldstart/r<R>/RESULT.json` (planned until the first round lands) |
+| Cold-start validation records (one directory per round; `ship_state` reads them) | `docs/coldstart/` |
 
 ## Harness (code)
 

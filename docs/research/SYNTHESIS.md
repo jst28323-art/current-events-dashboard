@@ -293,7 +293,7 @@ The canonical rows are in [`docs/SOURCES.md`](../SOURCES.md). This list adds the
   against a watchlist.
 - `cbo.gao` and `senate.noms` (nightly).
 - **Δ `oira.review`**: White House regulatory review XML; daily; a leading indicator for major rules.
-- `factbase`, `bno.pool`, `trumpstruth`: third-party; terms first (D-009).
+- `factbase`, `bno.pool`, `trumpstruth`: third-party; terms first (D-009). [Superseded: D-017 says ingest now, facts only + credit.]
 - `youtube.api`: `videos.list` only.
 - The F12 set.
 - **Research items:**
@@ -430,7 +430,7 @@ criterion is something a session can demonstrate.
 - Votes, DO alarms and the WebSocket move to Phase 2.
 - SCOTUS HTML moves from Phase 7 to Tier 2, because D-012 wants SCOTUS alerts and only `/rss/` is blocked.
 - Phases 3–8 otherwise match.
-- Either ordering satisfies D-004. The build session should pick one and record it.
+- Either ordering satisfies D-004. The build session should pick one and record it. [Settled the same day: D-024 adopted this cut.]
 
 ---
 
@@ -493,7 +493,7 @@ The canonical model is **[`docs/EVENT_MODEL.md`](../EVENT_MODEL.md) v0.1**. Its 
 | Timestamp lies and time-zone traps | Last-modified dates posing as event times; naive Eastern time strings; "EST" labels in daylight time; double spaces in Senate dates | The three-clock model, our own `first_seen_at`, parsing with an explicit America/New_York zone, and the raw string kept in provenance. |
 | Recess silence mistaken for an outage | Congress is out until Nov 9 | Calendar-aware staleness and a "recess until …" banner. |
 | Partisan leakage | DomeWatch whip text ("VOTE NO"); the cloakrooms | Affiliation chips, whitelisted factual fields only, and corroboration from official sources (D-009). |
-| Third-party dependency for the President's schedule | Factba.se and BNO: no terms found; Factba.se files disagree with each other field by field | Link out until terms are checked (D-009). Merge field by field, keyed on ETag. |
+| Third-party dependency for the President's schedule | Factba.se and BNO: no terms found; Factba.se files disagree with each other field by field | Link out until terms are checked (D-009) [superseded: D-017, ingest now, facts only + credit]. Merge field by field, keyed on ETag. |
 | Quota and key exhaustion | DEMO_KEY ran out in minutes; the GDELT DOC API returned 429 on its first call; CourtListener allows 125/day | Real keys on day 1, per-host token buckets, and never DEMO_KEY in CI. |
 | Platform changes | Cloudflare changed its subrequest limits (Feb 2026); YouTube's quota changed (Sep 2026); Congress.gov changes almost monthly; Workers Logs pricing changes Dec 1, 2026 | Pin versions. A schema-drift hash per source. Portable adapters. |
 | Home PC contention or outage | D-003: the PC runs other GPU work | CPU-first speech-to-text. Never on the critical path. Its sources show "stale" when it is off. |
@@ -520,7 +520,7 @@ The canonical model is **[`docs/EVENT_MODEL.md`](../EVENT_MODEL.md) v0.1**. Its 
 - **supremecourt.gov:** robots.txt has `Disallow: /rss/` and `Crawl-delay: 1` (re-checked 18:12Z). The HTML pages are
   allowed.
 - **Third parties:**
-  - Factba.se: no terms page found, and rollcall.com blocks AI bots. Link only until permission is recorded.
+  - Factba.se: no terms page found, and rollcall.com blocks AI bots. Link only until permission is recorded. [Superseded: D-017 says ingest now, facts only + credit.]
   - BNO: robots allows everything, but permission is advisable.
   - trumpstruth.org: no reuse terms stated.
   - DomeWatch: "attribution appreciated"; keys can be revoked for abuse.

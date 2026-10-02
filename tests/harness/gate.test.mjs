@@ -69,3 +69,10 @@ test('a test/typecheck/build/e2e/lint script not listed in gate.npmScripts is re
   assert.deepEqual(ungatedScripts({ scripts: { test: 'x', build: 'y', 'test:harness': 'z' }, gate: { npmScripts: ['build'] } }), ['test'])
   assert.deepEqual(ungatedScripts({ scripts: { gate: 'x' }, gate: { npmScripts: [] } }), [])
 })
+test('workspace suites must be reached by a gated root script', () => {
+  const ws = [{ dir: 'packages/schema', pkg: { name: '@ced/schema', scripts: { test: 'vitest run', dev: 'x' } } }]
+  assert.deepEqual(ungatedScripts({ scripts: {}, gate: { npmScripts: [] } }, ws), ['packages/schema:test'])
+  assert.deepEqual(ungatedScripts({ scripts: { test: 'npm run test --workspaces' }, gate: { npmScripts: ['test'] } }, ws), [])
+  assert.deepEqual(ungatedScripts({ scripts: { 'test:schema': 'npm run test -w packages/schema' }, gate: { npmScripts: ['test:schema'] } }, ws), [])
+  assert.deepEqual(ungatedScripts({ scripts: { build: 'npm run build --workspaces' }, gate: { npmScripts: ['build'] } }, ws), ['packages/schema:test'])
+})
