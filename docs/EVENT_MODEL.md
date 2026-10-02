@@ -1,8 +1,8 @@
 # EVENT MODEL — the one shape every source emits
 
-Status: **v0.1, proposed 2026-10-02, not yet implemented.** The first build session turns this into code
-(`packages/schema`, planned) as TypeScript types plus a JSON Schema, and this page then points at that code as the
-source of truth. Full rationale, worked examples and standards mapping: `docs/research/curation_priorart_future.md` §2.
+Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema in `packages/schema/`. The JSON Schema
+(`packages/schema/src/event.schema.json`) is the machine contract and wins over this page if they ever differ; D-030 in
+`docs/DECISIONS.md` lists what the code added to the v0.1 draft below. Full rationale, worked examples and standards mapping: `docs/research/curation_priorart_future.md` §2.
 
 ## Principles
 

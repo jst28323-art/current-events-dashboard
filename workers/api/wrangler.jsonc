@@ -1,0 +1,20 @@
+// ced-api: the live backend (docs/ARCHITECTURE.md). Deployed only by .github/workflows/deploy.yml after CI passes
+// (D-026, grant G-007). Address: https://ced-api.<account subdomain>.workers.dev (D-027).
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "ced-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": {
+    "bindings": [{ "name": "HUB", "class_name": "HubDO" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["HubDO"] }],
+  "triggers": { "crons": ["* * * * *"] },
+  "vars": {
+    // The only browser origin allowed to read the API cross-site (the GitHub Pages app).
+    "PAGES_ORIGIN": "https://jst28323-art.github.io"
+  },
+  "observability": { "enabled": true }
+}

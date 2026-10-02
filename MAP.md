@@ -24,10 +24,10 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | What was measured about each source (dated evidence)? | `docs/research/` (2026-10-02 snapshot; start with `docs/research/SYNTHESIS.md`) |
 | Recorded upstream responses for tests | `fixtures/` (index: `fixtures/README.md`) |
 | The live placeholder page (until `apps/web` replaces it) | `site/index.html` |
-| Event schema code | `packages/schema/` (planned) |
-| Source adapters + registry | `packages/adapters/` (planned) |
-| The Cloudflare Worker (pollers, hub, API) | `workers/api/` (planned) |
-| The web app (PWA) | `apps/web/` (planned) |
+| Event schema code (types, JSON Schema, ids, validator) | `packages/schema/` |
+| Source adapters + registry | `packages/adapters/` |
+| The Cloudflare Worker (pollers, hub, API) | `workers/api/` |
+| The web app (PWA) | `apps/web/` |
 | The home-PC producer (captions, speech-to-text) | `homepc/` (planned) |
 
 ## Rules, records, and memory

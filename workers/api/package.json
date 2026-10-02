@@ -1,0 +1,15 @@
+{
+  "name": "@ced/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The Cloudflare Worker: cron poller, HubDO event store, public read API.",
+  "scripts": {
+    "typecheck": "wrangler types && tsc -p tsconfig.json",
+    "build": "wrangler deploy --dry-run --outdir dist"
+  },
+  "dependencies": {
+    "@ced/adapters": "*",
+    "@ced/schema": "*"
+  }
+}

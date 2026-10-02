@@ -1,0 +1,16 @@
+{
+  "name": "@ced/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The phone-first web app (GitHub Pages), Vite + Preact + signals.",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@preact/signals": "2.11.3",
+    "preact": "10.29.8"
+  }
+}

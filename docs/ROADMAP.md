@@ -31,7 +31,7 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   key lives on this PC; alternative: `wrangler login` on this PC), and which `*.workers.dev` subdomain to use. Record
   every answer verbatim as a `docs/DECISIONS.md` row and each grant as a `docs/OWNER_GRANTS.md` row. If the owner is away, do
   P1.2 and P1.4 first (neither needs an account).
-- [ ] **P1.2 Workspace scaffold.** npm workspaces + TypeScript: `packages/schema` (EVENT_MODEL v0.1 Phase-1 minimum →
+- [x] **P1.2 Workspace scaffold.** (done 2026-10-02: pins in D-029; the Workers pool is now `@cloudflare/vitest-plugin`, docs/TRAPS.md) npm workspaces + TypeScript: `packages/schema` (EVENT_MODEL v0.1 Phase-1 minimum →
   TS types + JSON Schema + validator), `packages/adapters` (registry type + a harness that replays `fixtures/`),
   `workers/api` (Worker + one Durable Object skeleton, wrangler config, the Vitest Workers pool), `apps/web` (Vite +
   Preact + signals shell carrying the design tokens from `site/index.html`). Check current versions and pin them (the

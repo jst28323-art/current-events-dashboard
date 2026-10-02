@@ -49,10 +49,10 @@ needs them (`docs/ROADMAP.md`).
 
 | path | what | notes |
 |---|---|---|
-| `packages/schema/` (planned) | Event types + JSON Schema + validator, from `docs/EVENT_MODEL.md` | becomes the source of truth for the model; iOS can generate Codable types from the JSON Schema later |
-| `packages/adapters/` (planned) | one pure adapter per source + the source registry (cadence, validator to send, rate budget, UA override, freshness SLO, calendar awareness) | tests replay `fixtures/<source_id>/…` |
-| `workers/api/` (planned) | the Worker: PollerDOs, HubDO, supervisor cron, HTTP + WebSocket API, ingest endpoint | `wrangler` config; tested with Vitest + the Workers pool |
-| `apps/web/` (planned) | Vite + Preact + signals + TypeScript PWA, macOS design tokens (`docs/DESIGN_LANGUAGE.md`) | built and deployed to GitHub Pages by `.github/workflows/pages.yml`, replacing today's `site/` placeholder |
+| `packages/schema/` | Event types + JSON Schema + validator, from `docs/EVENT_MODEL.md` | becomes the source of truth for the model; iOS can generate Codable types from the JSON Schema later |
+| `packages/adapters/` | one pure adapter per source + the source registry (cadence, validator to send, rate budget, UA override, freshness SLO, calendar awareness) | tests replay `fixtures/<source_id>/…` |
+| `workers/api/` | the Worker: PollerDOs, HubDO, supervisor cron, HTTP + WebSocket API, ingest endpoint | `wrangler.jsonc`; tested in workerd with Vitest + `@cloudflare/vitest-plugin` |
+| `apps/web/` | Vite + Preact + signals + TypeScript PWA, macOS design tokens (`docs/DESIGN_LANGUAGE.md`) | built and deployed to GitHub Pages by `.github/workflows/pages.yml`, replacing today's `site/` placeholder |
 | `homepc/` (planned) | the home-PC producer (Node for capture/relay; Python only where speech-to-text needs it) | outbound-only; installing it as a service needs the owner's OK each time |
 | `fixtures/` | recorded upstream responses | exists; see `fixtures/README.md` |
 

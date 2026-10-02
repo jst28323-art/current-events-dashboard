@@ -1,0 +1,62 @@
+/* Design tokens: docs/DESIGN_LANGUAGE.md (first set in the placeholder site/index.html). */
+:root {
+  --bg: #ffffff;
+  --bg-window: #f5f5f7;
+  --material: rgb(246 246 246 / 0.72);
+  --label: rgb(0 0 0 / 0.85);
+  --label-2: rgb(0 0 0 / 0.55);
+  --label-3: rgb(0 0 0 / 0.30);
+  --separator: rgb(0 0 0 / 0.10);
+  --accent: #007aff;
+  --live: #ff3b30;
+  --ok: #34c759;
+  --warn: #ff9500;
+  --chip: rgb(0 0 0 / 0.06);
+  --skeleton: rgb(0 0 0 / 0.07);
+  --shadow: 0 10px 30px rgb(0 0 0 / 0.12), 0 0 0 0.5px rgb(0 0 0 / 0.12);
+  --radius: 10px;
+  --font: -apple-system, BlinkMacSystemFont, "Inter", system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1e1e;
+    --bg-window: #161617;
+    --material: rgb(40 40 40 / 0.68);
+    --label: rgb(255 255 255 / 0.88);
+    --label-2: rgb(255 255 255 / 0.58);
+    --label-3: rgb(255 255 255 / 0.30);
+    --separator: rgb(255 255 255 / 0.10);
+    --accent: #0a84ff;
+    --live: #ff453a;
+    --ok: #30d158;
+    --warn: #ff9f0a;
+    --chip: rgb(255 255 255 / 0.10);
+    --skeleton: rgb(255 255 255 / 0.08);
+    --shadow: 0 10px 30px rgb(0 0 0 / 0.5), 0 0 0 0.5px rgb(255 255 255 / 0.12);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--label);
+  background: var(--bg-window);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.shell { max-width: 720px; margin: 0 auto; min-height: 100dvh; background: var(--bg); }
+.toolbar {
+  position: sticky; top: 0;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 12px;
+  background: var(--material);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--separator);
+}
+.toolbar h1 { margin: 0; font-size: 17px; font-weight: 600; }
+.empty { padding: 32px 16px; color: var(--label-2); }

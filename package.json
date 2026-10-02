@@ -5,16 +5,44 @@
   "description": "A live feed of the US federal government: floor activity, votes, briefings, presidential actions, the Federal Register.",
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
+  "workspaces": [
+    "packages/*",
+    "workers/*",
+    "apps/*"
+  ],
   "scripts": {
     "gate": "node scripts/gate.mjs",
     "ship-state": "node scripts/ship_state.mjs",
     "lint:handoff": "node scripts/handoff_lint.mjs",
     "check:paths": "node scripts/check_paths.mjs",
-    "test:harness": "node --test \"tests/**/*.test.mjs\""
+    "test:harness": "node --test \"tests/**/*.test.mjs\"",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "build": "npm run build --workspaces --if-present"
   },
   "gate": {
-    "npmScripts": []
+    "npmScripts": [
+      "typecheck",
+      "test",
+      "build"
+    ]
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.3.6",
+    "@playwright/test": "1.63.0",
+    "@preact/preset-vite": "2.10.6",
+    "@types/node": "22.20.5",
+    "@vitest/runner": "4.1.11",
+    "@vitest/snapshot": "4.1.11",
+    "typescript": "7.0.2",
+    "vite": "8.3.2",
+    "vitest": "4.1.11",
+    "wrangler": "4.147.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20261001.1": true
   }
 }

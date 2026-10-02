@@ -1,0 +1,17 @@
+{
+  "name": "@ced/adapters",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pure source adapters (response in, events out) and the source registry.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@ced/schema": "*",
+    "fast-xml-parser": "5.11.2"
+  }
+}
