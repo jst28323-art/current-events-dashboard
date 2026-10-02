@@ -1,0 +1,131 @@
+# EVENT MODEL — the one shape every source emits
+
+Status: **v0.1, proposed 2026-10-02, not yet implemented.** The first build session turns this into code
+(`packages/schema`, planned) as TypeScript types plus a JSON Schema, and this page then points at that code as the
+source of truth. Full rationale, worked examples and standards mapping: `docs/research/curation_priorart_future.md` §2.
+
+## Principles
+
+1. **An event is a state change of a real-world object**, not a document. A bill is an object; "H.R. 5334 passed the
+   House" is an event. A roll call is an object; "vote opened" and "result" are events.
+2. **Append-only.** Never mutate history: a correction is a new revision (`revision + 1`, `supersedes`), and a
+   vanished item becomes `status: "retracted"` with its last-seen snapshot. Never hard-delete.
+3. **No source URL, no event.** Every event carries at least one primary-source link.
+4. **Three clocks, always** (docs/TRAPS.md: source timestamps are last-edit, not first-appearance):
+   `occurred_at` (in the world), `source_published_at` (what the source claims), `first_seen_at` (when our poller first
+   saw it). Plus `broadcast_at` (when we pushed it). Together they form the latency ledger, so "as soon as possible"
+   becomes a measured number.
+5. **Stable IDs from authorities**: bioguide for members, Senate LIS mapped to bioguide (via the
+   unitedstates/congress-legislators dataset), FR document numbers, EO numbers, congress/session/roll, PN numbers,
+   SCOTUS docket numbers. Executive officials have no authority, so we keep a hand-curated registry (never trust
+   Wikidata as a roster: a live query returned fictional office-holders).
+6. **Facts only, labeled by origin.** `official_text` (verbatim) is always shown. Partisan and third-party sources
+   contribute facts (times, numbers, IDs), never their commentary (D-009).
+
+## The record (v0.1)
+
+```jsonc
+{
+  "schema_version": "0.1",
+  "id": "evt_6c1f0e9a2b7d4e11",            // opaque, stable: "evt_" + 16 hex of sha256(dedup_key + revision basis)
+  "dedup_key": "vote:senate:119:2:256#result", // object_key + "#" + transition; same key from two sources => MERGE
+  "object_key": "vote:senate:119:2:256",
+  "thread_key": "nomination:119:PN1129",   // the lifecycle it belongs to (bill, nomination, EO, docket); optional
+  "alias_keys": [],                         // other systems' IDs for the same object
+  "event_type": "vote.result",             // taxonomy below
+  "status": "ended",                       // scheduled | live | ended | postponed | cancelled | rescheduled | corrected | retracted
+  "branch": "legislative",                 // legislative | executive | judicial | independent | nongov (F12)
+  "body": "senate",                        // senate | house | white_house | agency:<fr-slug> | scotus | fed | sec | ...
+  "features": ["F5", "F6"],                // docs/VISION.md feature ids (filters + coverage reports)
+  "title": "Senate confirms … , 47-41",    // our plain-words line (rule-generated, never AI in v1)
+  "official_text": "On the Nomination PN1129 - Nomination Confirmed (47-41)",
+  "importance": { "tier": 1, "reasons": ["vote.category=nomination"] },  // P0..P4, rules only (below)
+  "times": {
+    "occurred_at": "2026-10-01T01:29:00Z",
+    "scheduled_for": null,
+    "source_published_at": "2026-10-01T03:25:00Z",
+    "first_seen_at": "2026-10-01T03:31:12Z",
+    "broadcast_at": null
+  },
+  "actors": [{ "role": "nominee", "id": "official:…", "name": "…", "id_confidence": "curated" }],
+  "related": [{ "rel": "about", "key": "nomination:119:PN1129" }],
+  "result": { "yea": 47, "nay": 41, "present": 0, "not_voting": 12, "required": "1/2", "passed": true },
+  "member_votes_ref": "votes/senate/119/2/256.json", // member-level positions live in a side record, one per vote
+  "media": [],                              // { kind: video_live|video_archive|audio|pdf|html, url, is_live, provider }
+  "transcript": null,                       // { status: none|live|partial|final, segments_ref, license }
+  "sources": [{
+    "source_id": "senate.lis.vote_xml",
+    "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00256.xml",
+    "retrieved_at": "2026-10-01T03:31:12Z",
+    "license": "us-gov-public-domain",
+    "affiliation": "official-nonpartisan"   // official-nonpartisan | official-partisan | executive-messaging | independent | third-party | unofficial
+  }],
+  "revision": 1,
+  "supersedes": null,
+  "provenance": { "parser": "senate_vote_xml@0.1.0", "confidence": "high" }  // confidence: high | inferred
+}
+```
+
+**Phase-1 minimum** (everything else optional until a feature needs it): `schema_version`, `id`, `dedup_key`,
+`object_key`, `event_type`, `status`, `branch`, `body`, `features`, `title`, `official_text`, `times.occurred_at`,
+`times.first_seen_at`, `sources[0]`, `revision`, `provenance`.
+
+## Object keys (the dedup backbone)
+
+| object | key | example |
+|---|---|---|
+| roll-call vote | `vote:{house\|senate}:{congress}:{session}:{roll}` | `vote:house:119:2:314` |
+| bill | `bill:{congress}:{type}:{number}` (types: hr, s, hjres, sjres, hconres, sconres, hres, sres) | `bill:119:hr:5334` |
+| nomination | `nomination:{congress}:PN{n}` | `nomination:119:PN1129` |
+| FR document | `fr:{document_number}` (Public Inspection and publication share it) | `fr:2026-20321` |
+| executive order | `eo:{number}` (the number first appears at FR Public Inspection) | `eo:14434` |
+| White House page | `wh:{path}` (an alias later linked to `eo:` / `fr:`) | `wh:presidential-actions/2026/09/…` |
+| SCOTUS case | `scotus:{docket}` | `scotus:24-123` |
+| hearing | `hearing:{chamber}:{committee_code}:{yyyymmdd}:{slug}` | |
+| live stream | `live:{provider}:{id}` | `live:youtube:{videoId}` |
+| member | `bioguide:{id}` | `bioguide:A000370` |
+| executive official | `official:{slug}` (curated registry) | `official:secretary-of-state` |
+| agency | `agency:{fr_slug}` | `agency:environmental-protection-agency` |
+
+Merge rule: same `dedup_key` → union of `sources`, earliest `first_seen_at`, field values by source priority
+(official XML > Congress.gov > third-party > press-gallery text). Free-text sources contribute `first_seen_at` and a
+corroboration link, never counts. Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
+filing) uses the normalized-title + date-window rule in the research §2.4.
+
+## Event types (v0.1 taxonomy)
+
+| family | types | features |
+|---|---|---|
+| floor | `floor.convened`, `floor.adjourned`, `floor.recess`, `floor.pro_forma`, `floor.action`, `floor.speaking` | F1 F2 F8 |
+| vote | `vote.scheduled`, `vote.opened`, `vote.tally` (ephemeral, not stored per tick), `vote.result` | F5 F6 |
+| bill | `bill.introduced`, `bill.action`, `bill.passed_chamber`, `bill.presented`, `bill.signed`, `bill.vetoed`, `law.enacted` | F11 F9 |
+| nomination | `nomination.received`, `nomination.committee_action`, `nomination.confirmed`, `nomination.rejected`, `nomination.withdrawn` | F9 F11 |
+| hearing | `hearing.scheduled`, `hearing.live`, `hearing.ended`, `markup.*` | F7 |
+| live / speech | `live.started`, `live.ended`, `briefing.*`, `speech.*`, `transcript.segment`, `transcript.published` | F3 F4 F1 F2 |
+| schedule | `schedule.item` (President, VP, cabinet; floor schedules) | F7 |
+| presidential action | `presidential_action.{executive_order, proclamation, memorandum, notice, determination, nominations_sent, statement}` | F9 |
+| regulatory | `fr.public_inspection`, `fr.published.{rule, proposed_rule, notice, presidential_document}`, `fr.correction` | F10 |
+| judicial | `court.opinion`, `court.order_list`, `court.argument`, `court.grant` | F11 |
+| oversight | `report.{cbo, gao, crs, ig}` | F11 |
+| later (F12) | `econ.release`, `fed.statement`, `sec.filing`, `world.news`, … | F12 |
+| system | `system.source_health` (drives the status page) | ops |
+
+## Importance tiers (rules first; no AI in v1)
+
+The default view shows **every** item (D-019). Tiers never hide anything by default: they drive alerts, ordering,
+emphasis and the filters a user chooses to turn on.
+
+| tier | meaning | used for | examples |
+|---|---|---|---|
+| P0 breaking | alert-worthy (D-012 classes) | push at any hour (D-023) + banner | final passage of major bills, veto/override, confirmations of cabinet officials, first sighting of an EO, President/Press Secretary live, SCOTUS opinion |
+| P1 major | emphasized | Today view, bold rows | other passage and cloture votes, other presidential actions, significant FR rules, press briefing live |
+| P2 notable | normal | feed | amendment votes, other nominations, proposed rules, CBO/GAO reports, floor convened/adjourned |
+| P3 routine | de-emphasized | feed (lighter row) | procedural votes, routine rules, bill referrals, agency releases |
+| P4 low | de-emphasized | feed (lighter row), optional "hide routine" filter | FR notices (~82% of FR volume), pro forma sessions, corrections |
+
+## Honesty rules (code, not policy)
+
+- Never present an inferred fact as official: inferred speakers, unofficial tallies and third-party schedule items
+  carry `provenance.confidence: "inferred"` or a non-official `affiliation`, and the UI labels them.
+- If AI summaries are ever added (an owner decision, D-001), AI only annotates existing events, every number/name in a
+  summary must appear in the source text, and `official_text` is always shown beside it.
