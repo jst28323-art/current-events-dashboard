@@ -1,0 +1,37 @@
+{
+  "source_id": "senate.captions",
+  "url": "https://www-senate-gov-media-srs.akamaized.net/hls/live/2036788/judiciary/judiciary093026/master/text_1_00101.vtt",
+  "final_url": "https://www-senate-gov-media-srs.akamaized.net/hls/live/2036788/judiciary/judiciary093026/master/text_1_00101.vtt",
+  "fetched_at": "2026-10-02T18:00:55.237Z",
+  "status": 200,
+  "elapsed_ms": 177,
+  "bytes": 2751,
+  "sha256": "aefa29018eacdaab12cb358c4efb27b1fdc62f47426a83926f6ad4344eef5379",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "access-control-allow-credentials": "true",
+    "access-control-allow-headers": "origin,range,hdntl,hdnts,CMCD-Request,CMCD-Object,CMCD-Status,CMCD-Session",
+    "access-control-allow-methods": "GET,POST,OPTIONS",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Server,range,hdntl,hdnts,Akamai-Mon-Iucid-Ing,Akamai-Mon-Iucid-Del,Akamai-Request-BC",
+    "access-control-max-age": "86400",
+    "akamai-mon-iucid-del": "1224520",
+    "akamai-mon-iucid-ing": "2036788",
+    "akamai-path-timestamp": "i=1790778014.845;xi=1790778014.876;xo=1790778016.370;s=1790778016.376;",
+    "cache-control": "no-cache, no-store",
+    "connection": "keep-alive",
+    "content-encoding": "gzip",
+    "content-length": "437",
+    "content-type": "text/vtt",
+    "date": "Fri, 02 Oct 2026 18:00:53 GMT",
+    "expires": "Fri, 02 Oct 2026 18:00:53 GMT",
+    "last-modified": "Wed, 30 Sep 2026 14:20:14 GMT",
+    "pragma": "no-cache",
+    "vary": "Accept-Encoding",
+    "x-akamai-live-origin-qos": "d=12000;t=1790778014.849",
+    "x-akamai-server": "Akamai-SMT"
+  }
+}

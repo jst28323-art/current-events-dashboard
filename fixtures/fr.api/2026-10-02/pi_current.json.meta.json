@@ -1,0 +1,36 @@
+{
+  "source_id": "fr.api",
+  "url": "https://www.federalregister.gov/api/v1/public-inspection-documents/current.json",
+  "final_url": "https://www.federalregister.gov/api/v1/public-inspection-documents/current.json",
+  "fetched_at": "2026-10-02T18:00:28.428Z",
+  "status": 200,
+  "elapsed_ms": 177,
+  "bytes": 173464,
+  "sha256": "0b6bd4f1ee06e6d5c66b456b869d6f3d0be6235dc4470d013b6f08f94a3ad67a",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "access-control-allow-origin": "*",
+    "age": "17",
+    "cache-control": "no-store, no-cache, must-revalidate, private",
+    "content-encoding": "gzip",
+    "content-length": "15133",
+    "content-security-policy": "default-src 'self' https:; font-src 'self' https: data:; img-src 'self' https: data: 'report-sample'; object-src 'none'; script-src 'self' https: 'report-sample'; style-src 'self' https: 'report-sample' 'unsafe-inline'",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Fri, 02 Oct 2026 18:00:26 GMT",
+    "feature-policy": "camera 'none'; microphone 'none'; usb 'none'; fullscreen 'self'; payment 'self'",
+    "pragma": "no-cache",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "status": "200 OK",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "Root1-6abff127-060bb5e7205d23cf3a32a532",
+    "x-xss-protection": "0"
+  }
+}

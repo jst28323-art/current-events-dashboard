@@ -1,0 +1,34 @@
+{
+  "source_id": "wh.feeds",
+  "url": "https://www.whitehouse.gov/presidential-actions/feed/",
+  "final_url": "https://www.whitehouse.gov/presidential-actions/feed/",
+  "fetched_at": "2026-10-02T18:00:20.520Z",
+  "status": 200,
+  "elapsed_ms": 184,
+  "bytes": 593364,
+  "sha256": "cc6517c65cc1156e1a565b9831a0612470efd1c5bb16af97e79ba7d5e75f1d5a",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "max-age=300, must-revalidate",
+    "content-encoding": "br",
+    "content-security-policy": "upgrade-insecure-requests; frame-ancestors 'none'",
+    "content-type": "application/rss+xml; charset=UTF-8",
+    "date": "Fri, 02 Oct 2026 18:00:18 GMT",
+    "etag": "W/\"1ae6d600bf48ffd0040961563c7b264d\"",
+    "last-modified": "Fri, 02 Oct 2026 16:19:11 GMT",
+    "link": "<https://www.whitehouse.gov/presidential-actions/>; rel=\"canonical\"",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "server": "nginx",
+    "strict-transport-security": "max-age=31536000;includeSubdomains;preload",
+    "vary": "Accept-Encoding",
+    "x-cache": "HIT",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-rq": "mdw1 181 249 80",
+    "x-xss-protection": "1; mode=block"
+  }
+}

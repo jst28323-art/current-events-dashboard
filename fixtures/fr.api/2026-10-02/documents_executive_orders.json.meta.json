@@ -1,0 +1,36 @@
+{
+  "source_id": "fr.api",
+  "url": "https://www.federalregister.gov/api/v1/documents.json?per_page=10&order=newest&conditions%5Bpresidential_document_type%5D%5B%5D=executive_order",
+  "final_url": "https://www.federalregister.gov/api/v1/documents.json?per_page=10&order=newest&conditions%5Bpresidential_document_type%5D%5B%5D=executive_order",
+  "fetched_at": "2026-10-02T18:00:32.055Z",
+  "status": 200,
+  "elapsed_ms": 233,
+  "bytes": 8842,
+  "sha256": "ec1e7f8b63b52b9f581b9b41f119e41c2103555d8954206b54218216a274b1f3",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "access-control-allow-origin": "*",
+    "age": "0",
+    "cache-control": "no-store, no-cache, must-revalidate, private",
+    "content-encoding": "gzip",
+    "content-length": "1478",
+    "content-security-policy": "default-src 'self' https:; font-src 'self' https: data:; img-src 'self' https: data: 'report-sample'; object-src 'none'; script-src 'self' https: 'report-sample'; style-src 'self' https: 'report-sample' 'unsafe-inline'",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Fri, 02 Oct 2026 18:00:30 GMT",
+    "feature-policy": "camera 'none'; microphone 'none'; usb 'none'; fullscreen 'self'; payment 'self'",
+    "pragma": "no-cache",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "status": "200 OK",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "Root1-6abff13e-4f3e81816339226d20583c19",
+    "x-xss-protection": "0"
+  }
+}

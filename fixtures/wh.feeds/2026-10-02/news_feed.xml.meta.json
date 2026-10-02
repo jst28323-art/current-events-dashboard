@@ -1,0 +1,34 @@
+{
+  "source_id": "wh.feeds",
+  "url": "https://www.whitehouse.gov/news/feed/",
+  "final_url": "https://www.whitehouse.gov/news/feed/",
+  "fetched_at": "2026-10-02T18:00:23.941Z",
+  "status": 200,
+  "elapsed_ms": 132,
+  "bytes": 515686,
+  "sha256": "25c1b2dfb934f5c3dc766bd302a837940e1cb18d859718473fd74ed8718a8c8b",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "max-age=300, must-revalidate",
+    "content-encoding": "br",
+    "content-security-policy": "upgrade-insecure-requests; frame-ancestors 'none'",
+    "content-type": "application/rss+xml; charset=UTF-8",
+    "date": "Fri, 02 Oct 2026 18:00:21 GMT",
+    "etag": "W/\"1ae6d600bf48ffd0040961563c7b264d\"",
+    "last-modified": "Fri, 02 Oct 2026 16:19:11 GMT",
+    "link": "<https://www.whitehouse.gov/news/>; rel=\"canonical\"",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "server": "nginx",
+    "strict-transport-security": "max-age=31536000;includeSubdomains;preload",
+    "vary": "Accept-Encoding",
+    "x-cache": "HIT",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-rq": "mdw1 181 253 80",
+    "x-xss-protection": "1; mode=block"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "source_id": "house.domewatch",
+  "url": "https://data.domewatch.us/v1/floor",
+  "final_url": "https://data.domewatch.us/v1/floor",
+  "fetched_at": "2026-10-02T18:00:18.509Z",
+  "status": 200,
+  "elapsed_ms": 245,
+  "bytes": 819,
+  "sha256": "695741786704c204584a6947eeb1bcf5923e5b4810d1aa59a0ff715481c8be15",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "alt-svc": "h3=\":443\"; ma=2592000",
+    "cache-control": "public, max-age=2",
+    "content-length": "819",
+    "content-type": "application/json",
+    "date": "Fri, 02 Oct 2026 18:00:16 GMT",
+    "server": "Google Frontend",
+    "vary": "Accept-Encoding",
+    "via": "1.1 google",
+    "x-cloud-trace-context": "022f1e300fd48dae14fffe32d1c1c39f;o=1",
+    "x-ratelimit-limit": "30",
+    "x-ratelimit-remaining": "29",
+    "x-ratelimit-reset": "1790964076"
+  }
+}

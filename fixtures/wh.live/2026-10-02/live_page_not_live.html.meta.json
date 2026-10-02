@@ -1,0 +1,31 @@
+{
+  "source_id": "wh.live",
+  "url": "https://www.whitehouse.gov/live/",
+  "final_url": "https://www.whitehouse.gov/live/",
+  "fetched_at": "2026-10-02T18:00:26.683Z",
+  "status": 200,
+  "elapsed_ms": 144,
+  "bytes": 269696,
+  "sha256": "d9ce376bc91982119fef63508bb178fe755bbcf552afee7b0446a1f46d37ff08",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "max-age=60",
+    "content-encoding": "br",
+    "content-security-policy": "upgrade-insecure-requests; frame-ancestors 'none'",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Fri, 02 Oct 2026 18:00:24 GMT",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "server": "nginx",
+    "strict-transport-security": "max-age=31536000;includeSubdomains;preload",
+    "vary": "Accept-Encoding",
+    "x-cache": "HIT",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-rq": "mdw1 181 253 80",
+    "x-xss-protection": "1; mode=block"
+  }
+}

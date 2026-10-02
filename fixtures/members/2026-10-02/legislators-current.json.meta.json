@@ -1,0 +1,38 @@
+{
+  "source_id": "members",
+  "url": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+  "final_url": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+  "fetched_at": "2026-10-02T18:00:33.970Z",
+  "status": 200,
+  "elapsed_ms": 180,
+  "bytes": 1469059,
+  "sha256": "ae8cb9477c48715df71a7d860854229d799dc90a254d61badc1efb770f892b2c",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "access-control-allow-origin": "*",
+    "age": "428",
+    "cache-control": "max-age=600",
+    "content-encoding": "gzip",
+    "content-length": "132633",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Fri, 02 Oct 2026 18:00:32 GMT",
+    "etag": "W/\"6ab4f9aa-166a83\"",
+    "expires": "Fri, 02 Oct 2026 16:44:25 GMT",
+    "last-modified": "Thu, 24 Sep 2026 10:21:30 GMT",
+    "server": "GitHub.com",
+    "vary": "Accept-Encoding",
+    "via": "1.1 varnish",
+    "x-cache": "HIT",
+    "x-cache-hits": "0",
+    "x-fastly-request-id": "517c5831515fcd33071ebc58eafe3a066aca9511",
+    "x-github-edge-region": "iad",
+    "x-github-request-id": "8F00:326A0D:387E52:3E5FF4:6ABFEF02",
+    "x-proxy-cache": "REVALIDATED",
+    "x-served-by": "cache-chi-klot8100123-CHI",
+    "x-timer": "S1790964032.001767,VS0,VE2"
+  }
+}
