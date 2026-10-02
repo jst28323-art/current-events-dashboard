@@ -1,10 +1,11 @@
-# Deploys site/ to GitHub Pages on every push to main that touches it (and on demand).
-# Pages is the static front door (docs/ARCHITECTURE.md); live data will come from Cloudflare, never from Actions cron (D-008).
+# Deploys site/ to GitHub Pages on every push to main (and on demand from the Actions tab).
+# Every push, not only site/ changes: a path filter skipped the very first deploy, and the local token cannot dispatch
+# workflows (docs/TRAPS.md). Pages is the static front door (docs/ARCHITECTURE.md); live data will come from Cloudflare,
+# never from Actions cron (D-008).
 name: pages
 on:
   push:
     branches: [main]
-    paths: ['site/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read

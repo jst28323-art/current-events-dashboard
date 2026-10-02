@@ -60,6 +60,11 @@ strike it through with a dated note and keep it. Each source trap cites the rese
 - **The harness Bash tool is git-bash on Windows.** It sees `C:/Users/...`, not `/mnt/c/...`. Push from Windows git
   (`git -C C:/Users/j/claude/current-events-dashboard push origin main`); WSL git has no credential helper and hangs on a
   prompt that looks like a network stall.
+- **The local GitHub token (used by both `git` and `gh`) has limited permissions** (as of 2026-10-02): it can push
+  code and workflow files (the owner added "Workflows") and has "Pages", but it lacks "Administration: write" for this
+  repo (so it cannot change repo settings such as turning Pages on; the owner did that by hand) and "Actions: write"
+  (so `gh workflow run` fails with 403; to re-run a workflow, push a commit). A 403 response's
+  `X-Accepted-GitHub-Permissions` header names exactly what a call needs (`gh api -i …`).
 - **Where Claude Code is launched decides what the repo's `.claude/` does.** Launched from the repo directory, the hooks
   in `.claude/settings.json` fire (ship_state at session start, the push guard, the dirty-handoff warning) and workflows
   resolve by name. Launched from the parent `C:\Users\j\claude` (as the canonical prompt implies), those hooks do NOT
