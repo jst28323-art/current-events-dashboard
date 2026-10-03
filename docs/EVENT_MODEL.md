@@ -3,6 +3,10 @@
 Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema in `packages/schema/`. The JSON Schema
 (`packages/schema/src/event.schema.json`) is the machine contract and wins over this page if they ever differ; D-030 in
 `docs/DECISIONS.md` lists what the code added to the v0.1 draft below. Full rationale, worked examples and standards mapping: `docs/research/curation_priorart_future.md` §2.
+**v0.2 (2026-10-03, P2.1, additive):** typed vote results, the member-vote side record and the Congress key namespaces
+(section "v0.2" below). In P2.1 its schema lives in the separate subpath `packages/schema/src/v02/` that only tests and
+the fixture-only adapters import, so the live Worker's schema is unchanged and the wire value stays `"0.1"` (D-058,
+decision row P21-R2).
 
 ## Principles
 
@@ -37,9 +41,9 @@ Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema 
   "branch": "legislative",                 // legislative | executive | judicial | independent | nongov (F12)
   "body": "senate",                        // senate | house | white_house | agency:<fr-slug> | scotus | fed | sec | ...
   "features": ["F5", "F6"],                // docs/VISION.md feature ids (filters + coverage reports)
-  "title": "Senate confirms … , 47-41",    // our plain-words line (rule-generated, never AI in v1)
+  "title": "Senate confirmed nomination PN1129, 47-41 (roll call 256)", // our plain-words line (rule-generated, never AI in v1)
   "official_text": "On the Nomination PN1129 - Nomination Confirmed (47-41)",
-  "importance": { "tier": "P0", "reasons": ["confirmation", "office=cabinet"] },  // P0..P4, rules only (below)
+  "importance": { "tier": "P0", "reasons": ["confirmation"] },  // P0..P4, rules only (below)
   "times": {
     "occurred_at": "2026-10-01T01:29:00Z",
     "scheduled_for": null,
@@ -49,7 +53,10 @@ Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema 
   },
   "actors": [{ "role": "nominee", "id": "official:…", "name": "…", "id_confidence": "curated" }],
   "related": [{ "rel": "about", "key": "nomination:119:PN1129" }],
-  "result": { "yea": 47, "nay": 41, "present": 0, "not_voting": 12, "required": "1/2", "passed": true },
+  "result": {                               // v0.2 vote result (below); counts from the XML totals, never from text
+    "question": "On the Nomination", "question_kind": "nomination", "result_text": "Nomination Confirmed",
+    "required": "1/2", "passed": true, "yea": 47, "nay": 41, "present": 0, "not_voting": 12, "tie_breaker": null
+  },
   "member_votes_ref": "votes/senate/119/2/256.json", // member-level positions live in a side record, one per vote
   "media": [],                              // { kind: video_live|video_archive|audio|pdf|html, url, is_live, provider }
   "transcript": null,                       // { status: none|live|partial|final, segments_ref, license }
@@ -62,7 +69,7 @@ Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema 
   }],
   "revision": 1,
   "supersedes": null,
-  "provenance": { "parser": "senate_vote_xml@0.1.0", "confidence": "high" }  // confidence: high | inferred
+  "provenance": { "parser": "senate_lis_votes@0.1.0", "confidence": "high" }  // confidence: high | inferred
 }
 ```
 
@@ -78,6 +85,43 @@ gives only a calendar day puts it in `result.publication_date` as `YYYY-MM-DD` (
 source's posting time, then an earlier `result.publication_date` (sort only, never shown as a time), then
 `first_seen_at`; ties by id descending.
 
+## v0.2 (2026-10-03, P2.1): votes, member votes, Congress keys
+
+Additive; nothing in v0.1 changes meaning. No new `event_type`, `status`, `branch` or `body` value is needed: v0.1
+already lists every floor, vote, hearing and markup type the Congress adapters emit. In P2.1 the machine contract is
+`packages/schema/src/v02/` (`vote_result.schema.json`, `member_votes.schema.json`, `types.ts`, `validate.ts`), imported
+only by tests and `packages/adapters/src/fixture_only.ts`; at P2.2 go-live it is folded into `event.schema.json` and the
+wire `schema_version` becomes `"0.2"` in one decision row (decision row P21-R2). Until then every event still says `"0.1"`.
+
+- **`vote.result` events** carry a typed `result`: `question`, `question_kind` (closed per-chamber table; anything else
+  is `unknown`), `result_text`, `required` (`1/2`, `3/5`, `2/3` or null), `passed` (from the source's result words,
+  never from the tally), `yea`, `nay` (null in a Speaker election), `present`, `not_voting`, optional `candidates`,
+  `tie_breaker` and `time_note`; sources may add fields (`by_party`, `documents`, …) but never source prose. Chamber,
+  Congress, session and roll live ONLY in `object_key`. A vote event also carries `member_votes_ref`
+  (`votes/{chamber}/{congress}/{session}/{roll}.json`). `validateVoteEvent` checks the cross-field identity: object_key
+  shape, `dedup_key = object_key + "#result"`, `body` = chamber, the ref built from the key; session is 1 or 2.
+- **Member-vote side record** (`member_votes.schema.json`, one per roll call, never a feed event): every member's
+  position (`yea`, `nay`, `present`, `not_voting`, or `candidate` in a Speaker election) with the verbatim vote text,
+  party and state AS PRINTED in the vote XML, `member_key` `bioguide:{id}` (House name-id = authority; Senate LIS mapped
+  through the members map) or `lis:{id}` when the Senate id is not in the map, and an `unresolved` count. Per-bucket
+  counts must equal the event's counts (`checkVotePair`). Adapters return records in `AdapterOutput.records`; storing
+  and serving them waits for the vote inspector (P2.2; decision row P21-R16).
+- **Times:** naive Eastern wall times go through one helper; a time that does not exist (spring forward) is drift for
+  an official XML source, an ambiguous one (fall back) is null plus `result.time_note`, and press-gallery prose is null
+  in both cases (decision row P21-R13). House vote time = close of the vote; Senate vote time = its start (the XML has
+  no close time).
+- **Origin labels:** every P2.1 source is `official-nonpartisan`; press-gallery entries carry
+  `provenance.confidence: "inferred"` because their type is our keyword reading of staff prose.
+- **Not live (D-058):** the five P2.1 adapters emit these events only in tests (golden fixtures and the Hub replay);
+  the "emitted now" column of the event-type table below lists live sources only.
+
+| P2.1 source (fixture-only) | event types | key namespace (dedup suffix) |
+|---|---|---|
+| `house.clerk.votes`, `senate.lis.votes` | `vote.result` | `vote:` (`#result`) + side record |
+| `house.clerk.floor` | `floor.convened`, `floor.adjourned`, `floor.recess`, `floor.action`; `floor.convened` status `scheduled` for the next meeting | `floor:house:` (`#entry`), `floor_day:house:` (`#scheduled_convene`) |
+| `senate.schedule` | `floor.convened` (`scheduled`), `hearing.scheduled`, `markup.scheduled` | `floor_day:senate:` (`#scheduled_convene`), `hearing:senate:` (`#scheduled`) |
+| `senate.pressgallery` | `floor.pro_forma`, `floor.convened`, `floor.adjourned`, `floor.recess`, `vote.opened`, `floor.action`, `floor.speaking` | `pg_entry:daily:` (`#logged`) |
+
 ## Object keys (the dedup backbone)
 
 | object | key | example |
@@ -90,15 +134,23 @@ source's posting time, then an earlier `result.publication_date` (sort only, nev
 | White House page | `wh:{path}` (an alias later linked to `eo:` / `fr:`) | `wh:presidential-actions/2026/09/…` |
 | White House post | `wh_post:{wordpress_post_id}` from the RSS `<guid>` `?p=` (stable across re-titles and re-slugs; `wh:{path}` is its alias) | `wh_post:51617` |
 | SCOTUS case | `scotus:{docket}` | `scotus:24-123` |
-| hearing | `hearing:{chamber}:{committee_code}:{yyyymmdd}:{slug}` | |
+| hearing (Senate) | `hearing:senate:{identifier}`: the schedule's own 6-digit meeting id, one key for hearings and business meetings (it survives re-titles and type changes; v0.2, supersedes the draft `hearing:{chamber}:{committee_code}:{yyyymmdd}:{slug}`) | `hearing:senate:338740` |
+| House floor entry | `floor:house:{congress}:{unique-id}` (the Clerk's unique-id resets per Congress, not per session; v0.2) | `floor:house:119:45150` |
+| scheduled convene | `floor_day:{house\|senate}:{YYYY-MM-DD Eastern}` (one per chamber and day; the actual convene entry links to it with `related`; v0.2) | `floor_day:senate:2026-10-05` |
+| press-gallery entry | `pg_entry:daily:{post_id}:{session date}T{HH:MM}:{k}`; k counts entries with the same time from the bottom (oldest) of the post; a clock printed without a.m./p.m. uses `U{h:mm}` (v0.2) | `pg_entry:daily:167105:2026-09-30T21:29:1` |
 | live stream | `live:{provider}:{id}` | `live:youtube:{videoId}` |
-| member | `bioguide:{id}` | `bioguide:A000370` |
+| member | `bioguide:{id}`; a Senate LIS id not in the members map stays `lis:{id}` (side record only, v0.2) | `bioguide:A000370`, `lis:S293` |
 | executive official | `official:{slug}` (curated registry) | `official:secretary-of-state` |
 | agency | `agency:{fr_slug}` | `agency:environmental-protection-agency` |
+| committee (actor id) | `committee:{cmte_code}` (Senate committee code; subcommittees keep their own code; v0.2) | `committee:SSGA00` |
 
 Merge rule: same `dedup_key` → union of `sources`, earliest `first_seen_at`, field values by source priority
-(official XML > Congress.gov > third-party > press-gallery text). Free-text sources contribute `first_seen_at` and a
-corroboration link, never counts. Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
+(official XML > Congress.gov > third-party > press-gallery text). In P2.1 no two sources share a dedup_key: a
+press-gallery or floor line about a vote is its own event, linked to the vote by a `related` `vote:` key, never merged
+into the `vote.result` event, and it never contributes counts (decision row P21-R11, which supersedes the earlier
+sentence here that free-text sources merge in as `first_seen_at` plus a corroboration link; D-036 lets the first
+equal-rank owner freeze facts, so a shared key would stop the official vote from ever adding its counts). Showing such
+rows once on the page is a P2.2 page rule (decision row P21-R17). Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
 filing) uses the normalized-title + date-window rule in the research §2.4. How the Worker applies this rule today (what
 counts as a fact, who may revise, payload rules): D-036.
 

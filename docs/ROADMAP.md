@@ -101,6 +101,29 @@ then copy `/results` into `docs/SOURCES.md` "Cloudflare probe" and write the two
 
 - [ ] **P2.1 Adapters:** `senate.lis.votes`, `house.clerk.votes`, `house.clerk.floor` (per-day file), `senate.schedule`,
   `senate.pressgallery`, joined to `members`; member-vote side records (one per roll call) and a vote inspector.
+  Started early by owner override D-058: fixture-only, nothing polled live, nothing on the live site changes.
+  - [x] The five adapters on recorded fixtures (golden + NEGATIVE tests; branch `p2.1`, 2026-10-03), exported only from
+    `packages/adapters/src/fixture_only.ts`; `packages/adapters/test/live_list.test.ts` pins the live source list to
+    `fr.api` + `wh.feeds` and hash-pins every Worker-imported schema/adapter file, and the Worker bundle built from
+    `p2.1` is byte-identical to main's (dry-run compare). Rows and parse times: `docs/SOURCES.md`.
+  - [x] EVENT_MODEL v0.2 (typed vote result, member-vote side record, Congress key namespaces) in the separate
+    `packages/schema/src/v02/` subpath; member-vote records produced and validated by both vote adapters; members map
+    with a departed-members seed (`packages/adapters/src/generated/members.json`).
+  - [x] Every case of `workers/api/test/replay_congress.test.ts` active: each source's golden through a Hub twice (no
+    duplicates), the regenerated floor file (nothing new), hearings 07-25 then 07-30 (3 revisions), a changed House roll
+    (1 revision).
+  - [ ] **Deferred to P2.2 go-live** (each changes the live Worker or page, so it waits for Phase 1's exit, D-058):
+    the vote inspector (page panel + `GET /api/v1/votes/...`); Hub storage of member-vote records (decision row
+    P21-R16); the page rules Q-P1 (a gallery/floor line and the official vote collapse into one row) and Q-P2 (a past
+    `scheduled` item reads "was scheduled") (decision row P21-R17); folding v0.2 into `event.schema.json` with the wire
+    bump to `"0.2"` (P21-R2); moving the five sources into `SOURCES` with poller support for `dynamic` endpoints,
+    `notYetStatus` and `calendar` (P21-R3); the press-gallery alert rule of D-062 (which gallery result lines are an
+    alert class).
+  - [ ] **Session rollover checklist (before Jan 3 2027, at P2.2 go-live; decision row P21-R15):** move `CURRENT` in
+    `packages/adapters/src/lib/congress_ids.ts` to 120-1 / 2027 and the index/menu URLs with it; record the first
+    120-1 House listing and Senate menu as fixtures on Jan 3; check the House `No Votes Found` = empty and Senate
+    menu-404 = error states against them; re-cut the departed-members seed for the 120th Congress. No wall-clock test
+    holds CI for this.
 - [ ] **P2.2 Real-time plumbing:** PollerDOs on alarms (hot and warm cadences as in `docs/ARCHITECTURE.md`) with a supervisor cron;
   `/api/v1/live` over a hibernating WebSocket (falling back to `?since=` polling); calendar-aware staleness (recess,
   weekends, FR publication days).

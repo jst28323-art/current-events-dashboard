@@ -109,6 +109,268 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   revised by the Hub (it changes only events that arrive), so the page says "not seen published" once its date has
   passed (D-060).
 
+### Congress sources (P2.1 scouts and design critique, 2026-10-03; fixtures under `fixtures/<source>/2026-10-03/` unless named)
+
+The P2.1 adapters are fixture-only (D-058); these traps come from the six source scouts (each re-checked in the named
+fixture by the adapter builders) and from the design critique (`T` items, each reproduced against a live GET that was
+then recorded as a fixture). The parse rules that answer them are decision rows P21-R4..P21-R15.
+
+**House Clerk roll calls (`house.clerk.votes`)**
+
+- **A Committee of the Whole roll says `<committee>`, not `<chamber>`** (`roll275.xml`): both read "U.S. House of
+  Representatives". A parser that requires `<chamber>` rejects every amendment vote taken in the Committee of the Whole.
+- **Delegates vote in the Committee of the Whole** (`roll275.xml`): the 6 delegates and the Resident Commissioner appear
+  with `state="XX"`, so 437 voters. Their real territory comes only from the bioguide join.
+- **A Speaker election roll has its own shape** (`roll2025_002.xml`): no `<legis-num>`, `vote-result` is a person's
+  name, totals are `<totals-by-candidate>` (which also lists `Present` and `Not Voting` as candidates), there are no
+  totals by party or by vote, and each `<vote>` is a candidate name.
+- **A Speaker roll's result names the leader, not a winner** (critique T1; `roll2023_002.xml`, recorded from live
+  `evs/2023/roll002.xml`): result `Jeffries` with 212 of 434 named votes, and the House kept balloting. Whether a ballot
+  elected anyone is not in the XML, so a title must never say "elected".
+- **Quorum calls and adjournment motions use fake bill numbers** (`roll2025_001.xml`: legis-num `QUORUM`, vote-type
+  `QUORUM`, result `Passed`, every vote `Present`; `roll106.xml`: legis-num `ADJOURN`, while the Clerk website shows its
+  bill number as empty).
+- **The Clerk prints the same question in two casings** (critique T11; `roll2023_001.xml`, recorded from live
+  `evs/2023/roll001.xml`): `Call By States` in 2023, `Call by States` in 2025. Match questions and results
+  case-insensitively after collapsing whitespace.
+- **The Clerk's own files word one result two ways** (`roll106.xml`, `roll107.xml` vs `20260327.xml` in
+  `fixtures/house.clerk.floor/2026-10-03/`): the roll XML says `Passed` for the motion to adjourn and the previous
+  question; the floor file says "Agreed to by the Yeas and Nays" for the same rolls. Never match result text across sources.
+- **`Failed` with more yeas than nays** (`roll009.xml`, a veto override, 248-177; two-thirds needed). `passed` comes
+  from `vote-result`, never from comparing counts. A failed suspension can be a majority yes (`20260902.xml` uid 42544,
+  212-206), so the title says "failed to pass … two-thirds needed", not "rejected" (critique T12).
+- **The vote words change with the vote type** (`roll300.xml` in `fixtures/house.clerk.votes/2026-10-02/`):
+  RECORDED VOTE uses Aye/No (headers "Ayes"/"Noes"), YEA-AND-NAY uses Yea/Nay. Both map to yea and nay.
+- **The current members file cannot name past voters** (`fixtures/members/2026-10-03/house_roll_2026_090_departed_members_and_party_change.xml`):
+  `legislators-current.json` lacks members who left (4 bioguides already in Jan-Mar 2026 rolls) and holds today's party
+  (K000401 is R in roll 90 and roll009, I now). Party and state come from the roll XML; an unresolved bioguide is not drift.
+- **One calendar day can hold two legislative days** (`fixtures/house.clerk.floor/2026-10-03/20260327.xml`): convened
+  9:00 AM, adjourned 8:26:52 PM, a new legislative day at 9:30 PM, all under one `<legislative_day date="20260327">`.
+  HouseLive's session-day list keeps only the later start. The roll XML has no legislative-day field at all.
+- **Votes after midnight carry the next calendar date** (`roll2025_139.xml`: 00:29 on 22-May-2025), not the
+  legislative day's.
+- **The 65-byte "Error sanitizing file" body also answers a year that has not started**
+  (`roll2027_001_NEGATIVE_future_year.xml`, and `roll315_NEGATIVE_error_body.xml` in
+  `fixtures/house.clerk.votes/2026-10-02/`). It names only the file, not the year.
+- **The empty vote listing still has a vote row wrapper** (`votes_index_roll315_NEGATIVE_no_votes_found.html`): the
+  "No Votes Found" message sits inside `<div class="role-call-vote">`, and its hidden `currentSession` says `1st` under a
+  `Session=2nd` query. Count rows by their `aria-label="Roll number, N"`, never by the div; never read the session from it.
+- **The listing and the XML format times differently** (`roll290.xml` against the live listing, scout 2026-10-03):
+  the listing says `Sep 01, 2026, 05:55 PM` (zero-padded), the XML `1-Sep-2026` with `5:55 PM` and `time-etz="17:55"`.
+- **The vote listing sends no validators** (`votes_index_119_2nd.html`): `/Votes/MemberVotes` answers If-Modified-Since
+  and If-None-Match with a full 200, so change detection is a body hash. The legacy `evs/{year}/index.asp` is a 254 KB
+  404 for 2026 (scout, live 2026-10-03).
+- **A roll's action-time is the close of the vote** (inferred, n=4, `roll106.xml` against
+  `fixtures/house.clerk.floor/2026-10-03/20260327.xml`): minute precision, about 1 min before the floor file's result
+  line and 24 min after the motion was made; not the start of the vote.
+
+**Senate roll calls (`senate.lis.votes`)**
+
+- **senate.gov never answers 404 for a missing roll call** (`vote_119_2_00257_NEGATIVE_redirect_vote_not_available.html`,
+  `vote_menu_120_1_NEGATIVE_redirect_file_not_found.html`). A vote not posted yet answers 301 to
+  `roll-call-vote-not-available.htm`; a menu for a session that does not exist answers 302 to `file_not_found.htm`; both
+  end in 200 `text/html`. The response keeps the requested `.xml` URL, so only content type and root element reveal it.
+  A permanent redirect for a vote that will exist later could be cached by an intermediary (inferred): never request a
+  vote number the menu does not list.
+- **Join senators by `lis_member_id`, never by name** (`vote_119_2_00122.xml` vs `fixtures/senate.lis.votes/2026-10-02/vote_119_2_00256.xml`):
+  `Graham (R-SC)` is Lindsey Graham S293 in votes 9, 96 and 122 and Darline Graham S441 (appointed 2026-07-14) in vote 256.
+- **The current members file misses senators who left this session**
+  (`fixtures/members/2026-10-03/senate_vote_119_2_00063_departed_members_S293_S419.xml`): S293 Lindsey Graham and S419
+  Markwayne Mullin. `legislators-historical.json` (13,483,039 B) is too big to load per poll, so a departed-members seed
+  is cut from it at build time (`packages/adapters/src/generated/members_departed_119.json`).
+- **`<vote_cast>` can carry attributes and compound values** (`vote_115_2_00223.xml`:
+  `<vote_cast crp=" " pair="S375">Present, Giving Live Pair</vote_cast>`). A pattern on the bare `<vote_cast>` tag
+  silently drops that member, and an equality test against `Present` misses it.
+- **The Vice President's tie-break is in neither the counts nor the members** (`vote_119_2_00009.xml`: 50-50 "Well
+  Taken"), and three-fifths and two-thirds votes fail with more yeas (`vote_119_2_00254.xml` 57-43 Rejected,
+  `vote_119_2_00096.xml` 48-50, `vote_117_1_00059.xml` 57-43 Not Guilty). `passed` comes from `vote_result`, never the tally.
+- **A negative result hides inside a positive suffix** (`vote_117_1_00059.xml`): "Not Guilty" ends with "Guilty", and
+  "Not Well Taken" ends with "Well Taken" (inferred). Match the negatives first.
+- **En bloc votes have no vote-level result in the menu** (`vote_119_2_00225.xml`, `fixtures/senate.lis.votes/2026-10-02/vote_menu_119_2.xml`):
+  the issue, question and result sit in `en_bloc/matter`; the per-vote XML repeats `<document>` 74 times at the root, and
+  its first `<document>` (PN730-11) is the LAST nomination in the question text. "The first document" is arbitrary.
+- **Amendment votes leave the document number empty** (`vote_119_2_00249.xml`, `vote_119_2_00096.xml`): document_type
+  `S.Amdt.` with no number; the measure is only in `amendment/amendment_to_document_number`.
+- **A cloture vote on an amendment is not cloture on the bill** (critique T2; `vote_119_2_00240.xml`, recorded from
+  live): "On the Cloture Motion", S.Amdt. 6776 to S. 4668, 70-21. A title built from the bare measure would read
+  "cloture on S. 4668"; the subject must be the amendment ("amendment S.Amdt. 6776 (on S. 4668)").
+- **Last-Modified on old vote files is a bulk re-export** (`vote_119_2_00096.xml`, `vote_119_2_00105.xml`): 2026 files
+  and 2018/2021 files alike carry Mon 24 Aug 2026 14:12-14:19 GMT. `modify_date` is the edit stamp and can move days
+  later (votes of Apr 23, modify_date Apr 29). Last-Modified is not the time of first appearance (members scout: vote 63
+  of Mar 23 has LM 24 Aug, vote 193 of Jul 13 has LM 1 Sep).
+- **The first votes after the recess will be EST** (`vote_119_2_00009.xml` is EST; nearly all session-2 fixtures are
+  EDT): the Senate returns Nov 9, after DST ends Nov 1. Vote-a-ramas run at 12:31 AM and 03:22 AM
+  (`vote_119_2_00096.xml`, `vote_119_2_00105.xml`), so the 12 AM rule and the DST hours are real paths.
+- **The menu and the vote file disagree on format** (`fixtures/senate.lis.votes/2026-10-02/vote_menu_119_2.xml` vs
+  `vote_119_2_00256.xml`): the menu's vote_number is zero-padded (`00256`), the vote's is not (`256`); the menu's
+  `<question>` has a trailing newline and spaces and mixed `<measure>` children; its `<result>` is an abbreviation
+  ("Rejected") of the vote's `vote_result` ("Cloture on the Motion to Proceed Rejected").
+- **If-None-Match alone gets a full 200** (scout, live 2026-10-03, menu and per-vote): with If-Modified-Since too it
+  gets 304 (`vote_menu_119_2_304_not_modified.xml`), so INM is ignored, not harmful. Send If-Modified-Since.
+
+**House Clerk floor proceedings (`house.clerk.floor`)**
+
+- **A missing day file is a real HTTP 404** (`20261005_NEGATIVE_404_not_yet.html`: IIS text/html "404 - File or
+  directory not found.", 1,245 B, no validators), not a 200 error page; the 200 "File Not Found" above is docs.house.gov's.
+  A 404 on the next-day file means "not posted yet".
+- **The file is per legislative day, named by the date it convened** (`20260429.xml`: 84 actions after midnight, until
+  ~02:42 on Apr 30, while the next file began 09:00 the same date). A poller that asks for today's Eastern date misses them.
+- **One file can hold two legislative days or a session boundary** (`20260327.xml`, `20260103.xml`, `20250103.xml`):
+  `legislative_day_finished` can appear twice, and the header's session attribute labels session-1 actions as session 2.
+- **The next-meeting element can repeat with the same value** (critique T4; `20260103.xml` lines 10 and 47 both say
+  `20260106T18:30`). Emitting one event per element gives two events with one dedup_key, and the Hub refuses the whole
+  payload. One event per distinct date; two different times for one date = drift.
+- **A Congress transition day mixes two Congresses** (`20250103.xml`): header `congress="119:118" session="2:1"` (the
+  pair orders do not even match), unique-ids from both Congresses mix (51304..51338 and 4..92), and the 20th-Amendment
+  convene sits at index 74 of 85, beyond a 50-action head cut. unique-id resets per Congress, not per session
+  (`20260102.xml`, `20260103.xml`). Jan 3 2027 will hit this.
+- **Vote links carry the vote's own year, not today's session** (critique T6; `20250103.xml`: `year=2025&rollnumber=1..5`
+  = votes of 119-1). Derive the session from the link's year.
+- **The latest file is rewritten every 15 minutes with only `<pubDate>` changed** (`20261001.xml` vs
+  `20261001_regenerated_IMS_200.xml`): new ETag and Last-Modified each time, so a body-hash skip re-parses it every 15
+  min. Events must not contain pubDate, or every regeneration becomes a revision.
+- **Past day files are rewritten long after the day** (`20260416.xml`: LM Jul 2 2026, a real edit,
+  `update-date-time 20260702T12:09`; `20260327.xml`: LM Jul 24 2026 with no visible change). A poller that moves on to
+  the next day never sees late corrections.
+- **The per-day file's descriptions are XHTML** (`20260916.xml` in `fixtures/house.clerk.floor/2026-10-02/`):
+  `<a rel=bill|vote|report>`, `<b>`, `&#8212;`, `&amp;` inside hrefs, while the bulk file is plain text. Strip tags,
+  decode entities, collapse whitespace: that matched the Clerk's plain text on 443 of 443 actions.
+- **act-id is not a classifier** (`20260327.xml`): H61000 is used for both adjourn (128 in the 2026 bulk file) and
+  recess (141); H20100 for both a new legislative day and a return from recess. "Pro forma" is never written anywhere.
+- **unique-id is neither in time order nor gap-free** (`20261001.xml`: the Oct 1 convene entry is 44997 among
+  45144-45150, and 45149 is absent). Equal for-search times occur (`20260916.xml`, 2 ties).
+- **The legislative day text has a double space before a one-digit day** (`20261001.xml`: "LEGISLATIVE DAY OF
+  OCTOBER  1, 2026 "), like the Senate dates. Use the `@date` attribute.
+- **The RSS feed and the bulk file start with a UTF-8 BOM** (`Home_Feed_rss.xml`); the per-day files do not. The RSS
+  has no ETag or Last-Modified.
+- **The bulk file is 2.2 MB decoded but 235 KB gzip on the wire** (scout, live 2026-10-03); its name embeds
+  congress-session (`HDoc-119-2-FloorProceedings.xml`). Poll the per-day file.
+
+**Senate schedule (`senate.schedule`)**
+
+- **`floor_schedule.json` mixes two time conventions** (`floor_schedule_winter_est_2026-02-04_wayback.json`,
+  `floor_schedule_session_day_2026-09-30_wayback.json`, `floor_status_new.js`): the convene fields are naive
+  America/New_York wall time; `lastUpdated` has a fixed `-05:00` offset all year that is a correct instant (each sample
+  1-7 min before Last-Modified). Do not "fix" lastUpdated to New York time: summer values would move 1 h.
+- **`hearings.xml` `last_update_iso_8601` is malformed** (`hearings_session_week_2026-09-14_wayback.xml`:
+  `2026-09-08T13:12:21.000000Z-04:00`, both Z and an offset). Date.parse gives NaN, and dropping either suffix gives
+  answers 4 h apart. Read `last_update` as Eastern instead.
+- **"No committee hearings scheduled" is a per-day placeholder, not an empty-file marker**
+  (`hearings_2026-07-25_wayback.xml`, `hearings_session_week_2026-09-14_wayback.xml`): it sits next to real future
+  meetings. Its `<time>` is the hour the file was generated (n=5), in formats that differ from real rows.
+- **In recess `hearings.xml` changes every ~2 h with no news** (`fixtures/senate.schedule/2026-10-02/hearings.xml`): the
+  placeholder's time is regenerated, so validators and the body hash both change; only the adapter's output stays the same.
+- **`hearings.xml` is regenerated on even UTC hours** (Last-Modified +0-6 min; scout, Wayback copies): a session-week
+  copy stayed at 04:00:39Z until at least 13:28Z, so the file appears to be rewritten only when content changes (inferred).
+- **www.senate.gov may serve the previous version just after the hour** (n=1, scout): `hearings.xml` LM 14:06:01Z, but
+  a response at 14:06:40Z still served the 12:05:51Z version (multi-origin lag).
+- **Subcommittee meetings name only the parent committee** (`hearings_2026-07-30_wayback.xml`: cmte_code
+  SSJU22 says `<committee>Judiciary</committee>`). Titles say "a … subcommittee (code)".
+- **`hearings.xml` includes joint commissions** (`hearings_2026-07-30_wayback.xml`: JCSE00, the Helsinki
+  Commission, in House room CHOB-210).
+- **Placeholder video links are published** (`hearings_2026-07-30_wayback.xml` meeting 338700:
+  `comm=xxxx&filename=xxxx080526`, a nominations hearing whose matter was still generic). No media from them.
+- **A hearing's stream link can name another day's stream** (critique T7; `hearings_2026-07-25_wayback.xml`,
+  `hearings_2026-07-30_wayback.xml`): meeting 338684 (2026-07-30) links `filename=help072926`, and 338688 links
+  `filename=foreign073036`, an impossible date. Use a stream link only when its filename date equals the meeting date.
+- **`<matter>` is rewritten after posting and contains NBSP** (`hearings_2026-07-25_wayback.xml` vs
+  `hearings_2026-07-30_wayback.xml`: 338684 and 338688). Never key or dedupe on matter; normalize U+00A0 before any regex.
+  The meeting `<identifier>` survives re-titles: key by it.
+- **A nomination's partition is padded** (`hearings_session_week_2026-09-14_wayback.xml`): `partition="0 "` (trailing
+  space) means no partition, and the attribute can also be absent.
+- **senate.gov answers a missing path with a 200 HTML "404 Error Page"** (`floor_schedule_NEGATIVE_not_found.html`,
+  after a redirect to `file_not_found.htm`). Check the content type and body; parse JSON only after.
+- **`floor_schedule.json` is always 974 B** (`fixtures/senate.schedule/2026-10-02/floor_schedule.json`; ETag size 3ce
+  in all 4 samples): a fixed-width template, so a changed ETag or LM means "rewritten", not "longer".
+- **`floor_schedule.json` cannot tell a pro forma from a business session** (`floor_status_new.js`): senate.gov's page
+  flips to "Live Floor Proceedings" 15 min before ANY convene and stays "Live" until the file is rewritten after
+  adjournment, so a pro forma can read "Live" for the rest of the day. Our convene title never says "pro forma".
+- **The Wayback Machine is the only history of the Senate schedule files** (the `_wayback` fixtures): byte-exact
+  originals (the Apache ETag size equals the decoded length, 5 of 5), original LM/ETag in `x-archive-orig-*` headers.
+  A broad CDX query (from=2025) timed out at 40 s; narrow date ranges answered in ~1 s. Tests serve these copies under
+  the senate.gov URL (P21-R12).
+
+**Senate Daily Press Gallery (`senate.pressgallery`)**
+
+- **The WordPress REST API sends no validators and ignores If-Modified-Since**
+  (`dailypress_posts_newest3_fields_ims_200.json`): 200 with the full body every time, on both gallery hosts. Change
+  detection is a body hash.
+- **The `/feed/` Last-Modified is site-wide** (`dailypress_feed.xml`, `periodicalpress_feed.xml`; scout, live
+  2026-10-03): the newest edit of any post OR page (the Daily LM came from page 21643 "Most Votes in Senate History"),
+  not of the feed's items; the channel `lastBuildDate` is the newest post's modified_gmt. So a 200 on If-Modified-Since
+  does not mean a new post, and If-None-Match is ignored (200 with the exact ETag).
+- **`date_gmt` and `modified_gmt` carry no `Z`** (`dailypress_posts_newest3_fields.json`): see "Never Date.parse a naive
+  date-time string" in Libraries and code. Always append `Z`.
+- **Before 2021-03-12 the Daily site clock was UTC** (823 posts, ids up to 48963, have `date == date_gmt`; scout over the
+  full post list). Never derive UTC by adding a fixed offset to `date`.
+- **Post timestamps are not session times** (`dailypress_posts_165481_scheduled_modified_before_date.json`): 477 of 1,842
+  Daily posts are midnight-scheduled shells, 40 recent posts went live on an earlier day than their session day, 29
+  Periodical posts were back-filled up to 12 days later, and modified_gmt can be earlier than date_gmt on scheduled
+  posts (165481 and 3 more).
+- **Titles are hand-typed and often wrong** (`fixtures/senate.pressgallery/2026-10-02/dailypress_posts.json`: 166515
+  "Thursday, September 16" is Sep 17; `periodicalpress_posts_two_posts_one_day_and_wrong_year.json`;
+  `dailypress_post_162959_overnight_two_day_title.json`, a two-day title). 21 Daily and 19 Periodical weekday/date
+  mismatches, wrong years, missing years, typos ("20204"). Falling back to the post's weekday at any distance picks the
+  WRONG day on back-filled posts.
+- **Some session days have two posts** (`periodicalpress_posts_two_posts_one_day_and_wrong_year.json`; 13 days on each
+  site): an empty or one-line stub plus the real log with slug `-2`. Key by WordPress post id, never by day or slug.
+- **Category cannot identify a floor log** (`dailypress_categories.json`, `dailypress_post_56415_announcement_not_floor_log.json`):
+  the Daily site files all 1,842 posts, announcements included, under "Uncategorized". The title date and the content
+  must decide; the Periodical uses "Floor Logs" (37) for all 691.
+- **An overnight session continues past midnight inside the same post** (`dailypress_post_162959_overnight_two_day_title.json`):
+  entries are newest first, and the only marker is the prose "The above happened on Friday, June 5th." Clock times can
+  also be out of order by typo ("10:30 p.m." between 11:40 and 10:57 p.m.).
+- **The schedule separator moves** (`dailypress_posts_newest3_fields.json` post 167105: schedule below the log;
+  `fixtures/senate.pressgallery/2026-10-02/dailypress_posts.json` post 166515: above it): `*****`, `******`, `***` or
+  an em-dash line, and a post can hold two separators (166593). Post 166969 has no separator at all, so schedule blocks
+  ("The Senate will …", "At 10:00", "Following …") must stop an entry's continuation (critique T9).
+- **"Recess" inside a sentence is not a recess** (critique T3; `dailypress_posts_newest3_fields.json` 166969 "2:15 p.m.
+  The Senate returned from recess."; `fixtures/senate.pressgallery/2026-10-02/dailypress_posts.json` 166515 "… during
+  the August recess"). An unanchored keyword typed both as "Senate recessed". Type only the timed sentence, anchored to
+  its subject.
+- **The two galleries disagree on the same facts** (`fixtures/senate.pressgallery/2026-10-02/dailypress_posts.json` vs
+  `periodicalpress_posts.json`): adjournment 11:24 p.m. (Daily) vs 11:25pm (Periodical) on Sep 30, 5:58 vs 5:57 on Sep
+  16; nomination numbers differ (PN1201-4 vs PN1021-4); names are misspelled. Gallery text is never an ID source.
+- **`?_envelope` returns HTTP 200 with the error inside** (`dailypress_post_999999999_envelope_NEGATIVE_200_error_body.json`:
+  `{"body":{"code":"rest_post_invalid_id"},"status":404}`). Shape-check every 200: a list must be a JSON array.
+- **Clock ranges need entity decoding before matching** (`dailypress_posts_before_2026-01-10_EST_time_ranges.json`:
+  "5:50 - 6:35 p.m.", "3:15- 5:47 p.m.", "5:50 &#8211; 6:35 p.m."). A mid-afternoon "adjourned until 4:27 p.m." only
+  starts a new legislative day.
+
+**Member identity (`members`)**
+
+- **congress-legislators deletes a departed member from the current file** (commit d0fa668f "Sen. Graham died" moved
+  the record to `legislators-historical.json`): joining any older vote against `fixtures/members/2026-10-02/legislators-current.json`
+  misses that member (`house_roll_2026_090_departed_members_and_party_change.xml` 4 misses,
+  `senate_vote_119_2_00063_departed_members_S293_S419.xml` 2). Seed from the historical file and keep the map append-only.
+- **New members reach the published JSON 30.6–42.6 h after 00:00 ET of their term start** (n=7, GitHub commit and
+  gh-pages publish times). A new member's first votes do not resolve until then: 1 unresolved senator is a normal transient.
+- **The published JSON once carried a value outside its vocabulary**
+  (`legislators-current_ghpages_8125e52b_2026-09-02T2014Z.json`: party `D` for B001328 for ~14 h). The upstream's own
+  validation does not guarantee the enum; the map never reads party.
+- **`name.official_full` can be missing for weeks** (`fixtures/members/2026-10-02/legislators-current.json`: W000832
+  today). Build display names with a fallback.
+- **An appointed senator's `terms[].end` is the special-election date** (H001104 and M001244: 2026-11-03,
+  `end-type: special-election`), not the day they leave. Never drop members by end date.
+- **Vacancies are invisible in every join input** (`senate_vote_119_2_00193_vacancy_99_members.xml`: 99 rows, no
+  marker; House rolls have 433 rows for 435 seats). Only `house_clerk_MemberData.xml` lists vacancies. A check for
+  exactly 100 senators or 435 House rows is wrong.
+- **Party at the vote differs from the dataset's current party** (`house_roll_2026_090_departed_members_and_party_change.xml`:
+  K000401 `party="R"` on 2026-03-17; the dataset says Independent from 2026-03-09). Take party and state from the vote XML.
+- **Senate first names carry trailing whitespace and differ from the dataset** (`senate_cvc_member_data.xml`: 58 of 100
+  end in a space; `Lujan` without the accent; legal `Thomas` Tillis vs `Thom`). Trim, and never join on names.
+- **House roll XML has no first names and two disambiguation styles** (`roll300.xml` in
+  `fixtures/house.clerk.votes/2026-10-02/`: `Johnson (LA)`; `roll009.xml`: `Gonzales, Tony`).
+- **The GitHub Pages ETag is mtime-size, shared by every file of a deploy** (scout headers): a site deploy probably
+  changes this file's ETag with the same bytes (inferred), and its Expires header is hours earlier than Date. Compare sha256.
+- **clerk.house.gov `MemberData.xml` ignores If-None-Match but honours If-Modified-Since**
+  (`house_clerk_MemberData.xml`); its `publish-date` (October 1, 2026) is later than its Last-Modified (Sep 29).
+- **`legislators-historical.json` is 13,483,039 B (1.26 MB gzip): build time only, never in a Worker.** The full
+  current file parses in 2–23 ms (Node cold) or 2–4 ms (local workerd) of a 10 ms Free CPU budget; the generated map in
+  under 1 ms (members scout).
+- **raw.githubusercontent.com serves the JSON as `text/plain`** (`legislators-current_ghpages_8125e52b_2026-09-02T2014Z.json`):
+  a check that requires a JSON content type rejects a snapshot fetched there.
+
 ## Hosting
 
 - **GitHub Actions cron cannot drive a live feed**: most scheduled runs never ran in the measurement (D-008).
@@ -370,3 +632,9 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   D-048) re-sorts only rows written after the deploy; an unchanged stored row keeps its old key, and the API serves by
   that column. Changing the rule for existing rows needs a recompute of `sort_ms` (or a store reset; see the
   "reset API hub" entry above).
+- **Never `Date.parse` a naive date-time string** (2026-10-03, senate.schedule and senate.pressgallery scouts). Node
+  reads `'15-SEP-2026 09:00 AM'`, `'09-08-2026 01:12:21 PM'` or WordPress `date_gmt` `'2026-10-01T04:07:59'` (no `Z`)
+  in the MACHINE's zone: 14:00Z and 18:12:21Z on this Central-time PC, something else in a UTC Worker, so results depend
+  on where the code runs. Eastern wall times go through `easternToUtc` in `packages/adapters/src/lib/eastern.ts`
+  (nonexistent spring-forward times and ambiguous fall-back times are reported, never guessed: decision row P21-R13);
+  a UTC string without an offset gets `Z` appended before parsing.
