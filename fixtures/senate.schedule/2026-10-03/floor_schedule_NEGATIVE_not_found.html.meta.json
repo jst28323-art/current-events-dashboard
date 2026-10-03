@@ -1,0 +1,25 @@
+{
+  "source_id": "senate.schedule",
+  "url": "https://www.senate.gov/legislative/schedule/floor_schedule_2026.json",
+  "final_url": "https://www.senate.gov/pagelayout/general/one_item_and_teasers/file_not_found.htm",
+  "fetched_at": "2026-10-03T14:22:39.062Z",
+  "status": 200,
+  "elapsed_ms": 363,
+  "bytes": 25791,
+  "sha256": "aa9bcee082e3544f71a34198ba39bac97fa3eb9d97e9f33dc0a4675da87b7a12",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "connection": "keep-alive",
+    "content-encoding": "gzip",
+    "content-length": "4969",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Sat, 03 Oct 2026 14:22:37 GMT",
+    "server": "Apache",
+    "strict-transport-security": "max-age=31536000",
+    "vary": "Accept-Encoding"
+  }
+}
