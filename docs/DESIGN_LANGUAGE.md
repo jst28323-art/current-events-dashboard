@@ -85,6 +85,32 @@ On the Nomination PN1129 (Secretary of Labor) — Confirmed, 47–41
 - Line 3: origin chip(s), then disclosure into the inspector.
 - Votes show the tally in tabular numerals; the inspector shows the member-level breakdown (party/state, searchable).
 
+## Phase 1 web (v0), as built 2026-10-02
+
+What `apps/web` does today; the sections above stay the target. Behaviour rules (polling, merge, times, chip
+precedence) are D-040 and D-041.
+
+- **Layout:** one column at every width (the three-pane layout waits for Phase 4). The phone scale applies below 700 px
+  and the desktop scale at 700 px and above. The column is at most 720 px wide; from 760 px it is a window with
+  rounded corners and the window shadow.
+- **Health chips:** a neutral chip with the source name and one word (ok / stale / error / not polled yet). The dot is
+  `--ok` for ok, `--warn` for stale and error (on a `--warn` tint, with the word in semibold, weight 600), and `--label-3` for not polled
+  yet. A long source name is cut with an ellipsis: the chip is at most the column wide, the health word always stays
+  visible, and the full name leads the chip's tooltip.
+- **API unreachable:** the chips are labeled "Last known health, as of <time>"; the ok dot turns gray and every chip
+  gets a 1 px dashed `--label-3` outline. Chips are never dimmed with opacity, because the words must stay at least
+  4.5:1: measured 4.56:1 light and 5.01:1 dark for the weakest word (the "ok" state in `--label-2`), checked by
+  `apps/web/e2e/layout.spec.ts`. The "Live data unavailable" banner uses a `--warn` tint, never `--live` red; `--live`
+  is used only for a `status: "live"` row's LIVE chip.
+- **Row anatomy v0:** origin chip(s) on the left and the time on the right (absolute, in the viewer's zone with its
+  abbreviation, labeled "posted" or "first seen" when it is not the event's own time; D-041). Then the title (P0/P1
+  weight 650, P2 500, P3/P4 400 in `--label-2`), `official_text` (`--label-2`, clamped to 4 lines), then the source name
+  and the link host with an arrow.
+- **Tap targets:** the `--tap` token is 44 px on the phone scale and 24 px on desktop. A row's source link is that tall,
+  with negative block margins so the row layout does not change.
+- **Deferred to later phases:** relative times, the "N new" pill, Lucide kind icons, keyboard navigation, the
+  inspector, WebKit screenshots.
+
 ## Accessibility and quality bars
 
 - WCAG AA contrast in both themes; visible focus ring in `--accent`; full keyboard use (⌘K or `/` search, J/K to move,

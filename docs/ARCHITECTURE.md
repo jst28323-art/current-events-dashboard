@@ -1,7 +1,10 @@
 # ARCHITECTURE
 
 Status: **chosen 2026-10-02 (agent recommendation from the research, within the owner's constraints D-001 $0,
-D-002 public, D-003 home PC, D-013 address open). Nothing below is built yet.** Evidence:
+D-002 public, D-003 home PC, D-013 address open).** As of 2026-10-02 (83ea2b6) the Phase 1 slice is built and tested
+but not deployed (the Cloudflare account does not exist yet, ROADMAP P1.1): a 1-minute cron poller, the HubDO and the
+read API v0 in `workers/api`, the web page in `apps/web`. PollerDOs, alarms, WebSockets, alerts, ingest and the home PC
+are not built. Evidence:
 `docs/research/architecture_hosting_frontend.md` (§6 candidates, §2 live measurements) and
 `docs/research/live_media_transcripts.md` (§6 transcript design). Paths marked (planned) are created by the phase that
 needs them (`docs/ROADMAP.md`).
@@ -51,8 +54,9 @@ needs them (`docs/ROADMAP.md`).
 |---|---|---|
 | `packages/schema/` | Event types + JSON Schema + validator, from `docs/EVENT_MODEL.md` | becomes the source of truth for the model; iOS can generate Codable types from the JSON Schema later |
 | `packages/adapters/` | one pure adapter per source + the source registry (cadence, validator to send, rate budget, UA override, freshness SLO, calendar awareness) | tests replay `fixtures/<source_id>/…` |
-| `workers/api/` | the Worker: PollerDOs, HubDO, supervisor cron, HTTP + WebSocket API, ingest endpoint | `wrangler.jsonc`; tested in workerd with Vitest + `@cloudflare/vitest-plugin` |
-| `apps/web/` | Vite + Preact + signals + TypeScript PWA, macOS design tokens (`docs/DESIGN_LANGUAGE.md`) | built and deployed to GitHub Pages by `.github/workflows/pages.yml`, replacing today's `site/` placeholder |
+| `workers/api/` | the Worker: PollerDOs, HubDO, supervisor cron, HTTP + WebSocket API, ingest endpoint | `wrangler.jsonc`; tested in workerd with Vitest + `@cloudflare/vitest-plugin`; v0 has the cron poller, the HubDO and the read API only |
+| `workers/probe/` | the temporary P1.3 probe Worker `ced-probe` (D-042) | stops itself after 48 cron runs (G-010) |
+| `apps/web/` | Vite + Preact + signals + TypeScript PWA, macOS design tokens (`docs/DESIGN_LANGUAGE.md`) | built and deployed to GitHub Pages by `.github/workflows/pages.yml` (it replaced the `site/` placeholder on 2026-10-02) |
 | `homepc/` (planned) | the home-PC producer (Node for capture/relay; Python only where speech-to-text needs it) | outbound-only; installing it as a service needs the owner's OK each time |
 | `fixtures/` | recorded upstream responses | exists; see `fixtures/README.md` |
 
@@ -66,11 +70,16 @@ needs them (`docs/ROADMAP.md`).
 - `POST /api/v1/ingest` → HMAC-signed batches of events from the home PC (replay window, schema-validated).
 - CORS: allow the Pages origin; the API is read-only and public except `/ingest`.
 
+v0 (ROADMAP P1.5, built 2026-10-02, not deployed) serves `/api/v1/events` (no `features` / `tier` filters yet),
+`/api/v1/status`, `/feed.json` and a `/` index; `/api/v1/live` and `POST /api/v1/ingest` wait for Phase 2+. Its
+contract is `packages/schema/src/api.ts`; its rules are D-036..D-039. Events cross the HubDO RPC as stored JSON text
+(docs/TRAPS.md).
+
 ## Constraints that shape the code
 
 - **10 ms CPU per Worker invocation on Free.** A full parse of the Senate vote menu took 6–12 ms on a fast desktop, so
   pollers send conditional GETs and parse only the newest items. Whether DO alarms on Free get the same 10 ms is
-  undocumented: Phase 1 probes it.
+  undocumented: Phase 1 probes it. The HubDO's own cost on a large re-ingest is an open item (workers/api review W10, ROADMAP P1.5).
 - **Upstream caches set a freshness floor** (per-source figures: `docs/SOURCES.md`). Per-source cache-busting is a
   polite-polling decision recorded in the source's row.
 - **Reachability of each .gov source from Cloudflare's IPs is unmeasured.** Phase 1's probe Worker decides which sources

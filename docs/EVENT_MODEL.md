@@ -80,6 +80,7 @@ Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema 
 | FR document | `fr:{document_number}` (Public Inspection and publication share it) | `fr:2026-20321` |
 | executive order | `eo:{number}` (the number first appears at FR Public Inspection) | `eo:14434` |
 | White House page | `wh:{path}` (an alias later linked to `eo:` / `fr:`) | `wh:presidential-actions/2026/09/…` |
+| White House post | `wh_post:{wordpress_post_id}` from the RSS `<guid>` `?p=` (stable across re-titles and re-slugs; `wh:{path}` is its alias) | `wh_post:51617` |
 | SCOTUS case | `scotus:{docket}` | `scotus:24-123` |
 | hearing | `hearing:{chamber}:{committee_code}:{yyyymmdd}:{slug}` | |
 | live stream | `live:{provider}:{id}` | `live:youtube:{videoId}` |
@@ -90,25 +91,29 @@ Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema 
 Merge rule: same `dedup_key` → union of `sources`, earliest `first_seen_at`, field values by source priority
 (official XML > Congress.gov > third-party > press-gallery text). Free-text sources contribute `first_seen_at` and a
 corroboration link, never counts. Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
-filing) uses the normalized-title + date-window rule in the research §2.4.
+filing) uses the normalized-title + date-window rule in the research §2.4. How the Worker applies this rule today (what
+counts as a fact, who may revise, payload rules): D-036.
 
 ## Event types (v0.1 taxonomy)
 
-| family | types | features |
-|---|---|---|
-| floor | `floor.convened`, `floor.adjourned`, `floor.recess`, `floor.pro_forma`, `floor.action`, `floor.speaking` | F1 F2 F8 |
-| vote | `vote.scheduled`, `vote.opened`, `vote.tally` (ephemeral, not stored per tick), `vote.result` | F5 F6 |
-| bill | `bill.introduced`, `bill.action`, `bill.passed_chamber`, `bill.presented`, `bill.signed`, `bill.vetoed`, `law.enacted` | F11 F9 |
-| nomination | `nomination.received`, `nomination.committee_action`, `nomination.confirmed`, `nomination.rejected`, `nomination.withdrawn` | F9 F11 |
-| hearing | `hearing.scheduled`, `hearing.live`, `hearing.ended`, `markup.*` | F7 |
-| live / speech | `live.started`, `live.ended`, `briefing.*`, `speech.*`, `transcript.segment`, `transcript.published` | F3 F4 F1 F2 |
-| schedule | `schedule.item` (President, VP, cabinet; floor schedules) | F7 |
-| presidential action | `presidential_action.{executive_order, proclamation, memorandum, notice, determination, nominations_sent, statement}` | F9 |
-| regulatory | `fr.public_inspection`, `fr.published.{rule, proposed_rule, notice, presidential_document}`, `fr.correction` | F10 |
-| judicial | `court.opinion`, `court.order_list`, `court.argument`, `court.grant` | F11 |
-| oversight | `report.{cbo, gao, crs, ig}` | F11 |
-| later (F12) | `econ.release`, `fed.statement`, `sec.filing`, `world.news`, … | F12 |
-| system | `system.source_health` (drives the status page) | ops |
+The last column lists what the code emits today (2026-10-02, commit 83ea2b6); the adapter rows are D-034 and D-035.
+
+| family | types | features | emitted now (by) |
+|---|---|---|---|
+| floor | `floor.convened`, `floor.adjourned`, `floor.recess`, `floor.pro_forma`, `floor.action`, `floor.speaking` | F1 F2 F8 | none |
+| vote | `vote.scheduled`, `vote.opened`, `vote.tally` (ephemeral, not stored per tick), `vote.result` | F5 F6 | none |
+| bill | `bill.introduced`, `bill.action`, `bill.passed_chamber`, `bill.presented`, `bill.signed`, `bill.vetoed`, `law.enacted` | F11 F9 | none |
+| nomination | `nomination.received`, `nomination.committee_action`, `nomination.confirmed`, `nomination.rejected`, `nomination.withdrawn` | F9 F11 | none |
+| hearing | `hearing.scheduled`, `hearing.live`, `hearing.ended`, `markup.*` | F7 | none |
+| live / speech | `live.started`, `live.ended`, `briefing.*`, `speech.*`, `transcript.segment`, `transcript.published` | F3 F4 F1 F2 | none |
+| schedule | `schedule.item` (President, VP, cabinet; floor schedules) | F7 | none |
+| presidential action | `presidential_action.{executive_order, proclamation, memorandum, notice, determination, nominations_sent, statement, other}` | F9 | `presidential_action.executive_order`, `.proclamation`, `.memorandum`, `.nominations_sent`, `.other` (`wh.feeds`) |
+| White House messaging | `wh.{release, briefing_statement, fact_sheet, article, remarks, other}` (D-030) | F11 | all six (`wh.feeds`) |
+| regulatory | `fr.public_inspection`, `fr.published.{rule, proposed_rule, notice, presidential_document, other}`, `fr.correction` | F10 | `fr.public_inspection`, `fr.published.rule`, `.proposed_rule`, `.notice`, `.presidential_document`, `.other` (`fr.api`) |
+| judicial | `court.opinion`, `court.order_list`, `court.argument`, `court.grant` | F11 | none |
+| oversight | `report.{cbo, gao, crs, ig}` | F11 | none |
+| later (F12) | `econ.release`, `fed.statement`, `sec.filing`, `world.news`, … | F12 | none |
+| system | `system.source_health` (drives the status page) | ops | none (health is served by `/api/v1/status`, not as events) |
 
 ## Importance tiers (rules first; no AI in v1)
 

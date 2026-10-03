@@ -13,9 +13,10 @@ export type HealthStatus =
 /**
  * GET /api/v1/events?since=<cursor>&limit=<n>
  * - without `since`: the newest `limit` events (default 100, max 500), newest first by
- *   coalesce(occurred_at, source_published_at when it is not later than first_seen_at, first_seen_at), ties broken by
- *   id (a White House executive-order post has no signing time; it sorts by its posting time, not by when we first
- *   saw it, so a backfill does not put week-old orders on top). `has_more` here only means older events exist.
+ *   coalesce(occurred_at, source_published_at when it is not later than first_seen_at, first_seen_at)
+ *   (a White House executive-order post has no signing time; it sorts by its posting time, not by when we first
+ *   saw it, so a backfill does not put week-old orders on top). Ties are broken by id DESCENDING (the page sorts the
+ *   same way). `has_more` is always false here in v1: older events are not paged yet.
  * - with a `since` this API did not issue (e.g. after a store reset): HTTP 400 {error}; call again without since.
  * - with `since`: every event stored or revised after that cursor (up to `limit`, oldest change first), so a client
  *   that polls with the last cursor it got never misses one; `has_more` says to call again at once with the new cursor.

@@ -8,14 +8,14 @@ governed by D-009. Reports: CFV = `docs/research/congress_floor_votes.md`, LEG =
 EXE = `docs/research/executive_branch.md`, LIVE = `docs/research/live_media_transcripts.md`,
 ARC = `docs/research/architecture_hosting_frontend.md`, CUR = `docs/research/curation_priorart_future.md`.
 
-Columns to fill in Phase 1 (probe Worker): **CF reachable** (fetchable from Cloudflare's network?) and **parse CPU**.
+Cloudflare reachability, which validator gets a 304, and parse CPU go in "Cloudflare probe" below (ROADMAP P1.3).
 
 ## Tier 1 — build first (Phases 1–3; `fr.api` and `wh.feeds` in Phase 1, per D-024): free, official or explicitly allowed, verified live
 
 | source_id | what | features | access · validator | observed freshness (2026-10-02) | affiliation | fixture | report |
 |---|---|---|---|---|---|---|---|
-| `fr.api` | Federal Register API: Public Inspection `current.json` + `documents.json` (EOs, presidential docs, rules) | F10 F9 | JSON, no key, CORS `*` · no ETag/LM: hash the body; **always add a cache-busting query** (plain requests got shared-cache copies despite `no-store`: up to ~104 min old on `current.json` (EXE), ~47 min on `documents.json` (ARC); the cache seemed to refresh at slot times) | PI fixed slots: regular filings 08:45 ET; special filings 08:45, 11:15, 14:00, 16:15, 18:00 ET (verifier-corrected); presidential docs at 11:15 ET, 1–2 business days after signing (n=11); publication median 5 days after signing (n=31); slot-to-detection lag unmeasured | official-nonpartisan | yes | EXE, ARC, CUR |
-| `wh.feeds` | whitehouse.gov RSS: `/presidential-actions/feed/`, `/news/feed/` | F9 F11 | RSS · ETag + IMS both 304, but the validator is site-wide and changes with no new item: dedupe by GUID; `max-age=300` | EOs posted 17–210 min after the scheduled signing (10 signings, Aug–Sep 2026); the "breaking" source for EOs (FR follows ~42 h later) | executive-messaging | yes | EXE, CUR |
+| `fr.api` | Federal Register API, two endpoints: `pi_current` = Public Inspection `current.json`; `documents_newest` = `documents.json?per_page=20&order=newest` with 12 `fields[]` (each checked live 2026-10-02). EOs, presidential docs, rules. **Open (O1):** 20 per poll covers only ~20% of each daily issue | F10 F9 | JSON, no key, CORS `*` · no ETag/LM: hash the body; **always add the cache-buster `_=<epoch ms>`**: both endpoints accept it (live 2026-10-02: `Age: 0`, fresh `x-request-id`); plain requests got shared-cache copies despite `no-store`, up to ~104 min old on `current.json` (EXE) and ~47 min on `documents.json` (ARC); the cache seemed to refresh at slot times. `documents.json` echoes the cache-buster into `next_page_url` (docs/TRAPS.md; the poller rule is D-038) · cadence 60 s in business hours (covers the 08:45, 11:15, 14:00, 16:15 and 18:00 ET slots), 900 s off hours; stale after 120 s in business hours and 1800 s otherwise, including the first 15 min after 06:00 ET (rule: D-039); budget 180 req/h (2 endpoints x 60/h + retries; the FR publishes no limit) · mapping and fail-closed rules: D-034 | PI fixed slots: regular filings 08:45 ET; special filings 08:45, 11:15, 14:00, 16:15, 18:00 ET (verifier-corrected); presidential docs at 11:15 ET, 1–2 business days after signing (n=11); publication median 5 days after signing (n=31). Live smoke 2026-10-02 21:43Z: PI 200, 175,049 B, 696 ms, 108 docs; documents 200, 21,260 B, 92 ms. Parse (Node 26, home PC, 2026-10-02): PI 0.83 ms for 107 docs, 7.4 ms for 1000; documents 0.13 ms. CF parse CPU unmeasured (P1.3). Slot-to-detection latency unmeasured | official-nonpartisan | yes (+NEGATIVE) | EXE, ARC, CUR |
+| `wh.feeds` | whitehouse.gov umbrella RSS `https://www.whitehouse.gov/news/feed/` (endpoint `news`), the only polled endpoint: the 30 newest posts across Releases, Briefings & Statements, Fact Sheets and every Presidential Actions subcategory. `/presidential-actions/feed/` is a test-only fixture and is not polled (same site-wide ETag) | F9 F11 | RSS · public domain (whitehouse.gov/copyright); robots allows feeds · send the ETag (IMS also gets 304s); the validator is site-wide and changes with no new item, so the adapter is idempotent and dedupes by WordPress post id (D-035); `max-age=300` · poll every 60 s at all hours; stale after 120 s (D-039); <= 60 req/h (the host is shared with `wh.live`) · head-only parse (item bodies cut before XML parsing) of the 514 KB fixture, dev PC, 2026-10-02: warm median 0.98 ms (n=20, Node 26.3) / 0.90 ms (n=20, Node 22.23); first call in a fresh process 7.4-10.0 ms (n=5) / 8.2-9.0 ms (n=5); after the review fixes (2026-10-02 23:01Z, Node 26.3, paired against the builder's version) first call median 7.18 -> 7.54 ms (n=15 each), warm +0.04-0.06 ms (paired, n=200 x 3); CF parse CPU unmeasured (P1.3) | EOs posted 17–210 min after the scheduled signing (10 signings, Aug–Sep 2026); the "breaking" source for EOs (FR follows ~42 h later). Live smoke 2026-10-02 21:44:55Z: 200 (ETag changed; 4 new posts), 477,586 B, 194 ms, same shape as the fixture, adapter `ok` with 30 items. Latency unmeasured | executive-messaging | yes | EXE, CUR |
 | `wh.live` | whitehouse.gov/live/ `data-live-duplex` flag (event name + YouTube id when live) | F3 F4 | HTML · no ETag; `max-age=60`; ~41 KB gzip per poll | flag flip lag unmeasured | executive-messaging | yes (not-live state) | EXE, LIVE |
 | `senate.lis.votes` | Senate LIS vote menu + per-vote XML (member-level, LIS ids) | F5 F6 | XML · **If-Modified-Since only** (ETag ignored) | per-vote XML 36–47 min after the vote closed (n=4, Sep 30) | official-nonpartisan | yes | CFV, ARC |
 | `house.clerk.votes` | House Clerk `evs/<year>/roll<NNN>.xml` (member-level, bioguide ids) | F5 F6 | XML · probe the next roll number; a missing roll is **200 with an error body** | first-appearance latency unmeasured (needs a session day) | official-nonpartisan | yes (+NEGATIVE) | CFV, CUR |
@@ -45,6 +45,29 @@ Columns to fill in Phase 1 (probe Worker): **CF reachable** (fetchable from Clou
 | `govinfo.rss` | GovInfo RSS, no key: Congressional Record "is out", BILLSTATUS batch, bills, public laws | F11 | RSS · IMS; next-day-ish, a cheap F11 backbone before the Congress.gov key | official-nonpartisan | LEG |
 | `factbase` | Roll Call Factba.se presidential calendar JSON (D-017: ingest now, facts only + credit) | F7 F4 | JSON · ETag 304; file regenerated ~every 2 min | third-party | EXE, CUR |
 | `youtube.api` | YouTube Data API `videos.list` on the video id from `wh.live` (1 unit/call) | F3 F4 | needs a free Google API key (ask-first signup, ROADMAP P3.3); detect + embed only, never captions or audio (D-010) | n/a | EXE, LIVE |
+
+## Cloudflare probe (ROADMAP P1.3): not run yet
+
+To be measured from Cloudflare's network by the temporary `ced-probe` Worker (`workers/probe`; method and schedule: D-042).
+Nothing is deployed as of 2026-10-02: the probe waits on the Cloudflare secrets (ROADMAP P1.1). After its run, paste
+the body of `GET https://ced-probe.<account subdomain>.workers.dev/results/sources.md` here (its first line is an HTML
+comment naming the time, the run count and the dates). The raw measurements stay at `/results` (JSON), which the Worker
+keeps serving after its last run. Columns:
+
+- **CF reachable** = plain GETs that returned 2xx AND the expected document (the format, the root element for XML, a
+  page marker for HTML; per-URL values and their evidence in `workers/probe/src/targets.ts`), over all sent. A 200 error
+  or block page reads "not the expected document". Anything else lists what came back: statuses, bodies that failed to
+  read after the headers, no answer. URLs of a host that asked to wait (429/503) read "not sent while the host asked to
+  wait".
+- **Validator 304** = conditional GETs that got 304, per validator, sent only after a usable plain GET that returned
+  that validator (ETag -> If-None-Match, Last-Modified -> If-Modified-Since); "not measured (no usable answer)" when no
+  plain GET was usable.
+- **Median wall ms · bytes** = Date.now() around the request and body read; decoded bytes.
+- **Parse CPU** = head-only parse of the recorded fixture, timed in Node on the dev PC (a Worker cannot read CPU time);
+  "—" in the generated table.
+
+Several probed URLs are fixed recorded documents (roll 314, floor file 20260916, billsthisweek 20260914, the Sep 30
+Judiciary caption playlist), not the live "next" URL. The `fr.api` `documents_newest` probe URL has no `fields[]`.
 
 ## Tier 3 — later (Phase 7+) or needs an owner decision first
 

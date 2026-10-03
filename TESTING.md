@@ -15,6 +15,17 @@ Bugs are caught at the step that made them, never carried forward.
 | 5. End-to-end | ingest → store → API → page works on a phone-width screen | Playwright at 390×844 and 1440×900, light + dark | gate + CI (once the UI exists) |
 | 6. Deployed check | what the owner actually opens is up and fresh | fetch the live URL, check the newest event's age and the health endpoint | after every deploy |
 
+**Layer 5 as of 2026-10-02:** `npm run e2e -w apps/web` (Playwright, Chromium only, 390×844 + 1440×900, light + dark;
+in `gate.npmScripts`). It covers the page plus the API contract, with a route-mocked API serving events built from
+`fixtures/` (`apps/web/e2e/fixture-events.ts`); the ingest → store → API part is not yet end to end (the Worker side is
+covered by the workerd fixture replay, `workers/api/test/replay.test.ts`). The suite builds the app itself (webServer:
+`vite build` then `vite preview` on 127.0.0.1:4391), so it never tests a stale `dist/`. `apps/web/e2e/layout.spec.ts`
+checks layout at both sizes (no sideways scroll with long names; tap targets 44 px phone / 24 px desktop) and measures
+text contrast from real pixels (`apps/web/e2e/contrast.ts` decodes an element screenshot in a canvas); the contrast
+checks run on the phone project only, because pixel contrast needs deviceScaleFactor >= 2. 60 tests: 58 run, 2 skipped
+by design. **Not covered:** WebKit (the Safari engine), which `docs/DESIGN_LANGUAGE.md` asks for. Layer 6 is
+`scripts/deployed_check.mjs`, run by `.github/workflows/deploy.yml`; it has not run against a deployment yet.
+
 ## Rules
 
 1. **Fixtures first.** Before writing a parser, record real upstream responses (status, headers, body) with
@@ -35,7 +46,7 @@ Bugs are caught at the step that made them, never carried forward.
 
 ## The gate
 
-`node scripts/gate.mjs` runs layers 1–3 (and 5 once it exists) plus the harness checks, and writes a stamp naming HEAD on
+`node scripts/gate.mjs` runs layers 1–3 and 5 plus the harness checks, and writes a stamp naming HEAD on
 PASS. Product checks are declared as npm script names in `package.json` → `gate.npmScripts`; add each new suite there.
 CI runs the same gate (`node scripts/gate.mjs --ci`) on every push to `main` and on pull requests; the Pages deploy
 runs only after CI passes.

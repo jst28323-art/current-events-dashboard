@@ -8,14 +8,15 @@ import { sortKeyMs } from './time.js'
 /** The most rows kept in memory (the API's first page is 100; polls only add). */
 export const MAX_EVENTS = 500
 
-/** Newest first by coalesce(occurred_at, first_seen_at); ties by id, so the order is stable. */
+/** Newest first by the API's order key (sortKeyMs: occurred_at, else the posting time, else first seen); ties by id
+ * DESCENDING, exactly as the Hub orders them (hub.ts ORDER BY sort_ms DESC, id DESC), so a reload never reshuffles. */
 export function sortNewestFirst(events: CedEvent[]): CedEvent[] {
-  return events.sort((a, b) => sortKeyMs(b) - sortKeyMs(a) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
+  return events.sort((a, b) => sortKeyMs(b) - sortKeyMs(a) || (a.id < b.id ? 1 : a.id > b.id ? -1 : 0))
 }
 
 export interface MergeResult {
   events: CedEvent[]
-  /** Rows the `max` cap dropped (the oldest by coalesce(occurred_at, first_seen_at)); the page says when this happens. */
+  /** Rows the `max` cap dropped (the oldest by sortKeyMs); the page says when this happens. */
   trimmed: number
 }
 

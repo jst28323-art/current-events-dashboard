@@ -31,6 +31,8 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   key lives on this PC; alternative: `wrangler login` on this PC), and which `*.workers.dev` subdomain to use. Record
   every answer verbatim as a `docs/DECISIONS.md` row and each grant as a `docs/OWNER_GRANTS.md` row. If the owner is away, do
   P1.2 and P1.4 first (neither needs an account).
+  (2026-10-02: NOT done. The answers are recorded (D-025..D-027, D-032; grants G-006, G-007, G-010); the Cloudflare and
+  api.data.gov signups and the three secrets are still pending, so the deploy workflow skips and nothing is deployed.)
 - [x] **P1.2 Workspace scaffold.** (done 2026-10-02: pins in D-029; the Workers pool is now `@cloudflare/vitest-plugin`, docs/TRAPS.md) npm workspaces + TypeScript: `packages/schema` (EVENT_MODEL v0.1 Phase-1 minimum →
   TS types + JSON Schema + validator), `packages/adapters` (registry type + a harness that replays `fixtures/`),
   `workers/api` (Worker + one Durable Object skeleton, wrangler config, the Vitest Workers pool), `apps/web` (Vite +
@@ -48,7 +50,12 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   Object alarm CPU limit on Free (a deliberate ~20 ms busy loop) and alarm timing jitter. Results go into
   `docs/SOURCES.md` ("CF reachable", "parse CPU") and DECISIONS rows (which sources must move to the home PC; whether
   the free CPU limit binds).
-- [ ] **P1.4 Adapters** (needs no account; may run before P1.3; each via the `add-source` skill, pure functions with
+  (2026-10-02: code and tests landed in 83ea2b6 (`workers/probe`, method D-042); deploy waits on P1.1 (Cloudflare
+  secrets). Done when ced-probe has run (up to 48 runs, ~24 h), the table is in `docs/SOURCES.md` "Cloudflare probe" and
+  the two DECISIONS rows exist.)
+- [x] **P1.4 Adapters** (done 2026-10-02 in 83ea2b6: `fr.api` and `wh.feeds` registered in
+  `packages/adapters/src/registry.ts`, golden fixture tests, NEGATIVE / empty / drift cases, adversarial review fixed;
+  mappings D-034 and D-035. Still open: O1, the `documents_newest` coverage gap in the `docs/SOURCES.md` row `fr.api`.) (needs no account; may run before P1.3; each via the `add-source` skill, pure functions with
   golden fixture tests): `fr.api` (Public Inspection `current.json` with a cache-buster on every call, and the newest
   `documents.json`) and `wh.feeds` (the `/news/feed/` umbrella, deduped by GUID). Each has its error/empty
   cases: `fr.api` has a NEGATIVE fixture (an HTML 404 from the JSON API); for `wh.feeds`, "no new items" is the same
@@ -56,9 +63,17 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
 - [ ] **P1.5 Worker v0.** A 1-minute cron runs the two adapters into a HubDO (SQLite): dedupe/merge by `dedup_key`,
   `first_seen_at`, the latency ledger, per-source state (validators, errors). Serve `GET /api/v1/events?since=`,
   `/api/v1/status` and `/feed.json` with CORS for the Pages origin. (DO alarms and WebSockets wait for Phase 2.)
+  (2026-10-02: code and tests landed in 83ea2b6 (`workers/api`, rules D-036..D-039, incl. the fixture replay through
+  the real adapters in `workers/api/test/replay.test.ts`); deploy waits on P1.1 (Cloudflare secrets).
+  Deferred: workers/api review finding W10 (not the apps/web review W10 in D-040), the HubDO's CPU on a 107-event
+  re-ingest (~10 ms wall in local workerd). Check it with the probe results and Workers Observability cpuTime after the
+  first deploy; the known relief is to skip re-validating events identical to the stored ones.)
 - [ ] **P1.6 Web v0** on GitHub Pages (the Pages workflow builds `apps/web` instead of `site/`): a single-column,
   phone-first feed. Each row: time, origin chip, title, `official_text`, source link. A header with "last updated" and
   per-source health. Light and dark; polls the API every ~15 s; shows "live data unavailable" when the Worker is down.
+  (2026-10-02: code and tests landed in 83ea2b6 (`apps/web`, rules D-040 and D-041, Playwright e2e in the gate); the
+  Pages site now serves `apps/web` and shows "Live data unavailable" until ced-api is deployed, which waits on P1.1
+  (Cloudflare secrets). Not covered yet: WebKit in e2e, see `TESTING.md` layer 5.)
 
 **Exit:** (1) the gate is green locally and in CI, including: the validator rejects a malformed event; each adapter's
 golden test passes; every NEGATIVE fixture emits zero events; re-ingesting a fixture creates no duplicates (fails if

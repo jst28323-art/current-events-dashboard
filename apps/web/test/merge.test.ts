@@ -19,7 +19,10 @@ describe('mergeEvents', () => {
     expect(out[0]!.id).toBe(pd.id)
     expect(new Set(ids(out.slice(1, 3)))).toEqual(new Set([rule.id, notice.id]))
     expect(out[3]!.id).toBe(eo.id)
-    // ties broken by id, so the order is stable whatever order they arrive in
+    // ties broken by id DESCENDING, as the Hub orders them (hub.ts ORDER BY sort_ms DESC, id DESC)
+    const tied = ids(out.slice(1, 3))
+    expect(tied).toEqual([...tied].sort().reverse())
+    // and stable whatever order they arrive in
     expect(ids(mergeEvents([], [rule, notice]))).toEqual(ids(mergeEvents([], [notice, rule])))
   })
 

@@ -23,11 +23,20 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | What should it look and feel like (macOS tokens, layout)? | `docs/DESIGN_LANGUAGE.md` |
 | What was measured about each source (dated evidence)? | `docs/research/` (2026-10-02 snapshot; start with `docs/research/SYNTHESIS.md`) |
 | Recorded upstream responses for tests | `fixtures/` (index: `fixtures/README.md`) |
-| The live placeholder page (until `apps/web` replaces it) | `site/index.html` |
+| The retired placeholder page (Pages now deploys `apps/web`; first home of the design tokens) | `site/index.html` |
 | Event schema code (types, JSON Schema, ids, validator) | `packages/schema/` |
-| Source adapters + registry | `packages/adapters/` |
-| The Cloudflare Worker (pollers, hub, API) | `workers/api/` |
-| The web app (PWA) | `apps/web/` |
+| The read-API v1 contract shared by the Worker and the web app (incl. the event order key) | `packages/schema/src/api.ts` |
+| Source adapters + registry | `packages/adapters/` (registry: `packages/adapters/src/registry.ts`) |
+| `fr.api` adapter and its helpers (branch table, FR times) | `packages/adapters/src/sources/fr_api.ts`, `packages/adapters/src/lib/fr_branch.ts`, `packages/adapters/src/lib/fr_time.ts` |
+| `wh.feeds` adapter and the shared head-only RSS reader (envelope scan, item-head parse, RFC 822 dates) | `packages/adapters/src/sources/wh_feeds.ts`, `packages/adapters/src/lib/rss.ts` |
+| Adapter golden outputs (regenerate with `UPDATE_GOLDEN=1`, then review the diff against the fixture) | `packages/adapters/test/golden/` (one directory per source_id) |
+| The Cloudflare Worker `ced-api` (cron poller, hub, API) | `workers/api/` |
+| Event store, merge/revision rule, payload rules, API cursor, latency ledger, per-endpoint poll state, request claim (HubDO) | `workers/api/src/hub.ts`, `workers/api/src/merge.ts`; the stub helper `workers/api/src/hub_ref.ts` |
+| Poll loop and polite-polling constants (UA, cache-buster, timeout, backoff incl. drift, business hours, budget, stale threshold, code-version body key) | `workers/api/src/poll.ts`, `workers/api/src/policy.ts` |
+| Public read API routes, CORS, JSON Feed | `workers/api/src/http.ts` |
+| The temporary P1.3 probe Worker `ced-probe` (reachability, validators, CPU limit, alarm jitter, measured from Cloudflare) | `workers/probe/` (once deployed: `GET https://ced-probe.<account subdomain>.workers.dev/results`, and `/results/sources.md` for the SOURCES table) |
+| The web app (Vite + Preact feed; built and deployed by `.github/workflows/pages.yml`) | `apps/web/` (pure logic `apps/web/src/lib/`, polling state machine `apps/web/src/poller.ts`) |
+| Web end-to-end tests (Playwright, route-mocked API, events built from `fixtures/`) | `apps/web/e2e/` + `apps/web/playwright.config.ts` (screenshots go to `scratch/screens/`, gitignored) |
 | The home-PC producer (captions, speech-to-text) | `homepc/` (planned) |
 
 ## Rules, records, and memory
@@ -55,8 +64,12 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | Handoff shape lint | `scripts/handoff_lint.mjs` |
 | Dead-path check for living docs | `scripts/check_paths.mjs` |
 | Record a fixture | `scripts/record_fixture.mjs` |
+| Record a live congressional session day as fixtures (D-033; `--smoke` checks reachability only) | `scripts/capture_live.mjs` |
+| The wrapper the one-time Windows scheduled task runs (D-033, G-011; log in `scratch/capture_task.log`) | `scripts/capture_task.cmd` |
+| Post-deploy check of the live API (TESTING.md layer 6) | `scripts/deployed_check.mjs` |
 | Claude Code hooks (session start, push guard, stop warning) | `.claude/settings.json`, `scripts/hooks/` |
 | Cold-start validation workflow | `.claude/workflows/coldstart-validate.js` |
 | Git hooks (secret scan, no force-push) | `enforcement/git-hooks/` (enable: `git config core.hooksPath enforcement/git-hooks`) |
 | CI and Pages deploy | `.github/workflows/ci.yml`, `.github/workflows/pages.yml` |
+| Deploy of every Worker under `workers/` after CI passes, then the deployed check (D-026; skips until the Cloudflare secrets exist) | `.github/workflows/deploy.yml` |
 | Harness tests | `tests/harness/` |
