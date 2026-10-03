@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ced-vote-result-v0.2",
+  "title": "CED vote.result result v0.2",
+  "$defs": {
+    "count": { "type": "integer", "minimum": 0, "maximum": 1000 },
+    "countOrNull": { "anyOf": [{ "$ref": "#/$defs/count" }, { "type": "null" }] }
+  },
+  "description": "result of a vote.result event (docs/EVENT_MODEL.md v0.2). Counts come from the official XML totals, never from text. Chamber, Congress, session and roll live ONLY in object_key (one place).",
+  "type": "object",
+  "required": ["question", "question_kind", "result_text", "required", "passed", "yea", "nay", "present", "not_voting"],
+  "properties": {
+    "question": { "type": "string", "minLength": 1 },
+    "question_kind": { "type": "string", "pattern": "^[a-z][a-z_]*$" },
+    "result_text": { "type": "string", "minLength": 1 },
+    "required": { "enum": ["1/2", "3/5", "2/3", null] },
+    "passed": { "type": ["boolean", "null"] },
+    "yea": { "$ref": "#/$defs/countOrNull" },
+    "nay": { "$ref": "#/$defs/countOrNull" },
+    "present": { "$ref": "#/$defs/count" },
+    "not_voting": { "$ref": "#/$defs/count" },
+    "candidates": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["name", "votes"], "properties": { "name": { "type": "string", "minLength": 1 }, "votes": { "$ref": "#/$defs/count" } } } },
+    "tie_breaker": { "anyOf": [{ "type": "null" }, { "type": "object", "additionalProperties": false, "required": ["by", "vote"], "properties": { "by": { "type": "string", "minLength": 1 }, "vote": { "type": "string", "minLength": 1 } } }] },
+    "time_note": { "type": "string" }
+  }
+}

@@ -1,0 +1,687 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_2261da58b7823300",
+      "dedup_key": "floor_day:house:2026-01-03#scheduled_convene",
+      "object_key": "floor_day:house:2026-01-03",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F7"
+      ],
+      "title": "House scheduled to meet Saturday, January 3, at 11:30 a.m. Eastern",
+      "official_text": "next legislative day convenes 20260103T11:30",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-01-03T16:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "convene_date": "2026-01-03"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_147c7d822938a68d",
+      "dedup_key": "floor:house:119:26494#entry",
+      "object_key": "floor:house:119:26494",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned",
+      "official_text": "The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 11:30 a.m. on January 3, 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:10:55Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:27:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6dceb246efea0d26",
+      "dedup_key": "floor:house:119:26491#entry",
+      "object_key": "floor:house:119:26491",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 504",
+      "official_text": "POSTPONED CONSIDERATION OF VETO MESSAGE - The Chair announced that further consideration of the veto message and the bill, H.R. 504, is postponed until the legislative day of January 8, 2026. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:10:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:31:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:504"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a4ad123493f0d100",
+      "dedup_key": "floor:house:119:26490#entry",
+      "object_key": "floor:house:119:26490",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 504",
+      "official_text": "The Chair announced that the objections of the President to H.R. 504 would be spread at large upon the Journal and the veto message would be printed as a House Document (119-120).",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:09:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:31:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:504"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d9d5634c79612576",
+      "dedup_key": "floor:house:119:26489#entry",
+      "object_key": "floor:house:119:26489",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 504",
+      "official_text": "The Chair laid before the House the veto message from the President.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:07:02Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:31:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2508573fcae72228",
+      "dedup_key": "floor:house:119:26488#entry",
+      "object_key": "floor:house:119:26488",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 131",
+      "official_text": "POSTPONED CONSIDERATION OF VETO MESSAGE - The Chair announced that further consideration of the veto message and the bill, H.R. 131, is postponed until the legislative day of January 8, 2026. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:07:01Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:30:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:131"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3bc54fff4c636556",
+      "dedup_key": "floor:house:119:26487#entry",
+      "object_key": "floor:house:119:26487",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 131",
+      "official_text": "The Chair announced that the objections of the President to H.R. 131 would be spread at large upon the Journal and the veto message would be printed as a House Document (119-119).",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:07:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:30:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:131"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9b09928095fdcea9",
+      "dedup_key": "floor:house:119:26486#entry",
+      "object_key": "floor:house:119:26486",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 131",
+      "official_text": "The Chair laid before the House the veto message from the President.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:03:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:30:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b24a292295c42858",
+      "dedup_key": "floor:house:119:26485#entry",
+      "object_key": "floor:house:119:26485",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a message from the Clerk. Pursuant to the permission granted in Clause 2(h) of Rule II of the Rules of the U.S. House of Representatives, the Clerk transmitted to the House sealed envelopes received from the White House on December 30, 2025, at 3:17 p.m., said to contain messages from the President on his objections to H.R. 131 and H.R. 504.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:03:08Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:21:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:131"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:504"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H24500"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_072d39c78840e7ea",
+      "dedup_key": "floor:house:119:26484#entry",
+      "object_key": "floor:house:119:26484",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:02:51Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:03:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H2C000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6597df20187b45f3",
+      "dedup_key": "floor:house:119:26483#entry",
+      "object_key": "floor:house:119:26483",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "SPEAKER'S APPROVAL OF THE JOURNAL - Pursuant to clause 13 of Rule I, the Journal of the last day's proceedings was approved.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:02:30Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:02:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_17ebff9e70480546",
+      "dedup_key": "floor:house:119:26482#entry",
+      "object_key": "floor:house:119:26482",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Today's prayer was offered by Rev. John Kellogg, Christ Church Capitol Hill, Washington, DC.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:01:36Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:01:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H21000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b479591c3975991a",
+      "dedup_key": "floor:house:119:26481#entry",
+      "object_key": "floor:house:119:26481",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker designated the Honorable Robert P. Bresnahan Jr. to act as Speaker pro tempore for today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:01:21Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:01:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H22000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3ab159d76b98ab6f",
+      "dedup_key": "floor:house:119:26480#entry",
+      "object_key": "floor:house:119:26480",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House convened for a new legislative day",
+      "official_text": "The House convened, starting a new legislative day.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-02T21:00:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-02T21:01:00Z",
+        "first_seen_at": "2026-10-03T14:19:31.048Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:house:2026-01-02"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-02",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260102.xml",
+          "retrieved_at": "2026-10-03T14:19:31.048Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "day",
+    "status": "ok",
+    "detail": "13 actions; legislative day 2026-01-02; next meeting 2026-01-03",
+    "items_seen": 13
+  },
+  "targets": [
+    {
+      "endpoint": "next_day",
+      "url": "https://clerk.house.gov/floor/20260103.xml"
+    }
+  ]
+}

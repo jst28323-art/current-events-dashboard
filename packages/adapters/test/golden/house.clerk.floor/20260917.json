@@ -1,0 +1,338 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_5f5d5aa32a3e9787",
+      "dedup_key": "floor_day:house:2026-09-21#scheduled_convene",
+      "object_key": "floor_day:house:2026-09-21",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F7"
+      ],
+      "title": "House scheduled to meet Monday, September 21, at 10:30 a.m. Eastern",
+      "official_text": "next legislative day convenes 20260921T10:30",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-09-21T14:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:11:22.235Z"
+      },
+      "result": {
+        "convene_date": "2026-09-21"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260917.xml",
+          "retrieved_at": "2026-10-03T14:11:22.235Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e3a643ca2bd50563",
+      "dedup_key": "floor:house:119:44070#entry",
+      "object_key": "floor:house:119:44070",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned",
+      "official_text": "The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 10:30 a.m. on September 21, 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-17T14:32:10Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T14:34:00Z",
+        "first_seen_at": "2026-10-03T14:11:22.235Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-17",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260917.xml",
+          "retrieved_at": "2026-10-03T14:11:22.235Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4142001008e3a283",
+      "dedup_key": "floor:house:119:44068#entry",
+      "object_key": "floor:house:119:44068",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-17T14:32:06Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T14:32:00Z",
+        "first_seen_at": "2026-10-03T14:11:22.235Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-17",
+        "act_id": "H2C000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260917.xml",
+          "retrieved_at": "2026-10-03T14:11:22.235Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0f21c70d3fa1ebd4",
+      "dedup_key": "floor:house:119:44065#entry",
+      "object_key": "floor:house:119:44065",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "SPEAKER'S APPROVAL OF THE JOURNAL - Pursuant to clause 13 of Rule I, the Journal of the last day's proceedings was approved.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-17T14:31:13Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T14:32:00Z",
+        "first_seen_at": "2026-10-03T14:11:22.235Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-17",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260917.xml",
+          "retrieved_at": "2026-10-03T14:11:22.235Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6aad768a0f7f23e5",
+      "dedup_key": "floor:house:119:44064#entry",
+      "object_key": "floor:house:119:44064",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Today's prayer was offered by Pastor Dexter Skepple, Speak the Word Ministries, Frederiksted, St. Croix, Virgin Islands",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-17T14:30:13Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T14:30:00Z",
+        "first_seen_at": "2026-10-03T14:11:22.235Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-17",
+        "act_id": "H21000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260917.xml",
+          "retrieved_at": "2026-10-03T14:11:22.235Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3b721d96cd134f49",
+      "dedup_key": "floor:house:119:44063#entry",
+      "object_key": "floor:house:119:44063",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker designated the Honorable Michael K. Simpson to act as Speaker pro tempore for today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-17T14:30:06Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T14:30:00Z",
+        "first_seen_at": "2026-10-03T14:11:22.235Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-17",
+        "act_id": "H22000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260917.xml",
+          "retrieved_at": "2026-10-03T14:11:22.235Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b173219ad6ef98c7",
+      "dedup_key": "floor:house:119:44062#entry",
+      "object_key": "floor:house:119:44062",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House convened for a new legislative day",
+      "official_text": "The House convened, starting a new legislative day.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-17T14:30:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T14:30:00Z",
+        "first_seen_at": "2026-10-03T14:11:22.235Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:house:2026-09-17"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-17",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260917.xml",
+          "retrieved_at": "2026-10-03T14:11:22.235Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "day",
+    "status": "ok",
+    "detail": "6 actions; legislative day 2026-09-17; next meeting 2026-09-21",
+    "items_seen": 6
+  },
+  "targets": [
+    {
+      "endpoint": "next_day",
+      "url": "https://clerk.house.gov/floor/20260921.xml"
+    }
+  ]
+}

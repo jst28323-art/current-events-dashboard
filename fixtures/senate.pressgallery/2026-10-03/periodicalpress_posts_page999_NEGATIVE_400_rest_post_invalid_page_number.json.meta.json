@@ -1,0 +1,27 @@
+{
+  "source_id": "senate.pressgallery",
+  "url": "https://www.periodicalpress.senate.gov/wp-json/wp/v2/posts?page=999&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories",
+  "final_url": "https://www.periodicalpress.senate.gov/wp-json/wp/v2/posts?page=999&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories",
+  "fetched_at": "2026-10-03T14:15:07.486Z",
+  "status": 400,
+  "elapsed_ms": 606,
+  "bytes": 146,
+  "sha256": "b6714928c361e00376c3eda08eef1f4fcc3343bd71d9be2bde61ca1eee190c26",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "access-control-allow-headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+    "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages, Link",
+    "allow": "GET",
+    "connection": "keep-alive",
+    "content-length": "146",
+    "content-type": "application/json; charset=UTF-8",
+    "date": "Sat, 03 Oct 2026 14:15:06 GMT",
+    "link": "<https://www.periodicalpress.senate.gov/wp-json/>; rel=\"https://api.w.org/\"",
+    "strict-transport-security": "max-age=31536000",
+    "x-content-type-options": "nosniff",
+    "x-robots-tag": "noindex"
+  }
+}

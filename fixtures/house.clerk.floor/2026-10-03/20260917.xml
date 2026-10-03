@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legislative_activity>
+<legislative_header>CURRENT HOUSE FLOOR PROCEEDINGS</legislative_header>
+<legislative_day date="20260917" previous-legislative-day-convened="20260916T09:00:00">LEGISLATIVE DAY OF SEPTEMBER 17, 2026 </legislative_day>
+<legislative_congress congress="119" session="2"> 119TH CONGRESS - SECOND SESSION </legislative_congress>
+<language>en-us</language>
+<copyright>Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.</copyright>
+<pubDate>Mon, 21 Sep 2026 10:15:01 EDT</pubDate>
+<floor_actions>
+<legislative_day_finished next-legislative-day-convenes="20260921T10:30">Yes</legislative_day_finished>
+<floor_action act-id="H61000" update-date-time="20260917T10:34" unique-id="44070">
+<action_time for-search="20260917T10:32:10">10:32:10 A.M. -</action_time>
+<action_description>
+The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 10:30 a.m. on September 21, 2026.
+</action_description>
+</floor_action>
+<floor_action act-id="H2C000" update-date-time="20260917T10:32" unique-id="44068">
+<action_time for-search="20260917T10:32:06">10:32:06 A.M. -</action_time>
+<action_description>
+PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.
+</action_description>
+</floor_action>
+<floor_action act-id="H8D000" update-date-time="20260917T10:32" unique-id="44065">
+<action_time for-search="20260917T10:31:13">10:31:13 A.M. -</action_time>
+<action_description>
+SPEAKER'S APPROVAL OF THE JOURNAL - Pursuant to clause 13 of Rule I, the Journal of the last day's proceedings was approved.
+</action_description>
+</floor_action>
+<floor_action act-id="H21000" update-date-time="20260917T10:30" unique-id="44064">
+<action_time for-search="20260917T10:30:13">10:30:13 A.M. -</action_time>
+<action_description>
+Today's prayer was offered by Pastor Dexter Skepple, Speak the Word Ministries, Frederiksted, St. Croix, Virgin Islands
+</action_description>
+</floor_action>
+<floor_action act-id="H22000" update-date-time="20260917T10:30" unique-id="44063">
+<action_time for-search="20260917T10:30:06">10:30:06 A.M. -</action_time>
+<action_description>
+The Speaker designated the Honorable Michael K. Simpson to act as Speaker pro tempore for today.
+</action_description>
+</floor_action>
+<floor_action act-id="H20100" update-date-time="20260917T10:30" unique-id="44062">
+<action_time for-search="20260917T10:30:00">10:30:00 A.M. -</action_time>
+<action_description>
+The House convened, starting a new legislative day.
+</action_description>
+</floor_action>
+</floor_actions>
+</legislative_activity>

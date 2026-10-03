@@ -7,7 +7,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./order": "./src/order.ts",
-    "./event.schema.json": "./src/event.schema.json"
+    "./event.schema.json": "./src/event.schema.json",
+    "./v02": "./src/v02/index.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json"

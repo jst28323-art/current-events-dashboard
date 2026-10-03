@@ -1,0 +1,20 @@
+
+        { 
+		    "floorProceedings": [
+                            { "coveneOffsetMinutes": "15",
+                              "conveneYear": "2026",
+            				  "conveneMonth": "09",
+            				  "conveneDay": "30",
+            				  "conveneHour": "10",
+            				  "conveneMinutes": "15",
+            				  "convenedSessionLink": "/legislative/floor_activity_pail.htm",
+            				  "convenedSessionDescription": "WATCH LIVE SENATE FLOOR PROCEEDINGS",
+                              "convenedSessionStream": "https://www.senate.gov/isvp/stv.html?type=live&comm=stv&filename=stv093026",  
+            				  "outSessionLink": "/legislative/LIS/floor_activity/all-floor-activity-files.htm",
+            				  "outSessionDescription": "VIEW RECENT SENATE FLOOR ACTIVITY",
+            				  "outSessionImage": "/floor/graphics/640_360_out.jpg",
+                              "lastUpdated": "2026-09-29T19:17-05:00"  
+    				} 
+    			  ] 
+    		} 
+    

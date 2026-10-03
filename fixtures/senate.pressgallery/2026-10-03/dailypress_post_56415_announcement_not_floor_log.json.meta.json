@@ -1,0 +1,29 @@
+{
+  "source_id": "senate.pressgallery",
+  "url": "https://www.dailypress.senate.gov/wp-json/wp/v2/posts/56415?_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories",
+  "final_url": "https://www.dailypress.senate.gov/wp-json/wp/v2/posts/56415?_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories",
+  "fetched_at": "2026-10-03T14:16:21.811Z",
+  "status": 200,
+  "elapsed_ms": 668,
+  "bytes": 817,
+  "sha256": "d750aff8bc18f4842521741db6f25871e96be9cd903d68c8ba3118f86bbb386f",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "access-control-allow-headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+    "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages, Link",
+    "allow": "GET",
+    "connection": "keep-alive",
+    "content-encoding": "gzip",
+    "content-length": "459",
+    "content-type": "application/json; charset=UTF-8",
+    "date": "Sat, 03 Oct 2026 14:16:20 GMT",
+    "link": "<https://www.dailypress.senate.gov/standing-committee-of-correspondents-meeting-2-2/>; rel=\"alternate\"; type=text/html",
+    "strict-transport-security": "max-age=31536000",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-robots-tag": "noindex"
+  }
+}

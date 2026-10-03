@@ -1,0 +1,4039 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_70974efd3f27dbf7",
+      "dedup_key": "floor_day:house:2025-01-06#scheduled_convene",
+      "object_key": "floor_day:house:2025-01-06",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F7"
+      ],
+      "title": "House scheduled to meet Monday, January 6, at 12:00 p.m. Eastern",
+      "official_text": "next legislative day convenes 20250106T12:00",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2025-01-06T17:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "convene_date": "2025-01-06"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ec60dfd7a59dfe0a",
+      "dedup_key": "floor:house:119:92#entry",
+      "object_key": "floor:house:119:92",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned",
+      "official_text": "The House adjourned pursuant to a previous special order. The next meeting is scheduled for 12:00 p.m. on January 6, 2025.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:26:05Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:09:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4115e5731fa20394",
+      "dedup_key": "floor:house:119:90#entry",
+      "object_key": "floor:house:119:90",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "On motion to adjourn Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:26:02Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T00:30:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H60100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_62659fdb5cf696e3",
+      "dedup_key": "floor:house:119:89#entry",
+      "object_key": "floor:house:119:89",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Mrs. Fischbach moved that the House do now adjourn.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:26:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T00:30:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H60000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8537e1606eaa4855",
+      "dedup_key": "floor:house:119:80#entry",
+      "object_key": "floor:house:119:80",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Mrs. Fischbach asked unanimous consent when the House adjourns on Friday, January 3, 2025, it adjourn to meet on Monday, January 6, 2025, at noon. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:25:32Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:08:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H29800"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3cc2834a3abd1813",
+      "dedup_key": "floor:house:119:86#entry",
+      "object_key": "floor:house:119:86",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker announced that pursuant to S. Con. Res. 1, 119th Congress and the order of the House today, the Chair appointed the following members on the part of the House to the Joint Congressional Committee on Inaugural Ceremonies: Mr. Johnson of Louisiana, Mr. Scalise of Louisiana, and Mr. Jeffries of New York.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:25:30Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:07:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_011950e05edae738",
+      "dedup_key": "floor:house:119:77#entry",
+      "object_key": "floor:house:119:77",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 3",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:24:51Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f1e9739eb27a4429",
+      "dedup_key": "floor:house:119:76#entry",
+      "object_key": "floor:house:119:76",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 3",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:24:50Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_74afe95556251899",
+      "dedup_key": "floor:house:119:75#entry",
+      "object_key": "floor:house:119:75",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 3",
+      "official_text": "Considered by unanimous consent. S. Con. Res. 3 — \"Authorizing the use of the rotunda of the Capitol for the lying in state of the remains of the late James Earl Carter, Jr., 39th President of the United States.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:24:49Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-06T14:55:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:sconres:3"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b3103f164d4dde71",
+      "dedup_key": "floor:house:119:74#entry",
+      "object_key": "floor:house:119:74",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 3",
+      "official_text": "Mrs. Fischbach asked unanimous consent to take from the Speaker's table and consider.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:24:48Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30200"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5fe2a99645f132d6",
+      "dedup_key": "floor:house:119:73#entry",
+      "object_key": "floor:house:119:73",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 2",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:23:19Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c21618c93a4b5e67",
+      "dedup_key": "floor:house:119:72#entry",
+      "object_key": "floor:house:119:72",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 2",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:23:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f1ac27f7692a9e23",
+      "dedup_key": "floor:house:119:71#entry",
+      "object_key": "floor:house:119:71",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 2",
+      "official_text": "Considered as privileged matter. S. Con. Res. 2 — \"To provide for the counting on January 6, 2025, of the electoral votes for President and Vice President of the United States.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:23:16Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:sconres:2"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5964c50379c4ad03",
+      "dedup_key": "floor:house:119:70#entry",
+      "object_key": "floor:house:119:70",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 1",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:21:55Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_95bbb6f7a9c7b53a",
+      "dedup_key": "floor:house:119:69#entry",
+      "object_key": "floor:house:119:69",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 1",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:21:21Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1c0c497f03293893",
+      "dedup_key": "floor:house:119:68#entry",
+      "object_key": "floor:house:119:68",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S.Con.Res. 1",
+      "official_text": "Considered as privileged matter. S. Con. Res. 1 — \"Extending the life of the Joint Congressional Committee on Inaugural Ceremonies.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:21:20Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:sconres:1"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1da70818ea4e17c3",
+      "dedup_key": "floor:house:119:84#entry",
+      "object_key": "floor:house:119:84",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "WHOLE NUMBER OF THE HOUSE - Under clause 5(d) of rule 20, the Chair announced to the House that the whole number of the House is 434.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:21:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T01:02:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3b14332c5e91630b",
+      "dedup_key": "floor:house:119:82#entry",
+      "object_key": "floor:house:119:82",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Chair announced the Speaker's policies with respect to particular aspects of the legislative process and inserted in the Congressional Record announcements concerning: first, privileges of the floor; second, introduction of bills and resolutions; third, unanimous-consent requests for the consideration of legislation; fourth, recognition for 1-minute speeches; fifth, recognition for special-order speeches; sixth, decorum in debate; seventh, conduct of votes by electronic device; eighth, use of handouts on the House floor; ninth, use of electronic equipment on the House floor; and tenth, use of the Chamber and Capitol facilities. The Chair further announced that these announcements will reiterate the origins of the stated policies and that the Chair intends to continue in the 119th Congress the policies reflected in those statements and that the policy announced in the 102nd Congress with respect to jurisdictional concepts related to clause 5(a) of rule 21 - tax and tariff measures - will continue to govern but need not be reiterated, as it is adequately documented as precedent in the House Rules and Manual. Without objection, the announcements will be printed in the Record.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:20:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-06T15:15:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8c847aee6c38721e",
+      "dedup_key": "floor:house:119:83#entry",
+      "object_key": "floor:house:119:83",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a message from the Clerk. Under Clause 2(g) of Rule II of the Rules of the U.S. House of Representatives, the Clerk notified the House that he designated Ms. Lisa P. Grant, Deputy Clerk, Ms. Sarah Meier, Legal Counsel, and Ms. Cheryl H. Muller, Chief Human Resources Officer, to sign any and all papers and do all other acts for him under the name of the Clerk of the House which they would be authorized to do by virtue of this designation, except such as are provided by statute, in case of his temporary absence or disability. This designation shall remain in effect for the 119th Congress or until modified by the Clerk.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:18:01Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-05T21:33:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H24500"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1dea01afc943a92a",
+      "dedup_key": "floor:house:119:81#entry",
+      "object_key": "floor:house:119:81",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "SPEAKER PRO TEMPORE - The Speaker appointed the Honorable Adrian Smith, the Honorable Robert Wittman, the Honorable Andy Harris, the Honorable Richard Hudson, the Honorable John Joyce (PA), the Honorable Guy Reschenthaler, and the Honorable Jen Kiggans to act as Speaker pro tempore to sign enrolled bills and joint resolutions through the remainder of the One Hundred Nineteenth Congress.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:18:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T00:57:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1ff4dd25243798ff",
+      "dedup_key": "floor:house:119:79#entry",
+      "object_key": "floor:house:119:79",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a communication from the Honorable Mike Johnson, Speaker. The Speaker designated Representative Steve Scalise of Louisiana to exercise any authority regarding assembly, reassembly, convening, or reconvening of the House pursuant to H. Con. Res. 1, clause 12 of rule I, and any concurrent resolutions of the current Congress as may contemplate his designation of Members to exercise similar authority. In the event of the death or inability of that designee, the alternate Members of the House listed in the letter bearing this date that he had placed with the Clerk are designated, in turn, for the same purposes.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:17:05Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T00:56:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H24400"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f26495afb4e13ecc",
+      "dedup_key": "floor:house:119:88#entry",
+      "object_key": "floor:house:119:88",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Chair announced that the Speaker has delivered to the Clerk a letter dated January 3, 2025, listing Members in the order in which each shall act as Speaker pro tempore under clause 8(b)(3) of rule I.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:17:01Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T00:55:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_29d2b9924ef7d61e",
+      "dedup_key": "floor:house:119:87#entry",
+      "object_key": "floor:house:119:87",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "EXTENSIONS OF REMARKS - Mrs. Fischbach asked unanimous consent that during the One Hundred Nineteenth Congress, all Members may be permitted to extend their remarks and to include extraneous material within the permitted limit in that section of the record entitled \"Extensions of Remarks.\" Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:15:04Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T00:54:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a12f98a075f555fa",
+      "dedup_key": "floor:house:119:85#entry",
+      "object_key": "floor:house:119:85",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "APPOINTMENT AUTHORITY - Mrs. Fischbach asked unanimous consent that during the One Hundred Nineteenth Congress, the Speaker, Majority Leader, and Minority Leader be authorized to accept resignations and to make appointments authorized by law or by the House. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:14:03Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T00:54:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fe481e4c97f664fd",
+      "dedup_key": "floor:house:119:67#entry",
+      "object_key": "floor:house:119:67",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Con.Res. 1",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:13:48Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e5b45fb4d4ffb7aa",
+      "dedup_key": "floor:house:119:66#entry",
+      "object_key": "floor:house:119:66",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Con.Res. 1",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:13:34Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0646a708a6b36bb4",
+      "dedup_key": "floor:house:119:65#entry",
+      "object_key": "floor:house:119:65",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Con.Res. 1",
+      "official_text": "Considered as privileged matter. H. Con. Res. 1 — \"Regarding consent to assemble outside the seat of government.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:13:32Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hconres:1"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5ab4170044af47b4",
+      "dedup_key": "floor:house:119:64#entry",
+      "object_key": "floor:house:119:64",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 6",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:13:30Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dbdb8361b43eda61",
+      "dedup_key": "floor:house:119:63#entry",
+      "object_key": "floor:house:119:63",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 6",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:13:26Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_85fd273a627b3c96",
+      "dedup_key": "floor:house:119:62#entry",
+      "object_key": "floor:house:119:62",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 6",
+      "official_text": "Considered as privileged matter. H. Res. 6 — \"Fixing the daily hour of meeting of the First Session of the One Hundred Nineteenth Congress.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:13:03Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:6"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_85d0ef8318a842e8",
+      "dedup_key": "floor:house:119:61#entry",
+      "object_key": "floor:house:119:61",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:12:02Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9264b60b5d371855",
+      "dedup_key": "floor:house:119:60#entry",
+      "object_key": "floor:house:119:60",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 5 on H.Res. 5",
+      "official_text": "On agreeing to the resolution Agreed to by the Yeas and Nays: 215 - 209 (Roll no. 5).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:12:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:1:5"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fdec847c2ea07948",
+      "dedup_key": "floor:house:119:58#entry",
+      "object_key": "floor:house:119:58",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 4 on H.Res. 5",
+      "official_text": "On motion to commit with instructions Failed by the Yeas and Nays: 209 - 214 (Roll no. 4).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:06:14Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:1:4"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H36610"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d25909717ad4c386",
+      "dedup_key": "floor:house:119:57#entry",
+      "object_key": "floor:house:119:57",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "The previous question on the motion to commit was ordered without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:02:11Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d1cffc1b04b12678",
+      "dedup_key": "floor:house:119:55#entry",
+      "object_key": "floor:house:119:55",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "Ms. DeLauro moved to commit the resolution to a select committee composed of the Majority Leader and the Minority Leader with instructions to report the same back to the House forthwith with an amendment.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T23:02:10Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H36600"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5733e8c347eb242f",
+      "dedup_key": "floor:house:119:54#entry",
+      "object_key": "floor:house:119:54",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 3 on H.Res. 5",
+      "official_text": "On ordering the previous question Agreed to by the Yeas and Nays: 216 - 210 (Roll no. 3).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T22:57:16Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:1:3"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H35000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9bcbcda489da4c0e",
+      "dedup_key": "floor:house:119:53#entry",
+      "object_key": "floor:house:119:53",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "DEBATE - The House resumed debate on H. Res. 5.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T22:23:52Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:5"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9f3663e977601860",
+      "dedup_key": "floor:house:119:51#entry",
+      "object_key": "floor:house:119:51",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "ORDER OF PROCEDURE - Mr. Fishbach asked unanimous consent that the Chair may reduce to 5 minutes the minimum time for electronic voting on any question relating to H. Res. 5 that follows a 15 minute vote. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T22:23:51Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:5"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_024156ca6e56fb95",
+      "dedup_key": "floor:house:119:50#entry",
+      "object_key": "floor:house:119:50",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "DEBATE - The House resumed debate on H. Res. 5.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T21:54:01Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:5"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_95ee1a94e9d6d814",
+      "dedup_key": "floor:house:119:46#entry",
+      "object_key": "floor:house:119:46",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a message from the Senate. The Senate agreed to S. Con. Res. 1, S. Con. Res. 2, and S. Con. Res. 3.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T21:54:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:56:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:sconres:1"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:sconres:2"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:sconres:3"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H24200"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_adc39cc350e4fa2d",
+      "dedup_key": "floor:house:119:41#entry",
+      "object_key": "floor:house:119:41",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "DEBATE - The House proceeded with one hour of debate on H. Res. 5.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T21:39:13Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:5"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3456d47700aa27ca",
+      "dedup_key": "floor:house:119:40#entry",
+      "object_key": "floor:house:119:40",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 5",
+      "official_text": "Considered as privileged matter. H. Res. 5 — \"Adopting the Rules of the House of Representatives for the One Hundred Nineteenth Congress, and for other purposes.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T21:38:56Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:5"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a49a651337b97071",
+      "dedup_key": "floor:house:119:38#entry",
+      "object_key": "floor:house:119:38",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 4",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:47:37Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5ce22735fed13bc3",
+      "dedup_key": "floor:house:119:37#entry",
+      "object_key": "floor:house:119:37",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 4",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:47:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d5959ab0add90a39",
+      "dedup_key": "floor:house:119:36#entry",
+      "object_key": "floor:house:119:36",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 4",
+      "official_text": "Considered as privileged matter. H. Res. 4 — \"Authorizing the Clerk to inform the President of the election of the Speaker and the Clerk.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:47:07Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:4"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_69e6e02d246e7910",
+      "dedup_key": "floor:house:119:35#entry",
+      "object_key": "floor:house:119:35",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "COMMITTEE TO REPORT - Without objection, pursuant to H. Res. 3, the Chair announced the Speaker's appointment of the following Members to the committee on the part of the House to join a committee on the part of the Senate to notify the President of the United States that a quorum of each House has assembled and that Congress is ready to receive any communication that he may be pleased to make: Mr. Scalise of Louisiana, and Mr. Jeffries of New York.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:46:56Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:29:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:3"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d82cc9925b08bb0b",
+      "dedup_key": "floor:house:119:34#entry",
+      "object_key": "floor:house:119:34",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 3",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:46:36Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5c031428b4bf683b",
+      "dedup_key": "floor:house:119:33#entry",
+      "object_key": "floor:house:119:33",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 3",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:46:16Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_baac9782b94ffd00",
+      "dedup_key": "floor:house:119:32#entry",
+      "object_key": "floor:house:119:32",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 3",
+      "official_text": "Considered as privileged matter. H. Res. 3 — \"Authorizing the Speaker to appoint a committee to notify the President of the assembly of the Congress.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:46:06Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:3"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ef4c32690e591b98",
+      "dedup_key": "floor:house:119:31#entry",
+      "object_key": "floor:house:119:31",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 2",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:45:35Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_69f368cc7b30fd76",
+      "dedup_key": "floor:house:119:30#entry",
+      "object_key": "floor:house:119:30",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 2",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:45:15Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ffaff1035cb5dd9b",
+      "dedup_key": "floor:house:119:29#entry",
+      "object_key": "floor:house:119:29",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 2",
+      "official_text": "Considered as privileged matter. H. Res. 2 — \"To inform the Senate that a quorum of the House has assembled and of the election of the Speaker and the Clerk.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:45:04Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:2"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1eb835370dd21416",
+      "dedup_key": "floor:house:119:28#entry",
+      "object_key": "floor:house:119:28",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ADMINISTRATION OF THE OATH OF OFFICE - The Speaker administered the Oath of Office to the Officers of the House.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:41:42Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_648af0fa79dbae59",
+      "dedup_key": "floor:house:119:17#entry",
+      "object_key": "floor:house:119:17",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Chaplain of the House of Representatives - Pursuant to the provisions of section 208(a) of the Legislative Reorganization Act of 1946, the Chair appointed Reverend Doctor Margaret Grun Kibben of the Commonwealth of Pennsylvania to act as and to exercise the duties of the Chaplain of the House of Representatives, effective today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:41:02Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:27:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H26300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c8312285a9ef3ae8",
+      "dedup_key": "floor:house:119:27#entry",
+      "object_key": "floor:house:119:27",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:40:18Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_16bf621408a2fef5",
+      "dedup_key": "floor:house:119:26#entry",
+      "object_key": "floor:house:119:26",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1",
+      "official_text": "On agreeing to the resolution Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:40:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-06T14:53:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9c3cc73d2e8e8bba",
+      "dedup_key": "floor:house:119:25#entry",
+      "object_key": "floor:house:119:25",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1",
+      "official_text": "On agreeing to the Aguilar amendment; Failed by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:40:08Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H34111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2e171c02522ed516",
+      "dedup_key": "floor:house:119:24#entry",
+      "object_key": "floor:house:119:24",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1",
+      "official_text": "An amendment, offered by Mr. Aguilar, to elect officers of the House.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:40:07Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6b2628152fde2b25",
+      "dedup_key": "floor:house:119:23#entry",
+      "object_key": "floor:house:119:23",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1",
+      "official_text": "Considered as privileged matter. H. Res. 1 — \"Electing officers of the House of Representatives.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:39:50Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-04T07:37:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0102b505de4335a0",
+      "dedup_key": "floor:house:119:22#entry",
+      "object_key": "floor:house:119:22",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ANNOUNCEMENT OF LEADERSHIP POSTS - Mr. Aguilar of California notified the House that, at the direction of the Democratic Caucus, Mr. Jeffries of New York had been elected Minority Leader, and that Ms. Clark of Massachusetts had been elected as Minority Whip.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:38:56Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:25:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_91ce53f0e12ac73d",
+      "dedup_key": "floor:house:119:21#entry",
+      "object_key": "floor:house:119:21",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ANNOUNCEMENT OF LEADERSHIP POSTS - Mrs. McClain of Michigan notified the House that, at the direction of the Republican Conference, Mr. Scalise of Louisiana had been elected as Majority Leader and Mr. Emmer of Minnesota had been elected as Majority Whip.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:38:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:25:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1c1780be141980e4",
+      "dedup_key": "floor:house:119:20#entry",
+      "object_key": "floor:house:119:20",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ADMINISTRATION OF THE OATH OF OFFICE - The Speaker administered the Oath of Office to the Members-elect of the 119th Congress.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:27:04Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:24:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_893a23b5ac9ec3c3",
+      "dedup_key": "floor:house:119:19#entry",
+      "object_key": "floor:house:119:19",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ADMINISTRATION OF THE OATH OF OFFICE - The Dean of the House administered the Oath of Office to the Speaker-elect.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:26:03Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:24:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7dce5adabbc481bf",
+      "dedup_key": "floor:house:119:18#entry",
+      "object_key": "floor:house:119:18",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ADDRESS BY THE SPEAKER-ELECT - The Speaker-elect addressed the House prior to taking the Oath of Office which will be administered by the Dean of the House, Representative-elect Harold Rogers, Kentucky.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T20:05:20Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:24:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_21ba6ac9c62dcdb1",
+      "dedup_key": "floor:house:119:16#entry",
+      "object_key": "floor:house:119:16",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker-elect was escorted into the Chamber by the Escort Committee and introduced by Representative-elect Jeffries, Democratic Leader, before assuming the Chair.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T19:50:51Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:22:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ce393675a8cd0366",
+      "dedup_key": "floor:house:119:15#entry",
+      "object_key": "floor:house:119:15",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "COMMITTEE TO ESCORT THE SPEAKER-ELECT - The Acting Clerk appointed a Committee of Members-elect to escort the Speaker-elect into the Chamber and to the Chair.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T19:36:50Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:22:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bd72c0f35dd200d5",
+      "dedup_key": "floor:house:119:39#entry",
+      "object_key": "floor:house:119:39",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 2",
+      "official_text": "Roll call 2 - Election of the Speaker. Mr. Johnson (LA) 218, Mr. Jeffries 215, and Mr. Emmer 1 (Roll no. 2). Mr. Johnson (LA) was elected Speaker of the House.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T19:36:44Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T21:39:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:1:2"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H2A300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3a8e6a882eed7e61",
+      "dedup_key": "floor:house:119:13#entry",
+      "object_key": "floor:house:119:13",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "APPOINTMENT OF TELLERS - The Acting Clerk announced the appointment of the following Members-elect to act as Tellers during the Roll Call for Election of Speaker: Ms. Foxx, Mr. Morelle, Mr. Steil, and Mrs. Torres (CA).",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:50:27Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T20:15:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_54aca9c8111a63dc",
+      "dedup_key": "floor:house:119:12#entry",
+      "object_key": "floor:house:119:12",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "NOMINATIONS FOR OFFICE OF SPEAKER - Pursuant to law and precedent, the Acting Clerk announced that the next order of business was the election of the Speaker of the House of Representatives and that nominations would now be in order. Accordingly, the Honorable Lisa C. McClain of Michigan placed the name of the Honorable Mike Johnson into nomination for the Office of Speaker and the Honorable Pete Aguilar of California placed the name of the Honorable Hakeem S. Jeffries into nomination for the Office of Speaker. No other nominations were put forward.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:49:26Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T20:14:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_799068b4dd6e163e",
+      "dedup_key": "floor:house:119:11#entry",
+      "object_key": "floor:house:119:11",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Acting Clerk notified the House that he received a letter from the Honorable Matt Gaetz of Florida indicating that he will not serve in the House in the 119th Congress. Without objection, the letters relating to his resignation will be printed in the record.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:37:25Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T20:14:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cdbdb6fb854cc1fb",
+      "dedup_key": "floor:house:119:10#entry",
+      "object_key": "floor:house:119:10",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ELECTION CREDENTIALS FOR DELEGATES - The Acting Clerk notified the House that election credentials for all Delegates and the Resident Commissioner had been received.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:36:39Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-05T21:30:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_54fe930e9e1ab655",
+      "dedup_key": "floor:house:119:9#entry",
+      "object_key": "floor:house:119:9",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 1",
+      "official_text": "Call by States Quorum responded: 433 present (Roll no. 1).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:36:31Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T19:47:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:1:1"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H2A200"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0c39aca381504abe",
+      "dedup_key": "floor:house:119:7#entry",
+      "object_key": "floor:house:119:7",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "CERTIFICATION OF ELECTION - The Acting Clerk announced that Certificates of Election covering 435 seats in the One Hundred Nineteenth Congress had been received and the names of those persons whose credentials show that they were regularly elected as Representatives in accordance with the laws of their respective States or of the United States would be called. Without objection, the Representatives-elect were directed to record their presence by electronic device in order to determine whether a quorum was present.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:04:07Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-06T19:03:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_86833956aec520e5",
+      "dedup_key": "floor:house:119:6#entry",
+      "object_key": "floor:house:119:6",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "PLEDGE OF ALLEGIANCE - The Acting Clerk led the House in reciting the Pledge of Allegiance to the Flag.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:03:06Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T20:13:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_85f8ff5642935f1c",
+      "dedup_key": "floor:house:119:5#entry",
+      "object_key": "floor:house:119:5",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:01:05Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T18:26:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H21000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6bc8e6e5667069b8",
+      "dedup_key": "floor:house:119:4#entry",
+      "object_key": "floor:house:119:4",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House convened for a new legislative day",
+      "official_text": "House convened, starting a new legislative day, pursuant to the 20th amendment to the Constitution, for the meeting of the One Hundred Nineteenth Congress of the United States.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T17:00:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T18:26:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:house:2025-01-03"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0c1ed631c63ef156",
+      "dedup_key": "floor:house:118:51338#entry",
+      "object_key": "floor:house:118:51338",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned its session (sine die)",
+      "official_text": "The Speaker announced that the House do now adjourn Sine Die.",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:57:08Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:58:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_923f7c927076ca9f",
+      "dedup_key": "floor:house:118:51337#entry",
+      "object_key": "floor:house:118:51337",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House returned from a recess",
+      "official_text": "The House convened, returning from a recess continuing the legislative day of January 3.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:56:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:58:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fad49fd9dc27ff2e",
+      "dedup_key": "floor:house:118:51336#entry",
+      "object_key": "floor:house:118:51336",
+      "event_type": "floor.recess",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House went into recess",
+      "official_text": "The Speaker announced that the House do now recess. The next meeting is subject to the call of the Chair.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:03:33Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:10:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fbf66bfcc5a58be6",
+      "dedup_key": "floor:house:118:51335#entry",
+      "object_key": "floor:house:118:51335",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a communication from Representative Gonzalez-Colon wherein she resigns as a member of the House of Representatives effective at 11:59 p.m. on January 1, 2025.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:03:22Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:09:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H24800"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e3077235c612f3fa",
+      "dedup_key": "floor:house:118:51334#entry",
+      "object_key": "floor:house:118:51334",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ADJUSTMENT OF THE WHOLE NUMBER OF THE HOUSE - Under clause 5(d) of Rule XX, the Chair announced to the House that, in light of the resignation of the gentleman from North Carolina, Mr. Jackson, the whole number of the House is 429.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:03:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:11:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dff869de6540399b",
+      "dedup_key": "floor:house:118:51333#entry",
+      "object_key": "floor:house:118:51333",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:02:57Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:07:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H2C000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1795932977ef39bd",
+      "dedup_key": "floor:house:118:51332#entry",
+      "object_key": "floor:house:118:51332",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "SPEAKER'S APPROVAL OF THE JOURNAL - Pursuant to section 3(z) of H. Res. 5, the Journal of the last day's proceedings was approved.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:02:25Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:07:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_72bca3478820cb2c",
+      "dedup_key": "floor:house:118:51331#entry",
+      "object_key": "floor:house:118:51331",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:00:47Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:01:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H21000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3b419c0b32a41079",
+      "dedup_key": "floor:house:118:51330#entry",
+      "object_key": "floor:house:118:51330",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker designated the Honorable Steve Womack to act as Speaker pro tempore for today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:00:29Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:00:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H22000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_06a98aac12deb506",
+      "dedup_key": "floor:house:118:51304#entry",
+      "object_key": "floor:house:118:51304",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House convened for a new legislative day",
+      "official_text": "The House convened, starting a new legislative day.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2025-01-03T16:00:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2025-01-03T16:00:00Z",
+        "first_seen_at": "2026-10-03T14:21:19.854Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:house:2025-01-03"
+        }
+      ],
+      "result": {
+        "legislative_day": "2025-01-03",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20250103.xml",
+          "retrieved_at": "2026-10-03T14:21:19.854Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "day",
+    "status": "ok",
+    "detail": "85 actions; whole file scanned (Congress 119:118); legislative day 2025-01-03; next meeting 2025-01-06",
+    "items_seen": 85
+  },
+  "targets": [
+    {
+      "endpoint": "next_day",
+      "url": "https://clerk.house.gov/floor/20250106.xml"
+    }
+  ]
+}

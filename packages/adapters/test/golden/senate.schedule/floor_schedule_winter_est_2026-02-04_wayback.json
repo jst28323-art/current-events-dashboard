@@ -1,0 +1,65 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_3da5eeacce78149a",
+      "dedup_key": "floor_day:senate:2026-02-04#scheduled_convene",
+      "object_key": "floor_day:senate:2026-02-04",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7",
+        "F1"
+      ],
+      "title": "The Senate is next due to meet on Wednesday, February 4, at 10:00 a.m. Eastern",
+      "official_text": "conveneYear 2026 conveneMonth 02 conveneDay 04 conveneHour 10 conveneMinutes 00",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-02-04T15:00:00Z",
+        "source_published_at": "2026-02-03T22:19:00Z",
+        "first_seen_at": "2026-10-03T14:23:53.072Z"
+      },
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/stv.html?type=live&comm=stv&filename=stv020426",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "convene_date": "2026-02-04",
+        "stream_filename": "stv020426"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/legislative/schedule/floor_schedule.json",
+          "retrieved_at": "2026-10-03T14:23:53.072Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.schedule",
+    "endpoint": "floor",
+    "status": "ok",
+    "detail": "next convene 2026-02-04 (2026-02-04T15:00:00Z)",
+    "items_seen": 1
+  }
+}

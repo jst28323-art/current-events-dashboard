@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Pure source adapters (response in, events out) and the source registry.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./fixture-only": "./src/fixture_only.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json"

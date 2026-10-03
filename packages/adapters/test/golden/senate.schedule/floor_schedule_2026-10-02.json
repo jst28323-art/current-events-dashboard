@@ -1,0 +1,65 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_04eff013ee50cf79",
+      "dedup_key": "floor_day:senate:2026-10-05#scheduled_convene",
+      "object_key": "floor_day:senate:2026-10-05",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7",
+        "F1"
+      ],
+      "title": "The Senate is next due to meet on Monday, October 5, at 4:00 p.m. Eastern",
+      "official_text": "conveneYear 2026 conveneMonth 10 conveneDay 05 conveneHour 16 conveneMinutes 00",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-10-05T20:00:00Z",
+        "source_published_at": "2026-10-01T14:34:00Z",
+        "first_seen_at": "2026-10-02T18:00:07.316Z"
+      },
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/stv.html?type=live&comm=stv&filename=stv100526",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "convene_date": "2026-10-05",
+        "stream_filename": "stv100526"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/legislative/schedule/floor_schedule.json",
+          "retrieved_at": "2026-10-02T18:00:07.316Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.schedule",
+    "endpoint": "floor",
+    "status": "ok",
+    "detail": "next convene 2026-10-05 (2026-10-05T20:00:00Z)",
+    "items_seen": 1
+  }
+}

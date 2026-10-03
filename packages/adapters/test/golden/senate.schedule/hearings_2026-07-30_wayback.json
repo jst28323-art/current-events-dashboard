@@ -1,0 +1,1156 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_9d36622db2912b2a",
+      "dedup_key": "hearing:senate:338684#scheduled",
+      "object_key": "hearing:senate:338684",
+      "event_type": "markup.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Health, Education, Labor, and Pensions Committee set a business meeting for Thursday, July 30, at 9:45 a.m. Eastern",
+      "official_text": "Business meeting to consider S.5038, to prohibit the transfer of the functions of the Office of Special Education and Rehabilitative Services, S.5046, to prohibit the transfer of certain offices and functions of the Department of Education to other Federal agencies, S.2511, to establish a postsecondary student data system, S.3010, to amend the Individuals with Disabilities Education Act to improve provisions relating to dyslexia, S.3589, to amend the Higher Education Act of 1965 to provide students with disabilities and their families with access to critical information needed to select the right college and succeed once enrolled, S.4097, to establish that a State-based education loan program is excluded from certain requirements relating to a preferred lender arrangement, S.4689, to strengthen literacy outcomes for all students, to amend the comprehensive literacy State development grant program, and to ensure Federal accountability and investment in research, teacher preparation, and evidence-based instruction aligned with the science of reading, S.3333, to modify the eligibility requirements and account contribution maximum for pension-linked emergency savings accounts, S.4965, to amend the Railroad Retirement Act of 1974 to establish a Railroad Retirement Board Administrative Account, S.3097, to provide additional protections with respect to health information, and the nominations of Erica Schwartz, of Florida, to be Director of the Centers for Disease Control and Prevention, Sean Kaufman, of Georgia, to be Assistant Secretary for Preparedness and Response, Department of Health and Human Services, and Keith Sonderling, of Florida, to be Secretary of Labor.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T13:45:00Z",
+        "source_published_at": "2026-07-29T20:36:25Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSHR00",
+          "name": "Health, Education, Labor, and Pensions"
+        }
+      ],
+      "related": [
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1129"
+        },
+        {
+          "rel": "about",
+          "key": "nomination:119:PN932"
+        },
+        {
+          "rel": "about",
+          "key": "nomination:119:PN937-3"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2511"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3010"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3097"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3333"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3589"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4097"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4689"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4965"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:5038"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:5046"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSHR00",
+        "meeting_type": "Open Business Meeting",
+        "room": "SD-430",
+        "date": "2026-07-30",
+        "cable_channel": "18.1"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_50c3c5491e74c666",
+      "dedup_key": "hearing:senate:338689#scheduled",
+      "object_key": "hearing:senate:338689",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "A Senate Commerce, Science, and Transportation subcommittee (SSCM34) set an open hearing for Thursday, July 30, at 10:00 a.m. Eastern",
+      "official_text": "Hearings to examine intelligent networks, focusing on powering artificial intelligence and transforming communications.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T14:00:00Z",
+        "source_published_at": "2026-07-29T20:34:15Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSCM34",
+          "name": "Commerce, Science, and Transportation"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=commerce&filename=commerce073026",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSCM34",
+        "meeting_type": "Open Hearing",
+        "room": "SR-253",
+        "date": "2026-07-30",
+        "cable_channel": "13.1",
+        "subcommittee": "Telecommunications and Media Subcommittee"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_754bba88454c308b",
+      "dedup_key": "hearing:senate:338694#scheduled",
+      "object_key": "hearing:senate:338694",
+      "event_type": "markup.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Finance Committee set a business meeting for Thursday, July 30, at 10:00 a.m. Eastern",
+      "official_text": "Business meeting to consider an original bill entitled, \"Taxpayer Assistance and Service Act\".",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T14:00:00Z",
+        "source_published_at": "2026-07-29T20:34:35Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSFI00",
+          "name": "Finance"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=finance&filename=finance073026",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSFI00",
+        "meeting_type": "Open Business Meeting",
+        "room": "SD-215",
+        "date": "2026-07-30",
+        "cable_channel": "16.1"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4b4b610dc2911679",
+      "dedup_key": "hearing:senate:338688#scheduled",
+      "object_key": "hearing:senate:338688",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Foreign Relations Committee set an open hearing for Thursday, July 30, at 10:30 a.m. Eastern",
+      "official_text": "Hearings to examine the nominations of Sarah B. Rogers, of New York, to be Chief Executive Officer of the United States Agency for Global Media, Rebekah Jurata, of California, to be United States Executive Director of the International Monetary Fund, and Jennifer Johnson-Carroll, of Florida, to be Ambassador to the Republic of Trinidad and Tobago, Department of State.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T14:30:00Z",
+        "source_published_at": "2026-07-29T21:18:47Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSFR00",
+          "name": "Foreign Relations"
+        }
+      ],
+      "related": [
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1022-18"
+        },
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1098-5"
+        },
+        {
+          "rel": "about",
+          "key": "nomination:119:PN874"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSFR00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-419",
+        "date": "2026-07-30",
+        "cable_channel": "17.1"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0134e7a006b41fa8",
+      "dedup_key": "hearing:senate:338692#scheduled",
+      "object_key": "hearing:senate:338692",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "The Commission on Security and Cooperation in Europe set an open hearing for Thursday, July 30, at 2:00 p.m. Eastern",
+      "official_text": "To receive a briefing on Russia's exploitation and engagement in Africa.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T18:00:00Z",
+        "source_published_at": "2026-07-27T20:55:55Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:JCSE00",
+          "name": "Commission on Security and Cooperation in Europe"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=csce&filename=csce073026",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "JCSE00",
+        "meeting_type": "Open Hearing",
+        "room": "CHOB-210",
+        "date": "2026-07-30",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_49ec5c3f6d9df0dc",
+      "dedup_key": "hearing:senate:338693#scheduled",
+      "object_key": "hearing:senate:338693",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Budget Committee set an open hearing for Tuesday, August 4, at 10:00 a.m. Eastern",
+      "official_text": "Hearings to examine the reality of Medicaid.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-04T14:00:00Z",
+        "source_published_at": "2026-07-27T21:45:51Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSBU00",
+          "name": "Budget"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=budget&filename=budget080426",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSBU00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-608",
+        "date": "2026-08-04",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_aa1feb13cab48c6d",
+      "dedup_key": "hearing:senate:338695#scheduled",
+      "object_key": "hearing:senate:338695",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "A Senate Finance subcommittee (SSFI10) set an open hearing for Tuesday, August 4, at 10:00 a.m. Eastern",
+      "official_text": "Hearings to examine building a resilient health care future with biotechnology.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-04T14:00:00Z",
+        "source_published_at": "2026-07-28T20:06:06Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSFI10",
+          "name": "Finance"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=finance&filename=finance080426",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSFI10",
+        "meeting_type": "Open Hearing",
+        "room": "SD-215",
+        "date": "2026-08-04",
+        "cable_channel": null,
+        "subcommittee": "Health Care Subcommittee"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_37eaf001596daec6",
+      "dedup_key": "hearing:senate:338696#scheduled",
+      "object_key": "hearing:senate:338696",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Judiciary Committee set an open hearing for Tuesday, August 4, at 10:15 a.m. Eastern",
+      "official_text": "Hearings to examine prescribing sunshine, focusing on how competition and transparency lowers prescription drug costs.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-04T14:15:00Z",
+        "source_published_at": "2026-07-28T20:19:45Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSJU00",
+          "name": "Judiciary"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=judiciary&filename=judiciary080426",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSJU00",
+        "meeting_type": "Open Hearing",
+        "room": "SH-216",
+        "date": "2026-08-04",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7fed9db38852dcbf",
+      "dedup_key": "hearing:senate:338698#scheduled",
+      "object_key": "hearing:senate:338698",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "A Senate Judiciary subcommittee (SSJU22) set an open hearing for Tuesday, August 4, at 2:30 p.m. Eastern",
+      "official_text": "Hearings to examine data and profit, focusing on the consumer cost of AI surveillance pricing.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-04T18:30:00Z",
+        "source_published_at": "2026-07-28T21:33:31Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSJU22",
+          "name": "Judiciary"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=judiciary&filename=judiciary080426",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSJU22",
+        "meeting_type": "Open Hearing",
+        "room": "SD-226",
+        "date": "2026-08-04",
+        "cable_channel": null,
+        "subcommittee": "Crime and Counterterrorism Subcommittee"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_96327d05f7c1dd3f",
+      "dedup_key": "hearing:senate:338697#scheduled",
+      "object_key": "hearing:senate:338697",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Indian Affairs Committee set an open hearing for Tuesday, August 4, at 4:00 p.m. Eastern",
+      "official_text": "Hearings to examine tracking prediction markets' exponential growth, focusing on tribal implications and beyond.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-04T20:00:00Z",
+        "source_published_at": "2026-07-28T20:33:14Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SLIA00",
+          "name": "Indian Affairs"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=indian&filename=indian080426",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SLIA00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-628",
+        "date": "2026-08-04",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_94b199d1cf401b87",
+      "dedup_key": "hearing:senate:338704#scheduled",
+      "object_key": "hearing:senate:338704",
+      "event_type": "markup.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Commerce, Science, and Transportation Committee set a business meeting for Wednesday, August 5, at 10:00 a.m. Eastern",
+      "official_text": "Business meeting to markup S.737, to require certain interactive computer services to adopt and operate technology verification measures to ensure that users of the platform are not minors, S.1748, to protect the safety of children on the internet, S.4199, to require entities that make artificial intelligence chatbots available to minors to implement certain safe design features, S.4407, to require the creation of family accounts for children to be able to use artificial intelligence chatbots, to require verifiable parental consent for teens using artificial intelligence chatbots, S.5171, to require a study of AI-enabled toys and development of a joint action plan regarding the marketing and sale of AI-enabled toys, and a promotion list in the Coast Guard.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-05T14:00:00Z",
+        "source_published_at": "2026-07-29T23:12:38Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSCM00",
+          "name": "Commerce, Science, and Transportation"
+        }
+      ],
+      "related": [
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1174"
+        },
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1175"
+        },
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1176"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1748"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4199"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4407"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:5171"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:737"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=commerce&filename=commerce080526",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSCM00",
+        "meeting_type": "Open Business Meeting",
+        "room": "SR-253",
+        "date": "2026-08-05",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a1f5c2cf012dc558",
+      "dedup_key": "hearing:senate:338701#scheduled",
+      "object_key": "hearing:senate:338701",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Finance Committee set an open hearing for Wednesday, August 5, at 10:00 a.m. Eastern",
+      "official_text": "Hearings to examine exploring process approaches for addressing Social Security solvency.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-05T14:00:00Z",
+        "source_published_at": "2026-07-29T21:05:10Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSFI00",
+          "name": "Finance"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=finance&filename=finance080526",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSFI00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-215",
+        "date": "2026-08-05",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7ca49dad21875e0e",
+      "dedup_key": "hearing:senate:338702#scheduled",
+      "object_key": "hearing:senate:338702",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Foreign Relations Committee set an open hearing for Wednesday, August 5, at 10:00 a.m. Eastern",
+      "official_text": "Hearings to examine pending nominations.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-05T14:00:00Z",
+        "source_published_at": "2026-07-29T21:31:32Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSFR00",
+          "name": "Foreign Relations"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=foreign&filename=foreign080526",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSFR00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-419",
+        "date": "2026-08-05",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_de10be43df22195c",
+      "dedup_key": "hearing:senate:338700#scheduled",
+      "object_key": "hearing:senate:338700",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Judiciary Committee set an open hearing for Wednesday, August 5, at 10:15 a.m. Eastern",
+      "official_text": "Hearings to examine pending nominations.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-05T14:15:00Z",
+        "source_published_at": "2026-07-29T18:23:31Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSJU00",
+          "name": "Judiciary"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSJU00",
+        "meeting_type": "Open Hearing",
+        "room": "SH-216",
+        "date": "2026-08-05",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bad13b023136d931",
+      "dedup_key": "hearing:senate:338705#scheduled",
+      "object_key": "hearing:senate:338705",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "A Senate Judiciary subcommittee (SSJU25) set an open hearing for Wednesday, August 5, at 2:30 p.m. Eastern",
+      "official_text": "Hearings to examine the Muslim brotherhood network in America.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-05T18:30:00Z",
+        "source_published_at": "2026-07-30T00:26:25Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSJU25",
+          "name": "Judiciary"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=judiciary&filename=judiciary080526",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSJU25",
+        "meeting_type": "Open Hearing",
+        "room": "SD-226",
+        "date": "2026-08-05",
+        "cable_channel": null,
+        "subcommittee": "Federal Courts, Oversight, Agency Action, and Federal Rights"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_164e71314e21b8f4",
+      "dedup_key": "hearing:senate:338699#scheduled",
+      "object_key": "hearing:senate:338699",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Small Business and Entrepreneurship Committee set an open hearing for Wednesday, August 5, at 2:30 p.m. Eastern",
+      "official_text": "Hearings to examine the next 250, focusing on small businesses leading the way.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-05T18:30:00Z",
+        "source_published_at": "2026-07-29T16:01:00Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSSB00",
+          "name": "Small Business and Entrepreneurship"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=smbiz&filename=smbiz080526",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSSB00",
+        "meeting_type": "Open Hearing",
+        "room": "SR-428A",
+        "date": "2026-08-05",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e7b2d0cc061009d9",
+      "dedup_key": "hearing:senate:338703#scheduled",
+      "object_key": "hearing:senate:338703",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Foreign Relations Committee set a closed hearing for Wednesday, August 5, at 3:00 p.m. Eastern",
+      "official_text": "To receive a closed briefing update on the war in Sudan.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-08-05T19:00:00Z",
+        "source_published_at": "2026-07-29T23:03:26Z",
+        "first_seen_at": "2026-10-03T14:23:27.716Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSFR00",
+          "name": "Foreign Relations"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSFR00",
+        "meeting_type": "Closed Hearing",
+        "room": "SVC-217",
+        "date": "2026-08-05",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:27.716Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.schedule",
+    "endpoint": "hearings",
+    "status": "ok",
+    "detail": "17 meetings; 3 stream link(s) withheld (placeholder or another day's date)",
+    "items_seen": 17
+  }
+}

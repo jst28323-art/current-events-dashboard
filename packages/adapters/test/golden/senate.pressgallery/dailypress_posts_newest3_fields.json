@@ -1,0 +1,3987 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_459071ff56e43a67",
+      "dedup_key": "pg_entry:daily:167288:2026-10-01T10:30:1#logged",
+      "object_key": "pg_entry:daily:167288:2026-10-01T10:30:1",
+      "event_type": "floor.pro_forma",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate held a pro forma session (Senate Daily Press Gallery log)",
+      "official_text": "10:30 a.m. The Senate convened for a pro forma session at 10:30 a.m. Senator Lummis presided and no business was conducted.",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T14:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-10-01"
+        }
+      ],
+      "result": {
+        "session_date": "2026-10-01",
+        "clock_text": "10:30 a.m.",
+        "post_id": 167288
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-october-1-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_09aa86423dcd7d67",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T23:24:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T23:24:1",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate adjourned (Senate Daily Press Gallery log)",
+      "official_text": "11:24 p.m. The Senate adjourned.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T03:24:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-09-30"
+        }
+      ],
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:24 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3980957cf091724b",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T23:14:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T23:14:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:14 p.m. Democratic Leader Schumer spoke on the 119th Congress thus far.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T03:14:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:14 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0df13157608637ac",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T23:01:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T23:01:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "11:01 p.m. Majority Leader Thune wrapped up for the evening. Passed the following bills: S.3315, Health Care Cybersecurity and Resiliency Act of 2026 with Cassidy substitute; S.2273– Wyoming Education Trust Modernization Act; H.R.5235 – Skills-Based Federal Contracting Act; S.5249 – MORE American Fuel Act; ; S.2437 – Snow Water Supply Forecasting Program Reauthorization Act of 2026; S.1514 – Quinault Indian Nation Land Transfer Act; H.R.2400 – Pit River Land Transfer Act of 2025; S.1055 – Indian Health Service Emergency Claims Parity Act; S.1564 – Floodplain Enhancement and Recovery Act; H.R.227 – Clergy Act; H.R.1703 – Choices For Increased Mobility; H.R.4307 – Enhancing Detection of Human Trafficking Act; H.R.8352 – Criminal History Access Act of 2026 Adopted the following resolutions:S.Res.866 – Substance Use and Misuse Prevention Month; S.Res.936 – Hydrogen and Fuel Cell Day; S.Res.937 – PCOS Awareness Month; S.Res.938 – October 7; S.Res.939 – Iowa-Kosovo; S.Res.940 – Sickle Cell Disease Awareness Month; S.Res.941 – Bat Week; S.Res.942 – National Forensic Science Week; S.Res.943 – National Move Over Law Day; S.Res.944 – School Bus Safety Month; S.Res.945 – Bison Day; S.Res.946 – National Veterans Suicide Prevention Day; S.Res.947 – Childhood Cancer Awareness Month; S.Res.948– Texas A&M 150th Anniversary. Completed the Rule 14 process to place the following bills on the Legislative Calendar: S.5602, to prohibit the use of Federal funds for the planning and construction of any structure or monument at Memorial Circle at Columbia Island/ Lady Bird Johnson Park in the District of Columbia. (Merkley) S.5603, to prohibit the demolition of Presidential memorials (Merkley) Executive Business Confirmed the following nominations:AIR FORCE: Executive Cal. #913 – Brig. Gen. Stephen P. Snelson to be Major General;",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T03:01:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:01 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_377acf61960d0115",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T23:00:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T23:00:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate confirmed a nomination (unofficial log: Senate Daily Press Gallery)",
+      "official_text": "11:00 p.m. The Senate confirmed the Sonderling nomination on a party line vote of 47-41. Republicans not voting: Blackburn, Cornyn, Ernst, McConnell, Moran & Tillis. Democrats not voting: Blumenthal, Durbin, Gillibrand, Smith, Warner & Whitehouse.",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "confirmation",
+          "press_gallery_log",
+          "unofficial_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T03:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:00 p.m.",
+        "post_id": 167105,
+        "origin_label": "unofficial log"
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_af77433a1c84fe8e",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T21:29:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T21:29:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "9:29 p.m. The Senate began voting on confirmation of the nomination of Keith Sonderling to be Secretary of Labor.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T01:29:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "9:29 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ec1c65552ea24253",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T21:19:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T21:19:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "9:19 p.m. Senator Cortez-Masto spoke about the Inspector General for Federal Housing Finance Agency. She asked for unanimous consent to proceed to and pass S.5681. Senator Moreno objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T01:19:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "9:19 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d782df4c815b7f96",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T21:09:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T21:09:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "9:09 p.m. Senator Hoeven asked consent to take up and pass H.R. 1829, regarding public land management. Senator Heinrich objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T01:09:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "9:09 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_62932a3ad2930b48",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T21:00:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T21:00:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "9:00 p.m. Senator Coons spoke about AI regulation. He then moved to discuss and by unanimous consent to take up and pass HR 9496, the “Stop Tax Penalties on American Hostages Act”.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T01:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "9:00 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8445c7feebdd60f5",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T20:43:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T20:43:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "8:43 p.m. Senator Cornyn spoke about H.R. 7022-provide for transmission of energy alerts by satellite. The bill passed by unanimous consent.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T00:43:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "8:43 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_37a6521bb482a340",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T20:33:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T20:33:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "8:33 p.m. Senator Shaheen spoke about ambassador nominations. She sought unanimous consent to proceed to and confirm 10 ambassadors. The following nominations were confirmed en bloc: PN1255-12-Peter Lord to Ambassador to Benin PN1255-9-Keith Heffern to Ambassador to Gaban PN1022-36-Daniel Travis to be Ambassador to Sierra Leone PN1022-39-Henry Wooster to be Ambassador to Kenya PN1201-4-Joshua Harris to be Ambassador to Malaysia PN1255-15-Nuton Patel to be Ambassador to Cabo Verde PN1255-7-Steven Gillen to be Ambassador to the Kyrgyz Republic PN1255-8-Charles Goodman III to be Ambassador to Togo PN1255-13-John McIntyre to be Ambassador to Malawi PN1255-6-Natasha Franceschi to be Ambassador to Nicaragua",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T00:33:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "8:33 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bff579508e82ecff",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T20:31:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T20:31:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "8:31 p.m. Senator Cassidy spoke about the Healthcare Cybersecurity and Resiliency Act-S. 3315.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T00:31:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "8:31 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e60f3abdcc6f23ff",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T20:15:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T20:15:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "8:15 p.m. Senator Lankford spoke about the Hyde amendment.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T00:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "8:15 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5734e7593e394bd8",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T19:40:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T19:40:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "7:40 p.m. Senator Bennet spoke on the American dream, President Trump, and wealth inequality.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T23:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "7:40 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4bce816e63b9eac1",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T19:35:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T19:35:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "7:35 p.m. Senator Lee achieved consent to take up and pass H.R. 6380, to redesignate the Cherry Kohua National Monument; he then achieved consent to pass H.R 837 (To require the Secretary of Agriculture to convey the Pleasant Valley Ranger District Administrative Site to Gila County, Arizona) and H.R. 7831 (License to Drill Act) en bloc. He then discussed the permitting reform deal announced earlier today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T23:35:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "7:35 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f93e83bd1dcaeeac",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T19:22:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T19:22:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "7:22 p.m. Senators Lankford and Merkley debated voter ID.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T23:22:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "7:22 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c0f66a2580e727f7",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T19:02:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T19:02:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "7:02 p.m. Senator Merkley spoke on and asked unanimous consent to take up and pass a bill banning members of Congress and the President and Vice President from trading stocks. Senator Lankford objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T23:02:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "7:02 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2ff0e879a9c1a014",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T18:22:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T18:22:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "6:22 p.m. Senators Murray, Kaine, Shaheen, and Baldwin spoke about pocket rescissions. Senator Merkley asked for unanimous consent that the Senate proceed to and pass S. 5670. Senator Johnson objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T22:22:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "6:22 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8b02bd7c7e54d4e4",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T18:13:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T18:13:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "6:13 p.m. Senator Merkley spoke about the power of the purse.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T22:13:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "6:13 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1d2758cf2bbbbd24",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T18:02:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T18:02:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "6:02 p.m. Senator Hassan spoke about gas prices, healthcare, and high prices.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T22:02:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "6:02 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_08a658c73ed7df10",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T17:39:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T17:39:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:39 p.m. Senators Schmitt and Moody spoke about fraud. Senator Schmitt asked unanimous consent to proceed to and pass. H.R. 9576. Senator Whitehouse objected and asked that the bill be modified. Senator Schmitt objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T21:39:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "5:39 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9a2123f3c61c3190",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T17:24:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T17:24:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:24 p.m. Senator Wyden spoke on public lands and asked unanimous consent for the Senate to pass S.5658. Senator Paul objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T21:24:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "5:24 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dc9b66b0f6bc009a",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T17:07:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T17:07:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:07 p.m. Senator Blumenthal spoke on Ukraine as well as kids online safety. He then asked unanimous consent for the Senate to pass S.1748, Kids Online Safety Act. Senator Paul objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T21:07:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "5:07 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1cd2ba64d317779e",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T16:40:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T16:40:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:40 p.m. Senators Tillis, Curtis, and Armstrong spoke on Ukraine.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T20:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "4:40 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f82b70d9f443f53a",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T16:03:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T16:03:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:03 p.m. Senator Blackburn spoke on gender and sports. She then requested unanimous consent for the Senate to agree to S.Res.934. Senator Markey objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T20:03:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "4:03 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0cd106011e8ce87f",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T15:54:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T15:54:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:54 p.m. Senators Wyden and Crapo spoke on taxes. Senator Crapo then asked unanimous consent to pass H.R. 5349, as amended by the Crapo-Wyden amendment. It passed by unanimous consent.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T19:54:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "3:54 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_23c787135d2699f1",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T15:50:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T15:50:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:50 p.m. Senator Cruz spoke on the Federal Bank Robbery Act. The Senate then passed S.3798, Safe Access to Cash Act of 2026, by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T19:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "3:50 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1da5b6dc8e77e782",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T15:32:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T15:32:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:32 p.m. Senator Blackburn and Senator Coons spoke on their bipartisan legislation on AI deepfakes. Senator Blackburn then requested unanimous consent to pass S.4591 with the Committee reported substitute amendment; Senator Cruz objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T19:32:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "3:32 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ba917c50b6048997",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T14:55:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T14:55:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "2:55 p.m. Senator Ernst spoke about fraud and asked unanimous consent for the Senate to pass S.4952, Protecting American Taxpayers Act. Senator Wyden objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T18:55:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "2:55 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1f11cb3f0cbfd970",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T14:47:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T14:47:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "2:47 p.m. Senator Rosen spoke about Canadian tariffs. She asked for unanimous consent that the Senate proceed to and pass S. Res. 898. Senator Crapo objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T18:47:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "2:47 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_52bdf576359744fe",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T14:43:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T14:43:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:43 p.m. The following bills, as amended, were passed en bloc: S. 2498-National Park System Long-Term Lease Investment Act S. 2754-Crystal Reservoir Conveyance Act",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T18:43:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "2:43 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1414003740b8f1e8",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T14:22:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T14:22:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "2:22 p.m. Senator Murphy spoke on immigration enforcement. He asked for unanimous consent to proceed to and pass S. 5345. Senator Banks objected and spoke about ICE.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T18:22:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "2:22 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1e4b5c093b1c499b",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T14:21:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T14:21:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:21 p.m. The Senate invoked cloture on the nomination of Keith Sonderling to be Secretary of Labor.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T18:21:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "2:21 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f032d05c17573776",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T13:41:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T13:41:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "1:41 p.m. By a party-line vote of 53-47, the Senate began voting on cloture on the nomination of Keith Sonderling to be Secretary of Labor (30 hours of post-cloture debate).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T17:41:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "1:41 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e413027e864d0e68",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T13:40:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T13:40:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "1:40 p.m. The Senate did not invoke cloture on the motion to proceed to H.R. 9340 by a tally of 57-43. Democrats voting in favor: Hassan, Klobuchar, Ossoff, and Warnock.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T17:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "1:40 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ac1016a7dd547876",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T12:51:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T12:51:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "12:51 p.m. The Senate began voting on cloture on the motion to proceed to H.R. 9340, the Ratepayer Protection Act.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T16:51:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "12:51 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a969c94729e92b00",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T12:50:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T12:50:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "12:50 p.m. The Senate did not invoke cloture on the motion to proceed to H.R. 7008 on a party line tally of 53-47.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T16:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "12:50 p.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_95553e158006defc",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T11:58:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T11:58:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "11:58 a.m. The Senate is now voting on the Motion to invoke cloture on the motion to proceed to H.R.7008, Stop Insider Trading Act.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T15:58:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:58 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_69fbf0bc0f8b4048",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T11:56:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T11:56:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:56 a.m. Senator Heinrich spoke on the cost of utility bills and data centers.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T15:56:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:56 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a705bc7cef973e71",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T11:31:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T11:31:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:31 a.m. Senator Sullivan spoke on the Alaska Right to Produce Act 2.0. He then asked unanimous consent to pass S. 5438; Senator Heinrich objected. Senator Sullivan spoke more on Alaska.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T15:31:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:31 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8524ae74cecb4b0a",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T11:18:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T11:18:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:18 a.m. Senator Budd spoke on Hurricane Helene. He then asked unanimous consent to pass H.R.4238, Disaster Loan Accountability and Reform Act or the DLARA; Senator Markey objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T15:18:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:18 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cd4262ba9e3287d6",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T11:14:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T11:14:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:14 a.m. Senator Ricketts spoke on insider trading.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T15:14:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:14 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_137e06bb7d518ab4",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T11:08:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T11:08:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:08 a.m. Senator Hagerty spoke on data centers and innovation.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T15:08:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "11:08 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b72386a01a486708",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T10:59:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T10:59:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:59 a.m. Senator Husted spoke on data centers.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T14:59:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "10:59 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e77cbd2d571fa6e6",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T10:49:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T10:49:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:49 a.m. Senator Padilla spoke on the pending stock trading bill and voter ID.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T14:49:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "10:49 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cdb281f8291caf3d",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T10:36:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T10:36:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:36 a.m. Democratic Leader Schumer spoke on the 119th Congress, the AI meeting at the White House on Tuesday; the pending stock trading bill, and paid tribute to departing staffer Cietta Kiandoli.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T14:36:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "10:36 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c834238648666d4e",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T10:22:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T10:22:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:22 a.m. Majority Leader Thune moved to proceed to H.R. 9340, amending the Public Utility Act of 1978. The following two bills had their first reading: S 5602, to prohibit the use of Federal funds for the planning and construction of any structure or monument at Memorial Circle at Columbia Island/ Lady Bird Johnson Park and S. 5603 prohibiting the demolition of Presidential memorials. Leader Thune then spoke on the stock trading bill and the ratepayer protection act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T14:22:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "10:22 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_03b3da4dcddf41b8",
+      "dedup_key": "pg_entry:daily:167105:2026-09-30T10:15:1#logged",
+      "object_key": "pg_entry:daily:167105:2026-09-30T10:15:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate convened (Senate Daily Press Gallery log)",
+      "official_text": "10:15 a.m. The Senate convened.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T14:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-09-30"
+        }
+      ],
+      "result": {
+        "session_date": "2026-09-30",
+        "clock_text": "10:15 a.m.",
+        "post_id": 167105
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_55e2d7c56439ed14",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T20:15:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T20:15:1",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate adjourned (Senate Daily Press Gallery log)",
+      "official_text": "8:15 p.m. The Senate stands adjourned until 10:15 a.m. on Wednesday. With Leader remarks reserved, the Senate will proceed to morning business. At 11:30 a.m. the Senate will proceed to up to three roll call votes. Motion to invoke cloture on the MTP to H.R.7008, Stop Insider Trading Act. (If cloture is not invoked) Motion to invoke cloture on the MTP to H.R.9340, Ratepayer Protection Act. (If cloture is not invoked) Motion to invoke cloture on Executive Calendar #912, Keith Sonderling, of Florida, to be Secretary of Labor. Majority Leader Thune wrapped up. The following bills received their first reading: S. 5602 – A bill to prohibit the use of federal funds for any structure of monument at memorial circle at Lady Bird Johnson Park in the District of Columbia. Passed by unanimous consent: S.528 – the GLRI Act of 2025,with the Peters substitute amendment. Passed by unanimous consent: S.1574 – Tribal Access to Electronic Evidence Act, with the Cortez-Masto substitute amendment. Passed by unanimous consent: H.R. 5284 – Claiming Age Clarity Act. Passed by unanimous consent: H.R. 1190 – Expanding Access to Capital for Rural Job Creators Act. Passed by voice vote: S.5600 – To Reauthorize the Traumatic Brain Injury Program. Agreed to en bloc by unanimous consent: S. Res. 922, S. Res. 923, S. Res. 924, S. Res. 925, S. Res. 926, S. Res. 927, S. Res. 928. Agreed to by unanimous consent: S. Res. 652 – A resolution honoring the life and service of United States Marine Corps veteran Nicholas Douglas Quets, expressing condolences to his family, and condemning cartel violence. Passed by unanimous consent: H.R. 1744 – United States Commission on International Religious Freedom Reauthorization Act of 2026 Passed by unanimous consent: H.R. 10159 – To authorize the Secretary of the Army to convey to the State of North Carolina a certain parcel of real property located at Fort Bragg, North Carolina, on which the State shall construct a veterans’ State home, and for other purposes.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T00:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-09-29"
+        }
+      ],
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "8:15 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1289b941328dcfb8",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T20:08:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T20:08:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "8:08 p.m. By a vote of 47-51, the Senate did not discharge S. Res. 852 – A resolution requesting information on Israel’s human rights practices. Senator Fetterman (D) voted no and Senator Paul (R) voted aye. Senators Cassidy and Sullivan did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T00:08:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "8:08 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fd868d2f74cc7d6a",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T18:30:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T18:30:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "6:30 p.m. The Senate began voting on the previously scheduled roll call vote on the motion to discharge S. Res. 852 from the Foreign Relations Committee.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T22:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "6:30 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d362d079ecfc7d8d",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T18:20:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T18:20:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "6:20 p.m. Senator Welch spoke on S.Res.852 and Gaza.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T22:20:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "6:20 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bdf910e78882c8bd",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T18:01:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T18:01:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "6:01 p.m. Senator Van Hollen called up S.Res.852 and spoke on Israeli human rights practices.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T22:01:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "6:01 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_40fd3f046f0953ac",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T17:55:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T17:55:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:55 p.m. Senator Sanders spoke on S.Res.852 and American sentiment on Isreal.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T21:55:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "5:55 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0b56fbf3248eebea",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T17:39:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T17:39:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:39 p.m. Senator Paul spoke on Israeli human rights practices. He then asked for unanimous consent to pass his related bill, which is at the secretary’s desk; Senator Van Hollen objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T21:39:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "5:39 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_537bf982a19a8ae5",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T17:29:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T17:29:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:29 p.m. Senator Kaine spoke on Israeli human rights practices.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T21:29:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "5:29 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8c9aa3dd8d748096",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T17:19:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T17:19:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:19 p.m. Senator Daines spoke on S.Res.852.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T21:19:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "5:19 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9738e8c505b58993",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T17:14:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T17:14:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:14 p.m. Senator Young spoke on insider trader for members of congress.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T21:14:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "5:14 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e53fe4e50d8f43b3",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T17:03:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T17:03:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:03 p.m. Senator Warner spoke on artificial intelligence and data centers.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T21:03:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "5:03 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_37d6e8842c58921e",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T16:47:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T16:47:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:47 p.m. Senator Hassan spoke on the taxpayer-funded advertisements for President Trump and asked unanimous consent to take up and pass S. Res. 921 on this topic; Senator Lummis objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T20:47:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "4:47 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_542480debf140965",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T16:37:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T16:37:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "4:37 p.m. Senator Curtis achieved unanimous consent that the Senate will vote on a Van Hollen motion to discharge S. Res. 852 from the Foreign Relations Committee at 7:00 p.m.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T20:37:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "4:37 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d468864f84132f87",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T16:25:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T16:25:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:25 p.m. Senators Merkley, Padilla and Curtis spoke on wildfires and the Wildfire Prevention Act and achieved unanimous consent for the Senate to pass S. 5045, the Wildfire Prevention Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T20:25:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "4:25 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ac1359ed78899b8b",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T16:17:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T16:17:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:17 p.m. Senator Curtis spoke on water issues in the west.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T20:17:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "4:17 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b44290f9ac8523e8",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T16:13:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T16:13:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:13 p.m.. Senator Rosen spoke on the upcoming 9th anniversary of the mass shooting in Las Vegas on October 1, 2017.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T20:13:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "4:13 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b8d60fcee3a507ee",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T15:57:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T15:57:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:57 p.m. Senator Coons spoke on the Accelerating Access to Critical Therapies for ALS Reauthorization Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T19:57:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "3:57 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b00a934fd1abe934",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T15:48:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T15:48:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:48 p.m. Senator Murkowski spoke on the South Central Foundation Land Transfer Act and achieved unanimous consent for the Senate to pass the following bills en bloc: H.R.3620 – Southcentral Foundation Land Transfer Act of 2025. S.3383 – Unlocking Native Lands and Opportunities for Commerce and Key Economic Developments Act of 2025. S.3219 – Albuquerque Indian School Act of 2026. Senator Murkowski then spoke on the Accelerating Access to Critical Therapies for ALS Reauthorization Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T19:48:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "3:48 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e1c52b5f0b5a62d4",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T15:24:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T15:24:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:24 p.m. Senator Scott (FL) spoke on socialism.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T19:24:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "3:24 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b5b4075e4c3380d3",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T15:14:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T15:14:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:14 p.m. Senator Grassley spoke on the Working Families Tax Cuts Act and cancer screening.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T19:14:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "3:14 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0d82732ebb92e134",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T15:04:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T15:04:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "3:04 p.m. Senator Hawley achieved unanimous consent to pass the following bills en bloc: H.R.1945, America’s National Churchill Museum National Historic Landmark Act. H.R.1550, Strengthening America’s Turning Point Act. Senator Hawley then spoke about the Winston Churchill Memorial, located at Westminster College in Fulton, Missouri.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T19:04:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "3:04 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_47d49a5b3df55d62",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T15:03:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T15:03:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "3:03 p.m. By a vote of 48-51, the Senate did not agree to the motion to proceed to S.J.Res.197 (Baldwin Obamacare Exchange Standards CRA). Republican Senator Collins voted in favor. Senator Sullivan didn’t vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T19:03:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "3:03 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_314efabd35b9396a",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T14:21:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T14:21:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "2:21 p.m. The Senate began a roll call vote on the motion to proceed to S.J.Res.197, Baldwin Obamacare Exchange Standards CRA.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T18:21:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "2:21 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d10a66fd5d748d97",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T14:15:2#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T14:15:2",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "2:15 p.m. Senator Baldwin spoke on the Affordable Care Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T18:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "2:15 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4296894e4bed9756",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T14:15:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T14:15:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate returned from recess (Senate Daily Press Gallery log)",
+      "official_text": "2:15 p.m. The Senate returned from recess. There will be up to 10 minutes of debate on a motion to proceed to S. J. Res. 197, Baldwin Obamacare Exchange Standards CRA.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T18:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-09-29"
+        }
+      ],
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "2:15 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_174072131fb49569",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T12:30:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T12:30:1",
+      "event_type": "floor.recess",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate recessed (Senate Daily Press Gallery log)",
+      "official_text": "12:30 p.m. The Senate is now in recess.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T16:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "12:30 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a9faddf74f0965aa",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T12:21:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T12:21:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:21 p.m. Senator Welch spoke on tariffs.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T16:21:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "12:21 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8e0273ed3ec1b213",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T12:06:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T12:06:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "12:06 p.m. Senator Crapo achieved unanimous consent for the Senate to have 10 minutes of debate before the scheduled vote at 2:15 p.m. today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T16:06:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "12:06 p.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_37730758c1c19d7f",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T11:34:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T11:34:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:34 a.m. Senator Banks spoke on Dystonia, a muscle movement disorder. He then received unanimous consent for the Senate to adopt S.Res.917 to designate the month of September as Dystonia Awareness Month.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T15:34:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "11:34 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5d674a3acfbad984",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T11:32:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T11:32:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:32 a.m. Senator Kim spoke on AI competition with China and safety regulations.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T15:32:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "11:32 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0d7be05a64f036c6",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T11:30:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T11:30:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:30 a.m. Senator Schatz spoke on safety and guidelines for AI.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T15:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "11:30 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cab853ab42fd3869",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T11:21:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T11:21:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:21 a.m. Senator Warner spoke on the concerns of AI chatbots. He then asked unanimous consent to pass the Artificial Intelligence Risk Management and Security Act at the Secretary’s desk; Senator Cruz reserved the right to object. Senator Cruz objected. Senator Warner spoke more on a potential AI safety board.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T15:21:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "11:21 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_625cbd3e613f958f",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T11:17:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T11:17:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:17 a.m. Senator Kim spoke on AI and national security.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T15:17:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "11:17 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6f2e3019885ef91f",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T11:10:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T11:10:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:10 a.m. Senator Schatz spoke on AI regulations.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T15:10:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "11:10 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b5edfc6c751be202",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T11:03:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T11:03:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:03 a.m. Senator Warner spoke on artificial intelligence regulations and progress.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T15:03:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "11:03 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_26169ecd774d7510",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T10:50:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T10:50:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:50 a.m. Leader Schumer spoke on the need for guardrails on artificial intelligence.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T14:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "10:50 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8f9043c0f0ee1127",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T10:40:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T10:40:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:40 a.m. Senator Barasso spoke on lowering costs for Americans.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T14:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "10:40 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6c912e6fd7201bd3",
+      "dedup_key": "pg_entry:daily:166969:2026-09-29T10:25:1#logged",
+      "object_key": "pg_entry:daily:166969:2026-09-29T10:25:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:25 a.m. Leader Thune called up and spoke in favor of H.R. 9340, A bill to amend the Public Utility Regulatory Policies Act of 1978 to establish a federal standard relating to the recovery of the full, incremental costs of upgrades that serve large-load customers, and for other purposes.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-29T14:25:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:09:33.772Z"
+      },
+      "result": {
+        "session_date": "2026-09-29",
+        "clock_text": "10:25 a.m.",
+        "post_id": 166969
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-september-29-2026/",
+          "retrieved_at": "2026-10-03T14:09:33.772Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.pressgallery",
+    "endpoint": "daily_posts",
+    "status": "ok",
+    "detail": "3 posts, 3 floor logs, 86 entries",
+    "items_seen": 3
+  }
+}

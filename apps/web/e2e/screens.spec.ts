@@ -21,7 +21,7 @@ for (const scheme of ['light', 'dark'] as const) {
       const api = new MockApi()
       await openPaused(page, api)
       await expect(page.getByTestId('event-row')).toHaveCount(4)
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'feed', scheme)}`, fullPage: true })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'feed', scheme)}`, fullPage: true }))
     })
 
     test('unavailable after data', async ({ page }, info) => {
@@ -31,7 +31,7 @@ for (const scheme of ['light', 'dark'] as const) {
       api.mode = 'down'
       await nextPoll(page, api)
       await expect(page.getByTestId('unavailable')).toBeVisible()
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'unavailable', scheme)}`, fullPage: true })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'unavailable', scheme)}`, fullPage: true }))
     })
 
     test('unavailable before any data', async ({ page }, info) => {
@@ -39,7 +39,7 @@ for (const scheme of ['light', 'dark'] as const) {
       api.mode = 'down'
       await openPaused(page, api)
       await expect(page.getByTestId('unavailable')).toBeVisible()
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'nodata', scheme)}`, fullPage: true })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'nodata', scheme)}`, fullPage: true }))
     })
 
     test('long source name, stale, then API down (last known)', async ({ page }, info) => {
@@ -53,11 +53,11 @@ for (const scheme of ['light', 'dark'] as const) {
       }
       await openPaused(page, api)
       await expect(page.getByTestId('event-row')).toHaveCount(4)
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'longname', scheme)}`, fullPage: true })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'longname', scheme)}`, fullPage: true }))
       api.mode = 'down'
       await nextPoll(page, api)
       await expect(page.getByTestId('unavailable')).toBeVisible()
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'longname-down', scheme)}`, fullPage: true })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'longname-down', scheme)}`, fullPage: true }))
     })
 
     // The header material over content (a viewport shot: a full-page shot never scrolls, so it never shows the blur).
@@ -68,7 +68,7 @@ for (const scheme of ['light', 'dark'] as const) {
       await expect(page.getByTestId('event-row')).toHaveCount(16)
       await page.evaluate(() => window.scrollTo(0, 560))
       await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(560)
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'scrolled', scheme)}` })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'scrolled', scheme)}` }))
     })
 
     // The same, for a viewer who asks for more contrast: the opaque bar (styles.css fallback; layout.spec.ts WK4).
@@ -80,7 +80,7 @@ for (const scheme of ['light', 'dark'] as const) {
       await expect(page.getByTestId('event-row')).toHaveCount(16)
       await page.evaluate(() => window.scrollTo(0, 560))
       await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(560)
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'scrolled-opaque', scheme)}` })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'scrolled-opaque', scheme)}` }))
     })
 
     test('loading', async ({ page }, info) => {
@@ -88,7 +88,7 @@ for (const scheme of ['light', 'dark'] as const) {
       api.mode = 'hang'
       await openPaused(page, api)
       await expect(page.getByTestId('loading')).toBeVisible()
-      await page.screenshot({ path: `${SCREENS}/${shotName(info, 'loading', scheme)}`, fullPage: true, animations: 'disabled' })
+      await shot(() => page.screenshot({ path: `${SCREENS}/${shotName(info, 'loading', scheme)}`, fullPage: true, animations: 'disabled' }))
     })
   })
 }

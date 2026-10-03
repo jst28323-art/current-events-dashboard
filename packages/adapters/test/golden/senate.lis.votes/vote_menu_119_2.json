@@ -1,0 +1,52 @@
+{
+  "events": [],
+  "health": {
+    "source_id": "senate.lis.votes",
+    "endpoint": "menu",
+    "status": "ok",
+    "detail": "256 votes listed; the newest 10 (00256 down to 00247) are vote targets",
+    "items_seen": 256
+  },
+  "targets": [
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00256.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00255.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00254.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00253.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00252.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00251.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00250.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00249.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00248.xml"
+    },
+    {
+      "endpoint": "vote",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00247.xml"
+    }
+  ]
+}
