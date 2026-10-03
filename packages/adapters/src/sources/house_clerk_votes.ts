@@ -318,6 +318,8 @@ function parseRoll(ep: 'roll_next' | 'roll', res: FetchedResponse, opts: ParseVo
   if (root === 'xml') {
     const m = ERROR_BODY.exec(body.trim())
     if (!m) drift(`an <xml> body that is not the Clerk's "Error sanitizing file" answer`)
+    // The answer names the file it could not serve: another roll's name is not an answer about this URL (review 483d7ab).
+    if (urlMatch && m![1] !== `roll${urlMatch[2]}.xml`) drift(`the Clerk's error body names ${m![1]}, but the URL asked for roll${urlMatch[2]}.xml`)
     const rollN = urlMatch ? `roll ${Number(urlMatch[2])} of ${urlMatch[1]}` : `"${m![1]}"`
     if (ep === 'roll_next') return refuse(ep, 'empty', `${rollN} not posted yet (the Clerk's error body)`)
     // A roll the listing names should exist: the body says "Please try again", so back off and retry.

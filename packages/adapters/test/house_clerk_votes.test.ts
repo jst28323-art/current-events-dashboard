@@ -508,6 +508,11 @@ describe('the Clerk error body (HTTP 200, 65 B, root <xml>)', () => {
     const res = roll(D2, 'roll315_NEGATIVE_error_body.xml')
     expectRefused('roll_next', withBody(res, '<xml>Service unavailable</xml>'), 'drift', /not the Clerk's "Error sanitizing file"/)
   })
+  test('review 483d7ab (nit): the error body must name the URL\'s own roll file, else drift', () => {
+    const res = roll(D2, 'roll315_NEGATIVE_error_body.xml')
+    expectRefused('roll_next', withBody(res, '<xml>Error sanitizing file "roll316.xml". Please try again.</xml>'), 'drift', /the Clerk's error body names roll316\.xml, but the URL asked for roll315\.xml/)
+    expectRefused('roll', withBody(res, '<xml>Error sanitizing file "roll316.xml". Please try again.</xml>'), 'drift', /names roll316\.xml/)
+  })
 })
 
 describe('other refusals', () => {
