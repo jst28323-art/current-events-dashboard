@@ -10,6 +10,7 @@ import { chromium, expect, test, type Page } from '@playwright/test'
 import { decodePng } from './png.js'
 import { MockApi, nextPoll, openPaused } from './mock-api.js'
 import { engineOf, scaleOf } from './project.js'
+import { shot } from './shot.js'
 
 /** The PNG colour type each engine's screenshots use (observed 2026-10-03, Playwright 1.63). Pinned, so that the decode
  * path this check covers cannot change silently: if an engine starts writing another type, re-aim the check. */
@@ -45,7 +46,7 @@ for (const scheme of ['light', 'dark'] as const) {
     api.mode = 'down'
     await nextPoll(page, api) // the header now has the banner and last-known chips: material, tints, dashed outlines, text
     await expect(page.getByTestId('unavailable')).toBeVisible()
-    const png = await page.locator('header.toolbar').screenshot({ animations: 'disabled' })
+    const png = await shot(() => page.locator('header.toolbar').screenshot({ animations: 'disabled' }))
     expect(png.toString('latin1', 12, 16)).toBe('IHDR')
     expect(png[25], `${engine} screenshot PNG colour type (the decode path this run covers)`).toBe(COLOUR_TYPE[engine])
     const ours = decodePng(png)

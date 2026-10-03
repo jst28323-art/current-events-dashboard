@@ -6,10 +6,11 @@
 // WebKit (WebKit on Windows has no OffscreenCanvas; e2e/png.ts).
 import type { Locator } from '@playwright/test'
 import { contrastOf, decodePng, type Contrast } from './png.js'
+import { shot } from './shot.js'
 
 export type { Contrast }
 
 export async function measuredContrast(target: Locator): Promise<Contrast> {
-  const png = await target.screenshot({ animations: 'disabled' })
+  const png = await shot(() => target.screenshot({ animations: 'disabled' }))
   return contrastOf(decodePng(png).rgb)
 }

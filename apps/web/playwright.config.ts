@@ -17,7 +17,9 @@ export default defineConfig({
   forbidOnly: CI,
   retries: 0,
   workers: CI ? 2 : 4,
-  reporter: CI ? [['list'], ['github']] : 'list',
+  // Locally a JSON report too (gitignored scratch/): the gate keeps only the last 25 lines of a failing check, which cut off
+  // the one intermittent failure of 2026-10-03; read scratch/e2e-last.json after a red gate.
+  reporter: CI ? [['list'], ['github']] : [['list'], ['json', { outputFile: '../../scratch/e2e-last.json' }]],
   timeout: 60_000,
   expect: { timeout: 10_000 },
   use: {

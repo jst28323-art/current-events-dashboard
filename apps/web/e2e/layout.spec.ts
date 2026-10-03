@@ -7,6 +7,7 @@ import { repeatedEvents, sourceStatus } from './fixture-events.js'
 import { iso, MockApi, nextPoll, openPaused, T0 } from './mock-api.js'
 import { decodePng } from './png.js'
 import { engineOf, isPhone, scaleOf } from './project.js'
+import { shot } from './shot.js'
 
 const hScroll = (page: Page) => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)
 
@@ -189,7 +190,7 @@ for (const scheme of ['light', 'dark'] as const) {
       await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(y)
       const box = (await header.boundingBox())!
       expect(Math.abs(box.y), `the header is pinned at the top at scrollY ${y}`).toBeLessThanOrEqual(0.5)
-      return decodePng(await page.screenshot({ clip: box, animations: 'disabled' })).rgb
+      return decodePng(await shot(() => page.screenshot({ clip: box, animations: 'disabled' }))).rgb
     }
     /** Header pixels that differ between two scroll positions with different rows under the header. */
     const changed = async () => {

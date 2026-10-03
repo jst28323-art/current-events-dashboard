@@ -8,6 +8,7 @@ import { expect, test } from '@playwright/test'
 import { repeatedEvents, sourceStatus } from './fixture-events.js'
 import { iso, MockApi, nextPoll, openPaused, T0 } from './mock-api.js'
 import { shotName } from './project.js'
+import { shot } from './shot.js'
 
 const SCREENS = resolve(dirname(fileURLToPath(import.meta.url)), '../../../scratch/screens')
 mkdirSync(SCREENS, { recursive: true })
