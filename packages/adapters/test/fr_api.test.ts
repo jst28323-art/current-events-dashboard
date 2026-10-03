@@ -7,7 +7,8 @@ import { join } from 'node:path'
 import { validateEvent } from '@ced/schema'
 import type { CedEvent } from '@ced/schema'
 import {
-  DOCUMENTS_CADENCE, DOCUMENTS_FIELDS, DOCUMENTS_NEWEST_URL, DOCUMENTS_PER_PAGE, PI_CURRENT_URL, frApi, parseFr,
+  DOCUMENTS_CADENCE, DOCUMENTS_FIELDS, DOCUMENTS_NEWEST_URL, DOCUMENTS_PER_PAGE, MAX_SCHEDULED_AHEAD_DAYS, PI_CURRENT_URL, frApi,
+  parseFr,
 } from '../src/sources/fr_api.js'
 import { frBranch } from '../src/lib/fr_branch.js'
 import { frDateInWords, frInstantToUtc } from '../src/lib/fr_time.js'
@@ -76,6 +77,8 @@ describe('frApi source definition', () => {
     }
     expect(frApi.cadence.business_s).toBe(60)
     expect(frApi.freshness_slo_s).toBe(120)
+    // Only documents_newest reads differently on a new Eastern day (scheduled -> published, D-055).
+    expect(frApi.endpoints.map((e) => e.dayDependent === true)).toEqual([false, true])
   })
 
   test('documents_newest asks for one page of 500 with exactly the 12 fields the adapter reads', () => {
@@ -867,11 +870,28 @@ describe('adversarial review 2026-10-02: regression tests', () => {
     expect(frInstantToUtc('2026-10-02T11:15:00+05:45')).toBe('2026-10-02T05:30:00Z')
   })
 
-  test('FR-6: a published document dated after the poll day (+1 day for the UTC/Eastern date line) is drift', () => {
+  // D-055 supersedes the old FR-6 rule "dated after the poll day is drift": the FR lists the next issue early (Monday's
+  // issue on Saturday 2026-10-03), so a listed document dated after the poll's EASTERN day is scheduled, up to
+  // MAX_SCHEDULED_AHEAD_DAYS; further ahead is still drift.
+  test('FR-6: a listed document dated more than a week after the poll\'s Eastern day is drift; up to a week is scheduled', () => {
+    // docs() was fetched 2026-10-03T02:20Z, i.e. Fri 2026-10-02 22:20 EDT: the poll's Eastern day is 2026-10-02.
     const pub = (d: string): AdapterOutput => parseFr('documents_newest', edited(docs(), (j) => { find(j, '2026-20321').publication_date = d }))
     expectNothing(pub('2031-01-01'), 'drift')
-    expectNothing(pub('2026-10-05'), 'drift') // fetched 2026-10-03T02:20Z
-    expect(pub('2026-10-04').health.status).toBe('ok')
+    expectNothing(pub('2026-10-10'), 'drift') // 8 days after 2026-10-02
+    expect(pub('2026-10-10').health.detail).toContain("more than 7 days after the poll's Eastern day 2026-10-02")
+    const week = pub('2026-10-09') // exactly 7 days
+    expect(week.health.status).toBe('ok')
+    expect(byNumber(week.events, '2026-20321').status).toBe('scheduled')
+    expect(MAX_SCHEDULED_AHEAD_DAYS).toBe(7)
+  })
+
+  test('FR-6: the poll day is Eastern, not UTC (02:20Z on Oct 3 is still Oct 2 in Washington)', () => {
+    // Dated 2026-10-03, fetched 2026-10-03T02:20Z: a UTC day would call it published; it is scheduled.
+    const out = parseFr('documents_newest', edited(docs(), (j) => { find(j, '2026-20321').publication_date = '2026-10-03' }))
+    expect(out.health.status).toBe('ok')
+    const ev = byNumber(out.events, '2026-20321')
+    expect(ev.status).toBe('scheduled')
+    expect(ev.title).toContain('to be published in the Federal Register on October 3, 2026')
   })
 
   test('FR-6: a signing date after the publication date, or any date over a year from the poll, is drift', () => {
@@ -988,5 +1008,67 @@ describe('titles never repeat the document title (D-043)', () => {
         expect(e.title.endsWith(`(FR Doc. ${e.object_key.slice('fr:'.length)})`), e.dedup_key).toBe(true)
       }
     }
+  })
+})
+
+// D-055: the recorded reply in which the FR lists Monday's issue on Saturday (fetched 2026-10-03T13:19Z, Sat 09:19 EDT):
+// 106 documents dated 2026-10-05 first, then all of 10-02 (94), 10-01 (112), 09-30 (128) and 60 of 09-29.
+describe('fr.api documents_newest: the next issue listed before its date (D-055)', () => {
+  const early = (): FetchedResponse => replay('fr.api', '2026-10-03', 'documents_newest_next_issue_early.json')
+  const at = (iso: string): AdapterOutput => parseFr('documents_newest', variant(early(), { fetchedAt: iso }))
+  const scheduledOf = (out: AdapterOutput) => out.events.filter((e) => e.status === 'scheduled')
+
+  test('the recorded Saturday reply publishes every document: 106 scheduled for Monday, 394 published', () => {
+    const out = parseFr('documents_newest', early())
+    expect(out.health.status).toBe('ok')
+    expect(out.health.detail).toBe('500 newest published documents; 106 listed before their publication date (scheduled)')
+    expect(out.events).toHaveLength(500)
+    expectAllValid(out.events)
+    const sched = scheduledOf(out)
+    expect(sched).toHaveLength(106)
+    for (const e of sched) {
+      expect(e.result?.publication_date).toBe('2026-10-05')
+      expect(e.title).toMatch(/ to be published in the Federal Register on October 5, 2026 \(FR Doc\. [^)]+\)$/)
+      expect(e.times.occurred_at).toBeNull() // a date has no time of day; never invented
+      expect(e.dedup_key).toBe(`${e.object_key}#published`) // the same event that later says "published"
+    }
+    for (const e of out.events.filter((x) => x.status !== 'scheduled')) {
+      expect(e.status).toBe('published')
+      expect(e.result?.publication_date < '2026-10-05').toBe(true)
+      expect(e.title).toContain(' published in the Federal Register on ')
+    }
+    const det = byNumber(out.events, '2026-20439')
+    expect(det.title).toBe('Presidential determination to be published in the Federal Register on October 5, 2026 (FR Doc. 2026-20439)')
+    expect(det.official_text).toBe('Presidential Determination on the Revocation of Presidential Determinations Related to Lebanon')
+    expect(det.event_type).toBe('fr.published.presidential_document')
+    expect(det.importance?.tier).toBe('P1')
+    const eo = byNumber(out.events, '2026-20321')
+    expect(eo.status).toBe('published')
+    expect(eo.title).toBe('Executive Order 14434 published in the Federal Register on October 2, 2026 (FR Doc. 2026-20321)')
+  })
+
+  test('the same body flips to published at midnight Eastern, not before (EDT)', () => {
+    expect(scheduledOf(at('2026-10-05T03:59:59.000Z'))).toHaveLength(106) // Sun 23:59:59 EDT
+    const monday = at('2026-10-05T04:00:00.000Z') // Mon 00:00 EDT
+    expect(monday.health.detail).toBe('500 newest published documents')
+    expect(scheduledOf(monday)).toHaveLength(0)
+    const det = byNumber(monday.events, '2026-20439')
+    expect(det.status).toBe('published')
+    expect(det.title).toBe('Presidential determination published in the Federal Register on October 5, 2026 (FR Doc. 2026-20439)')
+  })
+
+  test('across the DST change the boundary is 05:00Z (EST)', () => {
+    const move = (iso: string) => parseFr('documents_newest', variant(
+      edited(early(), (j) => { for (const r of j.results) if (r.publication_date === '2026-10-05') r.publication_date = '2026-11-02' }),
+      { fetchedAt: iso },
+    ))
+    // 2026-11-01 is the first day of EST: Mon 2026-11-02 starts at 05:00Z.
+    expect(scheduledOf(move('2026-11-02T04:30:00.000Z'))).toHaveLength(106) // Sun 23:30 EST
+    expect(scheduledOf(move('2026-11-02T05:00:00.000Z'))).toHaveLength(0)
+  })
+
+  test('Public Inspection is unaffected: its documents are always dated ahead and stay "filed for public inspection"', () => {
+    const out = parseFr('pi_current', pi())
+    expect(out.events.every((e) => e.status === 'published' && e.event_type === 'fr.public_inspection')).toBe(true)
   })
 })

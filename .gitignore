@@ -4,6 +4,9 @@
 # scratch space for probes, downloads, agent temp files
 scratch/
 
+# git worktrees made by Claude Code workflow agents (isolation: worktree); never part of the tree
+.claude/worktrees/
+
 # dependencies / builds
 node_modules/
 dist/

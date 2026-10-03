@@ -10,6 +10,7 @@
 // request in flight per host; a 304, or a 2xx whose body key matches the last accepted body's, is `not_modified` and is
 // never parsed; a parse() throw is `drift`. fetch, the clock, the jitter source and the code version are injected, so
 // tests need no network.
+import { dayInEt } from '@ced/schema'
 import type { AdapterOutput, Endpoint, FetchedResponse, SourceDefinition } from '@ced/adapters'
 import type { EndpointState, PollOutcome, PollPlan, PollRecord, PollResult } from './hub.js'
 import {
@@ -240,7 +241,10 @@ async function fetchAndParse(
   const token = ep.cacheBust ? cacheBustToken(url) : null
   const text = token ? new TextDecoder().decode(buf) : null
   const hashed = text !== null && token ? new TextEncoder().encode(text.split(token).join('')) : buf
-  const body_hash = bodyKey(hex(await crypto.subtle.digest('SHA-256', hashed)), deps.codeVersion)
+  // A day-dependent endpoint (Endpoint.dayDependent, D-055) reads differently on a new Eastern day, so the day is part
+  // of the key: an unchanged body is parsed again once per Eastern day.
+  const dayTag = ep.dayDependent ? `#et:${dayInEt(at)}` : ''
+  const body_hash = bodyKey(hex(await crypto.subtle.digest('SHA-256', hashed)) + dayTag, deps.codeVersion)
   const resHeaders: Record<string, string> = {}
   res.headers.forEach((v, k) => {
     resHeaders[k.toLowerCase()] = v

@@ -93,6 +93,14 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   window began three publication days after the largest issue since 1994 (344 on 2024-12-30). Extremes cluster at year
   end and around a change of administration. The FR's daily facet goes back to 1994 in one ~550 KB request: record it
   and pin the rule to the fixture (`fixtures/fr.api/2026-10-03/facets_daily_since_1994.json`, D-047).
+- **The FR API lists the next issue's documents before their publication date** (2026-10-03, the live ced-api's poll
+  record and `fixtures/fr.api/2026-10-03/documents_newest_next_issue_early.json`). On Saturday `documents.json`
+  (order=newest) began with Monday's issue: 106 documents dated 2026-10-05, absent at 07:15Z and present by 08:15Z.
+  A rule that a listed document can never be dated after the poll day (the old FR-6, one day of slack) threw away every
+  weekend's list and showed the FR as drift for ~16 h. Such a document is now "scheduled" (D-055, D-059). The same
+  reply means something different once its date arrives, so a "same body hash = do not parse" skip must also key on
+  the date (`Endpoint.dayDependent`); otherwise the flip waits for the FR's list to change. How early the FR lists a
+  weekday issue is not yet measured.
 
 ## Hosting
 

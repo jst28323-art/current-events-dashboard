@@ -4,10 +4,12 @@
 // same Public Inspection fixture runs today, so the replay path itself is proven now. Fixtures are bundled with
 // Vite's ?raw (workerd tests have no host disk); fixtures are never edited.
 import { describe, expect, test } from 'vitest'
-import { finalizeEvent } from '@ced/schema'
+import { finalizeEvent, type CedEvent } from '@ced/schema'
 import { sourceById, type AdapterOutput, type Endpoint, type FetchedResponse, type SourceDefinition } from '@ced/adapters'
 import piBody from '../../../fixtures/fr.api/2026-10-02/pi_current.json?raw'
 import piMeta from '../../../fixtures/fr.api/2026-10-02/pi_current.json.meta.json'
+import earlyBody from '../../../fixtures/fr.api/2026-10-03/documents_newest_next_issue_early.json?raw'
+import earlyMeta from '../../../fixtures/fr.api/2026-10-03/documents_newest_next_issue_early.json.meta.json'
 import newsBody from '../../../fixtures/wh.feeds/2026-10-02/news_feed.xml?raw'
 import newsMeta from '../../../fixtures/wh.feeds/2026-10-02/news_feed.xml.meta.json'
 import { fakeSource, freshHub, page } from './fakes.js'
@@ -112,4 +114,39 @@ describe('recorded fixtures through an adapter into the HubDO', () => {
       expectNoDuplicates(await replayTwice(def!, ep!, c.meta, c.body))
     })
   }
+})
+
+// D-055 end to end: the recorded Saturday reply (the FR listing Monday's issue early) through the REAL fr.api adapter into
+// a HubDO, then the same body again after midnight Eastern (the poller parses it again: Endpoint.dayDependent).
+describe('an FR document listed early becomes "published" at midnight Eastern, as a revision of the same event', () => {
+  const def = sourceById('fr.api')
+  const ep = def?.endpoints.find((e) => e.id === 'documents_newest')
+  test.skipIf(!def || !ep)('Saturday: 106 scheduled; Monday 00:30 EDT: those 106 revised to published, first sighting kept', async () => {
+    const hub = freshHub()
+    const meta = earlyMeta as Meta
+    const record = (atMs: number) =>
+      hub.recordPoll({
+        source_id: def!.source_id,
+        affiliation: def!.affiliation,
+        endpoint_id: ep!.id,
+        started_ms: atMs,
+        finished_ms: atMs,
+        jitter: 0.5,
+        outcome: { kind: 'parsed', output: def!.parse(ep!.id, replay(meta, earlyBody, atMs)), etag: null, last_modified: null, body_hash: `replay-${atMs}` },
+      })
+    const find = (events: CedEvent[]) => events.find((e) => e.object_key === 'fr:2026-20439')!
+    const sat = Date.parse(meta.fetched_at)
+    expect(await record(sat)).toMatchObject({ health: 'ok', inserted: 500 })
+    const before = find((await page(hub, null, 500)).events)
+    expect(before.status).toBe('scheduled')
+
+    expect(await record(sat + 60_000)).toMatchObject({ inserted: 0, revised: 0, merged: 0 }) // same day: no change
+    const mon = Date.parse('2026-10-05T04:30:00Z')
+    expect(await record(mon)).toMatchObject({ health: 'ok', inserted: 0, revised: 106 })
+    const after = find((await page(hub, null, 500, mon)).events)
+    expect(after).toMatchObject({ status: 'published', revision: 2, supersedes: before.id, dedup_key: before.dedup_key })
+    expect(after.title).toBe('Presidential determination published in the Federal Register on October 5, 2026 (FR Doc. 2026-20439)')
+    expect(after.times.first_seen_at).toBe(before.times.first_seen_at) // still ordered by Saturday's sighting
+    expect(await record(mon + 3_600_000)).toMatchObject({ inserted: 0, revised: 0, merged: 0 })
+  })
 })

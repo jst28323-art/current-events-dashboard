@@ -50,6 +50,10 @@ export interface Endpoint {
    * once a day (FR documents.json, the daily issue) need not be fetched every minute beside a fast one (Public
    * Inspection). The endpoint's "stale" threshold follows its own cadence (workers/api policy.ts). */
   cadence?: { business_s: number; off_s: number }
+  /** The adapter's output for an UNCHANGED body depends on the poll's calendar day in Eastern time (fr.api
+   * documents_newest: a document listed before its publication date is "scheduled" until that day, D-055). The poller
+   * then keys the body by its hash AND that day, so an unchanged body is parsed again once per Eastern day. */
+  dayDependent?: boolean
 }
 
 export interface SourceDefinition {

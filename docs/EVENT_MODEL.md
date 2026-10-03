@@ -117,7 +117,7 @@ The last column lists what the code emits today (2026-10-02, commit 83ea2b6); th
 | schedule | `schedule.item` (President, VP, cabinet; floor schedules) | F7 | none |
 | presidential action | `presidential_action.{executive_order, proclamation, memorandum, notice, determination, nominations_sent, statement, other}` | F9 | `presidential_action.executive_order`, `.proclamation`, `.memorandum`, `.nominations_sent`, `.other` (`wh.feeds`) |
 | White House messaging | `wh.{release, briefing_statement, fact_sheet, article, remarks, other}` (D-030) | F11 | all six (`wh.feeds`) |
-| regulatory | `fr.public_inspection`, `fr.published.{rule, proposed_rule, notice, presidential_document, other}`, `fr.correction` | F10 | `fr.public_inspection`, `fr.published.rule`, `.proposed_rule`, `.notice`, `.presidential_document`, `.other` (`fr.api`) |
+| regulatory | `fr.public_inspection`, `fr.published.{rule, proposed_rule, notice, presidential_document, other}` (status `scheduled` while listed before its publication date, D-059), `fr.correction` | F10 | `fr.public_inspection`, `fr.published.rule`, `.proposed_rule`, `.notice`, `.presidential_document`, `.other` (`fr.api`) |
 | judicial | `court.opinion`, `court.order_list`, `court.argument`, `court.grant` | F11 | none |
 | oversight | `report.{cbo, gao, crs, ig}` | F11 | none |
 | later (F12) | `econ.release`, `fed.statement`, `sec.filing`, `world.news`, … | F12 | none |

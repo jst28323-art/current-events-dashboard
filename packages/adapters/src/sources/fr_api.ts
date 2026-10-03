@@ -14,7 +14,7 @@
 // "Completely" includes (adversarial review 2026-10-02, FR-1…FR-11): every result belongs to the endpoint it was fetched
 // for, every key the endpoint always sends is present, the type is one the FR uses, links stay on the official hosts,
 // times are plausible for the poll, repeats agree, `count` agrees with the list, and the payload is of a sane size.
-import { finalizeEvent, isRealInstant } from '@ced/schema'
+import { dayInEt, finalizeEvent, isRealInstant } from '@ced/schema'
 import type { CedEvent, EventDraft, FeatureId, Tier } from '@ced/schema'
 import type { AdapterOutput, FetchedResponse, HealthStatus, SourceDefinition } from '../types.js'
 import { frBranch } from '../lib/fr_branch.js'
@@ -124,12 +124,23 @@ const FILED_AHEAD_MS = 6 * HOUR_MS
  * (filed_at 2.8–24 h before the poll on 2026-10-02, n=106); the bound only rejects impossible values (FR-6). */
 const MAX_DISTANCE_MS = 366 * DAY_MS
 
+/** documents.json lists the next issue's documents before their publication date: Monday's issue (106 documents dated
+ * 2026-10-05) was listed on Saturday 2026-10-03, absent at 07:15Z and present by 08:15Z (the live Worker's poll record;
+ * fixture fixtures/fr.api/2026-10-03/documents_newest_next_issue_early.json; docs/TRAPS.md). Such a document is shown
+ * as scheduled (D-055). How far ahead the FR lists an issue is measured once (two days, over a weekend); a week covers
+ * a weekend plus a holiday stretch with room to spare, and a date further ahead is drift (FR-6): it is a broken record,
+ * not a schedule. */
+export const MAX_SCHEDULED_AHEAD_DAYS = 7
+
 /** The poll's own times, which the plausibility windows are measured from. */
 interface PollContext {
   at: EndpointId
   fetchedMs: number
   /** 00:00Z of the poll's UTC day. */
   fetchDayMs: number
+  /** The poll's calendar day in Eastern time, "YYYY-MM-DD": the FR dates its issues in Eastern time, so a listed
+   * document dated after this day has not been published yet (D-055). */
+  dayEt: string
 }
 
 /** One FR result after the shape check: every field typed, optional ones null. */
@@ -321,10 +332,11 @@ function readDoc(raw: unknown, ctx: PollContext): FrDoc {
 
   const publication_date = optPlausibleDate(raw, 'publication_date', num, ctx)
   const signing_date = optPlausibleDate(raw, 'signing_date', num, ctx)
-  // A published document cannot be dated after the day we saw it (one day of slack: the FR dates issues in Eastern
-  // time, our poll day is UTC), and nothing is signed after it is published (FR-6).
-  if (ctx.at === 'documents_newest' && publication_date !== null && Date.parse(`${publication_date}T00:00:00Z`) > ctx.fetchDayMs + DAY_MS) {
-    throw new Drift(`document ${num}: publication_date ${publication_date} is after the poll day`)
+  // A listed document dated after the poll's Eastern day is scheduled (D-055), but only up to a week ahead; nothing is
+  // signed after it is published (FR-6).
+  if (ctx.at === 'documents_newest' && publication_date !== null &&
+    Date.parse(`${publication_date}T00:00:00Z`) - Date.parse(`${ctx.dayEt}T00:00:00Z`) > MAX_SCHEDULED_AHEAD_DAYS * DAY_MS) {
+    throw new Drift(`document ${num}: publication_date ${publication_date} is more than ${MAX_SCHEDULED_AHEAD_DAYS} days after the poll's Eastern day ${ctx.dayEt}`)
   }
   if (signing_date !== null && publication_date !== null && signing_date > publication_date) {
     throw new Drift(`document ${num}: signing_date ${signing_date} is after its publication_date ${publication_date}`)
@@ -424,9 +436,16 @@ function importanceOf(d: FrDoc, at: EndpointId): { tier: Tier; reasons: string[]
   }
 }
 
-function draftOf(d: FrDoc, at: EndpointId, fetchedAt: string): EventDraft {
+/** A published-list document whose publication date is after the poll's Eastern day: listed early, not yet published
+ * (D-055). YYYY-MM-DD compares as text. */
+function isScheduled(d: FrDoc, at: EndpointId, dayEt: string): boolean {
+  return at === 'documents_newest' && d.publication_date !== null && d.publication_date > dayEt
+}
+
+function draftOf(d: FrDoc, at: EndpointId, fetchedAt: string, dayEt: string): EventDraft {
   const objectKey = `fr:${d.document_number}`
   const isPi = at === 'pi_current'
+  const scheduled = isScheduled(d, at, dayEt)
   const features: FeatureId[] = d.kind === 'presidential_document' ? ['F10', 'F9'] : ['F10']
 
   let title: string
@@ -436,6 +455,10 @@ function draftOf(d: FrDoc, at: EndpointId, fetchedAt: string): EventDraft {
     // The title says what happened; the document's own title is official_text, shown right under it, so it is not
     // repeated here (D-043). The FR document number tells same-titled documents apart.
     title = `${subjectOf(d)} filed for public inspection${d.editorial_note ? ' (with an editorial note)' : ''} (FR Doc. ${d.document_number})`
+  } else if (scheduled) {
+    // Listed before its date (D-055). The same event says "published" once the poll's Eastern day reaches the date: a
+    // revision, because the poller parses an unchanged list again on each new Eastern day (Endpoint.dayDependent).
+    title = `${subjectOf(d)} to be published in the Federal Register on ${frDateInWords(d.publication_date!)} (FR Doc. ${d.document_number})`
   } else {
     // publication_date has no time of day: it goes into words, never into occurred_at.
     const when = d.publication_date ? ` on ${frDateInWords(d.publication_date)}` : ''
@@ -462,7 +485,7 @@ function draftOf(d: FrDoc, at: EndpointId, fetchedAt: string): EventDraft {
     object_key: objectKey,
     ...(eoKey ? { thread_key: eoKey, alias_keys: [eoKey] } : {}),
     event_type: isPi ? 'fr.public_inspection' : `fr.published.${d.kind}`,
-    status: 'published',
+    status: scheduled ? 'scheduled' : 'published',
     branch: frBranch(d.kind === 'presidential_document', d.agency_slugs),
     body: bodyOf(d),
     features,
@@ -543,7 +566,9 @@ export function parseFr(endpointId: string, res: FetchedResponse): AdapterOutput
   }
 
   const fetchedMs = Date.parse(res.fetchedAt)
-  const ctx: PollContext = { at, fetchedMs, fetchDayMs: Date.parse(`${res.fetchedAt.slice(0, 10)}T00:00:00Z`) }
+  const ctx: PollContext = {
+    at, fetchedMs, fetchDayMs: Date.parse(`${res.fetchedAt.slice(0, 10)}T00:00:00Z`), dayEt: dayInEt(fetchedMs),
+  }
   const docs: FrDoc[] = []
   const seen = new Map<string, FrDoc>()
   let duplicates = 0
@@ -578,11 +603,13 @@ export function parseFr(endpointId: string, res: FetchedResponse): AdapterOutput
     return out('drift', `the body says count ${JSON.stringify(count) ?? 'nothing'} but lists ${results.length} results; nothing from this payload was published`, results.length)
   }
 
-  const events = docs.map((d) => finalizeEvent(draftOf(d, at, res.fetchedAt)))
+  const events = docs.map((d) => finalizeEvent(draftOf(d, at, res.fetchedAt, ctx.dayEt)))
   const what = at === 'pi_current' ? 'documents on public inspection' : 'newest published documents'
   const dupNote = duplicates > 0 ? `; ${duplicates} repeated document number${duplicates === 1 ? '' : 's'} skipped` : ''
+  const early = docs.filter((d) => isScheduled(d, at, ctx.dayEt)).length
+  const earlyNote = early > 0 ? `; ${early} listed before their publication date (scheduled)` : ''
   const overflow = at === 'documents_newest' ? issueOverflowNote(docs, results.length, count) : ''
-  return out('ok', `${results.length} ${what}${dupNote}${overflow}`, results.length, events)
+  return out('ok', `${results.length} ${what}${dupNote}${earlyNote}${overflow}`, results.length, events)
 }
 
 /** documents_newest is one page (DOCUMENTS_PER_PAGE). When more matches exist beyond it (count above the number listed)
@@ -607,7 +634,12 @@ export const frApi: SourceDefinition = {
   features: ['F10', 'F9'],
   endpoints: [
     { id: 'pi_current', url: PI_CURRENT_URL, validator: 'body-hash', cacheBust: true },
-    { id: 'documents_newest', url: DOCUMENTS_NEWEST_URL, validator: 'body-hash', cacheBust: true, cadence: { ...DOCUMENTS_CADENCE } },
+    // dayDependent: a document listed early reads "scheduled" only until its Eastern date (D-055), so the same body
+    // must be parsed again on the next Eastern day.
+    {
+      id: 'documents_newest', url: DOCUMENTS_NEWEST_URL, validator: 'body-hash', cacheBust: true,
+      cadence: { ...DOCUMENTS_CADENCE }, dayDependent: true,
+    },
   ],
   // The source cadence is Public Inspection's (documents_newest has its own, DOCUMENTS_CADENCE). Business hours: every
   // minute (Phase 1's cron floor), covering the PI slots 08:45, 11:15, 14:00, 16:15 and 18:00 ET. Off hours: every

@@ -564,3 +564,34 @@ describe('per-endpoint cadence (Endpoint.cadence, D-046)', () => {
     expect(f.calls.filter((c) => c.url.includes('documents.json'))).toHaveLength(8)
   })
 })
+
+describe('a day-dependent endpoint (Endpoint.dayDependent, D-055)', () => {
+  const DAILY: Endpoint = { ...PI, id: 'docs', dayDependent: true }
+
+  test('an unchanged body is parsed again on the first poll of a new Eastern day, and only then', async () => {
+    const body = docsBody(DOCS)
+    const { clock, deps, src } = setup(DAILY, [ok(body), ok(body), ok(body), ok(body)])
+    clock.t = Date.parse('2026-10-05T03:58:00Z') // Sun 23:58 EDT
+    await pollOnce(deps)
+    expect(src.parseCalls()).toBe(1)
+    clock.t += MIN // Sun 23:59 EDT: same day, same body
+    expect((await pollOnce(deps))[0]!.result).toMatchObject({ health: 'not_modified' })
+    expect(src.parseCalls()).toBe(1)
+    clock.t += MIN // Mon 00:00 EDT: same body, new Eastern day
+    expect((await pollOnce(deps))[0]!.result).toMatchObject({ health: 'ok', inserted: 0 })
+    expect(src.parseCalls()).toBe(2)
+    clock.t += MIN
+    expect((await pollOnce(deps))[0]!.result).toMatchObject({ health: 'not_modified' })
+    expect(src.parseCalls()).toBe(2)
+  })
+
+  test('an endpoint that is not day-dependent is not parsed again at midnight Eastern', async () => {
+    const body = docsBody(DOCS)
+    const { clock, deps, src } = setup(PI, [ok(body), ok(body)])
+    clock.t = Date.parse('2026-10-05T03:59:00Z')
+    await pollOnce(deps)
+    clock.t += MIN
+    expect((await pollOnce(deps))[0]!.result).toMatchObject({ health: 'not_modified' })
+    expect(src.parseCalls()).toBe(1)
+  })
+})
