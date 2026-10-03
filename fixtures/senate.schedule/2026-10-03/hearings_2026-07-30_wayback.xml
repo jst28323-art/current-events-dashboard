@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?><css_meetings_scheduled>
+  <meeting>
+    <identifier>338684</identifier>
+    <last_update>07-29-2026 04:36:25 PM</last_update>
+    <last_update_iso_8601>2026-07-29T16:36:25.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSHR00</cmte_code>
+    <committee>Health, Education, Labor, and Pensions</committee>
+    <type>Open Business Meeting</type>
+    <date>30-JUL-2026 09:45 AM</date>
+    <date_iso_8601>2026-07-30</date_iso_8601>
+    <day_of_week>Thursday</day_of_week>
+    <time>09:45 AM</time>
+    <time_iso_8601>09:45:00</time_iso_8601>
+    <room>SD-430</room>
+    <video_url>https://www.senate.gov/isvp/?comm=help&amp;filename=help072926</video_url>
+    <senate_cable_channel> 18.1</senate_cable_channel>
+    <Documents>
+      <AssociatedDocument congress="119" document_description="Keith Sonderling, of Florida, to be Secretary of Labor, vice Lori Chavez-DeRemer, resigned." document_num="1129" document_prefix="PN" partition="0 "/>
+      <AssociatedDocument congress="119" document_description="Erica Schwartz, of Florida, to be Director of the Centers for Disease Control and Prevention, vice Susan Monarez." document_num="932" document_prefix="PN" partition="0 "/>
+      <AssociatedDocument congress="119" document_description="Sean Kaufman, of Georgia, to be Assistant Secretary for Preparedness and Response, Department of Health and Human Services, vice Dawn Myers O'Connell, resigned." document_num="937" document_prefix="PN" partition="03"/>
+      <AssociatedDocument congress="119" document_description="A bill to establish a postsecondary student data system." document_num="2511" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to amend the Individuals with Disabilities Education Act to improve provisions relating to dyslexia, and for other purposes." document_num="3010" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to provide additional protections with respect to health information, and for other purposes." document_num="3097" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to modify the eligibility requirements and account contribution maximum for pension-linked emergency savings accounts, and for other purposes." document_num="3333" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to amend the Higher Education Act of 1965 to provide students with disabilities and their families with access to critical information needed to select the right college and succeed once enrolled." document_num="3589" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to establish that a State-based education loan program is excluded from certain requirements relating to a preferred lender arrangement." document_num="4097" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to strengthen literacy outcomes for all students, to amend the comprehensive literacy State development grant program, and to ensure Federal accountability and investment in research, teacher preparation, and evidence-based instruction aligned with the science of reading." document_num="4689" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to amend the Railroad Retirement Act of 1974 to establish a Railroad Retirement Board Administrative Account, and for other purposes." document_num="4965" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to prohibit the transfer of the functions of the Office of Special Education and Rehabilitative Services." document_num="5038" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to prohibit the transfer of certain offices and functions of the Department of Education to other Federal agencies, and for other purposes." document_num="5046" document_prefix="SN"/>
+    </Documents>
+    <matter>Business meeting to consider S.5038, to prohibit the transfer of the functions of the Office of Special Education and Rehabilitative Services, S.5046, to prohibit the transfer of certain offices and functions of the Department of Education to other Federal agencies, S.2511, to establish a postsecondary student data system, S.3010, to amend the Individuals with Disabilities Education Act to improve provisions relating to dyslexia, S.3589, to amend the Higher Education Act of 1965 to provide students with disabilities and their families with access to critical information needed to select the right college and succeed once enrolled, S.4097, to establish that a State-based education loan program is excluded from certain requirements relating to a preferred lender arrangement, S.4689, to strengthen literacy outcomes for all students, to amend the comprehensive literacy State development grant program, and to ensure Federal accountability and investment in research, teacher preparation, and evidence-based instruction aligned with the science of reading, S.3333, to modify the eligibility requirements and account contribution maximum for pension-linked emergency savings accounts, S.4965, to amend the Railroad Retirement Act of 1974 to establish a Railroad Retirement Board Administrative Account, S.3097, to provide additional protections with respect to health information, and the nominations of Erica Schwartz, of Florida, to be Director of the Centers for Disease Control and Prevention, Sean Kaufman, of Georgia, to be Assistant Secretary for Preparedness and Response, Department of Health and Human Services, and Keith Sonderling, of Florida, to be Secretary of Labor.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338689</identifier>
+    <last_update>07-29-2026 04:34:15 PM</last_update>
+    <last_update_iso_8601>2026-07-29T16:34:15.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSCM34</cmte_code>
+    <committee>Commerce, Science, and Transportation</committee>
+    <sub_cmte>Telecommunications and Media Subcommittee</sub_cmte>
+    <type>Open Hearing</type>
+    <date>30-JUL-2026 10:00 AM</date>
+    <date_iso_8601>2026-07-30</date_iso_8601>
+    <day_of_week>Thursday</day_of_week>
+    <time>10:00 AM</time>
+    <time_iso_8601>10:00:00</time_iso_8601>
+    <room>SR-253</room>
+    <video_url>https://www.senate.gov/isvp/?comm=commerce&amp;filename=commerce073026</video_url>
+    <senate_cable_channel> 13.1</senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine intelligent networks, focusing on powering artificial intelligence and transforming communications.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338694</identifier>
+    <last_update>07-29-2026 04:34:35 PM</last_update>
+    <last_update_iso_8601>2026-07-29T16:34:35.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSFI00</cmte_code>
+    <committee>Finance</committee>
+    <type>Open Business Meeting</type>
+    <date>30-JUL-2026 10:00 AM</date>
+    <date_iso_8601>2026-07-30</date_iso_8601>
+    <day_of_week>Thursday</day_of_week>
+    <time>10:00 AM</time>
+    <time_iso_8601>10:00:00</time_iso_8601>
+    <room>SD-215</room>
+    <video_url>https://www.senate.gov/isvp/?comm=finance&amp;filename=finance073026</video_url>
+    <senate_cable_channel> 16.1</senate_cable_channel>
+    <Documents/>
+    <matter>Business meeting to consider an original bill entitled, "Taxpayer Assistance and Service Act".</matter>
+  </meeting>
+  <meeting>
+    <identifier>338688</identifier>
+    <last_update>07-29-2026 05:18:47 PM</last_update>
+    <last_update_iso_8601>2026-07-29T17:18:47.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSFR00</cmte_code>
+    <committee>Foreign Relations</committee>
+    <type>Open Hearing</type>
+    <date>30-JUL-2026 10:30 AM</date>
+    <date_iso_8601>2026-07-30</date_iso_8601>
+    <day_of_week>Thursday</day_of_week>
+    <time>10:30 AM</time>
+    <time_iso_8601>10:30:00</time_iso_8601>
+    <room>SD-419</room>
+    <video_url>https://www.senate.gov/isvp/?comm=foreign&amp;filename=foreign073036</video_url>
+    <senate_cable_channel> 17.1</senate_cable_channel>
+    <Documents>
+      <AssociatedDocument congress="119" document_description="Jennifer Johnson-Carroll, of Florida, to be Ambassador Extraordinary and Plenipotentiary of the United States of America to the Republic of Trinidad and Tobago." document_num="1022" document_prefix="PN" partition="18"/>
+      <AssociatedDocument congress="119" document_description="Rebekah Jurata, of California, to be United States Executive Director of the International Monetary Fund for a term of two years, vice Margrethe Lundsager, resigned." document_num="1098" document_prefix="PN" partition="05"/>
+      <AssociatedDocument congress="119" document_description="Sarah B. Rogers, of New York, to be Chief Executive Officer of the United States Agency for Global Media, vice Amanda Bennett, resigned." document_num="874" document_prefix="PN"/>
+    </Documents>
+    <matter>Hearings to examine the nominations of Sarah B. Rogers, of New York, to be Chief Executive Officer of the United States Agency for Global Media, Rebekah Jurata, of California, to be United States Executive Director of the International Monetary Fund, and Jennifer Johnson-Carroll, of Florida, to be Ambassador to the Republic of Trinidad and Tobago, Department of State.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338692</identifier>
+    <last_update>07-27-2026 04:55:55 PM</last_update>
+    <last_update_iso_8601>2026-07-27T16:55:55.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>JCSE00</cmte_code>
+    <committee>Commission on Security and Cooperation in Europe</committee>
+    <type>Open Hearing</type>
+    <date>30-JUL-2026 02:00 PM</date>
+    <date_iso_8601>2026-07-30</date_iso_8601>
+    <day_of_week>Thursday</day_of_week>
+    <time>02:00 PM</time>
+    <time_iso_8601>14:00:00</time_iso_8601>
+    <room>CHOB-210</room>
+    <video_url>https://www.senate.gov/isvp/?comm=csce&amp;filename=csce073026</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>To receive a briefing on Russia's exploitation and engagement in Africa.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338693</identifier>
+    <last_update>07-27-2026 05:45:51 PM</last_update>
+    <last_update_iso_8601>2026-07-27T17:45:51.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSBU00</cmte_code>
+    <committee>Budget</committee>
+    <type>Open Hearing</type>
+    <date>04-AUG-2026 10:00 AM</date>
+    <date_iso_8601>2026-08-04</date_iso_8601>
+    <day_of_week>Tuesday</day_of_week>
+    <time>10:00 AM</time>
+    <time_iso_8601>10:00:00</time_iso_8601>
+    <room>SD-608</room>
+    <video_url>https://www.senate.gov/isvp/?comm=budget&amp;filename=budget080426</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine the reality of Medicaid.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338695</identifier>
+    <last_update>07-28-2026 04:06:06 PM</last_update>
+    <last_update_iso_8601>2026-07-28T16:06:06.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSFI10</cmte_code>
+    <committee>Finance</committee>
+    <sub_cmte>Health Care Subcommittee</sub_cmte>
+    <type>Open Hearing</type>
+    <date>04-AUG-2026 10:00 AM</date>
+    <date_iso_8601>2026-08-04</date_iso_8601>
+    <day_of_week>Tuesday</day_of_week>
+    <time>10:00 AM</time>
+    <time_iso_8601>10:00:00</time_iso_8601>
+    <room>SD-215</room>
+    <video_url>https://www.senate.gov/isvp/?comm=finance&amp;filename=finance080426</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine building a resilient health care future with biotechnology.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338696</identifier>
+    <last_update>07-28-2026 04:19:45 PM</last_update>
+    <last_update_iso_8601>2026-07-28T16:19:45.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSJU00</cmte_code>
+    <committee>Judiciary</committee>
+    <type>Open Hearing</type>
+    <date>04-AUG-2026 10:15 AM</date>
+    <date_iso_8601>2026-08-04</date_iso_8601>
+    <day_of_week>Tuesday</day_of_week>
+    <time>10:15 AM</time>
+    <time_iso_8601>10:15:00</time_iso_8601>
+    <room>SH-216</room>
+    <video_url>https://www.senate.gov/isvp/?comm=judiciary&amp;filename=judiciary080426</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine prescribing sunshine, focusing on how competition and transparency lowers prescription drug costs.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338698</identifier>
+    <last_update>07-28-2026 05:33:31 PM</last_update>
+    <last_update_iso_8601>2026-07-28T17:33:31.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSJU22</cmte_code>
+    <committee>Judiciary</committee>
+    <sub_cmte>Crime and Counterterrorism Subcommittee</sub_cmte>
+    <type>Open Hearing</type>
+    <date>04-AUG-2026 02:30 PM</date>
+    <date_iso_8601>2026-08-04</date_iso_8601>
+    <day_of_week>Tuesday</day_of_week>
+    <time>02:30 PM</time>
+    <time_iso_8601>14:30:00</time_iso_8601>
+    <room>SD-226</room>
+    <video_url>https://www.senate.gov/isvp/?comm=judiciary&amp;filename=judiciary080426</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine data and profit, focusing on the consumer cost of AI surveillance pricing.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338697</identifier>
+    <last_update>07-28-2026 04:33:14 PM</last_update>
+    <last_update_iso_8601>2026-07-28T16:33:14.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SLIA00</cmte_code>
+    <committee>Indian Affairs</committee>
+    <type>Open Hearing</type>
+    <date>04-AUG-2026 04:00 PM</date>
+    <date_iso_8601>2026-08-04</date_iso_8601>
+    <day_of_week>Tuesday</day_of_week>
+    <time>04:00 PM</time>
+    <time_iso_8601>16:00:00</time_iso_8601>
+    <room>SD-628</room>
+    <video_url>https://www.senate.gov/isvp/?comm=indian&amp;filename=indian080426</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine tracking prediction markets' exponential growth, focusing on tribal implications and beyond.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338704</identifier>
+    <last_update>07-29-2026 07:12:38 PM</last_update>
+    <last_update_iso_8601>2026-07-29T19:12:38.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSCM00</cmte_code>
+    <committee>Commerce, Science, and Transportation</committee>
+    <type>Open Business Meeting</type>
+    <date>05-AUG-2026 10:00 AM</date>
+    <date_iso_8601>2026-08-05</date_iso_8601>
+    <day_of_week>Wednesday</day_of_week>
+    <time>10:00 AM</time>
+    <time_iso_8601>10:00:00</time_iso_8601>
+    <room>SR-253</room>
+    <video_url>https://www.senate.gov/isvp/?comm=commerce&amp;filename=commerce080526</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents>
+      <AssociatedDocument congress="119" document_description="The following named officer of the Coast Guard Permanent Commissioned Teaching Staff for appointment in the United States Coast Guard to the grade indicated under title 14, U.S.C., section 1943: James C. Meyers, to be Lieutenant Commander" document_num="1174" document_prefix="PN"/>
+      <AssociatedDocument congress="119" document_description="Coast Guard Promotion List: 2 nominees beginning with AARON J. CASAVANT" document_num="1175" document_prefix="PN"/>
+      <AssociatedDocument congress="119" document_description="Coast Guard Promotion List: 2 nominees beginning with CAROLINE M. JENKINS" document_num="1176" document_prefix="PN"/>
+      <AssociatedDocument congress="119" document_description="A bill to protect the safety of children on the internet." document_num="1748" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to require entities that make artificial intelligence chatbots available to minors to implement certain safe design features, and for other purposes." document_num="4199" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to require the creation of family accounts for children to be able to use artificial intelligence chatbots, to require verifiable parental consent for teens using artificial intelligence chatbots, and for other purposes." document_num="4407" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to require a study of AI-enabled toys and development of a joint action plan regarding the marketing and sale of AI-enabled toys." document_num="5171" document_prefix="SN"/>
+      <AssociatedDocument congress="119" document_description="A bill to require certain interactive computer services to adopt and operate technology verification measures to ensure that users of the platform are not minors, and for other purposes." document_num="737" document_prefix="SN"/>
+    </Documents>
+    <matter>Business meeting to markup S.737, to require certain interactive computer services to adopt and operate technology verification measures to ensure that users of the platform are not minors, S.1748, to protect the safety of children on the internet, S.4199, to require entities that make artificial intelligence chatbots available to minors to implement certain safe design features, S.4407, to require the creation of family accounts for children to be able to use artificial intelligence chatbots, to require verifiable parental consent for teens using artificial intelligence chatbots, S.5171, to require a study of AI-enabled toys and development of a joint action plan regarding the marketing and sale of AI-enabled toys, and a promotion list in the Coast Guard.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338701</identifier>
+    <last_update>07-29-2026 05:05:10 PM</last_update>
+    <last_update_iso_8601>2026-07-29T17:05:10.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSFI00</cmte_code>
+    <committee>Finance</committee>
+    <type>Open Hearing</type>
+    <date>05-AUG-2026 10:00 AM</date>
+    <date_iso_8601>2026-08-05</date_iso_8601>
+    <day_of_week>Wednesday</day_of_week>
+    <time>10:00 AM</time>
+    <time_iso_8601>10:00:00</time_iso_8601>
+    <room>SD-215</room>
+    <video_url>https://www.senate.gov/isvp/?comm=finance&amp;filename=finance080526</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine exploring process approaches for addressing Social Security solvency.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338702</identifier>
+    <last_update>07-29-2026 05:31:32 PM</last_update>
+    <last_update_iso_8601>2026-07-29T17:31:32.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSFR00</cmte_code>
+    <committee>Foreign Relations</committee>
+    <type>Open Hearing</type>
+    <date>05-AUG-2026 10:00 AM</date>
+    <date_iso_8601>2026-08-05</date_iso_8601>
+    <day_of_week>Wednesday</day_of_week>
+    <time>10:00 AM</time>
+    <time_iso_8601>10:00:00</time_iso_8601>
+    <room>SD-419</room>
+    <video_url>https://www.senate.gov/isvp/?comm=foreign&amp;filename=foreign080526</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine pending nominations.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338700</identifier>
+    <last_update>07-29-2026 02:23:31 PM</last_update>
+    <last_update_iso_8601>2026-07-29T14:23:31.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSJU00</cmte_code>
+    <committee>Judiciary</committee>
+    <type>Open Hearing</type>
+    <date>05-AUG-2026 10:15 AM</date>
+    <date_iso_8601>2026-08-05</date_iso_8601>
+    <day_of_week>Wednesday</day_of_week>
+    <time>10:15 AM</time>
+    <time_iso_8601>10:15:00</time_iso_8601>
+    <room>SH-216</room>
+    <video_url>https://www.senate.gov/isvp/?comm=xxxx&amp;filename=xxxx080526</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine pending nominations.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338705</identifier>
+    <last_update>07-29-2026 08:26:25 PM</last_update>
+    <last_update_iso_8601>2026-07-29T20:26:25.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSJU25</cmte_code>
+    <committee>Judiciary</committee>
+    <sub_cmte>Federal Courts, Oversight, Agency Action, and Federal Rights</sub_cmte>
+    <type>Open Hearing</type>
+    <date>05-AUG-2026 02:30 PM</date>
+    <date_iso_8601>2026-08-05</date_iso_8601>
+    <day_of_week>Wednesday</day_of_week>
+    <time>02:30 PM</time>
+    <time_iso_8601>14:30:00</time_iso_8601>
+    <room>SD-226</room>
+    <video_url>https://www.senate.gov/isvp/?comm=judiciary&amp;filename=judiciary080526</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine the Muslim brotherhood network in America.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338699</identifier>
+    <last_update>07-29-2026 12:01:00 PM</last_update>
+    <last_update_iso_8601>2026-07-29T12:01:00.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSSB00</cmte_code>
+    <committee>Small Business and Entrepreneurship</committee>
+    <type>Open Hearing</type>
+    <date>05-AUG-2026 02:30 PM</date>
+    <date_iso_8601>2026-08-05</date_iso_8601>
+    <day_of_week>Wednesday</day_of_week>
+    <time>02:30 PM</time>
+    <time_iso_8601>14:30:00</time_iso_8601>
+    <room>SR-428A</room>
+    <video_url>https://www.senate.gov/isvp/?comm=smbiz&amp;filename=smbiz080526</video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>Hearings to examine the next 250, focusing on small businesses leading the way.</matter>
+  </meeting>
+  <meeting>
+    <identifier>338703</identifier>
+    <last_update>07-29-2026 07:03:26 PM</last_update>
+    <last_update_iso_8601>2026-07-29T19:03:26.000000Z-04:00</last_update_iso_8601>
+    <cmte_code>SSFR00</cmte_code>
+    <committee>Foreign Relations</committee>
+    <type>Closed Hearing</type>
+    <date>05-AUG-2026 03:00 PM</date>
+    <date_iso_8601>2026-08-05</date_iso_8601>
+    <day_of_week>Wednesday</day_of_week>
+    <time>03:00 PM</time>
+    <time_iso_8601>15:00:00</time_iso_8601>
+    <room>SVC-217</room>
+    <video_url>
+    </video_url>
+    <senate_cable_channel>
+    </senate_cable_channel>
+    <Documents/>
+    <matter>To receive a closed briefing update on the war in Sudan.</matter>
+  </meeting>
+</css_meetings_scheduled>
