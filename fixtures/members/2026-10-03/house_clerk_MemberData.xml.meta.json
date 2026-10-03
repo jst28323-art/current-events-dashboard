@@ -1,0 +1,27 @@
+{
+  "source_id": "members",
+  "url": "https://clerk.house.gov/xml/lists/MemberData.xml",
+  "final_url": "https://clerk.house.gov/xml/lists/MemberData.xml",
+  "fetched_at": "2026-10-03T14:23:38.953Z",
+  "status": 200,
+  "elapsed_ms": 246,
+  "bytes": 557203,
+  "sha256": "01833c6c646873b2247950e8ab9c7ecc2c57fd2bf019d1014bd64a58b496ed3d",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "max-age=0, no-cache, no-store",
+    "content-encoding": "gzip",
+    "content-type": "text/xml",
+    "date": "Sat, 03 Oct 2026 14:23:37 GMT",
+    "etag": "\"4be8bb355250dd1:0\"",
+    "expires": "Sat, 03 Oct 2026 14:23:37 GMT",
+    "last-modified": "Tue, 29 Sep 2026 20:36:31 GMT",
+    "pragma": "no-cache",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "vary": "Accept-Encoding"
+  }
+}
