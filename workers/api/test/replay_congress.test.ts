@@ -3,8 +3,8 @@
 // replayTwice / expectNoDuplicates pattern of replay.test.ts. Tests may import the fixture-only modules; workers/api/src
 // may not (packages/adapters/test/live_list.test.ts).
 //
-// Each case is SKIPPED while its adapter is still the foundation stub (its parse answers drift "adapter not built yet"),
-// so this file lands with the foundation and its cases switch on as the stage-2 builders replace the stubs. Vote events
+// Every case is ACTIVE (stage 3 integration): the foundation's skip-on-stub guards are gone, and a separate test fails
+// if any of the five adapters is (or reverts to) the foundation stub, so no case can silently skip again. Vote events
 // are checked with validateVoteEvent before ingest (the Hub itself still runs the unchanged v0.1 validateEvent).
 // Fixtures are bundled with Vite's ?raw (workerd tests have no host disk); fixtures are never edited: variants are made
 // in memory.
@@ -117,14 +117,14 @@ describe('P2.1 goldens through the Hub: re-ingesting creates no duplicates and d
     { def: senatePressgallery, endpoint: 'daily_posts', name: '2026-10-03/dailypress_posts_newest3_fields.json', meta: galleryMeta as Meta, body: galleryBody },
   ]
   for (const c of CASES) {
-    test.skipIf(isStub(c.def))(`${c.def.source_id} ${c.name}`, async () => {
+    test(`${c.def.source_id} ${c.name}`, async () => {
       expectNoDuplicates(await replayTwice(c.def, c.endpoint, c.meta, c.body, c.url))
     })
   }
 })
 
 describe('P2.1 revisions and repeats through the Hub', () => {
-  test.skipIf(isStub(houseClerkFloor))('20261001.xml then its regenerated copy (only <pubDate> differs): nothing new', async () => {
+  test('20261001.xml then its regenerated copy (only <pubDate> differs): nothing new', async () => {
     const hub = freshHub()
     const t0 = Date.parse(day1001Meta.fetched_at)
     const t1 = Math.max(Date.parse(day1001RegenMeta.fetched_at), t0 + MIN)
@@ -134,7 +134,7 @@ describe('P2.1 revisions and repeats through the Hub', () => {
       .toMatchObject({ inserted: 0, revised: 0, merged: 0 })
   })
 
-  test.skipIf(isStub(senateSchedule))('hearings 07-25 then 07-30: 338684, 338688 and 338689 are revised (3 revisions)', async () => {
+  test('hearings 07-25 then 07-30: 338684, 338688 and 338689 are revised (3 revisions)', async () => {
     const hub = freshHub()
     const t0 = Date.parse(hear0725Meta.fetched_at)
     const t1 = Math.max(Date.parse(hear0730Meta.fetched_at), t0 + MIN)
@@ -147,7 +147,7 @@ describe('P2.1 revisions and repeats through the Hub', () => {
     expect(revised).toEqual(['hearing:senate:338684', 'hearing:senate:338688', 'hearing:senate:338689'])
   })
 
-  test.skipIf(isStub(houseClerkVotes))('a House roll, then the same roll with a changed vote-desc: 1 revision', async () => {
+  test('a House roll, then the same roll with a changed vote-desc: 1 revision', async () => {
     const hub = freshHub()
     const t0 = Date.parse(roll314Meta.fetched_at)
     const changed = roll314Body.replace('<vote-desc>Retire through Ownership Act</vote-desc>', '<vote-desc>Retire through Ownership Act (corrected)</vote-desc>')
@@ -158,7 +158,7 @@ describe('P2.1 revisions and repeats through the Hub', () => {
       .toMatchObject({ health: 'ok', inserted: 0, revised: 1 })
   })
 
-  test.skipIf(isStub(houseClerkFloor))('20260103.xml (its convene date is repeated in the file): accepted, ONE scheduled_convene row', async () => {
+  test('20260103.xml (its convene date is repeated in the file): accepted, ONE scheduled_convene row', async () => {
     const hub = freshHub()
     const t0 = Date.parse(day0103Meta.fetched_at)
     const a = await record(hub, houseClerkFloor, 'day', response(day0103Meta as Meta, day0103Body, t0), t0)
@@ -167,7 +167,7 @@ describe('P2.1 revisions and repeats through the Hub', () => {
     expect(conv.map((e) => e.dedup_key)).toEqual(['floor_day:house:2026-01-06#scheduled_convene'])
   })
 
-  test.skipIf(isStub(houseClerkFloor))('20250103.xml (Congress 119:118 split, whole-file scan): accepted', async () => {
+  test('20250103.xml (Congress 119:118 split, whole-file scan): accepted', async () => {
     const hub = freshHub()
     const t0 = Date.parse(day20250103Meta.fetched_at)
     const a = await record(hub, houseClerkFloor, 'day', response(day20250103Meta as Meta, day20250103Body, t0), t0)
@@ -177,7 +177,13 @@ describe('P2.1 revisions and repeats through the Hub', () => {
 })
 
 describe('the foundation stub itself', () => {
-  test('ADAPTER_NOT_BUILT is the stub marker this file keys on', () => {
+  test('ADAPTER_NOT_BUILT is the stub marker isStub keys on', () => {
     expect(ADAPTER_NOT_BUILT).toBe('adapter not built yet')
+  })
+
+  test('no P2.1 adapter is still the foundation stub (every case above is active)', () => {
+    const stubs = [houseClerkVotes, senateLisVotes, houseClerkFloor, senateSchedule, senatePressgallery]
+      .filter(isStub).map((d) => d.source_id)
+    expect(stubs).toEqual([])
   })
 })

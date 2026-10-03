@@ -188,13 +188,15 @@ describe('joins and cross-checks (bare id scans; no vote parser needed)', () => 
   })
   test('House roll 2026-090: four former members resolve only through the departed seed', () => {
     const ids = houseIds('members', '2026-10-03', 'house_roll_2026_090_departed_members_and_party_change.xml')
-    const withoutSeed = ids.filter((id) => makeLookup(okMap(build(current()))).lookupHouse(id) === null)
+    const noSeed = makeLookup(okMap(build(current()))) // built once: rebuilding it per id (~430x) timed out the full run
+    const withoutSeed = ids.filter((id) => noSeed.lookupHouse(id) === null)
     expect(withoutSeed).toHaveLength(4)
     expect(ids.filter((id) => MEMBERS.lookupHouse(id) === null)).toEqual([])
   })
   test('Senate vote 119-2-00063: S293 and S419 resolve only through the departed seed', () => {
     const ids = senateIds('senate_vote_119_2_00063_departed_members_S293_S419.xml')
-    expect(ids.filter((id) => makeLookup(okMap(build(current()))).lookupSenate(id) === null).sort()).toEqual(['S293', 'S419'])
+    const noSeed = makeLookup(okMap(build(current()))) // built once, not per id
+    expect(ids.filter((id) => noSeed.lookupSenate(id) === null).sort()).toEqual(['S293', 'S419'])
     expect(ids.filter((id) => MEMBERS.lookupSenate(id) === null)).toEqual([])
   })
   test('Senate vote 119-2-00193 (99 rows, a vacancy): every id resolves', () => {
