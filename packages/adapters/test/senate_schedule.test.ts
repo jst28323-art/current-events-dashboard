@@ -98,6 +98,20 @@ function setField(body: string, name: string, value: string): string {
   if (!re.test(body)) throw new Error(`no field ${name}`)
   return body.replace(re, `"${name}": "${value}"`)
 }
+/** Meeting 338740 (09-14 copy) moved to another date and time: the ISO fields AND the printed <date>, <time> and
+ * <day_of_week> the file prints beside them (review 483d7ab F7 cross-checks them). */
+function when(m: string, isoDate: string, isoTime: string): string {
+  const [y, mo, d] = isoDate.split('-').map(Number) as [number, number, number]
+  const [h, mi] = isoTime.split(':').map(Number) as [number, number]
+  const MON = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][mo - 1]
+  const clock = `${String(h % 12 === 0 ? 12 : h % 12).padStart(2, '0')}:${String(mi).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`
+  const wd = new Date(Date.UTC(y, mo - 1, d)).toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' })
+  let out = edit(m, '<date_iso_8601>2026-09-15</date_iso_8601>', `<date_iso_8601>${isoDate}</date_iso_8601>`)
+  out = edit(out, '<time_iso_8601>09:00:00</time_iso_8601>', `<time_iso_8601>${isoTime}</time_iso_8601>`)
+  out = edit(out, '<date>15-SEP-2026 09:00 AM</date>', `<date>${String(d).padStart(2, '0')}-${MON}-${y} ${clock}</date>`)
+  out = edit(out, '<time>09:00 AM</time>', `<time>${clock}</time>`)
+  return edit(out, '<day_of_week>Tuesday</day_of_week>', `<day_of_week>${wd}</day_of_week>`)
+}
 /** The floor file with its convene fields (and stream) set to a given wall time; everything else recorded bytes. */
 function floorAt(y: string, mo: string, d: string, h: string, mi: string, stream = `stv${mo}${d}${y.slice(2)}`): FetchedResponse {
   return withBody(floorOct2(), (b) => {
@@ -291,6 +305,12 @@ describe('floor: fail closed (drift, zero events)', () => {
     expectRefused('floor', withBody(floorOct2(), (b) => edit(b, '"conveneMinutes": "00",', '')), 'drift', /conveneMinutes is undefined/)
     expectRefused('floor', withBody(floorOct2(), (b) => edit(b, '"conveneYear": "2026"', '"conveneYear": "26"')), 'drift', /not a 4-digit year/)
     expectRefused('floor', withBody(floorOct2(), (b) => edit(b, '"conveneMonth": "10"', '"conveneMonth": "010"')), 'drift', /not 1-2 digits/)
+  })
+
+  test('review 483d7ab F6: the floor JSON keys are a closed set (an unseen status key is drift, never a scheduled convene)', () => {
+    expectRefused('floor', withBody(floorOct2(), (b) => edit(b, '"conveneYear": "2026",', '"conveneStatus": "CANCELLED", "conveneYear": "2026",')), 'drift', /floorProceedings\[0\] has a key we never recorded: conveneStatus/)
+    expectRefused('floor', withBody(floorOct2(), (b) => edit(b, '"outSessionImage": "/floor/graphics/640_360_out.jpg",', '')), 'drift', /floorProceedings\[0\] lacks the recorded key outSessionImage/)
+    expectRefused('floor', withBody(floorOct2(), (b) => edit(b, '"floorProceedings": [', '"notice": "The Senate will not convene", "floorProceedings": [')), 'drift', /the JSON root has a key we never recorded: notice/)
   })
 
   test('lastUpdated malformed or missing = drift', () => {
@@ -489,9 +509,9 @@ describe('hearings: non-default rows', () => {
   })
 
   test('meeting time across the fall-back: 2026-11-02 16:30 -> 21:30Z; ambiguous 2026-11-01 01:30 -> null + time_note', () => {
-    const late = patchMeeting(hearingsWeek(), 338740, (m) => edit(edit(m, '<date_iso_8601>2026-09-15</date_iso_8601>', '<date_iso_8601>2026-11-02</date_iso_8601>'), '<time_iso_8601>09:00:00</time_iso_8601>', '<time_iso_8601>16:30:00</time_iso_8601>'))
+    const late = patchMeeting(hearingsWeek(), 338740, (m) => when(m, '2026-11-02', '16:30:00'))
     expect(byId(parseOk('hearings', late), 338740).times.scheduled_for).toBe('2026-11-02T21:30:00Z')
-    const amb = patchMeeting(hearingsWeek(), 338740, (m) => edit(edit(m, '<date_iso_8601>2026-09-15</date_iso_8601>', '<date_iso_8601>2026-11-01</date_iso_8601>'), '<time_iso_8601>09:00:00</time_iso_8601>', '<time_iso_8601>01:30:00</time_iso_8601>'))
+    const amb = patchMeeting(hearingsWeek(), 338740, (m) => when(m, '2026-11-01', '01:30:00'))
     const out = parseOk('hearings', amb)
     const e = byId(out, 338740)
     expect(e.times.scheduled_for).toBeNull()
@@ -596,6 +616,29 @@ describe('hearings: fail closed (drift, zero events)', () => {
     expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<room>SD-215</room>', '<room>SD-215</room> POSTPONED')), 'drift', /unexpected content "POSTPONED"/)
     expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<room>SD-215</room>', '<room>SD-215</room><!-- moved -->')), 'drift', /unexpected content "<!-- moved -->"/)
     expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<room>SD-215</room>', '<room>SD-215')), 'drift', /unexpected content "<room>SD-215/)
+  })
+
+  test('review 483d7ab F6: attributes on <meeting> or on a child (a possible cancellation marker) = drift', () => {
+    expectRefused('hearings', withBody(hearingsWeek(), (b) => b.replace(/<meeting>(\s*<identifier>338741<)/, '<meeting status="Cancelled">$1')), 'drift', /meeting \d+: the open tag is <meeting status="Cancelled">, not <meeting>/)
+    expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<type>Open Hearing</type>', '<type status="Postponed">Open Hearing</type>')), 'drift', /<type> carries attributes \(status="Postponed"\)/)
+    expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<Documents/>', '<Documents status="x"/>')), 'drift', /<Documents> carries attributes/)
+    expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<room>SD-215</room>', '<room><s>SD-215</s> SD-106</room>')), 'drift', /markup inside <room>/)
+  })
+
+  test('review 483d7ab F7 / time F5: date_iso_8601 and time_iso_8601 agree with the printed <date>, <time> and <day_of_week>', () => {
+    const p = (f: (m: string) => string) => patchMeeting(hearingsWeek(), 338740, f)
+    expectRefused('hearings', p((m) => edit(m, '<time_iso_8601>09:00:00</time_iso_8601>', '<time_iso_8601>21:00:00</time_iso_8601>')), 'drift', /id 338740\): time_iso_8601 21:00:00 disagrees with <time> "09:00 AM"/)
+    expectRefused('hearings', p((m) => edit(m, '<time_iso_8601>09:00:00</time_iso_8601>', '<time_iso_8601>00:00:00</time_iso_8601>')), 'drift', /disagrees with <time> "09:00 AM"/)
+    expectRefused('hearings', p((m) => edit(m, '<time_iso_8601>09:00:00</time_iso_8601>', '<time_iso_8601>09:00:30</time_iso_8601>')), 'drift', /disagrees with <time>/)
+    expectRefused('hearings', p((m) => edit(m, '<date_iso_8601>2026-09-15</date_iso_8601>', '<date_iso_8601>2026-09-16</date_iso_8601>')), 'drift', /date_iso_8601 2026-09-16 09:00 disagrees with <date> "15-SEP-2026 09:00 AM"/)
+    expectRefused('hearings', p((m) => edit(m, '<day_of_week>Tuesday</day_of_week>', '<day_of_week>Wednesday</day_of_week>')), 'drift', /<day_of_week> "Wednesday" is not the weekday of 2026-09-15 \(Tuesday\)/)
+    expectRefused('hearings', p((m) => edit(m, '<time>09:00 AM</time>', '<time>9 AM</time>')), 'drift', /<time> "9 AM" is not "hh:mm AM\|PM"/)
+  })
+
+  test('review 483d7ab F11: an entity we do not decode in room, subcommittee or cable channel = drift (every published field)', () => {
+    expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<room>SD-215</room>', '<room>SD&nbsp;215</room>')), 'drift', /entity we do not decode/)
+    expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<senate_cable_channel>\n    </senate_cable_channel>', '<senate_cable_channel>Ch&nbsp;2</senate_cable_channel>')), 'drift', /entity we do not decode/)
+    expectRefused('hearings', patchMeeting(hearingsWeek(), 338741, (m) => edit(m, '<committee>Finance</committee>', '<committee>Finance</committee><sub_cmte>Taxation&mdash;IRS</sub_cmte>')), 'drift', /entity we do not decode/)
   })
 
   test('bad cmte_code, empty committee, empty matter, unknown entity = drift', () => {

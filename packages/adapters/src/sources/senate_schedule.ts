@@ -8,7 +8,7 @@
 // which meetings are missing). Every rule below says which fixture it rests on.
 import { finalizeEvent, type CedEvent } from '@ced/schema'
 import type { AdapterOutput, FetchedResponse, HealthSignal, HealthStatus, SourceDefinition } from '../types.js'
-import { easternToUtc, fmtClock12, fmtWeekdayMonthDay, isoZ, isRealDate, ymd } from '../lib/eastern.js'
+import { easternToUtc, fmtClock12, fmtWeekdayMonthDay, hour24, isoZ, isRealDate, weekdayOf, ymd } from '../lib/eastern.js'
 import { attrsOf, blocks, collapseWs, endsWithClose, hasUnknownEntity, innerText, rootName } from '../lib/xmlscan.js'
 
 export const SOURCE_ID = 'senate.schedule'
@@ -57,6 +57,11 @@ function prelude(endpoint: string, res: FetchedResponse, want: 'json' | 'xml'): 
 // ---------------------------------------------------------------------------------------------------------------------
 
 const CONVENE_FIELDS = ['conveneYear', 'conveneMonth', 'conveneDay', 'conveneHour', 'conveneMinutes'] as const
+/** Every key of the one floorProceedings entry, identical in all recorded copies (2026-10-02, 09-30, 02-04; scout). */
+const FLOOR_ENTRY_KEYS: readonly string[] = [
+  'coveneOffsetMinutes', ...CONVENE_FIELDS, 'convenedSessionLink', 'convenedSessionDescription', 'convenedSessionStream',
+  'outSessionLink', 'outSessionDescription', 'outSessionImage', 'lastUpdated',
+]
 // lastUpdated always carries the literal offset -05:00, even in summer (2026-10-02 and 2026-09-30 copies) and winter
 // (2026-02-04 copy): read as written, it is a correct instant all year, so it is parsed WITH its own offset (§1.3).
 const LAST_UPDATED = /^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)([+-])(\d\d):(\d\d)$/
@@ -95,6 +100,10 @@ function floorEvent(p: Record<string, unknown>, res: FetchedResponse): CedEvent 
   const lu = p.lastUpdated
   const published = typeof lu === 'string' ? parseOffsetMinuteTime(lu) : null
   if (published === null) return `lastUpdated ${JSON.stringify(lu)} is not YYYY-MM-DDTHH:MM±HH:MM`
+  // The entry's keys are a closed set (review 483d7ab F6): an unseen key could be a cancellation marker
+  // ("conveneStatus": "CANCELLED"), and publishing the convene as scheduled beside it would be wrong.
+  for (const k of Object.keys(p)) if (!FLOOR_ENTRY_KEYS.includes(k)) return `floorProceedings[0] has a key we never recorded: ${k}`
+  for (const k of FLOOR_ENTRY_KEYS) if (!Object.hasOwn(p, k)) return `floorProceedings[0] lacks the recorded key ${k}`
 
   // Naive Eastern wall time (R-13): nonexistent = drift; ambiguous (the fall-back hour) = null + time_note.
   const et = easternToUtc(y, mo, d, h, mi)
@@ -141,6 +150,8 @@ export function parseFloor(res: FetchedResponse): AdapterOutput {
   if (!Array.isArray(list)) return fail(ep, 'drift', 'no floorProceedings array')
   // Exactly one entry in every recorded copy (4 of 4); two would mean two candidate convenes and we cannot pick.
   if (list.length !== 1) return fail(ep, 'drift', `floorProceedings holds ${list.length} entries, not exactly 1`, list.length)
+  const extra = Object.keys(doc as Record<string, unknown>).find((k) => k !== 'floorProceedings')
+  if (extra !== undefined) return fail(ep, 'drift', `the JSON root has a key we never recorded: ${extra}`, 1)
   const p = list[0]
   if (typeof p !== 'object' || p === null || Array.isArray(p)) return fail(ep, 'drift', 'floorProceedings[0] is not an object', 1)
   const ev = floorEvent(p as Record<string, unknown>, res)
@@ -181,6 +192,10 @@ const TIME_ISO = /^(\d\d):(\d\d):(\d\d)$/
 // `last_update` is Eastern wall clock (09-08-2026 01:12:21 PM). last_update_iso_8601 is ignored: it is malformed
 // (`2026-09-08T13:12:21.000000Z-04:00`, a Z and an offset at once; §1.3).
 const LAST_UPDATE = /^(\d\d)-(\d\d)-(\d{4}) (\d\d):(\d\d):(\d\d) ([AP]M)$/
+// The printed copies of the meeting time: `<date>15-SEP-2026 09:00 AM</date>`, `<time>09:00 AM</time>` (43 of 43).
+const PRINTED_DATE = /^(\d\d)-([A-Z]{3})-(\d{4}) (\d\d:\d\d) ([AP]M)$/
+const PRINTED_TIME = /^(\d\d):(\d\d) ([AP]M)$/
+const MON3 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 // A committee stream link we publish (T7): the ISVP player with a lower-case committee slug and a filename ending in the
 // meeting's MMDDYY. `comm=xxxx` is the site's placeholder (07-30 copy, id 338700).
 const VIDEO = /^https:\/\/www\.senate\.gov\/isvp\/\?comm=([a-z]+)&filename=[a-z]+(\d{6})$/
@@ -189,17 +204,25 @@ const VIDEO = /^https:\/\/www\.senate\.gov\/isvp\/\?comm=([a-z]+)&filename=[a-z]
 type Children = Map<string, string[]>
 // One forward pass over a <meeting> (a meeting's children never nest an element of their own name; <Documents> holds
 // only self-closing <AssociatedDocument/> tags). Cheaper than one scan per field: 1 pass instead of ~30 per meeting.
-const CHILD = /<([A-Za-z_][\w.:-]*)(?:\s[^>]*?)?(?:\/>|>([\s\S]*?)<\/\1\s*>)/g
+const CHILD = /<([A-Za-z_][\w.:-]*)(\s[^>]*?)?(?:\/>|>([\s\S]*?)<\/\1\s*>)/g
 
-/** The children of one meeting; a string = drift reason (text, a comment or an unclosed element between children). */
+/** The children of one meeting; a string = drift reason (text, a comment or an unclosed element between children, an
+ * attribute on a child, or markup inside a text child). No recorded child carries an attribute, and only <Documents>
+ * holds elements (its <AssociatedDocument/> tags, checked in relatedOf): a status carried as an attribute
+ * (`<type status="Postponed">`) or a nested element would otherwise be ignored (review 483d7ab F6). */
 function childrenOf(inner: string): Children | string {
   const out: Children = new Map()
   let last = 0
   for (const m of inner.matchAll(CHILD)) {
     if (inner.slice(last, m.index).trim() !== '') return `unexpected content "${collapseWs(inner.slice(last, m.index)).slice(0, 60)}"`
-    const list = out.get(m[1]!)
-    if (list) list.push(m[2] ?? '')
-    else out.set(m[1]!, [m[2] ?? ''])
+    const name = m[1]!
+    const attrs = (m[2] ?? '').trim()
+    if (attrs !== '') return `<${name}> carries attributes (${attrs.slice(0, 60)}), never recorded`
+    const text = m[3] ?? ''
+    if (name !== 'Documents' && text.includes('<')) return `markup inside <${name}> ("${collapseWs(text).slice(0, 60)}"), never recorded`
+    const list = out.get(name)
+    if (list) list.push(text)
+    else out.set(name, [text])
     last = m.index + m[0].length
   }
   if (inner.slice(last).trim() !== '') return `unexpected content "${collapseWs(inner.slice(last)).slice(0, 60)}"`
@@ -297,6 +320,20 @@ function meetingEvent(c: Children, at: string, res: FetchedResponse, notes: Meet
   const date = ymd(y, mo, d)
   const et = easternToUtc(y, mo, d, h, mi, s)
   if (!et.ok && et.reason !== 'ambiguous') return `${at}: meeting time ${date} ${tm[0]} Eastern is ${et.reason}`
+  // The file prints the same moment three more times; all 43 recorded meetings agree (review 483d7ab F7, time F5). A
+  // disagreement means one of them is wrong and we cannot tell which: drift, never a title at the wrong hour.
+  const printedTime = clean(child(c, 'time'))
+  const pt = PRINTED_TIME.exec(printedTime)
+  const pth = pt ? hour24(Number(pt[1]), pt[3] === 'PM') : null
+  if (!pt || pth === null) return `${at}: <time> "${printedTime}" is not "hh:mm AM|PM"`
+  if (pth !== h || Number(pt[2]) !== mi || s !== 0) return `${at}: time_iso_8601 ${tm[0]} disagrees with <time> "${printedTime}"`
+  const printedDate = clean(child(c, 'date'))
+  const pd = PRINTED_DATE.exec(printedDate)
+  if (!pd || Number(pd[1]) !== d || MON3.indexOf(pd[2]!) + 1 !== mo || Number(pd[3]) !== y || `${pd[4]} ${pd[5]}` !== printedTime) {
+    return `${at}: date_iso_8601 ${date} ${tm[0]!.slice(0, 5)} disagrees with <date> "${printedDate}"`
+  }
+  const dow = clean(child(c, 'day_of_week'))
+  if (dow !== weekdayOf(y, mo, d)) return `${at}: <day_of_week> "${dow}" is not the weekday of ${date} (${weekdayOf(y, mo, d)})`
 
   const lum = LAST_UPDATE.exec(clean(child(c, 'last_update')))
   if (!lum) return `${at}: last_update is not MM-DD-YYYY hh:mm:ss AM`
@@ -332,6 +369,8 @@ function meetingEvent(c: Children, at: string, res: FetchedResponse, notes: Meet
 
   const room = clean(child(c, 'room'))
   const cable = clean(child(c, 'senate_cable_channel'))
+  // Every text we publish, not only matter and committee (review 483d7ab F11: `SH&nbsp;216` reached result.room).
+  if ([room, cable, sub ?? '', typeText].some(hasUnknownEntity)) return `${at}: an entity we do not decode`
   const result: Record<string, unknown> = {
     cmte_code: cmteCode,
     meeting_type: typeText,
@@ -401,6 +440,8 @@ export function parseHearings(res: FetchedResponse): AdapterOutput {
   let placeholders = 0
   for (const [n, b] of scan.blocks.entries()) {
     const at = `meeting ${n + 1}`
+    // Every recorded <meeting> opens bare: `<meeting status="Cancelled">` must not publish as scheduled (review 483d7ab F6).
+    if (b.openTag !== '<meeting>') return fail(ep, 'drift', `${at}: the open tag is ${b.openTag.slice(0, 80)}, not <meeting>`, seen)
     const c = childrenOf(b.inner)
     if (typeof c === 'string') return fail(ep, 'drift', `${at}: ${c}`, seen)
     const unknown = [...c.keys()].filter((x) => !MEETING_CHILDREN.has(x))
