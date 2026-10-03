@@ -1,0 +1,23 @@
+{
+  "source_id": "senate.pressgallery",
+  "url": "https://www.dailypress.senate.gov/feed/",
+  "final_url": "https://www.dailypress.senate.gov/feed/",
+  "fetched_at": "2026-10-03T14:13:52.221Z",
+  "status": 304,
+  "elapsed_ms": 184,
+  "bytes": 0,
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*",
+    "If-Modified-Since": "Thu, 01 Oct 2026 17:03:59 GMT"
+  },
+  "response_headers": {
+    "connection": "keep-alive",
+    "content-type": "application/rss+xml; charset=UTF-8",
+    "date": "Sat, 03 Oct 2026 14:13:51 GMT",
+    "etag": "\"c5b5b54ecbd8d5c2240f2370ee4fd128-gzip\"",
+    "last-modified": "Thu, 01 Oct 2026 17:03:59 GMT",
+    "strict-transport-security": "max-age=31536000"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "source_id": "senate.pressgallery",
+  "url": "https://www.dailypress.senate.gov/wp-json/wp/v2/posts?before=2026-01-10T00:00:00Z&per_page=3&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories",
+  "final_url": "https://www.dailypress.senate.gov/wp-json/wp/v2/posts?before=2026-01-10T00:00:00Z&per_page=3&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories",
+  "fetched_at": "2026-10-03T14:16:06.441Z",
+  "status": 200,
+  "elapsed_ms": 628,
+  "bytes": 18034,
+  "sha256": "1c0007502e7d94ca8f5b211dee7768995cdafa07263be69f240041b9bc16a445",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "access-control-allow-headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+    "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages, Link",
+    "allow": "GET",
+    "connection": "keep-alive",
+    "content-encoding": "gzip",
+    "content-length": "4292",
+    "content-type": "application/json; charset=UTF-8",
+    "date": "Sat, 03 Oct 2026 14:16:05 GMT",
+    "link": "<https://www.dailypress.senate.gov/wp-json/wp/v2/posts?before=2026-01-10T00%3A00%3A00Z&per_page=3&_fields=id%2Cdate%2Cdate_gmt%2Cmodified%2Cmodified_gmt%2Cslug%2Cstatus%2Ctype%2Clink%2Ctitle%2Ccontent%2Ccategories&page=2>; rel=\"next\"",
+    "strict-transport-security": "max-age=31536000",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-robots-tag": "noindex",
+    "x-wp-total": "1704",
+    "x-wp-totalpages": "568"
+  }
+}
