@@ -43,6 +43,7 @@ Anything not granted here is ask-first. When unsure whether an action is covered
 | G-009 | 2026-10-02 | Fire the D-028 cloud routine once today in its smoke mode (reachability check, no commits, no pushes) | one-time | D-031 |
 | G-010 | 2026-10-02 | Deploy the temporary probe Worker `ced-probe` through the same deploy workflow and conditions as G-007; it must stop all outbound requests by itself after 48 cron runs (~24 h) | one-time deploy of the probe (re-deploys of the same probe under G-007 conditions included) | D-032 |
 | G-011 | 2026-10-02 | Create ONE Windows scheduled task on the owner's home PC that runs `scripts/capture_live.mjs` on Mon 2026-10-05 (14:45–16:30 CT; a few small requests a minute, no GPU) and deletes itself afterwards; plus a short same-session test task that proves the scheduler can run it | one-time | D-033 |
+| G-012 | 2026-10-03 | Walk the owner through creating a free Google API key (YouTube Data API v3) next session; the owner adds it as a GitHub Actions secret themselves (it never passes through chat) | one-time, next session | D-093 |
 
 Note (2026-10-02): G-002 was carried out by the owner by hand in the repo's Pages settings, because the local token
 lacked "Administration: write" (`docs/TRAPS.md`). G-001's push needed the owner to add "Workflows" to the token first.
