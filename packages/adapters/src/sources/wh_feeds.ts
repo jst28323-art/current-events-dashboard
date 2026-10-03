@@ -284,15 +284,15 @@ export function parseWhFeeds(endpointId: string, res: FetchedResponse): AdapterO
     if (posted === null) untimed++
     const occurred = cls.presidential || posted === null || Date.parse(posted) > fetchedMs ? null : posted
 
-    // Title: what the White House did, in plain words, with its headline in quotes so its wording (e.g. the real
-    // Releases headline "Democrats UNANIMOUSLY Vote AGAINST the Stop Insider Trading Act") is attributed, never stated
-    // as fact. The kind of document is named as the White House's own filing ("posted under Executive Orders"), not
+    // Title: what the White House did, in plain words. Its headline is official_text, shown verbatim right under the
+    // title with the "White House" origin chip, so its wording (e.g. the real Releases headline "Democrats UNANIMOUSLY
+    // Vote AGAINST the Stop Insider Trading Act") is always the source's, never ours; it is not repeated in the title
+    // (D-043). The kind of document is named as the White House's own filing ("posted under Executive Orders"), not
     // as our assertion, because that filing can be wrong: "Establishing the United States Space Academy" (?p=49230,
     // presidential-actions fixture) is filed under Proclamations, yet its text reads "it is hereby ordered" and the
     // Compilation of Presidential Documents lists it as Executive Order 14423 (docs/research/executive_branch.md §4).
-    const lead = cls.filedUnder.length > 0 ? `White House posted under ${joinList(cls.filedUnder)}: ` : 'White House posted: '
-    const full = `${lead}“${official}”`
-    const eventTitle = full.length <= TITLE_MAX ? full : `${lead}“${official.slice(0, TITLE_MAX - lead.length - 3)}…”`
+    const full = cls.filedUnder.length > 0 ? `White House posted under ${joinList(cls.filedUnder)}` : 'White House posted an item'
+    const eventTitle = full.length <= TITLE_MAX ? full : `${full.slice(0, TITLE_MAX - 1)}…`
 
     // object_key = the post id, so a re-titled or re-slugged post merges with itself. The EVENT_MODEL page key
     // wh:{path} rides along as an alias for the later EO / FR link (docs/research/curation_priorart_future.md §2.4).

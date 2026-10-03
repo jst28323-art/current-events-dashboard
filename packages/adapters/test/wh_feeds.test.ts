@@ -116,7 +116,8 @@ describe('news_feed.xml (umbrella feed, 30 items)', () => {
       expect(e.sources[0]).toMatchObject({ source_id: 'wh.feeds', retrieved_at: NEWS_FETCHED, affiliation: 'executive-messaging', license: 'us-gov-public-domain' })
       expect(e.sources[0]?.url).toMatch(/^https:\/\/www\.whitehouse\.gov\//)
       expect(e.title.startsWith('White House posted under ')).toBe(true)
-      expect(e.title.endsWith(`“${e.official_text}”`)).toBe(true)
+      // D-043: the headline is official_text, shown under the title; the title never repeats it
+      expect(e.title.includes(e.official_text)).toBe(false)
     }
     // One event per item, in feed order, ids unique.
     expect(new Set(out.events.map((e) => e.id)).size).toBe(30)
@@ -150,7 +151,7 @@ describe('news_feed.xml (umbrella feed, 30 items)', () => {
     expect(e.importance?.tier).toBe(r.tier)
     expect(e.features).toEqual([r.feature])
     expect(e.official_text).toBe(r.official)
-    expect(e.title).toBe(`White House posted under ${r.under}: “${r.official}”`)
+    expect(e.title).toBe(`White House posted under ${r.under}`)
     expect(e.sources[0]?.url).toBe(r.link)
     expect(e.alias_keys).toEqual([`wh:${new URL(r.link).pathname.slice(1, -1)}`])
     expect(e.times).toEqual({ occurred_at: r.occurred, source_published_at: r.pub, first_seen_at: NEWS_FETCHED })
@@ -192,7 +193,7 @@ describe('presidential-actions_feed.xml (test-only input; not a registered endpo
     const e = byPost(parseOk(pres()), 50367)
     expect(e.event_type).toBe('presidential_action.memorandum')
     expect(e.importance?.tier).toBe('P0')
-    expect(e.title).toBe('White House posted under Presidential Memoranda: “Restoring Reciprocity in Government Procurement”')
+    expect(e.title).toBe('White House posted under Presidential Memoranda')
     expect(e.times.source_published_at).toBe('2026-09-16T20:27:39Z')
   })
 
@@ -200,7 +201,7 @@ describe('presidential-actions_feed.xml (test-only input; not a registered endpo
     const e = byPost(parseOk(pres()), 50428)
     expect(e.event_type).toBe('presidential_action.other')
     expect(e.importance?.tier).toBe('P1')
-    expect(e.title).toBe('White House posted under Nominations & Appointments: “Withdrawals Sent to the Senate”')
+    expect(e.title).toBe('White House posted under Nominations & Appointments')
   })
 
   test('an all-caps headline is kept verbatim (no re-casing)', () => {
@@ -216,7 +217,7 @@ describe('presidential-actions_feed.xml (test-only input; not a registered endpo
     expect(e.event_type).toBe('presidential_action.other')
     expect(e.importance?.tier).toBe('P0')
     expect(e.importance?.reasons).toContain('filed under Proclamations, but the post does not open with the proclamation heading ("By the President of the United States of America A Proclamation")')
-    expect(e.title).toBe('White House posted under Proclamations: “Establishing the United States Space Academy”')
+    expect(e.title).toBe('White House posted under Proclamations')
     expect(e.title).not.toMatch(/posted a proclamation/)
   })
 
@@ -547,17 +548,17 @@ describe('classification rules', () => {
     const out = parseOk(oneItem((it) => edit(edit(it, '<category><![CDATA[Releases]]></category>', '<category><![CDATA[Presidential Actions]]></category><category><![CDATA[Executive Orders]]></category>'),
       '<description><![CDATA[', '<description><![CDATA[<p>BY THE PRESIDENT OF THE UNITED STATES OF AMERICA A PROCLAMATION</p>')))
     expect([out.events[0]?.event_type, out.events[0]?.importance?.tier]).toEqual(['presidential_action.other', 'P0'])
-    expect(out.events[0]?.title).toBe('White House posted under Executive Orders: “New Report: DSA Policies Would Cost Americans Trillions”')
+    expect(out.events[0]?.title).toBe('White House posted under Executive Orders')
   })
   test('in the feed: titles name every deciding category; an unknown or missing category is flagged in health', () => {
     const multi = parseOk(oneItem((it) => edit(it, '<category><![CDATA[Releases]]></category>', '<category><![CDATA[Executive Orders]]></category><category><![CDATA[Proclamations]]></category>'))).events[0]
-    expect(multi?.title).toBe('White House posted under Executive Orders and Proclamations: “New Report: DSA Policies Would Cost Americans Trillions”')
+    expect(multi?.title).toBe('White House posted under Executive Orders and Proclamations')
     const unknown = parseOk(oneItem((it) => edit(it, '<category><![CDATA[Releases]]></category>', '<category><![CDATA[Research]]></category>')))
     expect(unknown.events[0]?.event_type).toBe('wh.other')
-    expect(unknown.events[0]?.title).toBe('White House posted under Research: “New Report: DSA Policies Would Cost Americans Trillions”')
+    expect(unknown.events[0]?.title).toBe('White House posted under Research')
     expect(unknown.health.detail).toBe('1 items; 1 with no known category')
     const none = parseOk(oneItem((it) => edit(it, '<category><![CDATA[Releases]]></category>', '')))
-    expect(none.events[0]?.title).toBe('White House posted: “New Report: DSA Policies Would Cost Americans Trillions”')
+    expect(none.events[0]?.title).toBe('White House posted an item')
   })
 })
 

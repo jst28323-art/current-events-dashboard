@@ -96,7 +96,7 @@ describe('pi_current fixture (107 documents, 2026-10-02 18:00Z)', () => {
     expect(ev.importance).toEqual({ tier: 'P0', reasons: ['presidential_document_filed_for_public_inspection', 'D-012'] })
     expect(ev.times).toEqual({ occurred_at: '2026-10-02T15:15:00Z', first_seen_at: '2026-10-02T18:00:28.428Z' })
     expect(ev.official_text).toBe('Lebanon; Presidential Determination on Revocation of Prior Presidential Determinations (Presidential Determination No. 2026-25 of September 30, 2026)')
-    expect(ev.title).toBe(`Presidential document filed for public inspection: ${ev.official_text}`)
+    expect(ev.title).toBe('Presidential document filed for public inspection (FR Doc. 2026-20439)') // D-043: no repeat of official_text
     expect(ev.sources).toEqual([{
       source_id: 'fr.api',
       url: 'https://www.federalregister.gov/public-inspection/2026-20439/lebanon-presidential-determination-on-revocation-of-prior-presidential-determinations-presidential',
@@ -112,7 +112,7 @@ describe('pi_current fixture (107 documents, 2026-10-02 18:00Z)', () => {
     const ev = byNumber(out.events, '2026-20295')
     expect(ev.times.occurred_at).toBeNull()
     expect(ev.official_text).toBe('Meetings; Sunshine Act') // source: "Meetings; Sunshine Act  " (trimmed only)
-    expect(ev.title).toBe('Securities and Exchange Commission notice filed for public inspection (with an editorial note): Meetings; Sunshine Act')
+    expect(ev.title).toBe('Securities and Exchange Commission notice filed for public inspection (with an editorial note) (FR Doc. 2026-20295)')
     expect(ev.body).toBe('agency:securities-and-exchange-commission')
     expect(ev.branch).toBe('independent') // SEC is on the 44 U.S.C. 3502(5) list
     expect(ev.importance).toEqual({ tier: 'P4', reasons: ['notice'] })
@@ -176,7 +176,7 @@ describe('documents_newest fixture (20 newest published, recorded 2026-10-02 21:
     expect(ev.dedup_key).toBe('fr:2026-20321#published')
     expect(ev.thread_key).toBe('eo:14434')
     expect(ev.alias_keys).toEqual(['eo:14434'])
-    expect(ev.title).toBe('Executive Order 14434 published in the Federal Register on October 2, 2026: Inaugurating the Era of Super Intelligence')
+    expect(ev.title).toBe('Executive Order 14434 published in the Federal Register on October 2, 2026 (FR Doc. 2026-20321)')
     expect(ev.times.occurred_at).toBeNull()
     expect(ev.times.first_seen_at).toBe('2026-10-02T21:27:22.995Z')
     // FR-9: an executive order is a D-012 alert class wherever it is seen (EVENT_MODEL P0 examples); only the owner
@@ -189,9 +189,9 @@ describe('documents_newest fixture (20 newest published, recorded 2026-10-02 21:
 
   test('presidential notices and determinations are worded by subtype and get no eo: key', () => {
     const notice = byNumber(out.events, '2026-20322')
-    expect(notice.title).toBe('Presidential notice published in the Federal Register on October 2, 2026: Continuation of the National Emergency With Respect to the Situation in and in Relation to Syria')
+    expect(notice.title).toBe('Presidential notice published in the Federal Register on October 2, 2026 (FR Doc. 2026-20322)')
     expect(notice.thread_key).toBeUndefined()
-    expect(byNumber(out.events, '2026-20318').title).toMatch(/^Presidential determination published in the Federal Register on October 2, 2026: /)
+    expect(byNumber(out.events, '2026-20318').title).toBe('Presidential determination published in the Federal Register on October 2, 2026 (FR Doc. 2026-20318)')
   })
 
   test('the significant flag decides P1 for a rule; null stays unknown', () => {
@@ -199,7 +199,7 @@ describe('documents_newest fixture (20 newest published, recorded 2026-10-02 21:
     expect(sig.event_type).toBe('fr.published.rule')
     expect(sig.importance).toEqual({ tier: 'P1', reasons: ['rule', 'significant'] })
     expect(sig.body).toBe('agency:centers-for-medicare-medicaid-services') // HHS (parent) is listed first, CMS is the issuer
-    expect(sig.title).toBe('Centers for Medicare & Medicaid Services rule published in the Federal Register on October 2, 2026: Global Benchmark for Efficient Drug Pricing (GLOBE) Model')
+    expect(sig.title).toBe('Centers for Medicare & Medicaid Services rule published in the Federal Register on October 2, 2026 (FR Doc. 2026-20281)')
     expect(sig.branch).toBe('executive')
     const nrc = byNumber(out.events, '2026-20276') // NRC rule, significant: null
     expect(nrc.importance).toEqual({ tier: 'P3', reasons: ['rule', 'significance_unknown'] })
@@ -423,10 +423,10 @@ describe('mapping rules', () => {
     const none = one('pi_current', { agencies: [] })
     expect(none.body).toBe('federal_register')
     expect(none.branch).toBe('executive')
-    expect(none.title.startsWith('Notice filed for public inspection: ')).toBe(true)
+    expect(none.title.startsWith('Notice filed for public inspection (FR Doc. ')).toBe(true)
     const skipped = one('pi_current', { agencies: [{ raw_name: 'SOME BOARD' }, agency('postal-service', 'Postal Service', 410)] })
     expect(skipped.body).toBe('agency:postal-service')
-    expect(skipped.title.startsWith('Postal Service notice filed for public inspection: ')).toBe(true)
+    expect(skipped.title.startsWith('Postal Service notice filed for public inspection (FR Doc. ')).toBe(true)
     expectNothing(parseFr('pi_current', edited(pi(), (j) => { j.results[1].agencies[0].parent_id = '227' })), 'drift')
   })
 
@@ -457,11 +457,11 @@ describe('mapping rules', () => {
     expect(out.health.detail).toBe('108 documents on public inspection; 1 repeated document number skipped')
   })
 
-  test('a very long title is cut in our title line only; official_text stays verbatim', () => {
+  test('a very long document title stays out of our title line (D-043); official_text keeps it verbatim', () => {
     const long = 'A'.repeat(1500)
     const ev = one('pi_current', { title: long })
-    expect(ev.title.length).toBe(1000)
-    expect(ev.title.endsWith('…')).toBe(true)
+    expect(ev.title).not.toContain('AAAA')
+    expect(ev.title.length).toBeLessThan(200)
     expect(ev.official_text).toBe(long)
     expectNothing(parseFr('pi_current', edited(pi(), (j) => { j.results[0].title = 'B'.repeat(4001) })), 'drift')
   })
@@ -692,5 +692,18 @@ describe('adversarial review 2026-10-02: regression tests', () => {
     const out = parseFr('pi_current', variant(pi(), { body }))
     expectNothing(out, 'drift')
     expect(out.health.detail).toBe(`the body is ${body.length} characters, more than the 2000000 this adapter parses; nothing was published`)
+  })
+})
+
+describe('titles never repeat the document title (D-043)', () => {
+  test('on every recorded document, the title says what happened and official_text carries the words', () => {
+    for (const [endpoint, name] of [['pi_current', 'pi_current.json'], ['documents_newest', 'documents_newest.json']] as const) {
+      const out = frApi.parse(endpoint, replay('fr.api', '2026-10-02', name))
+      expect(out.events.length).toBeGreaterThan(0)
+      for (const e of out.events) {
+        expect(e.title, e.dedup_key).not.toContain(e.official_text)
+        expect(e.title, e.dedup_key).toMatch(/\(FR Doc\. \d{4}-\d{5}\)$/)
+      }
+    }
   })
 })

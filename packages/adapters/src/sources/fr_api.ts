@@ -412,11 +412,13 @@ function draftOf(d: FrDoc, at: EndpointId, fetchedAt: string): EventDraft {
   if (isPi) {
     // The editorial note is the FR's own warning (e.g. the agency asked to withdraw the document after it was placed
     // on public inspection, 2026-20295); the row says one exists and `result.editorial_note` carries it verbatim.
-    title = `${subjectOf(d)} filed for public inspection${d.editorial_note ? ' (with an editorial note)' : ''}: ${d.title}`
+    // The title says what happened; the document's own title is official_text, shown right under it, so it is not
+    // repeated here (D-043). The FR document number tells same-titled documents apart.
+    title = `${subjectOf(d)} filed for public inspection${d.editorial_note ? ' (with an editorial note)' : ''} (FR Doc. ${d.document_number})`
   } else {
     // publication_date has no time of day: it goes into words, never into occurred_at.
     const when = d.publication_date ? ` on ${frDateInWords(d.publication_date)}` : ''
-    title = `${subjectOf(d)} published in the Federal Register${when}: ${d.title}`
+    title = `${subjectOf(d)} published in the Federal Register${when} (FR Doc. ${d.document_number})`
   }
 
   // Date-only and flag facts, verbatim from the source, only when present.
