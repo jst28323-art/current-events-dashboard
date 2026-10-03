@@ -200,6 +200,15 @@ const GOLDENS: Want[] = [
     required: '1/2', passed: true, counts: [215, 214, 1, 2], positions: 432, thread: 'bill:119:hr:1',
   },
   {
+    // `On Motion to Suspend the Rules and Agree` on H RES 488 (D-088): a resolution adopted under suspension, P1
+    // `resolution`; titled like a suspension passage. 6 Present (R 1, D 5), 9-Jun-2025 7:01 PM EDT.
+    date: D3, name: 'roll2025_158_suspend_agree.xml', key: 'vote:house:119:1:158', tier: 'P1', reasons: ['resolution'],
+    title: 'House adopted H.Res. 488 under suspension of the rules, 280-113, 6 present; two-thirds needed (roll call 158)',
+    occurred_at: '2025-06-09T23:01:00Z', kind: 'suspension_resolution', required: '2/3', passed: true, counts: [280, 113, 6, 33],
+    positions: 432, thread: 'bill:119:hres:488',
+    official: 'On Motion to Suspend the Rules and Agree — H RES 488 — Denouncing the antisemitic terrorist attack in Boulder, Colorado — Passed',
+  },
+  {
     date: D3, name: 'roll106.xml', key: 'vote:house:119:2:106', tier: 'P3', reasons: ['procedural'],
     title: 'House voted to adjourn, 208-197 (roll call 106)', occurred_at: '2026-03-28T00:26:00Z', kind: 'adjourn',
     required: '1/2', passed: true, counts: [208, 197, 0, 27], positions: 432,
@@ -624,12 +633,47 @@ describe('non-default cases', () => {
   })
 
   test('variant: an unknown question that does not mention a veto -> published at P3 with a neutral title + a health note', () => {
+    // (Until D-088 this used `... and Agree`, now in the table: on S 2403 that is drift, pinned below.)
     const res = r314()
-    const { r, e, out } = parseOk(withBody(res, edit(res.body, 'On Motion to Suspend the Rules and Pass</vote-question>', 'On Motion to Suspend the Rules and Agree</vote-question>')))
+    const { r, e, out } = parseOk(withBody(res, edit(res.body, 'On Motion to Suspend the Rules and Pass</vote-question>', 'On Motion to Instruct Conferees</vote-question>')))
     expect(r.question_kind).toBe('unknown')
     expect(e.importance).toEqual({ tier: 'P3', reasons: ['unknown_question'] })
     expect(e.title).toBe('House roll call 314: the question was agreed to, 401-14')
-    expect(out.health.detail).toContain('unknown vote question "On Motion to Suspend the Rules and Agree"')
+    expect(out.health.detail).toContain('unknown vote question "On Motion to Instruct Conferees"')
+  })
+
+  test('D-088: `... Suspend the Rules and Agree[, as Amended]` on an H RES or H CON RES -> suspension_resolution, P1, any case or spacing', () => {
+    const res = roll(D3, 'roll2025_158_suspend_agree.xml')
+    const q = 'On Motion to Suspend the Rules and Agree</vote-question>'
+    for (const asked of ['On Motion to Suspend the Rules and Agree, as Amended', 'ON MOTION TO SUSPEND  THE RULES AND AGREE', 'on motion to suspend the rules and agree,  as   amended']) {
+      const { r, e } = parseOk(withBody(res, edit(res.body, q, `${asked}</vote-question>`)))
+      expect([r.question, r.question_kind], asked).toEqual([asked.replace(/\s+/g, ' '), 'suspension_resolution'])
+      expect(e.importance).toEqual({ tier: 'P1', reasons: ['resolution'] })
+      expect(e.title).toBe('House adopted H.Res. 488 under suspension of the rules, 280-113, 6 present; two-thirds needed (roll call 158)')
+    }
+    const con = parseOk(withBody(res, edit(res.body, '<legis-num>H RES 488</legis-num>', '<legis-num>H CON RES 488</legis-num>')))
+    expect([con.r.question_kind, con.e.importance, con.e.thread_key]).toEqual(['suspension_resolution', { tier: 'P1', reasons: ['resolution'] }, 'bill:119:hconres:488'])
+    expect(con.e.title).toBe('House adopted H.Con.Res. 488 under suspension of the rules, 280-113, 6 present; two-thirds needed (roll call 158)')
+  })
+
+  test('D-088: a failed suspension of a resolution reads "failed to adopt", not "rejected" (a majority can vote yes)', () => {
+    const res = roll(D3, 'roll2025_158_suspend_agree.xml')
+    const { e, r } = parseOk(withBody(res, edit(res.body, '<vote-result>Passed</vote-result>', '<vote-result>Failed</vote-result>')))
+    expect([r.passed, r.question_kind, e.importance!.tier]).toEqual([false, 'suspension_resolution', 'P1'])
+    expect(e.title).toBe('House failed to adopt H.Res. 488 under suspension of the rules, 280-113, 6 present; two-thirds needed (roll call 158)')
+  })
+
+  test('D-088: `... Suspend the Rules and Agree` on anything but an H RES or H CON RES -> drift (zero events)', () => {
+    const r = r314() // S 2403, a bill
+    expectRefused('roll', withBody(r, edit(r.body, 'On Motion to Suspend the Rules and Pass</vote-question>', 'On Motion to Suspend the Rules and Agree</vote-question>')), 'drift',
+      /"On Motion to Suspend the Rules and Agree" adopts a resolution, but <legis-num> is "S 2403", not an H RES or H CON RES/)
+    const res = roll(D3, 'roll2025_158_suspend_agree.xml')
+    for (const legis of ['H R 488', 'H J RES 488', 'S 488', 'S J RES 488', 'S RES 488', 'S CON RES 488', 'ADJOURN']) {
+      expectRefused('roll', withBody(res, edit(res.body, '<legis-num>H RES 488</legis-num>', `<legis-num>${legis}</legis-num>`)), 'drift', new RegExp(`<legis-num> is "${legis}", not an H RES`))
+    }
+    const amended = edit(res.body, 'Rules and Agree</vote-question>', 'Rules and Agree, as Amended</vote-question>')
+    expectRefused('roll', withBody(res, edit(amended, '<legis-num>H RES 488</legis-num>', '<legis-num>H R 488</legis-num>')), 'drift', /"On Motion to Suspend the Rules and Agree, as Amended" adopts a resolution, but <legis-num> is "H R 488"/)
+    expectRefused('roll', withBody(res, edit(res.body, /\s*<legis-num>H RES 488<\/legis-num>/, '')), 'drift', /<legis-num> is absent, not an H RES/)
   })
 
   test('variant: question case and spacing do not matter (`ON  passage`)', () => {

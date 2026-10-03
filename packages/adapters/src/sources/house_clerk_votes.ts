@@ -71,13 +71,18 @@ const VOTE_TYPES: Readonly<Record<string, { required: VoteRequired | null; famil
 const RESULTS: Readonly<Record<string, boolean>> = { passed: true, 'agreed to': true, failed: false }
 
 export type QuestionKind =
-  | 'passage' | 'suspension_passage' | 'concur' | 'veto_override' | 'resolution' | 'rule' | 'amendment' | 'table'
-  | 'adjourn' | 'previous_question' | 'recommit' | 'consideration' | 'quorum' | 'speaker_election' | 'unknown'
+  | 'passage' | 'suspension_passage' | 'suspension_resolution' | 'concur' | 'veto_override' | 'resolution' | 'rule'
+  | 'amendment' | 'table' | 'adjourn' | 'previous_question' | 'recommit' | 'consideration' | 'quorum' | 'speaker_election'
+  | 'unknown'
 
 const QUESTIONS: Readonly<Record<string, QuestionKind>> = {
   'on passage': 'passage',
   'on motion to suspend the rules and pass': 'suspension_passage',
   'on motion to suspend the rules and pass, as amended': 'suspension_passage',
+  // A resolution adopted under suspension (D-088; roll2025_158: H RES 488; the 119-1 listing also prints `, as Amended`,
+  // roll 179 of 2025, H RES 519). Only on an H RES or H CON RES, else drift (SUSPENSION_RESOLUTION_TYPES).
+  'on motion to suspend the rules and agree': 'suspension_resolution',
+  'on motion to suspend the rules and agree, as amended': 'suspension_resolution',
   'on motion to concur in the senate amendment': 'concur',
   'on motion to concur in the senate amendments': 'concur',
   'passage, objections of the president to the contrary notwithstanding': 'veto_override',
@@ -98,6 +103,8 @@ const RULE_DESC = /^Providing for (the )?(consideration|disposition)/i
 
 /** Bill types whose passage-class votes are P0 (DESIGN §1.5): bills and joint resolutions. */
 const P0_BILL_TYPES = new Set<BillType>(['hr', 's', 'hjres', 'sjres'])
+/** The only legis-num types a `suspension_resolution` question may be about (D-088); any other = drift. */
+const SUSPENSION_RESOLUTION_TYPES = new Set<BillType>(['hres', 'hconres'])
 
 /** totals-by-party <party> names -> the letter the member rows print. */
 const PARTY_LETTER: Readonly<Record<string, string>> = { republican: 'R', democratic: 'D', independent: 'I' }
@@ -396,6 +403,9 @@ function parseRoll(ep: 'roll_next' | 'roll', res: FetchedResponse, opts: ParseVo
   let kind: QuestionKind = QUESTIONS[norm(question)] ?? 'unknown'
   if (vt!.family === 'quorum') kind = 'quorum' // vote-type QUORUM is a quorum call whatever the question says
   if (kind === 'unknown' && VETO_WORDS.test(question)) drift(`possible veto vote, question not in the table: "${question}"`)
+  if (kind === 'suspension_resolution' && !(bill && SUSPENSION_RESOLUTION_TYPES.has(bill.type))) {
+    drift(`"${question}" adopts a resolution, but <legis-num> is ${legisText === null ? 'absent' : `"${collapseWs(legisText)}"`}, not an H RES or H CON RES`)
+  }
   if (kind === 'resolution' && bill?.type === 'hres' && RULE_DESC.test(desc)) kind = 'rule'
   const speaker = kind === 'speaker_election'
 
@@ -727,6 +737,7 @@ function importance(kind: QuestionKind, bill: { type: BillType } | null): { tier
     case 'veto_override':
       return { tier: 'P0', reasons: ['veto_override'] }
     case 'resolution':
+    case 'suspension_resolution': // always an H RES or H CON RES (else drift before this)
       return { tier: 'P1', reasons: ['resolution'] }
     case 'speaker_election':
       return { tier: 'P0', reasons: ['speaker_election'] } // D-061 (owner): every Speaker ballot is an alert class
@@ -771,6 +782,9 @@ function titleOf(
     case 'suspension_passage':
       // "failed to pass", not "rejected": a majority can vote yes and still fail the two-thirds (critique T12).
       return `House ${passed ? 'passed' : 'failed to pass'} ${b} under suspension of the rules, ${tally}${twoThirds} ${rc}`
+    case 'suspension_resolution':
+      // The suspension wording above, for a resolution: "failed to adopt", not "rejected" (same two-thirds reason).
+      return `House ${passed ? 'adopted' : 'failed to adopt'} ${b} under suspension of the rules, ${tally}${twoThirds} ${rc}`
     case 'concur': {
       const which = /amendments\s*$/i.test(question) ? 'amendments' : 'amendment'
       return `House ${passed ? 'agreed' : 'declined to agree'} to the Senate ${which} to ${b}, ${tally} ${rc}`
