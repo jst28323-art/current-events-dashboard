@@ -18,7 +18,7 @@ import {
   attrsOf, blocks, collapseWs, countBlocks, endsWithClose, hasUnknownEntity, innerText, rootName, stripBom, textOf,
   type XmlBlock,
 } from '../lib/xmlscan.js'
-import { easternToUtc, fmtClock12, fmtWeekdayMonthDay, isRealDate, ymd } from '../lib/eastern.js'
+import { easternToUtc, fmtClock12, fmtWeekdayMonthDay, hour24, isRealDate, ymd } from '../lib/eastern.js'
 import { billKey, congressSessionOfYear, floorBillType, fmtBill, type BillType } from '../lib/congress_ids.js'
 
 export const SOURCE_ID = 'house.clerk.floor'
@@ -36,6 +36,19 @@ const DAY_URL = /^https:\/\/clerk\.house\.gov\/floor\/(20[0-9]{6})\.xml$/
 const dayUrl = (yyyymmdd: string) => `https://clerk.house.gov/floor/${yyyymmdd}.xml`
 
 const TITLE_MAX = 1000 // event.schema.json title.maxLength
+/** How far an action may run ahead of our own fetch before it is drift (the Clerk's clock vs ours). */
+const FUTURE_SKEW_MS = 10 * 60_000
+
+/** 119 -> "119th", 121 -> "121st" (health details). */
+function ordinal(n: number): string {
+  const t = n % 100
+  const suffix = t >= 11 && t <= 13 ? 'th' : (['th', 'st', 'nd', 'rd'][n % 10] ?? 'th')
+  return `${n}${suffix}`
+}
+/** "2026-10-01" + 2 -> "2026-10-03" (calendar arithmetic on a date-only value; no zone involved). */
+function addDays(date: string, n: number): string {
+  return new Date(Date.parse(`${date}T00:00:00Z`) + n * 86_400_000).toISOString().slice(0, 10)
+}
 const OFFICIAL_MAX = 4000 // event.schema.json official_text.maxLength (DESIGN §3.3 "max 4000 chars")
 
 type Out = AdapterOutput
@@ -59,7 +72,10 @@ export interface FloorClass {
 const NEW_DAY = /^(The )?House convened, starting a new legislative day/
 const TWENTIETH = /^The House convened pursuant to the 20th Amendment/i
 const FROM_RECESS = /^The House convened, returning from a recess/
-const SINE_DIE = /sine die/i
+// Anchored to the two recorded sine-die sentences (20250103 uid 51338 and the 20th-Amendment declaration): an unanchored
+// /sine die/ made "…, the concurrent resolution providing for an adjournment sine die not having been agreed to" P1
+// (review 483d7ab F10). Any other adjournment wording is the plain P2 "House adjourned".
+const SINE_DIE = /^(The Speaker announced that the House do now adjourn sine die|Pursuant to the 20th Amendment of the Constitution, the Chair declares the [^.]* Congress adjourned sine die)\.?$/i
 const ADJOURNED = /^The House adjourned|do now adjourn/
 const RECESS = /do now recess/
 
@@ -191,6 +207,8 @@ function links(description: string): Links {
 interface Action {
   uid: string
   actId: string
+  /** The attribute as printed (20261001T11:33:10). */
+  forSearchRaw: string
   forSearch: WallTime & { ok: true }
   updated: WallTime & { ok: true }
   text: string
@@ -229,6 +247,18 @@ function readAction(b: XmlBlock, n: number): { ok: true; action: Action } | { ok
   if (ta === null || Object.keys(ta).join() !== 'for-search') return { ok: false, detail: `uid ${uid}: <action_time> attributes are not [for-search]` }
   const forSearch = wallTime(ta['for-search']!, FOR_SEARCH, `uid ${uid} for-search`)
   if (!forSearch.ok) return { ok: false, detail: forSearch.detail }
+  // The printed clock beside it ("11:33:10 A.M. -", 548 of 548 recorded actions agree; review 483d7ab time F4).
+  const clock = collapseWs(innerText(times.blocks[0]!.inner))
+  const c = /^(\d{1,2}):(\d{2}):(\d{2}) ([AP])\.M\. -$/.exec(clock)
+  const h24 = c ? hour24(Number(c[1]), c[4] === 'P') : null
+  if (!c || h24 === null) return { ok: false, detail: `uid ${uid}: the printed clock "${clock}" is not "h:mm:ss A.M.|P.M. -"` }
+  if (`${String(h24).padStart(2, '0')}:${c[2]}:${c[3]}` !== forSearch.wall.slice(11)) {
+    return { ok: false, detail: `uid ${uid}: for-search ${ta['for-search']} disagrees with the printed clock "${clock}"` }
+  }
+  // An entry is not edited before it happened (minute precision: update-date-time has no seconds).
+  if (later({ utc: null, wall: forSearch.wall.slice(0, 16) }, { utc: null, wall: updated.wall.slice(0, 16) })) {
+    return { ok: false, detail: `uid ${uid}: update-date-time ${updated.wall.slice(0, 16)} is earlier than its for-search ${forSearch.wall}` }
+  }
 
   const description = descs.blocks[0]!.inner
   if (hasUnknownEntity(description)) return { ok: false, detail: `uid ${uid}: an entity outside the XML five and numeric references` }
@@ -236,7 +266,7 @@ function readAction(b: XmlBlock, n: number): { ok: true; action: Action } | { ok
   const text = collapseWs(innerText(description))
   if (text === '') return { ok: false, detail: `uid ${uid}: an empty <action_description>` }
   const item = items.blocks[0] ? collapseWs(innerText(items.blocks[0].inner)) : null
-  return { ok: true, action: { uid, actId, forSearch, updated, text, item, description } }
+  return { ok: true, action: { uid, actId, forSearchRaw: ta['for-search']!, forSearch, updated, text, item, description } }
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -297,6 +327,18 @@ function parseDay(endpointId: string, res: FetchedResponse): Out {
   const pair = /^([1-9][0-9]{1,2}):([1-9][0-9]{1,2})$/.exec(congAttr)
   if (!single && !pair) return fail(E, 'drift', `legislative_congress congress "${congAttr}" is neither N nor N:M`)
   if (pair && Number(pair[1]) !== Number(pair[2]) + 1) return fail(E, 'drift', `legislative_congress congress "${congAttr}" is not two Congresses in a row (new:old)`)
+  // The Congress of the day's year (review 483d7ab F9): a single N is that Congress (or, on Jan 1-3 of an odd year, the one
+  // ending); a pair N:M is that Congress and the one before it (20250103.xml: 119:118).
+  const dayYear = Number(dayDate.slice(0, 4))
+  const cs = congressSessionOfYear(dayYear)
+  if (!cs) return fail(E, 'drift', `legislative day year ${dayYear} is out of range`)
+  const early = dayYear % 2 === 1 && dayDate.slice(4, 6) === '01' && Number(dayDate.slice(6)) <= 3
+  if (single && Number(single[1]) !== cs.congress && !(early && Number(single[1]) === cs.congress - 1)) {
+    return fail(E, 'drift', `legislative_congress congress "${congAttr}" is not the ${ordinal(cs.congress)} Congress of ${dayYear}`)
+  }
+  if (pair && Number(pair[1]) !== cs.congress) {
+    return fail(E, 'drift', `legislative_congress congress "${congAttr}" is not the ${ordinal(cs.congress)} Congress of ${dayYear} and the one before it`)
+  }
 
   // Head-only (§3.3): the newest 50 actions, but the whole file when the Congress changes inside it (20250103.xml: the
   // 20th-Amendment convene is action 75 of 85, critique B2).
@@ -308,12 +350,28 @@ function parseDay(endpointId: string, res: FetchedResponse): Out {
 
   const actions: Action[] = []
   const uids = new Set<string>()
+  // Review 483d7ab F3/F4: each for-search lies on the legislative day or up to two days after it (the recorded files
+  // reach one: 20260429.xml runs past midnight), is not later than our own fetch, and never increases from one block to
+  // the next (the head-only cut keeps the first 50 blocks as the NEWEST 50; all 12 recorded files are newest first).
+  const lastDay = addDays(legislativeDay, 2)
+  const fetchedMs = Date.parse(res.fetchedAt)
   for (const [n, b] of scan.blocks.entries()) {
     const r = readAction(b, n)
     if (!r.ok) return fail(E, 'drift', r.detail, total)
-    if (uids.has(r.action.uid)) return fail(E, 'drift', `duplicate unique-id ${r.action.uid} in one payload`, total)
-    uids.add(r.action.uid)
-    actions.push(r.action)
+    const a = r.action
+    if (uids.has(a.uid)) return fail(E, 'drift', `duplicate unique-id ${a.uid} in one payload`, total)
+    uids.add(a.uid)
+    if (a.forSearch.date < legislativeDay || a.forSearch.date > lastDay) {
+      return fail(E, 'drift', `uid ${a.uid} for-search ${a.forSearchRaw} is not within legislative day ${legislativeDay} .. ${lastDay}`, total)
+    }
+    if (a.forSearch.utc !== null && Date.parse(a.forSearch.utc) > fetchedMs + FUTURE_SKEW_MS) {
+      return fail(E, 'drift', `uid ${a.uid} for-search ${a.forSearchRaw} is later than our own fetch (${res.fetchedAt})`, total)
+    }
+    const prev = actions[actions.length - 1]
+    if (prev && later(a.forSearch, prev.forSearch)) {
+      return fail(E, 'drift', `uid ${a.uid} for-search ${a.forSearchRaw} is later than the action before it: the file is no longer newest first`, total)
+    }
+    actions.push(a)
   }
 
   // Congress of each action. A pair splits at the H20100 "pursuant to the 20th amendment" convene: it and everything at

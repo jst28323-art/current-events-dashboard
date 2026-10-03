@@ -386,10 +386,17 @@ describe('non-default cases', () => {
   })
 
   test('DST: ambiguous fall-back wall times -> that time null + result.time_note, the payload kept', () => {
-    // for-search in the repeated hour (Nov 1 2026, 01:30)
-    let out = ok('day', withBody(d1001(), (b) => edit(b, 'for-search="20261001T11:31:54"', 'for-search="20261101T01:30:00"')))
-    let e = byKey(out, 'floor:house:119:45147')
-    expect(e.times.occurred_at).toBeNull()
+    // for-search in the repeated hour (Nov 1 2026, 01:30): the 10-01 file moved to legislative day Oct 31, its newest
+    // action at 1:30:00 A.M. on Nov 1 (the printed clock, the day range and the newest-first order all still hold)
+    const oct31 = variant(withBody(d1001(), (b) => edit(edit(edit(edit(
+      b.replace(/for-search="20261001T/g, 'for-search="20261031T').replace(/update-date-time="20261001T/g, 'update-date-time="20261031T'),
+      'date="20261001"', 'date="20261031"'),
+    'update-date-time="20261031T11:54" unique-id="45150"', 'update-date-time="20261101T02:15" unique-id="45150"'),
+    'for-search="20261031T11:33:10">11:33:10 A.M. -', 'for-search="20261101T01:30:00">1:30:00 A.M. -'),
+    '20261005T16:30', '20261105T16:30')), { url: 'https://clerk.house.gov/floor/20261031.xml', fetchedAt: '2026-11-02T00:00:00.000Z' })
+    let out = ok('day', oct31)
+    let e = byKey(out, 'floor:house:119:45150')
+    expect(e.times).toMatchObject({ occurred_at: null, source_published_at: '2026-11-01T07:15:00Z' })
     expect((e.result as { time_note: string }).time_note).toMatch(/for-search 2026-11-01T01:30:00 falls in the repeated fall-back hour; occurred_at left null/)
     expect(out.health.detail).toMatch(/1 event\(s\) with an ambiguous fall-back wall time/)
     // update-date-time in the repeated hour
@@ -401,6 +408,53 @@ describe('non-default cases', () => {
     out = ok('day', withBody(d1001(), (b) => edit(b, '20261005T16:30', '20261101T01:30')))
     expect(scheduled(out)[0]).toMatchObject({ times: { scheduled_for: null }, result: { convene_date: '2026-11-01' } })
     expect((scheduled(out)[0]!.result as { time_note: string }).time_note).toMatch(/fall-back hour; scheduled_for left null/)
+  })
+
+  test('review 483d7ab F3: an oldest-first file is drift (the newest-50 cut relies on newest-first order)', () => {
+    // 20260429.xml with its 123 actions reversed used to publish the 50 OLDEST as "newest 50 of 123" and drop the adjournment
+    const res = day('20260429.xml')
+    const acts = res.body.match(/<floor_action\s[\s\S]*?<\/floor_action>\n?/g)!
+    expect(acts).toHaveLength(123)
+    const start = res.body.indexOf(acts[0]!)
+    const end = res.body.lastIndexOf(acts[acts.length - 1]!) + acts[acts.length - 1]!.length
+    const reversed = res.body.slice(0, start) + [...acts].reverse().join('') + res.body.slice(end)
+    refused('day', variant(res, { body: reversed }), 'drift', /for-search .* is later than the action before it: the file is no longer newest first/)
+    // two neighbours swapped in the 10-01 file
+    refused('day', withBody(d1001(), (b) => edit(edit(b, 'for-search="20261001T11:32:30">11:32:30', 'for-search="20261001T11:31:00">11:31:00'), 'for-search="20261001T11:31:54">11:31:54', 'for-search="20261001T11:32:00">11:32:00')), 'drift', /no longer newest first/)
+    // equal stamps are kept (the recorded files print seconds; a tie is not a reversal)
+    ok('day', withBody(d1001(), (b) => edit(b, 'for-search="20261001T11:32:30">11:32:30', 'for-search="20261001T11:31:54">11:31:54')))
+  })
+
+  test('review 483d7ab F4 / time F4: for-search is checked against the printed clock, the legislative day, the edit stamp and our fetch', () => {
+    // a year in the future: used to publish 2027-10-01 and erase the Oct 5 next meeting (it looked already past)
+    refused('day', withBody(d1001(), (b) => edit(edit(b, 'for-search="20261001T11:31:54"', 'for-search="20271001T11:31:54"'), 'update-date-time="20261001T11:32" unique-id="45147"', 'update-date-time="20271001T11:32" unique-id="45147"')), 'drift', /uid 45147 for-search 20271001T11:31:54 is not within legislative day 2026-10-01 \.\. 2026-10-03/)
+    refused('day', withBody(d1001(), (b) => edit(b, 'for-search="20261001T11:33:10"', 'for-search="20191001T11:33:10"')), 'drift', /uid 45150 for-search 20191001T11:33:10 is not within legislative day/)
+    // the printed clock "11:33:10 A.M. -" disagrees with a for-search of 23:33:10
+    refused('day', withBody(d1001(), (b) => edit(b, 'for-search="20261001T11:33:10"', 'for-search="20261001T23:33:10"')), 'drift', /uid 45150: for-search 20261001T23:33:10 disagrees with the printed clock "11:33:10 A.M. -"/)
+    refused('day', withBody(d1001(), (b) => edit(b, '11:33:10 A.M. -</action_time>', '11:33:10 -</action_time>')), 'drift', /uid 45150: the printed clock "11:33:10 -" is not "h:mm:ss A\.M\.\|P\.M\. -"/)
+    // an edit stamped before the action itself
+    refused('day', withBody(d1001(), (b) => edit(b, 'update-date-time="20261001T11:54" unique-id="45150"', 'update-date-time="20261001T11:20" unique-id="45150"')), 'drift', /uid 45150: update-date-time 2026-10-01T11:20 is earlier than its for-search 2026-10-01T11:33:10/)
+    // later than our own fetch (2026-10-03T14:11Z): the action is in the future
+    refused('day', variant(d1001(), { fetchedAt: '2026-10-01T15:00:00.000Z' }), 'drift', /uid 45150 for-search 20261001T11:33:10 is later than our own fetch/)
+    // the next day is in range (the recorded files reach 1 day past the legislative day: 20260429.xml runs past midnight)
+    ok('day', day('20260429.xml'))
+  })
+
+  test('review 483d7ab F9: a single @congress must be the Congress of the day file\'s year', () => {
+    refused('day', withBody(d1001(), (b) => edit(b, 'congress="119"', 'congress="118"')), 'drift', /legislative_congress congress "118" is not the 119th Congress of 2026/)
+    refused('day', withBody(d1001(), (b) => edit(b, 'congress="119"', 'congress="120"')), 'drift', /congress "120" is not the 119th Congress of 2026/)
+    refused('day', withBody(day('20250103.xml'), (b) => edit(b, 'congress="119:118"', 'congress="120:119"')), 'drift', /congress "120:119" .* the 119th Congress of 2025/)
+    ok('day', day('20260102.xml')) // a 119-1 legislative day read from the 2026 file: still the 119th Congress
+  })
+
+  test('review 483d7ab F10: only the recorded sine-die sentences are P1 (anchored)', () => {
+    const adjourn = 'The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 4:30 p.m. on October 5, 2026.'
+    const nearMiss = classifyAction('H61000', `${adjourn.slice(0, -1)}, the concurrent resolution providing for an adjournment sine die not having been agreed to.`, false)
+    expect(nearMiss).toMatchObject({ event_type: 'floor.adjourned', tier: 'P2', kind: 'adjourned' })
+    expect(classifyAction('H61000', 'The Speaker announced that the House do now adjourn Sine Die.', false)).toMatchObject({ tier: 'P1', kind: 'sine_die' })
+    expect(classifyAction('H61000', 'Pursuant to the 20th Amendment of the Constitution, the Chair declares the 1st Session of the One Hundred Nineteenth Congress adjourned sine die.', false)).toMatchObject({ tier: 'P1', kind: 'sine_die' })
+    const out = ok('day', withBody(d1001(), (b) => edit(b, 'on October 5, 2026.\n</action_description>', 'on October 5, 2026, the concurrent resolution providing for an adjournment sine die not having been agreed to.\n</action_description>')))
+    expect(byKey(out, 'floor:house:119:45150')).toMatchObject({ event_type: 'floor.adjourned', importance: { tier: 'P2' }, title: 'House adjourned' })
   })
 
   test('a duplicate unique-id -> drift', () => {
