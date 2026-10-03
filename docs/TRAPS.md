@@ -84,6 +84,15 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   also store the response's fresh ETag / Last-Modified, then after one site-wide validator change (wh.feeds) every poll
   is a full download. `workers/api` keys accepted bodies by sha-256 + Worker version id and refreshes validators on a
   hash match (D-038).
+- **A cache-buster does not get a CONDITIONAL request past the White House CDN, and the CDN sometimes serves a stale
+  copy** (2026-10-03, D-058 investigation: a session-bounded watcher on the home PC polled `/news/feed/` every 60 s
+  plain and with a unique `?_=` query, each with its own If-None-Match, 13:33Z-20:28Z, 832 responses). Only the very first
+  busted request (unconditional, 200) reached the origin (`x-cache: MISS`); every later busted request, conditional,
+  was answered at the edge like the plain one (304 `HIT`), and 15 of 832 answers were `x-cache: STALE` (plain and
+  busted). No post appeared that day, so the 24-minute lag of 2026-10-03 03:01Z -> 03:26Z (PROGRESS #6, n=1) is still
+  unexplained; the feed's `max-age=300` alone cannot cause it. Measure the lag distribution from our own ledger
+  (first_seen_at minus source_published_at per White House item, n >= 20 on business days) before paying for
+  unconditional origin fetches (~480 KB each).
 - **GovInfo's Federal Register RSS `pubDate` is a package (re)processing time, not when the issue went up** (2026-10-03,
   `https://www.govinfo.gov/rss/fr.xml`, 100 items). FR-2026-08-24 is stamped 2026-09-29 18:44 ET and FR-2026-09-18 is
   stamped 2026-09-23; only some packages carry a time on their own issue date (00:47-05:24 ET). Never read an FR issue's
