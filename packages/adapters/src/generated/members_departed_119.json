@@ -1,0 +1,322 @@
+{
+  "url": "https://unitedstates.github.io/congress-legislators/legislators-historical.json",
+  "sha256": "25187633f3215a096fe9d14d8a40db1fb0841ab1d24c6da52da3a80c93698cbc",
+  "fetched_at": "2026-10-03T15:42:01Z",
+  "congress": 119,
+  "congress_start": "2025-01-03",
+  "count": 16,
+  "members": [
+    {
+      "id": {
+        "bioguide": "C001078"
+      },
+      "name": {
+        "last": "Connolly",
+        "first": "Gerald",
+        "middle": "E.",
+        "official_full": "Gerald E. Connolly"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2025-05-21",
+          "state": "VA",
+          "district": 11
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "C001127"
+      },
+      "name": {
+        "last": "Cherfilus-McCormick",
+        "first": "Sheila",
+        "official_full": "Sheila Cherfilus-McCormick"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2026-04-21",
+          "state": "FL",
+          "district": 20
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "G000359",
+        "lis": "S293"
+      },
+      "name": {
+        "last": "Graham",
+        "first": "Lindsey",
+        "middle": "O.",
+        "official_full": "Lindsey Graham"
+      },
+      "terms": [
+        {
+          "type": "sen",
+          "start": "2021-01-03",
+          "end": "2026-07-11",
+          "state": "SC"
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "G000551"
+      },
+      "name": {
+        "last": "Grijalva",
+        "first": "Raúl",
+        "middle": "M.",
+        "official_full": "Raúl M. Grijalva"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2025-03-13",
+          "state": "AZ",
+          "district": 7
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "G000590"
+      },
+      "name": {
+        "last": "Green",
+        "first": "Mark",
+        "middle": "E.",
+        "official_full": "Mark E. Green"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2025-07-21",
+          "state": "TN",
+          "district": 7
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "G000594"
+      },
+      "name": {
+        "last": "Gonzales",
+        "first": "Ernest",
+        "middle": "Anthony",
+        "nickname": "Tony",
+        "official_full": "Tony Gonzales"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2026-04-14",
+          "state": "TX",
+          "district": 23
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "G000596"
+      },
+      "name": {
+        "last": "Greene",
+        "first": "Marjorie",
+        "middle": "Taylor",
+        "official_full": "Marjorie Taylor Greene"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2026-01-05",
+          "state": "GA",
+          "district": 14
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "L000578"
+      },
+      "name": {
+        "last": "LaMalfa",
+        "first": "Doug",
+        "official_full": "Doug LaMalfa"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2026-01-05",
+          "state": "CA",
+          "district": 1
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "M001190",
+        "lis": "S419"
+      },
+      "name": {
+        "last": "Mullin",
+        "first": "Markwayne",
+        "official_full": "Markwayne Mullin"
+      },
+      "terms": [
+        {
+          "type": "sen",
+          "start": "2023-01-03",
+          "end": "2026-03-23",
+          "state": "OK"
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "R000595",
+        "lis": "S350"
+      },
+      "name": {
+        "last": "Rubio",
+        "first": "Marco",
+        "official_full": "Marco Rubio"
+      },
+      "terms": [
+        {
+          "type": "sen",
+          "start": "2023-01-03",
+          "end": "2025-01-20",
+          "state": "FL"
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "S001157"
+      },
+      "name": {
+        "last": "Scott",
+        "first": "David",
+        "official_full": "David Scott"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2026-04-21",
+          "state": "GA",
+          "district": 13
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "S001193"
+      },
+      "name": {
+        "last": "Swalwell",
+        "first": "Eric",
+        "official_full": "Eric Swalwell"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2026-04-14",
+          "state": "CA",
+          "district": 14
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "S001207"
+      },
+      "name": {
+        "last": "Sherrill",
+        "first": "Mikie",
+        "official_full": "Mikie Sherrill"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2025-11-20",
+          "state": "NJ",
+          "district": 11
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "T000489"
+      },
+      "name": {
+        "last": "Turner",
+        "first": "Sylvester",
+        "official_full": "Sylvester Turner"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2025-03-04",
+          "state": "TX",
+          "district": 18
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "V000137",
+        "lis": "S421"
+      },
+      "name": {
+        "last": "Vance",
+        "first": "James David",
+        "nickname": "J.D.",
+        "official_full": "J.D. Vance"
+      },
+      "terms": [
+        {
+          "type": "sen",
+          "start": "2023-01-03",
+          "end": "2025-01-09",
+          "state": "OH"
+        }
+      ]
+    },
+    {
+      "id": {
+        "bioguide": "W000823"
+      },
+      "name": {
+        "last": "Waltz",
+        "first": "Michael",
+        "official_full": "Michael Waltz"
+      },
+      "terms": [
+        {
+          "type": "rep",
+          "start": "2025-01-03",
+          "end": "2025-01-20",
+          "state": "FL",
+          "district": 6
+        }
+      ]
+    }
+  ]
+}

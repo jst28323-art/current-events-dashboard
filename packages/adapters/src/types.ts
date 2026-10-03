@@ -2,6 +2,7 @@
 // HTTP response in, normalized events + one health signal out. The same code runs in the Cloudflare Worker, in Node
 // on the home PC, and in tests that replay fixtures/ (docs/ARCHITECTURE.md, .claude/skills/add-source/SKILL.md).
 import type { Affiliation, CedEvent, FeatureId, HealthStatus } from '@ced/schema'
+import type { MemberVotesRecord } from '@ced/schema/v02'
 
 export type { HealthStatus }
 
@@ -29,9 +30,21 @@ export interface HealthSignal {
   items_seen: number
 }
 
+/** A URL another endpoint's parse asks the poller to fetch (dynamic endpoints; scratch/phase2/DESIGN.md §3.0, R-3). */
+export interface Target {
+  /** The id of the dynamic endpoint this URL belongs to (its `dynamic.from` is the endpoint just parsed). */
+  endpoint: string
+  url: string
+}
+
 export interface AdapterOutput {
   events: CedEvent[]
   health: HealthSignal
+  /** Dynamic-endpoint targets (Endpoint.dynamic). Only for endpoints whose `dynamic.from` is the endpoint just parsed.
+   * Not read by the Phase 1 poller; P2.2 (PollerDOs) implements it. */
+  targets?: Target[]
+  /** Side records (member votes, DESIGN §2). Never feed events; the Hub ignores them until the vote inspector (§2.4). */
+  records?: MemberVotesRecord[]
 }
 
 export type Validator = 'etag' | 'if-modified-since' | 'body-hash'
@@ -54,6 +67,17 @@ export interface Endpoint {
    * documents_newest: a document listed before its publication date is "scheduled" until that day, D-055). The poller
    * then keys the body by its hash AND that day, so an unchanged body is parsed again once per Eastern day. */
   dayDependent?: boolean
+  /** Dynamic endpoint (DESIGN §3.0; P2.2 poller, never on a live SOURCES endpoint: live_list.test.ts): its URLs come
+   * from the latest accepted (ok/empty) parse of endpoint `from` (AdapterOutput.targets for this endpoint id), which
+   * REPLACES this endpoint's target set; a drift/error/not_modified parse keeps the old set. `url` is then a
+   * human-readable template; the poller rejects any target not matching `urlPattern` (full match) and any beyond
+   * `maxTargets`. A target new to the set is due at once; afterwards it polls at this endpoint's cadence with its own
+   * validator state and body hash. A target never fetched successfully is KEPT even when a later parse drops it, until
+   * one fetch of it is accepted (a burst of new rolls between accepted index parses is never lost). */
+  dynamic?: { from: string; urlPattern: string; maxTargets: number }
+  /** An HTTP status that means "not posted yet" for this endpoint (house.clerk.floor next day: 404). The poller records
+   * health `empty` with "not posted yet", never parses it, never backs off for it. P2.2 poller only. */
+  notYetStatus?: number
 }
 
 export interface SourceDefinition {
@@ -70,5 +94,10 @@ export interface SourceDefinition {
   freshness_slo_s: number
   /** Max requests per hour to this host, all endpoints together. */
   rate_budget_per_h: number
+  /** Calendar awareness for P2.2 (not read by the Phase 1 poller; never on a live SOURCES entry): in recess (next
+   * convene of `chamber` more than 24 h away, from house.clerk.floor / senate.schedule) every endpoint polls at
+   * `recess_s`; while the chamber is sitting (convened and not adjourned), at business cadence whatever the clock says
+   * (votes run at 2:49 AM: roll2025_143). */
+  calendar?: { chamber: 'house' | 'senate'; recess_s: number }
   parse(endpointId: string, res: FetchedResponse): AdapterOutput
 }
