@@ -1,0 +1,11 @@
+{
+  "name": "@ced/probe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Temporary P1.3 probe Worker: source reachability + validators from Cloudflare, DO alarm CPU limit, alarm jitter.",
+  "scripts": {
+    "typecheck": "wrangler types && tsc -p tsconfig.json",
+    "build": "wrangler deploy --dry-run --outdir dist"
+  }
+}

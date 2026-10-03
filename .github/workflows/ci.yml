@@ -22,5 +22,8 @@ jobs:
       - name: Install dependencies (once a lockfile exists)
         if: hashFiles('package-lock.json') != ''
         run: npm ci
+      - name: Install the Playwright browser (the web e2e suite runs in the gate)
+        if: hashFiles('package-lock.json') != ''
+        run: npx playwright install --with-deps chromium
       - name: Gate
         run: node scripts/gate.mjs --ci

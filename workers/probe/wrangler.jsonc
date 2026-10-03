@@ -1,0 +1,18 @@
+// ced-probe: the TEMPORARY P1.3 measurement Worker (docs/ROADMAP.md P1.3). Deployed only by .github/workflows/deploy.yml
+// after CI passes (grant G-010 / D-032, under the G-007 conditions). It stops every outbound request by itself after 48
+// cron runs (~24 h) and then only serves GET /results. Address: https://ced-probe.<account subdomain>.workers.dev
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "ced-probe",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": {
+    "bindings": [{ "name": "PROBE", "class_name": "ProbeDO" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ProbeDO"] }],
+  // Every 30 minutes: the source probe (one third of the targets per run) and, on the first run, the alarm experiments.
+  "triggers": { "crons": ["*/30 * * * *"] },
+  "observability": { "enabled": true }
+}

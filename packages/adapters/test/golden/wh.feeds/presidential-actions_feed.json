@@ -1,0 +1,1362 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_abc780d852f49378",
+      "dedup_key": "wh_post:51617#published",
+      "object_key": "wh_post:51617",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/eliminating-disease-carrying-pests-and-restoring-enjoyment-of-the-great-outdoors"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Eliminating Disease-Carrying Pests And Restoring Enjoyment Of The Great Outdoors”",
+      "official_text": "Eliminating Disease-Carrying Pests And Restoring Enjoyment Of The Great Outdoors",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-29T21:23:48Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/eliminating-disease-carrying-pests-and-restoring-enjoyment-of-the-great-outdoors/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_aa1433abd7ea72e8",
+      "dedup_key": "wh_post:51615#published",
+      "object_key": "wh_post:51615",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Inaugurating The Era Of Super Intelligence”",
+      "official_text": "Inaugurating The Era Of Super Intelligence",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-29T21:17:25Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6e4233c12ae450a1",
+      "dedup_key": "wh_post:51585#published",
+      "object_key": "wh_post:51585",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/streamlining-access-to-government-services-through-america-gov"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Streamlining Access to Government Services Through America.gov”",
+      "official_text": "Streamlining Access to Government Services Through America.gov",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-29T14:50:54Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/streamlining-access-to-government-services-through-america-gov/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9f548416024f8c73",
+      "dedup_key": "wh_post:51499#published",
+      "object_key": "wh_post:51499",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/nominations-sent-to-the-senate-e1fc"
+      ],
+      "event_type": "presidential_action.nominations_sent",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Nominations & Appointments: “Nominations Sent to the Senate”",
+      "official_text": "Nominations Sent to the Senate",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Nominations & Appointments",
+          "nominations sent to the Senate"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-28T19:59:28Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/nominations-sent-to-the-senate-e1fc/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_298a9a10f251e00a",
+      "dedup_key": "wh_post:51135#published",
+      "object_key": "wh_post:51135",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/gold-star-mothers-and-familys-day-2026"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Gold Star Mother’s And Family’s Day, 2026”",
+      "official_text": "Gold Star Mother’s And Family’s Day, 2026",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-25T19:47:32Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/gold-star-mothers-and-familys-day-2026/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5bad890bd3439d2c",
+      "dedup_key": "wh_post:50541#published",
+      "object_key": "wh_post:50541",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/enhancing-program-integrity-and-integrity-and-interagency-coordination-in-the-administration-of-the-h-1b-nonimmigrant-visa-program"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Enhancing Program Integrity and Integrity and Interagency Coordination in the Administration of the H-1B Nonimmigrant Visa Program”",
+      "official_text": "Enhancing Program Integrity and Integrity and Interagency Coordination in the Administration of the H-1B Nonimmigrant Visa Program",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-18T22:02:43Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/enhancing-program-integrity-and-integrity-and-interagency-coordination-in-the-administration-of-the-h-1b-nonimmigrant-visa-program/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_68212d5b20dcc7dd",
+      "dedup_key": "wh_post:50532#published",
+      "object_key": "wh_post:50532",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/restriction-on-entry-of-certain-nonimmigrant-workers-faad"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Restriction on Entry of Certain Nonimmigrant Workers”",
+      "official_text": "Restriction on Entry of Certain Nonimmigrant Workers",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-18T21:42:13Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/restriction-on-entry-of-certain-nonimmigrant-workers-faad/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7d167a2d4bd3a49f",
+      "dedup_key": "wh_post:50434#published",
+      "object_key": "wh_post:50434",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/restoring-american-saltwater-angling-and-recreation"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “RESTORING AMERICAN SALTWATER ANGLING AND RECREATION”",
+      "official_text": "RESTORING AMERICAN SALTWATER ANGLING AND RECREATION",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-17T21:31:50Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/restoring-american-saltwater-angling-and-recreation/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c88981b4640a4331",
+      "dedup_key": "wh_post:50433#published",
+      "object_key": "wh_post:50433",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/reinvigorating-americas-hunting-heritage"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Reinvigorating America’s Hunting Heritage”",
+      "official_text": "Reinvigorating America’s Hunting Heritage",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-17T21:26:54Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/reinvigorating-americas-hunting-heritage/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3e49453c6325787d",
+      "dedup_key": "wh_post:50428#published",
+      "object_key": "wh_post:50428",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/withdrawals-sent-to-the-senate"
+      ],
+      "event_type": "presidential_action.other",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Nominations & Appointments: “Withdrawals Sent to the Senate”",
+      "official_text": "Withdrawals Sent to the Senate",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Nominations & Appointments",
+          "other presidential action"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-17T15:48:13Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/withdrawals-sent-to-the-senate/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_83971fe791d56231",
+      "dedup_key": "wh_post:50367#published",
+      "object_key": "wh_post:50367",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/restoring-reciprocity-in-government-procurement"
+      ],
+      "event_type": "presidential_action.memorandum",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Presidential Memoranda: “Restoring Reciprocity in Government Procurement”",
+      "official_text": "Restoring Reciprocity in Government Procurement",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Presidential Memoranda",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-16T20:27:39Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/restoring-reciprocity-in-government-procurement/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_388c0b5e58c88a18",
+      "dedup_key": "wh_post:50372#published",
+      "object_key": "wh_post:50372",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/providing-meaningful-water-quality-improvements-through-collaboration-and-oversight-of-federal-support"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Providing Meaningful Water Quality Improvements Through Collaboration and Oversight of Federal Support”",
+      "official_text": "Providing Meaningful Water Quality Improvements Through Collaboration and Oversight of Federal Support",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-16T20:23:26Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/providing-meaningful-water-quality-improvements-through-collaboration-and-oversight-of-federal-support/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_573a939cd8f60b36",
+      "dedup_key": "wh_post:50365#published",
+      "object_key": "wh_post:50365",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/constitution-day-citizenship-day-and-constitution-week-2026"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Constitution Day, Citizenship Day, and Constitution Week, 2026”",
+      "official_text": "Constitution Day, Citizenship Day, and Constitution Week, 2026",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-16T20:09:16Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/constitution-day-citizenship-day-and-constitution-week-2026/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ef38b14e6fd57a84",
+      "dedup_key": "wh_post:50361#published",
+      "object_key": "wh_post:50361",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/national-pow-mia-recognition-day-2026"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “National POW/MIA Recognition Day, 2026”",
+      "official_text": "National POW/MIA Recognition Day, 2026",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-16T20:05:04Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/national-pow-mia-recognition-day-2026/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2516537af44faf76",
+      "dedup_key": "wh_post:50281#published",
+      "object_key": "wh_post:50281",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/nominations-sent-to-the-senate-9fc3"
+      ],
+      "event_type": "presidential_action.nominations_sent",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Nominations & Appointments: “Nominations Sent to the Senate”",
+      "official_text": "Nominations Sent to the Senate",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Nominations & Appointments",
+          "nominations sent to the Senate"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-14T19:25:34Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/nominations-sent-to-the-senate-9fc3/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d28e63da1b66fa9d",
+      "dedup_key": "wh_post:49961#published",
+      "object_key": "wh_post:49961",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/patriot-day-2026-the-25th-anniversary-of-the-september-11-terrorist-attacks"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Patriot Day 2026, The 25th Anniversary of the September 11 Terrorist Attacks”",
+      "official_text": "Patriot Day 2026, The 25th Anniversary of the September 11 Terrorist Attacks",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-09T23:23:01Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/patriot-day-2026-the-25th-anniversary-of-the-september-11-terrorist-attacks/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b3bf622b61a8705f",
+      "dedup_key": "wh_post:49908#published",
+      "object_key": "wh_post:49908",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/modifying-the-scope-of-products-of-canada-subject-to-the-additional-duties-imposed-to-offset-canadian-discrimination-against-the-united-states-with-respect-to-motor-vehicles"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Modifying the Scope of Products of Canada Subject to the Additional Duties Imposed to Offset Canadian Discrimination Against the United States with Respect to Motor Vehicles”",
+      "official_text": "Modifying the Scope of Products of Canada Subject to the Additional Duties Imposed to Offset Canadian Discrimination Against the United States with Respect to Motor Vehicles",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-08T22:50:00Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/modifying-the-scope-of-products-of-canada-subject-to-the-additional-duties-imposed-to-offset-canadian-discrimination-against-the-united-states-with-respect-to-motor-vehicles/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b9ac60317c70b8f3",
+      "dedup_key": "wh_post:49904#published",
+      "object_key": "wh_post:49904",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/excluding-certain-canadian-alcoholic-beverages-from-importation-into-the-united-states-in-response-to-continued-discrimination-against-the-commerce-of-the-united-states-with-respect-to-alcoholic-bever"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Excluding Certain Canadian Alcoholic Beverages from Importation into the United States in Response to Continued Discrimination Against the Commerce of the United States with Respect to Alcoholic Beverages”",
+      "official_text": "Excluding Certain Canadian Alcoholic Beverages from Importation into the United States in Response to Continued Discrimination Against the Commerce of the United States with Respect to Alcoholic Beverages",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-08T22:50:00Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/excluding-certain-canadian-alcoholic-beverages-from-importation-into-the-united-states-in-response-to-continued-discrimination-against-the-commerce-of-the-united-states-with-respect-to-alcoholic-bever/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_16dc5f9410c61498",
+      "dedup_key": "wh_post:49897#published",
+      "object_key": "wh_post:49897",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/excluding-certain-canadian-products-from-importation-into-the-united-states-in-response-to-continued-discrimination-against-the-commerce-of-the-united-states-with-respect-to-dairy"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Excluding Certain Canadian Products from Importation into the United States in Response to Continued Discrimination Against the Commerce of the United States with Respect to Dairy”",
+      "official_text": "Excluding Certain Canadian Products from Importation into the United States in Response to Continued Discrimination Against the Commerce of the United States with Respect to Dairy",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-08T22:50:00Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/excluding-certain-canadian-products-from-importation-into-the-united-states-in-response-to-continued-discrimination-against-the-commerce-of-the-united-states-with-respect-to-dairy/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f9aa85b4124a8850",
+      "dedup_key": "wh_post:49892#published",
+      "object_key": "wh_post:49892",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/modifying-the-scope-of-products-of-canada-subject-to-the-additional-duties-imposed-to-offset-canadian-discrimination-against-the-commerce-of-the-united-states-with-respect-to-alcoholic-beverages"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Modifying the Scope of Products of Canada Subject to the Additional Duties Imposed to Offset Canadian Discrimination Against the Commerce of the United States with Respect to Alcoholic Beverages”",
+      "official_text": "Modifying the Scope of Products of Canada Subject to the Additional Duties Imposed to Offset Canadian Discrimination Against the Commerce of the United States with Respect to Alcoholic Beverages",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-08T22:50:00Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/modifying-the-scope-of-products-of-canada-subject-to-the-additional-duties-imposed-to-offset-canadian-discrimination-against-the-commerce-of-the-united-states-with-respect-to-alcoholic-beverages/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_497800d108b00549",
+      "dedup_key": "wh_post:49891#published",
+      "object_key": "wh_post:49891",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/excluding-certain-canadian-products-from-importation-into-the-united-states-in-response-to-continued-discrimination-against-the-commerce-of-the-united-states-with-respect-to-motor-vehicles"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Excluding Certain Canadian Products from Importation into the United States in Response to Continued Discrimination Against the Commerce of the United States with Respect to Motor Vehicles”",
+      "official_text": "Excluding Certain Canadian Products from Importation into the United States in Response to Continued Discrimination Against the Commerce of the United States with Respect to Motor Vehicles",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-08T22:50:00Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/excluding-certain-canadian-products-from-importation-into-the-united-states-in-response-to-continued-discrimination-against-the-commerce-of-the-united-states-with-respect-to-motor-vehicles/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b15017e0b6bbab91",
+      "dedup_key": "wh_post:49842#published",
+      "object_key": "wh_post:49842",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/accelerating-access-to-veterans-benefits-and-employment-opportunities"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Accelerating Access To Veterans’ Benefits And Employment Opportunities”",
+      "official_text": "Accelerating Access To Veterans’ Benefits And Employment Opportunities",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-08T19:00:01Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/accelerating-access-to-veterans-benefits-and-employment-opportunities/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c0ddcc21b8c202fc",
+      "dedup_key": "wh_post:49840#published",
+      "object_key": "wh_post:49840",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/adjusting-certain-delegations-under-the-defense-production-act-e2de"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Adjusting Certain Delegations Under the Defense Production Act”",
+      "official_text": "Adjusting Certain Delegations Under the Defense Production Act",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-08T18:52:09Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/adjusting-certain-delegations-under-the-defense-production-act-e2de/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bdde910520438f98",
+      "dedup_key": "wh_post:49811#published",
+      "object_key": "wh_post:49811",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/labor-day-2026"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Labor Day, 2026”",
+      "official_text": "Labor Day, 2026",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-07T16:05:01Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/labor-day-2026/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a453e831902bdd21",
+      "dedup_key": "wh_post:49785#published",
+      "object_key": "wh_post:49785",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/supporting-americas-ranchers"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Supporting America’s Ranchers”",
+      "official_text": "Supporting America’s Ranchers",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-04T19:28:18Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/supporting-americas-ranchers/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_113f0293a04b6f14",
+      "dedup_key": "wh_post:49783#published",
+      "object_key": "wh_post:49783",
+      "alias_keys": [
+        "wh:presidential-actions/2026/09/promoting-fair-competition-in-livestock-markets-and-expanding-market-access-for-american-meat-producers"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Promoting Fair Competition In Livestock Markets And Expanding Market Access for American Meat Producers”",
+      "official_text": "Promoting Fair Competition In Livestock Markets And Expanding Market Access for American Meat Producers",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-09-04T19:23:49Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/09/promoting-fair-competition-in-livestock-markets-and-expanding-market-access-for-american-meat-producers/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_24dc0e362a051a3b",
+      "dedup_key": "wh_post:49230#published",
+      "object_key": "wh_post:49230",
+      "alias_keys": [
+        "wh:presidential-actions/2026/08/establishing-the-united-states-space-academy"
+      ],
+      "event_type": "presidential_action.other",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Establishing the United States Space Academy”",
+      "official_text": "Establishing the United States Space Academy",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "filed under Proclamations, but the post does not open with the proclamation heading (\"By the President of the United States of America A Proclamation\")",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-08-28T17:20:24Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/08/establishing-the-united-states-space-academy/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fd5abc70c3a56af4",
+      "dedup_key": "wh_post:49180#published",
+      "object_key": "wh_post:49180",
+      "alias_keys": [
+        "wh:presidential-actions/2026/08/honoring-the-american-history-of-the-great-lakes-and-renaming-lake-ontario-as-lake-america-3a36"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Honoring the American History of the Great Lakes and Renaming Lake Ontario as Lake America”",
+      "official_text": "Honoring the American History of the Great Lakes and Renaming Lake Ontario as Lake America",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-08-27T21:00:35Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/08/honoring-the-american-history-of-the-great-lakes-and-renaming-lake-ontario-as-lake-america-3a36/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_38bee61e581f64cd",
+      "dedup_key": "wh_post:49151#published",
+      "object_key": "wh_post:49151",
+      "alias_keys": [
+        "wh:presidential-actions/2026/08/further-ensuring-affordable-beef-for-the-american-consumer"
+      ],
+      "event_type": "presidential_action.proclamation",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Proclamations: “Further Ensuring Affordable Beef for the American Consumer”",
+      "official_text": "Further Ensuring Affordable Beef for the American Consumer",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Proclamations",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-08-26T21:18:42Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/08/further-ensuring-affordable-beef-for-the-american-consumer/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_10a2610353705d7a",
+      "dedup_key": "wh_post:49152#published",
+      "object_key": "wh_post:49152",
+      "alias_keys": [
+        "wh:presidential-actions/2026/08/declaring-a-national-emergency-to-secure-the-united-states-bulk-power-system"
+      ],
+      "event_type": "presidential_action.executive_order",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F9"
+      ],
+      "title": "White House posted under Executive Orders: “Declaring a National Emergency to Secure the United States Bulk-Power System”",
+      "official_text": "Declaring a National Emergency to Secure the United States Bulk-Power System",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "category: Presidential Actions",
+          "category: Executive Orders",
+          "D-012 alert class (presidential action)"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": "2026-08-26T19:59:10Z",
+        "first_seen_at": "2026-10-02T18:00:20.520Z"
+      },
+      "sources": [
+        {
+          "source_id": "wh.feeds",
+          "url": "https://www.whitehouse.gov/presidential-actions/2026/08/declaring-a-national-emergency-to-secure-the-united-states-bulk-power-system/",
+          "retrieved_at": "2026-10-02T18:00:20.520Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "executive-messaging"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "wh_feeds@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "wh.feeds",
+    "endpoint": "news",
+    "status": "ok",
+    "detail": "30 items",
+    "items_seen": 30
+  }
+}

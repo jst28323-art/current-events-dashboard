@@ -1,0 +1,1025 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_50600d9909793002",
+      "dedup_key": "fr:2026-20322#published",
+      "object_key": "fr:2026-20322",
+      "event_type": "fr.published.presidential_document",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F10",
+        "F9"
+      ],
+      "title": "Presidential notice published in the Federal Register on October 2, 2026: Continuation of the National Emergency With Respect to the Situation in and in Relation to Syria",
+      "official_text": "Continuation of the National Emergency With Respect to the Situation in and in Relation to Syria",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "presidential_document_published"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20322.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "signing_date": "2026-09-30",
+        "citation": "91 FR 63131"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20322/continuation-of-the-national-emergency-with-respect-to-the-situation-in-and-in-relation-to-syria",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c59579014ef6d870",
+      "dedup_key": "fr:2026-20321#published",
+      "object_key": "fr:2026-20321",
+      "thread_key": "eo:14434",
+      "alias_keys": [
+        "eo:14434"
+      ],
+      "event_type": "fr.published.presidential_document",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F10",
+        "F9"
+      ],
+      "title": "Executive Order 14434 published in the Federal Register on October 2, 2026: Inaugurating the Era of Super Intelligence",
+      "official_text": "Inaugurating the Era of Super Intelligence",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "presidential_document_published",
+          "executive_order",
+          "D-012"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20321.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "signing_date": "2026-09-29",
+        "executive_order_number": "14434",
+        "citation": "91 FR 63129"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20321/inaugurating-the-era-of-super-intelligence",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5a15c75c69349b66",
+      "dedup_key": "fr:2026-20320#published",
+      "object_key": "fr:2026-20320",
+      "thread_key": "eo:14433",
+      "alias_keys": [
+        "eo:14433"
+      ],
+      "event_type": "fr.published.presidential_document",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F10",
+        "F9"
+      ],
+      "title": "Executive Order 14433 published in the Federal Register on October 2, 2026: Eliminating Disease-Carrying Pests and Restoring Enjoyment of the Great Outdoors",
+      "official_text": "Eliminating Disease-Carrying Pests and Restoring Enjoyment of the Great Outdoors",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "presidential_document_published",
+          "executive_order",
+          "D-012"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20320.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "signing_date": "2026-09-29",
+        "executive_order_number": "14433",
+        "citation": "91 FR 63125"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20320/eliminating-disease-carrying-pests-and-restoring-enjoyment-of-the-great-outdoors",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2f3f37e589eabb97",
+      "dedup_key": "fr:2026-20319#published",
+      "object_key": "fr:2026-20319",
+      "thread_key": "eo:14432",
+      "alias_keys": [
+        "eo:14432"
+      ],
+      "event_type": "fr.published.presidential_document",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F10",
+        "F9"
+      ],
+      "title": "Executive Order 14432 published in the Federal Register on October 2, 2026: Streamlining Access to Government Services Through America.gov",
+      "official_text": "Streamlining Access to Government Services Through America.gov",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "presidential_document_published",
+          "executive_order",
+          "D-012"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20319.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "signing_date": "2026-09-29",
+        "executive_order_number": "14432",
+        "citation": "91 FR 63121"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20319/streamlining-access-to-government-services-through-americagov",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_938a15c40195d08d",
+      "dedup_key": "fr:2026-20318#published",
+      "object_key": "fr:2026-20318",
+      "event_type": "fr.published.presidential_document",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F10",
+        "F9"
+      ],
+      "title": "Presidential determination published in the Federal Register on October 2, 2026: Presidential Determination on Refugee Admissions for Fiscal Year 2027",
+      "official_text": "Presidential Determination on Refugee Admissions for Fiscal Year 2027",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "presidential_document_published"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20318.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "signing_date": "2026-09-25",
+        "citation": "91 FR 63119"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20318/presidential-determination-on-refugee-admissions-for-fiscal-year-2027",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e60cd39189adfe03",
+      "dedup_key": "fr:2026-20285#published",
+      "object_key": "fr:2026-20285",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:unified-carrier-registration-plan",
+      "features": [
+        "F10"
+      ],
+      "title": "Unified Carrier Registration Plan notice published in the Federal Register on October 2, 2026: Sunshine Act Meetings",
+      "official_text": "Sunshine Act Meetings",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20285.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62815"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20285/sunshine-act-meetings",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3c388a8937fb3864",
+      "dedup_key": "fr:2026-20281#published",
+      "object_key": "fr:2026-20281",
+      "event_type": "fr.published.rule",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-medicare-medicaid-services",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Medicare & Medicaid Services rule published in the Federal Register on October 2, 2026: Global Benchmark for Efficient Drug Pricing (GLOBE) Model",
+      "official_text": "Global Benchmark for Efficient Drug Pricing (GLOBE) Model",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "rule",
+          "significant"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20281.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "significant": true,
+        "citation": "91 FR 62936"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20281/global-benchmark-for-efficient-drug-pricing-globe-model",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a56fcc448ba4ee3d",
+      "dedup_key": "fr:2026-20280#published",
+      "object_key": "fr:2026-20280",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice published in the Federal Register on October 2, 2026: Agency Information Collection Activities; Proposed Collection; Comment Request; Extension: Rule 498",
+      "official_text": "Agency Information Collection Activities; Proposed Collection; Comment Request; Extension: Rule 498",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20280.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62798"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20280/agency-information-collection-activities-proposed-collection-comment-request-extension-rule-498",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e72a3d166a4131ce",
+      "dedup_key": "fr:2026-20279#published",
+      "object_key": "fr:2026-20279",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:education-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Education Department notice published in the Federal Register on October 2, 2026: Agency Information Collection Activities; Submission to the Office of Management and Budget for Review and Approval; Comment Request; Eligible Career Pathway Program",
+      "official_text": "Agency Information Collection Activities; Submission to the Office of Management and Budget for Review and Approval; Comment Request; Eligible Career Pathway Program",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20279.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62721"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20279/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_134dd978bcefe665",
+      "dedup_key": "fr:2026-20278#published",
+      "object_key": "fr:2026-20278",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:agriculture-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Agriculture Department notice published in the Federal Register on October 2, 2026: Submission for OMB Review; Comment Request",
+      "official_text": "Submission for OMB Review; Comment Request",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20278.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62687"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20278/submission-for-omb-review-comment-request",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_466cffd3b1e70574",
+      "dedup_key": "fr:2026-20277#published",
+      "object_key": "fr:2026-20277",
+      "event_type": "fr.published.proposed_rule",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:internal-revenue-service",
+      "features": [
+        "F10"
+      ],
+      "title": "Internal Revenue Service proposed rule published in the Federal Register on October 2, 2026: Federal Scholarship Tax Credit",
+      "official_text": "Federal Scholarship Tax Credit",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20277.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62818"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20277/federal-scholarship-tax-credit",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_aeeea8b357df5b84",
+      "dedup_key": "fr:2026-20276#published",
+      "object_key": "fr:2026-20276",
+      "event_type": "fr.published.rule",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:nuclear-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Nuclear Regulatory Commission rule published in the Federal Register on October 2, 2026: State of Indiana: Discontinuance of Certain Commission Regulatory Authority Within the State, Notice of Agreement Between the Nuclear Regulatory Commission and the State of Indiana",
+      "official_text": "State of Indiana: Discontinuance of Certain Commission Regulatory Authority Within the State, Notice of Agreement Between the Nuclear Regulatory Commission and the State of Indiana",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20276.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62635"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20276/state-of-indiana-discontinuance-of-certain-commission-regulatory-authority-within-the-state-notice",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_322d10c3d70cd1f0",
+      "dedup_key": "fr:2026-20274#published",
+      "object_key": "fr:2026-20274",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:nuclear-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Nuclear Regulatory Commission notice published in the Federal Register on October 2, 2026: Sunshine Act Meetings",
+      "official_text": "Sunshine Act Meetings",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20274.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62763"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20274/sunshine-act-meetings",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cd29b43f86882c5d",
+      "dedup_key": "fr:2026-20273#published",
+      "object_key": "fr:2026-20273",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice published in the Federal Register on October 2, 2026: Polyethylene Terephthalate Film, Sheet, and Strip From Taiwan: Preliminary Results and Preliminary Intent To Rescind, In Part, of Antidumping Duty Administrative Review; 2024-2025",
+      "official_text": "Polyethylene Terephthalate Film, Sheet, and Strip From Taiwan: Preliminary Results and Preliminary Intent To Rescind, In Part, of Antidumping Duty Administrative Review; 2024-2025",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20273.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62691"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20273/polyethylene-terephthalate-film-sheet-and-strip-from-taiwan-preliminary-results-and-preliminary",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f9243282e0a957bc",
+      "dedup_key": "fr:2026-20272#published",
+      "object_key": "fr:2026-20272",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice published in the Federal Register on October 2, 2026: Certain Aluminum Foil From the Republic of Türkiye: Final Results of Countervailing Duty Administrative Review; 2023",
+      "official_text": "Certain Aluminum Foil From the Republic of Türkiye: Final Results of Countervailing Duty Administrative Review; 2023",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20272.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62698"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20272/certain-aluminum-foil-from-the-republic-of-trkiye-final-results-of-countervailing-duty",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f2f6037e6da74159",
+      "dedup_key": "fr:2026-20271#published",
+      "object_key": "fr:2026-20271",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-procurement-policy-office",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Procurement Policy Office notice published in the Federal Register on October 2, 2026: Information Collection; Federal Acquisition Regulation Part 11 Requirements",
+      "official_text": "Information Collection; Federal Acquisition Regulation Part 11 Requirements",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20271.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62733"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20271/information-collection-federal-acquisition-regulation-part-11-requirements",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6520e42c8da21b6f",
+      "dedup_key": "fr:2026-20270#published",
+      "object_key": "fr:2026-20270",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-procurement-policy-office",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Procurement Policy Office notice published in the Federal Register on October 2, 2026: Information Collection; Presolicitation Notice and Response",
+      "official_text": "Information Collection; Presolicitation Notice and Response",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20270.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62734"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20270/information-collection-presolicitation-notice-and-response",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7323d0f2f3bccad6",
+      "dedup_key": "fr:2026-20269#published",
+      "object_key": "fr:2026-20269",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice published in the Federal Register on October 2, 2026: Antidumping or Countervailing Duty Order, Finding, or Suspended Investigation; Opportunity To Request Administrative Review and Join Annual Inquiry Service List; Note Regarding Format of Review Requests",
+      "official_text": "Antidumping or Countervailing Duty Order, Finding, or Suspended Investigation; Opportunity To Request Administrative Review and Join Annual Inquiry Service List; Note Regarding Format of Review Requests",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20269.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62695"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20269/antidumping-or-countervailing-duty-order-finding-or-suspended-investigation-opportunity-to-request",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_56696d5e2ef98165",
+      "dedup_key": "fr:2026-20268#published",
+      "object_key": "fr:2026-20268",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-oceanic-and-atmospheric-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "National Oceanic and Atmospheric Administration notice published in the Federal Register on October 2, 2026: New England Fishery Management Council; Public Meeting",
+      "official_text": "New England Fishery Management Council; Public Meeting",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20268.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62719"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20268/new-england-fishery-management-council-public-meeting",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7900bdec5474e973",
+      "dedup_key": "fr:2026-20267#published",
+      "object_key": "fr:2026-20267",
+      "event_type": "fr.published.notice",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:agriculture-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Agriculture Department notice published in the Federal Register on October 2, 2026: Submission for OMB Review; Comment Request",
+      "official_text": "Submission for OMB Review; Comment Request",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T21:27:22.995Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20267.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-02",
+        "citation": "91 FR 62686"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/documents/2026/10/02/2026-20267/submission-for-omb-review-comment-request",
+          "retrieved_at": "2026-10-02T21:27:22.995Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "fr.api",
+    "endpoint": "documents_newest",
+    "status": "ok",
+    "detail": "20 newest published documents",
+    "items_seen": 20
+  }
+}

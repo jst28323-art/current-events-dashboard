@@ -6,10 +6,12 @@
   "description": "The phone-first web app (GitHub Pages), Vite + Preact + signals.",
   "scripts": {
     "dev": "vite",
-    "typecheck": "tsc -p tsconfig.json",
-    "build": "vite build"
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
+    "build": "vite build",
+    "e2e": "playwright test"
   },
   "dependencies": {
+    "@ced/schema": "0.1.0",
     "@preact/signals": "2.11.3",
     "preact": "10.29.8"
   }

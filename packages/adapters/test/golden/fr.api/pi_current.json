@@ -1,0 +1,5157 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_2e37cec2a28dc83e",
+      "dedup_key": "fr:2026-20295#public_inspection",
+      "object_key": "fr:2026-20295",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection (with an editorial note): Meetings; Sunshine Act",
+      "official_text": "Meetings; Sunshine Act",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20295.pdf"
+        }
+      ],
+      "result": {
+        "editorial_note": "An agency letter requesting withdrawal of this document was received after placement on public inspection. The document will remain on public inspection through close of business on October 5, 2026.  You may request a copy of the agency's withdrawal letter, and/or the withdrawn document, by sending an email to fr.inspection@nara.gov."
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20295/meetings-sunshine-act",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_778ac246fc3e2841",
+      "dedup_key": "fr:2026-20228#public_inspection",
+      "object_key": "fr:2026-20228",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:u-s-customs-and-border-protection",
+      "features": [
+        "F10"
+      ],
+      "title": "U.S. Customs and Border Protection notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Court-Ordered Refunds under the International Emergency Economic Powers Act Worksheet",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Court-Ordered Refunds under the International Emergency Economic Powers Act Worksheet",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T18:00:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20228.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20228/agency-information-collection-activities-proposals-submissions-and-approvals-court-ordered-refunds",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_07c9b670beaa2a8d",
+      "dedup_key": "fr:2026-20338#public_inspection",
+      "object_key": "fr:2026-20338",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-oceanic-and-atmospheric-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "National Oceanic and Atmospheric Administration rule filed for public inspection: Fisheries of the Exclusive Economic Zone off Alaska: Pacific Ocean Perch in the Western Regulatory Area of the Gulf of Alaska",
+      "official_text": "Fisheries of the Exclusive Economic Zone off Alaska: Pacific Ocean Perch in the Western Regulatory Area of the Gulf of Alaska",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T20:15:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20338.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20338/fisheries-of-the-exclusive-economic-zone-off-alaska-pacific-ocean-perch-in-the-western-regulatory",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0275b18d3d25b090",
+      "dedup_key": "fr:2026-20396#public_inspection",
+      "object_key": "fr:2026-20396",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Meetings; Sunshine Act",
+      "official_text": "Meetings; Sunshine Act",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T20:15:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20396.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20396/meetings-sunshine-act",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d3d97c023ae39f1c",
+      "dedup_key": "fr:2026-20373#public_inspection",
+      "object_key": "fr:2026-20373",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:nuclear-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Nuclear Regulatory Commission notice filed for public inspection: Meetings; Sunshine Act",
+      "official_text": "Meetings; Sunshine Act",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-01T20:15:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20373.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20373/meetings-sunshine-act",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_696f53996c700e36",
+      "dedup_key": "fr:2026-20282#public_inspection",
+      "object_key": "fr:2026-20282",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Certain Corrosion Inhibitors from the People's Republic of China",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Certain Corrosion Inhibitors from the People's Republic of China",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20282.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20282/antidumping-or-countervailing-duty-investigations-orders-or-reviews-certain-corrosion-inhibitors",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_70f381b7bbe0bc58",
+      "dedup_key": "fr:2026-20283#public_inspection",
+      "object_key": "fr:2026-20283",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:state-department",
+      "features": [
+        "F10"
+      ],
+      "title": "State Department notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Media Inquiry System",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Media Inquiry System",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20283.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20283/agency-information-collection-activities-proposals-submissions-and-approvals-media-inquiry-system",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c17170c6743d9479",
+      "dedup_key": "fr:2026-20284#public_inspection",
+      "object_key": "fr:2026-20284",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-institutes-of-health",
+      "features": [
+        "F10"
+      ],
+      "title": "National Institutes of Health notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Center for Scientific Review",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Center for Scientific Review",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20284.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20284/hearings-meetings-proceedings-etc-center-for-scientific-review",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_152b5533f08648b5",
+      "dedup_key": "fr:2026-20286#public_inspection",
+      "object_key": "fr:2026-20286",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Commission notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Amine Compounds from China",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Amine Compounds from China",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20286.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20286/antidumping-or-countervailing-duty-investigations-orders-or-reviews-amine-compounds-from-china",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a90147d65f9dabb2",
+      "dedup_key": "fr:2026-20287#public_inspection",
+      "object_key": "fr:2026-20287",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:equal-employment-opportunity-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Equal Employment Opportunity Commission notice filed for public inspection: Performance Review Board Members",
+      "official_text": "Performance Review Board Members",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20287.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20287/performance-review-board-members",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_26231701951b7e7b",
+      "dedup_key": "fr:2026-20288#public_inspection",
+      "object_key": "fr:2026-20288",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:justice-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Justice Department notice filed for public inspection: Proposed Consent Decree: CERCLA",
+      "official_text": "Proposed Consent Decree: CERCLA",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20288.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20288/proposed-consent-decree-cercla",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7ff903d6ace37a63",
+      "dedup_key": "fr:2026-20289#public_inspection",
+      "object_key": "fr:2026-20289",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Application: SLR Secured Lending Partners, LLC and SLR Secured Specialty Lending Fund",
+      "official_text": "Application: SLR Secured Lending Partners, LLC and SLR Secured Specialty Lending Fund",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20289.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20289/application-slr-secured-lending-partners-llc-and-slr-secured-specialty-lending-fund",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0c7962ddd0d072ec",
+      "dedup_key": "fr:2026-20290#public_inspection",
+      "object_key": "fr:2026-20290",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:office-of-national-drug-control-policy",
+      "features": [
+        "F10"
+      ],
+      "title": "Office of National Drug Control Policy notice filed for public inspection: Performance Review Board Members",
+      "official_text": "Performance Review Board Members",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20290.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20290/performance-review-board-members",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_62935604dc2f975e",
+      "dedup_key": "fr:2026-20291#public_inspection",
+      "object_key": "fr:2026-20291",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:education-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Education Department notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Consolidated State Plan",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Consolidated State Plan",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20291.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20291/agency-information-collection-activities-proposals-submissions-and-approvals-consolidated-state-plan",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3db2a7fe0984b59a",
+      "dedup_key": "fr:2026-20292#public_inspection",
+      "object_key": "fr:2026-20292",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:interior-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Interior Department notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Private Rental Survey",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Private Rental Survey",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20292.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20292/agency-information-collection-activities-proposals-submissions-and-approvals-private-rental-survey",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3c850bd7f895d0e6",
+      "dedup_key": "fr:2026-20293#public_inspection",
+      "object_key": "fr:2026-20293",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:postal-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Postal Regulatory Commission notice filed for public inspection: New Postal Products",
+      "official_text": "New Postal Products",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20293.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20293/new-postal-products",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_566756dd5c950df2",
+      "dedup_key": "fr:2026-20294#public_inspection",
+      "object_key": "fr:2026-20294",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Steel Concrete Reinforcing Bar from the Republic of Turkiye",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Steel Concrete Reinforcing Bar from the Republic of Turkiye",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20294.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20294/antidumping-or-countervailing-duty-investigations-orders-or-reviews-steel-concrete-reinforcing-bar",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e8c8768c3e13eb0a",
+      "dedup_key": "fr:2026-20296#public_inspection",
+      "object_key": "fr:2026-20296",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:consumer-product-safety-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Consumer Product Safety Commission proposed rule filed for public inspection: Safety Standard: Lithium-Ion Batteries Used in Micromobility Products and Electrical Systems of Micromobility Products Containing Such Batteries",
+      "official_text": "Safety Standard: Lithium-Ion Batteries Used in Micromobility Products and Electrical Systems of Micromobility Products Containing Such Batteries",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20296.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20296/safety-standard-lithium-ion-batteries-used-in-micromobility-products-and-electrical-systems-of",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ccc8d23d6fb95f21",
+      "dedup_key": "fr:2026-20297#public_inspection",
+      "object_key": "fr:2026-20297",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: The Nasdaq Stock Market LLC",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: The Nasdaq Stock Market LLC",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20297.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20297/self-regulatory-organizations-proposed-rule-changes-the-nasdaq-stock-market-llc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a0695dd417548b02",
+      "dedup_key": "fr:2026-20298#public_inspection",
+      "object_key": "fr:2026-20298",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq MRX, LLC",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq MRX, LLC",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20298.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20298/self-regulatory-organizations-proposed-rule-changes-nasdaq-mrx-llc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e62ce0a5a8c8aa31",
+      "dedup_key": "fr:2026-20299#public_inspection",
+      "object_key": "fr:2026-20299",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq ISE, LLC",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq ISE, LLC",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20299.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20299/self-regulatory-organizations-proposed-rule-changes-nasdaq-ise-llc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d678d33334ba9f96",
+      "dedup_key": "fr:2026-20300#public_inspection",
+      "object_key": "fr:2026-20300",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq GEMX, LLC",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq GEMX, LLC",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20300.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20300/self-regulatory-organizations-proposed-rule-changes-nasdaq-gemx-llc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_755fc00a288b5869",
+      "dedup_key": "fr:2026-20301#public_inspection",
+      "object_key": "fr:2026-20301",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: The Depository Trust Co.",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: The Depository Trust Co.",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20301.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20301/self-regulatory-organizations-proposed-rule-changes-the-depository-trust-co",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dfb0a76abce257a9",
+      "dedup_key": "fr:2026-20302#public_inspection",
+      "object_key": "fr:2026-20302",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: MIAX PEARL, LLC",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: MIAX PEARL, LLC",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20302.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20302/self-regulatory-organizations-proposed-rule-changes-miax-pearl-llc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_aa77190ec435901e",
+      "dedup_key": "fr:2026-20303#public_inspection",
+      "object_key": "fr:2026-20303",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: The Nasdaq Stock Market LLC",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: The Nasdaq Stock Market LLC",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20303.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20303/self-regulatory-organizations-proposed-rule-changes-the-nasdaq-stock-market-llc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1be8b5f12319e9de",
+      "dedup_key": "fr:2026-20304#public_inspection",
+      "object_key": "fr:2026-20304",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq PHLX LLC",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: Nasdaq PHLX LLC",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20304.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20304/self-regulatory-organizations-proposed-rule-changes-nasdaq-phlx-llc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d4b0c52e6c2a860f",
+      "dedup_key": "fr:2026-20305#public_inspection",
+      "object_key": "fr:2026-20305",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Self-Regulatory Organizations; Proposed Rule Changes: Long-Term Stock Exchange, Inc.",
+      "official_text": "Self-Regulatory Organizations; Proposed Rule Changes: Long-Term Stock Exchange, Inc.",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20305.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20305/self-regulatory-organizations-proposed-rule-changes-long-term-stock-exchange-inc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a52cfca2b52c5b0f",
+      "dedup_key": "fr:2026-20306#public_inspection",
+      "object_key": "fr:2026-20306",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-transit-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Transit Administration notice filed for public inspection: Charter Amendments, Establishments, Renewals and Terminations: Transit Advisory Committee for Safety",
+      "official_text": "Charter Amendments, Establishments, Renewals and Terminations: Transit Advisory Committee for Safety",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20306.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20306/charter-amendments-establishments-renewals-and-terminations-transit-advisory-committee-for-safety",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_af227a8f7ca11352",
+      "dedup_key": "fr:2026-20307#public_inspection",
+      "object_key": "fr:2026-20307",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Potential Designations of the Investment Banking Representative License (Series 79) and the Research Analyst License (Series 86 and Series 87) as Qualifying Natural Persons for Accredited Investor Status",
+      "official_text": "Potential Designations of the Investment Banking Representative License (Series 79) and the Research Analyst License (Series 86 and Series 87) as Qualifying Natural Persons for Accredited Investor Status",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20307.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20307/potential-designations-of-the-investment-banking-representative-license-series-79-and-the-research",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0479c84107726820",
+      "dedup_key": "fr:2026-20308#public_inspection",
+      "object_key": "fr:2026-20308",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Potential Designation of U.S. Certified Public Accountant License as Qualifying Natural Persons for Accredited Investor Status",
+      "official_text": "Potential Designation of U.S. Certified Public Accountant License as Qualifying Natural Persons for Accredited Investor Status",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20308.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20308/potential-designation-of-us-certified-public-accountant-license-as-qualifying-natural-persons-for",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_580b85ea3d2e96a3",
+      "dedup_key": "fr:2026-20309#public_inspection",
+      "object_key": "fr:2026-20309",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Potential Designation of Certified Financial Planner Certification as Qualifying Natural Persons for Accredited Investor Status",
+      "official_text": "Potential Designation of Certified Financial Planner Certification as Qualifying Natural Persons for Accredited Investor Status",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20309.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20309/potential-designation-of-certified-financial-planner-certification-as-qualifying-natural-persons-for",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1e622751971f235a",
+      "dedup_key": "fr:2026-20310#public_inspection",
+      "object_key": "fr:2026-20310",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Potential Designation of Passage of an Accredited Investor Exam to Be Developed by FINRA as Qualifying Natural Persons for Accredited Investor Status",
+      "official_text": "Potential Designation of Passage of an Accredited Investor Exam to Be Developed by FINRA as Qualifying Natural Persons for Accredited Investor Status",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20310.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20310/potential-designation-of-passage-of-an-accredited-investor-exam-to-be-developed-by-finra-as",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2cf6cae270d9c256",
+      "dedup_key": "fr:2026-20311#public_inspection",
+      "object_key": "fr:2026-20311",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission notice filed for public inspection: Potential Designation of Chartered Financial Analyst Designation as Qualifying Natural Persons for Accredited Investor Status",
+      "official_text": "Potential Designation of Chartered Financial Analyst Designation as Qualifying Natural Persons for Accredited Investor Status",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20311.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20311/potential-designation-of-chartered-financial-analyst-designation-as-qualifying-natural-persons-for",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7dedce93734626b9",
+      "dedup_key": "fr:2026-20312#public_inspection",
+      "object_key": "fr:2026-20312",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration notice filed for public inspection: Intent to Designate as Abandoned: VanDyke Russell Supplemental Type Certificate",
+      "official_text": "Intent to Designate as Abandoned: VanDyke Russell Supplemental Type Certificate",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20312.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20312/intent-to-designate-as-abandoned-vandyke-russell-supplemental-type-certificate",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8b7cbb99d5ef1e00",
+      "dedup_key": "fr:2026-20313#public_inspection",
+      "object_key": "fr:2026-20313",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-oceanic-and-atmospheric-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "National Oceanic and Atmospheric Administration notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Reporting Requirements for Commercial Fisheries Authorization under Section 118 of the Marine Mammal Protection Act",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Reporting Requirements for Commercial Fisheries Authorization under Section 118 of the Marine Mammal Protection Act",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20313.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20313/agency-information-collection-activities-proposals-submissions-and-approvals-reporting-requirements",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8b526f385cdf4e56",
+      "dedup_key": "fr:2026-20314#public_inspection",
+      "object_key": "fr:2026-20314",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:children-and-families-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Children and Families Administration notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Mental Health Assessment Form and Onsite Health Intervention Form",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Mental Health Assessment Form and Onsite Health Intervention Form",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20314.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20314/agency-information-collection-activities-proposals-submissions-and-approvals-mental-health",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ad8ea0299d4bd8ad",
+      "dedup_key": "fr:2026-20315#public_inspection",
+      "object_key": "fr:2026-20315",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:fish-and-wildlife-service",
+      "features": [
+        "F10"
+      ],
+      "title": "Fish and Wildlife Service proposed rule filed for public inspection: Endangered and Threatened Species: Four Species Not Warranted for Listing as Endangered or Threatened Species",
+      "official_text": "Endangered and Threatened Species: Four Species Not Warranted for Listing as Endangered or Threatened Species",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20315.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20315/endangered-and-threatened-species-four-species-not-warranted-for-listing-as-endangered-or-threatened",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dd16d732483c703f",
+      "dedup_key": "fr:2026-20316#public_inspection",
+      "object_key": "fr:2026-20316",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:census-bureau",
+      "features": [
+        "F10"
+      ],
+      "title": "Census Bureau notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Qualitative Research to Improve 2030 Census Communications",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Qualitative Research to Improve 2030 Census Communications",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20316.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20316/agency-information-collection-activities-proposals-submissions-and-approvals-qualitative-research-to",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_637891cf930ef0ca",
+      "dedup_key": "fr:2026-20317#public_inspection",
+      "object_key": "fr:2026-20317",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:general-services-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "General Services Administration proposed rule filed for public inspection: General Services Administration Acquisition Regulation: Implementation of Executive Order 14275, Acquisition of Utility Services",
+      "official_text": "General Services Administration Acquisition Regulation: Implementation of Executive Order 14275, Acquisition of Utility Services",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20317.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20317/general-services-administration-acquisition-regulation-implementation-of-executive-order-14275",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e2c1d295bcc735a5",
+      "dedup_key": "fr:2026-20323#public_inspection",
+      "object_key": "fr:2026-20323",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration notice filed for public inspection: Airport Property: Liberal Mid-America Regional Airport, Liberal, KS",
+      "official_text": "Airport Property: Liberal Mid-America Regional Airport, Liberal, KS",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20323.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20323/airport-property-liberal-mid-america-regional-airport-liberal-ks",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a1f259b44b02d0cd",
+      "dedup_key": "fr:2026-20324#public_inspection",
+      "object_key": "fr:2026-20324",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:coast-guard",
+      "features": [
+        "F10"
+      ],
+      "title": "Coast Guard rule filed for public inspection: Special Local Regulation: Allegheny River Mile Marker 20.5-21, Creighton, PA",
+      "official_text": "Special Local Regulation: Allegheny River Mile Marker 20.5-21, Creighton, PA",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20324.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20324/special-local-regulation-allegheny-river-mile-marker-205-21-creighton-pa",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9c9982ec7c31a9f7",
+      "dedup_key": "fr:2026-20325#public_inspection",
+      "object_key": "fr:2026-20325",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-motor-carrier-safety-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Motor Carrier Safety Administration rule filed for public inspection: Petitions for Reconsideration: Clarification to the Applicability of Emergency Exemptions",
+      "official_text": "Petitions for Reconsideration: Clarification to the Applicability of Emergency Exemptions",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20325.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20325/petitions-for-reconsideration-clarification-to-the-applicability-of-emergency-exemptions",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ac995c19f425a200",
+      "dedup_key": "fr:2026-20326#public_inspection",
+      "object_key": "fr:2026-20326",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:surface-mining-reclamation-and-enforcement-office",
+      "features": [
+        "F10"
+      ],
+      "title": "Surface Mining Reclamation and Enforcement Office notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Technical Evaluation Surveys",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Technical Evaluation Surveys",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20326.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20326/agency-information-collection-activities-proposals-submissions-and-approvals-technical-evaluation",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f5170af4324c0381",
+      "dedup_key": "fr:2026-20327#public_inspection",
+      "object_key": "fr:2026-20327",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration notice filed for public inspection: Advisory Circular: 187-1V: Schedule of Charges Outside the United States",
+      "official_text": "Advisory Circular: 187-1V: Schedule of Charges Outside the United States",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20327.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20327/advisory-circular-187-1v-schedule-of-charges-outside-the-united-states",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a5a8fda9826c8a5d",
+      "dedup_key": "fr:2026-20328#public_inspection",
+      "object_key": "fr:2026-20328",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:census-bureau",
+      "features": [
+        "F10"
+      ],
+      "title": "Census Bureau proposed rule filed for public inspection: Decennial Census of the Population of Americans; Proposed Residence Criteria and Proposed Regulations for Demographic Questions",
+      "official_text": "Decennial Census of the Population of Americans; Proposed Residence Criteria and Proposed Regulations for Demographic Questions",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20328.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20328/decennial-census-of-the-population-of-americans-proposed-residence-criteria-and-proposed-regulations",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e5cd84424e894f1e",
+      "dedup_key": "fr:2026-20329#public_inspection",
+      "object_key": "fr:2026-20329",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:children-and-families-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Children and Families Administration proposed rule filed for public inspection: Reforming Federal Reporting and Assessments in Child Welfare",
+      "official_text": "Reforming Federal Reporting and Assessments in Child Welfare",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20329.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20329/reforming-federal-reporting-and-assessments-in-child-welfare",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d8c6df489ee813d7",
+      "dedup_key": "fr:2026-20330#public_inspection",
+      "object_key": "fr:2026-20330",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-oceanic-and-atmospheric-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "National Oceanic and Atmospheric Administration rule filed for public inspection: Fisheries of the Caribbean, Gulf of America, and South Atlantic: Puerto Rico Fishery Management Plan; Amendment 4",
+      "official_text": "Fisheries of the Caribbean, Gulf of America, and South Atlantic: Puerto Rico Fishery Management Plan; Amendment 4",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20330.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20330/fisheries-of-the-caribbean-gulf-of-america-and-south-atlantic-puerto-rico-fishery-management-plan",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_71df01a817992195",
+      "dedup_key": "fr:2026-20331#public_inspection",
+      "object_key": "fr:2026-20331",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:federal-deposit-insurance-corporation",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Deposit Insurance Corporation notice filed for public inspection: Termination of Receivership",
+      "official_text": "Termination of Receivership",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20331.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20331/termination-of-receivership",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3d65af2db58aedea",
+      "dedup_key": "fr:2026-20332#public_inspection",
+      "object_key": "fr:2026-20332",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-science-foundation",
+      "features": [
+        "F10"
+      ],
+      "title": "National Science Foundation notice filed for public inspection: Proposal Review Committee Name Changes",
+      "official_text": "Proposal Review Committee Name Changes",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20332.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20332/proposal-review-committee-name-changes",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6320d31114c9d0cd",
+      "dedup_key": "fr:2026-20333#public_inspection",
+      "object_key": "fr:2026-20333",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:susquehanna-river-basin-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Susquehanna River Basin Commission notice filed for public inspection: Hearings, Meetings, Proceedings, etc.",
+      "official_text": "Hearings, Meetings, Proceedings, etc.",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20333.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20333/hearings-meetings-proceedings-etc",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f299e134a6673535",
+      "dedup_key": "fr:2026-20334#public_inspection",
+      "object_key": "fr:2026-20334",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-medicare-medicaid-services",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Medicare & Medicaid Services notice filed for public inspection: Medicare Program: Alternative Payment Model (APM) Incentive Payment Advisory for Clinicians - Request for Current Billing Information for Qualifying APM Participants; Correction",
+      "official_text": "Medicare Program: Alternative Payment Model (APM) Incentive Payment Advisory for Clinicians - Request for Current Billing Information for Qualifying APM Participants; Correction",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20334.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20334/medicare-program-alternative-payment-model-apm-incentive-payment-advisory-for-clinicians---request",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f8a38400ac8d7740",
+      "dedup_key": "fr:2026-20335#public_inspection",
+      "object_key": "fr:2026-20335",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:nuclear-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Nuclear Regulatory Commission proposed rule filed for public inspection: Exemptions from Materials Licensing",
+      "official_text": "Exemptions from Materials Licensing",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20335.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20335/exemptions-from-materials-licensing",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9da3f9d48563a929",
+      "dedup_key": "fr:2026-20336#public_inspection",
+      "object_key": "fr:2026-20336",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:nuclear-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Nuclear Regulatory Commission rule filed for public inspection: Exemptions from Materials Licensing",
+      "official_text": "Exemptions from Materials Licensing",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20336.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20336/exemptions-from-materials-licensing",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b7d3ad47db5b0603",
+      "dedup_key": "fr:2026-20337#public_inspection",
+      "object_key": "fr:2026-20337",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:safety-and-environmental-enforcement-bureau",
+      "features": [
+        "F10"
+      ],
+      "title": "Safety and Environmental Enforcement Bureau notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20337.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20337/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f9908f288b0fe3c4",
+      "dedup_key": "fr:2026-20339#public_inspection",
+      "object_key": "fr:2026-20339",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-science-foundation",
+      "features": [
+        "F10"
+      ],
+      "title": "National Science Foundation notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20339.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20339/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2c7d35d721d8a8e2",
+      "dedup_key": "fr:2026-20340#public_inspection",
+      "object_key": "fr:2026-20340",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:federal-reserve-system",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Reserve System notice filed for public inspection: Change in Bank Control: Acquisitions of Shares of a Bank or Bank Holding Company",
+      "official_text": "Change in Bank Control: Acquisitions of Shares of a Bank or Bank Holding Company",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20340.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20340/change-in-bank-control-acquisitions-of-shares-of-a-bank-or-bank-holding-company",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_571a1ef949d2a28f",
+      "dedup_key": "fr:2026-20341#public_inspection",
+      "object_key": "fr:2026-20341",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:trade-representative-office-of-united-states",
+      "features": [
+        "F10"
+      ],
+      "title": "Trade Representative, Office of United States notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Operation of the Agreement between the United States of America, the United Mexican States, and Canada",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Operation of the Agreement between the United States of America, the United Mexican States, and Canada",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20341.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20341/hearings-meetings-proceedings-etc-operation-of-the-agreement-between-the-united-states-of-america",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c0695c08218acfe6",
+      "dedup_key": "fr:2026-20342#public_inspection",
+      "object_key": "fr:2026-20342",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:safety-and-environmental-enforcement-bureau",
+      "features": [
+        "F10"
+      ],
+      "title": "Safety and Environmental Enforcement Bureau notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Oil and Gas Production Requirements",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Oil and Gas Production Requirements",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20342.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20342/agency-information-collection-activities-proposals-submissions-and-approvals-oil-and-gas-production",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4bc5ad45e63b5f3f",
+      "dedup_key": "fr:2026-20343#public_inspection",
+      "object_key": "fr:2026-20343",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:small-business-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Small Business Administration notice filed for public inspection: Disaster Declaration: United States and U.S. Territories; Military Reservist Economic Injury Disaster Loan Program",
+      "official_text": "Disaster Declaration: United States and U.S. Territories; Military Reservist Economic Injury Disaster Loan Program",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20343.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20343/disaster-declaration-united-states-and-us-territories-military-reservist-economic-injury-disaster",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_73f8d7e83fd412d2",
+      "dedup_key": "fr:2026-20344#public_inspection",
+      "object_key": "fr:2026-20344",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-disease-control-and-prevention",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Disease Control and Prevention notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20344.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20344/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c80d8b4a0826a74e",
+      "dedup_key": "fr:2026-20345#public_inspection",
+      "object_key": "fr:2026-20345",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:nuclear-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Nuclear Regulatory Commission notice filed for public inspection: Permits; Applications, Issuances, etc.: Tennessee Valley Authority, Clinch River Nuclear Unit 1; Construction Permit and Record of Decision",
+      "official_text": "Permits; Applications, Issuances, etc.: Tennessee Valley Authority, Clinch River Nuclear Unit 1; Construction Permit and Record of Decision",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20345.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20345/permits-applications-issuances-etc-tennessee-valley-authority-clinch-river-nuclear-unit-1",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_148a27d25971daec",
+      "dedup_key": "fr:2026-20346#public_inspection",
+      "object_key": "fr:2026-20346",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-disease-control-and-prevention",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Disease Control and Prevention notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20346.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20346/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_eed4044dc4c14fb5",
+      "dedup_key": "fr:2026-20347#public_inspection",
+      "object_key": "fr:2026-20347",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:consumer-product-safety-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Consumer Product Safety Commission notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Safety Standard for Button Cell or Coin Batteries and Consumer Products Containing Such Batteries",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Safety Standard for Button Cell or Coin Batteries and Consumer Products Containing Such Batteries",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20347.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20347/agency-information-collection-activities-proposals-submissions-and-approvals-safety-standard-for",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_81c08e56c15ef420",
+      "dedup_key": "fr:2026-20348#public_inspection",
+      "object_key": "fr:2026-20348",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-disease-control-and-prevention",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Disease Control and Prevention notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20348.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20348/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_05ca26b0763e2387",
+      "dedup_key": "fr:2026-20349#public_inspection",
+      "object_key": "fr:2026-20349",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Commission notice filed for public inspection: Investigations; Determinations, Modifications, and Rulings, etc.: Railway Tank Cars and Parts Thereof from Mexico",
+      "official_text": "Investigations; Determinations, Modifications, and Rulings, etc.: Railway Tank Cars and Parts Thereof from Mexico",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20349.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20349/investigations-determinations-modifications-and-rulings-etc-railway-tank-cars-and-parts-thereof-from",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_849223a873a0f509",
+      "dedup_key": "fr:2026-20350#public_inspection",
+      "object_key": "fr:2026-20350",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Special Conditions: Honda Aircraft Company LLC Model HA-480 Airplane; High Altitude Operation",
+      "official_text": "Special Conditions: Honda Aircraft Company LLC Model HA-480 Airplane; High Altitude Operation",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20350.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20350/special-conditions-honda-aircraft-company-llc-model-ha-480-airplane-high-altitude-operation",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2b9bdd540ad789bb",
+      "dedup_key": "fr:2026-20351#public_inspection",
+      "object_key": "fr:2026-20351",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-disease-control-and-prevention",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Disease Control and Prevention notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20351.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20351/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5e1b0554b6da5570",
+      "dedup_key": "fr:2026-20352#public_inspection",
+      "object_key": "fr:2026-20352",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-medicare-medicaid-services",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Medicare & Medicaid Services notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20352.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20352/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f4d587aed5c51692",
+      "dedup_key": "fr:2026-20353#public_inspection",
+      "object_key": "fr:2026-20353",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:federal-maritime-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Maritime Commission notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: FMC Assistance Center",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: FMC Assistance Center",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20353.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20353/agency-information-collection-activities-proposals-submissions-and-approvals-fmc-assistance-center",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_11bda59d9a90fd1e",
+      "dedup_key": "fr:2026-20354#public_inspection",
+      "object_key": "fr:2026-20354",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:nuclear-regulatory-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Nuclear Regulatory Commission notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Sunset Rule",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Sunset Rule",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20354.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20354/agency-information-collection-activities-proposals-submissions-and-approvals-sunset-rule",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_72f17b01177c487e",
+      "dedup_key": "fr:2026-20355#public_inspection",
+      "object_key": "fr:2026-20355",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:transportation-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Transportation Department notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Public Charters",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Public Charters",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20355.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20355/agency-information-collection-activities-proposals-submissions-and-approvals-public-charters",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_22dae2563779537a",
+      "dedup_key": "fr:2026-20356#public_inspection",
+      "object_key": "fr:2026-20356",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-oceanic-and-atmospheric-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "National Oceanic and Atmospheric Administration rule filed for public inspection: Fisheries of the Northeastern United States: Summer Flounder Fishery; Quota Transfer from North Carolina to Massachusetts",
+      "official_text": "Fisheries of the Northeastern United States: Summer Flounder Fishery; Quota Transfer from North Carolina to Massachusetts",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20356.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20356/fisheries-of-the-northeastern-united-states-summer-flounder-fishery-quota-transfer-from-north",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_41b9916d14178d8a",
+      "dedup_key": "fr:2026-20357#public_inspection",
+      "object_key": "fr:2026-20357",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:agency-for-healthcare-research-and-quality",
+      "features": [
+        "F10"
+      ],
+      "title": "Agency for Healthcare Research and Quality notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20357.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20357/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d818c95f9837f6ff",
+      "dedup_key": "fr:2026-20358#public_inspection",
+      "object_key": "fr:2026-20358",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-transit-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Transit Administration notice filed for public inspection: Buy America Waiver: North County Transit District Diesel Multiple Unit Replacement Parts",
+      "official_text": "Buy America Waiver: North County Transit District Diesel Multiple Unit Replacement Parts",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20358.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20358/buy-america-waiver-north-county-transit-district-diesel-multiple-unit-replacement-parts",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f1a675f2da3b1c06",
+      "dedup_key": "fr:2026-20360#public_inspection",
+      "object_key": "fr:2026-20360",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:securities-and-exchange-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Securities and Exchange Commission proposed rule filed for public inspection: Interval Fund Modernization: Expansion of Multiple Share Class to Registered Closed-End Management Investment Companies and Business Development Companies",
+      "official_text": "Interval Fund Modernization: Expansion of Multiple Share Class to Registered Closed-End Management Investment Companies and Business Development Companies",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20360.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20360/interval-fund-modernization-expansion-of-multiple-share-class-to-registered-closed-end-management",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_14154f9b134120fb",
+      "dedup_key": "fr:2026-20361#public_inspection",
+      "object_key": "fr:2026-20361",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:agency-for-healthcare-research-and-quality",
+      "features": [
+        "F10"
+      ],
+      "title": "Agency for Healthcare Research and Quality notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20361.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20361/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_27caae952fffb46f",
+      "dedup_key": "fr:2026-20362#public_inspection",
+      "object_key": "fr:2026-20362",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "independent",
+      "body": "agency:federal-communications-commission",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Communications Commission rule filed for public inspection: 2026 Mandatory Data Collection for Incarcerated People's Communications Services",
+      "official_text": "2026 Mandatory Data Collection for Incarcerated People's Communications Services",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20362.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20362/2026-mandatory-data-collection-for-incarcerated-peoples-communications-services",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_75cedfe8fcf60aff",
+      "dedup_key": "fr:2026-20363#public_inspection",
+      "object_key": "fr:2026-20363",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:children-and-families-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Children and Families Administration notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Federal Case Registry",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Federal Case Registry",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20363.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20363/agency-information-collection-activities-proposals-submissions-and-approvals-federal-case-registry",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e6732686e75cb792",
+      "dedup_key": "fr:2026-20364#public_inspection",
+      "object_key": "fr:2026-20364",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:centers-for-medicare-medicaid-services",
+      "features": [
+        "F10"
+      ],
+      "title": "Centers for Medicare & Medicaid Services notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20364.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20364/agency-information-collection-activities-proposals-submissions-and-approvals",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a9445d25ad89aa0a",
+      "dedup_key": "fr:2026-20365#public_inspection",
+      "object_key": "fr:2026-20365",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-institutes-of-health",
+      "features": [
+        "F10"
+      ],
+      "title": "National Institutes of Health notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Center for Scientific Review",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Center for Scientific Review",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20365.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20365/hearings-meetings-proceedings-etc-center-for-scientific-review",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_75c999955251b8e9",
+      "dedup_key": "fr:2026-20366#public_inspection",
+      "object_key": "fr:2026-20366",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-institutes-of-health",
+      "features": [
+        "F10"
+      ],
+      "title": "National Institutes of Health notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Center for Scientific Review",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Center for Scientific Review",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20366.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20366/hearings-meetings-proceedings-etc-center-for-scientific-review",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8f26f18ee84d1bf3",
+      "dedup_key": "fr:2026-20367#public_inspection",
+      "object_key": "fr:2026-20367",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:u-s-immigration-and-customs-enforcement",
+      "features": [
+        "F10"
+      ],
+      "title": "U.S. Immigration and Customs Enforcement notice filed for public inspection: Agency Information Collection Activities; Proposals, Submissions, and Approvals: Suspicious/Criminal Activity Tip Reporting",
+      "official_text": "Agency Information Collection Activities; Proposals, Submissions, and Approvals: Suspicious/Criminal Activity Tip Reporting",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20367.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20367/agency-information-collection-activities-proposals-submissions-and-approvals-suspiciouscriminal",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_36ad601f81536023",
+      "dedup_key": "fr:2026-20368#public_inspection",
+      "object_key": "fr:2026-20368",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-institutes-of-health",
+      "features": [
+        "F10"
+      ],
+      "title": "National Institutes of Health notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Center for Scientific Review; Amended",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Center for Scientific Review; Amended",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20368.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20368/hearings-meetings-proceedings-etc-center-for-scientific-review-amended",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_229e12b24193140c",
+      "dedup_key": "fr:2026-20369#public_inspection",
+      "object_key": "fr:2026-20369",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:surface-transportation-board",
+      "features": [
+        "F10"
+      ],
+      "title": "Surface Transportation Board notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Rail Energy Transportation Advisory Committee",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Rail Energy Transportation Advisory Committee",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20369.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20369/hearings-meetings-proceedings-etc-rail-energy-transportation-advisory-committee",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ecd1f1521b955db0",
+      "dedup_key": "fr:2026-20370#public_inspection",
+      "object_key": "fr:2026-20370",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:national-institutes-of-health",
+      "features": [
+        "F10"
+      ],
+      "title": "National Institutes of Health notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Center for Scientific Review; Amended",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Center for Scientific Review; Amended",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20370.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20370/hearings-meetings-proceedings-etc-center-for-scientific-review-amended",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bfaa362b600f1c21",
+      "dedup_key": "fr:2026-20371#public_inspection",
+      "object_key": "fr:2026-20371",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:financial-crimes-enforcement-network",
+      "features": [
+        "F10"
+      ],
+      "title": "Financial Crimes Enforcement Network proposed rule filed for public inspection: Special Measure Prohibiting the Transmittal of Funds Regarding Transactions Involving the A7 Network's Sub-Agents",
+      "official_text": "Special Measure Prohibiting the Transmittal of Funds Regarding Transactions Involving the A7 Network's Sub-Agents",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20371.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20371/special-measure-prohibiting-the-transmittal-of-funds-regarding-transactions-involving-the-a7",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_42dcb87fa7c49017",
+      "dedup_key": "fr:2026-20372#public_inspection",
+      "object_key": "fr:2026-20372",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Airspace Designations and Reporting Points: Eastern United States",
+      "official_text": "Airspace Designations and Reporting Points: Eastern United States",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20372.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20372/airspace-designations-and-reporting-points-eastern-united-states",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_287e387d3d74abb9",
+      "dedup_key": "fr:2026-20374#public_inspection",
+      "object_key": "fr:2026-20374",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:housing-and-urban-development-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Housing and Urban Development Department rule filed for public inspection: Section 3 Benchmarks for Creating Economic Opportunities for Low- and Very Low-Income Persons and Eligible Businesses",
+      "official_text": "Section 3 Benchmarks for Creating Economic Opportunities for Low- and Very Low-Income Persons and Eligible Businesses",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "rule",
+          "significance_unknown"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20374.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20374/section-3-benchmarks-for-creating-economic-opportunities-for-low--and-very-low-income-persons-and",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b63faebf21269561",
+      "dedup_key": "fr:2026-20375#public_inspection",
+      "object_key": "fr:2026-20375",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:treasury-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Treasury Department notice filed for public inspection: Interest Rate Paid on Cash Deposited to Secure U.S. Immigration and Customs Enforcement Immigration Bonds",
+      "official_text": "Interest Rate Paid on Cash Deposited to Secure U.S. Immigration and Customs Enforcement Immigration Bonds",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20375.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20375/interest-rate-paid-on-cash-deposited-to-secure-us-immigration-and-customs-enforcement-immigration",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_796c7942c245b341",
+      "dedup_key": "fr:2026-20376#public_inspection",
+      "object_key": "fr:2026-20376",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Oil Country Tubular Goods from Ukraine",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Oil Country Tubular Goods from Ukraine",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20376.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20376/antidumping-or-countervailing-duty-investigations-orders-or-reviews-oil-country-tubular-goods-from",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_086cd8e777a3cfed",
+      "dedup_key": "fr:2026-20377#public_inspection",
+      "object_key": "fr:2026-20377",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Passenger Vehicle and Light Truck Tires from the Socialist Republic of Vietnam",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Passenger Vehicle and Light Truck Tires from the Socialist Republic of Vietnam",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20377.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20377/antidumping-or-countervailing-duty-investigations-orders-or-reviews-passenger-vehicle-and-light",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2982818195ee54df",
+      "dedup_key": "fr:2026-20378#public_inspection",
+      "object_key": "fr:2026-20378",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Potassium Phosphate Salts from the People's Republic of China",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Potassium Phosphate Salts from the People's Republic of China",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20378.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20378/antidumping-or-countervailing-duty-investigations-orders-or-reviews-potassium-phosphate-salts-from",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_395efb3d112ab14f",
+      "dedup_key": "fr:2026-20379#public_inspection",
+      "object_key": "fr:2026-20379",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Certain Potassium Phosphate Salts from the People's Republic of China",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Certain Potassium Phosphate Salts from the People's Republic of China",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20379.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20379/antidumping-or-countervailing-duty-investigations-orders-or-reviews-certain-potassium-phosphate",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_481a2c6267989b74",
+      "dedup_key": "fr:2026-20380#public_inspection",
+      "object_key": "fr:2026-20380",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Large Diameter Welded Pipe from the Republic of Turkiye; Correction",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Large Diameter Welded Pipe from the Republic of Turkiye; Correction",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20380.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20380/antidumping-or-countervailing-duty-investigations-orders-or-reviews-large-diameter-welded-pipe-from",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_77b8cb4bdd7f8209",
+      "dedup_key": "fr:2026-20381#public_inspection",
+      "object_key": "fr:2026-20381",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Certain Cut-to-Length Carbon Steel Plate from the People's Republic of China and the Russian Federation",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Certain Cut-to-Length Carbon Steel Plate from the People's Republic of China and the Russian Federation",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20381.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20381/antidumping-or-countervailing-duty-investigations-orders-or-reviews-certain-cut-to-length-carbon",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f90285e391123f5b",
+      "dedup_key": "fr:2026-20382#public_inspection",
+      "object_key": "fr:2026-20382",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Mattresses from Poland",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Mattresses from Poland",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20382.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20382/antidumping-or-countervailing-duty-investigations-orders-or-reviews-mattresses-from-poland",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c0c81743ecd1dfe5",
+      "dedup_key": "fr:2026-20383#public_inspection",
+      "object_key": "fr:2026-20383",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Melamine from the People's Republic of China",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Melamine from the People's Republic of China",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20383.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20383/antidumping-or-countervailing-duty-investigations-orders-or-reviews-melamine-from-the-peoples",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_72760b738d91318e",
+      "dedup_key": "fr:2026-20384#public_inspection",
+      "object_key": "fr:2026-20384",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:international-trade-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "International Trade Administration notice filed for public inspection: Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Methionine from France, Japan, and Spain",
+      "official_text": "Antidumping or Countervailing Duty Investigations, Orders, or Reviews: Methionine from France, Japan, and Spain",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20384.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20384/antidumping-or-countervailing-duty-investigations-orders-or-reviews-methionine-from-france-japan-and",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e19169c788237ea7",
+      "dedup_key": "fr:2026-20385#public_inspection",
+      "object_key": "fr:2026-20385",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:health-and-human-services-department",
+      "features": [
+        "F10"
+      ],
+      "title": "Health and Human Services Department notice filed for public inspection: Hearings, Meetings, Proceedings, etc.: Advisory Council on Alzheimer's Research, Care, and Services",
+      "official_text": "Hearings, Meetings, Proceedings, etc.: Advisory Council on Alzheimer's Research, Care, and Services",
+      "importance": {
+        "tier": "P4",
+        "reasons": [
+          "notice"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20385.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20385/hearings-meetings-proceedings-etc-advisory-council-on-alzheimers-research-care-and-services",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fb5079f0a6cf738b",
+      "dedup_key": "fr:2026-20386#public_inspection",
+      "object_key": "fr:2026-20386",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Simplifying Physical Containment Requirements",
+      "official_text": "Simplifying Physical Containment Requirements",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20386.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20386/simplifying-physical-containment-requirements",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_936b1ffe8d41184f",
+      "dedup_key": "fr:2026-20387#public_inspection",
+      "object_key": "fr:2026-20387",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Digital Modernization for Licensing Electronic Application Submissions",
+      "official_text": "Digital Modernization for Licensing Electronic Application Submissions",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20387.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20387/digital-modernization-for-licensing-electronic-application-submissions",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0ee9a43d7b7216a3",
+      "dedup_key": "fr:2026-20388#public_inspection",
+      "object_key": "fr:2026-20388",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Streamlining Flight Safety Analysis Methodology Means of Compliance",
+      "official_text": "Streamlining Flight Safety Analysis Methodology Means of Compliance",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20388.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20388/streamlining-flight-safety-analysis-methodology-means-of-compliance",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1e5eb498becc1b53",
+      "dedup_key": "fr:2026-20391#public_inspection",
+      "object_key": "fr:2026-20391",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Lightning Hazard Mitigation Burden-Reducing Exception",
+      "official_text": "Lightning Hazard Mitigation Burden-Reducing Exception",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20391.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20391/lightning-hazard-mitigation-burden-reducing-exception",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_19e0cca2656e981c",
+      "dedup_key": "fr:2026-20392#public_inspection",
+      "object_key": "fr:2026-20392",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Overpressure Blast Effects Analysis Burden Reducing Clarification",
+      "official_text": "Overpressure Blast Effects Analysis Burden Reducing Clarification",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20392.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20392/overpressure-blast-effects-analysis-burden-reducing-clarification",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_14e8ff53db2e64c9",
+      "dedup_key": "fr:2026-20393#public_inspection",
+      "object_key": "fr:2026-20393",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Airworthiness Directives: DG Aviation GmbH (Type Certificate Previously Held by DG Flugzeugbau GmbH) Gliders",
+      "official_text": "Airworthiness Directives: DG Aviation GmbH (Type Certificate Previously Held by DG Flugzeugbau GmbH) Gliders",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20393.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20393/airworthiness-directives-dg-aviation-gmbh-type-certificate-previously-held-by-dg-flugzeugbau-gmbh",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ed886ceef1b2ba43",
+      "dedup_key": "fr:2026-20411#public_inspection",
+      "object_key": "fr:2026-20411",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "agency:federal-aviation-administration",
+      "features": [
+        "F10"
+      ],
+      "title": "Federal Aviation Administration proposed rule filed for public inspection: Airworthiness Directives: Airbus Helicopters",
+      "official_text": "Airworthiness Directives: Airbus Helicopters",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "proposed_rule"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T12:45:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20411.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20411/airworthiness-directives-airbus-helicopters",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_51c7fd199922b83a",
+      "dedup_key": "fr:2026-20439#public_inspection",
+      "object_key": "fr:2026-20439",
+      "event_type": "fr.public_inspection",
+      "status": "published",
+      "branch": "executive",
+      "body": "white_house",
+      "features": [
+        "F10",
+        "F9"
+      ],
+      "title": "Presidential document filed for public inspection: Lebanon; Presidential Determination on Revocation of Prior Presidential Determinations (Presidential Determination No. 2026-25 of September 30, 2026)",
+      "official_text": "Lebanon; Presidential Determination on Revocation of Prior Presidential Determinations (Presidential Determination No. 2026-25 of September 30, 2026)",
+      "importance": {
+        "tier": "P0",
+        "reasons": [
+          "presidential_document_filed_for_public_inspection",
+          "D-012"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-10-02T15:15:00Z",
+        "first_seen_at": "2026-10-02T18:00:28.428Z"
+      },
+      "media": [
+        {
+          "kind": "pdf",
+          "url": "https://public-inspection.federalregister.gov/2026-20439.pdf"
+        }
+      ],
+      "result": {
+        "publication_date": "2026-10-05"
+      },
+      "sources": [
+        {
+          "source_id": "fr.api",
+          "url": "https://www.federalregister.gov/public-inspection/2026-20439/lebanon-presidential-determination-on-revocation-of-prior-presidential-determinations-presidential",
+          "retrieved_at": "2026-10-02T18:00:28.428Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "fr_api@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "fr.api",
+    "endpoint": "pi_current",
+    "status": "ok",
+    "detail": "107 documents on public inspection",
+    "items_seen": 107
+  }
+}
