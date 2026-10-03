@@ -50,11 +50,12 @@ export const DOCUMENTS_FIELDS = [
 export const DOCUMENTS_PER_PAGE = 500
 
 /** documents_newest's own poll cadence (Endpoint.cadence; Public Inspection keeps the source cadence of 60 s). The list
- * changes about once a business day, when the day's issue publishes: none of those 8,191 issues fell on a weekend. The
- * issue is expected at 06:00 ET (docs/research/executive_branch.md §11 recipe; NOT measured here: the first live
- * sighting is due Mon 2026-10-05), when the Worker's business hours start (D-038), so an issue posted at 06:00 is
- * fetched within about 15 min. 900 s by day also catches a special edition or a late addition; 3600 s at night and on
- * weekends, so an issue posted overnight waits at most an hour. 4 requests an hour by day instead of 60. */
+ * changes about once a business day, when an issue is listed: none of those 8,191 issues fell on a weekend. The FR lists
+ * an issue BEFORE its publication date (Monday's on the Saturday before, docs/TRAPS.md; when a weekday issue is listed
+ * is unmeasured), so the old 06:00 ET expectation (docs/research/executive_branch.md §11 recipe) no longer times
+ * anything here: such documents are "scheduled" (D-059) and become "published" on their Eastern date. 900 s by day also
+ * catches a special edition or a late addition; 3600 s at night and on weekends, so a list posted overnight waits at
+ * most an hour. 4 requests an hour by day instead of 60. */
 export const DOCUMENTS_CADENCE = { business_s: 900, off_s: 3600 } as const
 
 export const DOCUMENTS_NEWEST_URL =
@@ -124,12 +125,9 @@ const FILED_AHEAD_MS = 6 * HOUR_MS
  * (filed_at 2.8–24 h before the poll on 2026-10-02, n=106); the bound only rejects impossible values (FR-6). */
 const MAX_DISTANCE_MS = 366 * DAY_MS
 
-/** documents.json lists the next issue's documents before their publication date: Monday's issue (106 documents dated
- * 2026-10-05) was listed on Saturday 2026-10-03, absent at 07:15Z and present by 08:15Z (the live Worker's poll record;
- * fixture fixtures/fr.api/2026-10-03/documents_newest_next_issue_early.json; docs/TRAPS.md). Such a document is shown
- * as scheduled (D-055). How far ahead the FR lists an issue is measured once (two days, over a weekend); a week covers
- * a weekend plus a holiday stretch with room to spare, and a date further ahead is drift (FR-6): it is a broken record,
- * not a schedule. */
+/** documents.json lists an issue's documents before their publication date (docs/TRAPS.md has the measurement); such a
+ * document is shown as scheduled (D-055, D-059). A week covers a weekend plus a holiday stretch with room to spare; a
+ * date further ahead is drift (FR-6): a broken record, not a schedule. */
 export const MAX_SCHEDULED_AHEAD_DAYS = 7
 
 /** The poll's own times, which the plausibility windows are measured from. */
@@ -414,15 +412,18 @@ const P0_SUBTYPES: ReadonlyMap<string, string> = new Map([
  * - rules: P1 only when the FR's own `significant` flag is true; false or unknown -> P3 ("routine rules"). The flag is
  *   null on ~59% of rules (research CUR §3.1) and absent at Public Inspection, so unknown is said, never assumed;
  * - proposed rules P2, notices P4 (~82% of FR volume), anything else P4. */
-function importanceOf(d: FrDoc, at: EndpointId): { tier: Tier; reasons: string[] } {
+function importanceOf(d: FrDoc, at: EndpointId, scheduled: boolean): { tier: Tier; reasons: string[] } {
+  // A document listed before its date keeps the tier it will have when published (an EO is P0 wherever it is seen);
+  // only the reason says which stage this is (review adapter-3 of 861a6f4).
+  const stage = scheduled ? 'presidential_document_scheduled' : 'presidential_document_published'
   switch (d.kind) {
     case 'presidential_document': {
       if (at === 'pi_current') return { tier: 'P0', reasons: ['presidential_document_filed_for_public_inspection', 'D-012'] }
-      if (d.subtype === null) return { tier: 'P1', reasons: ['presidential_document_published', 'subtype_unknown'] }
+      if (d.subtype === null) return { tier: 'P1', reasons: [stage, 'subtype_unknown'] }
       const alertClass = P0_SUBTYPES.get(d.subtype.toLowerCase())
       return alertClass
-        ? { tier: 'P0', reasons: ['presidential_document_published', alertClass, 'D-012'] }
-        : { tier: 'P1', reasons: ['presidential_document_published'] }
+        ? { tier: 'P0', reasons: [stage, alertClass, 'D-012'] }
+        : { tier: 'P1', reasons: [stage] }
     }
     case 'rule':
       if (d.significant === true) return { tier: 'P1', reasons: ['rule', 'significant'] }
@@ -436,8 +437,9 @@ function importanceOf(d: FrDoc, at: EndpointId): { tier: Tier; reasons: string[]
   }
 }
 
-/** A published-list document whose publication date is after the poll's Eastern day: listed early, not yet published
- * (D-055). YYYY-MM-DD compares as text. */
+/** A listed document whose publication date is after the poll's Eastern day: listed before its official publication
+ * date (the FR's own document page and the issue PDF are already public then, docs/TRAPS.md), D-055. YYYY-MM-DD compares
+ * as text. */
 function isScheduled(d: FrDoc, at: EndpointId, dayEt: string): boolean {
   return at === 'documents_newest' && d.publication_date !== null && d.publication_date > dayEt
 }
@@ -491,7 +493,7 @@ function draftOf(d: FrDoc, at: EndpointId, fetchedAt: string, dayEt: string): Ev
     features,
     title: capTitle(title),
     official_text: d.title,
-    importance: importanceOf(d, at),
+    importance: importanceOf(d, at, scheduled),
     times: {
       // PI: the filing-slot time the FR states, converted from its offset to UTC; null when the FR gives none (a
       // withdrawn filing has filed_at null). Published: null, because publication_date is a date with no time.
@@ -607,9 +609,10 @@ export function parseFr(endpointId: string, res: FetchedResponse): AdapterOutput
   const what = at === 'pi_current' ? 'documents on public inspection' : 'newest published documents'
   const dupNote = duplicates > 0 ? `; ${duplicates} repeated document number${duplicates === 1 ? '' : 's'} skipped` : ''
   const early = docs.filter((d) => isScheduled(d, at, ctx.dayEt)).length
-  const earlyNote = early > 0 ? `; ${early} listed before their publication date (scheduled)` : ''
-  const overflow = at === 'documents_newest' ? issueOverflowNote(docs, results.length, count) : ''
-  return out('ok', `${results.length} ${what}${dupNote}${earlyNote}${overflow}`, results.length, events)
+  // "published" would count the scheduled ones too: then the list is described as listed (review adapter-2).
+  const listed = early > 0 ? `newest listed documents, ${early} of them before their publication date (scheduled)` : what
+  const overflow = at === 'documents_newest' ? issueOverflowNote(docs, results.length, count, ctx.dayEt) : ''
+  return out('ok', `${results.length} ${listed}${dupNote}${overflow}`, results.length, events)
 }
 
 /** documents_newest is one page (DOCUMENTS_PER_PAGE). When more matches exist beyond it (count above the number listed)
@@ -617,13 +620,15 @@ export function parseFr(endpointId: string, res: FetchedResponse): AdapterOutput
  * issue, so the newest issue may hold documents this poll cannot see: they would never be seen as published (their
  * Public Inspection event is unaffected). Every result was read, so this stays ok, never drift; the detail says it.
  * A document with no publication_date is not evidence that the page reached an older issue. */
-function issueOverflowNote(docs: readonly FrDoc[], listed: number, count: number): string {
+function issueOverflowNote(docs: readonly FrDoc[], listed: number, count: number, dayEt: string): string {
   if (count <= listed) return ''
   const dates = docs.flatMap((d) => (d.publication_date === null ? [] : [d.publication_date]))
   if (dates.length === 0) return ''
   const newest = dates.reduce((a, b) => (b > a ? b : a)) // YYYY-MM-DD compares as text
   if (dates.some((d) => d < newest)) return ''
-  return `; none is dated before ${frDateInWords(newest)}, so that day's issue may have more documents than this page of ${listed} holds, and those are not seen as published`
+  // An issue listed ahead of its date (D-059) that overflows the page: its cut documents are not seen at all.
+  const unseen = newest > dayEt ? 'and those are not seen' : 'and those are not seen as published'
+  return `; none is dated before ${frDateInWords(newest)}, so that day's issue may have more documents than this page of ${listed} holds, ${unseen}`
 }
 
 export const frApi: SourceDefinition = {

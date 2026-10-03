@@ -4,13 +4,13 @@
 // change, malformation or validator change still goes through the full validator and is refused when invalid.
 import { describe, expect, test, vi } from 'vitest'
 import { runInDurableObject } from 'cloudflare:test'
-import { validateEvent, type CedEvent } from '@ced/schema'
+import { eventId, validateEvent, type CedEvent } from '@ced/schema'
 import { sourceById, type FetchedResponse } from '@ced/adapters'
 import piBody from '../../../fixtures/fr.api/2026-10-02/pi_current.json?raw'
 import piMeta from '../../../fixtures/fr.api/2026-10-02/pi_current.json.meta.json'
 import newsBody from '../../../fixtures/wh.feeds/2026-10-02/news_feed.xml?raw'
 import newsMeta from '../../../fixtures/wh.feeds/2026-10-02/news_feed.xml.meta.json'
-import { FAST_PATH_ON, isUtcInstant, sameAsStored, sameJson, validatorFingerprint } from '../src/fastpath.js'
+import { FAST_PATH_ON, asRevisionOne, isUtcInstant, sameAsStored, sameAsStoredCopy, sameJson, validatorFingerprint } from '../src/fastpath.js'
 import { migrateEventsChecked, sortKeyMs, type HubDO } from '../src/hub.js'
 import { mergeEvent } from '../src/merge.js'
 import { DOCS, MIN, T0, docEvent, freshHub, ingest, iso, page } from './fakes.js'
@@ -55,6 +55,45 @@ describe('the fast path fires only for stored-equal copies', () => {
     const r = await counted(() => ingest(hub, 'fake.fr', changed, T0 + MIN))
     // 2 = the changed incoming event + the revision built from it (storeOne validates every merged/revised result).
     expect(r).toMatchObject({ result: { health: 'ok', revised: 1, unchanged: 2 }, validated: 2 })
+  })
+
+  // Review F1 of 861a6f4: a revised row is stored at revision 2 (new id, supersedes) while its source keeps sending
+  // revision 1, so before asRevisionOne no later copy could ever match it (after the D-059 flip: 106 FR rows a parse).
+  test('after a revision, the source\'s next revision-1 copy of the same facts still skips validateEvent', async () => {
+    const hub = freshHub()
+    await ingest(hub, 'fake.fr', all(T0), T0)
+    const renamed = (atMs: number) => [docEvent({ ...EO, title: 'Inaugurating the Era of Superintelligence' }, atMs), ...all(atMs).slice(1)]
+    expect(await ingest(hub, 'fake.fr', renamed(T0 + MIN), T0 + MIN)).toMatchObject({ revised: 1 })
+    const r = await counted(() => ingest(hub, 'fake.fr', renamed(T0 + 2 * MIN), T0 + 2 * MIN))
+    expect(r).toMatchObject({ result: { health: 'ok', inserted: 0, revised: 0, merged: 0, unchanged: 3 }, validated: 0 })
+    const row = (await page(hub, null)).events.find((e) => e.dedup_key === renamed(T0)[0]!.dedup_key)!
+    expect(row).toMatchObject({ revision: 2, title: renamed(T0)[0]!.title })
+    expect(row.supersedes).toMatch(/^evt_/)
+  })
+
+  test('a revision-1 copy of a revised row that differs in anything else is fully validated', async () => {
+    const hub = freshHub()
+    await ingest(hub, 'fake.fr', all(T0), T0)
+    const renamed = (atMs: number, extra: Record<string, unknown> = {}) =>
+      [{ ...docEvent({ ...EO, title: 'Inaugurating the Era of Superintelligence' }, atMs), ...extra }, ...all(atMs).slice(1)]
+    await ingest(hub, 'fake.fr', renamed(T0 + MIN), T0 + MIN)
+    // An explicit "supersedes": null is valid and means the same as absent, but it is not the stored row's revision-1
+    // form key for key, so it takes the full validator (and mergeEvent still calls it unchanged).
+    const r = await counted(() => ingest(hub, 'fake.fr', renamed(T0 + 2 * MIN, { supersedes: null }) as CedEvent[], T0 + 2 * MIN))
+    expect(r).toMatchObject({ result: { health: 'ok', unchanged: 3 }, validated: 1 })
+  })
+
+  test('asRevisionOne of a valid revised event is valid, with id eventId(dedup_key, 1) and no supersedes', () => {
+    const base = docEvent(EO, T0)
+    const rev2 = { ...base, id: eventId(base.dedup_key, 2), revision: 2, supersedes: base.id } as CedEvent
+    expect(validateEvent(rev2).valid).toBe(true)
+    const one = asRevisionOne(rev2)
+    expect(one).toEqual(base)
+    expect(Object.hasOwn(one, 'supersedes')).toBe(false)
+    expect(validateEvent(one).valid).toBe(true)
+    expect(asRevisionOne(base)).toBe(base)
+    expect(sameAsStoredCopy(docEvent(EO, T0 + MIN), rev2)).toBe(true) // only the stamps differ from its revision-1 form
+    expect(sameAsStored(docEvent(EO, T0 + MIN), rev2)).toBe(false)
   })
 
   test('an earlier sighting of a stored-equal event is merged (earliest first_seen_at), exactly as mergeEvent says', async () => {

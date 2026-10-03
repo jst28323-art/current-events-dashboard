@@ -45,7 +45,10 @@ export function parseLimit(value: string | null): number | null {
   return n <= MAX_LIMIT ? n : null
 }
 
-/** JSON Feed 1.1 (https://www.jsonfeed.org/version/1.1/); our own fields under `_ced`. */
+/** JSON Feed 1.1 (https://www.jsonfeed.org/version/1.1/); our own fields under `_ced`. An item's `id` is the event's
+ * dedup_key, which a revision keeps: the spec says an updated item keeps its id, and the event id changes with every
+ * revision, so a reader saw each revised event as a new item (review F2 of 861a6f4: the D-059 flip revises ~100 at
+ * once). The event id and revision are in `_ced`. */
 export function jsonFeed(events: CedEvent[], feedUrl: string, homePageUrl: string): unknown {
   return {
     version: 'https://jsonfeed.org/version/1.1',
@@ -57,7 +60,7 @@ export function jsonFeed(events: CedEvent[], feedUrl: string, homePageUrl: strin
     items: events.map((e) => {
       const primary = e.sources[0]!
       return {
-        id: e.id,
+        id: e.dedup_key,
         url: primary.url,
         title: e.title,
         content_text: e.official_text,
@@ -67,6 +70,8 @@ export function jsonFeed(events: CedEvent[], feedUrl: string, homePageUrl: strin
           tier: e.importance?.tier ?? null,
           affiliation: primary.affiliation,
           source_id: primary.source_id,
+          event_id: e.id,
+          revision: e.revision,
         },
       }
     }),

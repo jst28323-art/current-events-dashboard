@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 import type { Affiliation } from '@ced/schema'
-import { emphasis, healthLabel, isStale, originChips, skippedNote, statusChip } from '../src/lib/labels.js'
+import { emphasis, healthLabel, isStale, originChips, rowStatusChip, skippedNote, statusChip } from '../src/lib/labels.js'
 import { piEvent, sourceStatus } from '../e2e/fixture-events.js'
 
 const withAffiliation = (affiliation: Affiliation | string, confidence: string = 'high') => {
@@ -118,6 +118,29 @@ describe('status chip (W4)', () => {
 
   test.each(['constructor', 'toString', '__proto__', 'hasOwnProperty', 'LIVE', ''])('a status outside the contract (%s) gets no chip', (s) => {
     expect(statusChip(s)).toBeNull()
+  })
+})
+
+// Review of 861a6f4: an FR document listed early (D-059) that the source never confirmed as published must not keep
+// saying "scheduled" for a date that has passed.
+describe('row status chip: a scheduled FR document whose date has passed (D-059)', () => {
+  const sched = (publication_date: unknown) => ({ status: 'scheduled' as const, result: { publication_date } })
+  // 2026-10-06T03:30Z is Mon Oct 5, 23:30 EDT; 04:00Z is Tue Oct 6, 00:00 EDT.
+  const MON_2330_ET = Date.parse('2026-10-06T03:30:00Z')
+  const TUE_0000_ET = Date.parse('2026-10-06T04:00:00Z')
+
+  test('before and on its date it is "scheduled"; from the next Eastern day it is "not seen published"', () => {
+    expect(rowStatusChip(sched('2026-10-05'), Date.parse('2026-10-03T13:19:00Z'))).toBe('scheduled')
+    expect(rowStatusChip(sched('2026-10-05'), MON_2330_ET)).toBe('scheduled') // the flip may still be on its way
+    expect(rowStatusChip(sched('2026-10-05'), TUE_0000_ET)).toBe('not seen published')
+  })
+
+  test('only a scheduled event with a real YYYY-MM-DD publication_date is affected', () => {
+    expect(rowStatusChip({ status: 'published', result: { publication_date: '2026-10-05' } }, TUE_0000_ET)).toBeNull()
+    expect(rowStatusChip({ status: 'scheduled' }, TUE_0000_ET)).toBe('scheduled')
+    expect(rowStatusChip(sched(20261005), TUE_0000_ET)).toBe('scheduled')
+    expect(rowStatusChip(sched('Oct 5'), TUE_0000_ET)).toBe('scheduled')
+    expect(rowStatusChip({ status: 'live', result: { publication_date: '2026-10-05' } }, TUE_0000_ET)).toBe('LIVE')
   })
 })
 

@@ -108,6 +108,17 @@ export function ungatedScripts(pkg, workspaces = []) {
   return out
 }
 
+/** What a failing step prints: every line that names an error, wherever it is, then the last `tail` lines. A plain tail
+ * hid a TypeScript error on 2026-10-03: tsc writes its errors to stdout, which comes before stderr here, and wrangler's
+ * type-generation chatter filled the last 25 lines. */
+export function failureExcerpt(text, { tail = 25, maxErrors = 15 } = {}) {
+  const lines = String(text || '').split('\n')
+  const last = lines.slice(-tail)
+  const errorish = /\berror\b|\bFAIL(?:ED)?\b|AssertionError|✗|×/i
+  const errors = lines.slice(0, Math.max(0, lines.length - tail)).filter((l) => errorish.test(l)).slice(0, maxErrors)
+  return errors.length ? [...errors, '…', ...last].join('\n') : last.join('\n')
+}
+
 export function checks({ ci }) {
   const node = process.execPath
   const bash = findBash()
@@ -121,7 +132,7 @@ export function checks({ ci }) {
         const files = findTests()
         if (!files.length) return { ok: false, detail: 'no test files found under tests/ (fail closed)' }
         const r = run(node, ['--test', ...files], { timeoutMs: 15 * 60_000 })
-        return { ok: r.ok, detail: [r.out, r.err].filter(Boolean).join('\n').split('\n').slice(-25).join('\n') }
+        return { ok: r.ok, detail: failureExcerpt([r.out, r.err].filter(Boolean).join('\n')) }
       },
     },
     { name: 'handoff-lint', why: 'HANDOFF.md shape: <=80 lines, one NEXT ACTION, no hand-written sha', cmd: [node, ['scripts/handoff_lint.mjs']] },
@@ -194,7 +205,7 @@ function main() {
         else {
           const r = run(c.cmd[0], c.cmd[1], { timeoutMs: 15 * 60_000, shell: !!c.shell })
           ok = r.ok
-          detail = [r.out, r.err].filter(Boolean).join('\n').split('\n').slice(-25).join('\n')
+          detail = failureExcerpt([r.out, r.err].filter(Boolean).join('\n'))
         }
       } catch (e) { ok = false; detail = String((e && e.stack) || e) }
       const ms = Date.now() - t0

@@ -101,6 +101,13 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   reply means something different once its date arrives, so a "same body hash = do not parse" skip must also key on
   the date (`Endpoint.dayDependent`); otherwise the flip waits for the FR's list to change. How early the FR lists a
   weekday issue is not yet measured.
+- **An FR document listed early is already public on federalregister.gov** (2026-10-03 13:3xZ, review of 861a6f4).
+  Two days before its publication date, the page of 2026-20439 answered 200 and said "This document has been published
+  in the Federal Register", Publication Date 10/05/2026, and the issue's govinfo PDF answered 200. So the link of a
+  "scheduled" row works, and "not yet published" is the wrong description: the FR has made it public with an official
+  date that has not come yet. Our title names that date (D-059). A listed document the FR later drops is never
+  revised by the Hub (it changes only events that arrive), so the page says "not seen published" once its date has
+  passed (D-060).
 
 ## Hosting
 
@@ -304,6 +311,17 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   ~1.5 MB of unpushed fixtures and failed with "spawnSync git ENOBUFS": fail-closed, but a false red. `run()` in
   `scripts/lib/git.mjs` now passes `maxBuffer` 512 MB; regression test in `tests/harness/gate.test.mjs` (a 4 MB
   committed file scans clean, and a key committed after it is still caught).
+
+- **A workflow agent with `isolation: 'worktree'` left `core.hooksPath` absolute in the shared `.git/config`**
+  (2026-10-03). After the Phase 2 scouts' worktrees appeared under `.claude/worktrees/`, the main clone's config held
+  the absolute path of this clone's hooks folder instead of `enforcement/git-hooks`. The scouts' transcripts show them
+  only READING the value, so the worktree setup most likely wrote it. The hooks still ran, but `ship_state` reported
+  SETUP-ERROR (it checks the exact relative value). After any worktree workflow, run
+  `git config core.hooksPath enforcement/git-hooks` before the gate. `.claude/worktrees/` is gitignored.
+- **The gate printed only the last 25 lines of a failing step, which hid a TypeScript error** (2026-10-03): tsc writes
+  its errors to stdout, which the gate joined before stderr, and `wrangler types` filled the tail. The gate now prints
+  every error-looking line first (`failureExcerpt`, harness test). A step's full output is still not kept: re-run it
+  alone (e.g. `npm run typecheck > scratch/typecheck.log 2>&1`) and read the whole log, not its tail.
 
 ## Libraries and code
 

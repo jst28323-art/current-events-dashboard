@@ -92,3 +92,17 @@ test('workspace suites must be reached by a gated root script', () => {
   assert.deepEqual(ungatedScripts({ scripts: { 'test:schema': 'npm run test -w packages/schema' }, gate: { npmScripts: ['test:schema'] } }, ws), [])
   assert.deepEqual(ungatedScripts({ scripts: { build: 'npm run build --workspaces' }, gate: { npmScripts: ['build'] } }, ws), ['packages/schema:test'])
 })
+
+// 2026-10-03: a tsc error in the middle of a step's output, followed by 40 lines of wrangler chatter, was cut from the
+// gate log (it printed only the last 25 lines). failureExcerpt keeps every error-looking line, then the tail.
+test('failureExcerpt keeps an error line that a plain 25-line tail would cut', async () => {
+  const { failureExcerpt } = await import('../../scripts/gate.mjs')
+  const noise = Array.from({ length: 40 }, (_, i) => `Generating runtime types... ${i}`)
+  const text = ['> tsc -p tsconfig.json', "test/fr_api.test.ts(1037,14): error TS18046: 'x' is of type 'unknown'.", ...noise].join('\n')
+  const out = failureExcerpt(text)
+  assert.match(out, /error TS18046/)
+  assert.ok(out.endsWith('Generating runtime types... 39'))
+  assert.equal(text.split('\n').slice(-25).join('\n').includes('error TS18046'), false) // the old excerpt lost it
+  assert.equal(failureExcerpt('a\nb'), 'a\nb') // short output is printed as is
+  assert.equal(failureExcerpt(noise.join('\n')), noise.slice(-25).join('\n')) // no error lines: the tail alone
+})

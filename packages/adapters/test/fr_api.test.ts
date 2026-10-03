@@ -1021,7 +1021,7 @@ describe('fr.api documents_newest: the next issue listed before its date (D-055)
   test('the recorded Saturday reply publishes every document: 106 scheduled for Monday, 394 published', () => {
     const out = parseFr('documents_newest', early())
     expect(out.health.status).toBe('ok')
-    expect(out.health.detail).toBe('500 newest published documents; 106 listed before their publication date (scheduled)')
+    expect(out.health.detail).toBe('500 newest listed documents, 106 of them before their publication date (scheduled)')
     expect(out.events).toHaveLength(500)
     expectAllValid(out.events)
     const sched = scheduledOf(out)
@@ -1034,14 +1034,14 @@ describe('fr.api documents_newest: the next issue listed before its date (D-055)
     }
     for (const e of out.events.filter((x) => x.status !== 'scheduled')) {
       expect(e.status).toBe('published')
-      expect(e.result?.publication_date < '2026-10-05').toBe(true)
+      expect(String(e.result?.publication_date) < '2026-10-05').toBe(true)
       expect(e.title).toContain(' published in the Federal Register on ')
     }
     const det = byNumber(out.events, '2026-20439')
     expect(det.title).toBe('Presidential determination to be published in the Federal Register on October 5, 2026 (FR Doc. 2026-20439)')
     expect(det.official_text).toBe('Presidential Determination on the Revocation of Presidential Determinations Related to Lebanon')
     expect(det.event_type).toBe('fr.published.presidential_document')
-    expect(det.importance?.tier).toBe('P1')
+    expect(det.importance).toEqual({ tier: 'P1', reasons: ['presidential_document_scheduled'] })
     const eo = byNumber(out.events, '2026-20321')
     expect(eo.status).toBe('published')
     expect(eo.title).toBe('Executive Order 14434 published in the Federal Register on October 2, 2026 (FR Doc. 2026-20321)')
@@ -1054,7 +1054,23 @@ describe('fr.api documents_newest: the next issue listed before its date (D-055)
     expect(scheduledOf(monday)).toHaveLength(0)
     const det = byNumber(monday.events, '2026-20439')
     expect(det.status).toBe('published')
+    expect(det.importance).toEqual({ tier: 'P1', reasons: ['presidential_document_published'] })
     expect(det.title).toBe('Presidential determination published in the Federal Register on October 5, 2026 (FR Doc. 2026-20439)')
+  })
+
+  test('a scheduled EO keeps its P0 tier; the reason names the stage', () => {
+    const out = parseFr('documents_newest', edited(early(), (j) => { const r = j.results.find((x: any) => x.document_number === '2026-20321'); r.publication_date = '2026-10-05' }))
+    expect(byNumber(out.events, '2026-20321')).toMatchObject({
+      status: 'scheduled', thread_key: 'eo:14434',
+      importance: { tier: 'P0', reasons: ['presidential_document_scheduled', 'executive_order', 'D-012'] },
+    })
+  })
+
+  test('an issue listed ahead that overflows the page says its cut documents are not seen at all', () => {
+    const out = parseFr('documents_newest', edited(early(), (j) => { for (const r of j.results) r.publication_date = '2026-10-05' }))
+    expect(out.health.detail).toMatch(/none is dated before October 5, 2026, .* holds, and those are not seen$/)
+    const today = parseFr('documents_newest', edited(early(), (j) => { for (const r of j.results) r.publication_date = '2026-10-03' }))
+    expect(today.health.detail).toMatch(/holds, and those are not seen as published$/)
   })
 
   test('across the DST change the boundary is 05:00Z (EST)', () => {

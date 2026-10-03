@@ -69,6 +69,24 @@ export function sameAsStored(incoming: unknown, stored: CedEvent): boolean {
   return true
 }
 
+/** The stored event as its source's own copy reads: adapters always send revision 1, but a revised row is stored at
+ * revision N > 1 with a new id and a `supersedes` (D-036), so without this no later copy of it could ever match and every
+ * revised row was fully validated on every re-ingest (review F1 of 861a6f4: after the D-059 flip, 106 FR rows a parse).
+ * Valid exactly when the stored event is: validateEvent's only cross-field rule on these fields is id ===
+ * eventId(dedup_key, revision), which this id meets for revision 1; revision 1 meets "integer >= 1"; supersedes is
+ * optional. */
+export function asRevisionOne(stored: CedEvent): CedEvent {
+  if (stored.revision === 1) return stored
+  const { supersedes: _superseded, ...rest } = stored
+  return { ...rest, id: eventId(stored.dedup_key, 1), revision: 1 }
+}
+
+/** sameAsStored against the stored event, or (for a revised row) against its revision-1 form (asRevisionOne): the copy
+ * then carries the stored facts, which mergeEvent calls 'unchanged' (facts exclude id, revision and supersedes). */
+export function sameAsStoredCopy(incoming: unknown, stored: CedEvent): boolean {
+  return sameAsStored(incoming, stored) || (stored.revision > 1 && sameAsStored(incoming, asRevisionOne(stored)))
+}
+
 // The fast path re-checks the two stamps by the schema's own utc rule, so it is only sound while each stamp field is
 // exactly a reference to $defs/utc and that definition is a plain string pattern. Anything else: always validate.
 const UTC_REF = '#/$defs/utc'

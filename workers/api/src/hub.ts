@@ -24,7 +24,7 @@ import {
   type StatusResponse,
 } from '@ced/schema'
 import type { AdapterOutput } from '@ced/adapters'
-import { FAST_PATH_ON, checkedMark, sameAsStored, stampsValid } from './fastpath.js'
+import { FAST_PATH_ON, checkedMark, sameAsStoredCopy, stampsValid } from './fastpath.js'
 import { mergeEvent } from './merge.js'
 import { DRIFT_RETRIES_BEFORE_BACKOFF, backoffMs } from './policy.js'
 
@@ -232,7 +232,8 @@ export interface PriorCopy {
   /** The stored content passed validateEvent under the validator running now: events.checked = checkedMark(seq), so a
    * row rewritten by code that does not write the mark (a rollback) is not vouched for (review R1). */
   checked: boolean
-  /** fastpath.sameAsStored(incoming, event): identical apart from the incoming copy's two per-poll stamps. */
+  /** fastpath.sameAsStoredCopy(incoming, event): identical apart from the incoming copy's two per-poll stamps (and, for
+   * a revised row, apart from its id, revision and supersedes: the source's revision-1 copy of the same facts). */
   same: boolean
 }
 
@@ -492,7 +493,7 @@ export class HubDO extends DurableObject<Env> {
       .toArray()[0]
     if (!row) return null
     const event = JSON.parse(row.json) as CedEvent
-    return { event, json: row.json, seq: row.seq, checked: row.checked === checkedMark(row.seq), same: sameAsStored(ev, event) }
+    return { event, json: row.json, seq: row.seq, checked: row.checked === checkedMark(row.seq), same: sameAsStoredCopy(ev, event) }
   }
 
   /** `prior`: the stored copy as read by judge() in this same synchronous call (one dedup_key per payload, so no write

@@ -2,7 +2,7 @@
 // children and attributes), never as HTML. Fail closed: a loading state before the first answer, a "Live data
 // unavailable" banner whenever the last poll failed, and never an empty list that could read as "nothing happened".
 import type { CedEvent, SourceStatus } from '@ced/schema'
-import { emphasis, healthLabel, originChips, skippedNote, statusChip, type HealthLabel } from './lib/labels.js'
+import { emphasis, healthLabel, originChips, rowStatusChip, skippedNote, type HealthLabel } from './lib/labels.js'
 import { MAX_EVENTS } from './lib/merge.js'
 import { eventTime, formatClock } from './lib/time.js'
 import { linkHost, safeHttpsUrl } from './lib/url.js'
@@ -143,7 +143,7 @@ function Loading() {
 function Row({ e, sourceName, nowMs }: { e: CedEvent; sourceName: string; nowMs: number }) {
   const t = eventTime(e, { now: nowMs })
   const href = safeHttpsUrl(e.sources[0]?.url)
-  const chip = statusChip(e.status)
+  const chip = rowStatusChip(e, nowMs)
   return (
     <li class={`row ${emphasis(e.importance?.tier)}`} data-testid="event-row" data-tier={e.importance?.tier ?? ''} data-id={e.id}>
       <div class="meta">

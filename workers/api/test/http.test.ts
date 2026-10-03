@@ -77,7 +77,7 @@ describe('GET /api/v1/status', () => {
 })
 
 describe('GET /feed.json', () => {
-  test('JSON Feed 1.1: id, url = primary source, title, content_text = official_text, date_published, _ced', async () => {
+  test('JSON Feed 1.1: id = dedup_key, url = primary source, title, content_text = official_text, date_published, _ced', async () => {
     const { hub, call } = api()
     await ingest(hub, 'fake.fr', DOCS.map((d) => docEvent(d, T0)), T0)
     const res = await call('/feed.json')
@@ -97,16 +97,29 @@ describe('GET /feed.json', () => {
     expect(feed.items).toHaveLength(3)
     const eo = docEvent(DOCS[0]!, T0)
     const sec = docEvent(DOCS[2]!, T0)
-    expect(feed.items.find((i) => i.id === eo.id)).toEqual({
-      id: eo.id,
+    expect(feed.items.find((i) => i.id === eo.dedup_key)).toEqual({
+      id: eo.dedup_key,
       url: DOCS[0]!.html_url,
       title: eo.title,
       content_text: DOCS[0]!.title,
       date_published: '2026-10-01T15:15:00Z',
-      _ced: { event_type: 'fr.public_inspection', tier: 'P0', affiliation: 'official-nonpartisan', source_id: 'fake.fr' },
+      _ced: {
+        event_type: 'fr.public_inspection', tier: 'P0', affiliation: 'official-nonpartisan', source_id: 'fake.fr', event_id: eo.id, revision: 1,
+      },
     })
     // No occurred_at: date_published falls back to first_seen_at; no importance: tier null.
-    expect(feed.items.find((i) => i.id === sec.id)).toMatchObject({ date_published: iso(T0), _ced: { tier: null } })
+    expect(feed.items.find((i) => i.id === sec.dedup_key)).toMatchObject({ date_published: iso(T0), _ced: { tier: null } })
+  })
+
+  test('a revised event keeps its item id (JSON Feed: an updated item keeps its id); _ced names the new revision', async () => {
+    const { hub, call } = api()
+    await ingest(hub, 'fake.fr', DOCS.map((d) => docEvent(d, T0)), T0)
+    const before = ((await (await call('/feed.json')).json()) as { items: Array<{ id: string }> }).items.map((i) => i.id).sort()
+    const renamed = docEvent({ ...DOCS[0]!, title: 'Inaugurating the Era of Superintelligence' }, T0 + MIN)
+    expect(await ingest(hub, 'fake.fr', [renamed, ...DOCS.slice(1).map((d) => docEvent(d, T0 + MIN))], T0 + MIN)).toMatchObject({ revised: 1 })
+    const after = ((await (await call('/feed.json')).json()) as { items: Array<{ id: string; _ced: { revision: number } }> }).items
+    expect(after.map((i) => i.id).sort()).toEqual(before)
+    expect(after.find((i) => i.id === renamed.dedup_key)?._ced.revision).toBe(2)
   })
 })
 

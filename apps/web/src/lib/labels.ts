@@ -1,5 +1,6 @@
 // Origin chips (D-009: neutral gray chips with words, never party colors) and the per-source health chip.
 import type { Affiliation, CedEvent, EventStatus, SourceStatus, Tier } from '@ced/schema'
+import { dayInEt } from '@ced/schema/order'
 import { parseUtc } from './time.js'
 
 export const ORIGIN_LABEL: Record<Affiliation, string> = {
@@ -39,6 +40,17 @@ const STATUS_CHIP: Partial<Record<EventStatus, string>> = {
  */
 export function statusChip(status: string): string | null {
   return Object.hasOwn(STATUS_CHIP, status) ? (STATUS_CHIP[status as EventStatus] ?? null) : null
+}
+
+/** The status chip of a row as of `nowMs`. A "scheduled" event whose `result.publication_date` (a Federal Register
+ * document listed before its date, D-059) is EARLIER than today in Eastern time should have been seen published by now
+ * (the Worker parses the list again on each Eastern day); if it still says scheduled, its source never confirmed it (the
+ * FR dropped it, or the list moved on during an outage: review of 861a6f4). It then reads "not seen published", never
+ * "scheduled" for a date that has passed. On the date itself the flip may still be on its way (within the hour). */
+export function rowStatusChip(e: Pick<CedEvent, 'status' | 'result'>, nowMs: number): string | null {
+  const d = e.result?.publication_date
+  if (e.status === 'scheduled' && typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d) && d < dayInEt(nowMs)) return 'not seen published'
+  return statusChip(e.status)
 }
 
 /** The note above the rows when malformed events were dropped. */
