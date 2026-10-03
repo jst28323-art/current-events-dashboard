@@ -46,6 +46,10 @@ export interface Endpoint {
   validator: Validator
   /** Append a unique query parameter on every call (FR API: shared caches serve copies up to ~104 min old). */
   cacheBust?: boolean
+  /** This endpoint's own poll cadence (seconds), overriding the source's `cadence` (D-046): a large list that changes
+   * once a day (FR documents.json, the daily issue) need not be fetched every minute beside a fast one (Public
+   * Inspection). The endpoint's "stale" threshold follows its own cadence (workers/api policy.ts). */
+  cadence?: { business_s: number; off_s: number }
 }
 
 export interface SourceDefinition {
