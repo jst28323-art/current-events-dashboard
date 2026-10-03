@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legislative_activity>
+<legislative_header>CURRENT HOUSE FLOOR PROCEEDINGS</legislative_header>
+<legislative_day date="20260416" previous-legislative-day-convened="20260415T10:00:00">LEGISLATIVE DAY OF APRIL 16, 2026 </legislative_day>
+<legislative_congress congress="119" session="2"> 119TH CONGRESS - SECOND SESSION </legislative_congress>
+<language>en-us</language>
+<copyright>Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.</copyright>
+<pubDate>Thu, 02 Jul 2026 12:10:06 EDT</pubDate>
+<floor_actions>
+<legislative_day_finished next-legislative-day-convenes="20260420T12:00">Yes</legislative_day_finished>
+<floor_action act-id="H61000" update-date-time="20260417T02:28" unique-id="33238">
+<action_time for-search="20260417T02:10:03">2:10:03 A.M. -</action_time>
+<action_description>
+The House adjourned pursuant to a previous special order. The next meeting is scheduled for 12:00 p.m. on April 20, 2026.
+</action_description>
+</floor_action>
+<floor_action act-id="H60100" update-date-time="20260417T02:28" unique-id="33237">
+<action_time for-search="20260417T02:10:02">2:10:02 A.M. -</action_time>
+<action_description>
+On motion to adjourn Agreed to by voice vote.
+</action_description>
+</floor_action>
+<floor_action act-id="H60000" update-date-time="20260417T02:28" unique-id="33236">
+<action_time for-search="20260417T02:10:01">2:10:01 A.M. -</action_time>
+<action_description>
+Mr. Scott, Austin moved that the House do now adjourn.
+</action_description>
+</floor_action>
+<floor_action act-id="H29800" update-date-time="20260417T02:21" unique-id="33234">
+<action_time for-search="20260417T02:10:00">2:10:00 A.M. -</action_time>
+<action_description>
+Mr. Scott, Austin asked unanimous consent That, when the House adjourns on Friday, April 17, 2026, it adjourn to meet on Monday, April 20, 2026, at noon for Morning-Hour debate and 2:00 p.m. for legislative business. Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260417T03:51" unique-id="33233">
+<action_time for-search="20260417T02:09:37">2:09:37 A.M. -</action_time>
+<action_item>H.R. 8322</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260417T03:51" unique-id="33232">
+<action_time for-search="20260417T02:09:32">2:09:32 A.M. -</action_time>
+<action_item>H.R. 8322</action_item>
+<action_description>
+On passage Passed without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260417T03:51" unique-id="33231">
+<action_time for-search="20260417T02:09:24">2:09:24 A.M. -</action_time>
+<action_item>H.R. 8322</action_item>
+<action_description>
+Considered by unanimous consent. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/8322">H.R. 8322</a> &#8212; "<b>To amend the FISA Amendments Act of 2008 to extend the authorities of title VII of the Foreign Intelligence Surveillance Act of 1978 through April 30, 2026, and for other purposes</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H30200" update-date-time="20260417T03:51" unique-id="33230">
+<action_time for-search="20260417T02:08:39">2:08:39 A.M. -</action_time>
+<action_item>H.R. 8322</action_item>
+<action_description>
+Mr. Scott, Austin asked unanimous consent to discharge from committee and consider.
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260417T02:14" unique-id="33229">
+<action_time for-search="20260417T02:08:38">2:08:38 A.M. -</action_time>
+<action_item>H. Res. 1175</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260417T02:17" unique-id="33227">
+<action_time for-search="20260417T02:08:35">2:08:35 A.M. -</action_time>
+<action_item>H. Res. 1175</action_item>
+<action_description>
+On agreeing to the resolution Failed by recorded vote: 197 - 228 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=124">(Roll no. 124)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H34111" update-date-time="20260417T02:17" unique-id="33225">
+<action_time for-search="20260417T01:23:24">1:23:24 A.M. -</action_time>
+<action_item>H. Res. 1175</action_item>
+<action_description>
+On agreeing to the Scott, Austin amendment; Failed by the Yeas and Nays: 200 - 220 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=123">(Roll no. 123)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H34180" update-date-time="20260417T04:37" unique-id="33223">
+<action_time for-search="20260417T01:14:13">1:14:13 A.M. -</action_time>
+<action_item>H. Res. 1175</action_item>
+<action_description>
+On ordering the previous question on the amendment and the resolution Agreed to by the Yeas and Nays: 211 - 210 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=122">(Roll no. 122)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H3A100" update-date-time="20260702T12:09" unique-id="33221">
+<action_time for-search="20260417T00:05:03">12:05:03 A.M. -</action_time>
+<action_item>H. Res. 1175</action_item>
+<action_description>
+An amendment, offered by Mr. Scott, Austin,  to strike the first section after the resolving clause and insert a new paragraph providing for the consideration of <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/8035">H.R. 8035</a>, title VII of the Foreign Intelligence Surveillance Act of 1978.
+</action_description>
+</floor_action>
+<floor_action act-id="H8D000" update-date-time="20260416T23:23" unique-id="33220">
+<action_time for-search="20260416T23:23:34">11:23:34 P.M. -</action_time>
+<action_item>H. Res. 1175</action_item>
+<action_description>
+DEBATE - The House proceeded with one hour of debate on <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-resolution/1175"><a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-resolution/1175">H. Res. 1175</a></a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260416T23:23" unique-id="33219">
+<action_time for-search="20260416T23:22:31">11:22:31 P.M. -</action_time>
+<action_item>H. Res. 1175</action_item>
+<action_description>
+Considered as privileged matter. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-resolution/1175">H. Res. 1175</a> &#8212; "<b>Providing for consideration of the bill (<a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/8035">H.R. 8035</a>) to amend the FISA Amendments Act of 2008 to extend the authorities of title VII of the Foreign Intelligence Surveillance Act of 1978 through October 20, 2027, and for other purposes</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H20100" update-date-time="20260416T23:23" unique-id="33218">
+<action_time for-search="20260416T23:22:29">11:22:29 P.M. -</action_time>
+<action_description>
+The House convened, returning from a recess continuing the legislative day of April 16.
+</action_description>
+</floor_action>
+<floor_action act-id="H61000" update-date-time="20260416T14:37" unique-id="33217">
+<action_time for-search="20260416T14:32:32">2:32:32 P.M. -</action_time>
+<action_description>
+The Speaker announced that the House do now recess. The next meeting is subject to the call of the Chair.
+</action_description>
+</floor_action>
+<floor_action act-id="H24100" update-date-time="20260416T14:43" unique-id="33216">
+<action_time for-search="20260416T14:30:58">2:30:58 P.M. -</action_time>
+<action_description>
+The Speaker laid before the House a message from the President transmitting a notification stating that the national emergency declared in Proclamation 10371 of April 21, 2022, with respect to the Russian Federation and the emergency authority relating to the regulation of the anchorage and movement of Russian-affiliated vessels to United States ports, is to continue in effect beyond April 21, 2026 - referred to the Committee on Foreign Affairs and ordered to be printed (H. Doc. 119-149).
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260416T14:30" unique-id="33215">
+<action_time for-search="20260416T14:30:39">2:30:39 P.M. -</action_time>
+<action_item>H. Res. 1156</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260416T14:37" unique-id="33214">
+<action_time for-search="20260416T14:30:37">2:30:37 P.M. -</action_time>
+<action_item>H. Res. 1156</action_item>
+<action_description>
+On agreeing to the resolution Agreed to by the Yeas and Nays: 219 - 207 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=121">(Roll no. 121)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260416T14:22" unique-id="33212">
+<action_time for-search="20260416T14:22:18">2:22:18 P.M. -</action_time>
+<action_item>H. Res. 1156</action_item>
+<action_description>
+Considered as unfinished business. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-resolution/1156">H. Res. 1156</a> &#8212; "<b>Expressing support for tax policies that support working families</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260416T14:22" unique-id="33211">
+<action_time for-search="20260416T14:22:04">2:22:04 P.M. -</action_time>
+<action_item>H.R. 1689</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260416T14:37" unique-id="33210">
+<action_time for-search="20260416T14:22:01">2:22:01 P.M. -</action_time>
+<action_item>H.R. 1689</action_item>
+<action_description>
+On passage Passed by the Yeas and Nays: 224 - 204 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=120">(Roll no. 120)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H35000" update-date-time="20260416T13:45" unique-id="33208">
+<action_time for-search="20260416T13:43:47">1:43:47 P.M. -</action_time>
+<action_item>H.R. 1689</action_item>
+<action_description>
+The previous question was ordered pursuant to the rule.
+</action_description>
+</floor_action>
+<floor_action act-id="H8D000" update-date-time="20260416T13:12" unique-id="33206">
+<action_time for-search="20260416T13:11:51">1:11:51 P.M. -</action_time>
+<action_item>H.R. 1689</action_item>
+<action_description>
+DEBATE - The House resumed debate on <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/1689"><a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/1689">H.R. 1689</a></a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H24300" update-date-time="20260416T13:11" unique-id="33205">
+<action_time for-search="20260416T13:11:06">1:11:06 P.M. -</action_time>
+<action_description>
+The House received a message from the Senate. The Senate passed H.R. 2066 and H.J. Res. 140.
+</action_description>
+</floor_action>
+<floor_action act-id="H8D000" update-date-time="20260416T12:47" unique-id="33203">
+<action_time for-search="20260416T12:47:17">12:47:17 P.M. -</action_time>
+<action_item>H.R. 1689</action_item>
+<action_description>
+DEBATE - The House proceeded with one hour of debate on <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/1689"><a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/1689">H.R. 1689</a></a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260416T12:47" unique-id="33200">
+<action_time for-search="20260416T12:44:46">12:44:46 P.M. -</action_time>
+<action_item>H.R. 1689</action_item>
+<action_description>
+Considered under the provisions of rule <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-resolution/965">H. Res. 965</a>. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/1689">H.R. 1689</a> &#8212; "<b>To require the Secretary of Homeland Security to designate Haiti for temporary protected status</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260416T12:43" unique-id="33199">
+<action_time for-search="20260416T12:43:42">12:43:42 P.M. -</action_time>
+<action_item>H. Res. 965</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260416T12:52" unique-id="33198">
+<action_time for-search="20260416T12:43:40">12:43:40 P.M. -</action_time>
+<action_item>H. Res. 965</action_item>
+<action_description>
+On agreeing to the resolution Agreed to by the Yeas and Nays: 220 - 207 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=119">(Roll no. 119)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260416T12:34" unique-id="33196">
+<action_time for-search="20260416T12:33:34">12:33:34 P.M. -</action_time>
+<action_item>H. Res. 965</action_item>
+<action_description>
+Considered as unfinished business. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-resolution/965">H. Res. 965</a> &#8212; "<b>Providing for consideration of the bill (<a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/1689">H.R. 1689</a>) to require the Secretary of Homeland Security to designate Haiti for temporary protected status</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260416T12:33" unique-id="33195">
+<action_time for-search="20260416T12:33:28">12:33:28 P.M. -</action_time>
+<action_item>H.R. 6398</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260416T12:52" unique-id="33194">
+<action_time for-search="20260416T12:33:26">12:33:26 P.M. -</action_time>
+<action_item>H.R. 6398</action_item>
+<action_description>
+On passage Passed by the Yeas and Nays: 222 - 205 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=118">(Roll no. 118)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H36210" update-date-time="20260416T12:52" unique-id="33192">
+<action_time for-search="20260416T12:27:20">12:27:20 P.M. -</action_time>
+<action_item>H.R. 6398</action_item>
+<action_description>
+On motion to recommit Failed by the Yeas and Nays: 213 - 216 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=117">(Roll no. 117)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260416T12:21" unique-id="33190">
+<action_time for-search="20260416T12:21:11">12:21:11 P.M. -</action_time>
+<action_item>H.R. 6398</action_item>
+<action_description>
+Considered as unfinished business. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/6398">H.R. 6398</a> &#8212; "<b>To amend the Clean Air Act relating to review by the Environmental Protection Agency of proposed legislation</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260416T12:21" unique-id="33189">
+<action_time for-search="20260416T12:21:04">12:21:04 P.M. -</action_time>
+<action_item>H.R. 6409</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260416T12:52" unique-id="33188">
+<action_time for-search="20260416T12:21:02">12:21:02 P.M. -</action_time>
+<action_item>H.R. 6409</action_item>
+<action_description>
+On passage Passed by the Yeas and Nays: 220 - 208 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=116">(Roll no. 116)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H36210" update-date-time="20260416T12:52" unique-id="33186">
+<action_time for-search="20260416T12:14:14">12:14:14 P.M. -</action_time>
+<action_item>H.R. 6409</action_item>
+<action_description>
+On motion to recommit Failed by the Yeas and Nays: 213 - 215 <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=115">(Roll no. 115)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260416T12:07" unique-id="33184">
+<action_time for-search="20260416T12:07:10">12:07:10 P.M. -</action_time>
+<action_item>H.R. 6409</action_item>
+<action_description>
+Considered as unfinished business. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/6409">H.R. 6409</a> &#8212; "<b>To amend the Clean Air Act to clarify standards for emissions emanating from outside of the United States, and for other purposes</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H38310" update-date-time="20260416T12:07" unique-id="33182">
+<action_time for-search="20260416T12:06:50">12:06:50 P.M. -</action_time>
+<action_item>H. Con. Res. 40</action_item>
+<action_description>
+Motion to reconsider laid on the table Agreed to without objection.
+</action_description>
+</floor_action>
+<floor_action act-id="H37100" update-date-time="20260416T12:52" unique-id="33181">
+<action_time for-search="20260416T12:06:47">12:06:47 P.M. -</action_time>
+<action_item>H. Con. Res. 40</action_item>
+<action_description>
+On agreeing to the resolution Failed by the Yeas and Nays: 213 - 214, 1 Present <a rel="vote" href="http://clerk.house.gov/cgi-bin/vote.asp?year=2026&amp;rollnumber=114">(Roll no. 114)</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H35000" update-date-time="20260416T11:34" unique-id="33179">
+<action_time for-search="20260416T11:33:03">11:33:03 A.M. -</action_time>
+<action_item>H. Con. Res. 40</action_item>
+<action_description>
+The previous question was ordered pursuant to a previous  order of the House.
+</action_description>
+</floor_action>
+<floor_action act-id="H8D000" update-date-time="20260416T10:40" unique-id="33114">
+<action_time for-search="20260416T10:17:58">10:17:58 A.M. -</action_time>
+<action_item>H. Con. Res. 40</action_item>
+<action_description>
+DEBATE - Pursuant to a previous order, the House proceeded with one hour of debate on <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/40"><a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/40">H. Con. Res. 40</a></a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H30000" update-date-time="20260416T10:18" unique-id="33113">
+<action_time for-search="20260416T10:17:53">10:17:53 A.M. -</action_time>
+<action_item>H. Con. Res. 40</action_item>
+<action_description>
+Considered pursuant to a previous order. <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-concurrent-resolution/40">H. Con. Res. 40</a> &#8212; "<b>Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran</b>."
+</action_description>
+</floor_action>
+<floor_action act-id="H30800" update-date-time="20260416T10:18" unique-id="33112">
+<action_time for-search="20260416T10:17:40">10:17:40 A.M. -</action_time>
+<action_item>H. Con. Res. 40</action_item>
+<action_description>
+Consideration initiated pursuant to a previous order.
+</action_description>
+</floor_action>
+<floor_action act-id="H8D000" update-date-time="20260416T10:41" unique-id="33111">
+<action_time for-search="20260416T10:03:19">10:03:19 A.M. -</action_time>
+<action_description>
+ONE MINUTE SPEECHES - The House proceeded with one minute speeches, which by direction of the Chair would be limited to 15 per side of the aisle.
+</action_description>
+</floor_action>
+<floor_action act-id="H2C000" update-date-time="20260416T10:02" unique-id="33110">
+<action_time for-search="20260416T10:02:46">10:02:46 A.M. -</action_time>
+<action_description>
+PLEDGE OF ALLEGIANCE - The Chair designated Ms. Ocasio-Cortez to lead the Members in reciting the Pledge of Allegiance to the Flag.
+</action_description>
+</floor_action>
+<floor_action act-id="H23100" update-date-time="20260416T10:02" unique-id="33109">
+<action_time for-search="20260416T10:02:42">10:02:42 A.M. -</action_time>
+<action_description>
+The Speaker announced approval of the Journal.  Pursuant to clause 1, rule I, the Journal stands approved.
+</action_description>
+</floor_action>
+<floor_action act-id="H21000" update-date-time="20260416T10:01" unique-id="33108">
+<action_time for-search="20260416T10:01:19">10:01:19 A.M. -</action_time>
+<action_description>
+Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.
+</action_description>
+</floor_action>
+<floor_action act-id="H20100" update-date-time="20260416T10:01" unique-id="33107">
+<action_time for-search="20260416T10:00:00">10:00:00 A.M. -</action_time>
+<action_description>
+The House convened, starting a new legislative day.
+</action_description>
+</floor_action>
+</floor_actions>
+</legislative_activity>

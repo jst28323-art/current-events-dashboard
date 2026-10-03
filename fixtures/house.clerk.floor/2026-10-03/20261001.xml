@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legislative_activity>
+<legislative_header>CURRENT HOUSE FLOOR PROCEEDINGS</legislative_header>
+<legislative_day date="20261001" previous-legislative-day-convened="20260928T12:00:00">LEGISLATIVE DAY OF OCTOBER  1, 2026 </legislative_day>
+<legislative_congress congress="119" session="2"> 119TH CONGRESS - SECOND SESSION </legislative_congress>
+<language>en-us</language>
+<copyright>Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.</copyright>
+<pubDate>Sat, 03 Oct 2026 10:00:01 EDT</pubDate>
+<floor_actions>
+<legislative_day_finished next-legislative-day-convenes="20261005T16:30">Yes</legislative_day_finished>
+<floor_action act-id="H61000" update-date-time="20261001T11:54" unique-id="45150">
+<action_time for-search="20261001T11:33:10">11:33:10 A.M. -</action_time>
+<action_description>
+The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 4:30 p.m. on October 5, 2026.
+</action_description>
+</floor_action>
+<floor_action act-id="H24500" update-date-time="20261001T11:54" unique-id="45148">
+<action_time for-search="20261001T11:32:30">11:32:30 A.M. -</action_time>
+<action_description>
+The House received a message from the Clerk. Pursuant to the permission granted in Clause 2(h) of Rule II of the Rules of the U.S. House of Representatives, the Clerk notified the House that he had received the following message from the Secretary of the Senate on September 28, 2026, at 3:20 p.m.: That the Senate passed <a rel="bill" href="https://www.congress.gov/bill/119th-congress/senate-bill/3257">S. 3257</a>, <a rel="bill" href="https://www.congress.gov/bill/119th-congress/senate-bill/3258">S. 3258</a>, Senate agreed to House amendment to <a rel="bill" href="https://www.congress.gov/bill/119th-congress/senate-bill/240">S. 240</a>, Senate agreed to House amendment to <a rel="bill" href="https://www.congress.gov/bill/119th-congress/senate-bill/283">S. 283</a>, and passed <a rel="bill" href="https://www.congress.gov/bill/119th-congress/house-bill/2388">H.R. 2388</a>.
+</action_description>
+</floor_action>
+<floor_action act-id="H2C000" update-date-time="20261001T11:32" unique-id="45147">
+<action_time for-search="20261001T11:31:54">11:31:54 A.M. -</action_time>
+<action_description>
+PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.
+</action_description>
+</floor_action>
+<floor_action act-id="H8D000" update-date-time="20261001T11:31" unique-id="45146">
+<action_time for-search="20261001T11:31:04">11:31:04 A.M. -</action_time>
+<action_description>
+SPEAKER'S APPROVAL OF THE JOURNAL - Pursuant to clause 13 of Rule I, the Journal of the last day's proceedings was approved.
+</action_description>
+</floor_action>
+<floor_action act-id="H21000" update-date-time="20261001T11:30" unique-id="45145">
+<action_time for-search="20261001T11:30:38">11:30:38 A.M. -</action_time>
+<action_description>
+Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.
+</action_description>
+</floor_action>
+<floor_action act-id="H22000" update-date-time="20261001T11:30" unique-id="45144">
+<action_time for-search="20261001T11:30:23">11:30:23 A.M. -</action_time>
+<action_description>
+The Speaker designated the Honorable Dan Newhouse to act as Speaker pro tempore for today.
+</action_description>
+</floor_action>
+<floor_action act-id="H20100" update-date-time="20261001T11:30" unique-id="44997">
+<action_time for-search="20261001T11:30:00">11:30:00 A.M. -</action_time>
+<action_description>
+The House convened, starting a new legislative day.
+</action_description>
+</floor_action>
+</floor_actions>
+</legislative_activity>
