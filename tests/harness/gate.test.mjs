@@ -50,6 +50,22 @@ test('a key committed then deleted in unpushed history still fails (non-CI)', ()
     assert.equal(r.ok, false); assert.match(r.detail, /unpushed history/)
   } finally { rmSync(dir, { recursive: true, force: true }) }
 })
+test('a large unpushed history (multi-MB fixtures) is scanned, not refused with ENOBUFS (2026-10-03)', () => {
+  // The gate failed with "git log failed: spawnSync git ENOBUFS" when the unpushed commits carried ~1.5 MB of fixtures:
+  // spawnSync's default output buffer is 1 MB. The scan must read it all (and still catch a key at the end of it).
+  const { dir, g } = tempRepo()
+  try {
+    const big = 'x'.repeat(100) + '\n'
+    writeFileSync(join(dir, 'big.json'), big.repeat(40_000)); g('add', '.'); g('commit', '-qm', 'a 4 MB fixture')
+    const clean = secretScan({ cwd: dir, ci: false })
+    assert.equal(clean.ok, true, clean.detail)
+    writeFileSync(join(dir, 'late.txt'), `${ANT}\n`); g('add', '.'); g('commit', '-qm', 'a key after the big diff')
+    rmSync(join(dir, 'late.txt')); g('add', '-A'); g('commit', '-qm', 'removed')
+    const r = secretScan({ cwd: dir, ci: false })
+    assert.equal(r.ok, false); assert.match(r.detail, /unpushed history/)
+  } finally { rmSync(dir, { recursive: true, force: true }) }
+})
+
 test('allowlisted lines pass; a missing pattern file fails closed', () => {
   const { dir, g } = tempRepo()
   try {

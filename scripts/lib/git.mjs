@@ -15,6 +15,9 @@ export function run(cmd, args, { cwd = REPO_ROOT, timeoutMs = 60_000, input, she
     timeout: timeoutMs,
     input,
     windowsHide: true,
+    // spawnSync's default 1 MB output buffer failed the secret scan of a large unpushed history with ENOBUFS (fixtures
+    // of ~1.5 MB, 2026-10-03; tests/harness/gate.test.mjs). 512 MB is far above any diff this repo should push.
+    maxBuffer: 512 * 1024 * 1024,
     // never let git block on a credential prompt; a hung prompt reads like a network stall
     env: { ...process.env, GIT_TERMINAL_PROMPT: '0' },
   })
