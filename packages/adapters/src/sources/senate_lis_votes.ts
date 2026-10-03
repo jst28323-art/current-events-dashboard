@@ -260,7 +260,8 @@ function positionOf(voteCast: string): MemberPosition['position'] | null {
 // element's raw text: a single-space variant is drift, not a guess.
 const SENATE_DATE = /^([A-Z][a-z]+) (\d{1,2}), (\d{4}),  (\d{2}):(\d{2}) ([AP]M)$/
 
-type TimeRead = { ok: true; utc: string | null; note: string | null } | { ok: false; detail: string }
+/** `wall` = the Eastern wall clock as "YYYY-MM-DDTHH:MM" (sortable; bounds the fall-back hour, where utc is null). */
+type TimeRead = { ok: true; utc: string | null; note: string | null; wall: string } | { ok: false; detail: string }
 
 /** Naive Eastern wall time -> UTC. Nonexistent (spring-forward gap) = drift; ambiguous (fall-back hour) = null + note. */
 function senateTime(raw: string, field: string): TimeRead {
@@ -270,9 +271,10 @@ function senateTime(raw: string, field: string): TimeRead {
   const h = hour24(Number(m[4]), m[6] === 'PM')
   if (mo === 0 || h === null) return { ok: false, detail: `<${field}> ${JSON.stringify(raw)} is not a real date and time` }
   const r = easternToUtc(Number(m[3]), mo, Number(m[2]), h, Number(m[5]))
-  if (r.ok) return { ok: true, utc: r.utc, note: null }
+  const wall = `${m[3]}-${String(mo).padStart(2, '0')}-${m[2]!.padStart(2, '0')}T${String(h).padStart(2, '0')}:${m[5]}`
+  if (r.ok) return { ok: true, utc: r.utc, note: null, wall }
   if (r.reason === 'ambiguous') {
-    return { ok: true, utc: null, note: `<${field}> "${raw}" falls in the repeated fall-back hour (Eastern time), so its instant is unknown` }
+    return { ok: true, utc: null, note: `<${field}> "${raw}" falls in the repeated fall-back hour (Eastern time), so its instant is unknown`, wall }
   }
   return { ok: false, detail: `<${field}> ${JSON.stringify(raw)} is ${r.reason === 'nonexistent' ? 'a wall time that does not exist in Eastern time (spring-forward gap)' : 'not a real date and time'}` }
 }
@@ -686,20 +688,23 @@ function parseVoteXml(res: FetchedResponse, opts: ParseVoteOptions): AdapterOutp
   const sessionYear = 1787 + 2 * id.congress + (id.session - 1)
   const cyText = t.congress_year.trim()
   if (cyText !== String(sessionYear)) return failVote(`congress_year ${cyText} is not the year of session ${id.congress}-${id.session} (${sessionYear})`)
-  const sessionStart = easternToUtc(sessionYear, 1, 1, 0, 0)
-  const sessionEnd = easternToUtc(sessionYear + 1, 1, 3, 12, 0)
-  if (!sessionStart.ok || !sessionEnd.ok) return failVote(`session ${id.congress}-${id.session} has no computable bounds`)
+  // Compared on the Eastern wall clock, so a time in the fall-back hour (utc null) is bounded too.
+  const first = `${sessionYear}-01-01T00:00`
+  const end = `${sessionYear + 1}-01-03T12:00`
   const fetchedMs = Date.parse(res.fetchedAt)
   for (const [field, raw, r] of [['vote_date', t.vote_date, when], ['modify_date', t.modify_date, modified]] as const) {
-    if (r.utc === null) continue // the fall-back hour: no instant to bound (null + time_note)
-    if (r.utc < sessionStart.utc || r.utc >= sessionEnd.utc) {
+    if (r.wall < first || r.wall >= end) {
       return failVote(`<${field}> ${JSON.stringify(raw)} is outside session ${id.congress}-${id.session} (${sessionYear}-01-01 to ${sessionYear + 1}-01-03 noon Eastern)`)
     }
-    if (Date.parse(r.utc) > fetchedMs + FUTURE_SKEW_MS) return failVote(`<${field}> ${JSON.stringify(raw)} is later than our own fetch (${res.fetchedAt})`)
+    // In the fall-back hour the earlier reading is EDT (wall + 4 h): if even that is after the fetch, it is the future.
+    const earliestMs = r.utc !== null ? Date.parse(r.utc) : Date.parse(`${r.wall}:00Z`) + 4 * 3_600_000
+    if (earliestMs > fetchedMs + FUTURE_SKEW_MS) return failVote(`<${field}> ${JSON.stringify(raw)} is later than our own fetch (${res.fetchedAt})`)
   }
-  if (when.utc !== null && modified.utc !== null && modified.utc < when.utc) {
-    return failVote(`<modify_date> ${JSON.stringify(t.modify_date)} is earlier than <vote_date> ${JSON.stringify(t.vote_date)}`)
-  }
+  // By instant when both are known; else by wall clock with the one repeated hour of slack.
+  const modifiedFirst = when.utc !== null && modified.utc !== null
+    ? modified.utc < when.utc
+    : Date.parse(`${modified.wall}:00Z`) < Date.parse(`${when.wall}:00Z`) - 3_600_000
+  if (modifiedFirst) return failVote(`<modify_date> ${JSON.stringify(t.modify_date)} is earlier than <vote_date> ${JSON.stringify(t.vote_date)}`)
 
   const required = collapseWs(t.majority_requirement)
   if (!REQUIRED.has(required)) return failVote(`majority_requirement ${JSON.stringify(required)} is not 1/2, 3/5 or 2/3`)

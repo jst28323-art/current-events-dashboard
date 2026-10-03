@@ -705,6 +705,8 @@ function actionTime(meta: Node, urlYear: number, fetchedAt: string): { utc: stri
     return { utc: r.utc, note: null }
   }
   if (r.reason === 'ambiguous') {
+    // The earlier reading is EDT (wall + 4 h): if even that is after our fetch, the vote is in the future.
+    if (Date.UTC(y, mo! - 1, day, h + 4, mi) > Date.parse(fetchedAt) + FUTURE_SKEW_MS) drift(`<action-date> ${dateText} ${text} is later than our own fetch (${fetchedAt})`)
     return { utc: null, note: `${text} Eastern on ${dateText} falls in the repeated fall-back hour, so the instant is ambiguous` }
   }
   if (r.reason === 'nonexistent') drift(`${text} Eastern on ${dateText} does not exist (spring-forward gap)`)

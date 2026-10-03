@@ -708,6 +708,10 @@ describe('drift checks (DESIGN §3.1): each = zero events, zero records', () => 
     expectRefused('roll', late('3-Jan-2027', '12:00', '12:00 PM'), 'drift', /is outside the 2026 session/) // the next Congress begins at noon
     expect(parseOk(late('3-Jan-2027', '11:59', '11:59 AM')).e.times.occurred_at).toBe('2027-01-03T16:59:00Z')
     expect(parseOk(late('1-Jan-2026', '00:05', '12:05 AM')).e.times.occurred_at).toBe('2026-01-01T05:05:00Z')
+    // the fall-back hour (instant unknown) is bounded too: another year's repeated hour by the session window, this
+    // year's by the fetch (read as EDT, the earlier of its two instants)
+    expectRefused('roll', late('2-Nov-2025', '01:30', '1:30 AM'), 'drift', /2-Nov-2025 1:30 AM is outside the 2026 session/)
+    bad(/<action-date>16-Sep-2026<\/action-date>\s*<action-time time-etz="19:05">7:05 PM<\/action-time>/, '<action-date>1-Nov-2026</action-date><action-time time-etz="01:30">1:30 AM</action-time>', /1-Nov-2026 1:30 AM is later than our own fetch/)
     // roll314 was fetched 2026-10-02T17:59Z: a vote at 7:05 PM EDT that day (23:05Z) is in the future
     bad('<action-date>16-Sep-2026</action-date>', '<action-date>2-Oct-2026</action-date>', /2-Oct-2026 7:05 PM is later than our own fetch/)
   })

@@ -524,6 +524,11 @@ describe('non-default cases (DESIGN §3.2 tests)', () => {
     refused('vote', withBody(vote256(), (b) => edit(b, '<congress_year>2026</congress_year>', '<congress_year>2025</congress_year>')), 'drift', /congress_year 2025 is not the year of session 119-2 \(2026\)/)
     // modify_date before vote_date: the record cannot be edited before the vote
     refused('vote', withBody(vote256(), (b) => edit(b, '<modify_date>September 30, 2026,  11:25 PM</modify_date>', '<modify_date>September 29, 2026,  11:25 PM</modify_date>')), 'drift', /<modify_date> .* is earlier than <vote_date>/)
+    // the fall-back hour (instant unknown) is bounded on the wall clock: another year's repeated hour is drift
+    refused('vote', at('November 2, 2025,  01:00 AM'), 'drift', /"November 2, 2025,  01:00 AM" is outside session 119-2/)
+    refused('vote', at('November 7, 2027,  01:59 AM'), 'drift', /"November 7, 2027,  01:59 AM" is outside session 119-2/)
+    // ... and so is one that is after our fetch even read as EDT (256 fetched 2026-10-02T18:00Z)
+    refused('vote', withBody(vote256(), (b) => edit(edit(b, `<vote_date>${DATE256}</vote_date>`, '<vote_date>November 1, 2026,  01:30 AM</vote_date>'), '<modify_date>September 30, 2026,  11:25 PM</modify_date>', '<modify_date>November 1, 2026,  01:45 AM</modify_date>')), 'drift', /<vote_date> "November 1, 2026,  01:30 AM" is later than our own fetch/)
     // later than our own fetch (2026-10-02T18:00Z): a vote in the future
     refused('vote', withBody(vote256(), (b) => edit(edit(b, `<vote_date>${DATE256}</vote_date>`, '<vote_date>October 2, 2026,  03:00 PM</vote_date>'), '<modify_date>September 30, 2026,  11:25 PM</modify_date>', '<modify_date>October 2, 2026,  03:30 PM</modify_date>')), 'drift', /<vote_date> "October 2, 2026,  03:00 PM" is later than our own fetch/)
   })
