@@ -1,0 +1,27 @@
+{
+  "source_id": "senate.lis.votes",
+  "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00096.xml",
+  "final_url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00096.xml",
+  "fetched_at": "2026-10-03T13:30:24.770Z",
+  "status": 200,
+  "elapsed_ms": 354,
+  "bytes": 29449,
+  "sha256": "67f7d50a6f88800cfc706e3aea3cd130cb28cfe64060e9c86769a9c20ac913be",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "connection": "keep-alive",
+    "content-encoding": "gzip",
+    "content-length": "3380",
+    "content-type": "text/xml",
+    "date": "Sat, 03 Oct 2026 13:30:23 GMT",
+    "etag": "\"7309-659cb948ff896\"",
+    "last-modified": "Mon, 24 Aug 2026 14:12:45 GMT",
+    "server": "Apache",
+    "strict-transport-security": "max-age=31536000",
+    "vary": "Accept-Encoding"
+  }
+}
