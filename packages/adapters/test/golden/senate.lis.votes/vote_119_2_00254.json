@@ -1,0 +1,207 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_bfb87e0df97b4daf",
+      "dedup_key": "vote:senate:119:2:254#result",
+      "object_key": "vote:senate:119:2:254",
+      "thread_key": "bill:119:hr:9340",
+      "event_type": "vote.result",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F5",
+        "F6"
+      ],
+      "title": "Senate did not invoke cloture on the motion to take up H.R. 9340, 57-43; three-fifths needed (roll call 254)",
+      "official_text": "On Cloture on the Motion to Proceed H.R. 9340 - Cloture on the Motion to Proceed Rejected (57-43, 3/5 majority required)",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "cloture"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-30T16:51:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-30T17:52:00Z",
+        "first_seen_at": "2026-10-03T13:25:43.609Z"
+      },
+      "result": {
+        "question": "On Cloture on the Motion to Proceed",
+        "question_kind": "cloture",
+        "result_text": "Cloture on the Motion to Proceed Rejected",
+        "required": "3/5",
+        "passed": false,
+        "yea": 57,
+        "nay": 43,
+        "present": 0,
+        "not_voting": 0,
+        "tie_breaker": null,
+        "documents": [
+          {
+            "congress": 119,
+            "type": "H.R.",
+            "number": "9340"
+          }
+        ],
+        "amendment": null
+      },
+      "member_votes_ref": "votes/senate/119/2/254.json",
+      "sources": [
+        {
+          "source_id": "senate.lis.votes",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00254.xml",
+          "retrieved_at": "2026-10-03T13:25:43.609Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_lis_votes@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.lis.votes",
+    "endpoint": "vote",
+    "status": "ok",
+    "detail": "roll call 254 (119-2): 100 members; all in the member list",
+    "items_seen": 1
+  },
+  "records": [
+    {
+      "record_type": "member_votes",
+      "record_version": "0.1",
+      "ref": "votes/senate/119/2/254.json",
+      "vote_key": "vote:senate:119:2:254",
+      "chamber": "senate",
+      "congress": 119,
+      "session": 2,
+      "roll": 254,
+      "source": {
+        "source_id": "senate.lis.votes",
+        "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00254.xml",
+        "retrieved_at": "2026-10-03T13:25:43.609Z",
+        "parser": "senate_lis_votes@0.1.0"
+      },
+      "members_map": {
+        "sha256": "ae8cb9477c48715df71a7d860854229d799dc90a254d61badc1efb770f892b2c",
+        "source_last_modified": "Thu, 24 Sep 2026 10:21:30 GMT",
+        "built_at": "2026-10-03T15:51:00Z"
+      },
+      "counts": {
+        "yea": 57,
+        "nay": 43,
+        "present": 0,
+        "not_voting": 0
+      },
+      "unresolved": 0,
+      "positions": [
+        {"member_key":"bioguide:A000382","id_confidence":"mapped","lis":"S428","name":"Angela D. Alsobrooks","name_source":"map","source_name":"Alsobrooks (D-MD)","party":"D","state":"MD","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:A000383","id_confidence":"mapped","lis":"S440","name":"Alan Armstrong","name_source":"map","source_name":"Armstrong (R-OK)","party":"R","state":"OK","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:B001230","id_confidence":"mapped","lis":"S354","name":"Tammy Baldwin","name_source":"map","source_name":"Baldwin (D-WI)","party":"D","state":"WI","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:B001299","id_confidence":"mapped","lis":"S429","name":"Jim Banks","name_source":"map","source_name":"Banks (R-IN)","party":"R","state":"IN","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:B001261","id_confidence":"mapped","lis":"S317","name":"John Barrasso","name_source":"map","source_name":"Barrasso (R-WY)","party":"R","state":"WY","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:B001267","id_confidence":"mapped","lis":"S330","name":"Michael F. Bennet","name_source":"map","source_name":"Bennet (D-CO)","party":"D","state":"CO","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:B001243","id_confidence":"mapped","lis":"S396","name":"Marsha Blackburn","name_source":"map","source_name":"Blackburn (R-TN)","party":"R","state":"TN","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:B001277","id_confidence":"mapped","lis":"S341","name":"Richard Blumenthal","name_source":"map","source_name":"Blumenthal (D-CT)","party":"D","state":"CT","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:B001303","id_confidence":"mapped","lis":"S430","name":"Lisa Blunt Rochester","name_source":"map","source_name":"Blunt Rochester (D-DE)","party":"D","state":"DE","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:B001288","id_confidence":"mapped","lis":"S370","name":"Cory A. Booker","name_source":"map","source_name":"Booker (D-NJ)","party":"D","state":"NJ","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:B001236","id_confidence":"mapped","lis":"S343","name":"John Boozman","name_source":"map","source_name":"Boozman (R-AR)","party":"R","state":"AR","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:B001319","id_confidence":"mapped","lis":"S416","name":"Katie Boyd Britt","name_source":"map","source_name":"Britt (R-AL)","party":"R","state":"AL","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:B001305","id_confidence":"mapped","lis":"S417","name":"Ted Budd","name_source":"map","source_name":"Budd (R-NC)","party":"R","state":"NC","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C000127","id_confidence":"mapped","lis":"S275","name":"Maria Cantwell","name_source":"map","source_name":"Cantwell (D-WA)","party":"D","state":"WA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:C001047","id_confidence":"mapped","lis":"S372","name":"Shelley Moore Capito","name_source":"map","source_name":"Capito (R-WV)","party":"R","state":"WV","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C001075","id_confidence":"mapped","lis":"S373","name":"Bill Cassidy","name_source":"map","source_name":"Cassidy (R-LA)","party":"R","state":"LA","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C001035","id_confidence":"mapped","lis":"S252","name":"Susan M. Collins","name_source":"map","source_name":"Collins (R-ME)","party":"R","state":"ME","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C001088","id_confidence":"mapped","lis":"S337","name":"Christopher A. Coons","name_source":"map","source_name":"Coons (D-DE)","party":"D","state":"DE","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:C001056","id_confidence":"mapped","lis":"S287","name":"John Cornyn","name_source":"map","source_name":"Cornyn (R-TX)","party":"R","state":"TX","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C001113","id_confidence":"mapped","lis":"S385","name":"Catherine Cortez Masto","name_source":"map","source_name":"Cortez Masto (D-NV)","party":"D","state":"NV","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:C001095","id_confidence":"mapped","lis":"S374","name":"Tom Cotton","name_source":"map","source_name":"Cotton (R-AR)","party":"R","state":"AR","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C001096","id_confidence":"mapped","lis":"S398","name":"Kevin Cramer","name_source":"map","source_name":"Cramer (R-ND)","party":"R","state":"ND","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C000880","id_confidence":"mapped","lis":"S266","name":"Mike Crapo","name_source":"map","source_name":"Crapo (R-ID)","party":"R","state":"ID","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C001098","id_confidence":"mapped","lis":"S355","name":"Ted Cruz","name_source":"map","source_name":"Cruz (R-TX)","party":"R","state":"TX","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:C001114","id_confidence":"mapped","lis":"S431","name":"John R. Curtis","name_source":"map","source_name":"Curtis (R-UT)","party":"R","state":"UT","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:D000618","id_confidence":"mapped","lis":"S375","name":"Steve Daines","name_source":"map","source_name":"Daines (R-MT)","party":"R","state":"MT","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:D000622","id_confidence":"mapped","lis":"S386","name":"Tammy Duckworth","name_source":"map","source_name":"Duckworth (D-IL)","party":"D","state":"IL","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:D000563","id_confidence":"mapped","lis":"S253","name":"Richard J. Durbin","name_source":"map","source_name":"Durbin (D-IL)","party":"D","state":"IL","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:E000295","id_confidence":"mapped","lis":"S376","name":"Joni Ernst","name_source":"map","source_name":"Ernst (R-IA)","party":"R","state":"IA","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:F000479","id_confidence":"mapped","lis":"S418","name":"John Fetterman","name_source":"map","source_name":"Fetterman (D-PA)","party":"D","state":"PA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:F000463","id_confidence":"mapped","lis":"S357","name":"Deb Fischer","name_source":"map","source_name":"Fischer (R-NE)","party":"R","state":"NE","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:G000574","id_confidence":"mapped","lis":"S432","name":"Ruben Gallego","name_source":"map","source_name":"Gallego (D-AZ)","party":"D","state":"AZ","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:G000555","id_confidence":"mapped","lis":"S331","name":"Kirsten E. Gillibrand","name_source":"map","source_name":"Gillibrand (D-NY)","party":"D","state":"NY","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:G000608","id_confidence":"mapped","lis":"S441","name":"Darline Graham","name_source":"map","source_name":"Graham (R-SC)","party":"R","state":"SC","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:G000386","id_confidence":"mapped","lis":"S153","name":"Chuck Grassley","name_source":"map","source_name":"Grassley (R-IA)","party":"R","state":"IA","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:H000601","id_confidence":"mapped","lis":"S407","name":"Bill Hagerty","name_source":"map","source_name":"Hagerty (R-TN)","party":"R","state":"TN","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:H001076","id_confidence":"mapped","lis":"S388","name":"Margaret Wood Hassan","name_source":"map","source_name":"Hassan (D-NH)","party":"D","state":"NH","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:H001089","id_confidence":"mapped","lis":"S399","name":"Josh Hawley","name_source":"map","source_name":"Hawley (R-MO)","party":"R","state":"MO","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:H001046","id_confidence":"mapped","lis":"S359","name":"Martin Heinrich","name_source":"map","source_name":"Heinrich (D-NM)","party":"D","state":"NM","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:H000273","id_confidence":"mapped","lis":"S408","name":"John W. Hickenlooper","name_source":"map","source_name":"Hickenlooper (D-CO)","party":"D","state":"CO","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:H001042","id_confidence":"mapped","lis":"S361","name":"Mazie K. Hirono","name_source":"map","source_name":"Hirono (D-HI)","party":"D","state":"HI","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:H001061","id_confidence":"mapped","lis":"S344","name":"John Hoeven","name_source":"map","source_name":"Hoeven (R-ND)","party":"R","state":"ND","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:H001104","id_confidence":"mapped","lis":"S438","name":"Jon Husted","name_source":"map","source_name":"Husted (R-OH)","party":"R","state":"OH","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:H001079","id_confidence":"mapped","lis":"S395","name":"Cindy Hyde-Smith","name_source":"map","source_name":"Hyde-Smith (R-MS)","party":"R","state":"MS","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:J000293","id_confidence":"mapped","lis":"S345","name":"Ron Johnson","name_source":"map","source_name":"Johnson (R-WI)","party":"R","state":"WI","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:J000312","id_confidence":"mapped","lis":"S437","name":"James C. Justice","name_source":"map","source_name":"Justice (R-WV)","party":"R","state":"WV","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:K000384","id_confidence":"mapped","lis":"S362","name":"Tim Kaine","name_source":"map","source_name":"Kaine (D-VA)","party":"D","state":"VA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:K000377","id_confidence":"mapped","lis":"S406","name":"Mark Kelly","name_source":"map","source_name":"Kelly (D-AZ)","party":"D","state":"AZ","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:K000393","id_confidence":"mapped","lis":"S389","name":"John Kennedy","name_source":"map","source_name":"Kennedy (R-LA)","party":"R","state":"LA","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:K000394","id_confidence":"mapped","lis":"S426","name":"Andy Kim","name_source":"map","source_name":"Kim (D-NJ)","party":"D","state":"NJ","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:K000383","id_confidence":"mapped","lis":"S363","name":"Angus S. King, Jr.","name_source":"map","source_name":"King (I-ME)","party":"I","state":"ME","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:K000367","id_confidence":"mapped","lis":"S311","name":"Amy Klobuchar","name_source":"map","source_name":"Klobuchar (D-MN)","party":"D","state":"MN","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:L000575","id_confidence":"mapped","lis":"S378","name":"James Lankford","name_source":"map","source_name":"Lankford (R-OK)","party":"R","state":"OK","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:L000577","id_confidence":"mapped","lis":"S346","name":"Mike Lee","name_source":"map","source_name":"Lee (R-UT)","party":"R","state":"UT","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:L000570","id_confidence":"mapped","lis":"S409","name":"Ben Ray Luján","name_source":"map","source_name":"Lujan (D-NM)","party":"D","state":"NM","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:L000571","id_confidence":"mapped","lis":"S410","name":"Cynthia M. Lummis","name_source":"map","source_name":"Lummis (R-WY)","party":"R","state":"WY","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M000133","id_confidence":"mapped","lis":"S369","name":"Edward J. Markey","name_source":"map","source_name":"Markey (D-MA)","party":"D","state":"MA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:M001198","id_confidence":"mapped","lis":"S411","name":"Roger Marshall","name_source":"map","source_name":"Marshall (R-KS)","party":"R","state":"KS","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M000355","id_confidence":"mapped","lis":"S174","name":"Mitch McConnell","name_source":"map","source_name":"McConnell (R-KY)","party":"R","state":"KY","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M001243","id_confidence":"mapped","lis":"S433","name":"David McCormick","name_source":"map","source_name":"McCormick (R-PA)","party":"R","state":"PA","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M001176","id_confidence":"mapped","lis":"S322","name":"Jeff Merkley","name_source":"map","source_name":"Merkley (D-OR)","party":"D","state":"OR","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:M001244","id_confidence":"mapped","lis":"S439","name":"Ashley Moody","name_source":"map","source_name":"Moody (R-FL)","party":"R","state":"FL","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M000934","id_confidence":"mapped","lis":"S347","name":"Jerry Moran","name_source":"map","source_name":"Moran (R-KS)","party":"R","state":"KS","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M001242","id_confidence":"mapped","lis":"S434","name":"Bernie Moreno","name_source":"map","source_name":"Moreno (R-OH)","party":"R","state":"OH","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M001153","id_confidence":"mapped","lis":"S288","name":"Lisa Murkowski","name_source":"map","source_name":"Murkowski (R-AK)","party":"R","state":"AK","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:M001169","id_confidence":"mapped","lis":"S364","name":"Christopher Murphy","name_source":"map","source_name":"Murphy (D-CT)","party":"D","state":"CT","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:M001111","id_confidence":"mapped","lis":"S229","name":"Patty Murray","name_source":"map","source_name":"Murray (D-WA)","party":"D","state":"WA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:O000174","id_confidence":"mapped","lis":"S414","name":"Jon Ossoff","name_source":"map","source_name":"Ossoff (D-GA)","party":"D","state":"GA","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:P000145","id_confidence":"mapped","lis":"S413","name":"Alex Padilla","name_source":"map","source_name":"Padilla (D-CA)","party":"D","state":"CA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:P000603","id_confidence":"mapped","lis":"S348","name":"Rand Paul","name_source":"map","source_name":"Paul (R-KY)","party":"R","state":"KY","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:P000595","id_confidence":"mapped","lis":"S380","name":"Gary C. Peters","name_source":"map","source_name":"Peters (D-MI)","party":"D","state":"MI","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:R000122","id_confidence":"mapped","lis":"S259","name":"Jack Reed","name_source":"map","source_name":"Reed (D-RI)","party":"D","state":"RI","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:R000618","id_confidence":"mapped","lis":"S423","name":"Pete Ricketts","name_source":"map","source_name":"Ricketts (R-NE)","party":"R","state":"NE","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:R000584","id_confidence":"mapped","lis":"S323","name":"James E. Risch","name_source":"map","source_name":"Risch (R-ID)","party":"R","state":"ID","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:R000608","id_confidence":"mapped","lis":"S402","name":"Jacky Rosen","name_source":"map","source_name":"Rosen (D-NV)","party":"D","state":"NV","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:R000605","id_confidence":"mapped","lis":"S381","name":"Mike Rounds","name_source":"map","source_name":"Rounds (R-SD)","party":"R","state":"SD","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:S000033","id_confidence":"mapped","lis":"S313","name":"Bernard Sanders","name_source":"map","source_name":"Sanders (I-VT)","party":"I","state":"VT","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:S001194","id_confidence":"mapped","lis":"S353","name":"Brian Schatz","name_source":"map","source_name":"Schatz (D-HI)","party":"D","state":"HI","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:S001150","id_confidence":"mapped","lis":"S427","name":"Adam B. Schiff","name_source":"map","source_name":"Schiff (D-CA)","party":"D","state":"CA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:S001227","id_confidence":"mapped","lis":"S420","name":"Eric Schmitt","name_source":"map","source_name":"Schmitt (R-MO)","party":"R","state":"MO","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:S000148","id_confidence":"mapped","lis":"S270","name":"Charles E. Schumer","name_source":"map","source_name":"Schumer (D-NY)","party":"D","state":"NY","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:S001217","id_confidence":"mapped","lis":"S404","name":"Rick Scott","name_source":"map","source_name":"Scott (R-FL)","party":"R","state":"FL","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:S001184","id_confidence":"mapped","lis":"S365","name":"Tim Scott","name_source":"map","source_name":"Scott (R-SC)","party":"R","state":"SC","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:S001181","id_confidence":"mapped","lis":"S324","name":"Jeanne Shaheen","name_source":"map","source_name":"Shaheen (D-NH)","party":"D","state":"NH","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:S001232","id_confidence":"mapped","lis":"S435","name":"Tim Sheehy","name_source":"map","source_name":"Sheehy (R-MT)","party":"R","state":"MT","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:S001208","id_confidence":"mapped","lis":"S436","name":"Elissa Slotkin","name_source":"map","source_name":"Slotkin (D-MI)","party":"D","state":"MI","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:S001203","id_confidence":"mapped","lis":"S394","name":"Tina Smith","name_source":"map","source_name":"Smith (D-MN)","party":"D","state":"MN","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:S001198","id_confidence":"mapped","lis":"S383","name":"Dan Sullivan","name_source":"map","source_name":"Sullivan (R-AK)","party":"R","state":"AK","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:T000250","id_confidence":"mapped","lis":"S303","name":"John Thune","name_source":"map","source_name":"Thune (R-SD)","party":"R","state":"SD","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:T000476","id_confidence":"mapped","lis":"S384","name":"Thom Tillis","name_source":"map","source_name":"Tillis (R-NC)","party":"R","state":"NC","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:T000278","id_confidence":"mapped","lis":"S412","name":"Tommy Tuberville","name_source":"map","source_name":"Tuberville (R-AL)","party":"R","state":"AL","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:V000128","id_confidence":"mapped","lis":"S390","name":"Chris Van Hollen","name_source":"map","source_name":"Van Hollen (D-MD)","party":"D","state":"MD","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:W000805","id_confidence":"mapped","lis":"S327","name":"Mark R. Warner","name_source":"map","source_name":"Warner (D-VA)","party":"D","state":"VA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:W000790","id_confidence":"mapped","lis":"S415","name":"Raphael G. Warnock","name_source":"map","source_name":"Warnock (D-GA)","party":"D","state":"GA","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:W000817","id_confidence":"mapped","lis":"S366","name":"Elizabeth Warren","name_source":"map","source_name":"Warren (D-MA)","party":"D","state":"MA","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:W000800","id_confidence":"mapped","lis":"S422","name":"Peter Welch","name_source":"map","source_name":"Welch (D-VT)","party":"D","state":"VT","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:W000802","id_confidence":"mapped","lis":"S316","name":"Sheldon Whitehouse","name_source":"map","source_name":"Whitehouse (D-RI)","party":"D","state":"RI","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:W000437","id_confidence":"mapped","lis":"S318","name":"Roger F. Wicker","name_source":"map","source_name":"Wicker (R-MS)","party":"R","state":"MS","role":null,"position":"yea","vote_text":"Yea","pair":null},
+        {"member_key":"bioguide:W000779","id_confidence":"mapped","lis":"S247","name":"Ron Wyden","name_source":"map","source_name":"Wyden (D-OR)","party":"D","state":"OR","role":null,"position":"nay","vote_text":"Nay","pair":null},
+        {"member_key":"bioguide:Y000064","id_confidence":"mapped","lis":"S391","name":"Todd Young","name_source":"map","source_name":"Young (R-IN)","party":"R","state":"IN","role":null,"position":"yea","vote_text":"Yea","pair":null}
+      ]
+    }
+  ]
+}
