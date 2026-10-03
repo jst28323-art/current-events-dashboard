@@ -1,0 +1,3678 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_11a8021e6a9b5c25",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T16:30:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T16:30:1",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate adjourned (Senate Daily Press Gallery log)",
+      "official_text": "4:30 p.m. The Senate stands adjourned until 3:00 p.m. on Monday, January 12, 2026. Following Leader remarks, the Senate resume the motion to proceed to H.R. 6938, which will ripen 5:30 p.m.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T21:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-08"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "4:30 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bf17f8cfed2ebd9b",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T16:28:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T16:28:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "4:28 p.m. Wrap up: H.R. 6938 received its second reading and Senator Murkowski filed cloture on the bill.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T21:28:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "4:28 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e754ee2216a39b5d",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T16:27:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T16:27:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate convened (Senate Daily Press Gallery log)",
+      "official_text": "4:27 p.m. The Senate has convened for a new legislative day and is now in a period of morning business.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T21:27:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-08"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "4:27 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b806e8ea953b1858",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T16:25:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T16:25:1",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate adjourned (Senate Daily Press Gallery log)",
+      "official_text": "4:25 p.m. The Senate adjourned until 4:27 p.m. The following resolutions were agreed to en bloc: S. Res. 577, S. Res. 578, and S. Res. 579. The following bill received its first reading: H.R. 6938 – An act making consolidated appropriations for the fiscal year ending September 30, 2026, and for other purposes.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T21:25:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-08"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "4:25 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a08ad1090cd33149",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T14:50:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T14:50:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "2:50 p.m. Senators Merkley and Tillis spoke about a plaque honoring the service of law enforcement officers on January 6 by unanimous consent, S. Res. 580, directing the Architect of the Capitol to prominently display in a publicly accessible location in the Senate wing of the United State Capitol a plaque honoring the members of law enforcement responding on January 6, 2021, until the plaque can be placed in its permanent location, was agreed to.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T19:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "2:50 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0e8fe544fa284dee",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T14:30:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T14:30:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "2:30 p.m. Senator Murkowski spoke about things the Senate needs to do in 2026 and also spoke about Greenland.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T19:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "2:30 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_da8a359e0c784751",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T14:26:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T14:26:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:26 p.m. By a vote of 53-40, the nomination of Alexander Van Hook to be a District Judge for the Western District of Louisiana was confirmed. Dems/Independents voting aye: Senators Durbin, Hassan, Kaine, King, Klobuchar, Shaheen and Welch. Not voting: Senators Cramer, Daines, Moran, Scott (FL), Scott (SC), Tuberville and Wicker.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T19:26:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "2:26 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f078bd738402f265",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T13:31:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T13:31:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "1:31 p.m. The Senate began a roll call vote on confirmation on the nomination of Alexander Van Hook to be a District Judge for the Western District of Louisiana.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T18:31:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "1:31 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e15a8f741adc0133",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T13:19:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T13:19:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:19 p.m. Senator Markey spoke on Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T18:19:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "1:19 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3ff087057cd38f11",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T13:07:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T13:07:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:07 p.m. Senator Bennett spoke on the Arkansas Valley Conduit Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T18:07:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "1:07 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_02e418409aad7ecd",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T13:00:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T13:00:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:00 p.m. Senator Marshall spoke on nutrition.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T18:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "1:00 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ef6895fded74910e",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T12:50:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T12:50:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:50 p.m. Senator Murray spoke on the US and Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T17:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "12:50 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2e33c6bca56f2aec",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T12:39:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T12:39:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:39 p.m. Senator Grassley spoke on whistleblowers.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T17:39:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "12:39 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d0c1de5ec10397b7",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T12:26:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T12:26:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:26 p.m. Senator Moody spoke about Law Enforcement Appreciation Day.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T17:26:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "12:26 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3c6aea0730b8ee88",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T12:17:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T12:17:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:17 p.m. Senator Rosen spoke on inflation. She then asked for unanimous consent for the Senate to pass S.3229 – No Tariffs on Groceries Act of 2025, with the Rosen substitute amendment, Senator Crapo objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T17:17:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "12:17 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_827a31ef327b9cdc",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T12:09:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T12:09:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:09 p.m. Senator Barrasso spoke on the economy.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T17:09:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "12:09 p.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7b8e97ffa605a7c5",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T11:44:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T11:44:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:44 a.m. Senator Kennedy spoke on welfare fraud in Minnesota and the budget.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T16:44:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "11:44 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0595bfd4ea97921b",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T11:40:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T11:40:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "11:40 a.m. By a vote of 52-47, the Senate agreed to the motion to discharge S.J. Res. 98, A joint resolution to direct the removal of US Armed Forces from hostilities within or against Venezuela that have not been authorized by Congress. Republican senators voting in favor: Collins, Hawley, Murkowski, Paul, and Young. Senator Daines did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T16:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "11:40 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0316fb19e6545975",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T11:00:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T11:00:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "11:00 a.m. The Senate is now voting on the motion to discharge S.J.Res.98 – A joint resolution to direct the removal of US Armed Forces from hostilities within or against Venezuela that have not been authorized by Congress. (Kaine)",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T16:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "11:00 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_65079449cd97280f",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:56:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:56:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:56 a.m. Senator Kaine spoke in favor of the war powers resolution and he made a motion to discharge S. J. Res. 98 out of the Foreign Relations commitee.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:56:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:56 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_23d349a632325483",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:52:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:52:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:52 a.m. Minority Leader Schumer spoke in favor of the war powers resolution.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:52:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:52 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3926016a255c3a4a",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:44:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:44:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:44 a.m. Senator Risch spoke on the US and Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:44:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:44 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0eb95514807d3464",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:23:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:23:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:23 a.m. Senator Schiff spoke on the Trump Administration’s actions in Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:23:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:23 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_375f34f7c8f1e1da",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:14:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:14:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:14 a.m. Senator Reed spoke on US military operations in South America.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:14:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:14 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_71fe032a81327f02",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:08:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:08:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:08 a.m. Majority Leader Thune spoke on government funding.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:08:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:08 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_968e277dd9efd2de",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:02:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:02:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:02 a.m. Senator Grassley spoke on National Law Enforcement Day.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:02:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:02 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8a169f8c4da3bc59",
+      "dedup_key": "pg_entry:daily:156898:2026-01-08T10:00:1#logged",
+      "object_key": "pg_entry:daily:156898:2026-01-08T10:00:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate convened (Senate Daily Press Gallery log)",
+      "official_text": "10:00 a.m. The Senate is now in session and in a period of morning business.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-08T15:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-08"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-08",
+        "clock_text": "10:00 a.m.",
+        "post_id": 156898
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-january-8-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_454c6e1eafca7882",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T17:44:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T17:44:1",
+      "event_type": "floor.recess",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate recessed (Senate Daily Press Gallery log)",
+      "official_text": "5:44 p.m. The Senate recessed until 10:00 a.m. Thursday.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T22:44:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "5:44 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_89fb8bdf69a4ac98",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T17:35:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T17:35:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:35 p.m. Senator Heinrich spoke on permitting reform.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T22:35:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "5:35 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b87e8789d82a147e",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T17:33:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T17:33:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "5:33 p.m. Majority Leader Thune wrapped up for the evening. Passed the following by UC: S.Res.288 – Combating Antisemitism S.Res.503 – Club Q S.Res.543 – Centenary College of Louisiana Bicentennial UC that the Senate recess until 10:00 a.m. and following any Leader remarks, the Senate will be in a period of morning business. One vote at 11:00 a.m. Motion to discharge S.J.Res.98 – A joint resolution to direct the removal of United States Armed Forces from hostilities within or against Venezuela that have not been authorized by Congress (Kaine). One vote at 1:45 p.m. on confirmation of Executive Calendar #574 Alexander Van Hook to be a District Judge for the Western District of Louisiana.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T22:33:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "5:33 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8fb37fc7272fac9e",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T17:18:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T17:18:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:18 p.m. Senator Whitehouse spoke on permitting reform.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T22:18:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "5:18 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_90ca08c3b3f31bad",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T17:12:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T17:12:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:12 p.m. Senator Kim spoke on Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T22:12:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "5:12 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a46b9f3c631e435d",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T17:05:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T17:05:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:05 p.m. Senator Welch spoke on President Trump’s trade deals.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T22:05:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "5:05 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_954d5fa3a2cb74f8",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T16:45:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T16:45:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:45 p.m. Senator Bennett spoke on Venezuela and the Trump administration.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T21:45:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "4:45 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fd32f515d1470b0d",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T16:29:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T16:29:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:29 p.m. Senator Van Hollen spoke on Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T21:29:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "4:29 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e4d10a52b3e16d87",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T16:16:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T16:16:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:16 p.m. Senator Graham spoke on Venezuela and war powers.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T21:16:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "4:16 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8cbf7b64d8d723ed",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T16:11:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T16:11:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:11 p.m. Senator Schatz spoke about war powers.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T21:11:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "4:11 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_67868092040b99cf",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T16:03:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T16:03:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:03 p.m. Senator Slotkin spoke on Venezuela and war powers.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T21:03:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "4:03 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5e0a5fa04e526083",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T16:00:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T16:00:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "4:00 p.m. Senator Gallego spoke on U.S. Military invasions and oil.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T21:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "4:00 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6f50d89a1d1d8156",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T15:53:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T15:53:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:53 p.m. Senator Baldwin spoke on U.S. military invasions.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T20:53:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "3:53 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1c8d4c96f12e5695",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T15:38:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T15:38:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:38 p.m. Senator Merkley spoke on diplomacy and war.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T20:38:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "3:38 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9a6fa79064bac63d",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T15:23:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T15:23:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:23 p.m. Senator Murphy spoke in support of Senator Kaine’s and Paul’s proposed war powers resolution.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T20:23:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "3:23 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_efb8a565f20092d2",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T15:02:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T15:02:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:02 p.m. Senators Kaine and Paul spoke on a war powers resolution in regards to Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T20:02:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "3:02 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b26960d40b41db0f",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T14:41:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T14:41:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:41 p.m. By a party-line vote of 43-50, the Senate did not agree to the motion to proceed to S. J. Res. 86, Whitehouse CRA. Not voting (R): Britt, Graham and Schmitt. Not voting (D): Coons, Gillibrand, Padilla and Schiff.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T19:41:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "2:41 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5eb2b25e8ef3aac9",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T13:53:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T13:53:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "1:53 p.m. The Senate began a roll call vote on the motion to proceed to S. J. Res 86, a joint resolution providing for congressional disapproval of the rule submitted by the Environmental Protection Agency relating to ‘‘Air Plan Approval; South Dakota; Regional Haze Plan for the Second Implementation Period”. (Whitehouse)",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T18:53:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "1:53 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3efae0b88d063765",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T13:50:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T13:50:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:50 p.m. Senator Rounds spoke against S. J. Res. 86.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T18:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "1:50 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_13d08c651d16bc2f",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T13:29:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T13:29:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:29 p.m. Senator Tillis spoke on Venezuela. He then spoke on sovereignty and governmental authority.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T18:29:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "1:29 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_979ef8fd68746962",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T13:24:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T13:24:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:24 p.m. Senator Whitehouse spoke on the effects of coal.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T18:24:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "1:24 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_eb389d139d2f8eb4",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T13:23:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T13:23:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "1:23 p.m. The Senate is now in consideration of S.J. Res. 86.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T18:23:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "1:23 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_61b51d7d4dea4807",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T13:10:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T13:10:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:10 p.m. Senator Blackburn spoke on an alleged fraud scheme in Minnesota.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T18:10:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "1:10 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4e8fa10a04115ea6",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T12:57:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T12:57:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:57 p.m. Senator Wicker spoke about a departing member of his staff, John Patrick Keast.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T17:57:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "12:57 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_516e0a2b90e30eac",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T12:49:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T12:49:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:49 p.m. Senator Cotton spoke about Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T17:49:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "12:49 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b4b457a8d141a69f",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T12:19:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T12:19:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:19 p.m. Senator Cornyn spoke on Republican accomplishments and Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T17:19:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "12:19 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3f64a59397077995",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T12:07:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T12:07:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "12:07 p.m. Minority Leader Schumer spoke on Venezuela, inflation, and housing.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T17:07:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "12:07 p.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b7c9d9ae8af12f41",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T11:47:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T11:47:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:47 a.m. Senator Durbin spoke on the cost of prescription drugs.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T16:47:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "11:47 a.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_717863f86b919c93",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T11:36:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T11:36:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:36 a.m. Senator Barrasso spoke on Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T16:36:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "11:36 a.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f7aa4580cdd08506",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T11:21:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T11:21:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:21 a.m. Majority Leader Thune spoke on rural health care.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T16:21:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "11:21 a.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8b99458d880a902d",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T11:17:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T11:17:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "11:17 a.m. Senator Grassley spoke on the 250th birthday of the United States of America.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T16:17:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "11:17 a.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0d9bbebefda45663",
+      "dedup_key": "pg_entry:daily:156778:2026-01-07T11:15:1#logged",
+      "object_key": "pg_entry:daily:156778:2026-01-07T11:15:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate convened (Senate Daily Press Gallery log)",
+      "official_text": "11:15 a.m. The Senate convened.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T16:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-07"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-07",
+        "clock_text": "11:15 a.m.",
+        "post_id": 156778
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/wednesday-january-7-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b71e6bbc65d31bfb",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T19:32:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T19:32:1",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate adjourned (Senate Daily Press Gallery log)",
+      "official_text": "7:32 p.m. The Senate adjourned.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-07T00:32:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-06"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "7:32 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cc37fc3397a4006f",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T18:36:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T18:36:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "6:36 p.m. Senator Kaine spoke about Venezuela.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T23:36:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "6:36 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c3936940fc77825c",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T17:50:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T17:50:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "5:50 – 6:35 p.m. Senators Gallego, Blunt Rochester, Welch, Markey and Merkley spoke about January 6th.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T22:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "5:50 – 6:35 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1d5a398a843f9b7c",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T17:48:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T17:48:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "5:48 p.m. Majority Leader Thune wrapped up for the evening. H.R 224, regarding the Housing Community Development Act of 1974, S Res 575, congratulating the Oklahoma State mens cross country team, and the nomination of Christopher C. LaNeve to be Vice Chief of Staff of the Army were agreed to by unanimous consent.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T22:48:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "5:48 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_08a9c3df1ba1ff7d",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T15:15:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T15:15:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:15- 5:47 p.m. Senator, Tuberville, Justice, Padilla, Schiff, Murray, Kaine, Schumer, Merkley, Peters, Cortez Masto, Whitehouse, Kelly, Hassan, Kim, Blumenthal and Klobuchar spoke on January 6th.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T20:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "3:15- 5:47 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4abf72b419196596",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T15:14:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T15:14:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:14 p.m. Senator Padilla spoke on January 6th and asked unanimous consent for the Senate to pass S. Res. 574, a resolution regarding the 5th anniversary of January 6th. Senator Tuberville objected.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T20:14:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "3:14 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e77fc737c3c71ae9",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T15:01:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T15:01:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:01 p.m. Senator Tillis spoke on January 6th.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T20:01:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "3:01 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_185757a6a77c15f1",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T14:55:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T14:55:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:55 p.m. By a vote of 52-48, the Senate confirmed Sara Bailey to be Director Director of National Drug Control Policy. It was a party-line vote with Republican Senator Paul voting against.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T19:55:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "2:55 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_45b6813e186f006d",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T14:26:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T14:26:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "2:26 p.m. The Senate is now voting on the confirmation of Sara Bailey to be Director of National Drug Control Policy.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T19:26:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "2:26 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0cc789969f0b5a53",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T14:16:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T14:16:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "2:16 p.m. Senator Banks spoke about Indiana Hoosiers football",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T19:16:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "2:16 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c7f51cd8b1c9b754",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T14:15:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T14:15:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate returned from recess (Senate Daily Press Gallery log)",
+      "official_text": "2:15 p.m. The Senate returned from the recess.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T19:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-06"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "2:15 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5ffd182fa42fbe92",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T12:37:2#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T12:37:2",
+      "event_type": "floor.recess",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate recessed (Senate Daily Press Gallery log)",
+      "official_text": "12:37 p.m. The Senate stands in recess until 2:15 p.m.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T17:37:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "12:37 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e7f2827faedbd61f",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T12:37:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T12:37:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "12:37 p.m. By a vote of 53-47, the Senate confirmed the nomination of Joshua Simmons to be General Counsel of the CIA.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T17:37:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "12:37 p.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_52860b359b13be86",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T11:32:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T11:32:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "11:32 a.m. The Senate began a roll call vote on the confirmation of Joshua Simmons to be General Counsel of the Central Intelligence Agency.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T16:32:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "11:32 a.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5c28dcf51e121225",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T11:25:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T11:25:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "11:25 a.m. Senator Moran paid tribute to his hometown newspaper, the Plainville Times of Kansas.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T16:25:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "11:25 a.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_08f96bfedf1d9de4",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T10:57:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T10:57:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:57 a.m. Senator Barrasso spoke on rural health care.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T15:57:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "10:57 a.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_acdf28bb0a5ce29f",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T10:42:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T10:42:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:42 a.m. Minority Leader Schumer spoke on Venezuela, Jeffrey Epstein, and January 6th.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T15:42:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "10:42 a.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a2f58ee1afbfb5c4",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T10:26:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T10:26:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:26 a.m. Majority Leader Thune spoke on the Working Families Tax Cut Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T15:26:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "10:26 a.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_628ed1019d9a0c17",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T10:03:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T10:03:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:03 a.m. Senator Grassley spoke about health care.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T15:03:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "10:03 a.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5e87074568eae0ed",
+      "dedup_key": "pg_entry:daily:156674:2026-01-06T10:00:1#logged",
+      "object_key": "pg_entry:daily:156674:2026-01-06T10:00:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate convened (Senate Daily Press Gallery log)",
+      "official_text": "10:00 a.m. The Senate convened.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-06T15:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:16:06.441Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-01-06"
+        }
+      ],
+      "result": {
+        "session_date": "2026-01-06",
+        "clock_text": "10:00 a.m.",
+        "post_id": 156674
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/tuesday-january-6-2026/",
+          "retrieved_at": "2026-10-03T14:16:06.441Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.pressgallery",
+    "endpoint": "daily_posts",
+    "status": "ok",
+    "detail": "3 posts, 3 floor logs, 79 entries",
+    "items_seen": 3
+  }
+}
