@@ -312,12 +312,14 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   `scripts/lib/git.mjs` now passes `maxBuffer` 512 MB; regression test in `tests/harness/gate.test.mjs` (a 4 MB
   committed file scans clean, and a key committed after it is still caught).
 
-- **A workflow agent with `isolation: 'worktree'` left `core.hooksPath` absolute in the shared `.git/config`**
-  (2026-10-03). After the Phase 2 scouts' worktrees appeared under `.claude/worktrees/`, the main clone's config held
-  the absolute path of this clone's hooks folder instead of `enforcement/git-hooks`. The scouts' transcripts show them
-  only READING the value, so the worktree setup most likely wrote it. The hooks still ran, but `ship_state` reported
-  SETUP-ERROR (it checks the exact relative value). After any worktree workflow, run
-  `git config core.hooksPath enforcement/git-hooks` before the gate. `.claude/worktrees/` is gitignored.
+- **A workflow agent with `isolation: 'worktree'` left `core.hooksPath` absolute in the clone's shared git config**
+  (2026-10-03). After the Phase 2 scouts' worktrees appeared in the gitignored worktrees folder under .claude, the main
+  clone's config held the absolute path of this clone's hooks folder instead of `enforcement/git-hooks`. The scouts'
+  transcripts show them only READING the value, so the worktree setup most likely wrote it. The hooks still ran, but
+  `ship_state` reported SETUP-ERROR (it checks the exact relative value). After any worktree workflow, run
+  `git config core.hooksPath enforcement/git-hooks` before the gate. The same launch also failed 4 of its 6 agents
+  before they started (journal "failed" with no agent id; their worktrees were created and left locked): six worktrees
+  created at once on this PC. Resume reused the 4 worktrees with agents told to `cd` into them (no isolation).
 - **The gate printed only the last 25 lines of a failing step, which hid a TypeScript error** (2026-10-03): tsc writes
   its errors to stdout, which the gate joined before stderr, and `wrangler types` filled the tail. The gate now prints
   every error-looking line first (`failureExcerpt`, harness test). A step's full output is still not kept: re-run it
