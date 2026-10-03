@@ -547,6 +547,12 @@ describe('fail closed on the vote XML (drift, nothing published)', () => {
     refused('vote', withBody(base(), (b) => edit(b, '<document_type>PN</document_type>', '<document_type>Treaty Doc.</document_type>')), 'drift', /document_type "Treaty Doc\." is not in the closed table/)
   })
 
+  test('member vote words belong to the question: Guilty / Not Guilty only on a verdict, Yea / Nay never on one (review 483d7ab F2 follow-up)', () => {
+    refused('vote', withBody(base(), (b) => b.replace(/<vote_cast>Yea<\/vote_cast>/g, '<vote_cast>Guilty</vote_cast>')), 'drift', /vote_cast "Guilty" is not a vote word of "On the Nomination"/)
+    const verdict = v1003('vote_117_1_00059.xml')
+    refused('vote', withBody(verdict, (b) => edit(b, '<vote_cast>Guilty</vote_cast>', '<vote_cast>Yea</vote_cast>')), 'drift', /vote_cast "Yea" is not a vote word of "Guilty or Not Guilty"/, OLD)
+  })
+
   test('member rows: duplicate or malformed LIS id, unknown attribute, unknown child, stray content', () => {
     refused('vote', withBody(base(), (b) => edit(b, '<lis_member_id>S428</lis_member_id>', '<lis_member_id>S247</lis_member_id>')), 'drift', /lis_member_id S247 listed twice/)
     refused('vote', withBody(base(), (b) => edit(b, '<lis_member_id>S428</lis_member_id>', '<lis_member_id>S42</lis_member_id>')), 'drift', /lis_member_id "S42" is not S \+ 3 digits/)

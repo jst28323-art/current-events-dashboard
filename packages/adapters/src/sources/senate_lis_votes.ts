@@ -550,7 +550,7 @@ const VOTE_CAST_ATTRS = new Set(['crp', 'pair'])
 
 type MembersRead = { ok: true; positions: MemberPosition[]; unresolved: string[] } | { ok: false; detail: string }
 
-function readMembers(xml: string, opts: ParseVoteOptions): MembersRead {
+function readMembers(xml: string, opts: ParseVoteOptions, question: { kind: QuestionKind; text: string }): MembersRead {
   const bad = (detail: string): MembersRead => ({ ok: false, detail })
   const scan = blocks(xml, 'member')
   if (!scan.ok) return bad(scan.detail)
@@ -587,6 +587,11 @@ function readMembers(xml: string, opts: ParseVoteOptions): MembersRead {
     if (pair !== '' && !LIS_ID.test(pair)) return bad(`${at} (${lis}): vote_cast pair ${JSON.stringify(pair)} is not a LIS id`)
     const position = positionOf(cast!)
     if (position === null) return bad(`${at} (${lis}): vote_cast ${JSON.stringify(cast)} is not in the closed table`)
+    // The words belong to the question: Guilty / Not Guilty only on a verdict (117_1_00059), Yea / Nay never on one.
+    const verdictWord = /^(not )?guilty$/i.test(cast!)
+    if ((position === 'yea' || position === 'nay') && verdictWord !== (question.kind === 'impeachment_verdict')) {
+      return bad(`${at} (${lis}): vote_cast ${JSON.stringify(cast)} is not a vote word of ${JSON.stringify(question.text)}`)
+    }
     const found = opts.members.lookupSenate(lis!)
     // Never join on names (Graham (R-SC) is S293 in vote 122 and S441 in vote 256): the LIS id is the only key.
     let name: string
@@ -739,7 +744,7 @@ function parseVoteXml(res: FetchedResponse, opts: ParseVoteOptions): AdapterOutp
     tieBreaker = { by, vote: tieVote }
   }
 
-  const members = readMembers(body.slice(mi + '<members>'.length, body.lastIndexOf('</members>')), opts)
+  const members = readMembers(body.slice(mi + '<members>'.length, body.lastIndexOf('</members>')), opts, { kind: q.kind, text: question })
   if (!members.ok) return failVote(members.detail)
   const pos = members.positions
   const bucket = { yea: 0, nay: 0, present: 0, not_voting: 0, candidate: 0 }
