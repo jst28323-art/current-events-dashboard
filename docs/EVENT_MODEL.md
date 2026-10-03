@@ -6,7 +6,7 @@ Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema 
 **v0.2 (2026-10-03, P2.1, additive):** typed vote results, the member-vote side record and the Congress key namespaces
 (section "v0.2" below). In P2.1 its schema lives in the separate subpath `packages/schema/src/v02/` that only tests and
 the fixture-only adapters import, so the live Worker's schema is unchanged and the wire value stays `"0.1"` (D-058,
-decision row P21-R2).
+decision row D-064).
 
 ## Principles
 
@@ -91,7 +91,7 @@ Additive; nothing in v0.1 changes meaning. No new `event_type`, `status`, `branc
 already lists every floor, vote, hearing and markup type the Congress adapters emit. In P2.1 the machine contract is
 `packages/schema/src/v02/` (`vote_result.schema.json`, `member_votes.schema.json`, `types.ts`, `validate.ts`), imported
 only by tests and `packages/adapters/src/fixture_only.ts`; at P2.2 go-live it is folded into `event.schema.json` and the
-wire `schema_version` becomes `"0.2"` in one decision row (decision row P21-R2). Until then every event still says `"0.1"`.
+wire `schema_version` becomes `"0.2"` in one decision row (decision row D-064). Until then every event still says `"0.1"`.
 
 - **`vote.result` events** carry a typed `result`: `question`, `question_kind` (closed per-chamber table; anything else
   is `unknown`), `result_text`, `required` (`1/2`, `3/5`, `2/3` or null), `passed` (from the source's result words,
@@ -105,16 +105,16 @@ wire `schema_version` becomes `"0.2"` in one decision row (decision row P21-R2).
   party and state AS PRINTED in the vote XML, `member_key` `bioguide:{id}` (House name-id = authority; Senate LIS mapped
   through the members map) or `lis:{id}` when the Senate id is not in the map, and an `unresolved` count. Per-bucket
   counts must equal the event's counts (`checkVotePair`). Adapters return records in `AdapterOutput.records`; storing
-  and serving them waits for the vote inspector (P2.2; decision row P21-R16).
+  and serving them waits for the vote inspector (P2.2; decision row D-078).
 - **Times:** naive Eastern wall times go through one helper; a time that does not exist (spring forward) is drift for
   an official XML source, an ambiguous one (fall back) is null plus `result.time_note`, and press-gallery prose is null
-  in both cases (decision row P21-R13). House vote time = close of the vote; Senate vote time = its start (the XML has
+  in both cases (decision row D-075). House vote time = close of the vote; Senate vote time = its start (the XML has
   no close time).
 - **Origin labels:** every P2.1 source is `official-nonpartisan`; press-gallery entries carry
   `provenance.confidence: "inferred"` because their type is our keyword reading of staff prose. A gallery result line
   that may alert (P0, D-062) also carries `result.origin_label: "unofficial log"` and says so in its title; the page and
   alerts show that label (the registered affiliation cannot carry it: D-036 payload rule). The exact rule: decision row
-  P21-R18.
+  D-080.
 - **Not live (D-058):** the five P2.1 adapters emit these events only in tests (golden fixtures and the Hub replay);
   the "emitted now" column of the event-type table below lists live sources only.
 
@@ -150,13 +150,13 @@ wire `schema_version` becomes `"0.2"` in one decision row (decision row P21-R2).
 Merge rule: same `dedup_key` → union of `sources`, earliest `first_seen_at`, field values by source priority
 (official XML > Congress.gov > third-party > press-gallery text). In P2.1 no two sources share a dedup_key: a
 press-gallery or floor line about a vote is its own event, never merged into the `vote.result` event, and it never
-contributes counts (decision row P21-R11, which supersedes the earlier sentence here that free-text sources merge in
+contributes counts (decision row D-073, which supersedes the earlier sentence here that free-text sources merge in
 as `first_seen_at` plus a corroboration link; D-036 lets the first equal-rank owner freeze facts, so a shared key would
 stop the official vote from ever adding its counts). A House floor line links its vote by a `related` `vote:` key (from
 the Clerk's vote link); a press-gallery line carries NO `vote:` key (the gallery prints no roll number, so one cannot be
-derived honestly). Showing such rows once on the page is a P2.2 page rule (decision row P21-R17), and it, like D-062's
+derived honestly). Showing such rows once on the page is a P2.2 page rule (decision row D-079), and it, like D-062's
 "the official record does not alert again for the same vote", needs a matching rule for gallery lines that is not a
-shared key, decided before either ships (decision row P21-R20). Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
+shared key, decided before either ships (decision row D-082). Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
 filing) uses the normalized-title + date-window rule in the research §2.4. How the Worker applies this rule today (what
 counts as a fact, who may revise, payload rules): D-036.
 

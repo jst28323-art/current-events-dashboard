@@ -114,14 +114,14 @@ then copy `/results` into `docs/SOURCES.md` "Cloudflare probe" and write the two
     (1 revision).
   - [ ] **Deferred to P2.2 go-live** (each changes the live Worker or page, so it waits for Phase 1's exit, D-058):
     the vote inspector (page panel + `GET /api/v1/votes/...`); Hub storage of member-vote records (decision row
-    P21-R16); the page rules Q-P1 (a gallery/floor line and the official vote collapse into one row) and Q-P2 (a past
-    `scheduled` item reads "was scheduled") (decision row P21-R17); folding v0.2 into `event.schema.json` with the wire
-    bump to `"0.2"` (P21-R2); moving the five sources into `SOURCES` with poller support for `dynamic` endpoints,
-    `notYetStatus` and `calendar` (P21-R3); the matching rule that keeps the official vote from alerting again after
-    a D-062 gallery line (a gallery line carries no `vote:` key, P21-R20), the page's "unofficial log" label from
-    `result.origin_label`, and the newest-sighted-convene page rule (P21-R21). (Which gallery result lines are P0 under
-    D-062 is built: P21-R18.)
-  - [ ] **Session rollover checklist (before Jan 3 2027, at P2.2 go-live; decision row P21-R15):** move `CURRENT` in
+    D-078); the page rules Q-P1 (a gallery/floor line and the official vote collapse into one row) and Q-P2 (a past
+    `scheduled` item reads "was scheduled") (decision row D-079); folding v0.2 into `event.schema.json` with the wire
+    bump to `"0.2"` (D-064); moving the five sources into `SOURCES` with poller support for `dynamic` endpoints,
+    `notYetStatus` and `calendar` (D-065); the matching rule that keeps the official vote from alerting again after
+    a D-062 gallery line (a gallery line carries no `vote:` key, D-082), the page's "unofficial log" label from
+    `result.origin_label`, and the newest-sighted-convene page rule (D-083). (Which gallery result lines are P0 under
+    D-062 is built: D-080.)
+  - [ ] **Session rollover checklist (before Jan 3 2027, at P2.2 go-live; decision row D-077):** move `CURRENT` in
     `packages/adapters/src/lib/congress_ids.ts` to 120-1 / 2027 and the index/menu URLs with it; record the first
     120-1 House listing and Senate menu as fixtures on Jan 3; check the House `No Votes Found` = empty and Senate
     menu-404 = error states against them; re-cut the departed-members seed for the 120th Congress. No wall-clock test

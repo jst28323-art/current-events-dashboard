@@ -113,7 +113,7 @@ strike it through with a dated note and keep it. Each source trap cites the rese
 
 The P2.1 adapters are fixture-only (D-058); these traps come from the six source scouts (each re-checked in the named
 fixture by the adapter builders) and from the design critique (`T` items, each reproduced against a live GET that was
-then recorded as a fixture). The parse rules that answer them are decision rows P21-R4..P21-R15.
+then recorded as a fixture). The parse rules that answer them are decision rows D-066..D-077.
 
 **House Clerk roll calls (`house.clerk.votes`)**
 
@@ -288,7 +288,7 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
 - **The Wayback Machine is the only history of the Senate schedule files** (the `_wayback` fixtures): byte-exact
   originals (the Apache ETag size equals the decoded length, 5 of 5), original LM/ETag in `x-archive-orig-*` headers.
   A broad CDX query (from=2025) timed out at 40 s; narrow date ranges answered in ~1 s. Tests serve these copies under
-  the senate.gov URL (P21-R12).
+  the senate.gov URL (D-074).
 
 **Senate Daily Press Gallery (`senate.pressgallery`)**
 
@@ -393,11 +393,11 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   F3, HubDO repro). `floor_day:senate:{date}#scheduled_convene` for Oct 5, then Oct 6: both rows stay `scheduled`. A
   fixed key would bury the row (D-048 keeps a revised row at its first sighting when its new source time is later), so
   the key stays and the P2.2 page must show only the newest-sighted scheduled convene per chamber as scheduled (decision
-  row P21-R21).
+  row D-083).
 - **A press-gallery entry key carries its printed clock, so a corrected clock is a new event** (2026-10-03, review of
   483d7ab keys F4, HubDO repro): "3:40 p.m." fixed to "2:40 p.m." leaves both rows, two "logged a floor result" (now
   possibly two P0 candidates under D-062). There is no stable entry id in the WordPress HTML; the limitation is decision
-  row P21-R20 and the Phase 4 alert matching must tolerate it.
+  row D-082 and the Phase 4 alert matching must tolerate it.
 
 ## Hosting
 
@@ -672,7 +672,7 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   reads `'15-SEP-2026 09:00 AM'`, `'09-08-2026 01:12:21 PM'` or WordPress `date_gmt` `'2026-10-01T04:07:59'` (no `Z`)
   in the MACHINE's zone: 14:00Z and 18:12:21Z on this Central-time PC, something else in a UTC Worker, so results depend
   on where the code runs. Eastern wall times go through `easternToUtc` in `packages/adapters/src/lib/eastern.ts`
-  (nonexistent spring-forward times and ambiguous fall-back times are reported, never guessed: decision row P21-R13);
+  (nonexistent spring-forward times and ambiguous fall-back times are reported, never guessed: decision row D-075);
   a UTC string without an offset gets `Z` appended before parsing.
 - **`Date.parse` rolls impossible dates over** (2026-10-03, review of 483d7ab time F6): `2026-02-30T15:00:00Z` parses
   as March 2 and `…T24:00:00Z` as the next day, so a press-gallery `date_gmt` of Feb 30 passed as "a real instant".
