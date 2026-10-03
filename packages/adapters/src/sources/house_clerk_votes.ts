@@ -41,6 +41,8 @@ const LISTED_MAX = 10
 const NO_VOTES_MARKER = 'No Votes Found'
 const OFFICIAL_MAX = 4000 // event.schema.json official_text.maxLength
 const TITLE_MAX = 1000 // event.schema.json title.maxLength
+/** How far a vote instant may run ahead of our own fetch before it is drift (the Clerk's clock vs ours). */
+const FUTURE_SKEW_MS = 10 * 60_000
 
 export function rollUrl(year: number, roll: number): string {
   return `https://clerk.house.gov/evs/${year}/roll${String(roll).padStart(3, '0')}.xml`
@@ -473,7 +475,7 @@ function parseRoll(ep: 'roll_next' | 'roll', res: FetchedResponse, opts: ParseVo
   }
 
   // ---- time: naive Eastern, D-Mon-YYYY + time-etz, cross-checked against the h:mm AM|PM text ----
-  const time = actionTime(meta)
+  const time = actionTime(meta, id.year, res.fetchedAt)
 
   // ---- members: one forward scan of <vote-data> ----
   const tail = body.slice(headEnd)
@@ -665,7 +667,7 @@ function positionOf(v: string, family: VoteFamily, speaker: boolean, candidates:
 /** `<action-date>16-Sep-2026</action-date><action-time time-etz="19:05">7:05 PM</action-time>` -> UTC (DESIGN §1.3,
  * §1.6). The time-etz must agree with the AM/PM text; an unknown month or a nonexistent wall time (spring forward) =
  * drift; an ambiguous one (fall back) = null + a note (R-13). */
-function actionTime(meta: Node): { utc: string | null; note: string | null } {
+function actionTime(meta: Node, urlYear: number, fetchedAt: string): { utc: string | null; note: string | null } {
   const dateText = collapseWs(leaf(meta, 'action-date', 'vote-metadata')!)
   const d = /^(\d{1,2})-([A-Za-z]{3})-(\d{4})$/.exec(dateText)
   if (!d) drift(`<action-date> "${dateText}" is not D-Mon-YYYY`)
@@ -690,8 +692,16 @@ function actionTime(meta: Node): { utc: string | null; note: string | null } {
   if (h !== Number(e![1]) || x![2] !== e![2]) drift(`<action-time> time-etz ${etz} disagrees with its text "${text}"`)
   const y = Number(d![3])
   const day = Number(d![1])
-  const r = easternToUtc(y, mo!, day, h, Number(e![2]))
-  if (r.ok) return { utc: r.utc, note: null }
+  // The session of the URL's year (review 483d7ab F8, time F3): Jan 1 of that year up to noon Eastern on Jan 3 of the
+  // next (20th Amendment), compared on the wall clock so the fall-back hour is bounded too.
+  const mi = Number(e![2])
+  const inSession = y === urlYear || (y === urlYear + 1 && mo === 1 && (day < 3 || (day === 3 && h < 12)))
+  if (!inSession) drift(`<action-date> ${dateText} ${text} is outside the ${urlYear} session of the URL (${urlYear}-01-01 to ${urlYear + 1}-01-03 noon Eastern)`)
+  const r = easternToUtc(y, mo!, day, h, mi)
+  if (r.ok) {
+    if (Date.parse(r.utc) > Date.parse(fetchedAt) + FUTURE_SKEW_MS) drift(`<action-date> ${dateText} ${text} is later than our own fetch (${fetchedAt})`)
+    return { utc: r.utc, note: null }
+  }
   if (r.reason === 'ambiguous') {
     return { utc: null, note: `${text} Eastern on ${dateText} falls in the repeated fall-back hour, so the instant is ambiguous` }
   }

@@ -23,9 +23,10 @@ export function sessionNumber(s: string): 1 | 2 | null {
 
 /**
  * The §3.1 year rule: congress = floor((Y - 1787) / 2), session 1 in an odd year, 2 in an even year (2025 = 119/1,
- * 2026 = 119/2). Used by house.clerk.votes (URL year vs XML identity) and house.clerk.floor (vote links' `year=`).
- * Votes on Jan 1-3 of an odd year, before the new Congress convenes, would not fit; none was observed, and such a
- * mismatch drifts until seen. null for a year outside 1789..2200 or not an integer.
+ * 2026 = 119/2). Used by house.clerk.votes (URL year vs XML identity) and house.clerk.floor (vote links' `year=`, the
+ * day file's single Congress). A session runs from Jan 1 of its year to noon Eastern on Jan 3 of the next (20th
+ * Amendment): senate vote_116_2_00292 (congress_year 2020) is dated January 1, 2021, so the adapters bound a vote's date
+ * by its session, not by this rule's year (review 483d7ab time F3). null for a year outside 1789..2200 or not an integer.
  */
 export function congressSessionOfYear(y: number): { congress: number; session: 1 | 2 } | null {
   if (!Number.isInteger(y) || y < 1789 || y > 2200) return null

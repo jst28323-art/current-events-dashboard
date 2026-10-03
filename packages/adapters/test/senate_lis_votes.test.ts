@@ -393,7 +393,13 @@ describe('NEGATIVE fixtures', () => {
 
 describe('non-default cases (DESIGN §3.2 tests)', () => {
   const DATE256 = 'September 30, 2026,  09:29 PM'
-  const at = (when: string) => withBody(vote256(), (b) => edit(b, `<vote_date>${DATE256}</vote_date>`, `<vote_date>${when}</vote_date>`))
+  // Review 483d7ab F8: a vote_date must lie in the session, not after modify_date and not after the fetch. The variants
+  // below move only vote_date, so they also move modify_date to the session's last minute and fetch after it.
+  const LAST = 'January 3, 2027,  11:59 AM'
+  const at = (when: string) => variant(withBody(vote256(), (b) => edit(
+    edit(b, `<vote_date>${DATE256}</vote_date>`, `<vote_date>${when}</vote_date>`),
+    '<modify_date>September 30, 2026,  11:25 PM</modify_date>', `<modify_date>${LAST}</modify_date>`,
+  )), { fetchedAt: '2027-01-04T00:00:00.000Z' })
 
   test('double-space dates: a single-space variant of 00256 is drift', () => {
     refused('vote', at('September 30, 2026, 09:29 PM'), 'drift', /<vote_date> "September 30, 2026, 09:29 PM" is not/)
@@ -415,7 +421,7 @@ describe('non-default cases (DESIGN §3.2 tests)', () => {
   test('November 1, 2026,  01:30 AM (the repeated hour) -> occurred_at null + result.time_note, still published', () => {
     const { out, ev } = voteOk(at('November 1, 2026,  01:30 AM'))
     expect(ev.times.occurred_at).toBeNull()
-    expect(ev.times.source_published_at).toBe('2026-10-01T03:25:00Z')
+    expect(ev.times.source_published_at).toBe('2027-01-03T16:59:00Z') // the helper's modify_date (LAST)
     expect(ev.result?.time_note).toBe('<vote_date> "November 1, 2026,  01:30 AM" falls in the repeated fall-back hour (Eastern time), so its instant is unknown')
     expect(out.health.detail).toContain('left null')
   })
@@ -460,17 +466,66 @@ describe('non-default cases (DESIGN §3.2 tests)', () => {
     expect(no.ev.title).toBe('Senate roll call 256: the question was not agreed to, 47-41')
   })
 
-  test('passedOf: negatives first, word-bounded suffixes, anything else null', () => {
-    expect(passedOf('Not Guilty')).toBe(false)
-    expect(passedOf('Guilty')).toBe(true)
-    expect(passedOf('Point of Order Not Well Taken')).toBe(false)
-    expect(passedOf('Point of Order Well Taken')).toBe(true)
-    expect(passedOf('Veto Sustained')).toBe(false)
-    expect(passedOf('Veto Overridden')).toBe(true)
-    expect(passedOf('Cloture Motion Agreed to')).toBe(true)
-    expect(passedOf('Bill Passed')).toBe(true)
-    expect(passedOf('Nomination Withdrawn')).toBeNull()
-    expect(passedOf('Bill Bypassed')).toBeNull() // "passed" only as a whole word
+  test('passedOf: the whole phrase against the question\'s closed table (negatives first; anything else null)', () => {
+    expect(passedOf('Guilty or Not Guilty', 'Not Guilty')).toBe(false)
+    expect(passedOf('Guilty or Not Guilty', 'Guilty')).toBe(true)
+    expect(passedOf('On the Point of Order', 'Point of Order Not Well Taken')).toBe(false)
+    expect(passedOf('On the Point of Order', 'Point of Order Well Taken')).toBe(true)
+    expect(passedOf('On Overriding the Veto', 'Veto Sustained')).toBe(false)
+    expect(passedOf('On Overriding the Veto', 'Veto Overridden')).toBe(true)
+    expect(passedOf('On the Cloture Motion', 'Cloture Motion Agreed to')).toBe(true)
+    expect(passedOf('On Passage of the Bill', 'Bill Passed')).toBe(true)
+    expect(passedOf('On the Nomination', 'Nomination Withdrawn')).toBeNull()
+    expect(passedOf('On Passage of the Bill', 'Bill Bypassed')).toBeNull() // "passed" only as a whole word
+    // review 483d7ab F1: a "Not …" phrase ends in a positive word and used to count as passed
+    expect(passedOf('On the Nomination', 'Nomination Not Confirmed')).toBeNull()
+    expect(passedOf('On the Nomination', 'Nomination Not Yet Confirmed')).toBeNull()
+    expect(passedOf('On Passage of the Bill', 'Bill Not Passed')).toBeNull()
+    expect(passedOf('On the Motion', 'Motion Not Agreed to')).toBeNull()
+    expect(passedOf('On the Motion to Recommit', 'Motion Not Agreed to')).toBeNull() // an unknown question too
+    // review 483d7ab F2: a result phrase of another question kind
+    expect(passedOf('On the Nomination', 'Guilty')).toBeNull()
+    expect(passedOf('On the Nomination', 'Veto Overridden')).toBeNull()
+    expect(passedOf('On the Nomination', 'Point of Order Well Taken')).toBeNull()
+    expect(passedOf('On the Nomination', 'Bill Passed')).toBeNull()
+  })
+
+  test('review 483d7ab F1: a "Not …" vote_result is drift, never passed=true (four variants of real votes)', () => {
+    const res = (base: FetchedResponse, from: string, to: string) => withBody(base, (b) => edit(b, `<vote_result>${from}</vote_result>`, `<vote_result>${to}</vote_result>`))
+    refused('vote', res(vote256(), 'Nomination Confirmed', 'Nomination Not Confirmed'), 'drift', /vote_result "Nomination Not Confirmed" is not a result of "On the Nomination"/)
+    refused('vote', res(vote256(), 'Nomination Confirmed', 'Nomination Not Yet Confirmed'), 'drift', /vote_result "Nomination Not Yet Confirmed"/)
+    refused('vote', res(v1003('vote_119_2_00250.xml'), 'Bill Passed', 'Bill Not Passed'), 'drift', /vote_result "Bill Not Passed"/)
+    refused('vote', res(v1003('vote_119_2_00096.xml'), 'Motion Rejected', 'Motion Not Agreed to'), 'drift', /vote_result "Motion Not Agreed to"/)
+  })
+
+  test('review 483d7ab F2: question, result and document kinds must belong together', () => {
+    const result = (to: string) => withBody(vote256(), (b) => edit(b, '<vote_result>Nomination Confirmed</vote_result>', `<vote_result>${to}</vote_result>`))
+    for (const r of ['Guilty', 'Veto Overridden', 'Point of Order Well Taken', 'Bill Passed']) {
+      refused('vote', result(r), 'drift', new RegExp(`vote_result "${r}" is not a result of "On the Nomination"`))
+    }
+    const question = (q: string, r: string) => withBody(vote256(), (b) => edit(edit(b, '<question>On the Nomination</question>', `<question>${q}</question>`), '<vote_result>Nomination Confirmed</vote_result>', `<vote_result>${r}</vote_result>`))
+    refused('vote', question('Guilty or Not Guilty', 'Guilty'), 'drift', /the question "Guilty or Not Guilty" on a PN document/)
+    refused('vote', question('On Passage of the Bill', 'Bill Passed'), 'drift', /the question "On Passage of the Bill" on a PN document/)
+    refused('vote', question('On Overriding the Veto', 'Veto Overridden'), 'drift', /the question "On Overriding the Veto" on a PN document/)
+    // an unknown question may not carry a P0-class result word either (veto / guilty): drift, never a neutral P3
+    refused('vote', question('On the Question', 'Veto Sustained'), 'drift', /vote_result "Veto Sustained" is not a result of "On the Question"/)
+    refused('vote', question('On the Question', 'Guilty'), 'drift', /vote_result "Guilty" is not a result of "On the Question"/)
+    // the recorded kinds still publish: cloture on a nomination (00255) and on an amendment (00240), a motion on an amendment (00096)
+    for (const n of ['00255', '00240', '00096']) expect(voteOk(v1003(`vote_119_2_${n}.xml`)).ev.result?.passed).toBeTypeOf('boolean')
+  })
+
+  test('review 483d7ab F8 / time F3: vote_date belongs to the session, modify_date follows it, neither is later than the fetch', () => {
+    refused('vote', at('September 30, 2024,  09:29 PM'), 'drift', /<vote_date> "September 30, 2024,  09:29 PM" is outside session 119-2 \(2026-01-01 to 2027-01-03 noon Eastern\)/)
+    refused('vote', at('September 30, 2031,  09:29 PM'), 'drift', /outside session 119-2/)
+    refused('vote', at('January 3, 2027,  12:00 PM'), 'drift', /outside session 119-2/) // the 120th Congress begins at noon
+    expect(voteOk(at('January 3, 2027,  11:59 AM')).ev.times.occurred_at).toBe('2027-01-03T16:59:00Z')
+    expect(voteOk(at('January 1, 2026,  12:00 AM')).ev.times.occurred_at).toBe('2026-01-01T05:00:00Z')
+    // the recorded 116-2 vote on January 1, 2021 (congress_year 2020) is inside its session: the golden above publishes it
+    refused('vote', withBody(vote256(), (b) => edit(b, '<congress_year>2026</congress_year>', '<congress_year>2025</congress_year>')), 'drift', /congress_year 2025 is not the year of session 119-2 \(2026\)/)
+    // modify_date before vote_date: the record cannot be edited before the vote
+    refused('vote', withBody(vote256(), (b) => edit(b, '<modify_date>September 30, 2026,  11:25 PM</modify_date>', '<modify_date>September 29, 2026,  11:25 PM</modify_date>')), 'drift', /<modify_date> .* is earlier than <vote_date>/)
+    // later than our own fetch (2026-10-02T18:00Z): a vote in the future
+    refused('vote', withBody(vote256(), (b) => edit(edit(b, `<vote_date>${DATE256}</vote_date>`, '<vote_date>October 2, 2026,  03:00 PM</vote_date>'), '<modify_date>September 30, 2026,  11:25 PM</modify_date>', '<modify_date>October 2, 2026,  03:30 PM</modify_date>')), 'drift', /<vote_date> "October 2, 2026,  03:00 PM" is later than our own fetch/)
   })
 })
 
@@ -487,7 +542,7 @@ describe('fail closed on the vote XML (drift, nothing published)', () => {
 
   test('closed vocabularies: majority_requirement, result phrase, vote_cast, document_type', () => {
     refused('vote', withBody(base(), (b) => edit(b, '<majority_requirement>1/2</majority_requirement>', '<majority_requirement>3/4</majority_requirement>')), 'drift', /majority_requirement "3\/4"/)
-    refused('vote', withBody(base(), (b) => edit(b, '<vote_result>Nomination Confirmed</vote_result>', '<vote_result>Nomination Withdrawn</vote_result>')), 'drift', /ends in no result we know/)
+    refused('vote', withBody(base(), (b) => edit(b, '<vote_result>Nomination Confirmed</vote_result>', '<vote_result>Nomination Withdrawn</vote_result>')), 'drift', /vote_result "Nomination Withdrawn" is not a result of "On the Nomination" we know/)
     refused('vote', withBody(base(), (b) => edit(b, '<vote_cast>Nay</vote_cast>', '<vote_cast>Aye</vote_cast>')), 'drift', /vote_cast "Aye" is not in the closed table/)
     refused('vote', withBody(base(), (b) => edit(b, '<document_type>PN</document_type>', '<document_type>Treaty Doc.</document_type>')), 'drift', /document_type "Treaty Doc\." is not in the closed table/)
   })
@@ -518,7 +573,7 @@ describe('fail closed on the vote XML (drift, nothing published)', () => {
     const amd = v1003('vote_119_2_00249.xml')
     refused('vote', withBody(amd, (b) => edit(edit(b, '<amendment_number>S.Amdt. 6835</amendment_number>', '<amendment_number/>'), '<amendment_to_document_number>S. 4668</amendment_to_document_number>', '<amendment_to_document_number/>')), 'drift', /neither amendment_number nor amendment_to_document_number/)
     refused('vote', withBody(amd, (b) => edit(b, '<amendment_to_document_number>S. 4668</amendment_to_document_number>', '<amendment_to_document_number>PN 12</amendment_to_document_number>')), 'drift', /is not a bill in the closed table/)
-    refused('vote', withBody(v1003('vote_119_2_00225.xml'), (b) => edit(b, '<question>On the Nomination</question>', '<question>On the Cloture Motion</question>')), 'drift', /an en bloc vote on the question "On the Cloture Motion"/)
+    refused('vote', withBody(v1003('vote_119_2_00225.xml'), (b) => edit(edit(b, '<question>On the Nomination</question>', '<question>On the Cloture Motion</question>'), '<vote_result>Nomination Confirmed</vote_result>', '<vote_result>Cloture Motion Agreed to</vote_result>')), 'drift', /an en bloc vote on the question "On the Cloture Motion"/)
   })
 
   test('unresolved members: 5 publish (labeled), 6 drift', () => {

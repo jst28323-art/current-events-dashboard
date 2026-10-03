@@ -542,6 +542,8 @@ describe('other refusals', () => {
 // ---------------------------------------------------------------------------------------------------------------
 
 describe('non-default cases', () => {
+  /** A fetch after the 2026 session ends: the variants below move the vote date past roll314's own fetch (2026-10-02). */
+  const LATE = '2027-01-04T00:00:00.000Z'
   test('veto override: passed false with 248 > 177 (from vote-result, never from yea > nay)', () => {
     const { r, e } = parseOk(roll(D3, 'roll009.xml'))
     expect(r.yea! > r.nay!).toBe(true)
@@ -558,7 +560,7 @@ describe('non-default cases', () => {
     const res = r314()
     let b = edit(res.body, '<action-date>16-Sep-2026</action-date>', '<action-date>1-Nov-2026</action-date>')
     b = edit(b, '<action-time time-etz="19:05">7:05 PM</action-time>', '<action-time time-etz="01:30">1:30 AM</action-time>')
-    const { e, r, out } = parseOk(withBody(res, b))
+    const { e, r, out } = parseOk(variant(withBody(res, b), { fetchedAt: LATE }))
     expect(e.times.occurred_at).toBeNull()
     expect(r.time_note).toBe('1:30 AM Eastern on 1-Nov-2026 falls in the repeated fall-back hour, so the instant is ambiguous')
     expect(out.health.detail).toContain('ambiguous Eastern time')
@@ -568,7 +570,7 @@ describe('non-default cases', () => {
     const res = r314()
     let b = edit(res.body, '<action-date>16-Sep-2026</action-date>', '<action-date>1-Nov-2026</action-date>')
     b = edit(b, '<action-time time-etz="19:05">7:05 PM</action-time>', '<action-time time-etz="02:30">2:30 AM</action-time>')
-    expect(parseOk(withBody(res, b)).e.times.occurred_at).toBe('2026-11-01T07:30:00Z')
+    expect(parseOk(variant(withBody(res, b), { fetchedAt: LATE })).e.times.occurred_at).toBe('2026-11-01T07:30:00Z')
   })
 
   test('variant: roll314 on 8-Mar-2026 at 2:30 AM (the spring-forward gap: that time does not exist) -> drift', () => {
@@ -688,6 +690,21 @@ describe('drift checks (DESIGN §3.1): each = zero events, zero records', () => 
   test('a <recorded-vote> block in another shape (attribute order, extra element) = drift', () => {
     bad('name-id="A000055" sort-field="Aderholt"', 'sort-field="Aderholt" name-id="A000055"', /member 2: a <recorded-vote> block that does not match/)
     bad(/(<recorded-vote>\s*<legislator name-id="A000055"[^>]*>Aderholt<\/legislator>\s*<vote>Yea<\/vote>)/, '$1<note>x</note>', /member 2: a <recorded-vote> block that does not match/)
+  })
+  test("review 483d7ab F8 / time F3: the action date belongs to the URL year's session and is not later than our fetch", () => {
+    const late = (date: string, etz?: string, text?: string) => {
+      let body = edit(r.body, '<action-date>16-Sep-2026</action-date>', `<action-date>${date}</action-date>`)
+      if (etz !== undefined) body = edit(body, '<action-time time-etz="19:05">7:05 PM</action-time>', `<action-time time-etz="${etz}">${text}</action-time>`)
+      return variant(withBody(r, body), { fetchedAt: '2032-01-01T00:00:00.000Z' })
+    }
+    expectRefused('roll', late('16-Sep-2027'), 'drift', /<action-date> 16-Sep-2027 7:05 PM is outside the 2026 session of the URL \(2026-01-01 to 2027-01-03 noon Eastern\)/)
+    expectRefused('roll', late('16-Sep-2019'), 'drift', /16-Sep-2019 7:05 PM is outside the 2026 session/)
+    expectRefused('roll', late('16-Sep-2031'), 'drift', /16-Sep-2031 7:05 PM is outside the 2026 session/)
+    expectRefused('roll', late('3-Jan-2027', '12:00', '12:00 PM'), 'drift', /is outside the 2026 session/) // the next Congress begins at noon
+    expect(parseOk(late('3-Jan-2027', '11:59', '11:59 AM')).e.times.occurred_at).toBe('2027-01-03T16:59:00Z')
+    expect(parseOk(late('1-Jan-2026', '00:05', '12:05 AM')).e.times.occurred_at).toBe('2026-01-01T05:05:00Z')
+    // roll314 was fetched 2026-10-02T17:59Z: a vote at 7:05 PM EDT that day (23:05Z) is in the future
+    bad('<action-date>16-Sep-2026</action-date>', '<action-date>2-Oct-2026</action-date>', /2-Oct-2026 7:05 PM is later than our own fetch/)
   })
   test('unknown month; a malformed date', () => {
     bad('<action-date>16-Sep-2026</action-date>', '<action-date>16-Spt-2026</action-date>', /unknown month "Spt"/)

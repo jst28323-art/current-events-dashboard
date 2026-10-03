@@ -156,25 +156,76 @@ type QuestionKind =
   | 'nomination' | 'cloture' | 'passage' | 'veto_override' | 'resolution' | 'amendment' | 'table' | 'motion'
   | 'point_of_order' | 'impeachment_verdict' | 'unknown'
 type QuestionForm = 'plain' | 'proceed' | 'discharge'
+type DocKind = BillType | 'nomination' | 'amendment'
 
-/** `/question`, lower-cased after whitespace collapse (DESIGN §3.2; every question in the 10-02 menu is listed). */
-const QUESTIONS = new Map<string, { kind: QuestionKind; form: QuestionForm }>([
-  ['on the nomination', { kind: 'nomination', form: 'plain' }],
-  ['on the cloture motion', { kind: 'cloture', form: 'plain' }],
-  ['on cloture on the motion to proceed', { kind: 'cloture', form: 'proceed' }],
-  ['on passage of the bill', { kind: 'passage', form: 'plain' }],
-  ['on the joint resolution', { kind: 'passage', form: 'plain' }],
-  ['on overriding the veto', { kind: 'veto_override', form: 'plain' }],
-  ['on the concurrent resolution', { kind: 'resolution', form: 'plain' }],
-  ['on the resolution', { kind: 'resolution', form: 'plain' }],
-  ['on the amendment', { kind: 'amendment', form: 'plain' }],
-  ['on the motion to table', { kind: 'table', form: 'plain' }],
-  ['on the motion', { kind: 'motion', form: 'plain' }],
-  ['on the motion to discharge', { kind: 'motion', form: 'discharge' }],
-  ['on the motion to proceed', { kind: 'motion', form: 'proceed' }],
-  ['on the point of order', { kind: 'point_of_order', form: 'plain' }],
-  ['guilty or not guilty', { kind: 'impeachment_verdict', form: 'plain' }],
+/** One question's closed vocabulary (review 483d7ab F1/F2): the `vote_result` phrases it may carry, each the WHOLE
+ * phrase `{prefix} {outcome}` (lower-cased after collapse), and the document kinds it may be about (null = any). */
+interface QuestionRow {
+  kind: QuestionKind
+  form: QuestionForm
+  /** prefix ('' = the outcome alone) -> the outcomes allowed after it. */
+  results: ReadonlyArray<readonly [string, readonly Outcome[]]>
+  docs: ReadonlySet<DocKind> | null
+}
+
+// The outcome words, longest first (so "not well taken" is read before "well taken" and "not guilty" before "guilty": the
+// suffix trap). Never from the tally: 00254 is 57-43 Rejected (3/5), 00009 is 50-50 Well Taken (the Vice President).
+type Outcome = 'agreed to' | 'rejected' | 'confirmed' | 'passed' | 'well taken' | 'not well taken' | 'guilty' | 'not guilty' | 'veto overridden' | 'veto sustained'
+const OUTCOMES: ReadonlyArray<readonly [Outcome, boolean]> = [
+  ['not well taken', false], ['veto overridden', true], ['veto sustained', false], ['not guilty', false], ['well taken', true],
+  ['agreed to', true], ['confirmed', true], ['rejected', false], ['passed', true], ['guilty', true],
+]
+
+const AGREE: readonly Outcome[] = ['agreed to', 'rejected']
+const BILLS: ReadonlySet<DocKind> = new Set<DocKind>(['hr', 'hres', 'hjres', 'hconres', 's', 'sres', 'sjres', 'sconres'])
+const row = (kind: QuestionKind, form: QuestionForm, results: QuestionRow['results'], docs: readonly DocKind[] | null): QuestionRow =>
+  ({ kind, form, results, docs: docs === null ? null : new Set(docs) })
+
+/**
+ * `/question`, lower-cased after whitespace collapse (DESIGN §3.2; every question in the 10-02 menu is listed), with the
+ * result phrases and document kinds recorded for it (fixtures/senate.lis.votes, the 10-02 menu's <question>/<result>/
+ * <issue> columns). A phrase or document outside a question's row is drift: a P0 title must never come from a
+ * combination the source did not print together (00256 with "Guilty" or "Nomination Not Confirmed" published
+ * "Senate confirmed nomination PN1129" before this table).
+ */
+const QUESTIONS = new Map<string, QuestionRow>([
+  ['on the nomination', row('nomination', 'plain', [['nomination', ['confirmed', 'rejected']]], ['nomination'])],
+  ['on the cloture motion', row('cloture', 'plain', [['cloture motion', AGREE]], null)],
+  ['on cloture on the motion to proceed', row('cloture', 'proceed', [['cloture on the motion to proceed', AGREE]], [...BILLS, 'nomination'])],
+  ['on passage of the bill', row('passage', 'plain', [['bill', ['passed', 'rejected']]], ['s', 'hr'])],
+  ['on the joint resolution', row('passage', 'plain', [['joint resolution', ['passed', 'rejected']]], ['sjres', 'hjres'])],
+  ['on overriding the veto', row('veto_override', 'plain', [['', ['veto overridden', 'veto sustained']]], ['hr', 's', 'hjres', 'sjres'])],
+  ['on the concurrent resolution', row('resolution', 'plain', [['concurrent resolution', AGREE]], ['sconres', 'hconres'])],
+  ['on the resolution', row('resolution', 'plain', [['resolution', AGREE]], ['sres', 'hres'])],
+  ['on the amendment', row('amendment', 'plain', [['amendment', AGREE]], ['amendment'])],
+  ['on the motion to table', row('table', 'plain', [['motion to table', AGREE]], null)],
+  ['on the motion', row('motion', 'plain', [['motion', AGREE]], null)],
+  ['on the motion to discharge', row('motion', 'discharge', [['motion to discharge', AGREE]], [...BILLS])],
+  ['on the motion to proceed', row('motion', 'proceed', [['motion to proceed', AGREE]], [...BILLS, 'nomination'])],
+  ['on the point of order', row('point_of_order', 'plain', [['point of order', ['well taken', 'not well taken']]], null)],
+  ['guilty or not guilty', row('impeachment_verdict', 'plain', [['', ['guilty', 'not guilty']]], ['hres'])],
 ])
+/** An unknown question publishes at P3 with a neutral title only with one of these outcomes after a prefix of plain
+ * words that never says "not" (a veto, verdict or point-of-order outcome on an unknown question is drift). */
+const UNKNOWN_OUTCOMES: readonly Outcome[] = ['agreed to', 'rejected', 'confirmed', 'passed']
+const NEGATING = /\b(not|no|never|failed|without|un\w*)\b/
+
+const lookupQuestion = (question: string): QuestionRow =>
+  QUESTIONS.get(collapseWs(question).toLowerCase()) ?? row('unknown', 'plain', [], null)
+
+/** true / false from the WHOLE result phrase checked against the question's row; null = not in its closed table. */
+export function passedOf(question: string, voteResult: string): boolean | null {
+  const t = collapseWs(voteResult).toLowerCase()
+  const hit = OUTCOMES.find(([o]) => t === o || t.endsWith(` ${o}`))
+  if (!hit) return null
+  const [outcome, passed] = hit
+  const prefix = t.slice(0, t.length - outcome.length).trim()
+  const row = lookupQuestion(question)
+  if (row.kind === 'unknown') {
+    return UNKNOWN_OUTCOMES.includes(outcome) && /^[a-z][a-z .]*$/.test(prefix) && !NEGATING.test(prefix) ? passed : null
+  }
+  return row.results.some(([p, os]) => p === prefix && os.includes(outcome)) ? passed : null
+}
 /** An unknown question matching this is drift, not a P3 publish (DESIGN §0.2: the P0 veto class is never demoted). */
 const VETO_WORDS = /veto|objections of the president/i
 
@@ -191,23 +242,6 @@ const TIER: Record<QuestionKind, { tier: Tier; reason: string }> = {
   motion: { tier: 'P3', reason: 'procedural' },
   point_of_order: { tier: 'P3', reason: 'procedural' },
   unknown: { tier: 'P3', reason: 'unknown_question' },
-}
-
-// `passed` from /vote_result by suffix, case-insensitive after collapse, NEGATIVES FIRST: "Not Guilty" ends in
-// "Guilty" and "Not Well Taken" in "Well Taken" (the suffix trap). Never from the tally: 00254 is 57-43 Rejected
-// (3/5), 00009 is 50-50 Well Taken (the Vice President). Anything else = drift (R-14).
-const RESULT_NEGATIVE = ['rejected', 'not guilty', 'not well taken', 'veto sustained']
-const RESULT_POSITIVE = ['confirmed', 'agreed to', 'passed', 'well taken', 'guilty', 'veto overridden']
-
-const endsWithWord = (text: string, suffix: string): boolean =>
-  text === suffix || (text.endsWith(suffix) && text.charAt(text.length - suffix.length - 1) === ' ')
-
-/** true / false from the result phrase; null = not in the closed table (drift). */
-export function passedOf(voteResult: string): boolean | null {
-  const t = collapseWs(voteResult).toLowerCase()
-  if (RESULT_NEGATIVE.some((s) => endsWithWord(t, s))) return false
-  if (RESULT_POSITIVE.some((s) => endsWithWord(t, s))) return true
-  return null
 }
 
 const REQUIRED = new Set<string>(['1/2', '3/5', '2/3'])
@@ -365,6 +399,8 @@ interface Measure {
   documents: Array<{ congress: number; type: string; number: string }>
   amendment: { number: string; to_amendment: string | null; to_amendment_to_amendment: string | null; to_document: string } | null
   enBloc: boolean
+  /** The closed document kind of each <document>, in order (the question row checks them). */
+  kinds: DocKind[]
 }
 
 const AMDT = /^S\.Amdt\. ([1-9][0-9]{0,5})$/
@@ -380,7 +416,7 @@ function parseBillText(text: string): { type: BillType; n: number } | null {
 function measureOf(h: Head, congress: number): { ok: true; m: Measure } | { ok: false; detail: string } {
   const bad = (detail: string) => ({ ok: false as const, detail })
   const documents: Measure['documents'] = []
-  const kinds: Array<BillType | 'nomination' | 'amendment'> = []
+  const kinds: DocKind[] = []
   for (const [i, d] of h.documents.entries()) {
     const type = collapseWs(d.document_type)
     const kind = senateDocumentType(type)
@@ -413,7 +449,7 @@ function measureOf(h: Head, congress: number): { ok: true; m: Measure } | { ok: 
       seen.add(key)
       related.push({ rel: 'about', key })
     }
-    return { ok: true, m: { subject: `${documents.length} nominations en bloc`, thread_key: null, related, documents, amendment: null, enBloc: true } }
+    return { ok: true, m: { subject: `${documents.length} nominations en bloc`, thread_key: null, related, documents, amendment: null, enBloc: true, kinds } }
   }
 
   const d = documents[0]!
@@ -440,6 +476,7 @@ function measureOf(h: Head, congress: number): { ok: true; m: Measure } | { ok: 
         thread_key: billKey(congress, bill.type, bill.n),
         related: [],
         documents,
+        kinds,
         amendment: { number: label, to_amendment: toAmd === '' ? null : toAmd, to_amendment_to_amendment: toToAmd === '' ? null : toToAmd, to_document: on },
         enBloc: false,
       },
@@ -450,11 +487,11 @@ function measureOf(h: Head, congress: number): { ok: true; m: Measure } | { ok: 
     const key = nominationKey(d.congress, d.number)
     if (key === null) return bad(`PN number ${JSON.stringify(d.number)} is not N or N-N`)
     const pn = key.slice(key.indexOf(':PN') + 1)
-    return { ok: true, m: { subject: `nomination ${pn}`, thread_key: key, related: [{ rel: 'about', key }], documents, amendment: null, enBloc: false } }
+    return { ok: true, m: { subject: `nomination ${pn}`, thread_key: key, related: [{ rel: 'about', key }], documents, amendment: null, enBloc: false, kinds } }
   }
   if (!/^[1-9][0-9]{0,5}$/.test(d.number)) return bad(`${d.type} number ${JSON.stringify(d.number)} is not a number`)
   const n = Number(d.number)
-  return { ok: true, m: { subject: fmtBill(kind, n), thread_key: billKey(d.congress, kind, n), related: [], documents, amendment: null, enBloc: false } }
+  return { ok: true, m: { subject: fmtBill(kind, n), thread_key: billKey(d.congress, kind, n), related: [], documents, amendment: null, enBloc: false, kinds } }
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -582,6 +619,8 @@ function readMembers(xml: string, opts: ParseVoteOptions): MembersRead {
 
 const VOTE_URL = /^https:\/\/www\.senate\.gov\/legislative\/LIS\/roll_call_votes\/vote([0-9]{2,3})([12])\/vote_([0-9]{2,3})_([12])_([0-9]{5})\.xml$/
 const OFFICIAL_MAX = 4000 // event.schema.json official_text.maxLength
+/** How far a vote instant may run ahead of our own fetch before it is drift (the source's clock vs ours). */
+const FUTURE_SKEW_MS = 10 * 60_000
 
 const countOf = (raw: string): number | null => {
   const t = raw.trim()
@@ -636,25 +675,49 @@ function parseVoteXml(res: FetchedResponse, opts: ParseVoteOptions): AdapterOutp
   const modified = senateTime(t.modify_date, 'modify_date')
   if (!modified.ok) return failVote(modified.detail)
 
+  // The session's own bounds (review 483d7ab F8, time F3): congress_year is the session's year; the vote falls between
+  // Jan 1 of it and noon Eastern on Jan 3 of the next year (20th Amendment: 116-2's vote 292 is on January 1, 2021);
+  // the record is not modified before the vote; neither instant is later than our own fetch.
+  const sessionYear = 1787 + 2 * id.congress + (id.session - 1)
+  const cyText = t.congress_year.trim()
+  if (cyText !== String(sessionYear)) return failVote(`congress_year ${cyText} is not the year of session ${id.congress}-${id.session} (${sessionYear})`)
+  const sessionStart = easternToUtc(sessionYear, 1, 1, 0, 0)
+  const sessionEnd = easternToUtc(sessionYear + 1, 1, 3, 12, 0)
+  if (!sessionStart.ok || !sessionEnd.ok) return failVote(`session ${id.congress}-${id.session} has no computable bounds`)
+  const fetchedMs = Date.parse(res.fetchedAt)
+  for (const [field, raw, r] of [['vote_date', t.vote_date, when], ['modify_date', t.modify_date, modified]] as const) {
+    if (r.utc === null) continue // the fall-back hour: no instant to bound (null + time_note)
+    if (r.utc < sessionStart.utc || r.utc >= sessionEnd.utc) {
+      return failVote(`<${field}> ${JSON.stringify(raw)} is outside session ${id.congress}-${id.session} (${sessionYear}-01-01 to ${sessionYear + 1}-01-03 noon Eastern)`)
+    }
+    if (Date.parse(r.utc) > fetchedMs + FUTURE_SKEW_MS) return failVote(`<${field}> ${JSON.stringify(raw)} is later than our own fetch (${res.fetchedAt})`)
+  }
+  if (when.utc !== null && modified.utc !== null && modified.utc < when.utc) {
+    return failVote(`<modify_date> ${JSON.stringify(t.modify_date)} is earlier than <vote_date> ${JSON.stringify(t.vote_date)}`)
+  }
+
   const required = collapseWs(t.majority_requirement)
   if (!REQUIRED.has(required)) return failVote(`majority_requirement ${JSON.stringify(required)} is not 1/2, 3/5 or 2/3`)
   const resultText = collapseWs(t.vote_result)
-  const passed = passedOf(resultText)
-  if (passed === null) return failVote(`vote_result ${JSON.stringify(resultText)} ends in no result we know`)
-
   const question = collapseWs(t.question)
   const questionText = collapseWs(t.vote_question_text)
   const resultLine = collapseWs(t.vote_result_text)
   if (question === '' || questionText === '' || resultLine === '') return failVote('an empty question, vote_question_text or vote_result_text')
-  const q = QUESTIONS.get(question.toLowerCase()) ?? { kind: 'unknown' as const, form: 'plain' as const }
+  const q = lookupQuestion(question)
   if (q.kind === 'unknown' && (VETO_WORDS.test(question) || VETO_WORDS.test(questionText))) {
     return failVote(`possible veto vote, question ${JSON.stringify(question)} not in the table`)
   }
+  const passed = passedOf(question, resultText)
+  if (passed === null) return failVote(`vote_result ${JSON.stringify(resultText)} is not a result of ${JSON.stringify(question)} we know (closed table per question)`)
 
   const measure = measureOf(h, id.congress)
   if (!measure.ok) return failVote(measure.detail)
   const ms = measure.m
   if (ms.enBloc && q.kind !== 'nomination') return failVote(`an en bloc vote on the question ${JSON.stringify(question)} (only nominations were recorded en bloc)`)
+  const offDoc = q.docs === null ? undefined : ms.kinds.find((k) => !q.docs!.has(k))
+  if (offDoc !== undefined) {
+    return failVote(`the question ${JSON.stringify(question)} on a ${ms.documents[ms.kinds.indexOf(offDoc)]!.type} document (not a combination we know)`)
+  }
 
   // Counts: an empty element = 0; `absent` = not voting.
   const counts: Record<(typeof COUNT_KEYS)[number], number> = { yeas: 0, nays: 0, present: 0, absent: 0 }
