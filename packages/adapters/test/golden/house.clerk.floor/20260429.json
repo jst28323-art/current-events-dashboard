@@ -1,0 +1,2402 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_9ccb4e226a0d6f3c",
+      "dedup_key": "floor_day:house:2026-04-30#scheduled_convene",
+      "object_key": "floor_day:house:2026-04-30",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F7"
+      ],
+      "title": "House scheduled to meet Thursday, April 30, at 9:00 a.m. Eastern",
+      "official_text": "next legislative day convenes 20260430T09:00",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-04-30T13:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "convene_date": "2026-04-30"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_12b7b634c0ab584e",
+      "dedup_key": "floor:house:119:34494#entry",
+      "object_key": "floor:house:119:34494",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned",
+      "official_text": "The House adjourned pursuant to a previous special order. The next meeting is scheduled for 9:00 a.m. on April 30, 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:26:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:29:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1319a09e04110fb6",
+      "dedup_key": "floor:house:119:34493#entry",
+      "object_key": "floor:house:119:34493",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "On motion to adjourn Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:26:40Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:29:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H60100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_92f4fae196b8df53",
+      "dedup_key": "floor:house:119:34492#entry",
+      "object_key": "floor:house:119:34492",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Mr. Thompson (PA) moved that the House do now adjourn.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:26:30Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:29:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H60000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a225e8b05210b649",
+      "dedup_key": "floor:house:119:34491#entry",
+      "object_key": "floor:house:119:34491",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Mr. Thompson (PA) asked unanimous consent that when the House adjourns today, it adjourn to meet at 9:00 a.m. on April 30. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:26:08Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:27:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H29400"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_23a3d0087b72c646",
+      "dedup_key": "floor:house:119:34490#entry",
+      "object_key": "floor:house:119:34490",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "Committee of the Whole House on the state of the Union rises leaving H.R. 7567 as unfinished business.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:25:56Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:27:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:7567"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32700"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8ca55c25524f82e0",
+      "dedup_key": "floor:house:119:34489#entry",
+      "object_key": "floor:house:119:34489",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On motion that the committee rise Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:25:44Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:27:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32341"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b175e14e495a958f",
+      "dedup_key": "floor:house:119:34488#entry",
+      "object_key": "floor:house:119:34488",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "Mr. Thompson (PA) moved that the committee rise.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:25:27Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:27:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32340"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1a9f4ac8ec27b03b",
+      "dedup_key": "floor:house:119:34487#entry",
+      "object_key": "floor:house:119:34487",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on the Self amendment No. 47, the Chair put the question on agreeing to the amendment and by voice vote, announced the ayes had prevailed. Ms. Self demanded a recorded vote, and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:24:38Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:25:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_84dab2cfeb59da93",
+      "dedup_key": "floor:house:119:34486#entry",
+      "object_key": "floor:house:119:34486",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Self amendment No. 47.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:17:08Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:17:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_97ae60b44d0969b8",
+      "dedup_key": "floor:house:119:34485#entry",
+      "object_key": "floor:house:119:34485",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Mr. Self, numbered 47 printed in Part B of House Report 119-628 to add \"soda\" to the definition of ineligible items and defines soda as a carbonated beverage containing more than 1 gram of added sugar, artificial sweetener, or flavoring per serving.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:16:58Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:17:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c8938ab932983812",
+      "dedup_key": "floor:house:119:34484#entry",
+      "object_key": "floor:house:119:34484",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Schrier amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:16:35Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:17:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_59f295e424232114",
+      "dedup_key": "floor:house:119:34483#entry",
+      "object_key": "floor:house:119:34483",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Schrier amendment No. 46.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:12:49Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:13:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_eb8946443aff0707",
+      "dedup_key": "floor:house:119:34482#entry",
+      "object_key": "floor:house:119:34482",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Schrier, numbered 46 printed in Part B of House Report 119-628 to allow for the continuous enrollment of land under the Conservation Reserve Program (CRP) State Acres for Wildlife Enhancement (SAFE) Initiative.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:12:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:13:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1bf65b5ece96676a",
+      "dedup_key": "floor:house:119:34481#entry",
+      "object_key": "floor:house:119:34481",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Scholten amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:12:25Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:13:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0626729bd8b23b79",
+      "dedup_key": "floor:house:119:34480#entry",
+      "object_key": "floor:house:119:34480",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Scholten amendment No. 45.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:09:47Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:10:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_48300578e78db9a4",
+      "dedup_key": "floor:house:119:34479#entry",
+      "object_key": "floor:house:119:34479",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Scholten, numbered 45 printed in Part B of House Report 119-628 to remove administrative hurdles for small farmers and ranchers to participate in federal nutrition programs which would expand their economic opportunities and improve access to healthy, affordable food for families.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:09:37Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:10:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4948eb1d86069d97",
+      "dedup_key": "floor:house:119:34478#entry",
+      "object_key": "floor:house:119:34478",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Moylan amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:09:14Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:10:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e3bece4a7c6e0af2",
+      "dedup_key": "floor:house:119:34477#entry",
+      "object_key": "floor:house:119:34477",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Moylan amendment No. 42.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:08:31Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:09:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c2ff2e961361dbd9",
+      "dedup_key": "floor:house:119:34476#entry",
+      "object_key": "floor:house:119:34476",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Mr. Moylan, numbered 42 printed in Part B of House Report 119-628 to direct the Secretary of Agriculture to conduct studies in the U.S. Virgin Islands and Guam with, respectively, the Virgin Islands Department of Planning and Natural Resources and the Guam Department of Agriculture, on the development of aquaculture.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:07:03Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:09:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8a56a6bc9f93d384",
+      "dedup_key": "floor:house:119:34475#entry",
+      "object_key": "floor:house:119:34475",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on the Scholten amendment No. 39, as modified, the Chair put the question on agreeing to the amendment and by voice vote, announced the noes had prevailed. Ms. Scholten demanded a recorded vote, and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:06:32Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T11:47:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e74dc603c9b9136d",
+      "dedup_key": "floor:house:119:34474#entry",
+      "object_key": "floor:house:119:34474",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "Scholten amendment; modified by unanimous consent. To strike Page 430 each time it appears, and insert Page 431.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:03:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:03:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32160"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_87032d8c099091c0",
+      "dedup_key": "floor:house:119:34473#entry",
+      "object_key": "floor:house:119:34473",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Scholten amendment No. 39.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:02:49Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:03:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_481e81aa017d26c5",
+      "dedup_key": "floor:house:119:34472#entry",
+      "object_key": "floor:house:119:34472",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Scholten, numbered 39 printed in Part B of House Report 119-628 to revise the Agriculture Advanced Research and Development Authority program to provide federal support for sustainable agriculture and innovative sustainability solutions.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:02:34Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:03:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4ffe45c8b1563920",
+      "dedup_key": "floor:house:119:34471#entry",
+      "object_key": "floor:house:119:34471",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Scholten amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T06:02:24Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T06:03:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2de69eda90184d21",
+      "dedup_key": "floor:house:119:34470#entry",
+      "object_key": "floor:house:119:34470",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Scholten amendment No. 38.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:59:14Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:59:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4083e2c3c6f047b0",
+      "dedup_key": "floor:house:119:34469#entry",
+      "object_key": "floor:house:119:34469",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Scholten, numbered 41 printed in Part B of House Report 119-628 to require a report from the Secretary of Agriculture on barriers to organic farms taking part in programs authorized under the bill.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:59:03Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:59:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d2c4ba634207eca9",
+      "dedup_key": "floor:house:119:34468#entry",
+      "object_key": "floor:house:119:34468",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on the Moore (WV) amendment No. 36, the Chair put the question on agreeing to the amendment and by voice vote, announced the ayes had prevailed. Mr. Carbajal demanded a recorded vote, and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:58:37Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:59:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_66063d1f1521165e",
+      "dedup_key": "floor:house:119:34467#entry",
+      "object_key": "floor:house:119:34467",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Moore (WV) amendment No. 36.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:47:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:47:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fab4e8ec5694b384",
+      "dedup_key": "floor:house:119:34466#entry",
+      "object_key": "floor:house:119:34466",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Mr. Moore (WV), numbered 36 printed in Part B of House Report 119-628 to preserve greyhound racing operations in West Virginia.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:47:23Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:49:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7dc1026dc21a9a4b",
+      "dedup_key": "floor:house:119:34465#entry",
+      "object_key": "floor:house:119:34465",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Mace amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:46:45Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:47:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2b214b1d61b910a7",
+      "dedup_key": "floor:house:119:34464#entry",
+      "object_key": "floor:house:119:34464",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Mace amendment No. 31.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:43:22Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:43:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8ad2f06683b8b0eb",
+      "dedup_key": "floor:house:119:34463#entry",
+      "object_key": "floor:house:119:34463",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Mace, numbered 31 printed in Part B of House Report 119-628 to require federal animal research facilities to establish procedures to facilitate the adoption or non-laboratory placement of animals once they're no longer needed for research.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:43:14Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:43:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_68563df805ceb104",
+      "dedup_key": "floor:house:119:34462#entry",
+      "object_key": "floor:house:119:34462",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Mace amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:43:02Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:43:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5ea27953aabf440b",
+      "dedup_key": "floor:house:119:34461#entry",
+      "object_key": "floor:house:119:34461",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Mace amendment No. 30.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:37:44Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:37:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2e5435e661ccdaf1",
+      "dedup_key": "floor:house:119:34460#entry",
+      "object_key": "floor:house:119:34460",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Mace, numbered 30 printed in Part B of House Report 119-628 to revise definitions and eligibility criteria in the Consolidated Farm and Rural Development Act to clarify the eligibility of commercial fishing and fish processing businesses in certain U.S. Department of Agriculture programs.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:37:35Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:37:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9fe13322fd4933ca",
+      "dedup_key": "floor:house:119:34459#entry",
+      "object_key": "floor:house:119:34459",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Mace amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:37:18Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:37:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_578c434befc9b209",
+      "dedup_key": "floor:house:119:34458#entry",
+      "object_key": "floor:house:119:34458",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Mace amendment No. 29.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:30:57Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:31:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_caccf91f1a4464f6",
+      "dedup_key": "floor:house:119:34457#entry",
+      "object_key": "floor:house:119:34457",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Mace, numbered 29 printed in Part B of House Report 119-628 to codify the newly established Office of Seafood within the U.S. Department of Agriculture.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:30:49Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:31:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5f0d818bb8d43aa9",
+      "dedup_key": "floor:house:119:34456#entry",
+      "object_key": "floor:house:119:34456",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on the Luna amendment No. 28, the Chair put the question on agreeing to the amendment and by voice vote, announced the noes had prevailed. Mrs. Luna demanded a recorded vote, and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:30:18Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:31:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ea11109bd96eadda",
+      "dedup_key": "floor:house:119:34455#entry",
+      "object_key": "floor:house:119:34455",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Luna amendment No. 28.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:19:28Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:19:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_87a5597a02aea89b",
+      "dedup_key": "floor:house:119:34454#entry",
+      "object_key": "floor:house:119:34454",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Mrs. Luna, numbered 28 printed in Part B of House Report 119-628 to strike section 10205 (relating to uniformity of pesticide labeling), section 10206 (relating to authority of States), and section 10207 (relating to lawful use of authorized pesticides).",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:19:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:19:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_94035a6649dca78f",
+      "dedup_key": "floor:house:119:34453#entry",
+      "object_key": "floor:house:119:34453",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Latta amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:18:26Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:18:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6ad3774eaa4beb82",
+      "dedup_key": "floor:house:119:34452#entry",
+      "object_key": "floor:house:119:34452",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Latta amendment No. 26.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:15:07Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:15:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_02d5a1aad8ec5a62",
+      "dedup_key": "floor:house:119:34451#entry",
+      "object_key": "floor:house:119:34451",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Mr. Latta, numbered 26 printed in Part B of House Report 119-628 to require the Federal Communications Commission (FCC) to review and recommend changes to its satellite rules to promote precision agriculture.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:14:54Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:15:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b3bc54da1030a77f",
+      "dedup_key": "floor:house:119:34450#entry",
+      "object_key": "floor:house:119:34450",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "On agreeing to the Craig amendment; Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:14:35Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:15:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H32111"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dc0f2e57dfbe0ff3",
+      "dedup_key": "floor:house:119:34449#entry",
+      "object_key": "floor:house:119:34449",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Craig amendment No. 24.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:12:29Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:13:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_951430049e071a48",
+      "dedup_key": "floor:house:119:34448#entry",
+      "object_key": "floor:house:119:34448",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Ms. Craig, numbered 24 printed in Part B of House Report 119-628 to increase the loan guarantee cap of the USDA Biorefinery, Renewable Chemical, and Biobased Product Manufacturing Assistance Program from $250 million to $400 million.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:12:12Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:13:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2a2d27b4e16cff45",
+      "dedup_key": "floor:house:119:34447#entry",
+      "object_key": "floor:house:119:34447",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on the Grothman amendment No. 22, the Chair put the question on agreeing to the amendment and by voice vote, announced the noes had prevailed. Mr. Grothman demanded a recorded vote, and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:11:58Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:13:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_80016daebe83e72e",
+      "dedup_key": "floor:house:119:34446#entry",
+      "object_key": "floor:house:119:34446",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "DEBATE - Pursuant to the provisions of H. Res. 1224, the Committee of the Whole proceeded with 10 minutes of debate on the Grothman amendment No. 22.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:04:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:04:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1224"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a087a68793965669",
+      "dedup_key": "floor:house:119:34445#entry",
+      "object_key": "floor:house:119:34445",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7567",
+      "official_text": "An amendment, offered by Mr. Grothman, numbered 22 printed in Part B of House Report 119-628 to repeal and prohibit future implementation of the Animal and Plant Health Inspection Service (APHIS) rule mandating electronic identification (EID) eartags for bison and cattle moving interstate.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-04-30T05:04:08Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-04-30T05:04:00Z",
+        "first_seen_at": "2026-10-03T14:11:42.197Z"
+      },
+      "result": {
+        "legislative_day": "2026-04-29",
+        "act_id": "H3A100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260429.xml",
+          "retrieved_at": "2026-10-03T14:11:42.197Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "day",
+    "status": "ok",
+    "detail": "newest 50 of 123 actions; legislative day 2026-04-29; next meeting 2026-04-30",
+    "items_seen": 123
+  },
+  "targets": [
+    {
+      "endpoint": "next_day",
+      "url": "https://clerk.house.gov/floor/20260430.xml"
+    }
+  ]
+}

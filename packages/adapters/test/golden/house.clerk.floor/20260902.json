@@ -1,0 +1,2019 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_d321dae479b6c871",
+      "dedup_key": "floor_day:house:2026-09-03#scheduled_convene",
+      "object_key": "floor_day:house:2026-09-03",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F7"
+      ],
+      "title": "House scheduled to meet Thursday, September 3, at 9:00 a.m. Eastern",
+      "official_text": "next legislative day convenes 20260903T09:00",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-09-03T13:00:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "convene_date": "2026-09-03"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4b86bae193885758",
+      "dedup_key": "floor:house:119:42563#entry",
+      "object_key": "floor:house:119:42563",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned",
+      "official_text": "The House adjourned pursuant to a previous special order. The next meeting is scheduled for 9:00 a.m. on September 3, 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T23:14:35Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T23:15:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_987021559fe22eaf",
+      "dedup_key": "floor:house:119:42562#entry",
+      "object_key": "floor:house:119:42562",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "On motion to adjourn Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T23:14:34Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T23:15:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H60100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_94b2abedd363604b",
+      "dedup_key": "floor:house:119:42561#entry",
+      "object_key": "floor:house:119:42561",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Mr. Beyer moved that the House do now adjourn.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T23:14:19Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T23:15:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H60000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cff5338b6e3f6a79",
+      "dedup_key": "floor:house:119:42560#entry",
+      "object_key": "floor:house:119:42560",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "SPECIAL ORDER SPEECHES - The House has concluded all anticipated legislative business and has proceeded to Special Order speeches.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T21:14:05Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T21:14:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6b3454bad73c10de",
+      "dedup_key": "floor:house:119:42554#entry",
+      "object_key": "floor:house:119:42554",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ONE MINUTE SPEECHES - The House proceeded with further one minute speeches.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:58:55Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:58:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fe2b752f6bc31513",
+      "dedup_key": "floor:house:119:42553#entry",
+      "object_key": "floor:house:119:42553",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Mr. Flood asked unanimous consent that when the House adjourns today, it adjourn to meet at 9:00 a.m. on September 3. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:56:44Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:58:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H29400"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c1bd5a9adcedda3b",
+      "dedup_key": "floor:house:119:42557#entry",
+      "object_key": "floor:house:119:42557",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 179",
+      "official_text": "ASSUMING FIRST SPONSORSHIP - Mr. Jackson (IL) asked unanimous consent that he may hereafter be considered as the first sponsor of H. Res. 179, a resolution originally introduced by Representative Cherfilus-McCormick for the purpose of adding cosponsors and requesting reprintings pursuant to clause 7 of rule XII. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:55:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T21:09:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:179"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_85d7e5bb803f219a",
+      "dedup_key": "floor:house:119:42556#entry",
+      "object_key": "floor:house:119:42556",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1114",
+      "official_text": "ASSUMING FIRST SPONSORSHIP - Mr. Jackson (IL) asked unanimous consent that he may hereafter be considered as the first sponsor of H.R. 1114, a bill originally introduced by Representative Cherfilus-McCormick, for the purpose of adding cosponsors and requesting reprintings pursuant to clause 7 of rule XII. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:55:40Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T21:08:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1114"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6f6606b5563d4b10",
+      "dedup_key": "floor:house:119:42559#entry",
+      "object_key": "floor:house:119:42559",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 4586",
+      "official_text": "ASSUMING FIRST SPONSORSHIP - Mr. Jackson (IL) asked unanimous consent that he may hereafter be considered as the first sponsor of H.R. 4586, a bill originally introduced by Representative Cherfilus-McCormick for the purpose of adding cosponsors and requesting reprintings pursuant to clause 7 of rule XII. Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:55:36Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T21:08:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:4586"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9c2a1e66cda2968a",
+      "dedup_key": "floor:house:119:42552#entry",
+      "object_key": "floor:house:119:42552",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "MOMENT OF SILENCE - The House observed a moment of silence in remembrance of the victims of the recent tragedy in Tucson, Arizona.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:55:35Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:59:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_50266c5b6b660b53",
+      "dedup_key": "floor:house:119:42551#entry",
+      "object_key": "floor:house:119:42551",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "MOMENT OF SILENCE - The House observed a moment of silence in memory of the late Dolly Rebecca Parton.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:52:19Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:54:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c11963746edcd105",
+      "dedup_key": "floor:house:119:42550#entry",
+      "object_key": "floor:house:119:42550",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1501",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:50:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:50:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_175a0acd7b57f57d",
+      "dedup_key": "floor:house:119:42549#entry",
+      "object_key": "floor:house:119:42549",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 294 on H.R. 1501",
+      "official_text": "On passage Passed by the Yeas and Nays: 218 - 201 (Roll no. 294).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:50:15Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T21:02:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:294"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_31c878637556f46f",
+      "dedup_key": "floor:house:119:42546#entry",
+      "object_key": "floor:house:119:42546",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1501",
+      "official_text": "Considered as unfinished business. H.R. 1501 — \"To amend the FAST Act to include certain mineral production activities as a covered project, and for other purposes.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:41:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:41:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1501"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1510c0e709eaba04",
+      "dedup_key": "floor:house:119:42544#entry",
+      "object_key": "floor:house:119:42544",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 293 on H.J.Res. 1",
+      "official_text": "On motion to suspend the rules and pass Failed by the Yeas and Nays: (2/3 required): 212 - 206 (Roll no. 293).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:35:33Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-04T15:54:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:293"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H37300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b7437c89cf29ac79",
+      "dedup_key": "floor:house:119:42542#entry",
+      "object_key": "floor:house:119:42542",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 1",
+      "official_text": "Considered as unfinished business. H.J. Res. 1 — \"Proposing an amendment to the Constitution of the United States to require that the Supreme Court of the United States be composed of nine justices.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:00:37Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:02:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:1"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c8fe21277e783b0a",
+      "dedup_key": "floor:house:119:42548#entry",
+      "object_key": "floor:house:119:42548",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "UNFINISHED BUSINESS - The Chair announced the unfinished business was the question on passage of H.J. Res. 1 and H.R. 1501 which had been debated earlier and on which further proceedings had been postponed.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:00:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:44:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:1"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1501"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6868aeee842afb62",
+      "dedup_key": "floor:house:119:42541#entry",
+      "object_key": "floor:house:119:42541",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House returned from a recess",
+      "official_text": "The House convened, returning from a recess continuing the legislative day of September 2.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T20:00:16Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T20:06:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_145fe2e5fe23bd8a",
+      "dedup_key": "floor:house:119:42539#entry",
+      "object_key": "floor:house:119:42539",
+      "event_type": "floor.recess",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House went into recess",
+      "official_text": "The Speaker announced that the House do now recess. The next meeting is subject to the call of the Chair.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T18:32:50Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T18:52:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2608c80adc604bd9",
+      "dedup_key": "floor:house:119:42538#entry",
+      "object_key": "floor:house:119:42538",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1501",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on H.R. 1501, the Chair put the question on passage and by voice vote, announced the ayes had prevailed. Mr. Huffman demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T18:32:46Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T18:34:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1501"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ec1da0c36296a980",
+      "dedup_key": "floor:house:119:42537#entry",
+      "object_key": "floor:house:119:42537",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1501",
+      "official_text": "The previous question was ordered pursuant to the rule.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T18:31:48Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T18:36:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H35000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f9f5a3e5f91d9c24",
+      "dedup_key": "floor:house:119:42536#entry",
+      "object_key": "floor:house:119:42536",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1501",
+      "official_text": "DEBATE - The House proceeded with one hour of debate on H.R. 1501.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T17:41:25Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T17:41:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1501"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a64f52e04a178fb7",
+      "dedup_key": "floor:house:119:42533#entry",
+      "object_key": "floor:house:119:42533",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1501",
+      "official_text": "Rule provides for consideration of H.R. 1501, H.R. 9436, H. Res. 1490 and H.R. 4795. The resolution provides for consideration of H.R. 1501, H.R. 9436, H. Res. 1490, and H.R. 4795 under a closed rule with one hour of general debate on each measure. The resolution provides for a motion to recommit on H.R. 1501, H.R. 9436, and H.R. 4795.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T17:39:47Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T17:41:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1501"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9436"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1490"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:4795"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d022e02a5eb96a99",
+      "dedup_key": "floor:house:119:42532#entry",
+      "object_key": "floor:house:119:42532",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 1501",
+      "official_text": "Considered under the provisions of rule H. Res. 1499. H.R. 1501 — \"To amend the FAST Act to include certain mineral production activities as a covered project, and for other purposes.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T17:39:42Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T17:41:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1499"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1501"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9ba419759cb40874",
+      "dedup_key": "floor:house:119:42531#entry",
+      "object_key": "floor:house:119:42531",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 1",
+      "official_text": "At the conclusion of debate, the Yeas and Nays were demanded and ordered. Pursuant to the provisions of clause 8, rule XX, the Chair announced that further proceedings on the motion would be postponed.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T17:38:06Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T17:38:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H37220"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c40db5389185741f",
+      "dedup_key": "floor:house:119:42529#entry",
+      "object_key": "floor:house:119:42529",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 1",
+      "official_text": "DEBATE - The House proceeded with one hour of debate on H.J. Res. 1.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:30:28Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:30:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:1"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7f4d17346fd89764",
+      "dedup_key": "floor:house:119:42528#entry",
+      "object_key": "floor:house:119:42528",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 1",
+      "official_text": "Considered under suspension of the rules.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:30:26Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:30:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5d1a889d9a657107",
+      "dedup_key": "floor:house:119:42527#entry",
+      "object_key": "floor:house:119:42527",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 1",
+      "official_text": "Mr. Biggs (AZ) moved to suspend the rules and pass the resolution. H.J. Res. 1 — \"Proposing an amendment to the Constitution of the United States to require that the Supreme Court of the United States be composed of nine justices.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:30:10Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:30:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:1"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H30300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ccdd919c36e69626",
+      "dedup_key": "floor:house:119:42526#entry",
+      "object_key": "floor:house:119:42526",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker announced that votes on suspensions, if ordered, will be postponed until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:29:56Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:30:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H26200"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a369ad2d77a0df08",
+      "dedup_key": "floor:house:119:42525#entry",
+      "object_key": "floor:house:119:42525",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ONE MINUTE SPEECHES - The House proceeded with one minute speeches, which by direction of the Chair would be limited to 15 per side of the aisle.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:11:19Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:12:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_73ebf711610e9566",
+      "dedup_key": "floor:house:119:42524#entry",
+      "object_key": "floor:house:119:42524",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ADJUSTMENT OF THE WHOLE NUMBER OF THE HOUSE - Under clause 5(d) of Rule XX, the Chair announced to the House that, in light of the administration of the Oath of Office to the gentlewoman from California, the whole number of the House is 433.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:10:47Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:12:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5f2e339d5201be85",
+      "dedup_key": "floor:house:119:42523#entry",
+      "object_key": "floor:house:119:42523",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "OATH OF OFFICE - Representative-elect Aisha Wahab, Fourteenth District, State of California, presented herself in the well of the House for the purpose of taking the Oath of Office which was administered by the Speaker of the House.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:03:24Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:04:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f478f1f3827632bb",
+      "dedup_key": "floor:house:119:42522#entry",
+      "object_key": "floor:house:119:42522",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a message from the Clerk. The Clerk transmitted to the House a copy of a letter received from Ms. Jana M. Lean, Chief, Elections Division, California Secretary of State, indicating that, according to the unofficial results for the Special General Election held on August 18, 2026, the Honorable Aisha Wahab was elected Representative to Congress for the Fourteenth Congressional District of California.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:02:27Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:09:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H24500"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_170014ecfdd919f6",
+      "dedup_key": "floor:house:119:42521#entry",
+      "object_key": "floor:house:119:42521",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "PLEDGE OF ALLEGIANCE - The Chair designated Mr. Strong to lead the Members in reciting the Pledge of Allegiance to the Flag.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:02:01Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:02:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H2C000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ad30db0f58b7ee39",
+      "dedup_key": "floor:house:119:42520#entry",
+      "object_key": "floor:house:119:42520",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker announced approval of the Journal. Pursuant to clause 1, rule I, the Journal stands approved.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:01:59Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:02:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H23100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cd06a46af13330ed",
+      "dedup_key": "floor:house:119:42519#entry",
+      "object_key": "floor:house:119:42519",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:00:36Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:00:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H21000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f8783df6dc3270d1",
+      "dedup_key": "floor:house:119:42518#entry",
+      "object_key": "floor:house:119:42518",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House returned from a recess",
+      "official_text": "The House convened, returning from a recess continuing the legislative day of September 2.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T16:00:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T16:00:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5a9afa4e4504302d",
+      "dedup_key": "floor:house:119:42517#entry",
+      "object_key": "floor:house:119:42517",
+      "event_type": "floor.recess",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House went into recess",
+      "official_text": "The Speaker announced that the House do now recess for a period of less than 15 minutes.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T15:46:42Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T15:47:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2627ea0222605c07",
+      "dedup_key": "floor:house:119:42516#entry",
+      "object_key": "floor:house:119:42516",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "MORNING-HOUR DEBATE - The House proceeded with Morning-Hour Debate. At the conclusion of Morning-Hour, the House will recess until 12:00 p.m. for the start of legislative business.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T14:00:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T14:04:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_23ab3acd2275460c",
+      "dedup_key": "floor:house:119:42515#entry",
+      "object_key": "floor:house:119:42515",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker designated the Honorable Jeff Crank to act as Speaker pro tempore for today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T14:00:20Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T14:04:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H22000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7dbcd9300c849d8d",
+      "dedup_key": "floor:house:119:42514#entry",
+      "object_key": "floor:house:119:42514",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House convened for a new legislative day",
+      "official_text": "The House convened, starting a new legislative day.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-02T14:00:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-02T14:04:00Z",
+        "first_seen_at": "2026-10-03T14:11:31.867Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:house:2026-09-02"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-02",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260902.xml",
+          "retrieved_at": "2026-10-03T14:11:31.867Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "day",
+    "status": "ok",
+    "detail": "41 actions; legislative day 2026-09-02; next meeting 2026-09-03",
+    "items_seen": 41
+  },
+  "targets": [
+    {
+      "endpoint": "next_day",
+      "url": "https://clerk.house.gov/floor/20260903.xml"
+    }
+  ]
+}
