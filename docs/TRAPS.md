@@ -569,6 +569,10 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   error, at most twice, never an assertion (`apps/web/test/shot.test.ts`). Separately, one full gate run failed WK4
   (dark, Chromium desktop) and passed in isolation and in a full rerun; the gate log keeps only 25 lines, so its error
   text was lost. Every local e2e run now also writes `scratch/e2e-last.json`: read it after a red gate.
+  [2026-10-03, p2.1 integration: `apps/web/e2e/screens.spec.ts` imported `shot()` but called `page.screenshot`
+  directly in all 8 shots, so the retry never covered the very spec this trap was seen in; a p2.1 gate failed on it
+  (desktop light feed, "Unable to capture screenshot"). All 8 now go through `shot()`, and `apps/web/test/shot.test.ts`
+  fails if any e2e `.screenshot(` call bypasses it.]
 - **`spawnSync`'s default 1 MB output buffer fails on a large git history** (2026-10-03). The gate's secret scan read
   ~1.5 MB of unpushed fixtures and failed with "spawnSync git ENOBUFS": fail-closed, but a false red. `run()` in
   `scripts/lib/git.mjs` now passes `maxBuffer` 512 MB; regression test in `tests/harness/gate.test.mjs` (a 4 MB
