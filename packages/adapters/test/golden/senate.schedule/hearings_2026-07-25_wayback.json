@@ -1,0 +1,817 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_e8a775ebab0cef31",
+      "dedup_key": "hearing:senate:338683#scheduled",
+      "object_key": "hearing:senate:338683",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Homeland Security and Governmental Affairs Committee set an open hearing for Wednesday, July 29, at 8:30 a.m. Eastern",
+      "official_text": "Hearings to examine the testimony of Anthony Fauci.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-29T12:30:00Z",
+        "source_published_at": "2026-07-25T01:00:29Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSGA00",
+          "name": "Homeland Security and Governmental Affairs"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=govtaff&filename=govtaff072926",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSGA00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-342",
+        "date": "2026-07-29",
+        "cable_channel": "19.1"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_43b41c91e7b11f17",
+      "dedup_key": "hearing:senate:338691#scheduled",
+      "object_key": "hearing:senate:338691",
+      "event_type": "markup.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Energy and Natural Resources Committee set a business meeting for Wednesday, July 29, at 9:30 a.m. Eastern",
+      "official_text": "Business meeting to consider S.365 and H.R.1729, bills to amend the John D. Dingell, Jr. Conservation, Management, and Recreation Act to allow for additional entities to be eligible to complete the maintenance work on Bolts Ditch and the Bolts Ditch Headgate within the Holy Cross Wilderness, Colorado, S.764, to provide for the designation of certain wilderness areas, recreation management areas, and conservation areas in the State of Colorado, S.791, to establish the Justice Thurgood Marshall National Historic Site in the State of Maryland as an affiliated area of the National Park System, S.888, to designate certain land administered by the Bureau of Land Management and the Forest Service in the State of Oregon as wilderness and national recreation areas, to withdraw certain land located in Curry County and Josephine County, Oregon, from all forms of entry, appropriation, or disposal under the public land laws, location, entry, and patent under the mining laws, and operation under the mineral leasing and geothermal leasing laws, S.945, to amend the Smith River National Recreation Area Act to include certain additions to the Smith River National Recreation Area, to amend the Wild and Scenic Rivers Act to designate certain wild rivers in the State of Oregon, S.1005, to provide for conservation and economic development in the State of Nevada, S.1088, to provide that the memorial to commemorate the sacrifice and service of the women who worked on the home front to support the efforts of the United States military during World War II may be located on the National Mall, S.1195, to promote conservation, improve public land management, and provide for sensible development in Pershing County, Nevada, S.1257, to amend the Infrastructure Investment and Jobs Act to authorize the use of funds for certain additional Carey Act projects, S.1341, to amend the Colorado Wilderness Act of 1993 to add certain land to the Sarvis Creek Wilderness, S.1349, to withdraw the National Forest System land in the Ruby Mountains subdistrict of the Humboldt-Toiyabe National Forest and the National Wildlife Refuge System land in Ruby Lake National Wildlife Refuge, Elko and White Pine Counties, Nevada, from operation under the mineral leasing laws, S.1476, to amend the Wild and Scenic Rivers Act to designate certain segments of the Gila River system in the State of New Mexico as components of the National Wild and Scenic Rivers System, to provide for the transfer of administrative jurisdiction over certain Federal land in the State of New Mexico, S.1737, to designate and expand wilderness areas in Olympic National Forest in the State of Washington, and to designate certain rivers in Olympic National Forest and Olympic National Park as wild and scenic rivers, S.1777, to amend the California Desert Protection Act of 1994 to expand the boundary of Joshua Tree National Park, to redesignate the Cottonwood Visitor Center at Joshua Tree National Park as the \"Dianne Feinstein Visitor Center\", S.1870, to adjust the boundary of the Santa Monica Mountains National Recreation Area to include the Rim of the Valley Corridor, S.2498, to authorize the Secretary of the Interior to extend certain leases within units of the National Park System without opening the lease to bidding, S.2767 and H.R.5254, bills to authorize the Secretary of the Interior to enter into an agreement with the Gateway Arch Park Foundation to host private events in Gateway Arch National Park buildings, S.2801, to authorize the Secretary of the Interior to conduct a study to assess the suitability and feasibility of designating the Canterbury Shaker Village National Heritage Area, S.2887, to amend the National Trails System Act to designate the Route 66 National Historic Trail, S.2933, to redesignate a playground in the New River Gorge National Park and Preserve in the State of West Virginia as the \"Hearts of Gold Playground: In Honor of West Virginia Children and Families Impacted by Childhood Cancer\",…",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-29T13:30:00Z",
+        "source_published_at": "2026-07-25T00:59:44Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSEG00",
+          "name": "Energy and Natural Resources"
+        }
+      ],
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:1729"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:249"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:5254"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:5631"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:5729"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:6365"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:6380"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:677"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:7831"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1005"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1088"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1195"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1257"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1341"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1349"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1476"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1737"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1777"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:1870"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2498"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2767"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2801"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2887"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2933"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2968"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3194"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3313"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3409"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3635"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:365"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3715"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3720"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3732"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3738"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4041"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4238"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4399"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4410"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4538"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:5039"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:764"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:791"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:888"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:945"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=energy&filename=energy072926",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSEG00",
+        "meeting_type": "Open Business Meeting",
+        "room": "SD-366",
+        "date": "2026-07-29",
+        "cable_channel": null,
+        "matter_truncated_from": 4999
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ccc7193c35b775d7",
+      "dedup_key": "hearing:senate:338686#scheduled",
+      "object_key": "hearing:senate:338686",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "A Senate Health, Education, Labor, and Pensions subcommittee (SSHR11) set an open hearing for Wednesday, July 29, at 2:00 p.m. Eastern",
+      "official_text": "Hearings to examine the impact of AI on the workplace.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-29T18:00:00Z",
+        "source_published_at": "2026-07-22T18:14:26Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSHR11",
+          "name": "Health, Education, Labor, and Pensions"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=help&filename=help072926",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSHR11",
+        "meeting_type": "Open Hearing",
+        "room": "SD-430",
+        "date": "2026-07-29",
+        "cable_channel": null,
+        "subcommittee": "Employment and Workplace Safety Subcommittee"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_11e06e3bb86d732a",
+      "dedup_key": "hearing:senate:338687#scheduled",
+      "object_key": "hearing:senate:338687",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Indian Affairs Committee set an open hearing for Wednesday, July 29, at 2:30 p.m. Eastern",
+      "official_text": "Hearings to examine S.3573, to amend the Aamodt Litigation Settlement Act to modify a provision relating to the extension of certain dates for the completion of the Regional Water System, S.3617, to approve the settlement of water rights claims of the Yavapai-Apache Nation in the State of Arizona, to authorize construction of a water project relating to those water rights claims, S.4368, to approve the settlement of the water rights claims of the Agua Caliente Band of Cahuilla Indians, S.4417, to amend the Pechanga Band of Luiseno Mission Indians Water Rights Settlement Act to make technical corrections, and S.4890, to amend the Infrastructure Investment and Jobs Act to establish subaccounts in the Indian Water Rights Settlement Completion Fund.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-29T18:30:00Z",
+        "source_published_at": "2026-07-22T19:28:50Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SLIA00",
+          "name": "Indian Affairs"
+        }
+      ],
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:s:3573"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3617"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4368"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4417"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4890"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=indian&filename=indian072926",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SLIA00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-628",
+        "date": "2026-07-29",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e35556e2c604975a",
+      "dedup_key": "hearing:senate:338685#scheduled",
+      "object_key": "hearing:senate:338685",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Aging Committee set an open hearing for Wednesday, July 29, at 3:30 p.m. Eastern",
+      "official_text": "Hearings to examine the AI deception machine, focusing on deepfakes, chatbots, and the new frontier of senior fraud.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-29T19:30:00Z",
+        "source_published_at": "2026-07-22T17:09:47Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SPAG00",
+          "name": "Aging"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=aging&filename=aging072926",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SPAG00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-562",
+        "date": "2026-07-29",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_74ab751fc48715a0",
+      "dedup_key": "hearing:senate:338690#scheduled",
+      "object_key": "hearing:senate:338690",
+      "event_type": "markup.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Judiciary Committee set a business meeting for Thursday, July 30, at 9:00 a.m. Eastern",
+      "official_text": "Business meeting to consider the nomination of Todd Blanche, of Florida, to be Attorney General.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T13:00:00Z",
+        "source_published_at": "2026-07-23T21:03:32Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSJU00",
+          "name": "Judiciary"
+        }
+      ],
+      "related": [
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1078"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=judiciary&filename=judiciary073026",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSJU00",
+        "meeting_type": "Open Business Meeting",
+        "room": "SH-216",
+        "date": "2026-07-30",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9d36622db2912b2a",
+      "dedup_key": "hearing:senate:338684#scheduled",
+      "object_key": "hearing:senate:338684",
+      "event_type": "markup.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Health, Education, Labor, and Pensions Committee set a business meeting for Thursday, July 30, at 9:45 a.m. Eastern",
+      "official_text": "Business meeting to consider an original bill entitled \"Special Education Administration Protection Act\", S.5046, to prohibit the transfer of certain offices and functions of the Department of Education to other Federal agencies, S.2511, to establish a postsecondary student data system, S.3010, to amend the Individuals with Disabilities Education Act to improve provisions relating to dyslexia, S.3589, to amend the Higher Education Act of 1965 to provide students with disabilities and their families with access to critical information needed to select the right college and succeed once enrolled, S.4097, to establish that a State-based education loan program is excluded from certain requirements relating to a preferred lender arrangement, S.4689, to strengthen literacy outcomes for all students, to amend the comprehensive literacy State development grant program, and to ensure Federal accountability and investment in research, teacher preparation, and evidence-based instruction aligned with the science of reading, S.3333, to modify the eligibility requirements and account contribution maximum for pension-linked emergency savings accounts, S.4965, to amend the Railroad Retirement Act of 1974 to establish a Railroad Retirement Board Administrative Account, S.3097, to provide additional protections with respect to health information, and the nominations of Sean Kaufman, of Georgia, to be Assistant Secretary for Preparedness and Response, Department of Health and Human Services, and Keith Sonderling, of Florida, to be Secretary of Labor.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T13:45:00Z",
+        "source_published_at": "2026-07-23T13:39:41Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSHR00",
+          "name": "Health, Education, Labor, and Pensions"
+        }
+      ],
+      "related": [
+        {
+          "rel": "about",
+          "key": "nomination:119:PN1129"
+        },
+        {
+          "rel": "about",
+          "key": "nomination:119:PN937-3"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:2511"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3010"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3097"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3333"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:3589"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4097"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4689"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:4965"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:s:5046"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSHR00",
+        "meeting_type": "Open Business Meeting",
+        "room": "SD-430",
+        "date": "2026-07-30",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_50c3c5491e74c666",
+      "dedup_key": "hearing:senate:338689#scheduled",
+      "object_key": "hearing:senate:338689",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "A Senate Commerce, Science, and Transportation subcommittee (SSCM34) set an open hearing for Thursday, July 30, at 10:00 a.m. Eastern",
+      "official_text": "Hearings to examine intelligent networks, focusing on powering artificial intelligence and transforming communications.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T14:00:00Z",
+        "source_published_at": "2026-07-23T20:55:40Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSCM34",
+          "name": "Commerce, Science, and Transportation"
+        }
+      ],
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/?comm=commerce&filename=commerce073026",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSCM34",
+        "meeting_type": "Open Hearing",
+        "room": "SR-253",
+        "date": "2026-07-30",
+        "cable_channel": null,
+        "subcommittee": "Telecommunications and Media Subcommittee"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4b4b610dc2911679",
+      "dedup_key": "hearing:senate:338688#scheduled",
+      "object_key": "hearing:senate:338688",
+      "event_type": "hearing.scheduled",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7"
+      ],
+      "title": "Senate Foreign Relations Committee set an open hearing for Thursday, July 30, at 10:30 a.m. Eastern",
+      "official_text": "Hearings to examine pending nominations.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "committee_meeting"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-07-30T14:30:00Z",
+        "source_published_at": "2026-07-23T19:43:51Z",
+        "first_seen_at": "2026-10-03T14:23:19.403Z"
+      },
+      "actors": [
+        {
+          "role": "committee",
+          "id": "committee:SSFR00",
+          "name": "Foreign Relations"
+        }
+      ],
+      "result": {
+        "cmte_code": "SSFR00",
+        "meeting_type": "Open Hearing",
+        "room": "SD-419",
+        "date": "2026-07-30",
+        "cable_channel": null
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/general/committee_schedules/hearings.xml",
+          "retrieved_at": "2026-10-03T14:23:19.403Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.schedule",
+    "endpoint": "hearings",
+    "status": "ok",
+    "detail": "9 meetings; 1 placeholder skipped; 2 stream link(s) withheld (placeholder or another day's date); 1 matter text(s) cut to 4000 characters",
+    "items_seen": 10
+  }
+}

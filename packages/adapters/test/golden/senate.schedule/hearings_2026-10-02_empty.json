@@ -1,0 +1,10 @@
+{
+  "events": [],
+  "health": {
+    "source_id": "senate.schedule",
+    "endpoint": "hearings",
+    "status": "empty",
+    "detail": "no committee meetings scheduled (the placeholder row only)",
+    "items_seen": 1
+  }
+}

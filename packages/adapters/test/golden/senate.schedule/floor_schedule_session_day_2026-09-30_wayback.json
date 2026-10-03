@@ -1,0 +1,65 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_d1a78098e6fc2619",
+      "dedup_key": "floor_day:senate:2026-09-30#scheduled_convene",
+      "object_key": "floor_day:senate:2026-09-30",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F7",
+        "F1"
+      ],
+      "title": "The Senate is next due to meet on Wednesday, September 30, at 10:15 a.m. Eastern",
+      "official_text": "conveneYear 2026 conveneMonth 09 conveneDay 30 conveneHour 10 conveneMinutes 15",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-09-30T14:15:00Z",
+        "source_published_at": "2026-09-30T00:17:00Z",
+        "first_seen_at": "2026-10-03T14:23:42.026Z"
+      },
+      "media": [
+        {
+          "kind": "video_live",
+          "url": "https://www.senate.gov/isvp/stv.html?type=live&comm=stv&filename=stv093026",
+          "is_live": false,
+          "provider": "senate.gov ISVP"
+        }
+      ],
+      "result": {
+        "convene_date": "2026-09-30",
+        "stream_filename": "stv093026"
+      },
+      "sources": [
+        {
+          "source_id": "senate.schedule",
+          "url": "https://www.senate.gov/legislative/schedule/floor_schedule.json",
+          "retrieved_at": "2026-10-03T14:23:42.026Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_schedule@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.schedule",
+    "endpoint": "floor",
+    "status": "ok",
+    "detail": "next convene 2026-09-30 (2026-09-30T14:15:00Z)",
+    "items_seen": 1
+  }
+}
