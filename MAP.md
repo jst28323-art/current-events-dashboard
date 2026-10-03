@@ -35,7 +35,7 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | Event store, merge/revision rule, payload rules, API cursor, latency ledger, per-endpoint poll state, request claim (HubDO) | `workers/api/src/hub.ts`, `workers/api/src/merge.ts`; the stub helper `workers/api/src/hub_ref.ts`; the validation fast path for stored-equal copies `workers/api/src/fastpath.ts` (D-050) |
 | Poll loop and polite-polling constants (UA, cache-buster, timeout, backoff incl. drift, business hours, budget per source with the peak-fit bound `peakRequestsPerHour`, per-endpoint cadence and stale threshold (D-049), code-version body key) | `workers/api/src/poll.ts`, `workers/api/src/policy.ts` |
 | Public read API routes, CORS, JSON Feed | `workers/api/src/http.ts` |
-| The temporary P1.3 probe Worker `ced-probe` (reachability, validators, CPU limit, alarm jitter, measured from Cloudflare) | `workers/probe/` (once deployed: `GET https://ced-probe.<account subdomain>.workers.dev/results`, and `/results/sources.md` for the SOURCES table) |
+| The temporary P1.3 probe Worker `ced-probe` (reachability, validators, CPU limit, alarm jitter, measured from Cloudflare) | `workers/probe/` (deployed: `GET https://ced-probe.usgovfeed.workers.dev/results`, and `/results/sources.md` for the SOURCES table; the full JSON is kept after the run at `docs/research/probe_<date>.json`, ROADMAP P1.3) |
 | The web app (Vite + Preact feed; built and deployed by `.github/workflows/pages.yml`) | `apps/web/` (pure logic `apps/web/src/lib/`, polling state machine `apps/web/src/poller.ts`) |
 | Web end-to-end tests (Playwright, Chromium + WebKit, route-mocked API, events built from `fixtures/`) | `apps/web/e2e/` + `apps/web/playwright.config.ts` (screenshots go to `scratch/screens/`, gitignored; WebKit's are named `webkit-*.png`; a local run's full JSON report: `scratch/e2e-last.json`) |
 | e2e helpers: the form factor read from the project's emulation, never its name; the screenshot-capture retry; the Node PNG decoder behind the contrast checks | `apps/web/e2e/project.ts`, `apps/web/e2e/shot.ts`, `apps/web/e2e/png.ts` (D-051, D-052) |
@@ -66,6 +66,7 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | Handoff shape lint | `scripts/handoff_lint.mjs` |
 | Dead-path check for living docs | `scripts/check_paths.mjs` |
 | Record a fixture | `scripts/record_fixture.mjs` |
+| Phase 1 exit criterion 3 from the live API (per business day: PI documents, White House items, PI latency n and median) | `scripts/ledger_report.mjs` |
 | Record a live congressional session day as fixtures (D-033; `--smoke` checks reachability only) | `scripts/capture_live.mjs` |
 | The wrapper the one-time Windows scheduled task runs (D-033, G-011; log in `scratch/capture_task.log`) | `scripts/capture_task.cmd` |
 | Post-deploy check of the live API (TESTING.md layer 6) | `scripts/deployed_check.mjs` |

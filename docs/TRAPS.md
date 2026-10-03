@@ -207,6 +207,11 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   `--dry-run` to a side branch. Anything that must fetch upstream on a schedule runs on Cloudflare or on the home PC
   (D-033), never in a cloud routine; and a smoke check must fail on 403, not count it as "reachable" (fixed in
   `scripts/capture_live.mjs`).
+- **The Windows scheduled task for the D-033 capture runs only while the owner is signed in on this PC** (2026-10-03,
+  `schtasks /query /xml`: LogonType InteractiveToken, "Interactive only", no WakeToRun; StartWhenAvailable is set, so a
+  late sign-in before the task's end boundary still starts it). If the PC is off, asleep or signed out for the whole
+  window, nothing is recorded and the day cannot be recorded again. The run's final snapshots are taken right after
+  its `--until` time, so read `scratch/capture_task.log` only once it ends with an "exit" line (cold-start r3).
 - **Where Claude Code is launched decides what the repo's `.claude/` does.** Launched from the repo directory, the hooks
   in `.claude/settings.json` fire (ship_state at session start, the push guard, the dirty-handoff warning) and workflows
   resolve by name. Launched from the parent `C:\Users\j\claude` (as the canonical prompt implies), those hooks do NOT

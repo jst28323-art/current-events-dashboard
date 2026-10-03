@@ -52,9 +52,14 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   Object alarm CPU limit on Free (a deliberate ~20 ms busy loop) and alarm timing jitter. Results go into
   `docs/SOURCES.md` ("CF reachable", "parse CPU") and DECISIONS rows (which sources must move to the home PC; whether
   the free CPU limit binds).
-  (2026-10-02: code and tests landed in 83ea2b6 (`workers/probe`, method D-042); deploy waits on P1.1 (Cloudflare
-  secrets). Done when ced-probe has run (up to 48 runs, ~24 h), the table is in `docs/SOURCES.md` "Cloudflare probe" and
-  the two DECISIONS rows exist.)
+  (2026-10-03: deployed; first cron run 2026-10-03 01:01Z (method D-042). Done when ced-probe has stopped
+  (`cron.stopped` true in `/results`), its full `/results` JSON is committed as `docs/research/probe_<date>.json`, the
+  table is in `docs/SOURCES.md` "Cloudflare probe" and the two DECISIONS rows exist. The CPU-limit row's cross-check
+  against Workers Observability cpuTime (D-042), and the HubDO's cpuTime (W10, P1.5), can only be read in the
+  Cloudflare dashboard (no Cloudflare credential lives on this PC: ask the owner, with the exact clicks), and the free
+  plan's Workers Logs keep about 3 days (docs/research/architecture_hosting_frontend.md; unverified for this account),
+  so ask by 2026-10-06. If that is missed, write the row from the probe's own started/done evidence and say the
+  cross-check was not made.)
 - [x] **P1.4 Adapters** (done 2026-10-02 in 83ea2b6: `fr.api` and `wh.feeds` registered in
   `packages/adapters/src/registry.ts`, golden fixture tests, NEGATIVE / empty / drift cases, adversarial review fixed;
   mappings D-034 and D-035. O1 closed 2026-10-03 (D-047): `documents_newest` reads a whole daily issue in one page, on its own cadence (page size and cadence: `docs/SOURCES.md` row `fr.api`).) (needs no account; may run before P1.3; each via the `add-source` skill, pure functions with
@@ -87,8 +92,9 @@ shows "live data unavailable", never an empty feed. (5) The probe table is in `d
 
 Exit status (2026-10-03): (1) MET (gate green locally and in CI; the four named tests exist). (2) MET (D-044).
 (4) MET (`apps/web/e2e/fail-closed.spec.ts`). (3) OPEN: needs two business days of live polling; the first are
-Mon 2026-10-05 and Tue 2026-10-06 (PI regular filings 08:45 ET). Read it from `/api/v1/status` (items_24h,
-median_latency_s) and record n and the median here. (5) OPEN: ced-probe runs ~24 h from 2026-10-03 01:00Z (48 runs);
+Mon 2026-10-05 and Tue 2026-10-06 (PI regular filings 08:45 ET). Measure it with `node scripts/ledger_report.mjs --days 2026-10-05,2026-10-06`
+(it pages the whole event history: `/api/v1/status` is a rolling 24 h with no n and cannot answer this; cold-start r3)
+and record its PASS/FAIL lines, n and the medians here. (5) OPEN: ced-probe runs ~24 h from 2026-10-03 01:00Z (48 runs);
 then copy `/results` into `docs/SOURCES.md` "Cloudflare probe" and write the two DECISIONS rows (D-042).
 
 ## Phase 2 — Congress pipelines on fixtures + real-time plumbing

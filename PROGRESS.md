@@ -5,6 +5,30 @@ entry; correct it with a new one. Rotate the oldest entries to `PROGRESS_ARCHIVE
 
 ---
 
+## #6 — 2026-10-03 — cold-start r3 PASS on page #2; the 500-document FR page verified live; r3 backlog fixed in the tree
+
+**Cold-start round r3** (page #2, `docs/coldstart/r3/`, tree untouched while it ran): routing PASS (3/3 resumers named
+the same first action: one AskUserQuestion with a PushNotification, then wait for the data), content PASS (0 false
+claims). The page was not edited afterwards; its backlog was fixed in the TREE:
+- Exit criterion 3 had no workable recipe (`/api/v1/status` is a rolling 24 h with no n): new
+  `scripts/ledger_report.mjs` pages the whole event history and prints, per Eastern business day, PI documents, White
+  House items and the PI latency (n, median) with PASS/FAIL (harness tests; run live: 639 events; 2026-10-02 FAILs as it
+  should, all of it seen hours later in the first backfill). ROADMAP's exit status points to it.
+- The probe's CPU-limit cross-check and the HubDO's cpuTime (W10) can only be read in the Cloudflare dashboard (the
+  owner), and free Workers Logs keep about 3 days: ROADMAP P1.3 now says ask by 2026-10-06, and what to write if missed.
+  The probe JSON's home is `docs/research/probe_<date>.json` (ROADMAP P1.3, MAP).
+- TRAPS: the Monday task runs only while the owner is signed in; read its log only once it ends with an "exit" line.
+- Stale notes fixed: SOURCES probe section, ARCHITECTURE status, MAP probe row, ROADMAP P1.3 note.
+
+**Live checks** (read-only, 2026-10-03): the first fetch of the 500-document page landed by 05:15Z: fr.api ok
+("documents_newest: 500 newest published documents"); the newest 500 events are the newest items, then the Oct 2
+issue, then the backfilled issues in date order (no "first seen" flood). First live White House latency, n=1: a Fact
+Sheet posted 03:01:43Z (its RSS pubDate) was first seen 03:26:00Z (24 min, polled every 60 s), so the delay is upstream
+(the feed is CDN-cached; WordPress feeds can lag). One sample: measure before concluding anything.
+
+---
+
+
 ## #5 — 2026-10-03 — Phase 1 polish (D-046): whole daily FR issues, WebKit e2e, HubDO fast path, one order rule
 
 **Asked for:** the owner chose "Keep polishing Phase 1" (D-046) over wrapping up or starting Phase 2 early.

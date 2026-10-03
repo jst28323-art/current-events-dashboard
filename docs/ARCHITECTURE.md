@@ -1,9 +1,9 @@
 # ARCHITECTURE
 
 Status: **chosen 2026-10-02 (agent recommendation from the research, within the owner's constraints D-001 $0,
-D-002 public, D-003 home PC, D-013 address open).** As of 2026-10-02 (83ea2b6) the Phase 1 slice is built and tested
-but not deployed (the Cloudflare account does not exist yet, ROADMAP P1.1): a 1-minute cron poller, the HubDO and the
-read API v0 in `workers/api`, the web page in `apps/web`. PollerDOs, alarms, WebSockets, alerts, ingest and the home PC
+D-002 public, D-003 home PC, D-013 address open).** As of 2026-10-03 the Phase 1 slice is built, tested and deployed
+(ced-api since 2026-10-03 00:49Z; ROADMAP Phase 1): a 1-minute cron poller, the HubDO and the read API v0 in
+`workers/api`, the web page in `apps/web`. PollerDOs, alarms, WebSockets, alerts, ingest and the home PC
 are not built. Evidence:
 `docs/research/architecture_hosting_frontend.md` (§6 candidates, §2 live measurements) and
 `docs/research/live_media_transcripts.md` (§6 transcript design). Paths marked (planned) are created by the phase that

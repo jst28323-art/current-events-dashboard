@@ -1,0 +1,289 @@
+{
+  "round": 3,
+  "page_n": 2,
+  "sha": "7b5c87a875fa",
+  "date": "2026-10-03",
+  "n_resumers": 3,
+  "routing_verdict": "PASS",
+  "content_verdict": "PASS",
+  "routing_axes": {
+    "first_actions_agree": true,
+    "compare_note": "All three agents name the same first action, from HANDOFF.md NEXT ACTION step 1: one batched multiSelect AskUserQuestion sent with a PushNotification. Agent 3 also says the first data command after that is the probe curl, once cron.stopped is true. That is a later step, so it does not change the first action. Agents 1 and 2 say the session then records what is still waiting and stops. That is also after the first action. All three agree that steps 2-4 have no data yet, which is why the question goes first.",
+    "heads_ok": true,
+    "could_execute_all": true,
+    "page_blockers": 0,
+    "resumer_fails": 0
+  },
+  "first_actions": [
+    {
+      "lens": "straight",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification — HANDOFF.md NEXT ACTION step 1: \"Ask first ... one AskUserQuestion (with a PushNotification) for anything the repo does not answer\"",
+      "what": "Send the owner one batched multiSelect AskUserQuestion with a PushNotification. Step 1 of NEXT ACTION puts it first. Also, at 2026-10-03 04:47Z none of steps 2-4 has data yet: the probe is at run 8 of 48, Monday's capture has not run, and the latency read waits until Tuesday evening. So the questions are the only work available now; after them the session records what is still waiting and stops.",
+      "head": "7b5c87a",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "skeptic",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification — HANDOFF.md NEXT ACTION step 1: \"Ask first, as the canonical prompt says: one AskUserQuestion (with a PushNotification) for anything the repo does not answer.\"",
+      "what": "Send one multiselect AskUserQuestion with a PushNotification. It comes first because the page orders it first, and at about 2026-10-03 04:50Z none of the later steps has data yet. The probe has done 8 of 48 runs and finishes around 2026-10-04 01:00Z. Monday's capture and Tuesday's latency are days away. So after asking, the session records what is still waiting and stops with the handoff skill.",
+      "head": "7b5c87a",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "executor",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification [HANDOFF.md:39-40 NEXT ACTION step 1]; then, once cron.stopped is true (from 2026-10-04 ~01:00Z): curl -s https://ced-probe.usgovfeed.workers.dev/results",
+      "what": "The first action is one multiselect AskUserQuestion with a PushNotification, as NEXT ACTION step 1 and the canonical prompt require. It also has to come first because at 2026-10-03 ~05:00Z none of the data for steps 2-4 exists yet (probe from 10-04 ~01:00Z, capture Mon 16:30 CT, latency Tue 18:00 ET), so the owner decides what the session does until then. After that, the first data command is the probe GET.",
+      "head": "7b5c87a",
+      "verdict": "PASS-WITH-NOTES"
+    }
+  ],
+  "blocking": [],
+  "blocking_offpage": [
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The page and ROADMAP give different methods for reading exit criterion 3. Following ROADMAP's method with /api/v1/status alone cannot settle the criterion: status is a rolling 24-h window, so Monday is gone by Tue 18:00 ET. It has no n field. Its items_24h counts every fr.api first sighting, including published FR documents and backfill, so it cannot show 'at least 5 PI documents per business day'. The page's method (per business day, from /api/v1/events) is the one that works. Neither file says that getting Monday back from /api/v1/events needs since= paging (D-037).",
+      "where": "HANDOFF.md:48-50 \"from `/api/v1/status` and `/api/v1/events`, count Public Inspection documents and White House items per business day and the PI median of `first_seen_at` minus the filing slot (n)\" vs docs/ROADMAP.md:90-91 \"Read it from `/api/v1/status` (items_24h, median_latency_s) and record n and the median here.\"",
+      "evidence": "D-039 (docs/DECISIONS.md:49): 'median_latency_s covers the last 24 h ... items_24h counts every first sighting in the last 24 h, backfill included'. Live GET /api/v1/status at 04:53Z returned only items_24h and median_latency_s per source, with no n. D-037 (DECISIONS.md:47): without since=, the API returns only the newest <=500 events.",
+      "lens": "skeptic"
+    }
+  ],
+  "backlog": [
+    {
+      "severity": "MAJOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "Step 2 says to write the 'free CPU limit binds' DECISIONS row by doing what D-042 says. D-042 requires a cross-check against Workers Observability cpuTime, and the HubDO cpuTime (W10) is also owed. The page never says this is dashboard-only, so it needs the owner (no Cloudflare credential on this PC). It also never says Free Workers Logs keep only about 3 days. A session that first runs after about Oct 6 loses the cross-check for good.",
+      "where": "HANDOFF.md:41-44 ('Do what D-042's \"binds\" column ... write the two DECISIONS rows') and HANDOFF.md:21-22 ('Cloudflare CPU of the HubDO is unmeasured') vs docs/DECISIONS.md:52 D-042 ('cross-checked with Workers Observability cpuTime')",
+      "evidence": "docs/research/architecture_hosting_frontend.md:661 'Free: \"200,000 per day\", \"3 Days\" retention'; .github/workflows/deploy.yml header 'No Cloudflare credential lives on any PC'; workers/probe/src/do.ts:71 'Workers Observability (dashboard -> ced-probe -> Observability)'",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "'Keep the full JSON in the repo' gives no path. The page attributes it to D-042 and ROADMAP P1.3, but neither says it, and SOURCES.md says the raw JSON stays on the Worker.",
+      "where": "HANDOFF.md:42-43 'keep the full JSON in the repo' vs docs/SOURCES.md:54-55 'The raw measurements stay at `/results` (JSON), which the Worker keeps serving after its last run'",
+      "evidence": "D-042 binds column (DECISIONS.md:52) and ROADMAP.md:49-57 mention only the SOURCES.md table and the two DECISIONS rows",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 4 asks for per-business-day counts and the PI median with n, read once after Tue 18:00 ET. /api/v1/status covers only the last 24 h and has no n field, so on Tuesday evening it cannot give Monday. /api/v1/events without since returns at most the newest 500 events. The page does not say how to get Monday: read it Monday evening, or page from since=<epoch>.0, which hub.ts accepts but D-037 calls opaque to clients.",
+      "where": "HANDOFF.md:48-50 'after Tue 2026-10-06 18:00 ET: from /api/v1/status and /api/v1/events, count ... per business day' vs docs/ROADMAP.md:90-91 'Read it from /api/v1/status (items_24h, median_latency_s) and record n and the median here'",
+      "evidence": "D-039 (DECISIONS.md:49) 'median_latency_s covers the last 24 h'; packages/schema/src/api.ts:56-58 has items_24h and median_latency_s but no n; D-037 limit 1..500; workers/api/src/hub.ts:195 CURSOR_RE accepts seq 0",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "The page says the scheduled task will record Monday's sessions. Neither the page nor TRAPS says the task runs only if this PC is on and the owner is logged in (InteractiveToken, no WakeToRun). The owner should be told, because a missed run cannot be redone.",
+      "where": "HANDOFF.md:18-19 'a one-time Windows scheduled task on this PC that records Monday's pro forma sessions'",
+      "evidence": "schtasks /query /xml 'CED pro forma capture 2026-10-05': LogonType InteractiveToken, no WakeToRun element, StartBoundary 2026-10-05T14:45:00-05:00; Logon Mode: Interactive only",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Three adjacent steps use three clocks (Z, CT, ET). '2026-10-04 ~01:00Z' is Saturday evening local time and is easy to misread as Sunday. The AS-OF date is the UTC date, while the local date at writing (and the harness date) is 2026-10-02.",
+      "where": "HANDOFF.md:3 'AS-OF 2026-10-03'; HANDOFF.md:41 'from 2026-10-04 ~01:00Z'; :45 'after Mon 2026-10-05 16:30 CT'; :48 'after Tue 2026-10-06 18:00 ET'",
+      "evidence": "date: Fri Oct 2 23:47 CDT = Sat Oct 3 04:47Z; HANDOFF.md mtime Oct 2 23:39 local",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The SOURCES.md probe section still says nothing is deployed and the probe is waiting on secrets. The probe has been live since 2026-10-03 and is at run 8 of 48. The '<account subdomain>' placeholder remains even though the subdomain is usgovfeed (D-027).",
+      "where": "docs/SOURCES.md:52 'Nothing is deployed as of 2026-10-02: the probe waits on the Cloudflare secrets (ROADMAP P1.1)' vs docs/ROADMAP.md:35-36 'the first deploy-workers run (1d42eab) deployed ced-api and ced-probe to usgovfeed.workers.dev'; also docs/SOURCES.md:53 and MAP.md:38 '<account subdomain>'",
+      "evidence": "GET https://ced-probe.usgovfeed.workers.dev/ -> status {cron_runs: 8, max_cron_runs: 48, stopped: false} at 2026-10-03T04:54Z",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The P1.3 note says the deploy is waiting on P1.1. P1.1 is ticked in the same file, and it says ced-probe is deployed.",
+      "where": "docs/ROADMAP.md:55-56 'deploy waits on P1.1 (Cloudflare secrets)' vs docs/ROADMAP.md:34-36 '(Done 2026-10-03 ... deployed ced-api and ced-probe to usgovfeed.workers.dev'",
+      "evidence": "live probe status at run 8 of 48",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The owner's auto-memory index (outside the repo) describes the project as 'groundwork 2026-10-02; Phase 1 next', but Phase 1 is live on the owner's phone.",
+      "where": "C:/Users/j/.claude/projects/C--Users-j-claude/memory/MEMORY.md 'current-events-dashboard - live US-gov feed; groundwork 2026-10-02; Phase 1 next' vs HANDOFF.md:8 'Phase 1 is live on the owner's phone'",
+      "evidence": "D-044 (DECISIONS.md:54) exit criterion 2 met; PROGRESS.md #4/#5",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The page and ROADMAP give different methods for reading exit criterion 3. Following ROADMAP's method with /api/v1/status alone cannot settle the criterion: status is a rolling 24-h window, so Monday is gone by Tue 18:00 ET. It has no n field. Its items_24h counts every fr.api first sighting, including published FR documents and backfill, so it cannot show 'at least 5 PI documents per business day'. The page's method (per business day, from /api/v1/events) is the one that works. Neither file says that getting Monday back from /api/v1/events needs since= paging (D-037).",
+      "where": "HANDOFF.md:48-50 \"from `/api/v1/status` and `/api/v1/events`, count Public Inspection documents and White House items per business day and the PI median of `first_seen_at` minus the filing slot (n)\" vs docs/ROADMAP.md:90-91 \"Read it from `/api/v1/status` (items_24h, median_latency_s) and record n and the median here.\"",
+      "evidence": "D-039 (docs/DECISIONS.md:49): 'median_latency_s covers the last 24 h ... items_24h counts every first sighting in the last 24 h, backfill included'. Live GET /api/v1/status at 04:53Z returned only items_24h and median_latency_s per source, with no n. D-037 (DECISIONS.md:47): without since=, the API returns only the newest <=500 events.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "The page never says who reads Workers Observability cpuTime, or by when. Step 2 says to do what D-042's binds column says, and D-042 cross-checks the CPU-limit row against Observability cpuTime. The page's Open list also has the HubDO CPU unmeasured. No Cloudflare credential lives on this PC, so the owner has to do it. Free-plan Workers Logs keep only 3 days, so the probe's first-run alarm data (2026-10-03 01:00Z) ages out around 2026-10-06 01:00Z, before step 4's Tuesday window.",
+      "where": "HANDOFF.md:42 \"Do what D-042's 'binds' column and ROADMAP P1.3 say\" + HANDOFF.md:21-22 \"Cloudflare CPU of the HubDO is unmeasured\"; docs/DECISIONS.md:52 (D-042) \"(cross-checked with Workers Observability cpuTime)\"",
+      "evidence": "docs/research/architecture_hosting_frontend.md:661 'Free: \"200,000 per day\", \"3 Days\" retention'. D-026 (DECISIONS.md:36): 'No Cloudflare credential lives on this PC.' ROADMAP.md:72-73: 'Still to do: read the HubDO's cpuTime in Workers Observability after the deploy.'",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "PROGRESS #5 hands a live check to the next session, and the NEXT ACTION has no step for it. The check is whether fr.api documents_newest's first 500-document fetch (D-047) worked on Cloudflare. It also tests the CPU cost of a re-ingest (W10).",
+      "where": "PROGRESS.md:37 \"The first fetch of the big FR page waits for its hourly overnight cadence (see #6 or the next session).\" vs HANDOFF.md:34-52 (no step covers it)",
+      "evidence": "Live /api/v1/status at 2026-10-03T04:53Z: fr.api last_success_at 04:15:01Z. That is the stalest endpoint's success (D-039/D-049), and it is earlier than the ~04:23Z deploy, so documents_newest had not polled since the deploy. PROGRESS has no #6.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The page says to 'keep the full JSON in the repo' and credits this to D-042 and ROADMAP P1.3, but neither says it, and no path is given. SOURCES.md says the raw JSON stays on the Worker at /results, and MAP has no row for a committed copy. The resumer has to pick a location (fixtures/? docs/research/?).",
+      "where": "HANDOFF.md:42-43 \"Do what D-042's 'binds' column and ROADMAP P1.3 say: keep the full JSON in the repo\" vs docs/DECISIONS.md:52 \"Results go to docs/SOURCES.md 'Cloudflare probe'; after the run, two agent rows filled only from `/results`\" and docs/SOURCES.md:53-54 \"The raw measurements stay at `/results` (JSON), which the Worker keeps serving after its last run.\"",
+      "evidence": "I read D-042 in full (DECISIONS.md:52) and ROADMAP P1.3 (ROADMAP.md:49-57); neither mentions committing the JSON. MAP.md:38 has only the Worker URL.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The SOURCES probe section still says the probe has not run and nothing is deployed. ced-probe has been deployed and running since 2026-10-03.",
+      "where": "docs/SOURCES.md:49 \"## Cloudflare probe (ROADMAP P1.3): not run yet\" and :52 \"Nothing is deployed as of 2026-10-02: the probe waits on the Cloudflare secrets (ROADMAP P1.1).\" vs docs/ROADMAP.md:34-36 \"the first deploy-workers run (1d42eab) deployed ced-api and ced-probe\"",
+      "evidence": "GET https://ced-probe.usgovfeed.workers.dev/ at 04:53Z -> status {cron_runs: 8, max_cron_runs: 48, stopped: false}",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The ARCHITECTURE status line still says the Phase 1 slice is not deployed and the Cloudflare account does not exist.",
+      "where": "docs/ARCHITECTURE.md:4-5 \"the Phase 1 slice is built and tested but not deployed (the Cloudflare account does not exist yet, ROADMAP P1.1)\" vs HANDOFF.md:10 \"The feed is live: the Cloudflare Worker `ced-api` polls the Federal Register and the White House news feed\"",
+      "evidence": "Live GET https://ced-api.usgovfeed.workers.dev/api/v1/status returned both sources polling at 2026-10-03T04:53Z; ROADMAP.md:25 P1.1 is ticked.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "Two dated notes were not updated after the deploy. ROADMAP's P1.3 note still says the deploy waits on P1.1, and MAP still says 'once deployed' with the subdomain as a placeholder.",
+      "where": "docs/ROADMAP.md:55-56 \"deploy waits on P1.1 (Cloudflare secrets)\" vs docs/ROADMAP.md:25 \"- [x] **P1.1 Accounts\" ; MAP.md:38 \"once deployed: `GET https://ced-probe.<account subdomain>.workers.dev/results`\" vs HANDOFF.md:41 \"`https://ced-probe.usgovfeed.workers.dev/results`\"",
+      "evidence": "I read both files. D-027 (DECISIONS.md:37) fixes the subdomain as usgovfeed.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "'after Mon 2026-10-05 16:30 CT' is the capture's --until time, but capture_live.mjs records its final snapshots after --until, and the task's EndBoundary is 17:00 CT. Reading the log at 16:30 could catch the run mid-way. The page also does not say the task runs only while the owner is logged in (LogonType InteractiveToken, no WakeToRun). The step-1 ask is the only chance to tell the owner that.",
+      "where": "HANDOFF.md:45 \"after Mon 2026-10-05 16:30 CT\" vs scripts/capture_live.mjs header (\"at the end /broadcastevents/<yyyymmdd>, /floor/<date>, /transcripts/<date>\") and the scheduled task's EndBoundary 2026-10-05T17:00:00",
+      "evidence": "schtasks /query /xml: StartBoundary 2026-10-05T14:45:00-05:00, EndBoundary 2026-10-05T17:00:00, LogonType InteractiveToken, StartWhenAvailable true, args --until 2026-10-05T21:30:00Z --max-run-s 7200.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MAJOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Exit criterion 3 has no workable measurement recipe. /api/v1/status has no n, it covers a rolling 24 h, and fr.api items_24h counts PI and published documents together. Read after Tue 18:00 ET it no longer includes Monday. /api/v1/events without since returns only the newest <=500 events. Paging from since=<epoch>.0 works (hub.ts:605-609 accepts seq 0), but nothing documents it, and the D-039 exclusions (backfill, negative latencies) would have to be re-applied by hand.",
+      "where": "HANDOFF.md:48-50 'after Tue 2026-10-06 18:00 ET: from `/api/v1/status` and `/api/v1/events`, count Public Inspection documents and White House items per business day and the PI median ... (n)' vs docs/ROADMAP.md:90-91 'Read it from `/api/v1/status` (items_24h, median_latency_s) and record n and the median here.'",
+      "evidence": "packages/schema/src/api.ts:56-58 (status row has only items_24h and median_latency_s, 'over the last 24 h'); D-039 'items_24h counts every first sighting in the last 24 h, backfill included'; D-037 'Without since: the newest `limit` events'; live 2026-10-03 05:15Z fr.api items_24h jumped 128 -> 608 when the 500-document published page landed, so items_24h is not a PI count",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "The page drops PROGRESS #5's pointer to check the first Cloudflare fetch of the 500-document FR page, which the next session was meant to do. A Free-plan CPU overrun in the cron isolate would have hurt Monday's exit-3 day, and only step 4 (Tuesday evening) would have noticed. Checked live: the fetch succeeded, so this was downgraded from MAJOR.",
+      "where": "PROGRESS.md #5 'The first fetch of the big FR page waits for its hourly overnight cadence (see #6 or the next session).' vs HANDOFF.md:21-22 (only 'Cloudflare CPU of the HubDO is unmeasured') and HANDOFF.md:38-52 (no step checks fr.api health)",
+      "evidence": "GET /api/v1/status: 04:53Z fr.api items_24h 128, last_success_at 04:15:01Z (pre-deploy); 05:15:53Z fr.api ok 'documents_newest: 500 newest published documents', items_24h 608, error_streak 0, stale false. workers/api/src/poll.ts:1-4 says parsing runs in the cron isolate ('Workers Free: ~10 ms CPU per invocation')",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Where the probe's full JSON goes is unclear. The page says to keep it in the repo but gives no path. SOURCES says the JSON stays at /results and only the Markdown table is pasted. ROADMAP says to copy /results into SOURCES.md. MAP has no row for it.",
+      "where": "HANDOFF.md:42-43 'keep the full JSON in the repo, fill the \"Cloudflare probe\" section of `docs/SOURCES.md`' vs docs/SOURCES.md:53-55 'paste the body of GET .../results/sources.md here ... The raw measurements stay at /results (JSON), which the Worker keeps serving after its last run' vs docs/ROADMAP.md:91-92 'then copy `/results` into `docs/SOURCES.md` \"Cloudflare probe\"'",
+      "evidence": "grep of MAP.md: no row names a home for probe results JSON",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "The Workers Observability cpuTime cross-check (D-042 binds; ROADMAP P1.5 'still to do') needs the owner, because no Cloudflare credential lives on this PC. Free Workers Logs keep 3 days, so the probe's first-run logs expire around 2026-10-06 01:00Z, before step 4's Tuesday-evening slot. The page says neither.",
+      "where": "docs/DECISIONS.md:52 (D-042 binds '...cross-checked with Workers Observability cpuTime') and docs/ROADMAP.md:72-73 'Still to do: read the HubDO's cpuTime in Workers Observability after the deploy' vs docs/DECISIONS.md:36 (D-026 'No Cloudflare credential lives on this PC') and docs/research/architecture_hosting_frontend.md:661 'Free: \"200,000 per day\", \"3 Days\" retention'",
+      "evidence": "HANDOFF.md:41-44 step 2 says 'Do what D-042's \"binds\" column ... say' with no owner hand-off or deadline",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "The Monday capture task runs only while the owner is signed in ('Interactive only'). The repo never records this, and the page says the data cannot be recorded again if the task does not run.",
+      "where": "schtasks '\\CED pro forma capture 2026-10-05' 'Logon Mode: Interactive only' vs HANDOFF.md:47 'If the task did not run, say so in PROGRESS; the data cannot be recorded again.' (no mention in docs/TRAPS.md, PROGRESS #4, D-033, G-011)",
+      "evidence": "schtasks /query /fo LIST /v: Status Ready, Next Run 10/5/2026 2:45 PM, Logon Mode Interactive only, Delete Task If Not Rescheduled PT1H",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The Cloudflare probe section of SOURCES still says the probe has not run or been deployed, but ced-probe is deployed and has been running since 01:01Z.",
+      "where": "docs/SOURCES.md:49 '## Cloudflare probe (ROADMAP P1.3): not run yet' and :52 'Nothing is deployed as of 2026-10-02: the probe waits on the Cloudflare secrets' vs docs/ROADMAP.md:35-36 'the first deploy-workers run (1d42eab) deployed ced-api and ced-probe'",
+      "evidence": "GET https://ced-probe.usgovfeed.workers.dev/results?rows=0 -> cron {runs: 8, max_runs: 48, stopped: false, first_run_at: 2026-10-03T01:01:23.866Z}",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Steps 2-4 use three clocks (Z, CT, ET), and AS-OF uses the UTC date for a page written on Oct 2 local CT. The times agree, but they are easy to misread.",
+      "where": "HANDOFF.md:41 '2026-10-04 ~01:00Z', :45 'Mon 2026-10-05 16:30 CT', :48 'Tue 2026-10-06 18:00 ET', :3 'AS-OF 2026-10-03'",
+      "evidence": "date: Fri Oct 2 23:47 CDT when read; the task's --until 2026-10-05T21:30:00Z = 16:30 CT, consistent",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "A session that starts before 2026-10-04 01:00Z can only ask and stop. Step 6 still says to run the handoff skill, which means a PROGRESS entry for a session where nothing ran. That is mildly wasteful.",
+      "where": "HANDOFF.md:38 'do the ones whose data exists, record what is still waiting, and stop there' + HANDOFF.md:52 'End with the `handoff` skill'",
+      "evidence": "Session clock 2026-10-03 04:47Z; no step's data-ready time had passed",
+      "lens": "executor"
+    }
+  ],
+  "would_ask": [
+    "[straight] Cloudflare CPU cross-check needs you and has a deadline. D-042 cross-checks the 'free CPU limit binds' row against Workers Observability cpuTime, and ROADMAP P1.5 still owes the HubDO cpuTime (W10). That data is only in the Cloudflare dashboard, because no Cloudflare credential is on this PC. Free Workers Logs keep about 3 days, so the probe's first runs age out around Oct 6 01:00Z. Options: walk me through reading it between Sat evening and Mon, or skip the cross-check and write the CPU row from /results alone.",
+    "[straight] Monday's capture task runs only if this PC is on, awake, and you are logged in on Mon 2026-10-05 from 14:45 to 16:30 CT (the task is Interactive only, with no wake-to-run). Will it be? If not, the data is lost and I will say so in PROGRESS.",
+    "[straight] When should I resume? The probe results land Sat about 19:30 CT, the recordings Mon after 16:30 CT, and the latency read Tue after 17:00 CT. Options: restart me at each time, run one session Tuesday evening (this loses the Observability window, and Monday's latency would have to come from /api/v1/events paging), or something else.",
+    "[straight] What should this session do until the data exists? Options: stop now (the page's default), more Phase 1 polish (e.g. D-047 review R2, or the White House median latency of 1457 s), or start Phase 2 P2.1 on fixtures early (ROADMAP's gate rule needs your explicit OK for that).",
+    "[straight] Reminder: the disabled D-028 cloud routine still exists. Only you can delete it, at claude.ai/code/routines. Delete it?",
+    "[skeptic] When should the next session run? Nothing can be recorded before Sat 10-03 ~20:00 CT (probe done), Mon after ~17:00 CT (capture) and Tue after 17:00 CT (latency). End now and resume Tuesday evening, or also come back Saturday night for the probe?",
+    "[skeptic] D-042 cross-checks the CPU verdict against Workers Observability cpuTime, and the HubDO CPU (W10) is read there too, but no Cloudflare credential lives on this PC (D-026). Will you read cpuTime in the Cloudflare dashboard while I walk you through it? Free-plan logs keep only 3 days, so the probe's first-run alarm data ages out around 2026-10-06 01:00Z. Or should the rows be written from /results alone, with cpuTime left unmeasured?",
+    "[skeptic] The Monday capture task is 'Interactive only' (it runs only while you are logged in, and it will not wake the PC). Will you stay logged in on this PC, with no reboot, Mon 2026-10-05 from 14:45 to 17:00 CT?",
+    "[skeptic] After its 48 runs, should ced-probe stay deployed (it then only serves /results and sends no requests), or be removed? Removing it is a Cloudflare action, so it is ask-first.",
+    "[skeptic] When Phase 1's exit criteria are met, should the session start Phase 2 (P2.1) right away, or ask you again at that point?",
+    "[skeptic] The disabled D-028 cloud routine still exists, and only you can delete it at claude.ai/code/routines. Delete it or keep it?",
+    "[executor] No NEXT ACTION step has its data yet: the probe ends ~2026-10-04 01:00Z, the Monday capture after 16:30 CT, the latency check after Tue 18:00 ET. What should this session do now? (a) stop and resume Saturday evening CT for the probe step [rec]; (b) keep polishing Phase 1 (W10 Cloudflare CPU, D-047 review R2); (c) start Phase 2 adapters on fixtures early (needs your OK against the ROADMAP gate). D-046 settled this for the previous session only.",
+    "[executor] Cloudflare CPU (D-042's cpuTime cross-check, the ROADMAP P1.5 HubDO note) is visible only in your Cloudflare dashboard (Workers -> ced-api / ced-probe -> Observability), and no Cloudflare credential is on this PC (D-026). Can you read cpuTime / exceededCpu for me before ~2026-10-06 01:00Z, when Free Workers Logs (3-day retention) drop the probe's first runs? Or should a read-only analytics token be added as a secret (ask-first)?",
+    "[executor] Monday's scheduled capture task is set to 'Interactive only' (runs only while you are signed in). Will this PC be on, awake and signed in Mon 2026-10-05 14:45-16:30 CT? The Senate captions cannot be re-recorded.",
+    "[executor] The disabled D-028 cloud routine still exists at claude.ai/code/routines and only you can delete it. Delete it now, or keep it?"
+  ],
+  "content_findings": [],
+  "notes": "C:/Users/j/claude/current-events-dashboard/docs/coldstart/r3/ (copied from C:/Users/j/claude/current-events-dashboard/scratch/coldstart/r3/ at record time)"
+}

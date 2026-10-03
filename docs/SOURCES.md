@@ -46,11 +46,11 @@ Cloudflare reachability, which validator gets a 304, and parse CPU go in "Cloudf
 | `factbase` | Roll Call Factba.se presidential calendar JSON (D-017: ingest now, facts only + credit) | F7 F4 | JSON · ETag 304; file regenerated ~every 2 min | third-party | EXE, CUR |
 | `youtube.api` | YouTube Data API `videos.list` on the video id from `wh.live` (1 unit/call) | F3 F4 | needs a free Google API key (ask-first signup, ROADMAP P3.3); detect + embed only, never captions or audio (D-010) | n/a | EXE, LIVE |
 
-## Cloudflare probe (ROADMAP P1.3): not run yet
+## Cloudflare probe (ROADMAP P1.3): running, results pending
 
-To be measured from Cloudflare's network by the temporary `ced-probe` Worker (`workers/probe`; method and schedule: D-042).
-Nothing is deployed as of 2026-10-02: the probe waits on the Cloudflare secrets (ROADMAP P1.1). After its run, paste
-the body of `GET https://ced-probe.<account subdomain>.workers.dev/results/sources.md` here (its first line is an HTML
+Measured from Cloudflare's network by the temporary `ced-probe` Worker (`workers/probe`; method and schedule: D-042),
+deployed 2026-10-03 and running since its first cron at 01:01Z; it stops itself after its last run. After that, paste
+the body of `GET https://ced-probe.usgovfeed.workers.dev/results/sources.md` here (its first line is an HTML
 comment naming the time, the run count and the dates). The raw measurements stay at `/results` (JSON), which the Worker
 keeps serving after its last run. Columns:
 
