@@ -5,16 +5,20 @@
 //   1. SOURCES (what the Worker polls) is exactly [fr.api, wh.feeds];
 //   2. no live endpoint uses a P2.2-only poller feature (dynamic, notYetStatus, calendar);
 //   3. nothing the Worker or the page imports reaches the fixture-only modules, the members map or @ced/schema/v02
-//      (literal import check + a walk of the Worker's and the page's import graph);
+//      (literal import check + a text walk of the Worker's and the page's import graph + the real esbuild bundle graph;
+//      no script file other than .ts/.tsx in their source trees);
 //   4. the bytes of every Worker-imported schema/adapter entry file equal hashes recorded from main at foundation time
 //      (a hash, not a git diff, so it runs in CI's shallow checkout).
 // The fixture-only definitions are pinned too (one table below), so a builder's change to an endpoint is a visible diff.
 import { describe, expect, test } from 'vitest'
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
-import { dirname, join, relative, resolve } from 'node:path'
+import { readFileSync } from 'node:fs'
+import { join, relative } from 'node:path'
 import { SOURCES } from '../src/index.js'
 import { ADAPTER_NOT_BUILT, FIXTURE_ONLY_SOURCES, fixtureOnlySourceById } from '../src/fixture_only.js'
+import {
+  FORBIDDEN_SPECIFIER, allSpecifiers, bundleInputs, isP21Path, nonTsScripts, reachable, scriptFiles, walkFiles,
+} from './import_guard.js'
 import { REPO_ROOT } from './replay.js'
 
 const D058 = 'D-058: P2.1 sources are fixture-only until Phase 1 closes; changing this list needs a decision row'
@@ -132,60 +136,8 @@ describe('the fixture-only definitions (DESIGN §1.2, §3.1-§3.5)', () => {
 })
 
 // ---- imports: nothing the Worker or the page loads may reach the fixture-only code ----
-
-const FORBIDDEN_SPECIFIER = /(^@ced\/adapters\/fixture-only$)|(^@ced\/schema\/v02$)|generated\/members|fixture_only|\/v02\//
-
-function walkFiles(dir: string, out: string[] = []): string[] {
-  for (const name of readdirSync(dir)) {
-    const p = join(dir, name)
-    if (statSync(p).isDirectory()) walkFiles(p, out)
-    else if (/\.(ts|tsx)$/.test(name)) out.push(p)
-  }
-  return out
-}
-
-/** Value imports and re-exports of a module (type-only ones are erased by the compiler and never bundled). */
-function valueSpecifiers(text: string): string[] {
-  const out: string[] = []
-  for (const m of text.matchAll(/(?:^|\n)\s*(import|export)\s+(type\s+)?([^'";]*?)\s*from\s*['"]([^'"]+)['"]/g)) if (!m[2]) out.push(m[4]!)
-  for (const m of text.matchAll(/(?:^|\n)\s*import\s*['"]([^'"]+)['"]/g)) out.push(m[1]!)
-  for (const m of text.matchAll(/\bimport\(\s*['"]([^'"]+)['"]\s*\)/g)) out.push(m[1]!)
-  return out
-}
-/** Every import specifier, type-only included (the literal check of DESIGN §4.2). */
-function allSpecifiers(text: string): string[] {
-  return [...text.matchAll(/(?:from|import)\s*\(?\s*['"]([^'"]+)['"]/g)].map((m) => m[1]!)
-}
-
-const WORKSPACE: Record<string, string> = {
-  '@ced/adapters': 'packages/adapters/src/index.ts',
-  '@ced/schema': 'packages/schema/src/index.ts',
-  '@ced/schema/order': 'packages/schema/src/order.ts',
-  '@ced/schema/event.schema.json': 'packages/schema/src/event.schema.json',
-}
-
-/** The repo files reachable by value imports from `entries` (workspace packages followed; npm packages not). */
-function reachable(entries: string[]): Set<string> {
-  const seen = new Set<string>()
-  const queue = [...entries]
-  while (queue.length) {
-    const file = queue.pop()!
-    if (seen.has(file)) continue
-    seen.add(file)
-    if (!/\.(ts|tsx)$/.test(file)) continue
-    for (const spec of valueSpecifiers(readFileSync(file, 'utf8'))) {
-      let target: string | null = null
-      if (spec.startsWith('.')) {
-        const base = resolve(dirname(file), spec)
-        target = [base.replace(/\.js$/, '.ts'), base.replace(/\.js$/, '.tsx'), base, `${base}.ts`, join(base, 'index.ts')].find((p) => existsSync(p) && statSync(p).isFile()) ?? base
-      } else if (spec.startsWith('@ced/')) {
-        target = WORKSPACE[spec] ? join(REPO_ROOT, WORKSPACE[spec]!) : join(REPO_ROOT, `UNKNOWN-WORKSPACE-SPECIFIER/${spec}`)
-      }
-      if (target) queue.push(target)
-    }
-  }
-  return seen
-}
+// The guard itself lives in import_guard.ts (two layers: esbuild's real module graph, and a text walk of every file);
+// import_guard.test.ts pins the four bypasses the review of 483d7ab found in the old regex-only walk.
 
 describe('the Worker and the page never import the fixture-only modules', () => {
   test('packages/adapters/src/index.ts and registry.ts never mention them', () => {
@@ -198,20 +150,29 @@ describe('the Worker and the page never import the fixture-only modules', () => 
     ...walkFiles(join(REPO_ROOT, 'workers', 'api', 'src')),
     ...walkFiles(join(REPO_ROOT, 'apps', 'web', 'src')),
   ]
-  test('workers/api/src/** and apps/web/src/** (.ts and .tsx): no such import, type-only included', () => {
-    expect(appFiles.some((f) => f.endsWith('.tsx')), 'the .tsx files are scanned (critique C8)').toBe(true)
-    const bad = appFiles.flatMap((f) => allSpecifiers(readFileSync(f, 'utf8')).filter((s) => FORBIDDEN_SPECIFIER.test(s)).map((s) => `${rel(f)} imports ${s}`))
+  const scripts = scriptFiles(appFiles)
+  test('workers/api/src/** and apps/web/src/** hold no script file that is not .ts/.tsx (a .js/.mjs shim is refused outright)', () => {
+    expect(nonTsScripts(appFiles).map(rel), D058).toEqual([])
+  })
+  test('workers/api/src/** and apps/web/src/** (every script file): no such import, type-only included', () => {
+    expect(scripts.some((f) => f.endsWith('.tsx')), 'the .tsx files are scanned (critique C8)').toBe(true)
+    const bad = scripts.flatMap((f) => allSpecifiers(readFileSync(f, 'utf8')).filter((s) => FORBIDDEN_SPECIFIER.test(s)).map((s) => `${rel(f)} imports ${s}`))
     expect(bad, D058).toEqual([])
   })
-  test("the Worker's and the page's import graphs reach no P2.1 module", () => {
-    const graph = [...reachable(appFiles)].map(rel)
+  test("the Worker's and the page's import graphs (text walk) reach no P2.1 module", () => {
+    const graph = [...reachable(REPO_ROOT, scripts)].map(rel)
     expect(graph).toContain('packages/adapters/src/registry.ts') // the walk does follow workspace packages
     expect(graph).toContain('packages/schema/src/validate.ts')
-    const p21 = graph.filter((f) =>
-      /^packages\/schema\/src\/v02\//.test(f) ||
-      /^packages\/adapters\/src\/(fixture_only\.ts|generated\/|lib\/(members|stub|eastern|xmlscan|congress_ids)\.ts|sources\/(house_clerk_votes|senate_lis_votes|house_clerk_floor|senate_schedule|senate_pressgallery)\.ts)/.test(f) ||
-      f.startsWith('UNKNOWN-WORKSPACE-SPECIFIER/'))
-    expect(p21, D058).toEqual([])
+    expect(graph.filter(isP21Path), D058).toEqual([])
+  })
+  test("the Worker's and the page's REAL bundle graphs (esbuild metafile, the bundler wrangler uses) reach no P2.1 module", async () => {
+    const worker = await bundleInputs(REPO_ROOT, 'workers/api/src/index.ts')
+    expect(worker).toContain('packages/adapters/src/registry.ts') // the bundle does pull the live adapters
+    expect(worker).toContain('packages/schema/src/validate.ts')
+    expect(worker.filter(isP21Path), D058).toEqual([])
+    const page = await bundleInputs(REPO_ROOT, 'apps/web/src/main.tsx')
+    expect(page).toContain('packages/schema/src/order.ts')
+    expect(page.filter(isP21Path), D058).toEqual([])
   })
 })
 
