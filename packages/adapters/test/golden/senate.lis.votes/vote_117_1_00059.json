@@ -17,7 +17,7 @@
       "title": "Senate acquitted on H.Res. 24, 57-43; two-thirds needed (roll call 59)",
       "official_text": "Guilty or Not Guilty H.Res. 24 - Not Guilty (57-43, 2/3 majority required)",
       "importance": {
-        "tier": "P1",
+        "tier": "P0",
         "reasons": [
           "impeachment_verdict"
         ]

@@ -16,7 +16,7 @@
       "title": "House vote for Speaker: Jeffries 212, McCarthy 203, Biggs 10, Jordan 6, Banks 1, Zeldin 1, Donalds 1 (roll call 2)",
       "official_text": "Election of the Speaker — Jeffries",
       "importance": {
-        "tier": "P1",
+        "tier": "P0",
         "reasons": [
           "speaker_election"
         ]

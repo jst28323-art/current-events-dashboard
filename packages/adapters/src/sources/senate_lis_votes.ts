@@ -185,7 +185,7 @@ const TIER: Record<QuestionKind, { tier: Tier; reason: string }> = {
   veto_override: { tier: 'P0', reason: 'veto_override' },
   cloture: { tier: 'P1', reason: 'cloture' },
   resolution: { tier: 'P1', reason: 'resolution' },
-  impeachment_verdict: { tier: 'P1', reason: 'impeachment_verdict' },
+  impeachment_verdict: { tier: 'P0', reason: 'impeachment_verdict' }, // D-061 (owner): an impeachment verdict alerts
   amendment: { tier: 'P2', reason: 'amendment' },
   table: { tier: 'P3', reason: 'procedural' },
   motion: { tier: 'P3', reason: 'procedural' },

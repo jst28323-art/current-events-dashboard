@@ -178,7 +178,7 @@ const GOLDENS: Want[] = [
     required: null, passed: null, counts: [0, 0, 433, 2], positions: 435,
   },
   {
-    date: D3, name: 'roll2025_002.xml', key: 'vote:house:119:1:2', tier: 'P1', reasons: ['speaker_election'],
+    date: D3, name: 'roll2025_002.xml', key: 'vote:house:119:1:2', tier: 'P0', reasons: ['speaker_election'], // D-061
     title: 'House vote for Speaker: Johnson (LA) 218, Jeffries 215, Emmer 1 (roll call 2)', occurred_at: '2025-01-03T19:33:00Z',
     kind: 'speaker_election', required: '1/2', passed: null, counts: [null, null, 0, 0], positions: 434,
     official: 'Election of the Speaker — Johnson (LA)',
@@ -247,7 +247,7 @@ const GOLDENS: Want[] = [
   {
     // A Speaker ballot with no majority: the result names the top candidate (212 of 434). Never "elected"; no
     // Present / Not Voting in the list.
-    date: D3, name: 'roll2023_002.xml', key: 'vote:house:118:1:2', tier: 'P1', reasons: ['speaker_election'],
+    date: D3, name: 'roll2023_002.xml', key: 'vote:house:118:1:2', tier: 'P0', reasons: ['speaker_election'], // D-061: each ballot, even without a majority
     title: 'House vote for Speaker: Jeffries 212, McCarthy 203, Biggs 10, Jordan 6, Banks 1, Zeldin 1, Donalds 1 (roll call 2)',
     occurred_at: '2023-01-03T18:39:00Z', kind: 'speaker_election', required: '1/2', passed: null, counts: [null, null, 0, 0],
     positions: 434,

@@ -16,7 +16,7 @@
       "title": "House vote for Speaker: Johnson (LA) 218, Jeffries 215, Emmer 1 (roll call 2)",
       "official_text": "Election of the Speaker — Johnson (LA)",
       "importance": {
-        "tier": "P1",
+        "tier": "P0",
         "reasons": [
           "speaker_election"
         ]

@@ -271,7 +271,7 @@ describe('goldens: vote XML', () => {
     const { out, ev, rec } = voteOk(res, OLD)
     expect(ev.title).toBe('Senate acquitted on H.Res. 24, 57-43; two-thirds needed (roll call 59)')
     expect(ev.result).toMatchObject({ question_kind: 'impeachment_verdict', result_text: 'Not Guilty', required: '2/3', passed: false, yea: 57, nay: 43, present: 0, not_voting: 0 })
-    expect(ev.importance).toEqual({ tier: 'P1', reasons: ['impeachment_verdict'] })
+    expect(ev.importance).toEqual({ tier: 'P0', reasons: ['impeachment_verdict'] }) // D-061
     expect(rec.positions.filter((p) => p.vote_text === 'Guilty').every((p) => p.position === 'yea')).toBe(true)
     expect(rec.positions.filter((p) => p.vote_text === 'Not Guilty').every((p) => p.position === 'nay')).toBe(true)
     expect(rec.unresolved).toBe(20) // DESIGN §2.2 counted 22 against the current roster; the seed resolves S293 and S350

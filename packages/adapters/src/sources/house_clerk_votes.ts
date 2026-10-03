@@ -715,7 +715,7 @@ function importance(kind: QuestionKind, bill: { type: BillType } | null): { tier
     case 'resolution':
       return { tier: 'P1', reasons: ['resolution'] }
     case 'speaker_election':
-      return { tier: 'P1', reasons: ['speaker_election'] } // owner question O1: build default P1
+      return { tier: 'P0', reasons: ['speaker_election'] } // D-061 (owner): every Speaker ballot is an alert class
     case 'amendment':
       return { tier: 'P2', reasons: ['amendment'] }
     case 'quorum':
