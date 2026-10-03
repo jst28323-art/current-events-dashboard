@@ -1,0 +1,3513 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_febe9735d8a19b12",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T05:15:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T05:15:1",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate adjourned (Senate Daily Press Gallery log)",
+      "official_text": "5:15 a.m. The Senate stands adjourned until 3:00 p.m. on Monday, June 8, 2026. Following Leader Remarks, the Senate will be in a period of morning business. At 5:30 p.m., the Senate will proceed to a roll call vote on the motion to invoke cloture on the Mattivi nomination.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T09:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-06-04"
+        }
+      ],
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "5:15 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2828646b18990164",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T05:13:2#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T05:13:2",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "5:13 a.m. Majority Leader Thune filed cloture on the following nominees: Anthony W. Mattivi, of Kansas to be United States District Judge for the District of Kansas.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T09:13:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "5:13 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2b66762b84631ae8",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T05:13:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T05:13:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "5:13 a.m. By a vote of 47-52, the Senate did not adopt the motion to proceed to the House message to accompany S. 1318, the FISA bill. Republicans voting against: Hawley, Kennedy, Lee, Paul, Schmitt, Scott (FL) & Tuberville. Democrat voting in favor: Fetterman. Not voting: Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T09:13:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "5:13 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d49e50ec84e10469",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:52:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:52:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "4:52 a.m. The Senate is now voting on the motion to lay before the Senate the House message to accompany S. 1318, to reauthorize Title VII of the Foreign Intelligence Surveillance Act.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:52:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:52 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_def1dc25074a10bb",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:51:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:51:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "4:51 a.m. By a party-line vote of 52-47, the Senate passed S. 2, the FY26 Budget Reconciliation Bill, as amended. GOP Senator Murkowski voted no. Senator Bennet did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:51:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:51 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a82dc5381f186a6a",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:42:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:42:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "4:42 a.m. The Senate is now voting on passage of S. 2, the FY26 Budget Reconciliation Bill, as amended.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:42:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:42 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_34ed8256a88afc19",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:41:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:41:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "4:41 a.m. By voice vote, the Senate adopted the Graham Substitute Amendment #5453 to S. 2, the FY26 Budget Reconciliation Bill.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:41:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:41 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_840ab6319f113611",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:39:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:39:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "4:39 a.m. By a vote of 51-48, the Senate did not waive the Budget Act with respect to the Schiff amendment #5740. GOP Senators Cassidy, Collins, Murkowski, Sullivan, and Tillis voted aye. Senator Bennet did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:39:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:39 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_74450b38f0d2e203",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:28:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:28:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "4:28 a.m. The Senate is now voting on the motion to waive the Budget Act with respect to Schiff amendment #5740.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:28:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:28 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4561760e9e769934",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:25:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:25:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "4:25 a.m. By a vote of 53-46, the Senate did not waive the Budget Act with respect to the Van Hollen Amendment #5632, to prohibit the use of funds to provide payments to certain individuals. GOP Senators voting aye: Cassidy, Collins, Husted, Moody, Moran, Murkowski, and Sullivan. Senator Bennet did not vote. (60-vote threshold)",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:25:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:25 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_fdf395c83b3d0db9",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:15:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:15:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "4:15 a.m. The Senate began a roll call vote on the motion to waive the Budget Act with respect to the Van Hollen Amendment #5632, to prohibit the use of funds to provide payments to certain individuals.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:15:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:15 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d48682c4896f6cf7",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T04:13:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T04:13:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "4:13 a.m. By a vote of 45-53, the Senate did not adopt the Cortez Masto amendment on party lines with Senator Booker voting present.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T08:13:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:13 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a1bd187197acc1e4",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T03:59:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T03:59:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "3:59 a.m. The Senate began voting on the Cortez Masto amendment #5463, regarding local law enforcement hiring programs.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T07:59:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:59 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b4ddf6f0061e221c",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T03:53:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T03:53:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "3:53 a.m. The Rosen motion to commit and the Wyden motion to commit were both defeated by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T07:53:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:53 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d6daf481e6d4e24a",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T03:52:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T03:52:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "3:52 a.m. By a vote of 52-47, The Senate did not waive the budget act with respect to the Cassidy amendment. Republican Senators voting in favor: Cassidy, Collins, Husted, Murkowski, Sullivan and Tillis. Not voting: Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T07:52:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:52 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d2f9d44f192831c3",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T03:40:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T03:40:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "3:40 a.m. The Senate began voting on the motion to waive the Budget Act with respect to the Cassidy amendment #5812, to provide compensation to law enforcement officers who defended the U.S. Capitol on January 6, 2021.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T07:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:40 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f87152cc3dd016a6",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T03:36:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T03:36:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "3:36 a.m. By a vote of 54-45, the Senate did not agree to waive the Budget Act with respect to the Coons amendment #5457. Not voting: Bennet. GOP Senators voting aye: Cassidy, Collins, Husted, Moody, Moran, Murkowski, Sullivan and Tillis.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T07:36:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:36 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_40b10e0c9161b153",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T03:17:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T03:17:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "3:17 a.m. The Senate began voting on the motion to waive the budget act with respect to the Coons amendment #5457, regarding not paying anyone convicted of assaulting law enforcement on January 6, 2021.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T07:17:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:17 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4edab742845f8428",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T03:14:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T03:14:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "3:14 a.m. By a party-line vote of 46-53, the Senate did not adopt the Padilla Amendment #5808, to provide body cameras to agents and officers. Senator Bennet did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T07:14:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:14 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b2afe23f88f7e3e2",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T02:45:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T02:45:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "2:45 a.m. The Senate began voting on the motion to adopt the Padilla Amendment #5808, to provide body cameras to agents and officers.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T06:45:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "2:45 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_28a433768784653f",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T02:42:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T02:42:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:42 a.m. By a vote of 47-52, the Senate did not adopt the Gallego amendment. Republican voting in favor: Murkowski. Not voting: Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T06:42:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "2:42 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b75d4a5f029436a7",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T02:19:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T02:19:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "2:19 a.m. The Senate began voting on the Gallego amendment #5663 regarding DACA.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T06:19:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "2:19 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d11087f001a060de",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T02:17:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T02:17:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:17 a.m. By a party-line vote of 46-53, the Senate did not adopt the Peters amendment #5763 regarding debt reduction. Not voting: Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T06:17:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "2:17 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f2bb59ad5a903a04",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T01:42:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T01:42:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "1:42 a.m. The Senate began voting on the motion to adopt the Peters amendment #5763 regarding debt reduction.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T05:42:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:42 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2914071b7e1edb85",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T01:39:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T01:39:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "1:39 a.m. By a party-line vote of 46-53, the Senate did not agree to the Hirono amendment #5506. Not voting: Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T05:39:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:39 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3dbd14014e0b2fe4",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T01:11:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T01:11:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "1:11 a.m. The Senate began a roll call vote on the Hirono amendment #5506 regarding youth mentoring programs.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T05:11:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:11 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d68492e0ae4514d0",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T01:09:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T01:09:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "1:09 a.m. By a vote of 48-51, the Senate did not agree to the Wyden motion to commit, with respect to S. 2, the Reconciliation Bill FY 2026. Senator Bennet did not vote. GOP Senators voting aye: Collins and Sullivan.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T05:09:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:09 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_93a401a60d9029da",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T00:40:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T00:40:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "12:40 a.m. The Senate began a roll call vote on the Wyden motion to commit to S. 2, the Reconciliation Bill FY 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T04:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "12:40 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cd3cd7275a08f30a",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T00:36:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T00:36:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "12:36 a.m. By a vote of 48-51, the Senate did not agree to the motion to waive the Budget Act with respect to the Durbin amendment #5806. Republicans voting in favor: Collins and Murkowski. Not voting: Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T04:36:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "12:36 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2dab59b2c67d485b",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T00:10:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T00:10:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "12:10 a.m. The Senate began a roll call vote on the motion to waive the Budget Act with respect to the Durbin Amendment #5806, regarding DACA recipients.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T04:10:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "12:10 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_848da66d3fa4b88a",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T00:08:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T00:08:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "12:08 a.m. By a vote of 50-49, the Senate did not agree to the motion to waive the Budget Act with respect to the Lee Amendment. Republicans voting no: McConnell, Murkowski and Tillis. Not voting: Bennet. The above happened on Friday, June 5th.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T04:08:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "12:08 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_91124ef2974941b5",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T23:40:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T23:40:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "11:40 p.m. The Senate began a roll call vote on the motion to waive the Budget Act with respect to the Lee Amendment #5804, to ensure only U.S. citizens vote in Federal elections and to require voters to provide voter ID.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T03:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "11:40 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8bad554085bfef37",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T22:30:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T22:30:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "10:30 p.m. By a vote of 46-53, the Senate did not agree to the motion to waive the Budget Act with respect to the Booker Amendment #5803, to support the work of the Immigration Detention Ombudsman. This was a party-line vote and Senator Bennet did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:30 p.m.",
+        "post_id": 162959,
+        "time_note": "clock out of order (earlier than the entry logged before it)"
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_501391fd33e818b4",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T22:57:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T22:57:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "10:57 p.m. The Senate began voting on the motion to waive the Budget Act with respect to the Booker Amendment #5803, to support the work of the Immigration Detention Ombudsman.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T02:57:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:57 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d2d4928f2472229f",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T22:53:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T22:53:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "10:53 p.m. By a vote of 46-53, the Senate did not agree the motion to waive the Budget Act with respect to the Baldwin Amendment #5485, child care and development block grant. Senator Bennet did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T02:53:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:53 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_852c18ca3a2de832",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T22:16:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T22:16:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "10:16 p.m. The Senate began voting on the motion to waive the Budget Act with respect to the Baldwin Amendment #5485, child care and development block grant.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T02:16:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:16 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c9ec7f527ee8bc9a",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T22:12:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T22:12:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "10:12 p.m. By a party-line vote of 45-53, the Senate did not agree to the motion to waive the Budget Act with regards to the Sanders Amendment #5451 to limit contributions to SuperPACs. Senators Bennet and Gallego did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T02:12:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:12 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_49da48ec5a430d8b",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T21:12:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T21:12:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "9:12 p.m. The Senate began voting on the motion to waive the Budget Act with regards to the Sanders Amendment #5451 to limit contributions to SuperPACs.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T01:12:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "9:12 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_402d38ab883b55bb",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T21:10:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T21:10:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "9:10 p.m. By a vote of 46-52, the Senate did not agree to the motion to commit. GOP Senator Collins voted aye and Senators Bennet and Gallego did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T01:10:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "9:10 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_435cf073b197fef2",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T20:36:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T20:36:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "8:36 p.m. The Senate began a roll call vote on the Warnock motion to commit (Medicaid FOIA).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T00:36:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "8:36 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7de45c69b2aca4bd",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T20:26:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T20:26:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "8:26 p.m. Senators Thune, Schumer, Durbin, and King paid tribute to Senator Collins on her 10,000th consecutive vote in the Senate.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T00:26:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "8:26 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a25f3919ee196ea9",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T20:24:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T20:24:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "8:24 p.m. By a party-line vote of 46-53 the motion to waive the Budget Act with Respect to the Kim amendment #5545 was not agreed to. Senator Bennet did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-05T00:24:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "8:24 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6503e11a56f3068a",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T19:35:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T19:35:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "7:35 p.m. The Senate began voting on the motion to waive the Budget Act with Respect to the Kim amendment #5545.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T23:35:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "7:35 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_20052c9daee397b2",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T19:30:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T19:30:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "7:30 p.m. By a vote of 51-47, the Senate did not agree to the motion to waive the Budget Act with respect to the Hickenlooper Amendment #5501.(60-vote threshold). Senators Bennet and Ernst did not vote. GOP Senators Cassidy, Collins, Murkowski, Sullivan, and Tillis voted aye.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T23:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "7:30 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8afcfcacac664927",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T18:49:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T18:49:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "6:49 p.m. The Senate began a vote on the motion to waive the Budget Act with respect to the Hickenlooper Amendment #5501.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T22:49:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "6:49 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3f90bfdd30fff904",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T18:40:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T18:40:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "6:40 p.m. By a vote of 48-50, the Senate did not agree to the motion to waive the Budget Act with respect to the Graham Amendment #5779 in relation to the SAVE Act of 2026. Senators Bennet and Ernst did not vote. GOP Senators voting no: Collins, McConnell, Murkowski, and Tillis.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T22:40:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "6:40 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_75da627f1fe291fa",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T18:08:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T18:08:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "6:08 p.m. The Senate began voting on the motion to waive the Budget Act with respect to the Graham Amendment #5779 in relation to the Safeguard American Voter Eligibility Act of 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T22:08:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "6:08 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_07bef2478dc577d3",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T18:05:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T18:05:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "6:05 p.m. By a vote of 49-49, the motion to waive the Budget Act with respect to the Warner amendment #5556 (prohibit an individual from acting as Director of National Intelligence if such individual is simultaneously serving as the head of any other Federal department or agency) was not agreed to. Republicans voting aye: Cassidy, Collins, and Murkowski. Not voting: Senators Bennet and Ernst.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T22:05:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "6:05 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3319e6133f840a61",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T17:20:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T17:20:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "5:20 p.m. The Senate began voting on the motion to waive the Budget Act with respect to the Warner amendment #5556 (prohibit an individual from acting as Director of National Intelligence if such individual is simultaneously serving as the head of any other Federal department or agency).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T21:20:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "5:20 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e18e02e4f24be91f",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T17:16:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T17:16:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "5:16 p.m. By a party-line vote of 46-52, the motion to waive the Budget Act with respect to the Hassan amendment #5535 (building new homes) was not agreed to. Senators Bennet and Ernst did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T21:16:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "5:16 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d81341fb3ca3b8f2",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T16:41:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T16:41:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "4:41 p.m. The Senate began voting on the motion to waive the Budget act with respect to the Hassan amendment #5535 (building new homes).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T20:41:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:41 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5693ccdef2cfbb3e",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T16:38:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T16:38:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "4:38 p.m. By a vote of 47-50, the Motion to Commit the Ossoff amendment was not agreed to. Senator Collins voted aye. Senators Bennet, Ernst, and Tillis did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T20:38:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "4:38 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e81609b02a42c660",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:50:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:50:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "3:50 p.m. The Senate began a roll call vote on the Motion to Commit the Ossoff Amendment (prior authorization).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:50:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:50 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6936e699831300df",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:49:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:49:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:49 p.m. Senator Grassley spoke against the Ossoff motion to commit.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:49:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:49 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5921b7f835f48879",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:48:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:48:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:48 p.m. Senator Ossoff spoke on his motion to commit S. 2, with instructions.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:48:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:48 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_851f43d6fd4abebc",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:47:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:47:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "3:47 p.m. Senator Cassidy asked unanimous consent to change his vote to AYE (not changing the outcome of the vote) on roll call vote #139 the motion to waive the Budget Act with respect to the Merkley amendment #5512 making the tally 53-46, not agreed to.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:47:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:47 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_15e7e82320c70a44",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:46:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:46:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "3:46 p.m. By a vote of 46-53, the motion to waive the Budget Act with respect to the Reed amendment #5514 (regarding affordable housing) was not agreed to. This was a party line vote. Senator Bennet did not vote.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:46:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:46 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_03ff385bb3fd9628",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:10:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:10:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "3:10 p.m. The Senate is now voting on the motion to waive the Budget Act with respect to Reed amendment #5514",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:10:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:10 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0ac7f30fab154ab9",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:09:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:09:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:09 p.m. Senator Scott (SC) spoke against the Reed amendment #5514, regarding affordable housing.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:09:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:09 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bf71f2f81482c7fe",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:08:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:08:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "3:08 p.m. Senator Reed spoke in favor of his amendment #5514, regarding affordable housing.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:08:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:08 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5bf8eebe526d327d",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T15:07:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T15:07:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "3:07 p.m. By a vote 52-47, the motion to waive the Budget Act with respect to the Merkley amendment #5512 (use of funds for the White House Ballroom) to the Graham substitute amendment #5453, was not agreed to. Republicans voting aye: Collins, Husted, Moran, Murkowski, Sullivan and Tillis. Not voting: Senator Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T19:07:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "3:07 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_bed7d093638efd8b",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T14:22:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T14:22:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "2:22 p.m. The Senate began a vote on the motion to waive the Budget Act with respect to the Merkley amendment #5512, use of funds for the White House Ballroom, to the Graham substitute amendment #5453.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T18:22:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "2:22 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ff4fe3016be16017",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T14:21:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T14:21:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "2:21 p.m. By a vote of 15-84, the motion to waive the Budget Act with respect to Tillis amendment #5452 (reallocate funds that would have been used for the Anti-Weaponization Fund to fraud enforcement), to Graham substitute amendment #5453 to Cal. #417, S.2, FY2026 Budget Reconciliation was not agreed to. Voting aye: 12 Republicans: Cassidy, Collins, Cornyn, Curtis, Ernst, Husted, Moran, Murkowski, Rounds, Sullivan, Tillis & Young. 3 Democrats: Cortez Masto, Hassan & Klobuchar. Not voting: Senator Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T18:21:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "2:21 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cf581b8f76f56866",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T13:39:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T13:39:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "1:39 p.m. The Senate began a vote on the motion to waive the Budget Act with respect to Tillis amendment #5452, to Graham substitute amendment #5453 to Cal. #417, S.2, FY2026 Budget Reconciliation.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T17:39:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:39 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7a10cc57c87e08b3",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T13:36:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T13:36:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "1:36 p.m. Senators Tillis, Merkley, and Graham spoke on the amendment.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T17:36:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:36 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c3f139656205547d",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T13:35:2#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T13:35:2",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate Daily Press Gallery logged floor activity",
+      "official_text": "1:35 p.m. Senator Tillis called up his amendment #5452 (reallocate funds that would have been used for the Anti-Weaponization Fund to fraud enforcement) to the Graham substitute amendment #5453.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T17:35:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:35 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1c44c03e323f77c3",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T13:35:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T13:35:1",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "Senate Daily Press Gallery logged a floor result",
+      "official_text": "1:35 p.m. By a vote of 49-50, the Senate did not agree to the Schumer motion to commit. Not voting: Senator Bennet.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T17:35:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "1:35 p.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cb5ea8f23f69fa6a",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T10:30:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T10:30:1",
+      "event_type": "vote.opened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F5"
+      ],
+      "title": "A Senate roll call vote began (Senate Daily Press Gallery log)",
+      "official_text": "10:30 a.m. The Senate began a roll call vote on the Schumer motion to commit S. 2, Secure America Act, to the Judiciary Committee with instructions.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T14:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:30 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_277c26e0a91324fe",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T10:28:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T10:28:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:28 a.m. Minority Leader Schumer spoke against S. 2, Secure America Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T14:28:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:28 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4e0af2ef209ae011",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T10:20:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T10:20:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:20 a.m. Senator Moreno spoke against the Schumer motion to commit.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T14:20:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:20 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ce752f9cd215f33f",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T10:18:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T10:18:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:18 a.m. Minority Leader Schumer spoke on his motion to commit S. 2, Secure America Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T14:18:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:18 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6d69ac578841ef05",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T10:11:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T10:11:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:11 a.m. Senator Graham spoke on S.2, Secure America Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T14:11:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:11 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d6a65924ff02de60",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T10:02:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T10:02:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "10:02 a.m. Senator Merkley spoke on S.2, Secure America Act.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T14:02:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "10:02 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_226b37f1142693d7",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T09:51:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T09:51:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "9:51 a.m. Minority Leader Schumer spoke on the DOJ weaponization fund and the Blanche nomination to AG.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T13:51:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "9:51 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_0cb7a07075fdbefc",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T09:41:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T09:41:1",
+      "event_type": "floor.speaking",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1",
+        "F8"
+      ],
+      "title": "Senate Daily Press Gallery logged floor speeches",
+      "official_text": "9:41 a.m. Majority Leader Thune spoke on S.2, Secure America Act and the importance of funding DHS.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T13:41:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "9:41 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_b5548669bc431fa5",
+      "dedup_key": "pg_entry:daily:162959:2026-06-04T09:30:1#logged",
+      "object_key": "pg_entry:daily:162959:2026-06-04T09:30:1",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "senate",
+      "features": [
+        "F1"
+      ],
+      "title": "Senate convened (Senate Daily Press Gallery log)",
+      "official_text": "9:30 a.m. The Senate convened.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "press_gallery_log"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-06-04T13:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:10:04.463Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:senate:2026-06-04"
+        }
+      ],
+      "result": {
+        "session_date": "2026-06-04",
+        "clock_text": "9:30 a.m.",
+        "post_id": 162959
+      },
+      "sources": [
+        {
+          "source_id": "senate.pressgallery",
+          "url": "https://www.dailypress.senate.gov/thursday-june-4-2026/",
+          "retrieved_at": "2026-10-03T14:10:04.463Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "senate_pressgallery@0.1.0",
+        "confidence": "inferred"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "senate.pressgallery",
+    "endpoint": "daily_posts",
+    "status": "ok",
+    "detail": "1 posts, 1 floor logs, 76 entries; post 162959 day 2026-06-04 from title with the post's year",
+    "items_seen": 1
+  }
+}
