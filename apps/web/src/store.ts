@@ -21,6 +21,10 @@ export function start(): () => void {
     doc: document,
     setTimeout: (fn, ms) => setTimeout(fn, ms),
     clearTimeout: (h) => clearTimeout(h as ReturnType<typeof setTimeout>),
+    onSettled: () => {
+      const el = document.documentElement
+      el.dataset.polls = String(Number(el.dataset.polls ?? '0') + 1)
+    },
     poll: async () => {
       feed.value = await pollOnce(feed.value, {
         base: API_BASE.replace(/\/+$/, ''),

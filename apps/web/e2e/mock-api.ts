@@ -95,9 +95,19 @@ export async function openPaused(page: Page, api: MockApi, atMs = 0): Promise<vo
   await page.goto('./')
 }
 
-/** Advances the fake clock by one poll interval and waits until that poll's status request has been answered. */
+/** Polls the page has finished (and scheduled the next one after): <html data-polls>, set by apps/web/src/store.ts. */
+export async function settledPolls(page: Page): Promise<number> {
+  return Number(await page.evaluate(() => document.documentElement.dataset.polls ?? '0'))
+}
+
+/** Advances the fake clock by one poll interval and waits until that poll has been answered and has settled.
+ * It first waits until every poll so far has settled (each poll asks for status exactly once): the page schedules its
+ * next poll only when the previous one finishes, so a clock jump made while a poll is in flight would land before the
+ * next timer exists, and that poll would never fire (CI flake on 6dd6cf5, 2026-10-03). */
 export async function nextPoll(page: Page, api: MockApi, ms = 15_000): Promise<void> {
   const before = api.count('/api/v1/status')
+  await expect.poll(() => settledPolls(page)).toBe(before)
   await page.clock.runFor(ms)
   await expect.poll(() => api.count('/api/v1/status')).toBeGreaterThan(before)
+  await expect.poll(() => settledPolls(page)).toBe(before + 1)
 }

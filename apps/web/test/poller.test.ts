@@ -382,3 +382,36 @@ describe('pollOnce: the row cap is said, not silent (W9)', () => {
     expect(s.trimmed).toBe(true)
   })
 })
+
+describe('startPolling onSettled (the e2e clock hook, 2026-10-03)', () => {
+  test('fires once per poll, only after the poll finished and the next timer exists', async () => {
+    vi.useFakeTimers()
+    const doc = Object.assign(new EventTarget(), { hidden: false })
+    let release: () => void = () => {}
+    let settled = 0
+    let pendingTimers = 0
+    const stop = startPolling({
+      doc: doc as unknown as Parameters<typeof startPolling>[0]['doc'],
+      poll: () => new Promise<void>((r) => { release = r }),
+      setTimeout: (fn, ms) => { pendingTimers++; return setTimeout(() => { pendingTimers--; fn() }, ms) },
+      clearTimeout: (h) => clearTimeout(h as ReturnType<typeof setTimeout>),
+      intervalMs: 15_000,
+      onSettled: () => {
+        settled++
+        expect(pendingTimers).toBe(1) // the next poll is already scheduled when "settled" is reported
+      },
+    })
+    await vi.advanceTimersByTimeAsync(0)
+    expect(settled).toBe(0) // the first poll is still in flight
+    release()
+    await vi.advanceTimersByTimeAsync(0)
+    expect(settled).toBe(1)
+    await vi.advanceTimersByTimeAsync(15_000)
+    expect(settled).toBe(1) // second poll in flight
+    release()
+    await vi.advanceTimersByTimeAsync(0)
+    expect(settled).toBe(2)
+    stop()
+    vi.useRealTimers()
+  })
+})

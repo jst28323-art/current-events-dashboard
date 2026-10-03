@@ -22,7 +22,7 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
 
 ## Phase 1 — A thin vertical slice: two live sources on the owner's phone
 
-- [ ] **P1.1 Accounts (owner-led; ask first, walk through each).** Free Cloudflare account → an API token scoped to
+- [x] **P1.1 Accounts (owner-led; ask first, walk through each).** Free Cloudflare account → an API token scoped to
   Workers edits, stored as GitHub Actions secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`; free api.data.gov
   key → secret `API_DATA_GOV_KEY` (a Worker secret too, later). The owner pastes secrets into GitHub's Settings →
   Secrets page themselves (keys never pass through chat; the local token may lack the Secrets permission). Also ask:
@@ -31,8 +31,10 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   key lives on this PC; alternative: `wrangler login` on this PC), and which `*.workers.dev` subdomain to use. Record
   every answer verbatim as a `docs/DECISIONS.md` row and each grant as a `docs/OWNER_GRANTS.md` row. If the owner is away, do
   P1.2 and P1.4 first (neither needs an account).
-  (2026-10-02: NOT done. The answers are recorded (D-025..D-027, D-032; grants G-006, G-007, G-010); the Cloudflare and
-  api.data.gov signups and the three secrets are still pending, so the deploy workflow skips and nothing is deployed.)
+  (Done 2026-10-03: answers D-025..D-027 and D-032, grants G-006, G-007, G-010; the owner created both accounts and added
+  the three secrets on 2026-10-02 evening (CT); the first deploy-workers run (1d42eab) deployed ced-api and ced-probe
+  to `usgovfeed.workers.dev`, proving the Cloudflare secrets. `API_DATA_GOV_KEY` is not used by any code yet, so it is
+  unproven until the first Congress.gov adapter.)
 - [x] **P1.2 Workspace scaffold.** (done 2026-10-02: pins in D-029; the Workers pool is now `@cloudflare/vitest-plugin`, docs/TRAPS.md) npm workspaces + TypeScript: `packages/schema` (EVENT_MODEL v0.1 Phase-1 minimum →
   TS types + JSON Schema + validator), `packages/adapters` (registry type + a harness that replays `fixtures/`),
   `workers/api` (Worker + one Durable Object skeleton, wrangler config, the Vitest Workers pool), `apps/web` (Vite +
@@ -60,20 +62,21 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   `documents.json`) and `wh.feeds` (the `/news/feed/` umbrella, deduped by GUID). Each has its error/empty
   cases: `fr.api` has a NEGATIVE fixture (an HTML 404 from the JSON API); for `wh.feeds`, "no new items" is the same
   feed replayed twice (record a malformed-feed case if the parser needs one).
-- [ ] **P1.5 Worker v0.** A 1-minute cron runs the two adapters into a HubDO (SQLite): dedupe/merge by `dedup_key`,
+- [x] **P1.5 Worker v0.** A 1-minute cron runs the two adapters into a HubDO (SQLite): dedupe/merge by `dedup_key`,
   `first_seen_at`, the latency ledger, per-source state (validators, errors). Serve `GET /api/v1/events?since=`,
   `/api/v1/status` and `/feed.json` with CORS for the Pages origin. (DO alarms and WebSockets wait for Phase 2.)
-  (2026-10-02: code and tests landed in 83ea2b6 (`workers/api`, rules D-036..D-039, incl. the fixture replay through
-  the real adapters in `workers/api/test/replay.test.ts`); deploy waits on P1.1 (Cloudflare secrets).
+  (Done 2026-10-03: code and tests landed in 83ea2b6 (`workers/api`, rules D-036..D-039, incl. the fixture replay
+  through the real adapters in `workers/api/test/replay.test.ts`); deployed 2026-10-03 00:49Z; first live poll 00:53Z:
+  fr.api ok (108 documents on public inspection), wh.feeds ok (30 items), 157 events served, no errors.
   Deferred: workers/api review finding W10 (not the apps/web review W10 in D-040), the HubDO's CPU on a 107-event
   re-ingest (~10 ms wall in local workerd). Check it with the probe results and Workers Observability cpuTime after the
   first deploy; the known relief is to skip re-validating events identical to the stored ones.)
-- [ ] **P1.6 Web v0** on GitHub Pages (the Pages workflow builds `apps/web` instead of `site/`): a single-column,
+- [x] **P1.6 Web v0** on GitHub Pages (the Pages workflow builds `apps/web` instead of `site/`): a single-column,
   phone-first feed. Each row: time, origin chip, title, `official_text`, source link. A header with "last updated" and
   per-source health. Light and dark; polls the API every ~15 s; shows "live data unavailable" when the Worker is down.
-  (2026-10-02: code and tests landed in 83ea2b6 (`apps/web`, rules D-040 and D-041, Playwright e2e in the gate); the
-  Pages site now serves `apps/web` and shows "Live data unavailable" until ced-api is deployed, which waits on P1.1
-  (Cloudflare secrets). Not covered yet: WebKit in e2e, see `TESTING.md` layer 5.)
+  (Done 2026-10-03: code and tests landed in 83ea2b6 (`apps/web`, rules D-040 and D-041, Playwright e2e in the gate);
+  the Pages site serves `apps/web` against the live ced-api; the owner checked it on an iPhone over cellular in light
+  and dark (D-044). Not covered yet: WebKit in e2e, see `TESTING.md` layer 5.)
 
 **Exit:** (1) the gate is green locally and in CI, including: the validator rejects a malformed event; each adapter's
 golden test passes; every NEGATIVE fixture emits zero events; re-ingesting a fixture creates no duplicates (fails if
@@ -81,6 +84,12 @@ dedupe is removed). (2) The page loads on the owner's phone over cellular, light
 ledger shows ≥ 5 Public Inspection documents and ≥ 1 White House item, with the PI median `first_seen_at` − filing slot
 ≤ 90 s (n ≥ 5). (4) Fail-closed, tested with Playwright: a stopped poller shows "stale" within 2× its cadence; a down API
 shows "live data unavailable", never an empty feed. (5) The probe table is in `docs/SOURCES.md`.
+
+Exit status (2026-10-03): (1) MET (gate green locally and in CI; the four named tests exist). (2) MET (D-044).
+(4) MET (`apps/web/e2e/fail-closed.spec.ts`). (3) OPEN: needs two business days of live polling; the first are
+Mon 2026-10-05 and Tue 2026-10-06 (PI regular filings 08:45 ET). Read it from `/api/v1/status` (items_24h,
+median_latency_s) and record n and the median here. (5) OPEN: ced-probe runs ~24 h from 2026-10-03 01:00Z (48 runs);
+then copy `/results` into `docs/SOURCES.md` "Cloudflare probe" and write the two DECISIONS rows (D-042).
 
 ## Phase 2 — Congress pipelines on fixtures + real-time plumbing
 

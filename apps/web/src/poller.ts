@@ -204,6 +204,10 @@ export interface SchedulerDeps {
   setTimeout: (fn: () => void, ms: number) => unknown
   clearTimeout: (h: unknown) => void
   intervalMs?: number
+  /** Called after each poll has finished AND the next one is scheduled (the page marks this on <html data-polls>, so
+   * the e2e suite can wait for it before moving its fake clock: a clock jump that lands while a poll is still in flight
+   * leaves the next timer scheduled after the jump, and that poll never fires; CI flake, 2026-10-03). */
+  onSettled?: () => void
 }
 
 /**
@@ -234,6 +238,7 @@ export function startPolling(d: SchedulerDeps): () => void {
     } finally {
       inFlight = false
       schedule()
+      d.onSettled?.()
     }
   }
   const onVisibility = () => {
