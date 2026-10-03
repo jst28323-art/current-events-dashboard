@@ -1,0 +1,750 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_21acddf86a82d9c5",
+      "dedup_key": "floor_day:house:2026-01-06#scheduled_convene",
+      "object_key": "floor_day:house:2026-01-06",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F7"
+      ],
+      "title": "House scheduled to meet Tuesday, January 6, at 6:30 p.m. Eastern",
+      "official_text": "next legislative day convenes 20260106T18:30",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-01-06T23:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "convene_date": "2026-01-06"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e9b991c0ffc2115b",
+      "dedup_key": "floor:house:119:26514#entry",
+      "object_key": "floor:house:119:26514",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned",
+      "official_text": "The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 6:30 p.m. on January 6, 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T17:03:12Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T17:46:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1c0b4aedfc77865b",
+      "dedup_key": "floor:house:119:26513#entry",
+      "object_key": "floor:house:119:26513",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ANNOUNCEMENT BY THE CHAIR - Pursuant to section 8 of H. Res. 936, the Chair announced that no organizational or legislative business will be conducted on this day. Messages requiring action will be laid before the House on a subsequent day. Bills and resolutions introduced today will receive a number but will not be referred to committee or noted in the Record until a subsequent day. Executive communications, memorials, and petitions likewise will be referred and numbered on a subsequent day.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T17:02:33Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T17:45:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_10d8b676fc053d09",
+      "dedup_key": "floor:house:119:26512#entry",
+      "object_key": "floor:house:119:26512",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T17:02:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T17:43:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H2C000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3fc05182ac5feffd",
+      "dedup_key": "floor:house:119:26511#entry",
+      "object_key": "floor:house:119:26511",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T17:01:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T17:43:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H21000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f992ef05d5141782",
+      "dedup_key": "floor:house:119:26510#entry",
+      "object_key": "floor:house:119:26510",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker designated the Honorable Christopher H. Smith to act as Speaker pro tempore for today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T17:00:05Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T17:43:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H22000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9a95763c65362962",
+      "dedup_key": "floor:house:119:26508#entry",
+      "object_key": "floor:house:119:26508",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House convened for a new legislative day",
+      "official_text": "The House convened pursuant to the 20th Amendment to the Constitution and was called to order by the Chair.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T17:00:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T17:43:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:house:2026-01-03"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f9b5f61e0825a2dd",
+      "dedup_key": "floor:house:119:26507#entry",
+      "object_key": "floor:house:119:26507",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned its session (sine die)",
+      "official_text": "Pursuant to the 20th Amendment of the Constitution, the Chair declares the 1st Session of the One Hundred Nineteenth Congress adjourned sine die.",
+      "importance": {
+        "tier": "P1",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:55:45Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:58:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_93aaa218c2492d71",
+      "dedup_key": "floor:house:119:26506#entry",
+      "object_key": "floor:house:119:26506",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House returned from a recess",
+      "official_text": "The House convened, returning from a recess continuing the legislative day of January 3.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:55:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:56:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dcb22e35f0d15a50",
+      "dedup_key": "floor:house:119:26505#entry",
+      "object_key": "floor:house:119:26505",
+      "event_type": "floor.recess",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House went into recess",
+      "official_text": "The Speaker announced that the House do now recess. The next meeting is subject to the call of the Chair.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:33:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:34:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_926fc9de02f953fa",
+      "dedup_key": "floor:house:119:26504#entry",
+      "object_key": "floor:house:119:26504",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a communication from Representative Greene (GA) wherein she resigns as a member of the House of Representatives effective at 11:59 p.m. on January 5, 2026.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:32:53Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:37:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H24800"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_31e35f8394eb2543",
+      "dedup_key": "floor:house:119:26503#entry",
+      "object_key": "floor:house:119:26503",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:32:15Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:32:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H2C000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c884ca61cd8a852d",
+      "dedup_key": "floor:house:119:26502#entry",
+      "object_key": "floor:house:119:26502",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "SPEAKER'S APPROVAL OF THE JOURNAL - Pursuant to clause 13 of Rule I, the Journal of the last day's proceedings was approved.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:32:06Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:32:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_64cc46a034fe3107",
+      "dedup_key": "floor:house:119:26501#entry",
+      "object_key": "floor:house:119:26501",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:30:52Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:31:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H21000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7d53339f56087a72",
+      "dedup_key": "floor:house:119:26500#entry",
+      "object_key": "floor:house:119:26500",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The Speaker designated the Honorable Christopher H. Smith to act as Speaker pro tempore for today.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:30:32Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:31:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H22000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c6a02d16108d4b35",
+      "dedup_key": "floor:house:119:26499#entry",
+      "object_key": "floor:house:119:26499",
+      "event_type": "floor.convened",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House convened for a new legislative day",
+      "official_text": "The House convened, starting a new legislative day.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-01-03T16:30:00Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-01-03T16:30:00Z",
+        "first_seen_at": "2026-10-03T14:12:16.388Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "floor_day:house:2026-01-03"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-01-03",
+        "act_id": "H20100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260103.xml",
+          "retrieved_at": "2026-10-03T14:12:16.388Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "day",
+    "status": "ok",
+    "detail": "15 actions; legislative day 2026-01-03; next meeting 2026-01-06",
+    "items_seen": 15
+  },
+  "targets": [
+    {
+      "endpoint": "next_day",
+      "url": "https://clerk.house.gov/floor/20260106.xml"
+    }
+  ]
+}

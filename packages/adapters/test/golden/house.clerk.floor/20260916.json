@@ -1,0 +1,2515 @@
+{
+  "events": [
+    {
+      "schema_version": "0.1",
+      "id": "evt_9f033b746568db57",
+      "dedup_key": "floor_day:house:2026-09-17#scheduled_convene",
+      "object_key": "floor_day:house:2026-09-17",
+      "event_type": "floor.convened",
+      "status": "scheduled",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F7"
+      ],
+      "title": "House scheduled to meet Thursday, September 17, at 10:30 a.m. Eastern",
+      "official_text": "next legislative day convenes 20260917T10:30",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_schedule"
+        ]
+      },
+      "times": {
+        "occurred_at": null,
+        "scheduled_for": "2026-09-17T14:30:00Z",
+        "source_published_at": null,
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "convene_date": "2026-09-17"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_a06983db1dd7a868",
+      "dedup_key": "floor:house:119:43840#entry",
+      "object_key": "floor:house:119:43840",
+      "event_type": "floor.adjourned",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F7"
+      ],
+      "title": "House adjourned",
+      "official_text": "The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 10:30 a.m. on September 17, 2026.",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-17T01:59:48Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T02:03:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H61000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3dd34c897283307e",
+      "dedup_key": "floor:house:119:43839#entry",
+      "object_key": "floor:house:119:43839",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "SPECIAL ORDER SPEECHES - The House has concluded all anticipated legislative business and has proceeded to Special Order speeches.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:35:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:35:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_916cc9a749d07ce2",
+      "dedup_key": "floor:house:119:43838#entry",
+      "object_key": "floor:house:119:43838",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "ONE MINUTE SPEECHES - The House proceeded with further one minute speeches.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:07:16Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:07:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ef591eb162e3531d",
+      "dedup_key": "floor:house:119:43837#entry",
+      "object_key": "floor:house:119:43837",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1544",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:06:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T03:40:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_79ef107d29b1a657",
+      "dedup_key": "floor:house:119:43836#entry",
+      "object_key": "floor:house:119:43836",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1544",
+      "official_text": "On agreeing to the resolution Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:06:13Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T03:40:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_cb32f02fd3987047",
+      "dedup_key": "floor:house:119:43835#entry",
+      "object_key": "floor:house:119:43835",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.Res. 1544",
+      "official_text": "Considered as privileged matter. H. Res. 1544 — \"Electing a Member to a certain standing committee of the House of Representatives.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:05:49Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-17T03:40:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1544"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5aa023454e50ec94",
+      "dedup_key": "floor:house:119:43834#entry",
+      "object_key": "floor:house:119:43834",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "DISTRICT WORK PERIOD - Pursuant to clause 13 of Rule I, the Chair announced the Speaker's designation of the period from Wednesday, September 16, 2026, through Sunday, November 8, 2026, as a \"district work period.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:05:35Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:10:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1e5c75f629150bcd",
+      "dedup_key": "floor:house:119:43833#entry",
+      "object_key": "floor:house:119:43833",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S. 2403",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:05:18Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:05:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_c32e56d09ad3f783",
+      "dedup_key": "floor:house:119:43832#entry",
+      "object_key": "floor:house:119:43832",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 314 on S. 2403",
+      "official_text": "On motion to suspend the rules and pass the bill Agreed to by the Yeas and Nays: (2/3 required): 401 - 14 (Roll no. 314).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T23:05:16Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:12:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:314"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9ec094e7ce8f344c",
+      "dedup_key": "floor:house:119:43830#entry",
+      "object_key": "floor:house:119:43830",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on S. 2403",
+      "official_text": "Considered as unfinished business. S. 2403 — \"To amend the Employee Retirement Income Security Act of 1974 to provide a clear definition of adequate consideration for certain closely held stock, and for other purposes.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:59:01Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:59:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:s:2403"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_76f39cc9d559ebd9",
+      "dedup_key": "floor:house:119:43829#entry",
+      "object_key": "floor:house:119:43829",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9497",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:58:43Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:58:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_463314f34afbba68",
+      "dedup_key": "floor:house:119:43828#entry",
+      "object_key": "floor:house:119:43828",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 313 on H.R. 9497",
+      "official_text": "On motion to suspend the rules and pass the bill, as amended Agreed to by the Yeas and Nays: (2/3 required): 415 - 9 (Roll no. 313).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:58:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:12:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:313"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_270ae9dd89da11a6",
+      "dedup_key": "floor:house:119:43826#entry",
+      "object_key": "floor:house:119:43826",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9497",
+      "official_text": "Considered as unfinished business. H.R. 9497 — \"To provide for improvements to the rivers and harbors of the United States, to provide for the conservation and development of water and related resources, and for other purposes.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:54:04Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:54:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9497"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3b306491118c518b",
+      "dedup_key": "floor:house:119:43825#entry",
+      "object_key": "floor:house:119:43825",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9340",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:53:50Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:54:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_56ecbbf27e92fc44",
+      "dedup_key": "floor:house:119:43824#entry",
+      "object_key": "floor:house:119:43824",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 312 on H.R. 9340",
+      "official_text": "On motion to suspend the rules and pass the bill, as amended Agreed to by the Yeas and Nays: (2/3 required): 417 - 3 (Roll no. 312).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:53:48Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:12:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:312"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ea1f8989ee59a3d3",
+      "dedup_key": "floor:house:119:43822#entry",
+      "object_key": "floor:house:119:43822",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9340",
+      "official_text": "Considered as unfinished business. H.R. 9340 — \"To amend the Public Utility Regulatory Policies Act of 1978 to establish a Federal standard relating to the recovery of the full, incremental costs of upgrades that serve large-load customers, and for other purposes.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:50:20Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:50:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9340"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_d14b426441d46848",
+      "dedup_key": "floor:house:119:43821#entry",
+      "object_key": "floor:house:119:43821",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 213",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:50:09Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:50:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_01482d8195bb6e76",
+      "dedup_key": "floor:house:119:43820#entry",
+      "object_key": "floor:house:119:43820",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 311 on H.J.Res. 213",
+      "official_text": "On passage Passed by the Yeas and Nays: 214 - 208 (Roll no. 311).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:50:06Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:12:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:311"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_ac8ff61c1196b6bc",
+      "dedup_key": "floor:house:119:43818#entry",
+      "object_key": "floor:house:119:43818",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 213",
+      "official_text": "Considered as unfinished business. H.J. Res. 213 — \"Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule issued by the Environmental Protection Agency relating to the \"California State Nonroad Engine Pollution Control Standards; Commercial Harbor Craft Regulations; Notice of Decision\".\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:44:17Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:44:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:213"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_816d02cbd5eb5d96",
+      "dedup_key": "floor:house:119:43817#entry",
+      "object_key": "floor:house:119:43817",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 10326",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:43:59Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:44:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_aea5de025e0cb54f",
+      "dedup_key": "floor:house:119:43816#entry",
+      "object_key": "floor:house:119:43816",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 310 on H.R. 10326",
+      "official_text": "On passage Passed by the Yeas and Nays: 217 - 207 (Roll no. 310).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:43:57Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:12:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:310"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_395b4ef9bd7707b8",
+      "dedup_key": "floor:house:119:43814#entry",
+      "object_key": "floor:house:119:43814",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 10326",
+      "official_text": "Considered as unfinished business. H.R. 10326 — \"To enhance information-sharing capabilities between Federal law enforcement and State agencies to detect, investigate, and prosecute fraud in certain Federal programs, and to protect individual privacy.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:37:43Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:38:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:10326"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_229e136fcd082f18",
+      "dedup_key": "floor:house:119:43813#entry",
+      "object_key": "floor:house:119:43813",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9576",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:37:31Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:37:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_91920c99d6ecc2a8",
+      "dedup_key": "floor:house:119:43812#entry",
+      "object_key": "floor:house:119:43812",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 309 on H.R. 9576",
+      "official_text": "On passage Passed by the Yeas and Nays: 352 - 72 (Roll no. 309).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:37:27Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:12:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:309"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37100"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_504a876b6f7a61b1",
+      "dedup_key": "floor:house:119:43810#entry",
+      "object_key": "floor:house:119:43810",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9576",
+      "official_text": "Considered as unfinished business. H.R. 9576 — \"To establish the National Fraud Enforcement Division of the Department of Justice.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:28:42Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:29:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9576"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_dd0998933427b215",
+      "dedup_key": "floor:house:119:43809#entry",
+      "object_key": "floor:house:119:43809",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 5334",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:28:23Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T22:28:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H41931"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2a90f153888ca8c3",
+      "dedup_key": "floor:house:119:43808#entry",
+      "object_key": "floor:house:119:43808",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2",
+        "F5"
+      ],
+      "title": "House floor recorded the result of roll call 308 on H.R. 5334",
+      "official_text": "On motion that the House agree to the Senate amendments Agreed to by the Yeas and Nays: 262 - 159 (Roll no. 308).",
+      "importance": {
+        "tier": "P2",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T22:28:20Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T23:12:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "vote:house:119:2:308"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H41610"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_9780250462ca5178",
+      "dedup_key": "floor:house:119:43801#entry",
+      "object_key": "floor:house:119:43801",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor proceedings entry",
+      "official_text": "The House received a message from the Senate. The Senate passed H.R. 3657 and H.R. 7250.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:52:58Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:53:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H24300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e06f2c3ab8398abe",
+      "dedup_key": "floor:house:119:43800#entry",
+      "object_key": "floor:house:119:43800",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 213",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on H.J. Res. 213, the Chair put the question on passage of the joint resolution, and by voice vote announced that the ayes had prevailed. Mr. Pallone demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:52:20Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:52:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:213"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_e377b83d1c533b26",
+      "dedup_key": "floor:house:119:43799#entry",
+      "object_key": "floor:house:119:43799",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 213",
+      "official_text": "The previous question was ordered pursuant to the rule.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:51:28Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:52:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H35000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_88b24031f7e97648",
+      "dedup_key": "floor:house:119:43798#entry",
+      "object_key": "floor:house:119:43798",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 213",
+      "official_text": "DEBATE - The House proceeded with one hour of debate on H.J. Res. 213.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:28:15Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:28:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:213"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_2d9898f2709477a1",
+      "dedup_key": "floor:house:119:43797#entry",
+      "object_key": "floor:house:119:43797",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 213",
+      "official_text": "Rule provides for consideration of H.R. 9576, H.R. 10326, H.J. Res. 210 and H.J. Res. 213. The resolution provides for consideration of H.R. 9576, H.R. 10326, H.J. Res. 210, and H.J. Res. 213 under a closed rule with one hour of debate and one motion to recommit on each measure. The resolution provides for a motion to concur in the Senate amendments to H.R. 5334.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:27:29Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:28:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:213"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_21b6d6586d7fe8d4",
+      "dedup_key": "floor:house:119:43796#entry",
+      "object_key": "floor:house:119:43796",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.J.Res. 213",
+      "official_text": "Considered under the provisions of rule H. Res. 1530. H.J. Res. 213 — \"Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule issued by the Environmental Protection Agency relating to the \"California State Nonroad Engine Pollution Control Standards; Commercial Harbor Craft Regulations; Notice of Decision\".\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:27:24Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:28:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1530"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:213"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8a9f4ea1592cd77e",
+      "dedup_key": "floor:house:119:43795#entry",
+      "object_key": "floor:house:119:43795",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 10326",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on H.R. 10326, the Chair put the question on passage of the bill, and by voice vote announced that the ayes had prevailed. Mr. Raskin demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:25:48Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:26:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:10326"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_3e2fd9f34714ad11",
+      "dedup_key": "floor:house:119:43794#entry",
+      "object_key": "floor:house:119:43794",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 10326",
+      "official_text": "The previous question was ordered pursuant to the rule.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T21:25:08Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T21:26:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H35000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_1f38f4c403cf3d99",
+      "dedup_key": "floor:house:119:43793#entry",
+      "object_key": "floor:house:119:43793",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 10326",
+      "official_text": "DEBATE - The House proceeded with one hour of debate on H.R. 10326.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T20:36:42Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T20:39:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:10326"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_14e7f1778078a346",
+      "dedup_key": "floor:house:119:43792#entry",
+      "object_key": "floor:house:119:43792",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 10326",
+      "official_text": "Rule provides for consideration of H.R. 9576, H.R. 10326, H.J. Res. 210 and H.J. Res. 213. The resolution provides for consideration of H.R. 9576, H.R. 10326, H.J. Res. 210, and H.J. Res. 213 under a closed rule with one hour of debate and one motion to recommit on each measure. The resolution provides for a motion to concur in the Senate amendments to H.R. 5334.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T20:36:12Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T20:39:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9576"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:10326"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:210"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hjres:213"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:5334"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_00cfb12beff8b5d6",
+      "dedup_key": "floor:house:119:43791#entry",
+      "object_key": "floor:house:119:43791",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 10326",
+      "official_text": "Considered under the provisions of rule H. Res. 1530. H.R. 10326 — \"To enhance information-sharing capabilities between Federal law enforcement and State agencies to detect, investigate, and prosecute fraud in certain Federal programs, and to protect individual privacy.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T20:36:07Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T20:39:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1530"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:10326"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_02be48ecc1a397c8",
+      "dedup_key": "floor:house:119:43790#entry",
+      "object_key": "floor:house:119:43790",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9576",
+      "official_text": "POSTPONED PROCEEDINGS - At the conclusion of debate on H.R. 9576, the Chair put the question on passage of the bill, and by voice vote announced that the ayes had prevailed. Mr. Raskin demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T20:35:32Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T20:57:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9576"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_858ef919228581a8",
+      "dedup_key": "floor:house:119:43789#entry",
+      "object_key": "floor:house:119:43789",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9576",
+      "official_text": "The previous question was ordered pursuant to the rule.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T20:35:19Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T20:36:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H35000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_7989bff201c9299f",
+      "dedup_key": "floor:house:119:43788#entry",
+      "object_key": "floor:house:119:43788",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9576",
+      "official_text": "DEBATE - The House proceeded with one hour of debate on H.R. 9576.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:46:33Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:47:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9576"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_debdc1ec2312840f",
+      "dedup_key": "floor:house:119:43785#entry",
+      "object_key": "floor:house:119:43785",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9576",
+      "official_text": "Rule provides for consideration of H.R. 9576, H.R. 10326, H.J. Res. 210 and H.J. Res. 213. The resolution provides for consideration of H.R. 9576, H.R. 10326, H.J. Res. 210, and H.J. Res. 213 under a closed rule with one hour of debate and one motion to recommit on each measure. The resolution provides for a motion to concur in the Senate amendments to H.R. 5334.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:45:49Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:46:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9576"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_5294020c5284789e",
+      "dedup_key": "floor:house:119:43784#entry",
+      "object_key": "floor:house:119:43784",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9576",
+      "official_text": "Considered under the provisions of rule H. Res. 1530. H.R. 9576 — \"To establish the National Fraud Enforcement Division of the Department of Justice.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:45:44Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:46:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hres:1530"
+        },
+        {
+          "rel": "about",
+          "key": "bill:119:hr:9576"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_4a11c58388832700",
+      "dedup_key": "floor:house:119:43783#entry",
+      "object_key": "floor:house:119:43783",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7730",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:43:46Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:44:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_8b79dc039b145bba",
+      "dedup_key": "floor:house:119:43782#entry",
+      "object_key": "floor:house:119:43782",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7730",
+      "official_text": "On motion to suspend the rules and pass the bill, as amended Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:43:43Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:43:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_672047ed07c34d93",
+      "dedup_key": "floor:house:119:43781#entry",
+      "object_key": "floor:house:119:43781",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7730",
+      "official_text": "DEBATE - The House proceeded with forty minutes of debate on H.R. 7730.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:33:43Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:34:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:7730"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H8D000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_480e9267b9c8d204",
+      "dedup_key": "floor:house:119:43780#entry",
+      "object_key": "floor:house:119:43780",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7730",
+      "official_text": "Considered under suspension of the rules.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:33:41Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:34:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30000"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_30f4929c041c14a8",
+      "dedup_key": "floor:house:119:43779#entry",
+      "object_key": "floor:house:119:43779",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 7730",
+      "official_text": "Mr. Cline moved to suspend the rules and pass the bill, as amended. H.R. 7730 — \"To amend title 11, United States Code, to modify certain bankruptcy eligibility requirements, and for other purposes.\"",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:33:10Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:34:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "related": [
+        {
+          "rel": "about",
+          "key": "bill:119:hr:7730"
+        }
+      ],
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H30300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_f61a29a50409fa50",
+      "dedup_key": "floor:house:119:43778#entry",
+      "object_key": "floor:house:119:43778",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9191",
+      "official_text": "Motion to reconsider laid on the table Agreed to without objection.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:33:10Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:34:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H38310"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "id": "evt_6221943991d32664",
+      "dedup_key": "floor:house:119:43777#entry",
+      "object_key": "floor:house:119:43777",
+      "event_type": "floor.action",
+      "status": "ended",
+      "branch": "legislative",
+      "body": "house",
+      "features": [
+        "F2"
+      ],
+      "title": "House floor action on H.R. 9191",
+      "official_text": "On motion to suspend the rules and pass the bill, as amended Agreed to by voice vote.",
+      "importance": {
+        "tier": "P3",
+        "reasons": [
+          "floor_entry"
+        ]
+      },
+      "times": {
+        "occurred_at": "2026-09-16T19:33:01Z",
+        "scheduled_for": null,
+        "source_published_at": "2026-09-16T19:33:00Z",
+        "first_seen_at": "2026-10-02T17:59:54.111Z"
+      },
+      "result": {
+        "legislative_day": "2026-09-16",
+        "act_id": "H37300"
+      },
+      "sources": [
+        {
+          "source_id": "house.clerk.floor",
+          "url": "https://clerk.house.gov/floor/20260916.xml",
+          "retrieved_at": "2026-10-02T17:59:54.111Z",
+          "license": "us-gov-public-domain",
+          "affiliation": "official-nonpartisan"
+        }
+      ],
+      "revision": 1,
+      "provenance": {
+        "parser": "house_clerk_floor@0.1.0",
+        "confidence": "high"
+      }
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "day",
+    "status": "ok",
+    "detail": "newest 50 of 170 actions; legislative day 2026-09-16; next meeting 2026-09-17",
+    "items_seen": 170
+  },
+  "targets": [
+    {
+      "endpoint": "next_day",
+      "url": "https://clerk.house.gov/floor/20260917.xml"
+    }
+  ]
+}

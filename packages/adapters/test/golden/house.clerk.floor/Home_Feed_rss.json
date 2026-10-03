@@ -1,0 +1,16 @@
+{
+  "events": [],
+  "health": {
+    "source_id": "house.clerk.floor",
+    "endpoint": "feed",
+    "status": "ok",
+    "detail": "7 items; current legislative day 2026-10-01",
+    "items_seen": 7
+  },
+  "targets": [
+    {
+      "endpoint": "day",
+      "url": "https://clerk.house.gov/floor/20261001.xml"
+    }
+  ]
+}
