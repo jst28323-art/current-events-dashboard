@@ -1,0 +1,31 @@
+{
+  "source_id": "house.clerk.votes",
+  "url": "https://clerk.house.gov/Votes/MemberVotes?Session=2nd",
+  "final_url": "https://clerk.house.gov/Votes/MemberVotes?Session=2nd",
+  "fetched_at": "2026-10-03T13:22:07.833Z",
+  "status": 200,
+  "elapsed_ms": 226,
+  "bytes": 43235,
+  "sha256": "864dc381fb8edb62e1bf6eb5d25a4aedb7c8261c9710fb5023fca8b10bed2714",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "cache-control": "max-age=0, no-cache, no-store",
+    "content-encoding": "gzip",
+    "content-length": "2923",
+    "content-security-policy": "default-src * blob:; connect-src 'self' *.house.gov *.surveymonkey.com bam.nr-data.net *.google-analytics.com *.bitmovin.com houseliveprod-f9h4cpb9dyb8gegg.a01.azurefd.net *.arcgis.com; font-src 'self' fonts.gstatic.com maxcdn.bootstrapcdn.com js.arcgis.com; script-src 'self' *.googletagmanager.com 'nonce-B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8' 'unsafe-eval' oss.maxcdn.com js.arcgis.com *.newrelic.com cdn.jsdelivr.net bam.nr-data.net; style-src 'self' 'unsafe-inline' *.house.gov fonts.googleapis.com maxcdn.bootstrapcdn.com secure.surveymonkey.com cdn.jsdelivr.net js.arcgis.com; img-src * blob: 'self' *.house.gov *.google.com bam.nr-data.net assets01.surveymonkey.com surveymonkey-assets.s3.amazonaws.com js.arcgis.com api.mapbox.com data:; worker-src 'self' blob:; media-src 'self' blob: houseliveprod-f9h4cpb9dyb8gegg.a01.azurefd.net; frame-src *.surveymonkey.com surveymonkey.com js.arcgis.com; block-all-mixed-content",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Sat, 03 Oct 2026 13:22:06 GMT",
+    "expires": "Sat, 03 Oct 2026 13:22:06 GMT",
+    "pragma": "no-cache",
+    "referrer-policy": "no-referrer",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "vary": "Accept-Encoding, Cookie",
+    "x-content-security-policy": "default-src * blob:; connect-src 'self' *.house.gov *.surveymonkey.com bam.nr-data.net *.google-analytics.com *.bitmovin.com houseliveprod-f9h4cpb9dyb8gegg.a01.azurefd.net *.arcgis.com; font-src 'self' fonts.gstatic.com maxcdn.bootstrapcdn.com js.arcgis.com; script-src 'self' *.googletagmanager.com 'nonce-B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8' 'unsafe-eval' oss.maxcdn.com js.arcgis.com *.newrelic.com cdn.jsdelivr.net bam.nr-data.net; style-src 'self' 'unsafe-inline' *.house.gov fonts.googleapis.com maxcdn.bootstrapcdn.com secure.surveymonkey.com cdn.jsdelivr.net js.arcgis.com; img-src * blob: 'self' *.house.gov *.google.com bam.nr-data.net assets01.surveymonkey.com surveymonkey-assets.s3.amazonaws.com js.arcgis.com api.mapbox.com data:; worker-src 'self' blob:; media-src 'self' blob: houseliveprod-f9h4cpb9dyb8gegg.a01.azurefd.net; frame-src *.surveymonkey.com surveymonkey.com js.arcgis.com; block-all-mixed-content",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-xss-protection": "1; mode=block"
+  }
+}
