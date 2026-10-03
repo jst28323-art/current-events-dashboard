@@ -69,10 +69,16 @@ export function easternToUtc(y: number, mo: number, d: number, h: number, mi: nu
   return { ok: true, utc: isoZ(hits[0]!) }
 }
 
-/** The Eastern wall-clock parts of a UTC instant ("…Z"); null when the text is not a real instant. */
+/**
+ * The Eastern wall-clock parts of a UTC instant ("YYYY-MM-DDTHH:MM:SS[.sss]Z"); null when the text is not a real
+ * instant. Date.parse rolls impossible values over ("2026-02-30T15:00:00Z" -> March 2, "…T24:00:00Z" -> the next day),
+ * so the text must round-trip through toISOString exactly (review 483d7ab time F6).
+ */
 export function easternParts(utc: string): EtParts | null {
+  const m = /^(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d)(\.\d{3})?Z$/.exec(utc)
+  if (!m) return null
   const ms = Date.parse(utc)
-  if (!/Z$/.test(utc) || Number.isNaN(ms)) return null
+  if (Number.isNaN(ms) || new Date(ms).toISOString() !== `${m[1]}${m[2] ?? '.000'}Z`) return null
   return partsAt(ms)
 }
 

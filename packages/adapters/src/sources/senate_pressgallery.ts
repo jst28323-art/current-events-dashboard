@@ -24,7 +24,7 @@
 import { finalizeEvent, type CedEvent, type FeatureId, type Tier } from '@ced/schema'
 import type { AdapterOutput, FetchedResponse, HealthSignal, HealthStatus, SourceDefinition } from '../types.js'
 import { MONTHS, easternDate, easternToUtc, hour24, isRealDate, weekdayOf, ymd } from '../lib/eastern.js'
-import { collapseWs, decodeEntities } from '../lib/xmlscan.js'
+import { collapseWs, decodeEntities, hasUnknownEntity } from '../lib/xmlscan.js'
 
 export const SOURCE_ID = 'senate.pressgallery'
 export const PRESS_GALLERY_PARSER = 'senate_pressgallery@0.1.0'
@@ -64,6 +64,14 @@ const HTML_NAMED: Record<string, string> = {
 /** Decode prose text: the HTML named entities above, then &amp; &lt; … &#N; &#xN; (lib/xmlscan). */
 export function decodeProse(s: string): string {
   return decodeEntities(s.replace(/&(nbsp|ndash|mdash|lsquo|rsquo|ldquo|rdquo|hellip);/g, (_, n: string) => HTML_NAMED[n] ?? _))
+}
+
+/** The first entity in `inner` that decodeProse leaves verbatim (a named one outside HTML_NAMED and the XML five, or an
+ * invalid number), or null. */
+function unknownEntity(inner: string): string | null {
+  const rest = inner.replace(/&(nbsp|ndash|mdash|lsquo|rsquo|ldquo|rdquo|hellip);/g, ' ')
+  if (!hasUnknownEntity(rest)) return null
+  return /&(#[xX][0-9a-fA-F]{1,6}|#[0-9]{1,7}|[a-zA-Z][a-zA-Z0-9]{1,31});/.exec(decodeEntities(rest))?.[0] ?? '&?;'
 }
 
 function blockText(inner: string): string {
@@ -120,7 +128,11 @@ export function scanBlocks(html: string): BlocksResult {
       }
     }
     if (closing && name === blockTag && nested.length === 0) {
-      blocks.push({ tag: blockTag, text: blockText(src.slice(blockStart, m.index)) })
+      const inner = src.slice(blockStart, m.index)
+      // A named entity outside the table above would reach official_text verbatim (review 483d7ab F11): drift.
+      const unknown = unknownEntity(inner)
+      if (unknown !== null) return { ok: false, detail: `an HTML entity we do not decode (${unknown}) inside <${blockTag}>` }
+      blocks.push({ tag: blockTag, text: blockText(inner) })
       mode = blockTag === 'li' ? 'list' : 'top'
       continue
     }
@@ -164,14 +176,19 @@ export function resolveSessionDay(title: string, postDay: string): SessionDay {
   const mo = MONTHS.findIndex((x) => x.toLowerCase() === (m[2] as string).toLowerCase()) + 1
   const d = Number(m[3])
   const postYear = Number(postDay.slice(0, 4))
-  const years = m[4] ? [...new Set([Number(m[4]), postYear])] : [postYear]
+  // A title without a year tries the post's year, then the years either side (review 483d7ab time F7: "Thursday,
+  // December 31" posted on 2027-01-01 is 2026-12-31). The -14..+7 day window is 21 days wide, so at most one year fits.
+  const years = m[4] ? [...new Set([Number(m[4]), postYear])] : [postYear, postYear - 1, postYear + 1]
   const postN = dayNumber(postDay)
   for (const [i, y] of years.entries()) {
     if (!isRealDate(y, mo, d)) continue
     if (weekday !== null && weekdayOf(y, mo, d) !== weekday) continue
     const diff = dayNumber(ymd(y, mo, d)) - postN
     if (diff < -14 || diff > 7) continue
-    return { kind: 'day', date: ymd(y, mo, d), how: i === 0 ? (m[4] ? 'title' : "title with the post's year") : "title with the post's year (the printed year did not fit)" }
+    const how = m[4]
+      ? (i === 0 ? 'title' : "title with the post's year (the printed year did not fit)")
+      : (i === 0 ? "title with the post's year" : `title with the year ${i === 1 ? 'before' : 'after'} the post's (a year boundary)`)
+    return { kind: 'day', date: ymd(y, mo, d), how }
   }
   const [py, pm, pd] = postDay.split('-').map(Number) as [number, number, number]
   if (weekday !== null && weekday === weekdayOf(py, pm, pd)) {
@@ -199,9 +216,9 @@ const SCHEDULE_PART = /^(The Senate will|At \d{1,2}:\d{2}|Following)/
 // ("——…——-"), so hyphens may ride along as long as there are 3+ em dashes. An em-dash rule inside the log is a day
 // break, not a schedule boundary (162959: "The above happened on Friday, June 5th." then the rule); the midnight walk,
 // not the rule, moves the day.
-function isSeparator(text: string): boolean {
-  if (/^\*{3,}$/.test(text)) return true
-  return /^[—-]+$/.test(text) && (text.match(/—/g)?.length ?? 0) >= 3
+function separatorKind(text: string): 'stars' | 'rule' | null {
+  if (/^\*{3,}$/.test(text)) return 'stars'
+  return /^[—-]+$/.test(text) && (text.match(/—/g)?.length ?? 0) >= 3 ? 'rule' : null
 }
 
 export interface Entry {
@@ -221,13 +238,15 @@ export interface Entry {
   /** Why h/mi are null. */
   clockNote?: string
   continuation: string[]
+  /** How many em-dash day-break rules sit above this entry in the post (the walk sees a day change when it drops). */
+  dayBreaks: number
 }
 
 export type EntriesResult = { ok: true; entries: Entry[]; orphans: number } | { ok: false; why: string }
 
 const pad2 = (n: number) => String(n).padStart(2, '0')
 
-function readClock(text: string): Omit<Entry, 'block' | 'text' | 'continuation'> | null {
+function readClock(text: string): Omit<Entry, 'block' | 'text' | 'continuation' | 'dayBreaks'> | null {
   const t = TIMED.exec(text)
   if (t) {
     const pm = (t[5] as string).toLowerCase() === 'p'
@@ -264,11 +283,16 @@ export function cutEntries(blocks: readonly Block[]): EntriesResult {
   const entries: Entry[] = []
   let orphans = 0
   const parts: Array<Array<{ b: Block; i: number }>> = [[]]
+  const rulesAbove: number[] = [0] // em-dash rules above each part
   blocks.forEach((b, i) => {
-    if (isSeparator(b.text)) parts.push([])
-    else (parts[parts.length - 1] as Array<{ b: Block; i: number }>).push({ b, i })
+    const sep = separatorKind(b.text)
+    if (sep !== null) {
+      parts.push([])
+      rulesAbove.push((rulesAbove[rulesAbove.length - 1] ?? 0) + (sep === 'rule' ? 1 : 0))
+    } else (parts[parts.length - 1] as Array<{ b: Block; i: number }>).push({ b, i })
   })
-  for (const part of parts) {
+  for (const [pi, part] of parts.entries()) {
+    const dayBreaks = rulesAbove[pi] ?? 0
     const first = part.find((x) => x.b.text !== '')
     if (first === undefined) continue
     if (SCHEDULE_PART.test(first.b.text)) {
@@ -283,7 +307,7 @@ export function cutEntries(blocks: readonly Block[]): EntriesResult {
       const clock = readClock(b.text)
       if (clock !== null) {
         if (inSchedule) return { ok: false, why: `block ${i} is a clock line after the schedule began` }
-        current = { block: i, text: b.text, continuation: [], ...clock }
+        current = { block: i, text: b.text, continuation: [], dayBreaks, ...clock }
         entries.push(current)
       } else if (SCHEDULE_START.test(b.text)) {
         inSchedule = true
@@ -303,31 +327,64 @@ export function cutEntries(blocks: readonly Block[]): EntriesResult {
 
 export interface Placed { occurred_at: string | null; time_note?: string }
 
+export const NOTE_AFTER_EDIT = "later than the post's last edit (modified_gmt)"
+export const NOTE_AFTER_FETCH = 'later than our own fetch'
+export const NOTE_DAY_BREAK = 'after a day break in the log (an em-dash rule) that the clocks do not date'
+export const NOTE_LOST_DAY = 'after two clocks in a row that run backwards: the log no longer says which day'
+
 /**
  * Walk from the bottom (oldest) up: the day rolls forward when the clock drops by more than 6 h (midnight); a smaller
  * drop is an out-of-order typo (162959's "10:30 p.m." between 10:57 and 11:40) -> null. U-clocks are skipped by the
- * walk. Ambiguous / nonexistent wall times -> null; so is a time later than our own fetch.
+ * walk. Ambiguous / nonexistent wall times -> null.
+ *
+ * Never a time the post itself rules out (review 483d7ab fail-closed F5, time F1/F2, keys F2):
+ * - an instant later than the post's own `modified_gmt` (a log cannot record what happened after its last edit; across
+ *   every recorded post the smallest margin is 2.1 min) or than our fetch -> null. This also catches an a.m./p.m. slip
+ *   that the walk read as midnight, so the facts depend only on the body, never on when we fetched it;
+ * - crossing an em-dash day-break rule (162959: "The above happened on Friday, June 5th.") the day must change: when
+ *   the clock does not drop by more than 6 h there, the walk cannot tell by how much, so that entry and every newer one
+ *   in the post -> null (162959's rule sits at midnight, 11:40 p.m. -> 12:08 a.m., and keeps its times);
+ * - two clocks in a row earlier than the last placed one: one typo is an out-of-order entry, two mean the walk has
+ *   lost the day (an unmarked overnight recess) -> those and every newer entry -> null.
  */
-export function placeEntries(entries: readonly Entry[], sessionDay: string, fetchedAt: string): Placed[] {
+export function placeEntries(entries: readonly Entry[], sessionDay: string, bound: { fetchedAt: string; modifiedAt: string }): Placed[] {
   const out: Placed[] = new Array(entries.length)
   let prev: number | null = null
+  let prevBreaks: number | null = null
   let roll = 0
-  const fetchedMs = Date.parse(fetchedAt)
+  let typoRun = 0
+  let lost: string | null = null
+  const fetchedMs = Date.parse(bound.fetchedAt)
+  const modifiedMs = Date.parse(bound.modifiedAt)
   for (let i = entries.length - 1; i >= 0; i--) {
     const e = entries[i] as Entry
+    if (lost !== null) {
+      out[i] = { occurred_at: null, time_note: e.h === null ? (e.clockNote ?? 'not a valid clock time') : lost }
+      continue
+    }
     if (e.h === null || e.mi === null) {
       out[i] = { occurred_at: null, time_note: e.clockNote ?? 'not a valid clock time' }
       continue
     }
     const t = e.h * 60 + e.mi
+    const crossesDayBreak = prevBreaks !== null && e.dayBreaks < prevBreaks
+    if (crossesDayBreak && !(prev !== null && prev - t > 360)) {
+      lost = NOTE_DAY_BREAK
+      out[i] = { occurred_at: null, time_note: lost }
+      continue
+    }
     if (prev !== null && t < prev) {
       if (prev - t > 360) roll++
       else {
-        out[i] = { occurred_at: null, time_note: 'clock out of order (earlier than the entry logged before it)' }
+        typoRun++
+        if (typoRun >= 2) lost = NOTE_LOST_DAY
+        out[i] = { occurred_at: null, time_note: lost ?? 'clock out of order (earlier than the entry logged before it)' }
         continue
       }
     }
+    typoRun = 0
     prev = t
+    prevBreaks = e.dayBreaks
     const date = addDays(sessionDay, roll)
     const [y, mo, d] = date.split('-').map(Number) as [number, number, number]
     const r = easternToUtc(y, mo, d, e.h, e.mi)
@@ -335,7 +392,10 @@ export function placeEntries(entries: readonly Entry[], sessionDay: string, fetc
       out[i] = { occurred_at: null, time_note: r.reason === 'ambiguous' ? 'ambiguous Eastern wall time (fall-back hour)' : r.reason === 'nonexistent' ? 'Eastern wall time does not exist (spring-forward gap)' : 'not a valid clock time' }
       continue
     }
-    out[i] = Date.parse(r.utc) > fetchedMs ? { occurred_at: null, time_note: 'later than our own fetch' } : { occurred_at: r.utc }
+    const ms = Date.parse(r.utc)
+    out[i] = ms > modifiedMs ? { occurred_at: null, time_note: NOTE_AFTER_EDIT }
+      : ms > fetchedMs ? { occurred_at: null, time_note: NOTE_AFTER_FETCH }
+        : { occurred_at: r.utc }
   }
   return out
 }
@@ -343,7 +403,17 @@ export function placeEntries(entries: readonly Entry[], sessionDay: string, fetc
 // ---------------------------------------------------------------------------------------------------------------------
 // Typing (DESIGN §3.5 "Typing"; critique T3): the timed block's text after the clock only, first match wins.
 
-export interface Typing { event_type: string; tier: Tier; features: FeatureId[]; title: string; floorDay: boolean }
+export interface Typing {
+  event_type: string
+  tier: Tier
+  features: FeatureId[]
+  title: string
+  floorDay: boolean
+  /** importance.reasons when not the default ['press_gallery_log'] (a D-062 P0 line). */
+  reasons?: string[]
+  /** D-062: "unofficial log" on a line that may alert (result.origin_label). */
+  originLabel?: string
+}
 
 const T_PRO_FORMA = /^The Senate (convened|met|has convened)\b.*\bpro forma\b/i
 const T_CONVENED = /^The Senate (has )?(convened|returned from (the )?recess|is (now )?in session)\b/i
@@ -355,6 +425,53 @@ const T_VOTE_OPENED = /^The Senate (began (voting|a (roll call )?vote)|is (now )
 // passed H.R.7250" (166464 block 11) / "By voice vote, the Senate adopted the Graham Substitute Amendment" (162959).
 const T_RESULT = /^(By a (party[- ]line )?vote (of )?\d+-\d+|By voice vote\b|The Senate (confirmed|invoked|did not|passed|adopted|agreed|rejected)\b|The following .*\b(passed|adopted|agreed to|confirmed)\b)/i
 const T_SPOKE = /\bspoke\b/i
+
+// ---- D-062 (owner): a result line of a D-012/D-061 alert class may be P0, labeled as the unofficial log ----
+// P0 only when the line ITSELF states the outcome of a recorded vote, in one of the shapes below, anchored at the start of
+// the text after the clock (never from the continuation, a schedule part or context). A tally "N-N" is required: the
+// official alert classes are roll-call votes (a voice vote or unanimous consent has no official roll call to follow and
+// never alerts). Passage needs a bill or joint resolution number right after "passed" (a simple or concurrent resolution
+// is not final passage of a bill); a confirmation needs a nominee shape ("the X nomination", "the nomination of",
+// "<Name> to be <office>", "Executive Calendar #N"). Anything else that reads as a result stays P2 (rule 6).
+const TALLY = String.raw`By a (?:party[- ]line )?vote (?:of )?\d{1,3}-\d{1,3},? `
+const TALLY_AFTER = String.raw` (?:on|by) a (?:party[- ]line )?(?:vote|tally) of \d{1,3}-\d{1,3}\b`
+const BILL_NO = String.raw`(H\.\s?J\.\s?Res\.|S\.\s?J\.\s?Res\.|H\.\s?R\.|S\.)\s?([1-9]\d{0,4})\b`
+const NOMINEE = String.raw`(?:the nomination of |Executive Calendar #\d+|the [A-Z][\w'’.-]*(?: [A-Z][\w'’.-]*)* nomination\b|[A-Z][^,;.]*? to be )`
+const P0_LINES: ReadonlyArray<{ re: RegExp; reason: 'confirmation' | 'final_passage' | 'veto_override' | 'impeachment_verdict' }> = [
+  // "By a party-line vote of 50-47, the Senate confirmed Angela Veronica Colmenero to be United States District Judge …" (166665)
+  { re: new RegExp(`^${TALLY}the Senate confirmed ${NOMINEE}`, 'i'), reason: 'confirmation' },
+  // "The Senate confirmed the Sonderling nomination on a party line vote of 47-41." (167105)
+  { re: new RegExp(`^The Senate confirmed ${NOMINEE}[^;]*?${TALLY_AFTER}`, 'i'), reason: 'confirmation' },
+  // "By a vote of 53-40, the nomination of Alexander Van Hook to be a District Judge … was confirmed." (156898)
+  { re: new RegExp(String.raw`^${TALLY}the nomination of [^;]+? was confirmed\b`, 'i'), reason: 'confirmation' },
+  // "By a vote of 77-22, the Senate passed S.4668, Protect College Sports Act of 2026, as amended." (166855)
+  { re: new RegExp(`^${TALLY}the Senate passed ${BILL_NO}`, 'i'), reason: 'final_passage' },
+  { re: new RegExp(`^The Senate passed ${BILL_NO}[^;]*?${TALLY_AFTER}`, 'i'), reason: 'final_passage' },
+  // no recorded line yet; the shape of the passage line with the override verb
+  { re: new RegExp(String.raw`^${TALLY}the Senate (?:voted to )?overr(?:ode|ide) the (?:President['’]s |presidential )?veto (?:of|on) ${BILL_NO}`, 'i'), reason: 'veto_override' },
+  // no recorded line yet; "By a vote of 57-43, the Senate acquitted …" (the 117-1 vote 59 tally)
+  { re: new RegExp(String.raw`^${TALLY}the Senate (?:voted to )?(?:acquit(?:ted)?|convict(?:ed)?) (?!of\b|on\b)\S`, 'i'), reason: 'impeachment_verdict' },
+]
+/** The origin label D-062 requires on a gallery line that may alert (result.origin_label; also in the title). */
+export const UNOFFICIAL_LOG = 'unofficial log'
+
+const fmtBillNo = (type: string, n: string): string => `${type.replace(/\s+/g, '')} ${Number(n)}`
+
+/** The D-062 P0 reading of a timed line's text after the clock, or null (the line keeps its rule-6 tier). */
+export function p0Result(rest: string): { reason: string; title: string } | null {
+  for (const { re, reason } of P0_LINES) {
+    const m = re.exec(rest)
+    if (!m) continue
+    const tag = `(${UNOFFICIAL_LOG}: ${LOG_NAME.replace(/ log$/, '')})` // "(unofficial log: Senate Daily Press Gallery)"
+    switch (reason) {
+      case 'confirmation': return { reason, title: `Senate confirmed a nomination ${tag}` }
+      case 'final_passage': return { reason, title: `Senate passed ${fmtBillNo(m[1]!, m[2]!)} ${tag}` }
+      case 'veto_override': return { reason, title: `Senate overrode the veto of ${fmtBillNo(m[1]!, m[2]!)} ${tag}` }
+      case 'impeachment_verdict': return { reason, title: `Senate ${/acquit/i.test(m[0]) ? 'acquitted' : 'convicted'} in an impeachment trial ${tag}` }
+    }
+  }
+  return null
+}
 
 const log = (what: string) => `${what} (${LOG_NAME})`
 
@@ -369,7 +486,11 @@ export function typeEntry(rest: string): Typing {
   if (T_ADJOURNED.test(rest)) return { event_type: 'floor.adjourned', tier: 'P2', features: ['F1'], title: log('Senate adjourned'), floorDay: true }
   if (T_RECESS.test(rest)) return { event_type: 'floor.recess', tier: 'P3', features: ['F1'], title: log('Senate recessed'), floorDay: false }
   if (T_VOTE_OPENED.test(rest)) return { event_type: 'vote.opened', tier: 'P2', features: ['F1', 'F5'], title: log('A Senate roll call vote began'), floorDay: false }
-  if (T_RESULT.test(rest)) return { event_type: 'floor.action', tier: 'P2', features: ['F1', 'F5'], title: 'Senate Daily Press Gallery logged a floor result', floorDay: false }
+  if (T_RESULT.test(rest)) {
+    const p0 = p0Result(rest)
+    if (p0) return { event_type: 'floor.action', tier: 'P0', features: ['F1', 'F5'], title: p0.title, floorDay: false, reasons: [p0.reason, 'press_gallery_log', 'unofficial_log'], originLabel: UNOFFICIAL_LOG }
+    return { event_type: 'floor.action', tier: 'P2', features: ['F1', 'F5'], title: 'Senate Daily Press Gallery logged a floor result', floorDay: false }
+  }
   if (T_SPOKE.test(rest)) return { event_type: 'floor.speaking', tier: 'P3', features: ['F1', 'F8'], title: 'Senate Daily Press Gallery logged floor speeches', floorDay: false }
   return { event_type: 'floor.action', tier: 'P3', features: ['F1'], title: 'Senate Daily Press Gallery logged floor activity', floorDay: false }
 }
@@ -387,7 +508,7 @@ function rendered(v: unknown): string | null {
   return isObj(v) && typeof v.rendered === 'string' ? v.rendered : null
 }
 
-interface Post { id: number; dateGmt: string; link: string; title: string; content: string }
+interface Post { id: number; dateGmt: string; modifiedGmt: string; link: string; title: string; content: string }
 
 /** The required post fields (DESIGN §3.5 "Parsing"); a string says what is wrong. */
 function readPost(p: unknown): Post | string {
@@ -411,7 +532,7 @@ function readPost(p: unknown): Post | string {
   const content = rendered(p.content)
   if (content === null) return `${at}: no content.rendered`
   if (isObj(p.content) && p.content.protected !== undefined && p.content.protected !== false) return `${at}: content is password-protected`
-  return { id: p.id, dateGmt: p.date_gmt, link: url.href, title, content }
+  return { id: p.id, dateGmt: p.date_gmt, modifiedGmt: p.modified_gmt, link: url.href, title, content }
 }
 
 /**
@@ -462,6 +583,8 @@ export function parseDailyPosts(endpointId: string, res: FetchedResponse): Adapt
     }
     const postDay = easternDate(`${post.dateGmt}Z`)
     if (postDay === null) return fail('drift', `post ${post.id}: date_gmt ${post.dateGmt} is not a real instant`, seen)
+    // modified_gmt bounds every entry's instant (placeEntries), so it must be a real instant too.
+    if (easternDate(`${post.modifiedGmt}Z`) === null) return fail('drift', `post ${post.id}: modified_gmt ${post.modifiedGmt} is not a real instant`, seen)
     const day = resolveSessionDay(title, postDay)
     if (day.kind === 'not_a_date') {
       notes.push(`post ${post.id} skipped: its title is not a date, so it is not a floor log`)
@@ -481,7 +604,7 @@ export function parseDailyPosts(endpointId: string, res: FetchedResponse): Adapt
     logs++
     if (cut.entries.length === 0) notes.push(`post ${post.id}: no timed entries`)
     if (day.how !== 'title') notes.push(`post ${post.id} day ${day.date} from ${day.how}`)
-    const placed = placeEntries(cut.entries, day.date, res.fetchedAt)
+    const placed = placeEntries(cut.entries, day.date, { fetchedAt: res.fetchedAt, modifiedAt: `${post.modifiedGmt}Z` })
     // k = 1-based index among entries with the same time part, counted from the BOTTOM (oldest) of the post.
     const ks = new Array<number>(cut.entries.length)
     const counts = new Map<string, number>()
@@ -507,10 +630,10 @@ export function parseDailyPosts(endpointId: string, res: FetchedResponse): Adapt
         features: typing.features,
         title: typing.title,
         official_text: official,
-        importance: { tier: typing.tier, reasons: ['press_gallery_log'] },
+        importance: { tier: typing.tier, reasons: typing.reasons ?? ['press_gallery_log'] },
         times: { occurred_at: p.occurred_at, source_published_at: null, first_seen_at: res.fetchedAt },
         ...(typing.floorDay ? { related: [{ rel: 'about', key: `floor_day:senate:${day.date}` }] } : {}),
-        result: { session_date: day.date, clock_text: e.clock, post_id: post.id, ...(p.time_note !== undefined ? { time_note: p.time_note } : {}) },
+        result: { session_date: day.date, clock_text: e.clock, post_id: post.id, ...(typing.originLabel !== undefined ? { origin_label: typing.originLabel } : {}), ...(p.time_note !== undefined ? { time_note: p.time_note } : {}) },
         sources: [{
           source_id: SOURCE_ID,
           url: post.link,

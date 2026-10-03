@@ -11,8 +11,10 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { validateEvent, type CedEvent } from '@ced/schema'
 import {
-  DAILY_POSTS_URL, PRESS_GALLERY_PARSER, cutEntries, parseDailyPosts, resolveSessionDay, scanBlocks, senatePressgallery, typeEntry,
+  DAILY_POSTS_URL, NOTE_AFTER_EDIT, NOTE_DAY_BREAK, NOTE_LOST_DAY, PRESS_GALLERY_PARSER, cutEntries, p0Result, parseDailyPosts,
+  resolveSessionDay, scanBlocks, senatePressgallery, typeEntry,
 } from '../src/sources/senate_pressgallery.js'
+import { easternDate } from '../src/lib/eastern.js'
 import type { AdapterOutput, FetchedResponse } from '../src/types.js'
 import { expectHubPayloadRules } from './payload_rules.js'
 import { replay, variant } from './replay.js'
@@ -80,10 +82,15 @@ function posts(res: FetchedResponse, patch: (ps: Array<Record<string, any>>) => 
   return variant(res, { body: JSON.stringify(out ?? ps) })
 }
 /** A one-post payload built on the recorded post 167288 (all required fields as recorded) with the given overrides. */
-function onePost(over: { id?: number; date_gmt: string; title: string; content: string }, fetchedAt: string): FetchedResponse {
+/** A synthetic one-post answer. Its modified_gmt (the last edit, which bounds every entry's instant since review
+ * 483d7ab) defaults to the fetch time: a post we fetched was last edited no later than that. */
+function onePost(over: { id?: number; date_gmt: string; modified_gmt?: string; title: string; content: string }, fetchedAt: string): FetchedResponse {
   return posts(variant(newest3(), { fetchedAt }), (ps) => {
     const p = ps[0] as Record<string, any>
-    return [{ ...p, id: over.id ?? 900001, date_gmt: over.date_gmt, title: { rendered: over.title }, content: { rendered: over.content, protected: false } }]
+    return [{
+      ...p, id: over.id ?? 900001, date_gmt: over.date_gmt, modified_gmt: over.modified_gmt ?? fetchedAt.slice(0, 19),
+      title: { rendered: over.title }, content: { rendered: over.content, protected: false },
+    }]
   })
 }
 const html = (...blocks: string[]) => blocks.map((b) => `<p class="wp-block-paragraph">${b}</p>`).join('\n\n')
@@ -175,11 +182,19 @@ describe('every event: fixed fields, keys, titles', () => {
         expect(e.object_key).toMatch(/^pg_entry:daily:\d+:\d{4}-\d\d-\d\d(T\d\d:\d\d|U\d{1,2}:\d\d):[1-9]\d*$/)
         expect(e.times.source_published_at).toBeNull()
         expect(e.times.first_seen_at).toBe(res.fetchedAt)
-        expect(e.importance?.reasons).toEqual(['press_gallery_log'])
+        // D-062: a P0 line names its alert class first and is labeled the unofficial log; every other line has one reason
+        const p0 = e.importance?.tier === 'P0'
+        if (p0) {
+          expect(e.importance?.reasons).toHaveLength(3)
+          expect(['confirmation', 'final_passage', 'veto_override', 'impeachment_verdict']).toContain(e.importance?.reasons[0])
+          expect(e.importance?.reasons.slice(1)).toEqual(['press_gallery_log', 'unofficial_log'])
+        } else expect(e.importance?.reasons).toEqual(['press_gallery_log'])
         expect(e.sources).toHaveLength(1)
         expect(e.sources[0]?.url).toMatch(/^https:\/\/www\.dailypress\.senate\.gov\/[a-z0-9-]+\/$/)
         const r = e.result as Record<string, unknown>
-        expect(Object.keys(r).sort()).toEqual(e.times.occurred_at === null ? ['clock_text', 'post_id', 'session_date', 'time_note'] : ['clock_text', 'post_id', 'session_date'])
+        const keys = ['clock_text', 'post_id', 'session_date', ...(p0 ? ['origin_label'] : []), ...(e.times.occurred_at === null ? ['time_note'] : [])]
+        expect(Object.keys(r).sort()).toEqual(keys.sort())
+        if (p0) expect(r.origin_label).toBe('unofficial log')
         expect(e.object_key).toContain(`:${r.post_id}:${r.session_date}`)
         // No counts in result (free-text sources never contribute counts).
         expect(r).not.toHaveProperty('yea')
@@ -205,15 +220,18 @@ describe('every event: fixed fields, keys, titles', () => {
       ['floor.speaking|P3|F1,F8', 'Senate Daily Press Gallery logged floor speeches'],
       ['floor.action|P3|F1', 'Senate Daily Press Gallery logged floor activity'],
     ])
+    // D-062: a P0 result line names what the line itself states (a confirmation, or passage of a bill we number ourselves)
+    const P0_TITLE = /^Senate (confirmed a nomination|passed (S\.|H\.R\.|S\.J\.Res\.|H\.J\.Res\.) [1-9]\d*) \(unofficial log: Senate Daily Press Gallery\)$/
     const seen = new Set<string>()
     for (const [out] of all()) {
       for (const e of out.events) {
         const k = `${e.event_type}|${e.importance?.tier}|${e.features.join(',')}`
-        expect(allowed.get(k), k).toBe(e.title)
+        if (k === 'floor.action|P0|F1,F5') expect(e.title, k).toMatch(P0_TITLE)
+        else expect(allowed.get(k), k).toBe(e.title)
         seen.add(k)
       }
     }
-    expect([...seen].sort()).toEqual([...allowed.keys()].sort()) // every row is exercised by a fixture
+    expect([...seen].sort()).toEqual([...allowed.keys(), 'floor.action|P0|F1,F5'].sort()) // every row is exercised by a fixture
   })
 })
 
@@ -300,7 +318,7 @@ describe('typing pins (critique T3: anchored to the subject, the timed block onl
     ['The Senate is now voting on the motion to proceed.', 'vote.opened', 'P2'],
     ['The Senate is voting on the motion to proceed to S.J.Res. 199', 'vote.opened', 'P2'],
     ['By a party-line vote of 53-47, the Senate began voting on cloture', 'floor.action', 'P2'],
-    ['By a vote of 77-22, the Senate passed S.4668.', 'floor.action', 'P2'],
+    ['By a vote of 77-22, the Senate passed S.4668.', 'floor.action', 'P0'], // D-062: final passage of a bill, by roll call
     ['The Senate did not invoke cloture on the motion to proceed to H.R. 9340 by a tally of 57-43.', 'floor.action', 'P2'],
     ['The following bills, as amended, were passed en bloc:', 'floor.action', 'P2'],
     // Widened over the design's pattern (recorded result lines): 162959 "By a vote 52-47, …", 166464 "By voice vote, …".
@@ -543,6 +561,158 @@ describe('fail closed: any unexpected structure = drift, zero events from the pa
     const e = parseOk(r).events[0] as CedEvent
     expect(e.official_text).toHaveLength(4000)
     expect(e.official_text.endsWith('…')).toBe(true)
+  })
+})
+
+describe('review 483d7ab: a time the post itself rules out is null, never a day off', () => {
+  const facts = (out: AdapterOutput) => out.events.map((e) => [e.dedup_key, e.event_type, e.importance, e.times.occurred_at, e.result])
+
+  test('fail-closed F5 / time F1: an a.m./p.m. slip on 167105 ("11:01 a.m." for 11:01 p.m.) no longer moves the newer entries a day late', () => {
+    const res = posts(newest3(), (ps) => {
+      const p = ps.find((x) => x.id === 167105)!
+      p.content.rendered = edit(p.content.rendered, '11:01 p.m. Majority Leader Thune wrapped up', '11:01 a.m. Majority Leader Thune wrapped up')
+    })
+    const out = parseOk(res)
+    // used to be 2026-10-02T03:24Z, 03:14Z and 2026-10-01T15:01Z: all after the post's modified_gmt 2026-10-01T03:57:40
+    for (const k of ['2026-09-30T23:24:1', '2026-09-30T23:14:1', '2026-09-30T11:01:1']) {
+      const e = byKey(out, `pg_entry:daily:167105:${k}`)
+      expect(e.times.occurred_at, k).toBeNull()
+      expect((e.result as Record<string, unknown>).time_note, k).toBe(NOTE_AFTER_EDIT)
+    }
+    expect(byKey(out, 'pg_entry:daily:167105:2026-09-30T21:29:1').times.occurred_at).toBe('2026-10-01T01:29:00Z') // the rest keeps its times
+  })
+
+  test('keys F2: the same body fetched at three times has the same facts (no revision from the fetch time alone)', () => {
+    const body = {
+      date_gmt: '2026-10-05T13:00:00', modified_gmt: '2026-10-05T15:08:00', title: 'Monday, October 5, 2026',
+      content: html('11:05 a.m. Senator Thune spoke on the budget.', '10:00 p.m. The Senate convened.'),
+    }
+    const runs = ['2026-10-05T15:10:00.000Z', '2026-10-06T03:00:00.000Z', '2026-10-06T16:00:00.000Z'].map((t) => parseOk(onePost(body, t)))
+    expect(facts(runs[1]!)).toEqual(facts(runs[0]!))
+    expect(facts(runs[2]!)).toEqual(facts(runs[0]!))
+    expect(runs[2]!.events.map((e) => e.times.occurred_at)).toEqual([null, null]) // 10:00 p.m. (02:00Z next day) and the a.m. slip are after the last edit
+  })
+
+  const twoDay = (rule: boolean) => onePost({
+    date_gmt: '2026-06-04T13:00:00', modified_gmt: '2026-06-05T23:00:00', title: 'Thursday, June 4/Friday June 5, 2026',
+    content: html(
+      '6:00 p.m. The Senate stands adjourned.', '5:30 p.m. By a vote of 60-40, the Senate passed H.R. 1.', '1:00 p.m. Senator X spoke on Y.',
+      '12:30 p.m. The Senate convened.', ...(rule ? ['The above happened on Friday, June 5th.', '———————————'] : []),
+      '5:00 p.m. The Senate recessed until 12:30 p.m. Friday.', '4:00 p.m. Senator Z spoke on W.', '9:30 a.m. The Senate convened.',
+    ),
+  }, '2026-06-06T00:00:00.000Z')
+
+  test('time F2: a two-day post with an overnight recess across an em-dash day-break rule: Friday is not placed on Thursday', () => {
+    const out = parseOk(twoDay(true))
+    expect(out.events.map((e) => [e.official_text.slice(0, 10), e.times.occurred_at, (e.result as Record<string, unknown>).time_note ?? null])).toEqual([
+      ['6:00 p.m. ', null, NOTE_DAY_BREAK],
+      ['5:30 p.m. ', null, NOTE_DAY_BREAK], // used to be 2026-06-04T21:30Z, a day early, on a result line
+      ['1:00 p.m. ', null, NOTE_DAY_BREAK],
+      ['12:30 p.m.', null, NOTE_DAY_BREAK],
+      ['5:00 p.m. ', '2026-06-04T21:00:00Z', null],
+      ['4:00 p.m. ', '2026-06-04T20:00:00Z', null],
+      ['9:30 a.m. ', '2026-06-04T13:30:00Z', null],
+    ])
+  })
+
+  test('time F2: the same post without the rule: two clocks in a row that run backwards lose the day for every newer entry', () => {
+    const out = parseOk(twoDay(false))
+    expect(out.events.map((e) => e.times.occurred_at)).toEqual([null, null, null, null, '2026-06-04T21:00:00Z', '2026-06-04T20:00:00Z', '2026-06-04T13:30:00Z'])
+    expect(out.events.slice(0, 3).map((e) => (e.result as Record<string, unknown>).time_note)).toEqual([NOTE_LOST_DAY, NOTE_LOST_DAY, NOTE_LOST_DAY])
+  })
+
+  test('time F7: a title without a year at the year boundary resolves to the year before the post', () => {
+    expect(resolveSessionDay('Thursday, December 31', '2027-01-01')).toEqual({ kind: 'day', date: '2026-12-31', how: "title with the year before the post's (a year boundary)" })
+    expect(resolveSessionDay('Friday, January 1', '2026-12-31')).toEqual({ kind: 'day', date: '2027-01-01', how: "title with the year after the post's (a year boundary)" })
+  })
+
+  test('time F6: an impossible date_gmt or modified_gmt (Feb 30, hour 24) is drift, never rolled over', () => {
+    expect(easternDate('2026-02-30T15:00:00Z')).toBeNull()
+    expect(easternDate('2026-09-30T24:00:00Z')).toBeNull()
+    expect(easternDate('2026-09-30T15:00:00Z')).toBe('2026-09-30')
+    expect(easternDate('2026-09-30T03:00:00.000Z')).toBe('2026-09-29')
+    const one = (over: Record<string, string>) => posts(newest3(), (ps) => [{ ...ps[1]!, ...over }])
+    expectRefused(one({ date_gmt: '2026-02-30T15:00:00' }), 'drift', /date_gmt 2026-02-30T15:00:00 is not a real instant/)
+    expectRefused(one({ date_gmt: '2026-09-30T24:00:00' }), 'drift', /date_gmt 2026-09-30T24:00:00 is not a real instant/)
+    expectRefused(one({ modified_gmt: '2026-09-31T03:57:40' }), 'drift', /modified_gmt 2026-09-31T03:57:40 is not a real instant/)
+  })
+
+  test('fail-closed F11: an HTML entity we do not decode is drift, never raw text in official_text', () => {
+    const res = posts(newest3(), (ps) => {
+      const p = ps.find((x) => x.id === 167105)!
+      p.content.rendered = edit(p.content.rendered, 'Democratic Leader Schumer spoke', 'Democratic Leader Schumer spoke (caf&eacute;)')
+    })
+    expectRefused(res, 'drift', /post 167105: an HTML entity we do not decode \(&eacute;\) inside <p>/)
+  })
+})
+
+describe('D-062: a gallery result line of an alert class may be P0, labeled the unofficial log', () => {
+  const LABEL = '(unofficial log: Senate Daily Press Gallery)'
+  const byText = (out: AdapterOutput, prefix: string): CedEvent => {
+    const hits = out.events.filter((e) => e.official_text.startsWith(prefix))
+    expect(hits, prefix).toHaveLength(1)
+    return hits[0]!
+  }
+  const isP0 = (e: CedEvent, reason: string, title: string) => {
+    expect(e).toMatchObject({ event_type: 'floor.action', features: ['F1', 'F5'], title, importance: { tier: 'P0', reasons: [reason, 'press_gallery_log', 'unofficial_log'] } })
+    expect(e.provenance).toEqual({ parser: PRESS_GALLERY_PARSER, confidence: 'inferred' }) // the design's gallery labeling, unchanged
+    expect(e.sources[0]?.affiliation).toBe('official-nonpartisan') // the registered affiliation (D-036 payload rule)
+    expect((e.result as Record<string, unknown>).origin_label).toBe('unofficial log')
+  }
+
+  test('confirmations, on real lines of every recorded shape', () => {
+    isP0(byText(parseOk(newest3()), '11:00 p.m. The Senate confirmed the Sonderling nomination on a party line vote of 47-41.'), 'confirmation', `Senate confirmed a nomination ${LABEL}`)
+    const ten10 = parseOk(ten())
+    isP0(byText(ten10, '3:16 p.m. By a party-line vote of 50-47, the Senate confirmed Angela Veronica Colmenero'), 'confirmation', `Senate confirmed a nomination ${LABEL}`)
+    isP0(byText(ten10, '3:13 p.m. By a vote of 49-45, the Senate confirmed Kasdin Miller Mitchell'), 'confirmation', `Senate confirmed a nomination ${LABEL}`)
+    const e = parseOk(est())
+    isP0(byText(e, '2:26 p.m. By a vote of 53-40, the nomination of Alexander Van Hook'), 'confirmation', `Senate confirmed a nomination ${LABEL}`)
+    isP0(byText(e, '12:37 p.m. By a vote of 53-47, the Senate confirmed the nomination of Joshua Simmons'), 'confirmation', `Senate confirmed a nomination ${LABEL}`)
+    isP0(byText(e, '2:55 p.m. By a vote of 52-48, the Senate confirmed Sara Bailey'), 'confirmation', `Senate confirmed a nomination ${LABEL}`)
+    // exactly these eight recorded lines are P0 across every fixture (the goldens pin each one)
+    const p0 = [newest3(), ten(), est(), overnight()].flatMap((r) => parseOk(r).events).filter((x) => x.importance?.tier === 'P0')
+    expect(new Set(p0.map((x) => x.dedup_key)).size).toBe(8)
+  })
+
+  test('final passage of a bill, on real lines (166855 S.4668, 162959 S. 2)', () => {
+    isP0(byText(parseOk(ten()), '10:01 p.m. By a vote of 77-22, the Senate passed S.4668'), 'final_passage', `Senate passed S. 4668 ${LABEL}`)
+    isP0(byText(parseOk(overnight()), '4:51 a.m. By a party-line vote of 52-47, the Senate passed S. 2'), 'final_passage', `Senate passed S. 2 ${LABEL}`)
+  })
+
+  test('veto override and impeachment verdict: no recorded line, so variants of real lines (marked)', () => {
+    // VARIANT of the real 166855 passage line, with the override verb
+    expect(p0Result("By a vote of 77-22, the Senate overrode the President's veto of S.4668, Protect College Sports Act of 2026.")).toEqual({ reason: 'veto_override', title: `Senate overrode the veto of S. 4668 ${LABEL}` })
+    // VARIANT: the 117-1 vote 59 outcome (Not Guilty, 57-43) in the gallery's "By a vote of" shape
+    expect(p0Result('By a vote of 57-43, the Senate acquitted former President Donald J. Trump on the article of impeachment.')).toEqual({ reason: 'impeachment_verdict', title: `Senate acquitted in an impeachment trial ${LABEL}` })
+    expect(p0Result('By a vote of 89-8, the Senate convicted Judge G. Thomas Porteous Jr. on article I.')).toEqual({ reason: 'impeachment_verdict', title: `Senate convicted in an impeachment trial ${LABEL}` })
+    // and through the whole parse: the 166855 line edited in place
+    const res = posts(ten(), (ps) => {
+      const p = ps.find((x) => x.id === 166855)!
+      p.content.rendered = edit(p.content.rendered, 'the Senate passed S.4668', "the Senate overrode the President's veto of S.4668")
+    })
+    isP0(byText(parseOk(res), "10:01 p.m. By a vote of 77-22, the Senate overrode the President's veto of S.4668"), 'veto_override', `Senate overrode the veto of S. 4668 ${LABEL}`)
+  })
+
+  test.each([
+    // real near misses (fixture lines)
+    ['By a vote of 49-47, the Senate invoked cloture on the nomination of Kasdin Miller Mitchell to be United States District Judge for the Northern District of Texas.', 'P2'], // 166515 cloture
+    ['By a vote of 77-22, the Senate agreed to the motion to proceed to S.4668, Protect College Sports Act of 2026.', 'P2'], // 166515 motion to proceed
+    ['By a party-line vote of 53-47, the Senate began voting on cloture on the nomination of Keith Sonderling to be Secretary of Labor (30 hours of post-cloture debate).', 'P2'], // 167105
+    ['By voice vote, the Senate passed H.R.7250 – To reauthorize the Fort Peck Reservation Rural Water System Act of 2000 (Daines).', 'P2'], // 166464: no roll call
+    ['By a party-line vote of 50-47, the Senate adopted S. Res. 817, the legislative framework providing for the en bloc consideration of (74) certain Executive Calendar nominations.', 'P2'], // 165516
+    ['By a vote of 48-51, the Senate did not agree to the motion to proceed to S.J.Res.197 (Baldwin Obamacare Exchange Standards CRA).', 'P2'], // 166969
+    ['The Senate began voting on confirmation of the nomination of Keith Sonderling to be Secretary of Labor.', 'P2'], // 167105 vote.opened
+    // synthetic near misses
+    ['The Senate began consideration of S.4668, Protect College Sports Act of 2026.', 'P3'],
+    ['The Senate will vote on confirmation of the Sonderling nomination at 5:30 p.m.', 'P3'],
+    ['“By a vote of 50-47, the Senate confirmed Angela Colmenero to be a judge,” Leader Thune repeated.', 'P3'],
+    ['By a vote of 60-40, the Senate passed S. Res. 5, a resolution honoring X.', 'P2'], // a simple resolution is not a bill
+    ['By a vote of 60-38, the Senate failed to override the President\'s veto of S. 1.', 'P2'],
+    ['By a vote of 47-41, the nomination of X to be Y was not confirmed.', 'P2'],
+    ['By a vote of 51-49, the Senate did not pass H.R. 1.', 'P2'],
+  ])('near miss %j stays %s', (rest, tier) => {
+    expect(p0Result(rest)).toBeNull()
+    expect(typeEntry(rest).tier).toBe(tier)
   })
 })
 

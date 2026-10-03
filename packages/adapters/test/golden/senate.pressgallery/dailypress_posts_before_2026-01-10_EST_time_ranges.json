@@ -303,12 +303,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate confirmed a nomination (unofficial log: Senate Daily Press Gallery)",
       "official_text": "2:26 p.m. By a vote of 53-40, the nomination of Alexander Van Hook to be a District Judge for the Western District of Louisiana was confirmed. Dems/Independents voting aye: Senators Durbin, Hassan, Kaine, King, Klobuchar, Shaheen and Welch. Not voting: Senators Cramer, Daines, Moran, Scott (FL), Scott (SC), Tuberville and Wicker.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "confirmation",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -319,7 +321,8 @@
       "result": {
         "session_date": "2026-01-08",
         "clock_text": "2:26 p.m.",
-        "post_id": 156898
+        "post_id": 156898,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {
@@ -3074,12 +3077,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate confirmed a nomination (unofficial log: Senate Daily Press Gallery)",
       "official_text": "2:55 p.m. By a vote of 52-48, the Senate confirmed Sara Bailey to be Director Director of National Drug Control Policy. It was a party-line vote with Republican Senator Paul voting against.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "confirmation",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -3090,7 +3095,8 @@
       "result": {
         "session_date": "2026-01-06",
         "clock_text": "2:55 p.m.",
-        "post_id": 156674
+        "post_id": 156674,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {
@@ -3308,12 +3314,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate confirmed a nomination (unofficial log: Senate Daily Press Gallery)",
       "official_text": "12:37 p.m. By a vote of 53-47, the Senate confirmed the nomination of Joshua Simmons to be General Counsel of the CIA.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "confirmation",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -3324,7 +3332,8 @@
       "result": {
         "session_date": "2026-01-06",
         "clock_text": "12:37 p.m.",
-        "post_id": 156674
+        "post_id": 156674,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {

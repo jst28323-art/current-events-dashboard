@@ -206,12 +206,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate confirmed a nomination (unofficial log: Senate Daily Press Gallery)",
       "official_text": "11:00 p.m. The Senate confirmed the Sonderling nomination on a party line vote of 47-41. Republicans not voting: Blackburn, Cornyn, Ernst, McConnell, Moran & Tillis. Democrats not voting: Blumenthal, Durbin, Gillibrand, Smith, Warner & Whitehouse.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "confirmation",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -222,7 +224,8 @@
       "result": {
         "session_date": "2026-09-30",
         "clock_text": "11:00 p.m.",
-        "post_id": 167105
+        "post_id": 167105,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {
@@ -4357,12 +4360,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate passed S. 4668 (unofficial log: Senate Daily Press Gallery)",
       "official_text": "10:01 p.m. By a vote of 77-22, the Senate passed S.4668, Protect College Sports Act of 2026, as amended. Senators voting No: Alsobrooks, Blumenthal, Blunt Rochester, Booker, Duckworth, Gillibrand, Kaine, Kelly, Kim, Markey, Merkley, Murphy, Paul (R), Reed, Sanders, Schiff, Schumer, Scott – FL (R), Van Hollen, Warnock, Warren, and Whitehouse. Senator Sullivan did not vote.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "final_passage",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -4373,7 +4378,8 @@
       "result": {
         "session_date": "2026-09-28",
         "clock_text": "10:01 p.m.",
-        "post_id": 166855
+        "post_id": 166855,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {
@@ -7865,12 +7871,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate confirmed a nomination (unofficial log: Senate Daily Press Gallery)",
       "official_text": "3:16 p.m. By a party-line vote of 50-47, the Senate confirmed Angela Veronica Colmenero to be United States District Judge for the Southern District of Texas. Not voting: Senators Daines, Ernst and Tillis.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "confirmation",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -7881,7 +7889,8 @@
       "result": {
         "session_date": "2026-09-23",
         "clock_text": "3:16 p.m.",
-        "post_id": 166665
+        "post_id": 166665,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {
@@ -9589,12 +9598,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate confirmed a nomination (unofficial log: Senate Daily Press Gallery)",
       "official_text": "3:13 p.m. By a vote of 49-45, the Senate confirmed Kasdin Miller Mitchell to be United States District Judge for the Northern District of Texas. Party-line vote with Senators Marshall, McConnell, Moran, Shaheen, Tuberville and Van Hollen not voting.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "confirmation",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -9605,7 +9616,8 @@
       "result": {
         "session_date": "2026-09-17",
         "clock_text": "3:13 p.m.",
-        "post_id": 166515
+        "post_id": 166515,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {

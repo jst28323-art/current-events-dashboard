@@ -201,12 +201,14 @@
         "F1",
         "F5"
       ],
-      "title": "Senate Daily Press Gallery logged a floor result",
+      "title": "Senate passed S. 2 (unofficial log: Senate Daily Press Gallery)",
       "official_text": "4:51 a.m. By a party-line vote of 52-47, the Senate passed S. 2, the FY26 Budget Reconciliation Bill, as amended. GOP Senator Murkowski voted no. Senator Bennet did not vote.",
       "importance": {
-        "tier": "P2",
+        "tier": "P0",
         "reasons": [
-          "press_gallery_log"
+          "final_passage",
+          "press_gallery_log",
+          "unofficial_log"
         ]
       },
       "times": {
@@ -217,7 +219,8 @@
       "result": {
         "session_date": "2026-06-04",
         "clock_text": "4:51 a.m.",
-        "post_id": 162959
+        "post_id": 162959,
+        "origin_label": "unofficial log"
       },
       "sources": [
         {
