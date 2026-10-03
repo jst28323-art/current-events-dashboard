@@ -1,0 +1,56 @@
+{
+  "events": [],
+  "targets": [
+    {
+      "endpoint": "roll_next",
+      "url": "https://clerk.house.gov/evs/2026/roll315.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll314.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll313.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll312.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll311.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll310.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll309.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll308.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll307.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll306.xml"
+    },
+    {
+      "endpoint": "roll",
+      "url": "https://clerk.house.gov/evs/2026/roll305.xml"
+    }
+  ],
+  "health": {
+    "source_id": "house.clerk.votes",
+    "endpoint": "index",
+    "status": "ok",
+    "detail": "10 roll calls listed (314..305, 2026); probing roll 315",
+    "items_seen": 10
+  }
+}
