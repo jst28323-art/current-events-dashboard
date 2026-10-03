@@ -129,6 +129,8 @@ then copy `/results` into `docs/SOURCES.md` "Cloudflare probe" and write the two
 - [ ] **P2.2 Real-time plumbing:** PollerDOs on alarms (hot and warm cadences as in `docs/ARCHITECTURE.md`) with a supervisor cron;
   `/api/v1/live` over a hibernating WebSocket (falling back to `?since=` polling); calendar-aware staleness (recess,
   weekends, FR publication days).
+  (2026-10-03, paper only by D-089: designed and critiqued, `docs/design/P2.2.md`; built after Phase 1 closes, its
+  owner questions in §9 and its push order G0..G10 in §4.)
 - [ ] **P2.3 Opportunistic, Mon 2026-10-05 ~16:00–17:00 ET:** both chambers hold short pro forma sessions. If one is
   running, record live fixtures with `scripts/record_fixture.mjs`: Senate floor caption playlist + segments (they vanish
   after the day), HouseLive `/latest/*`, the Clerk floor XML. (Do this whenever that window falls, whatever phase is
