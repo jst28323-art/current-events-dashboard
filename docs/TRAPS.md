@@ -370,6 +370,34 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   under 1 ms (members scout).
 - **raw.githubusercontent.com serves the JSON as `text/plain`** (`legislators-current_ghpages_8125e52b_2026-09-02T2014Z.json`):
   a check that requires a JSON content type rejects a snapshot fetched there.
+- **A Senate `vote_result` read by its last word turns "Not …" into a pass** (2026-10-03, review of 483d7ab, fail-closed
+  F1). "Nomination Not Confirmed", "Bill Not Passed" and "Motion Not Agreed to" end in a positive word, and "Guilty"
+  or "Veto Overridden" fit any question by suffix: each published a P0 "Senate confirmed …". The whole phrase is now
+  checked against a closed table per question, with the document kinds that question may carry
+  (`packages/adapters/src/sources/senate_lis_votes.ts` QUESTIONS).
+- **A head-only cut is only as good as the order it assumes** (2026-10-03, review of 483d7ab F3). The Clerk floor file
+  is newest first in all 12 recordings, but nothing guaranteed it: reversed, the "newest 50" were the oldest 50 and the
+  adjournment vanished. Check the order you rely on (for-search may never increase) instead of assuming it; the
+  Senate menu cut already did.
+- **A vote's printed date is not tied to its identity unless you tie it** (2026-10-03, review of 483d7ab F8/time F3). A
+  2027 or 2019 date in a 119-2 vote published as such. A session runs from Jan 1 of its year to noon Eastern on Jan 3 of
+  the next (senate `vote_116_2_00292.xml`, congress_year 2020, is dated January 1, 2021): the vote adapters now bound
+  every vote instant by that window and by the fetch time.
+- **The press-gallery midnight walk reads an a.m./p.m. slip as midnight** (2026-10-03, review of 483d7ab F5/time F1/
+  keys F2). "11:01 a.m." for 11:01 p.m. put every newer entry 24 h late, and the old "later than our own fetch" bound
+  made the same body publish different times depending on when we polled. Bound every entry by the post's own
+  `modified_gmt` (a log cannot record what happened after its last edit; smallest recorded margin 2.1 min). A two-day
+  post with an overnight recess (no midnight drop) cannot be walked either: an em-dash day-break rule without a
+  >6 h drop, or two clocks in a row that run backwards, nulls every newer entry.
+- **A date-keyed "next convene" leaves a stale scheduled row when the date moves** (2026-10-03, review of 483d7ab keys
+  F3, HubDO repro). `floor_day:senate:{date}#scheduled_convene` for Oct 5, then Oct 6: both rows stay `scheduled`. A
+  fixed key would bury the row (D-048 keeps a revised row at its first sighting when its new source time is later), so
+  the key stays and the P2.2 page must show only the newest-sighted scheduled convene per chamber as scheduled (decision
+  row, `scratch/phase2/DECISIONS_rows.md`).
+- **A press-gallery entry key carries its printed clock, so a corrected clock is a new event** (2026-10-03, review of
+  483d7ab keys F4, HubDO repro): "3:40 p.m." fixed to "2:40 p.m." leaves both rows, two "logged a floor result" (now
+  possibly two P0 candidates under D-062). There is no stable entry id in the WordPress HTML; the limitation is recorded
+  as a decision row and the Phase 4 alert matching must tolerate it.
 
 ## Hosting
 
@@ -590,6 +618,10 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   its errors to stdout, which the gate joined before stderr, and `wrangler types` filled the tail. The gate now prints
   every error-looking line first (`failureExcerpt`, harness test). A step's full output is still not kept: re-run it
   alone (e.g. `npm run typecheck > scratch/typecheck.log 2>&1`) and read the whole log, not its tail.
+- **The harness Bash tool can strip backslashes from a heredoc, even a quoted `<<'EOF'` one** (2026-10-03, P2.1 fixer):
+  a regex written into a source file through `node - <<'EOF'` arrived as `/^(d{1,2}):(d{2})/` (every `\d` lost) and
+  `'\n'` became a real newline, while the same text through the Write/Edit tools arrived intact. Write any code that
+  holds a backslash with the Write/Edit tools, then grep the file for the regex you meant.
 
 ## Libraries and code
 
@@ -642,3 +674,12 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   on where the code runs. Eastern wall times go through `easternToUtc` in `packages/adapters/src/lib/eastern.ts`
   (nonexistent spring-forward times and ambiguous fall-back times are reported, never guessed: decision row P21-R13);
   a UTC string without an offset gets `Z` appended before parsing.
+- **`Date.parse` rolls impossible dates over** (2026-10-03, review of 483d7ab time F6): `2026-02-30T15:00:00Z` parses
+  as March 2 and `…T24:00:00Z` as the next day, so a press-gallery `date_gmt` of Feb 30 passed as "a real instant".
+  `easternParts`/`easternDate` (`packages/adapters/src/lib/eastern.ts`) now require the text to round-trip through
+  `toISOString`; `isRealDate` range-checks number parts.
+- **A regex walk of import lines is not the bundle's module graph** (2026-10-03, review of 483d7ab keys F1). The D-058
+  guard skipped `.js`/`.mjs` files, imports not at a line start and imports with a `;` in a comment, so a shim could
+  have pulled fixture-only code into the Worker with every test green. The guard now checks esbuild's metafile of a real
+  bundle (`packages/adapters/test/import_guard.ts`), refuses non-.ts script files under the app roots, and keeps the
+  widened text walk as a second opinion.

@@ -114,6 +114,11 @@ const NAMED: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', a
  * Decode `&amp; &lt; &gt; &quot; &apos; &#N; &#xN;` (DESIGN §3.0). Any other named entity (`&nbsp;`, `&mdash;`) and any
  * numeric reference that is not a valid Unicode scalar value is left verbatim, so nothing is silently guessed; an
  * adapter that meets one decides for itself (hasUnknownEntity tells it).
+ *
+ * `&nbsp;` stays undecoded ON PURPOSE (P2.1 fix, 2026-10-03): XML defines only the five above, so `&nbsp;` in an
+ * official XML body means the payload is not the XML we recorded, and the XML adapters refuse it (senate.lis.votes head,
+ * house.clerk.floor, senate.schedule: drift; pinned in xmlscan.test.ts and each adapter's tests). The HTML press-gallery
+ * prose decodes its own HTML names (senate_pressgallery.ts decodeProse) and refuses any other.
  */
 export function decodeEntities(s: string): string {
   if (!s.includes('&')) return s

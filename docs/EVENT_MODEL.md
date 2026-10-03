@@ -111,7 +111,10 @@ wire `schema_version` becomes `"0.2"` in one decision row (decision row P21-R2).
   in both cases (decision row P21-R13). House vote time = close of the vote; Senate vote time = its start (the XML has
   no close time).
 - **Origin labels:** every P2.1 source is `official-nonpartisan`; press-gallery entries carry
-  `provenance.confidence: "inferred"` because their type is our keyword reading of staff prose.
+  `provenance.confidence: "inferred"` because their type is our keyword reading of staff prose. A gallery result line
+  that may alert (P0, D-062) also carries `result.origin_label: "unofficial log"` and says so in its title; the page and
+  alerts show that label (the registered affiliation cannot carry it: D-036 payload rule). The exact rule: the P2.1
+  fix decision row on D-062 (`scratch/phase2/DECISIONS_rows.md` until integration).
 - **Not live (D-058):** the five P2.1 adapters emit these events only in tests (golden fixtures and the Hub replay);
   the "emitted now" column of the event-type table below lists live sources only.
 
@@ -146,11 +149,14 @@ wire `schema_version` becomes `"0.2"` in one decision row (decision row P21-R2).
 
 Merge rule: same `dedup_key` → union of `sources`, earliest `first_seen_at`, field values by source priority
 (official XML > Congress.gov > third-party > press-gallery text). In P2.1 no two sources share a dedup_key: a
-press-gallery or floor line about a vote is its own event, linked to the vote by a `related` `vote:` key, never merged
-into the `vote.result` event, and it never contributes counts (decision row P21-R11, which supersedes the earlier
-sentence here that free-text sources merge in as `first_seen_at` plus a corroboration link; D-036 lets the first
-equal-rank owner freeze facts, so a shared key would stop the official vote from ever adding its counts). Showing such
-rows once on the page is a P2.2 page rule (decision row P21-R17). Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
+press-gallery or floor line about a vote is its own event, never merged into the `vote.result` event, and it never
+contributes counts (decision row P21-R11, which supersedes the earlier sentence here that free-text sources merge in
+as `first_seen_at` plus a corroboration link; D-036 lets the first equal-rank owner freeze facts, so a shared key would
+stop the official vote from ever adding its counts). A House floor line links its vote by a `related` `vote:` key (from
+the Clerk's vote link); a press-gallery line carries NO `vote:` key (the gallery prints no roll number, so one cannot be
+derived honestly). Showing such rows once on the page is a P2.2 page rule (decision row P21-R17), and it, like D-062's
+"the official record does not alert again for the same vote", needs a matching rule for gallery lines that is not a
+shared key, decided before either ships (review of 483d7ab, keys F5). Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
 filing) uses the normalized-title + date-window rule in the research §2.4. How the Worker applies this rule today (what
 counts as a fact, who may revise, payload rules): D-036.
 
