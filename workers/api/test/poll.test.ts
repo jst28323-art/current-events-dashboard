@@ -2,7 +2,16 @@
 import { describe, expect, test } from 'vitest'
 import type { Endpoint } from '@ced/adapters'
 import { pollOnce, type PollDeps, type PollHub } from '../src/poll.js'
-import { BACKOFF_CAP_S, CACHE_BUST_PARAM, USER_AGENT, backoffMs, describeSources, parseRetryAfter, requestUrl } from '../src/policy.js'
+import {
+  BACKOFF_CAP_S,
+  CACHE_BUST_PARAM,
+  USER_AGENT,
+  backoffMs,
+  describeSources,
+  parseRetryAfter,
+  peakRequestsPerHour,
+  requestUrl,
+} from '../src/policy.js'
 import { DOCS, MIN, T0, docsBody, fakeSource, freshHub, iso, page, scriptedFetch } from './fakes.js'
 
 const PI: Endpoint = {
@@ -489,5 +498,69 @@ describe('policy', () => {
     expect(parseRetryAfter('Fri, 02 Oct 2026 12:05:00 GMT', now)).toBe(300)
     expect(parseRetryAfter('soon', now)).toBeNull()
     expect(parseRetryAfter(null, now)).toBeNull()
+  })
+})
+
+describe('per-endpoint cadence (Endpoint.cadence, D-046)', () => {
+  const NEWEST: Endpoint = {
+    id: 'docs',
+    url: 'https://www.federalregister.gov/api/v1/documents.json?per_page=20&order=newest',
+    validator: 'body-hash',
+    cacheBust: true,
+    cadence: { business_s: 900, off_s: 3600 },
+  }
+  const twoEndpoints = (budget: number) => fakeSource('fake.fr', [PI, NEWEST], { cadence_s: 60, rate_budget_per_h: budget })
+
+  test('each endpoint is due on its own cadence: the slow one waits 15 min while the fast one polls every minute', async () => {
+    const src = twoEndpoints(180)
+    const f = scriptedFetch(Array.from({ length: 40 }, () => ok(docsBody([]))))
+    const clock = { t: T0 }
+    const deps: PollDeps = { hub: freshHub(), sources: [src.def], fetch: f.fetch, now: () => clock.t, random: () => 0.5 }
+    const seen: string[] = []
+    for (let m = 0; m <= 16; m++) {
+      clock.t = T0 + m * MIN
+      const runs = await pollOnce(deps)
+      seen.push(runs.map((r) => `${r.endpoint_id}:${r.action === 'polled' ? 'P' : r.reason}`).join(' '))
+    }
+    expect(seen[0]).toBe('pi:P docs:P')
+    for (let m = 1; m <= 14; m++) expect(seen[m], `minute ${m}`).toBe('docs:cadence pi:P')
+    expect(seen[15]).toBe('pi:P docs:P') // 900 s minus the 20 s cron slack has passed
+    expect(seen[16]).toBe('docs:cadence pi:P')
+    expect(f.calls.filter((c) => c.url.includes('documents.json'))).toHaveLength(2)
+    expect(f.calls.filter((c) => c.url.includes('current.json'))).toHaveLength(17)
+  })
+
+  test('off hours: the slow endpoint follows its own off-hours cadence (1 h), the fast one the source off-hours cadence', async () => {
+    const SAT = Date.parse('2026-10-03T16:00:10Z') // Sat noon ET
+    const src = fakeSource('fake.fr', [PI, NEWEST], { rate_budget_per_h: 180 })
+    src.def.cadence = { business_s: 60, off_s: 900 }
+    const f = scriptedFetch(Array.from({ length: 20 }, () => ok(docsBody([]))))
+    const clock = { t: SAT }
+    const deps: PollDeps = { hub: freshHub(), sources: [src.def], fetch: f.fetch, now: () => clock.t, random: () => 0.5 }
+    const polled: string[] = []
+    for (let m = 0; m <= 60; m += 15) {
+      clock.t = SAT + m * MIN
+      for (const r of await pollOnce(deps)) if (r.action === 'polled') polled.push(`${m}:${r.endpoint_id}`)
+    }
+    expect(polled).toEqual(['0:pi', '0:docs', '15:pi', '30:pi', '45:pi', '60:pi', '60:docs'])
+  })
+
+  test('a whole hour of cron runs fits a budget of exactly peakRequestsPerHour: no endpoint is ever skipped for budget', async () => {
+    const budget = peakRequestsPerHour(twoEndpoints(1).def)
+    expect(budget).toBe(65)
+    const src = twoEndpoints(budget)
+    const f = scriptedFetch(Array.from({ length: 200 }, () => ok(docsBody([]))))
+    const clock = { t: 0 }
+    const deps: PollDeps = { hub: freshHub(), sources: [src.def], fetch: f.fetch, now: () => clock.t, random: () => 0.5 }
+    const hourStart = Math.floor(T0 / 3_600_000) * 3_600_000
+    const reasons = new Set<string>()
+    // Two clock hours, cron runs a little late by varying amounts (0-7 s), as Cloudflare's cron fires.
+    for (let k = 0; k < 120; k++) {
+      clock.t = hourStart + k * MIN + ((k * 7919) % 7000)
+      for (const r of await pollOnce(deps)) if (r.action !== 'polled') reasons.add(`${r.endpoint_id}:${r.reason}`)
+    }
+    expect([...reasons]).toEqual(['docs:cadence'])
+    expect(f.calls.filter((c) => c.url.includes('current.json'))).toHaveLength(120)
+    expect(f.calls.filter((c) => c.url.includes('documents.json'))).toHaveLength(8)
   })
 })

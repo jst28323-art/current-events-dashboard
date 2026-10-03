@@ -3,15 +3,18 @@
 // and the per-endpoint poll state (validators, health, error streak, backoff). Every method takes the caller's clock
 // (`*_ms`), so tests drive time; nothing here reads Date.now().
 //
-// Fail closed: every incoming event is validated (validateEvent) before anything is written; if ANY event of a payload
-// is invalid, cites a source other than the polled one, claims an affiliation other than the registered one, or repeats
-// a dedup_key, nothing from that payload is stored and the endpoint's health becomes `drift` with the reasons.
+// Fail closed: every incoming event is validated (validateEvent) before anything is written, except a copy identical to
+// a stored event that passed this same validator, apart from the two per-poll stamps (checked separately; fastpath.ts,
+// W10); if ANY event of a payload is invalid, cites a source other than the polled one, claims an affiliation other than
+// the registered one, or repeats a dedup_key, nothing from that payload is stored and the endpoint's health becomes
+// `drift` with the reasons.
 // Every upstream request is counted by claim() BEFORE it is sent (cadence + hourly budget), so a failure to record its
 // result never turns into unthrottled polling.
 // Storage writes for one poll (events, ledger, validators, health) commit in ONE transaction, so validators never move
 // ahead of the events they vouch for.
 import { DurableObject } from 'cloudflare:workers'
 import {
+  orderKeyMs,
   validateEvent,
   type Affiliation,
   type CedEvent,
@@ -21,10 +24,19 @@ import {
   type StatusResponse,
 } from '@ced/schema'
 import type { AdapterOutput } from '@ced/adapters'
+import { FAST_PATH_ON, checkedMark, sameAsStored, stampsValid } from './fastpath.js'
 import { mergeEvent } from './merge.js'
 import { DRIFT_RETRIES_BEFORE_BACKOFF, backoffMs } from './policy.js'
 
-/** The static part of a SourceDefinition plus the cadence in force now (see policy.describeSources). */
+/** One endpoint's cadence and stale threshold in force now (policy.describeSources). */
+export interface EndpointInfo {
+  id: string
+  cadence_s: number
+  freshness_slo_s: number
+}
+
+/** The static part of a SourceDefinition plus the cadences in force now (see policy.describeSources): the source row's
+ * cadence_s is its fastest endpoint's, freshness_slo_s its largest endpoint threshold. */
 export interface SourceInfo {
   source_id: string
   name: string
@@ -32,7 +44,7 @@ export interface SourceInfo {
   features: FeatureId[]
   cadence_s: number
   freshness_slo_s: number
-  endpoint_ids: string[]
+  endpoints: EndpointInfo[]
 }
 
 export type EndpointState = {
@@ -132,14 +144,17 @@ const LEDGER_CACHE_MS = 60_000
 
 const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT NOT NULL)`,
-  // The latest revision of each event. seq = the change sequence (bumped on insert, merge and revision).
+  // The latest revision of each event. seq = the change sequence (bumped on insert, merge and revision). checked = the
+  // validator fingerprint its content passed, bound to its seq (fastpath.ts checkedMark); stores created before the
+  // column get it in the constructor.
   `CREATE TABLE IF NOT EXISTS events (
      dedup_key TEXT PRIMARY KEY,
      id TEXT NOT NULL,
      revision INTEGER NOT NULL,
      sort_ms INTEGER NOT NULL,
      seq INTEGER NOT NULL UNIQUE,
-     json TEXT NOT NULL)`,
+     json TEXT NOT NULL,
+     checked TEXT)`,
   `CREATE INDEX IF NOT EXISTS events_by_sort ON events (sort_ms DESC, id DESC)`,
   // Superseded revisions, never deleted (EVENT_MODEL principle 2: append-only).
   `CREATE TABLE IF NOT EXISTS event_history (
@@ -185,15 +200,9 @@ const SEVERITY: Array<SourceStatus['health']> = ['drift', 'error', 'never_polled
 const iso = (ms: number) => new Date(ms).toISOString()
 const hourOf = (ms: number) => Math.floor(ms / HOUR_MS) * HOUR_MS
 
-/** The API's order key (packages/schema api.ts EventsResponse): occurred_at, else source_published_at when it is not
- * later than our first sighting (a White House executive-order post has no signing time, only its posting time; a
- * "posted" time after we had already seen the item cannot be its posting time), else first_seen_at. The web app sorts
- * with the same rule (apps/web/src/lib/time.ts). */
-export function sortKeyMs(e: { times: { occurred_at: string | null; source_published_at?: string | null; first_seen_at: string } }): number {
-  if (e.times.occurred_at) return Date.parse(e.times.occurred_at)
-  const seen = Date.parse(e.times.first_seen_at)
-  const posted = e.times.source_published_at ? Date.parse(e.times.source_published_at) : NaN
-  return !Number.isNaN(posted) && posted <= seen ? posted : seen
+/** The API's order key: the ONE shared rule in packages/schema/src/order.ts (the page sorts with the same function). */
+export function sortKeyMs(e: CedEvent): number {
+  return orderKeyMs(e)
 }
 
 function median(xs: number[]): number | null {
@@ -213,22 +222,55 @@ function message(e: unknown): string {
   return e instanceof Error ? e.message : String(e)
 }
 
+/** The stored copy of an incoming event's dedup_key, read once per poll (judge) and used by checkPayload and storeOne. */
+export interface PriorCopy {
+  /** The stored event (parsed) and its JSON text as stored. */
+  event: CedEvent
+  json: string
+  /** The row's change seq (events.seq). */
+  seq: number
+  /** The stored content passed validateEvent under the validator running now: events.checked = checkedMark(seq), so a
+   * row rewritten by code that does not write the mark (a rollback) is not vouched for (review R1). */
+  checked: boolean
+  /** fastpath.sameAsStored(incoming, event): identical apart from the incoming copy's two per-poll stamps. */
+  same: boolean
+}
+
 /**
  * Validation plus the payload-level rules. Returns the problems (empty = accept).
+ * - Every event passes validateEvent, or (W10, fastpath.ts) is identical to its stored copy (`prior[i]`, index-aligned
+ *   with `events`) whose content passed this same validator, apart from two per-poll stamps that are valid UTC instants.
  * - An adapter speaks only for itself: every sources[] entry is the polled source, with its REGISTERED affiliation.
  *   Cross-source provenance is built only by the merge, so a payload can never borrow another source's authority
  *   (listing the official owner's entry, or labelling itself official) to change facts or pose as the owner.
  * - A dedup_key appears at most once per payload (two copies with different facts would revise on every re-parse).
  */
-export function checkPayload(sourceId: string, affiliation: Affiliation, events: unknown[]): string[] {
+export function checkPayload(
+  sourceId: string,
+  affiliation: Affiliation,
+  events: unknown[],
+  prior: ReadonlyArray<PriorCopy | null> = [],
+): string[] {
   const problems: string[] = []
   const firstIndex = new Map<string, number>()
   events.forEach((ev, i) => {
-    const r = validateEvent(ev)
     const key = (ev as { dedup_key?: unknown } | null)?.dedup_key
     const label = `events[${i}]${typeof key === 'string' ? ` (${key})` : ''}`
-    for (const e of r.errors) problems.push(`${label} ${e}`)
-    if (!r.valid) return
+    const p = prior[i]
+    const known = FAST_PATH_ON && p != null && p.same && p.checked && stampsValid(ev as CedEvent)
+    if (!known) {
+      let r: ReturnType<typeof validateEvent>
+      try {
+        r = validateEvent(ev)
+      } catch (e) {
+        // validateEvent throws on a value JSON cannot carry, e.g. an undefined member (review R4), although its doc
+        // says it never throws: that event is refused by name like any other invalid one.
+        problems.push(`${label} could not be validated: ${message(e)}`)
+        return
+      }
+      for (const e of r.errors) problems.push(`${label} ${e}`)
+      if (!r.valid) return
+    }
     const e = ev as CedEvent
     if (!e.sources.some((s) => s.source_id === sourceId)) problems.push(`${label} does not cite source ${sourceId}`)
     e.sources.forEach((s, j) => {
@@ -253,7 +295,19 @@ interface Verdict {
   backoff: 'error' | 'drift' | null
   retry_after_s: number | null
   events: CedEvent[] | null
+  /** Index-aligned with events: each one's stored copy, or null when its dedup_key is new. */
+  prior: Array<PriorCopy | null> | null
   validators: { etag: string | null; last_modified: string | null; body_hash: string } | null
+}
+
+/** Add events.checked to a store created before it existed (a no-op on a new store, whose CREATE TABLE has it). Old
+ * rows start unchecked, so their next re-ingest is fully validated once. */
+export function migrateEventsChecked(sql: SqlStorage): void {
+  try {
+    sql.exec(`SELECT checked FROM events LIMIT 0`)
+  } catch {
+    sql.exec(`ALTER TABLE events ADD COLUMN checked TEXT`)
+  }
 }
 
 export class HubDO extends DurableObject<Env> {
@@ -268,6 +322,7 @@ export class HubDO extends DurableObject<Env> {
     super(ctx, env)
     this.sql = ctx.storage.sql
     for (const stmt of SCHEMA) this.sql.exec(stmt)
+    migrateEventsChecked(this.sql)
     let epoch = this.meta('epoch')
     if (epoch == null) {
       epoch = [...crypto.getRandomValues(new Uint8Array(4))].map((b) => b.toString(16).padStart(2, '0')).join('')
@@ -313,20 +368,23 @@ export class HubDO extends DurableObject<Env> {
    * itself was already counted by claim(). */
   async recordPoll(rec: PollRecord): Promise<PollResult> {
     const prev = this.readState(rec.source_id, rec.endpoint_id)
-    const verdict = this.judge(rec, prev)
     try {
+      // judge() reads the stored copies of the payload's events (priorCopy), so it is inside the try as well.
+      const verdict = this.judge(rec, prev)
       return this.ctx.storage.transactionSync(() => this.apply(rec, prev, verdict))
     } catch (e) {
-      // The store refused something mid-payload (the transaction rolled back): record drift, store nothing.
+      // The store refused something mid-payload (the transaction rolled back), or a stored copy could not be read:
+      // record drift, store nothing.
       this.seq = this.readSeq()
       this.newestCache = null
       const refused: Verdict = {
-        ...verdict,
         health: 'drift',
         detail: `nothing stored from this payload: ${message(e)}`,
         success: false,
         backoff: 'drift',
+        retry_after_s: null,
         events: null,
+        prior: null,
         validators: null,
       }
       return this.ctx.storage.transactionSync(() => this.apply(rec, prev, refused))
@@ -335,7 +393,7 @@ export class HubDO extends DurableObject<Env> {
 
   private judge(rec: PollRecord, prev: EndpointState): Verdict {
     const o = rec.outcome
-    const base = { retry_after_s: null, events: null, validators: null, backoff: null }
+    const base = { retry_after_s: null, events: null, prior: null, validators: null, backoff: null }
     switch (o.kind) {
       case 'not_modified': {
         // Fresh validators are kept only when they come with the very body this endpoint last accepted.
@@ -361,7 +419,8 @@ export class HubDO extends DurableObject<Env> {
         }
         const events = Array.isArray(o.output.events) ? o.output.events : null
         if (events == null) return drift('adapter returned no events array')
-        const problems = checkPayload(rec.source_id, rec.affiliation, events)
+        const prior = events.map((ev) => this.priorCopy(ev))
+        const problems = checkPayload(rec.source_id, rec.affiliation, events, prior)
         if (problems.length > 0) {
           const shown = problems.slice(0, 3).join('; ')
           const more = problems.length > 3 ? ` (+${problems.length - 3} more)` : ''
@@ -373,6 +432,7 @@ export class HubDO extends DurableObject<Env> {
           detail: typeof h.detail === 'string' ? h.detail : '',
           success: true,
           events,
+          prior,
           validators: { etag: o.etag, last_modified: o.last_modified, body_hash: o.body_hash },
         }
       }
@@ -385,7 +445,7 @@ export class HubDO extends DurableObject<Env> {
     if (v.events && v.events.length > 0) {
       // The endpoint's first accepted payload is a backfill: its first_seen_at is our start-up time, not detection.
       const backfill = prev.last_success_ms == null
-      for (const ev of v.events) this.storeOne(ev, rec.source_id, backfill, rec.finished_ms, counts)
+      v.events.forEach((ev, i) => this.storeOne(ev, v.prior?.[i] ?? null, rec.source_id, backfill, rec.finished_ms, counts))
       this.ledgerCache.clear()
       if (rec.finished_ms - this.lastPruneMs > HOUR_MS) {
         this.sql.exec(`DELETE FROM ledger WHERE first_seen_ms < ?`, rec.finished_ms - LEDGER_KEEP_MS)
@@ -423,20 +483,40 @@ export class HubDO extends DurableObject<Env> {
     return { health: v.health, detail: v.detail, ...counts, error_streak, backoff_until_ms }
   }
 
+  /** The stored copy of an incoming event's dedup_key (null when new, or when the event has no string dedup_key). */
+  private priorCopy(ev: unknown): PriorCopy | null {
+    const key = (ev as { dedup_key?: unknown } | null)?.dedup_key
+    if (typeof key !== 'string') return null
+    const row = this.sql
+      .exec<{ json: string; seq: number; checked: string | null }>(`SELECT json, seq, checked FROM events WHERE dedup_key = ?`, key)
+      .toArray()[0]
+    if (!row) return null
+    const event = JSON.parse(row.json) as CedEvent
+    return { event, json: row.json, seq: row.seq, checked: row.checked === checkedMark(row.seq), same: sameAsStored(ev, event) }
+  }
+
+  /** `prior`: the stored copy as read by judge() in this same synchronous call (one dedup_key per payload, so no write
+   * of this payload has changed it). */
   private storeOne(
     ev: CedEvent,
+    prior: PriorCopy | null,
     sourceId: string,
     backfill: boolean,
     atMs: number,
     counts: { inserted: number; revised: number; merged: number; unchanged: number },
   ): void {
-    const row = this.sql.exec<{ json: string }>(`SELECT json FROM events WHERE dedup_key = ?`, ev.dedup_key).toArray()[0]
     let toStore: CedEvent | null = null
-    if (!row) {
+    if (!prior) {
       toStore = ev
       counts.inserted++
+    } else if (prior.same && !(Date.parse(ev.times.first_seen_at) < Date.parse(prior.event.times.first_seen_at))) {
+      // Identical apart from this poll's own stamps and not an earlier sighting: what mergeEvent calls 'unchanged'
+      // (pinned by test/fastpath.test.ts), without its cost. The copy passed validateEvent (or the fast path) above,
+      // so a stored copy not yet confirmed under this validator now is.
+      counts.unchanged++
+      if (!prior.checked) this.sql.exec(`UPDATE events SET checked = ? WHERE dedup_key = ?`, checkedMark(prior.seq), ev.dedup_key)
     } else {
-      const stored = JSON.parse(row.json) as CedEvent
+      const stored = prior.event
       const m = mergeEvent(stored, ev)
       if (m.kind === 'unchanged') counts.unchanged++
       else {
@@ -445,7 +525,7 @@ export class HubDO extends DurableObject<Env> {
         if (m.kind === 'revised') {
           this.sql.exec(
             `INSERT INTO event_history (id, dedup_key, revision, superseded_ms, json) VALUES (?, ?, ?, ?, ?)`,
-            stored.id, stored.dedup_key, stored.revision, atMs, row.json,
+            stored.id, stored.dedup_key, stored.revision, atMs, prior.json,
           )
           counts.revised++
         } else counts.merged++
@@ -455,11 +535,13 @@ export class HubDO extends DurableObject<Env> {
     if (toStore) {
       this.seq += 1
       const sortMs = sortKeyMs(toStore)
+      // Every stored version passed validateEvent under this validator (an insert in checkPayload, a merge or
+      // revision just above), so it carries this validator's mark for its new seq.
       this.sql.exec(
-        `INSERT INTO events (dedup_key, id, revision, sort_ms, seq, json) VALUES (?, ?, ?, ?, ?, ?)
+        `INSERT INTO events (dedup_key, id, revision, sort_ms, seq, json, checked) VALUES (?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT (dedup_key) DO UPDATE SET id = excluded.id, revision = excluded.revision,
-           sort_ms = excluded.sort_ms, seq = excluded.seq, json = excluded.json`,
-        toStore.dedup_key, toStore.id, toStore.revision, sortMs, this.seq, JSON.stringify(toStore),
+           sort_ms = excluded.sort_ms, seq = excluded.seq, json = excluded.json, checked = excluded.checked`,
+        toStore.dedup_key, toStore.id, toStore.revision, sortMs, this.seq, JSON.stringify(toStore), checkedMark(this.seq),
       )
     }
     // Latency ledger: this source's first sighting of this event (later sightings are ignored).
@@ -609,7 +691,7 @@ export class HubDO extends DurableObject<Env> {
   }
 
   private sourceStatus(info: SourceInfo, byKey: Map<string, EndpointState>, nowMs: number): SourceStatus {
-    const eps = info.endpoint_ids.map((id) => ({ id, s: byKey.get(`${info.source_id} ${id}`) ?? null }))
+    const eps = info.endpoints.map((e) => ({ id: e.id, slo_s: e.freshness_slo_s, s: byKey.get(`${info.source_id} ${e.id}`) ?? null }))
     const polled = eps.flatMap((e) => (e.s ? [e.s] : []))
     const maxOf = (xs: Array<number | null>) => {
       const v = xs.filter((x): x is number => x != null)
@@ -630,6 +712,12 @@ export class HubDO extends DurableObject<Env> {
     const ledger = this.ledgerStats(info.source_id, nowMs)
     const lastAttempt = maxOf(polled.map((s) => s.last_attempt_ms))
     const lastChange = maxOf(polled.map((s) => s.last_change_ms))
+    // Stale is judged PER ENDPOINT, each against its own threshold (D-039 on the endpoint's cadence): a stopped fast
+    // endpoint shows stale within 2x its cadence even while a slow one (FR documents.json every 15 min) is fresh. The
+    // source is stale when any endpoint is (or when it has none).
+    const stale =
+      eps.length === 0 ||
+      eps.some((e) => e.s?.last_success_ms == null || nowMs - e.s.last_success_ms > e.slo_s * 1000)
     return {
       source_id: info.source_id,
       name: info.name,
@@ -645,7 +733,7 @@ export class HubDO extends DurableObject<Env> {
       error_streak: Math.max(0, ...polled.map((s) => s.error_streak)),
       items_24h: ledger.items_24h,
       median_latency_s: ledger.median_latency_s,
-      stale: lastSuccess == null || nowMs - lastSuccess > info.freshness_slo_s * 1000,
+      stale,
     }
   }
 }

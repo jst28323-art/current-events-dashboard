@@ -102,3 +102,20 @@ describe('schema file', () => {
     expect(isRealInstant('2026-10-02T24:00:00Z')).toBe(false)
   })
 })
+
+describe('never throws (2026-10-03 review fuzz: the library threw on an undefined member)', () => {
+  test('an undefined member, a function, a symbol or a bigint is invalid, not a crash', () => {
+    for (const evil of [
+      bad((e) => { e.thread_key = undefined }),
+      bad((e) => { e.times.scheduled_for = undefined }),
+      bad((e) => { e.sources[0].license = () => 1 }),
+      bad((e) => { e.revision = 1n }),
+      bad((e) => { e.title = Symbol('x') }),
+    ]) {
+      let r: ReturnType<typeof validateEvent> | undefined
+      expect(() => { r = validateEvent(evil) }).not.toThrow()
+      expect(r!.valid).toBe(false)
+      expect(r!.errors.length).toBeGreaterThan(0)
+    }
+  })
+})

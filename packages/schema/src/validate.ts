@@ -13,7 +13,15 @@ const validator = new Validator(schema as object, '2020-12', false)
 
 /** Schema check + cross-field rules. Never throws; an invalid event comes back with readable reasons. */
 export function validateEvent(ev: unknown): ValidationResult {
-  const r = validator.validate(ev)
+  let r: ReturnType<typeof validator.validate>
+  try {
+    r = validator.validate(ev)
+  } catch (e) {
+    // @cfworker/json-schema throws on values JSON has no type for, e.g. an undefined member ("Instances of
+    // \"undefined\" type are not supported."), which survives a Workers RPC structured clone. Found by fuzzing in the
+    // 2026-10-03 review (12,148 of ~199k calls). Such an event is invalid, never a crash.
+    return { valid: false, errors: [`not validatable: ${e instanceof Error ? e.message : String(e)}`] }
+  }
   const errors = r.valid ? [] : r.errors.map((e) => `${e.instanceLocation} ${e.keyword}: ${e.error}`)
   if (r.valid) {
     const e = ev as {

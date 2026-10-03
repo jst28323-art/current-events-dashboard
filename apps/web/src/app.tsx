@@ -166,10 +166,11 @@ function Row({ e, sourceName, nowMs }: { e: CedEvent; sourceName: string; nowMs:
             title={
               t.kind === 'first_seen' ? 'The source gives no trustworthy time; this is when the feed first saw it.'
                 : t.kind === 'posted' ? 'When the source posted it; the source does not say when the action itself happened.'
+                : t.kind === 'published_on' ? 'The source gives only the day it was published, not a time.'
                 : undefined
             }
           >
-            {t.kind === 'first_seen' ? `first seen ${t.text}` : t.kind === 'posted' ? `posted ${t.text}` : t.text}
+            {t.kind === 'first_seen' ? `first seen ${t.text}` : t.kind === 'posted' ? `posted ${t.text}` : t.kind === 'published_on' ? `published ${t.text}` : t.text}
           </time>
         ) : null}
       </div>

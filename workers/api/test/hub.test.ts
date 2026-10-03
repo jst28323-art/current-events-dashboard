@@ -364,3 +364,65 @@ describe('snapshot order (orchestrator integration, 2026-10-02)', () => {
     expect(order[order.length - 1]).toBe(backfilled.dedup_key)
   })
 })
+
+describe('status: staleness per endpoint (Endpoint.cadence, D-046)', () => {
+  // fr.api's shape: Public Inspection on the source cadence (60 s, SLO 120 s), documents.json on its own 15-min cadence.
+  const two = fakeSource('fake.fr', [
+    { id: 'pi', url: 'https://www.federalregister.gov/a.json', validator: 'body-hash' },
+    { id: 'docs', url: 'https://www.federalregister.gov/b.json', validator: 'body-hash', cadence: { business_s: 900, off_s: 3600 } },
+  ]).def
+  const at = async (hub: ReturnType<typeof freshHub>, ms: number) => (await hub.status(ms, describeSources([two], ms))).sources[0]!
+  /** The web page's own check (apps/web labels.ts isStale): stale, or last_success_at older than freshness_slo_s. */
+  const clientStale = (s: { stale: boolean; last_success_at: string | null; freshness_slo_s: number }, ms: number) =>
+    s.stale || s.last_success_at == null || ms - Date.parse(s.last_success_at) > s.freshness_slo_s * 1000
+
+  test('a slow endpoint is not stale 10 min after its last poll while the fast one keeps polling', async () => {
+    const hub = freshHub()
+    await ingest(hub, 'fake.fr', [docEvent(EO, T0)], T0, 'docs')
+    for (let m = 0; m <= 10; m++) await ingest(hub, 'fake.fr', [docEvent(SEC, T0 + m * MIN)], T0 + m * MIN, 'pi')
+    const s = await at(hub, T0 + 10 * MIN + 30_000)
+    expect(s).toMatchObject({ stale: false, cadence_s: 60, freshness_slo_s: 1800, last_success_at: iso(T0) })
+    // The page compares the stalest endpoint's success with the largest threshold: it agrees (no false "stale").
+    expect(clientStale(s, T0 + 10 * MIN + 30_000)).toBe(false)
+    // The slow endpoint itself goes stale after ITS threshold (2 x 900 s).
+    await ingest(hub, 'fake.fr', [docEvent(SEC, T0 + 30 * MIN)], T0 + 30 * MIN, 'pi')
+    expect((await at(hub, T0 + 30 * MIN)).stale).toBe(false)
+    expect((await at(hub, T0 + 30 * MIN + 1)).stale).toBe(true)
+  })
+
+  test('a stopped fast endpoint is stale at 121 s (2 x its 60 s cadence) while the slow one is fine', async () => {
+    const hub = freshHub()
+    await ingest(hub, 'fake.fr', [docEvent(EO, T0)], T0, 'docs')
+    await ingest(hub, 'fake.fr', [docEvent(SEC, T0)], T0, 'pi')
+    expect((await at(hub, T0 + 120_000)).stale).toBe(false)
+    const s = await at(hub, T0 + 121_000)
+    expect(s).toMatchObject({ stale: true, health: 'ok' })
+    expect(clientStale(s, T0 + 121_000)).toBe(true) // through the server's flag
+    // Only the fast endpoint was overdue: once it polls again, the 121-s-old slow endpoint does not make it stale.
+    await ingest(hub, 'fake.fr', [docEvent(SEC, T0 + 121_000)], T0 + 121_000, 'pi')
+    expect((await at(hub, T0 + 121_000)).stale).toBe(false)
+  })
+
+  test('off hours: each endpoint is judged by its own off-hours threshold', async () => {
+    const SAT = Date.parse('2026-10-03T16:00:00Z') // Sat noon ET: pi every 60 s (fake source), docs every 3600 s
+    const hub = freshHub()
+    await ingest(hub, 'fake.fr', [docEvent(EO, SAT)], SAT, 'docs')
+    await ingest(hub, 'fake.fr', [docEvent(SEC, SAT + 7140_000)], SAT + 7140_000, 'pi')
+    const s = await at(hub, SAT + 7200_000)
+    expect(s).toMatchObject({ stale: false, freshness_slo_s: 7200, cadence_s: 60 })
+    expect((await at(hub, SAT + 7200_001)).stale).toBe(true)
+  })
+})
+
+describe('snapshot order uses the shared rule (packages/schema order.ts)', () => {
+  test('a backfilled document with only an earlier publication day sorts at that day, below a newer timed filing', async () => {
+    const hub = freshHub()
+    const [EO, EO2] = DOCS as [typeof DOCS[number], typeof DOCS[number]]
+    const filed = docEvent(EO, T0) // occurred_at = its filing time (Oct 1)
+    const base = docEvent(EO2, T0 + 5 * 24 * 3600_000) // first seen 5 days later
+    const backfilled = { ...base, times: { occurred_at: null, first_seen_at: base.times.first_seen_at }, result: { publication_date: '2026-09-28' } }
+    await ingest(hub, 'fake.fr', [backfilled, filed], T0 + 5 * 24 * 3600_000)
+    const order = (await page(hub, null)).events.map((e) => e.dedup_key)
+    expect(order).toEqual([filed.dedup_key, backfilled.dedup_key]) // by first_seen it would have been on top
+  })
+})

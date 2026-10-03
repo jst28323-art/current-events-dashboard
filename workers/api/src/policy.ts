@@ -62,31 +62,62 @@ export function isBusinessHours(nowMs: number): boolean {
   return hour >= BUSINESS_HOURS_ET.startHour && hour < BUSINESS_HOURS_ET.endHour
 }
 
-/** The cadence (seconds) a source is polled at, at this instant. */
-export function cadenceFor(def: SourceDefinition, nowMs: number): number {
-  return isBusinessHours(nowMs) ? def.cadence.business_s : def.cadence.off_s
+/** The cadence an endpoint polls on: its own (Endpoint.cadence, D-046), else its source's. */
+export function endpointCadence(def: SourceDefinition, ep?: Endpoint): { business_s: number; off_s: number } {
+  return ep?.cadence ?? def.cadence
 }
 
-/** The "stale" threshold in force (seconds): the source's own SLO, but never less than twice the cadence it is polled
- * at, now or one off-hours interval ago. A source polled every 15 min at night (fr.api) is not stale after 2 min, and
- * the morning switch to the business cadence does not flash "stale" before the first business-hours poll has run.
+/** The cadence (seconds) an endpoint (or, without one, the source) is polled at, at this instant. */
+export function cadenceFor(def: SourceDefinition, nowMs: number, ep?: Endpoint): number {
+  const c = endpointCadence(def, ep)
+  return isBusinessHours(nowMs) ? c.business_s : c.off_s
+}
+
+/** The "stale" threshold in force (seconds) for one endpoint (D-039, applied per endpoint): the source's own SLO, but
+ * never less than twice the cadence the endpoint is polled at, now or one of its off-hours intervals ago. An endpoint
+ * polled every 15 min at night (fr.api) is not stale after 2 min, and the morning switch to the business cadence does
+ * not flash "stale" before the first business-hours poll has run. Without `ep`: the source's own cadence.
  * (Phase 1 exit criterion 4: a stopped poller shows stale within 2x its cadence.) */
-export function effectiveFreshnessS(def: SourceDefinition, nowMs: number): number {
-  const cadence = Math.max(cadenceFor(def, nowMs), cadenceFor(def, nowMs - def.cadence.off_s * 1000))
+export function effectiveFreshnessS(def: SourceDefinition, nowMs: number, ep?: Endpoint): number {
+  const offS = endpointCadence(def, ep).off_s
+  const cadence = Math.max(cadenceFor(def, nowMs, ep), cadenceFor(def, nowMs - offS * 1000, ep))
   return Math.max(def.freshness_slo_s, 2 * cadence)
 }
 
-/** The static part of each definition, as the HubDO needs it for /api/v1/status (functions do not cross RPC). */
+/** The static part of each definition, as the HubDO needs it for /api/v1/status (functions do not cross RPC). Each
+ * endpoint carries its own cadence and stale threshold in force (the HubDO judges staleness per endpoint); the source
+ * row reports the FASTEST endpoint cadence and the LARGEST endpoint threshold, so a client that compares the stalest
+ * endpoint's last success with that threshold never flags a healthy slow endpoint (packages/schema api.ts). */
 export function describeSources(sources: readonly SourceDefinition[], nowMs: number): SourceInfo[] {
-  return sources.map((d) => ({
-    source_id: d.source_id,
-    name: d.name,
-    affiliation: d.affiliation,
-    features: [...d.features],
-    cadence_s: cadenceFor(d, nowMs),
-    freshness_slo_s: effectiveFreshnessS(d, nowMs),
-    endpoint_ids: d.endpoints.map((e) => e.id),
-  }))
+  return sources.map((d) => {
+    const endpoints = d.endpoints.map((e) => ({
+      id: e.id,
+      cadence_s: cadenceFor(d, nowMs, e),
+      freshness_slo_s: effectiveFreshnessS(d, nowMs, e),
+    }))
+    return {
+      source_id: d.source_id,
+      name: d.name,
+      affiliation: d.affiliation,
+      features: [...d.features],
+      cadence_s: endpoints.length ? Math.min(...endpoints.map((e) => e.cadence_s)) : cadenceFor(d, nowMs),
+      freshness_slo_s: endpoints.length ? Math.max(...endpoints.map((e) => e.freshness_slo_s)) : effectiveFreshnessS(d, nowMs),
+      endpoints,
+    }
+  })
+}
+
+/** The most requests the poll loop can send for one endpoint (or, without `ep`, all of a source's endpoints) in one
+ * budget window (a UTC clock hour). An endpoint is due once its cadence minus CRON_SLACK_S has passed since its last
+ * claim (the claim time is also what the budget counts), so a window holds at most ceil(3600 / that gap) of its
+ * requests, and never more than the 60 cron runs; the faster of its business / off-hours cadences counts. Backoff only
+ * ever delays a request. A source fits when this is within its rate_budget_per_h, so no endpoint is ever starved by
+ * another's share of the budget (checked for every registered source in test/policy.test.ts). */
+export function peakRequestsPerHour(def: SourceDefinition, ep?: Endpoint): number {
+  if (!ep) return def.endpoints.reduce((n, e) => n + peakRequestsPerHour(def, e), 0)
+  const c = endpointCadence(def, ep)
+  const gapS = Math.max(1, Math.min(c.business_s, c.off_s) - CRON_SLACK_S)
+  return Math.min(60, Math.ceil(3600 / gapS))
 }
 
 /** The URL actually requested: the endpoint URL, plus a unique cache-buster when the endpoint asks for one. Appended

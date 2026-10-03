@@ -112,6 +112,16 @@ export function fixtureEvents(): CedEvent[] {
   return [piEvent('2026-20439', 'P0'), whExecutiveOrderEvent(EO_LINK), piEvent('2026-20296', 'P2'), piEvent('2026-20293', 'P4')]
 }
 
+/** `copies` (<= 16) repeats of fixtureEvents(), for a page long enough to scroll. Only the bookkeeping differs (id,
+ * dedup_key); every fact on screen, times included, is the recorded one, so the copies show as repeated rows. */
+export function repeatedEvents(copies: number): CedEvent[] {
+  if (copies < 1 || copies > 16) throw new Error('1..16 copies')
+  return Array.from({ length: copies }, (_, k) =>
+    // Still schema-shaped: id ^evt_[0-9a-f]{16}$; the copy mark goes before the dedup_key's single '#'.
+    fixtureEvents().map((e) => ({ ...e, id: `evt_${k.toString(16)}${e.id.slice(5)}`, dedup_key: e.dedup_key.replace('#', `.copy${k}#`) })),
+  ).flat()
+}
+
 /** The two Phase-1 sources as /api/v1/status rows. Cadence/SLO are the Phase-1 1-minute cron and its 2x SLO. */
 export function sourceStatus(source_id: 'fr.api' | 'wh.feeds', lastSuccessIso: string | null, over: Partial<SourceStatus> = {}): SourceStatus {
   return {

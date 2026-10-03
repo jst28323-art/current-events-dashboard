@@ -3,7 +3,8 @@
 // (not CPU), a native sha-256 of each body, and adapter parsing only when a body actually changed. Validation, merge
 // and storage happen in the HubDO, a separate invocation.
 //
-// Per endpoint: skip while in backoff, before its cadence has elapsed, or over the source's hourly budget; have the
+// Per endpoint: skip while in backoff, before its cadence has elapsed (the endpoint's own cadence when it sets one, else
+// its source's: D-046), or over the source's hourly budget (shared by its endpoints; policy.peakRequestsPerHour); have the
 // HubDO count the request (claim) BEFORE sending it, and send nothing it did not count; send the stored conditional
 // validator the endpoint honours (only if this code version stored it), the CLAUDE.md User-Agent and a timeout; one
 // request in flight per host; a 304, or a 2xx whose body key matches the last accepted body's, is `not_modified` and is
@@ -97,8 +98,8 @@ export async function pollOnce(deps: PollDeps): Promise<EndpointRun[]> {
   const byHost = new Map<string, Job[]>()
 
   for (const def of deps.sources) {
-    const dueAfterMs = Math.max(0, cadenceFor(def, startMs) - CRON_SLACK_S) * 1000
     for (const ep of def.endpoints) {
+      const dueAfterMs = Math.max(0, cadenceFor(def, startMs, ep) - CRON_SLACK_S) * 1000
       const state = states.get(`${def.source_id} ${ep.id}`) ?? null
       const skip = (reason: EndpointRun['reason']) =>
         runs.push({ source_id: def.source_id, endpoint_id: ep.id, action: 'skipped', reason })

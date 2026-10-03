@@ -3,8 +3,12 @@
   --bg: #ffffff;
   --bg-window: #f5f5f7;
   --material: rgb(246 246 246 / 0.72);
+  --material-opaque: rgb(248 248 248); /* the material as it looks over --bg; used where the blur may not be painted */
   --label: rgb(0 0 0 / 0.85);
-  --label-2: rgb(0 0 0 / 0.55);
+  /* 0.60, not the token table's first 0.55: at 0.55 the "ok" word of a health chip (a chip fill over the toolbar
+     material, the darkest background secondary text meets) measured 4.56:1 in Chromium and 4.50:1 in WebKit, which
+     paints alpha text one level lighter; every light secondary text sat within 5% of AA. e2e/layout.spec.ts (W3, WK1). */
+  --label-2: rgb(0 0 0 / 0.60);
   --label-3: rgb(0 0 0 / 0.30);
   --separator: rgb(0 0 0 / 0.10);
   --accent: #007aff;
@@ -31,6 +35,7 @@
     --bg: #1e1e1e;
     --bg-window: #161617;
     --material: rgb(40 40 40 / 0.68);
+    --material-opaque: rgb(37 37 37);
     --label: rgb(255 255 255 / 0.88);
     --label-2: rgb(255 255 255 / 0.58);
     --label-3: rgb(255 255 255 / 0.30);
@@ -88,6 +93,17 @@ a:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, trans
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--separator);
+}
+/* The blur is what keeps the bar legible: without it, rows scrolling under the 0.68-0.72 material print through "Last
+   updated" and the chips (seen in Playwright's WebKit on Windows, which paints no backdrop blur; review R2). So
+   wherever the blur may not be painted, and for viewers who ask for more contrast or less transparency, the bar is
+   opaque, in the colour the material has at rest over the page. Pinned by test/safari.test.ts and e2e/layout.spec.ts
+   (WK4). With default settings in a browser that paints the blur (iOS Safari, Chromium) nothing changes. */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .toolbar { background: var(--material-opaque); }
+}
+@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+  .toolbar { background: var(--material-opaque); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 .toolbar h1 { margin: 0; font-size: var(--fs-large); font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
 .updated { margin: 2px 0 0; font-size: var(--fs-meta); color: var(--label-2); font-variant-numeric: tabular-nums; }

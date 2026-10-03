@@ -6,7 +6,9 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { validateEvent } from '@ced/schema'
 import type { CedEvent } from '@ced/schema'
-import { DOCUMENTS_FIELDS, DOCUMENTS_NEWEST_URL, PI_CURRENT_URL, frApi, parseFr } from '../src/sources/fr_api.js'
+import {
+  DOCUMENTS_CADENCE, DOCUMENTS_FIELDS, DOCUMENTS_NEWEST_URL, DOCUMENTS_PER_PAGE, PI_CURRENT_URL, frApi, parseFr,
+} from '../src/sources/fr_api.js'
 import { frBranch } from '../src/lib/fr_branch.js'
 import { frDateInWords, frInstantToUtc } from '../src/lib/fr_time.js'
 import { REPO_ROOT, replay, variant } from './replay.js'
@@ -14,7 +16,14 @@ import type { AdapterOutput, FetchedResponse } from '../src/types.js'
 
 const DAY = '2026-10-02'
 const pi = (): FetchedResponse => replay('fr.api', DAY, 'pi_current.json')
-const docs = (): FetchedResponse => replay('fr.api', DAY, 'documents_newest.json')
+/** The production documents_newest page (per_page=500), recorded 2026-10-03 02:20Z: the whole issues of 2026-10-02,
+ * 10-01, 09-30 and 09-29, then the 50 highest-numbered documents of 2026-09-28 (the FR's own counts: 94, 112, 128, 116
+ * and 101, facets_daily_since_1994.json). Its first 300 results are identical to the page of 300 recorded at 01:44Z for
+ * the first sizing (review R1), on which the records pinned below were first checked by hand. */
+const docs = (): FetchedResponse => replay('fr.api', '2026-10-03', 'documents_newest.json')
+/** The page of 20 production used before O1 was closed (recorded 2026-10-02 21:27Z): 20 of the 94 documents of the
+ * 2026-10-02 issue, and nothing older. A real recorded case of an issue overflowing the page. */
+const docs20 = (): FetchedResponse => replay('fr.api', DAY, 'documents_newest.json')
 const negative = (): FetchedResponse => replay('fr.api', DAY, 'documents_2026-99999_NEGATIVE_404_html_body.html')
 const GOLDEN_DIR = join(REPO_ROOT, 'packages', 'adapters', 'test', 'golden', 'fr.api')
 
@@ -67,6 +76,89 @@ describe('frApi source definition', () => {
     }
     expect(frApi.cadence.business_s).toBe(60)
     expect(frApi.freshness_slo_s).toBe(120)
+  })
+
+  test('documents_newest asks for one page of 500 with exactly the 12 fields the adapter reads', () => {
+    const u = new URL(DOCUMENTS_NEWEST_URL)
+    expect(u.pathname).toBe('/api/v1/documents.json')
+    expect(u.searchParams.get('per_page')).toBe(String(DOCUMENTS_PER_PAGE))
+    expect(DOCUMENTS_PER_PAGE).toBe(500) // why 500: 'page size' tests below (review R1)
+    expect(u.searchParams.get('order')).toBe('newest')
+    expect(u.searchParams.getAll('fields[]')).toEqual([...DOCUMENTS_FIELDS])
+    expect([...u.searchParams.keys()].filter((k) => k !== 'fields[]')).toEqual(['per_page', 'order']) // no paging, no conditions
+    expect(JSON.parse(docs().body).results).toHaveLength(DOCUMENTS_PER_PAGE) // the recorded production page is full
+  })
+
+  test('documents_newest polls on its own cadence (D-046); Public Inspection keeps the source cadence', () => {
+    const [piEp, docsEp] = frApi.endpoints
+    expect(piEp!.cadence).toBeUndefined()
+    expect(docsEp!.cadence).toEqual({ business_s: 900, off_s: 3600 })
+    expect(docsEp!.cadence).toEqual(DOCUMENTS_CADENCE)
+    expect(docsEp!.cadence).not.toBe(DOCUMENTS_CADENCE) // a copy: nothing that reads the endpoint can change the constant
+    // The daily issue (expected 06:00 ET, when business hours start) is fetched within 15 min by day.
+    expect(docsEp!.cadence!.business_s).toBeLessThanOrEqual(900)
+    expect(docsEp!.cadence!.business_s).toBeGreaterThan(frApi.cadence.business_s)
+    // Both endpoints at their business-hours cadence fit the hourly budget with room for retries.
+    const perHour = 3600 / frApi.cadence.business_s + 3600 / docsEp!.cadence!.business_s
+    expect(perHour).toBe(64)
+    expect(perHour).toBeLessThan(frApi.rate_budget_per_h)
+  })
+})
+
+// Review R1 (2026-10-03): the page was sized on 437 days (2025-01-02..2026-10-02, largest 279), which start three
+// publication days after the largest issue on record (344 on 2024-12-30). It is now sized on the whole history.
+describe('page size: one page holds the largest daily issue on record, with room for a new record (review R1)', () => {
+  /** The FR's own document count for every calendar day from 1994-01-01 to 2026-10-02 (api/v1/documents/facets/daily,
+   * recorded 2026-10-03 02:16Z); days with no issue count 0. */
+  const facet = replay('fr.api', '2026-10-03', 'facets_daily_since_1994.json')
+  const daily = JSON.parse(facet.body) as Record<string, { count: number; name: string }>
+  const issues = Object.entries(daily).filter(([, v]) => v.count > 0).map(([d, v]) => [d, v.count] as const)
+  const largest = (from: string, to: string) =>
+    issues.filter(([d]) => d >= from && d <= to).reduce((a, b) => (b[1] > a[1] ? b : a))
+
+  test('the recorded facet is the whole publication history, and documents.json agrees with its largest day', () => {
+    expect(facet.url).toBe('https://www.federalregister.gov/api/v1/documents/facets/daily?conditions%5Bpublication_date%5D%5Bgte%5D=1994-01-01')
+    expect(issues).toHaveLength(8191)
+    expect(issues[0]![0]).toBe('1994-01-03')
+    expect(issues.at(-1)).toEqual(['2026-10-02', 94])
+    // No issue on a Saturday or Sunday in 32 years: the off-hours cadence on weekends misses nothing (DOCUMENTS_CADENCE).
+    expect(issues.filter(([d]) => [0, 6].includes(new Date(`${d}T12:00:00Z`).getUTCDay()))).toEqual([])
+    // The same day counted the other way: documents.json for publication_date 2024-12-30 (recorded 2026-10-03 02:19Z).
+    const one = JSON.parse(replay('fr.api', '2026-10-03', 'documents_count_2024-12-30.json').body)
+    expect(one.count).toBe(daily['2024-12-30']!.count)
+    expect(one.count).toBe(344)
+  })
+
+  test('DOCUMENTS_PER_PAGE holds every daily issue since 1994, with room for one more record jump as big as the last', () => {
+    const [recordDay, record] = largest('0000', '9999')
+    expect([recordDay, record]).toEqual(['2024-12-30', 344])
+    expect(issues.filter(([, n]) => n > 300).map(([d]) => d)).toEqual(['2024-12-30']) // the only issue a page of 300 misses
+    expect(DOCUMENTS_PER_PAGE).toBeGreaterThanOrEqual(record)
+    // The record before it was 269 (2001-01-22): the last new record beat the old one by 28%. A page that only just
+    // holds today's record would miss the next such jump, and a missed issue is silent (review R2), so leave room for it.
+    const [prevDay, prev] = largest('0000', '2024-12-29')
+    expect([prevDay, prev]).toEqual(['2001-01-22', 269])
+    expect(DOCUMENTS_PER_PAGE).toBeGreaterThanOrEqual(Math.ceil((record * record) / prev)) // 440
+  })
+
+  test('every whole issue on the recorded production page has exactly the facet\'s count', () => {
+    const perDate = new Map<string, number>()
+    for (const r of JSON.parse(docs().body).results as Array<{ publication_date: string }>) {
+      perDate.set(r.publication_date, (perDate.get(r.publication_date) ?? 0) + 1)
+    }
+    const dates = [...perDate.keys()]
+    expect(dates).toEqual(['2026-10-02', '2026-10-01', '2026-09-30', '2026-09-29', '2026-09-28'])
+    // Every issue but the oldest (cut at the page end) is whole: two independent counts of the same issues agree.
+    for (const d of dates.slice(0, -1)) expect([d, perDate.get(d)]).toEqual([d, daily[d]!.count])
+    expect(perDate.get('2026-09-28')).toBeLessThan(daily['2026-09-28']!.count)
+  })
+
+  test('a full page stays well inside the body cap (FR-11): a body 3x its size is still read', () => {
+    // 514,532 B for 500 documents (1,029 B each); the cap is 2,000,000 characters. Trailing spaces keep the JSON valid.
+    const body = docs().body
+    const out = parseFr('documents_newest', variant(docs(), { body: body + ' '.repeat(2 * body.length) }))
+    expect(out.health.status, out.health.detail).toBe('ok')
+    expect(out.events).toHaveLength(DOCUMENTS_PER_PAGE)
   })
 })
 
@@ -156,14 +248,33 @@ describe('pi_current fixture (107 documents, 2026-10-02 18:00Z)', () => {
   })
 })
 
-describe('documents_newest fixture (20 newest published, recorded 2026-10-02 21:27Z with fields[])', () => {
+describe('documents_newest fixture (500 newest published, recorded 2026-10-03 02:20Z with fields[])', () => {
   const out = parseFr('documents_newest', docs())
 
   test('matches the golden output and every event is schema-valid', () => {
     checkGolden('documents_newest.json', out)
-    expect(out.health).toEqual({ source_id: 'fr.api', endpoint: 'documents_newest', status: 'ok', detail: '20 newest published documents', items_seen: 20 })
-    expect(out.events).toHaveLength(20)
+    // The page reached older issues (back to 2026-09-28), so no overflow note.
+    expect(out.health).toEqual({ source_id: 'fr.api', endpoint: 'documents_newest', status: 'ok', detail: '500 newest published documents', items_seen: 500 })
+    expect(out.events).toHaveLength(500)
+    expect(new Set(out.events.map((e) => e.id)).size).toBe(500)
     expectAllValid(out.events)
+  })
+
+  test('every listed document becomes one published event; whole issues are on the page', () => {
+    const raw = JSON.parse(docs().body).results as Array<{ document_number: string; publication_date: string }>
+    expect(out.events.map((e) => e.object_key)).toEqual(raw.map((r) => `fr:${r.document_number}`))
+    const perDate: Record<string, number> = {}
+    for (const e of out.events) {
+      const d = (e.result as { publication_date: string }).publication_date
+      perDate[d] = (perDate[d] ?? 0) + 1
+    }
+    // Four whole issues (the FR counted 94, 112, 128 and 116 documents); 2026-09-28 (101) is cut at the page end.
+    expect(perDate).toEqual({ '2026-10-02': 94, '2026-10-01': 112, '2026-09-30': 128, '2026-09-29': 116, '2026-09-28': 50 })
+    const tiers: Record<string, number> = {}
+    for (const e of out.events) tiers[e.importance!.tier] = (tiers[e.importance!.tier] ?? 0) + 1
+    // Counted from the raw records: 3 EOs + 1 proclamation (P0); a presidential notice and determination + 4 rules with
+    // significant: true (P1); 33 proposed rules (P2); the other 64 of 68 rules (P3); 393 notices (P4).
+    expect(tiers).toEqual({ P0: 4, P1: 6, P2: 33, P3: 64, P4: 393 })
   })
 
   test('re-parsing the same fixture gives byte-identical events (stable ids)', () => {
@@ -178,7 +289,7 @@ describe('documents_newest fixture (20 newest published, recorded 2026-10-02 21:
     expect(ev.alias_keys).toEqual(['eo:14434'])
     expect(ev.title).toBe('Executive Order 14434 published in the Federal Register on October 2, 2026 (FR Doc. 2026-20321)')
     expect(ev.times.occurred_at).toBeNull()
-    expect(ev.times.first_seen_at).toBe('2026-10-02T21:27:22.995Z')
+    expect(ev.times.first_seen_at).toBe('2026-10-03T02:20:43.124Z')
     // FR-9: an executive order is a D-012 alert class wherever it is seen (EVENT_MODEL P0 examples); only the owner
     // may narrow that, so publication is P0 too, like the White House feed's EO post.
     expect(ev.importance).toEqual({ tier: 'P0', reasons: ['presidential_document_published', 'executive_order', 'D-012'] })
@@ -208,6 +319,115 @@ describe('documents_newest fixture (20 newest published, recorded 2026-10-02 21:
     expect(byNumber(out.events, '2026-20280').event_type).toBe('fr.published.notice')
   })
 
+  // Each value below was read from the raw fixture record (fixtures/fr.api/2026-10-03/documents_newest.json), not from
+  // the adapter's output.
+  test('EOs 14433 and 14432 (same issue as 14434) carry their own numbers, citations and signing dates', () => {
+    const e33 = byNumber(out.events, '2026-20320')
+    expect(e33.thread_key).toBe('eo:14433')
+    expect(e33.official_text).toBe('Eliminating Disease-Carrying Pests and Restoring Enjoyment of the Great Outdoors')
+    expect(e33.result).toEqual({ publication_date: '2026-10-02', signing_date: '2026-09-29', executive_order_number: '14433', citation: '91 FR 63125' })
+    const e32 = byNumber(out.events, '2026-20319')
+    expect(e32.thread_key).toBe('eo:14432')
+    expect(e32.title).toBe('Executive Order 14432 published in the Federal Register on October 2, 2026 (FR Doc. 2026-20319)')
+    expect(e32.result).toEqual({ publication_date: '2026-10-02', signing_date: '2026-09-29', executive_order_number: '14432', citation: '91 FR 63121' })
+    expect(e32.media).toEqual([{ kind: 'pdf', url: 'https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20319.pdf' }])
+    const notice = byNumber(out.events, '2026-20322')
+    expect(notice.result).toEqual({ publication_date: '2026-10-02', signing_date: '2026-09-30', citation: '91 FR 63131' })
+    expect(byNumber(out.events, '2026-20318').result).toEqual({ publication_date: '2026-10-02', signing_date: '2026-09-25', citation: '91 FR 63119' })
+  })
+
+  test('the proclamation 2026-20093 (from the 2026-09-30 issue) is P0 and worded by its subtype', () => {
+    const ev = byNumber(out.events, '2026-20093')
+    expect(ev.event_type).toBe('fr.published.presidential_document')
+    expect(ev.title).toBe('Presidential proclamation published in the Federal Register on September 30, 2026 (FR Doc. 2026-20093)')
+    expect(ev.official_text).toBe("Gold Star Mother's and Family's Day, 2026")
+    expect(ev.importance).toEqual({ tier: 'P0', reasons: ['presidential_document_published', 'proclamation', 'D-012'] })
+    expect(ev.body).toBe('white_house')
+    expect(ev.thread_key).toBeUndefined() // no EO number
+    expect(ev.result).toEqual({ publication_date: '2026-09-30', signing_date: '2026-09-25', citation: '91 FR 62295' })
+    expect(ev.sources[0]!.url).toBe('https://www.federalregister.gov/documents/2026/09/30/2026-20093/gold-star-mothers-and-familys-day-2026')
+  })
+
+  test('significant: a significant rule is P1, a significant proposed rule stays P2 and keeps the flag', () => {
+    const dhs = byNumber(out.events, '2026-20016') // DHS EB-5 fee rule, 2026-09-30, significant: true, DHS listed alone
+    expect(dhs.importance).toEqual({ tier: 'P1', reasons: ['rule', 'significant'] })
+    expect(dhs.body).toBe('agency:homeland-security-department')
+    expect(dhs.title).toBe('Homeland Security Department rule published in the Federal Register on September 30, 2026 (FR Doc. 2026-20016)')
+    expect(dhs.result).toEqual({ publication_date: '2026-09-30', significant: true, citation: '91 FR 61940' })
+    const cg = byNumber(out.events, '2026-20087') // Coast Guard proposed rule (DHS parent first), significant: true
+    expect(cg.event_type).toBe('fr.published.proposed_rule')
+    expect(cg.importance).toEqual({ tier: 'P2', reasons: ['proposed_rule'] })
+    expect(cg.body).toBe('agency:coast-guard')
+    expect(cg.result).toEqual({ publication_date: '2026-10-01', significant: true, citation: '91 FR 62383' })
+  })
+
+  test('2026-19971 (FAA proposed rule of 2026-09-30, significant: false; the last record of the first page of 300)', () => {
+    const ev = byNumber(out.events, '2026-19971')
+    expect(out.events.indexOf(ev)).toBe(299)
+    expect(ev.title).toBe('Federal Aviation Administration proposed rule published in the Federal Register on September 30, 2026 (FR Doc. 2026-19971)')
+    expect(ev.official_text).toBe('Airworthiness Directives; Airbus Helicopters Deutschland GmbH (AHD) Helicopters')
+    expect(ev.body).toBe('agency:federal-aviation-administration') // Transportation Department (parent) listed first
+    expect(ev.branch).toBe('executive')
+    expect(ev.importance).toEqual({ tier: 'P2', reasons: ['proposed_rule'] })
+    expect(ev.result).toEqual({ publication_date: '2026-09-30', significant: false, citation: '91 FR 61803' })
+    expect(ev.media).toEqual([{ kind: 'pdf', url: 'https://www.govinfo.gov/content/pkg/FR-2026-09-30/pdf/2026-19971.pdf' }])
+  })
+
+  // Records 301-500, read from the raw fixture record (review R1 fix): the rest of 2026-09-30, 2026-09-29 and 2026-09-28.
+  test('the significant rules of 2026-09-30 and 2026-09-29 beyond the first 300 are P1, issued by the sub-agency', () => {
+    const nhtsa = byNumber(out.events, '2026-19964') // Transportation Department (parent) listed first, then NHTSA
+    expect(nhtsa.title).toBe('National Highway Traffic Safety Administration rule published in the Federal Register on September 30, 2026 (FR Doc. 2026-19964)')
+    expect(nhtsa.official_text).toBe('The Safer Affordable Fuel-Efficient (SAFE) Vehicles Rule III for Model Years 2022 to 2031 Passenger Cars and Light Trucks')
+    expect(nhtsa.importance).toEqual({ tier: 'P1', reasons: ['rule', 'significant'] })
+    expect(nhtsa.body).toBe('agency:national-highway-traffic-safety-administration')
+    expect(nhtsa.branch).toBe('executive')
+    expect(nhtsa.result).toEqual({ publication_date: '2026-09-30', significant: true, citation: '91 FR 61988' })
+    const cms = byNumber(out.events, '2026-19946') // HHS, CMS, and "Office of the Secretary" (raw name only)
+    expect(cms.body).toBe('agency:centers-for-medicare-medicaid-services')
+    expect(cms.importance).toEqual({ tier: 'P1', reasons: ['rule', 'significant'] })
+    expect(cms.official_text.endsWith('Adoption of Updated Versions of Certain Health Information Technology Standards; Correction')).toBe(true)
+    expect(cms.result).toEqual({ publication_date: '2026-09-29', significant: true, citation: '91 FR 61328' })
+  })
+
+  test('a correction (FR Doc. C1-2026-17108, typed "Proposed Rule" by the FR) is its own document under its own number', () => {
+    const ev = byNumber(out.events, 'C1-2026-17108') // the original, 2026-17108, is not on the page
+    expect(ev.dedup_key).toBe('fr:C1-2026-17108#published')
+    expect(ev.event_type).toBe('fr.published.proposed_rule')
+    expect(ev.title).toBe('U.S. Customs and Border Protection proposed rule published in the Federal Register on September 29, 2026 (FR Doc. C1-2026-17108)')
+    expect(ev.official_text).toBe('Withdrawal of International Airport Designation of Chalk Seaplane Base')
+    expect(ev.body).toBe('agency:u-s-customs-and-border-protection') // DHS (parent, id 227) listed first
+    expect(ev.importance).toEqual({ tier: 'P2', reasons: ['proposed_rule'] })
+    expect(ev.result).toEqual({ publication_date: '2026-09-29', significant: false, citation: '91 FR 61346' })
+    expect(ev.media).toEqual([{ kind: 'pdf', url: 'https://www.govinfo.gov/content/pkg/FR-2026-09-29/pdf/C1-2026-17108.pdf' }])
+  })
+
+  test('the oldest record on the page, 2026-19766 (CDC notice of 2026-09-28, the 50th of that issue\'s 101)', () => {
+    const ev = byNumber(out.events, '2026-19766')
+    expect(out.events.at(-1)).toBe(ev)
+    expect(ev.event_type).toBe('fr.published.notice')
+    expect(ev.title).toBe('Centers for Disease Control and Prevention notice published in the Federal Register on September 28, 2026 (FR Doc. 2026-19766)')
+    expect(ev.official_text).toBe('Proposed Data Collection Submitted for Public Comment and Recommendations')
+    expect(ev.body).toBe('agency:centers-for-disease-control-and-prevention') // HHS (parent) listed first
+    expect(ev.branch).toBe('executive')
+    expect(ev.importance).toEqual({ tier: 'P4', reasons: ['notice'] })
+    expect(ev.result).toEqual({ publication_date: '2026-09-28', citation: '91 FR 61229' })
+    expect(ev.media).toEqual([{ kind: 'pdf', url: 'https://www.govinfo.gov/content/pkg/FR-2026-09-28/pdf/2026-19766.pdf' }])
+    expect(ev.sources[0]!.url).toBe('https://www.federalregister.gov/documents/2026/09/28/2026-19766/proposed-data-collection-submitted-for-public-comment-and-recommendations')
+  })
+
+  test('an agency listed by raw name only is skipped; the Federal Reserve is independent', () => {
+    const dhs = byNumber(out.events, '2026-20233') // DHS + "Office of the Secretary" (no slug, no id)
+    expect(dhs.body).toBe('agency:homeland-security-department')
+    expect(dhs.event_type).toBe('fr.published.notice')
+    expect(dhs.importance).toEqual({ tier: 'P4', reasons: ['notice'] })
+    expect(dhs.result).toEqual({ publication_date: '2026-10-02', citation: '91 FR 62739' })
+    const fed = byNumber(out.events, '2026-20247')
+    expect(fed.branch).toBe('independent')
+    expect(fed.body).toBe('agency:federal-reserve-system')
+    expect(fed.importance).toEqual({ tier: 'P3', reasons: ['rule', 'significance_unknown'] })
+    expect(fed.result).toEqual({ publication_date: '2026-10-02', citation: '91 FR 62870' })
+  })
+
   test('the cache-buster echoed into next_page_url (seen live 2026-10-02) does not change any event', () => {
     const busted = edited(docs(), (j) => { j.next_page_url = j.next_page_url.replace('documents?', 'documents?_=1790977406839&') })
     expect(busted.body).not.toBe(docs().body)
@@ -223,6 +443,58 @@ describe('documents_newest fixture (20 newest published, recorded 2026-10-02 21:
       expectNothing(o, 'drift')
       expect(o.health.detail).toMatch(/^result 1 of \d+: document \S+ has no "citation" field; nothing from this payload was published$/)
     }
+  })
+})
+
+describe('one page per daily issue (open item O1, D-046): an issue larger than the page is said, never hidden', () => {
+  const NOTE_0210 = "none is dated before October 2, 2026, so that day's issue may have more documents than this page of"
+  const allDated = (date: string) => (j: any) => { for (const r of j.results) r.publication_date = date }
+
+  test('the real page of 20 recorded before O1 (20 of the 94 documents of 2026-10-02) is ok, with the overflow note', () => {
+    const out = parseFr('documents_newest', docs20())
+    expect(out.health).toEqual({
+      source_id: 'fr.api', endpoint: 'documents_newest', status: 'ok', items_seen: 20,
+      detail: `20 newest published documents; ${NOTE_0210} 20 holds, and those are not seen as published`,
+    })
+    expect(out.events).toHaveLength(20) // every result read is still published
+    expectAllValid(out.events)
+  })
+
+  test('a full page of 500 that never reaches an older issue is ok, publishes all 500, and says the issue may be larger', () => {
+    const out = parseFr('documents_newest', edited(docs(), allDated('2026-10-02')))
+    expect(out.health.status).toBe('ok')
+    expect(out.health.detail).toBe(`500 newest published documents; ${NOTE_0210} 500 holds, and those are not seen as published`)
+    expect(out.events).toHaveLength(500)
+  })
+
+  test('one older document on the page is enough to show the newest issue is complete', () => {
+    const out = parseFr('documents_newest', edited(docs(), (j) => { allDated('2026-10-02')(j); j.results[499].publication_date = '2026-10-01' }))
+    expect(out.health.detail).toBe('500 newest published documents')
+  })
+
+  test('the newest date is the latest on the page, wherever it is listed (not the first result\'s)', () => {
+    const reversed = parseFr('documents_newest', edited(docs(), (j) => { j.results.reverse() }))
+    expect(reversed.health.detail).toBe('500 newest published documents')
+    const out = parseFr('documents_newest', edited(docs(), (j) => { allDated('2026-10-01')(j); j.results[250].publication_date = '2026-10-02' }))
+    expect(out.health.detail).toBe('500 newest published documents')
+  })
+
+  test('nothing beyond the page (count equals the list) means no overflow, whatever the dates', () => {
+    const out = parseFr('documents_newest', edited(docs(), (j) => { allDated('2026-10-02')(j); j.count = 500 }))
+    expect(out.health.detail).toBe('500 newest published documents')
+    const short = parseFr('documents_newest', edited(docs20(), (j) => { j.count = 20 }))
+    expect(short.health.detail).toBe('20 newest published documents')
+  })
+
+  test('a document with no publication_date is not evidence that the page reached an older issue', () => {
+    const out = parseFr('documents_newest', edited(docs20(), (j) => { j.results[19].publication_date = null }))
+    expect(out.health.status).toBe('ok')
+    expect(out.health.detail).toBe(`20 newest published documents; ${NOTE_0210} 20 holds, and those are not seen as published`)
+    expect(out.events).toHaveLength(20)
+  })
+
+  test('Public Inspection (one unpaginated list) never gets the note', () => {
+    expect(parseFr('pi_current', pi()).health.detail).toBe('107 documents on public inspection')
   })
 })
 
@@ -477,14 +749,17 @@ describe('adversarial review 2026-10-02: regression tests', () => {
   }
 
   // FR-1: a payload must belong to the endpoint it is parsed for.
-  test('FR-1: a documents.json payload given to pi_current is drift, never 20 Public Inspection filings', () => {
+  test('FR-1: a documents.json payload given to pi_current is drift, never 500 Public Inspection filings', () => {
     const out = parseFr('pi_current', docs())
     expectNothing(out, 'drift')
-    expect(out.health.detail).toBe('result 1 of 20: document 2026-20322 is not a Public Inspection document (its html_url is not under https://www.federalregister.gov/public-inspection/); nothing from this payload was published')
+    expect(out.health.detail).toBe('result 1 of 500: document 2026-20322 is not a Public Inspection document (its html_url is not under https://www.federalregister.gov/public-inspection/); nothing from this payload was published')
   })
 
   test('FR-1: a current.json payload given to documents_newest is drift, never 107 publications', () => {
-    expectNothing(parseFr('documents_newest', pi()), 'drift') // 107 results: more than the URL's per_page=20 (FR-11)
+    // 107 results fit in the page of 500, so the html_url check is what refuses them (FR-1).
+    const whole = parseFr('documents_newest', pi())
+    expectNothing(whole, 'drift')
+    expect(whole.health.detail).toMatch(/^result 1 of 107: document \S+ is not a published document \(its html_url is not under https:\/\/www\.federalregister\.gov\/documents\/\); nothing from this payload was published$/)
     const out = parseFr('documents_newest', edited(pi(), (j) => { j.results = j.results.slice(0, 20); j.count = 20 }))
     expectNothing(out, 'drift')
     expect(out.health.detail).toMatch(/^result 1 of 20: document \S+ is not a published document \(its html_url is not under https:\/\/www\.federalregister\.gov\/documents\/\); nothing from this payload was published$/)
@@ -492,9 +767,11 @@ describe('adversarial review 2026-10-02: regression tests', () => {
 
   // FR-2: a key the endpoint always sends is required; only its null value means "none".
   const PI_REQUIRED = ['agencies', 'document_number', 'editorial_note', 'filed_at', 'filing_type', 'html_url', 'pdf_url', 'publication_date', 'title', 'type']
-  test('FR-2: every key the adapter requires is present on all 127 recorded production results', () => {
+  test('FR-2: every key the adapter requires is present on all 627 recorded production results', () => {
     for (const r of JSON.parse(pi().body).results) for (const k of PI_REQUIRED) expect(Object.hasOwn(r, k), `${r.document_number}.${k}`).toBe(true)
-    for (const r of JSON.parse(docs().body).results) for (const k of DOCUMENTS_FIELDS) expect(Object.hasOwn(r, k), `${r.document_number}.${k}`).toBe(true)
+    for (const page of [docs(), docs20()]) {
+      for (const r of JSON.parse(page.body).results) for (const k of DOCUMENTS_FIELDS) expect(Object.hasOwn(r, k), `${r.document_number}.${k}`).toBe(true)
+    }
   })
 
   test.each(PI_REQUIRED)('FR-2: a PI result without its "%s" key is drift', (key) => {
@@ -508,7 +785,7 @@ describe('adversarial review 2026-10-02: regression tests', () => {
   test('FR-2: agencies missing from every result is drift, not "no agency" (the NRC rule would lose its body and branch)', () => {
     const out = parseFr('documents_newest', edited(docs(), (j) => { for (const r of j.results) delete r.agencies }))
     expectNothing(out, 'drift')
-    expect(out.health.detail).toBe('result 1 of 20: document 2026-20322 has no "agencies" field; nothing from this payload was published')
+    expect(out.health.detail).toBe('result 1 of 500: document 2026-20322 has no "agencies" field; nothing from this payload was published')
   })
 
   test('FR-1: a PI result whose filing_type is not text is drift (it is the PI marker)', () => {
@@ -593,8 +870,8 @@ describe('adversarial review 2026-10-02: regression tests', () => {
   test('FR-6: a published document dated after the poll day (+1 day for the UTC/Eastern date line) is drift', () => {
     const pub = (d: string): AdapterOutput => parseFr('documents_newest', edited(docs(), (j) => { find(j, '2026-20321').publication_date = d }))
     expectNothing(pub('2031-01-01'), 'drift')
-    expectNothing(pub('2026-10-04'), 'drift') // fetched 2026-10-02T21:27Z
-    expect(pub('2026-10-03').health.status).toBe('ok')
+    expectNothing(pub('2026-10-05'), 'drift') // fetched 2026-10-03T02:20Z
+    expect(pub('2026-10-04').health.status).toBe('ok')
   })
 
   test('FR-6: a signing date after the publication date, or any date over a year from the poll, is drift', () => {
@@ -643,9 +920,11 @@ describe('adversarial review 2026-10-02: regression tests', () => {
     expect(out.events[0]!.importance).toEqual({ tier, reasons })
   })
 
-  test('FR-9: the three EOs in the fixture are P0 when published; the notice and determination stay P1', () => {
+  test('FR-9: the three EOs and the proclamation in the fixture are P0 when published; the notice and determination stay P1', () => {
     const out = parseFr('documents_newest', docs())
-    expect(out.events.filter((e) => e.importance?.tier === 'P0').map((e) => e.thread_key)).toEqual(['eo:14434', 'eo:14433', 'eo:14432'])
+    expect(out.events.filter((e) => e.importance?.tier === 'P0').map((e) => [e.object_key, e.thread_key ?? null])).toEqual([
+      ['fr:2026-20321', 'eo:14434'], ['fr:2026-20320', 'eo:14433'], ['fr:2026-20319', 'eo:14432'], ['fr:2026-20093', null],
+    ])
     expect(byNumber(out.events, '2026-20322').importance?.tier).toBe('P1')
     expect(byNumber(out.events, '2026-20318').importance?.tier).toBe('P1')
   })
@@ -681,10 +960,12 @@ describe('adversarial review 2026-10-02: regression tests', () => {
     expect(parseFr('pi_current', manyPi(1000)).events).toHaveLength(1000)
   })
 
-  test('FR-11: documents_newest never lists more than the 20 its URL asks for', () => {
+  test('FR-11: documents_newest never lists more than the 500 its URL asks for', () => {
     const out = parseFr('documents_newest', edited(docs(), (j) => { j.results.push({ ...j.results[0], document_number: '2026-99999' }) }))
     expectNothing(out, 'drift')
-    expect(out.health.detail).toBe('21 results, more than the 20 this adapter reads in one poll; nothing from this payload was published')
+    expect(out.health.detail).toBe('501 results, more than the 500 this adapter reads in one poll; nothing from this payload was published')
+    expect(out.health.items_seen).toBe(501)
+    expect(parseFr('documents_newest', docs()).events).toHaveLength(500) // a full page is read
   })
 
   test('FR-11: a body over 2,000,000 characters is drift before it is parsed', () => {
@@ -697,12 +978,14 @@ describe('adversarial review 2026-10-02: regression tests', () => {
 
 describe('titles never repeat the document title (D-043)', () => {
   test('on every recorded document, the title says what happened and official_text carries the words', () => {
-    for (const [endpoint, name] of [['pi_current', 'pi_current.json'], ['documents_newest', 'documents_newest.json']] as const) {
-      const out = frApi.parse(endpoint, replay('fr.api', '2026-10-02', name))
+    for (const [endpoint, res] of [['pi_current', pi()], ['documents_newest', docs20()], ['documents_newest', docs()]] as const) {
+      const out = frApi.parse(endpoint, res)
       expect(out.events.length).toBeGreaterThan(0)
       for (const e of out.events) {
         expect(e.title, e.dedup_key).not.toContain(e.official_text)
-        expect(e.title, e.dedup_key).toMatch(/\(FR Doc\. \d{4}-\d{5}\)$/)
+        // The FR's numbers: 2026-20322, and C1-2026-17108 for a correction (two on the page of 500).
+        expect(e.title, e.dedup_key).toMatch(/\(FR Doc\. (?:C\d-)?\d{4}-\d{5}\)$/)
+        expect(e.title.endsWith(`(FR Doc. ${e.object_key.slice('fr:'.length)})`), e.dedup_key).toBe(true)
       }
     }
   })

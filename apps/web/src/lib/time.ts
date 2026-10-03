@@ -2,6 +2,8 @@
 // `occurred_at` is null when the source gives no trustworthy time (docs/EVENT_MODEL.md "three clocks"); the row then
 // shows when the feed first saw the item, labeled as such, never presented as when it happened.
 import type { CedEvent } from '@ced/schema'
+// The order rule is shared with the Hub; imported from the subpath so the page bundle does not pull in the validator.
+import { earlierPublicationDate, orderKeyMs, postedMs } from '@ced/schema/order'
 
 export interface TimeOptions {
   /** BCP 47 locale; undefined = the viewer's. */
@@ -56,30 +58,34 @@ export interface EventTime {
   text: string
   /** occurred: when it happened; posted: when the source published it (the event's own time is not given, e.g. a
    * White House executive-order post has no signing time); first_seen: neither is given, so when the feed saw it. */
-  kind: 'occurred' | 'posted' | 'first_seen'
+  /** published_on: the source gives only a calendar DAY, earlier than the day we saw it (a backfilled Federal Register
+   * document); shown as a date with no time of day, never as one (D-034). */
+  kind: 'occurred' | 'posted' | 'published_on' | 'first_seen'
 }
 
-/** source_published_at, but only when it is not later than our own first sighting (a "posted" time after we had
- * already seen the item cannot be its posting time). Same rule as the API's order key (workers/api hub.ts). */
-function postedMs(e: Pick<CedEvent, 'times'>): number | null {
-  const posted = parseUtc(e.times.source_published_at ?? null)
-  const seen = parseUtc(e.times.first_seen_at)
-  return posted !== null && (seen === null || posted <= seen) ? posted : null
+/** "Sep 30" (or "Sep 30, 2025" when not this year) for a calendar day "YYYY-MM-DD", with no zone shift. */
+export function formatDay(day: string, opts: TimeOptions = {}): string {
+  const [y, m, d] = day.split('-').map(Number) as [number, number, number]
+  const at = Date.UTC(y, m - 1, d, 12)
+  const otherYear = y !== new Date(opts.now ?? Date.now()).getUTCFullYear()
+  return new Intl.DateTimeFormat(opts.locale, { timeZone: 'UTC', month: 'short', day: 'numeric', ...(otherYear ? { year: 'numeric' } : {}) }).format(at)
 }
 
-/** The time a row shows: occurred_at, else the source's posting time (labeled "posted"), else first_seen_at
- * (labeled "first seen"). */
-export function eventTime(e: Pick<CedEvent, 'times'>, opts: TimeOptions = {}): EventTime | null {
+/** The time a row shows: occurred_at; else the source's posting time ("posted"); else an earlier publication DAY
+ * ("published", date only); else first_seen_at ("first seen"). Same precedence as the order key. */
+export function eventTime(e: Pick<CedEvent, 'times' | 'result'>, opts: TimeOptions = {}): EventTime | null {
   const occurred = parseUtc(e.times.occurred_at)
   if (occurred !== null) return { iso: e.times.occurred_at as string, text: formatDateTime(occurred, opts), kind: 'occurred' }
   const posted = postedMs(e)
   if (posted !== null) return { iso: e.times.source_published_at as string, text: formatDateTime(posted, opts), kind: 'posted' }
+  const day = earlierPublicationDate(e)
+  if (day !== null) return { iso: day, text: formatDay(day, opts), kind: 'published_on' }
   const seen = parseUtc(e.times.first_seen_at)
   if (seen !== null) return { iso: e.times.first_seen_at, text: formatDateTime(seen, opts), kind: 'first_seen' }
   return null
 }
 
-/** The API's order key: coalesce(occurred_at, source_published_at if not after first_seen_at, first_seen_at). */
-export function sortKeyMs(e: Pick<CedEvent, 'times'>): number {
-  return parseUtc(e.times.occurred_at) ?? postedMs(e) ?? parseUtc(e.times.first_seen_at) ?? 0
+/** The API's order key: the one shared rule (packages/schema/src/order.ts), so page and Hub never disagree. */
+export function sortKeyMs(e: Pick<CedEvent, 'times' | 'result'>): number {
+  return orderKeyMs(e)
 }

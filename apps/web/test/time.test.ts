@@ -102,3 +102,26 @@ describe('parseUtc rejects impossible calendar instants (W12)', () => {
     expect(parseUtc('2026-10-02T15:15:00.123456Z')).toBe(Date.parse('2026-10-02T15:15:00.123Z'))
   })
 })
+
+describe('a backfilled FR document with only a publication DAY (2026-10-03, D-046 page of 500)', () => {
+  const chicago = { locale: 'en-US', timeZone: 'America/Chicago', now: Date.parse('2026-10-03T03:00:00Z') }
+  const pd = piEvent('2026-20439', 'P0')
+  // A published document: no occurred_at, no posting time; published Sep 30, first seen Oct 2 at 22:00 CDT.
+  const published = { ...pd, times: { occurred_at: null, first_seen_at: '2026-10-03T03:00:00Z' }, result: { publication_date: '2026-09-30' } }
+
+  test('shows "published Sep 30" as a DATE, never a time of day, and sorts at the start of that day (Eastern)', () => {
+    const t = eventTime(published, chicago)!
+    expect(t.kind).toBe('published_on')
+    expect(t.text).toBe('Sep 30')
+    expect(t.iso).toBe('2026-09-30')
+    expect(sortKeyMs(published)).toBe(Date.parse('2026-09-30T04:00:00Z'))
+  })
+  test('the same document published the day we first saw it is ordered and shown by our sighting', () => {
+    const sameDay = { ...published, result: { publication_date: '2026-10-02' } }
+    expect(eventTime(sameDay, chicago)!.kind).toBe('first_seen')
+    expect(sortKeyMs(sameDay)).toBe(Date.parse('2026-10-03T03:00:00Z'))
+  })
+  test('so a backfill of week-old documents never sorts above a newer timed filing', () => {
+    expect(sortKeyMs(pd)).toBeGreaterThan(sortKeyMs(published)) // filed Oct 2 15:15Z vs published Sep 30
+  })
+})

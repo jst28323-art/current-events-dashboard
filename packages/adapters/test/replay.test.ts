@@ -30,6 +30,12 @@ describe('registry', () => {
       const eps = s.endpoints.map((e) => e.id)
       expect(new Set(eps).size).toBe(eps.length)
       expect(s.cadence.business_s).toBeGreaterThanOrEqual(60)
+      expect(s.cadence.off_s).toBeGreaterThanOrEqual(60)
+      // an endpoint's own cadence (D-046) may not go below the 1-minute cron either
+      for (const e of s.endpoints) if (e.cadence) {
+        expect(e.cadence.business_s, `${s.source_id}/${e.id}`).toBeGreaterThanOrEqual(60)
+        expect(e.cadence.off_s, `${s.source_id}/${e.id}`).toBeGreaterThanOrEqual(60)
+      }
     }
   })
 })

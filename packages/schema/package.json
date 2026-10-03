@@ -6,6 +6,7 @@
   "description": "The event model (docs/EVENT_MODEL.md) as code: types, JSON Schema, ids, validator.",
   "exports": {
     ".": "./src/index.ts",
+    "./order": "./src/order.ts",
     "./event.schema.json": "./src/event.schema.json"
   },
   "scripts": {

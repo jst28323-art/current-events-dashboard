@@ -88,7 +88,8 @@ test('upstream text is shown as text, never parsed as HTML; a non-https source i
   await expect(page.locator('a[href^="http:"]')).toHaveCount(0)
 })
 
-test('polling pauses while the tab is hidden and runs at once when it returns', async ({ page }) => {
+// @engine-agnostic: poller logic under Playwright's injected fake clock; the WebKit projects skip it (playwright.config.ts).
+test('polling pauses while the tab is hidden and runs at once when it returns', { tag: '@engine-agnostic' }, async ({ page }) => {
   const api = new MockApi()
   await openPaused(page, api)
   await expect(page.getByTestId('event-row')).toHaveCount(4)

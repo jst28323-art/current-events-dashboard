@@ -8,6 +8,8 @@ export const API_ORIGIN = 'https://ced-api.usgovfeed.workers.dev'
 /** The fake "now" every test starts at: one minute after the fixtures were recorded (18:00Z). 1:01 PM CDT. */
 export const T0 = Date.parse('2026-10-02T18:01:00Z')
 export const iso = (ms: number) => new Date(ms).toISOString()
+/** How long before its paused start time openPaused installs the fake clock (see there). */
+export const CLOCK_INSTALL_LEAD_MS = 60_000
 
 export type Mode = 'ok' | 'down' | 'http503' | 'garbage' | 'hang'
 
@@ -90,7 +92,10 @@ export class MockApi {
  */
 export async function openPaused(page: Page, api: MockApi, atMs = 0): Promise<void> {
   await api.install(page)
-  await page.clock.install({ time: T0 - 1000 })
+  // The installed clock runs in real time until pauseAt, which must lie in its future. Installed only 1 s early, a slow
+  // worker passed T0 first ("clock.pauseAt: Cannot fast-forward to the past", WebKit under load, 2026-10-03). A minute
+  // of margin; the jump fires nothing, because no page has loaded yet.
+  await page.clock.install({ time: T0 + atMs - CLOCK_INSTALL_LEAD_MS })
   await page.clock.pauseAt(T0 + atMs)
   await page.goto('./')
 }

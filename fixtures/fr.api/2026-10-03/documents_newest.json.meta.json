@@ -1,0 +1,36 @@
+{
+  "source_id": "fr.api",
+  "url": "https://www.federalregister.gov/api/v1/documents.json?per_page=500&order=newest&fields%5B%5D=agencies&fields%5B%5D=citation&fields%5B%5D=document_number&fields%5B%5D=executive_order_number&fields%5B%5D=html_url&fields%5B%5D=pdf_url&fields%5B%5D=publication_date&fields%5B%5D=significant&fields%5B%5D=signing_date&fields%5B%5D=subtype&fields%5B%5D=title&fields%5B%5D=type",
+  "final_url": "https://www.federalregister.gov/api/v1/documents.json?per_page=500&order=newest&fields%5B%5D=agencies&fields%5B%5D=citation&fields%5B%5D=document_number&fields%5B%5D=executive_order_number&fields%5B%5D=html_url&fields%5B%5D=pdf_url&fields%5B%5D=publication_date&fields%5B%5D=significant&fields%5B%5D=signing_date&fields%5B%5D=subtype&fields%5B%5D=title&fields%5B%5D=type",
+  "fetched_at": "2026-10-03T02:20:43.124Z",
+  "status": 200,
+  "elapsed_ms": 369,
+  "bytes": 514532,
+  "sha256": "22ffa958117e44f645635ef35fb3967043db4d38ffe5d0f404eb3fc2b0610ab9",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "access-control-allow-origin": "*",
+    "age": "0",
+    "cache-control": "no-store, no-cache, must-revalidate, private",
+    "content-encoding": "gzip",
+    "content-length": "55385",
+    "content-security-policy": "default-src 'self' https:; font-src 'self' https: data:; img-src 'self' https: data: 'report-sample'; object-src 'none'; script-src 'self' https: 'report-sample'; style-src 'self' https: 'report-sample' 'unsafe-inline'",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Sat, 03 Oct 2026 02:20:42 GMT",
+    "feature-policy": "camera 'none'; microphone 'none'; usb 'none'; fullscreen 'self'; payment 'self'",
+    "pragma": "no-cache",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "status": "200 OK",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "Root1-6ac0667a-7187008f122ccfb74ffb4089",
+    "x-xss-protection": "0"
+  }
+}

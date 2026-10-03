@@ -67,6 +67,9 @@ test('(b) API goes down after data: banner with the last good time, rows kept; (
   expect(norm(await page.getByTestId('last-updated').textContent())).toBe('Last updated 1:01:30 PM CDT')
 })
 
+// Runs in every engine, like the whole of this file (test/e2e-coverage.test.ts). It was briefly tagged @engine-agnostic
+// and skipped in WebKit (review R1, 2026-10-03), which left the stale clause of exit criterion 4 Chromium-only. It is
+// the check that catches a frozen or cached API still saying stale: false.
 test('(c) a stopped poller turns "stale" within 2x its cadence, by the client clock, while the API keeps answering', async ({ page }) => {
   // fr.api: cadence 60 s, freshness SLO 120 s (2x cadence); its last success is T0 and never moves again (the poller
   // stopped), and the frozen status keeps saying stale: false. wh.feeds keeps succeeding.

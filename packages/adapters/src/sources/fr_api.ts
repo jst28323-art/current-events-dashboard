@@ -3,7 +3,8 @@
 // - pi_current: the Public Inspection desk (`public-inspection-documents/current.json`): every document filed for
 //   public inspection in the current issue, with its filing-slot time `filed_at`. A presidential document appears here
 //   1–2 business days after signing, days before FR publication.
-// - documents_newest: the newest published documents (`documents.json`, order=newest, an explicit fields[] list).
+// - documents_newest: the newest published documents (`documents.json`, order=newest, an explicit fields[] list), one
+//   page big enough to hold a whole daily issue, polled on its own slower cadence (D-046, open item O1).
 // Both answer with no ETag/Last-Modified and are served from a shared cache despite `no-store` (copies up to ~104 min
 // old), so the poller hashes the body and appends a cache-buster query to every call (`_=<epoch ms>` is tolerated:
 // checked live 2026-10-02 on documents.json, and by the research on current.json).
@@ -34,8 +35,27 @@ export const DOCUMENTS_FIELDS = [
   'publication_date', 'significant', 'signing_date', 'subtype', 'title', 'type',
 ] as const
 
-/** documents_newest asks for one page of this many; a reply can never list more (FR-11). */
-export const DOCUMENTS_PER_PAGE = 20
+/** documents_newest asks for one page of this many; a reply can never list more (FR-11). Sized so one page holds a whole
+ * daily issue, on the FR's own count for every publication day since 1994 (api/v1/documents/facets/daily, recorded
+ * 2026-10-03 02:16Z as fixtures/fr.api/2026-10-03/facets_daily_since_1994.json): n=8,191 days from 1994-01-03 to
+ * 2026-10-02, median 123 documents, largest 344 (2024-12-30; documents.json agrees), the only day above 300. That
+ * record beat the one before it (269, 2001-01-22) by 28%, so the page leaves room for one more jump like it
+ * (344 x 344/269 = 440; review R1 of 2026-10-03: the first sizing, 300, used only 2025-01-02..2026-10-02 and missed
+ * 2024-12-30). A missed issue is silent downstream (review R2: the note below lasts one poll), which is why the margin
+ * errs high: a page too big for the CPU budget fails loudly, a page too small does not. 400 still holds every issue on
+ * record if CPU forces a cut. per_page=2000 is accepted (2000 results, 2026-10-03 01:40Z). The page lists
+ * publication_date newest first, then document_number descending (0 order violations in 2000 results), so an issue
+ * larger than the page loses its lowest-numbered documents, and the health detail says so (issueOverflowNote). The old
+ * page of 20 saw ~20% of an issue (open item O1). */
+export const DOCUMENTS_PER_PAGE = 500
+
+/** documents_newest's own poll cadence (Endpoint.cadence; Public Inspection keeps the source cadence of 60 s). The list
+ * changes about once a business day, when the day's issue publishes: none of those 8,191 issues fell on a weekend. The
+ * issue is expected at 06:00 ET (docs/research/executive_branch.md §11 recipe; NOT measured here: the first live
+ * sighting is due Mon 2026-10-05), when the Worker's business hours start (D-038), so an issue posted at 06:00 is
+ * fetched within about 15 min. 900 s by day also catches a special edition or a late addition; 3600 s at night and on
+ * weekends, so an issue posted overnight waits at most an hour. 4 requests an hour by day instead of 60. */
+export const DOCUMENTS_CADENCE = { business_s: 900, off_s: 3600 } as const
 
 export const DOCUMENTS_NEWEST_URL =
   `https://www.federalregister.gov/api/v1/documents.json?per_page=${DOCUMENTS_PER_PAGE}&order=newest&` +
@@ -70,7 +90,8 @@ interface EndpointProfile {
  * (0.8 ms for the real 107) on Node 26 on the home PC, 2026-10-02, so the cap only refuses an abnormal payload before it
  * can use up a Worker's CPU limit. The workerd figure is unmeasured (ROADMAP P1.3): tighten the cap if it binds. */
 const MAX_PI_RESULTS = 1000
-/** ~11x the 2026-10-02 current.json (175 KB); checked before JSON.parse, which is most of the cost of a huge body. */
+/** ~11x the 2026-10-02 current.json (175 KB) and ~3.9x a full documents_newest page of 500 (fixtures/fr.api/2026-10-03);
+ * checked before JSON.parse, which is most of the cost of a huge body. */
 const MAX_BODY_CHARS = 2_000_000
 
 const PROFILES: Record<EndpointId, EndpointProfile> = {
@@ -560,7 +581,22 @@ export function parseFr(endpointId: string, res: FetchedResponse): AdapterOutput
   const events = docs.map((d) => finalizeEvent(draftOf(d, at, res.fetchedAt)))
   const what = at === 'pi_current' ? 'documents on public inspection' : 'newest published documents'
   const dupNote = duplicates > 0 ? `; ${duplicates} repeated document number${duplicates === 1 ? '' : 's'} skipped` : ''
-  return out('ok', `${results.length} ${what}${dupNote}`, results.length, events)
+  const overflow = at === 'documents_newest' ? issueOverflowNote(docs, results.length, count) : ''
+  return out('ok', `${results.length} ${what}${dupNote}${overflow}`, results.length, events)
+}
+
+/** documents_newest is one page (DOCUMENTS_PER_PAGE). When more matches exist beyond it (count above the number listed)
+ * and no listed document is dated before the newest listed publication_date, the page never reached the previous
+ * issue, so the newest issue may hold documents this poll cannot see: they would never be seen as published (their
+ * Public Inspection event is unaffected). Every result was read, so this stays ok, never drift; the detail says it.
+ * A document with no publication_date is not evidence that the page reached an older issue. */
+function issueOverflowNote(docs: readonly FrDoc[], listed: number, count: number): string {
+  if (count <= listed) return ''
+  const dates = docs.flatMap((d) => (d.publication_date === null ? [] : [d.publication_date]))
+  if (dates.length === 0) return ''
+  const newest = dates.reduce((a, b) => (b > a ? b : a)) // YYYY-MM-DD compares as text
+  if (dates.some((d) => d < newest)) return ''
+  return `; none is dated before ${frDateInWords(newest)}, so that day's issue may have more documents than this page of ${listed} holds, and those are not seen as published`
 }
 
 export const frApi: SourceDefinition = {
@@ -571,10 +607,11 @@ export const frApi: SourceDefinition = {
   features: ['F10', 'F9'],
   endpoints: [
     { id: 'pi_current', url: PI_CURRENT_URL, validator: 'body-hash', cacheBust: true },
-    { id: 'documents_newest', url: DOCUMENTS_NEWEST_URL, validator: 'body-hash', cacheBust: true },
+    { id: 'documents_newest', url: DOCUMENTS_NEWEST_URL, validator: 'body-hash', cacheBust: true, cadence: { ...DOCUMENTS_CADENCE } },
   ],
-  // Business hours: every minute (Phase 1's cron floor), covering the PI slots 08:45, 11:15, 14:00, 16:15 and 18:00 ET.
-  // Off hours: every 15 min (research recipe, EXE §3). Two endpoints at 60 s = 120 requests/h; the budget leaves room
+  // The source cadence is Public Inspection's (documents_newest has its own, DOCUMENTS_CADENCE). Business hours: every
+  // minute (Phase 1's cron floor), covering the PI slots 08:45, 11:15, 14:00, 16:15 and 18:00 ET. Off hours: every
+  // 15 min (research recipe, EXE §3). PI at 60/h plus documents at 4/h is 64 requests/h by day; the budget leaves room
   // for backoff retries and stays far below the 1 request/s etiquette (the FR publishes no rate limit).
   cadence: { business_s: 60, off_s: 900 },
   freshness_slo_s: 120,
