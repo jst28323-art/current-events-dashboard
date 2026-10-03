@@ -93,6 +93,12 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   unexplained; the feed's `max-age=300` alone cannot cause it. Measure the lag distribution from our own ledger
   (first_seen_at minus source_published_at per White House item, n >= 20 on business days) before paying for
   unconditional origin fetches (~480 KB each).
+- **YouTube's robots.txt disallows `/feeds/videos.xml` (the keyless channel RSS) for every user agent** (checked
+  2026-10-03 23:16Z). The Phase 0 reports recommend that feed (`docs/research/executive_branch.md` §6.2,
+  `docs/research/live_media_transcripts.md`, `docs/research/curation_priorart_future.md`); never poll it. Use WebSub push
+  and the Data API `videos.list` (a free key, ROADMAP P3.3) instead (`docs/research/leadership_press_conferences.md`).
+  Research rule this taught: read a host's robots.txt BEFORE the first request to it, in every agent; the P3.5 research
+  sent 45 requests to the disallowed path before it noticed.
 - **GovInfo's Federal Register RSS `pubDate` is a package (re)processing time, not when the issue went up** (2026-10-03,
   `https://www.govinfo.gov/rss/fr.xml`, 100 items). FR-2026-08-24 is stamped 2026-09-29 18:44 ET and FR-2026-09-18 is
   stamped 2026-09-23; only some packages carry a time on their own issue date (00:47-05:24 ET). Never read an FR issue's

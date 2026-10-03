@@ -149,6 +149,9 @@ page in < 2 s over the WebSocket; during recess the status page says "in recess 
   (Fed calendar, DVIDS, State schedule).
 - [ ] **P3.4 Supreme Court** (D-016): slip-opinion and orders-list HTML pages only (never `/rss/`).
 - [ ] **P3.5 Research gap:** find sources for congressional leadership press conferences (F3; no source was researched).
+  (2026-10-03, paper only by D-089: researched, `docs/research/leadership_press_conferences.md`: no keyless source says
+  "live now"; build order, fixtures to record from Nov 9 and the owner decisions it needs are in its §3, §4 and §1.
+  Ticked when Phase 3 builds it.)
 - [ ] **P3.6 Latency harness:** pre-register the measurement in its own commit, then run it on Nov 9–10.
 
 **Exit:** measured `first_seen − occurred` per source (n ≥ 20 actions and votes per chamber) recorded in
