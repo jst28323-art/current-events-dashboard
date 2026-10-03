@@ -70,6 +70,14 @@ Status: **v0.1, implemented 2026-10-02** as TypeScript types plus a JSON Schema 
 `object_key`, `event_type`, `status`, `branch`, `body`, `features`, `title`, `official_text`, `times.occurred_at`,
 `times.first_seen_at`, `sources[0]`, `revision`, `provenance`.
 
+**Date-only facts** go in `result`, never in `times`: every time in `times` is a full UTC instant (D-030). A source that
+gives only a calendar day puts it in `result.publication_date` as `YYYY-MM-DD` (today: published FR documents, D-034).
+
+**Order key** (newest first, the same in the API and the page): one function, `orderKeyMs` in
+`packages/schema/src/order.ts` (rule and reasons: D-048). In short, it uses the event's own time first, then the
+source's posting time, then an earlier `result.publication_date` (sort only, never shown as a time), then
+`first_seen_at`; ties by id descending.
+
 ## Object keys (the dedup backbone)
 
 | object | key | example |

@@ -119,3 +119,11 @@ describe('never throws (2026-10-03 review fuzz: the library threw on an undefine
     }
   })
 })
+
+test('VALIDATOR_ID names the installed validation library and version (the HubDO fast-path fingerprint uses it)', async () => {
+  const { readFileSync } = await import('node:fs')
+  const file = new URL('../../../node_modules/@cfworker/json-schema/package.json', import.meta.url)
+  const pkg = JSON.parse(readFileSync(file, 'utf8')) as { name: string; version: string }
+  const { VALIDATOR_ID } = await import('../src/index.js')
+  expect(VALIDATOR_ID).toBe(`${pkg.name}@${pkg.version}`)
+})

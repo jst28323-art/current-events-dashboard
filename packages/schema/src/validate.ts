@@ -11,6 +11,11 @@ export interface ValidationResult {
 
 const validator = new Validator(schema as object, '2020-12', false)
 
+/** The validation library and version doing the work. Part of the HubDO's "already validated" fingerprint
+ * (workers/api/src/fastpath.ts), so a library upgrade re-validates stored copies once. test/validate.test.ts fails
+ * when the installed version differs, so this cannot go stale silently (docs critic, 2026-10-03). */
+export const VALIDATOR_ID = '@cfworker/json-schema@4.1.1'
+
 /** Schema check + cross-field rules. Never throws; an invalid event comes back with readable reasons. */
 export function validateEvent(ev: unknown): ValidationResult {
   let r: ReturnType<typeof validator.validate>

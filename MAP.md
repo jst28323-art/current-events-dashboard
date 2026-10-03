@@ -25,18 +25,20 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | Recorded upstream responses for tests | `fixtures/` (index: `fixtures/README.md`) |
 | The retired placeholder page (Pages now deploys `apps/web`; first home of the design tokens) | `site/index.html` |
 | Event schema code (types, JSON Schema, ids, validator) | `packages/schema/` |
-| The read-API v1 contract shared by the Worker and the web app (incl. the event order key) | `packages/schema/src/api.ts` |
+| The read-API v1 contract shared by the Worker and the web app | `packages/schema/src/api.ts` |
+| The one event order key (Hub and page; the page imports it from `@ced/schema/order`, without the validator) | `packages/schema/src/order.ts` (D-048) |
 | Source adapters + registry | `packages/adapters/` (registry: `packages/adapters/src/registry.ts`) |
 | `fr.api` adapter and its helpers (branch table, FR times) | `packages/adapters/src/sources/fr_api.ts`, `packages/adapters/src/lib/fr_branch.ts`, `packages/adapters/src/lib/fr_time.ts` |
 | `wh.feeds` adapter and the shared head-only RSS reader (envelope scan, item-head parse, RFC 822 dates) | `packages/adapters/src/sources/wh_feeds.ts`, `packages/adapters/src/lib/rss.ts` |
 | Adapter golden outputs (regenerate with `UPDATE_GOLDEN=1`, then review the diff against the fixture) | `packages/adapters/test/golden/` (one directory per source_id) |
 | The Cloudflare Worker `ced-api` (cron poller, hub, API) | `workers/api/` |
-| Event store, merge/revision rule, payload rules, API cursor, latency ledger, per-endpoint poll state, request claim (HubDO) | `workers/api/src/hub.ts`, `workers/api/src/merge.ts`; the stub helper `workers/api/src/hub_ref.ts` |
-| Poll loop and polite-polling constants (UA, cache-buster, timeout, backoff incl. drift, business hours, budget, stale threshold, code-version body key) | `workers/api/src/poll.ts`, `workers/api/src/policy.ts` |
+| Event store, merge/revision rule, payload rules, API cursor, latency ledger, per-endpoint poll state, request claim (HubDO) | `workers/api/src/hub.ts`, `workers/api/src/merge.ts`; the stub helper `workers/api/src/hub_ref.ts`; the validation fast path for stored-equal copies `workers/api/src/fastpath.ts` (D-050) |
+| Poll loop and polite-polling constants (UA, cache-buster, timeout, backoff incl. drift, business hours, budget per source with the peak-fit bound `peakRequestsPerHour`, per-endpoint cadence and stale threshold (D-049), code-version body key) | `workers/api/src/poll.ts`, `workers/api/src/policy.ts` |
 | Public read API routes, CORS, JSON Feed | `workers/api/src/http.ts` |
 | The temporary P1.3 probe Worker `ced-probe` (reachability, validators, CPU limit, alarm jitter, measured from Cloudflare) | `workers/probe/` (once deployed: `GET https://ced-probe.<account subdomain>.workers.dev/results`, and `/results/sources.md` for the SOURCES table) |
 | The web app (Vite + Preact feed; built and deployed by `.github/workflows/pages.yml`) | `apps/web/` (pure logic `apps/web/src/lib/`, polling state machine `apps/web/src/poller.ts`) |
-| Web end-to-end tests (Playwright, route-mocked API, events built from `fixtures/`) | `apps/web/e2e/` + `apps/web/playwright.config.ts` (screenshots go to `scratch/screens/`, gitignored) |
+| Web end-to-end tests (Playwright, Chromium + WebKit, route-mocked API, events built from `fixtures/`) | `apps/web/e2e/` + `apps/web/playwright.config.ts` (screenshots go to `scratch/screens/`, gitignored; WebKit's are named `webkit-*.png`; a local run's full JSON report: `scratch/e2e-last.json`) |
+| e2e helpers: the form factor read from the project's emulation, never its name; the screenshot-capture retry; the Node PNG decoder behind the contrast checks | `apps/web/e2e/project.ts`, `apps/web/e2e/shot.ts`, `apps/web/e2e/png.ts` (D-051, D-052) |
 | The home-PC producer (captions, speech-to-text) | `homepc/` (planned) |
 
 ## Rules, records, and memory

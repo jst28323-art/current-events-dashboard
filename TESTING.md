@@ -12,19 +12,38 @@ Bugs are caught at the step that made them, never carried forward.
 | 2. Parser unit tests | a source adapter turns a **recorded upstream response** into the right events | fixture files under `fixtures/<source_id>/<YYYY-MM-DD>/` + `node:test`/Vitest | gate + CI |
 | 3. Contract tests | the normalized events match `docs/EVENT_MODEL.md` (schema, required fields, IDs, UTC times) | schema validation over every adapter's fixture output | gate + CI |
 | 4. Live smoke (non-gating) | the upstream still answers in the shape we recorded | `scripts/` probe per source, run by hand or on a schedule; a diff from the fixture shape is a TRAP or a fix | manual / scheduled |
-| 5. End-to-end | ingest → store → API → page works on a phone-width screen | Playwright at 390×844 and 1440×900, light + dark | gate + CI (once the UI exists) |
+| 5. End-to-end | ingest → store → API → page works on a phone-width screen | Playwright in Chromium and WebKit at 390×844 and 1440×900, light + dark | gate + CI |
 | 6. Deployed check | what the owner actually opens is up and fresh | fetch the live URL, check the newest event's age and the health endpoint | after every deploy |
 
-**Layer 5 as of 2026-10-02:** `npm run e2e -w apps/web` (Playwright, Chromium only, 390×844 + 1440×900, light + dark;
-in `gate.npmScripts`). It covers the page plus the API contract, with a route-mocked API serving events built from
-`fixtures/` (`apps/web/e2e/fixture-events.ts`); the ingest → store → API part is not yet end to end (the Worker side is
-covered by the workerd fixture replay, `workers/api/test/replay.test.ts`). The suite builds the app itself (webServer:
-`vite build` then `vite preview` on 127.0.0.1:4391), so it never tests a stale `dist/`. `apps/web/e2e/layout.spec.ts`
-checks layout at both sizes (no sideways scroll with long names; tap targets 44 px phone / 24 px desktop) and measures
-text contrast from real pixels (`apps/web/e2e/contrast.ts` decodes an element screenshot in a canvas); the contrast
-checks run on the phone project only, because pixel contrast needs deviceScaleFactor >= 2. 60 tests: 58 run, 2 skipped
-by design. **Not covered:** WebKit (the Safari engine), which `docs/DESIGN_LANGUAGE.md` asks for. Layer 6 is
-`scripts/deployed_check.mjs`, run by `.github/workflows/deploy.yml`; it has not run against a deployment yet.
+**Layer 5 as of 2026-10-03:** `npm run e2e -w apps/web` (Playwright, Chromium AND WebKit, each at 390×844 phone and
+1440×900 desktop, light + dark; in `gate.npmScripts`; on a new machine install both browsers once:
+`npx playwright install chromium webkit`). It covers the page plus the API contract, with a route-mocked API serving
+events built from `fixtures/` (`apps/web/e2e/fixture-events.ts`); the ingest → store → API part is not yet end to end
+(the Worker side is covered by the workerd fixture replay, `workers/api/test/replay.test.ts`). The suite builds the app
+itself (webServer: `vite build` then `vite preview` on 127.0.0.1:4391), so it never tests a stale `dist/`.
+`apps/web/e2e/layout.spec.ts` checks layout at both sizes (no sideways scroll with long names; tap targets 44 px phone /
+24 px desktop; the header stays pinned over scrolling rows with its material applied; where the blur may not be
+painted, the header is opaque, so its pixels do not change as rows scroll under it). It measures text contrast from
+real pixels: `apps/web/e2e/contrast.ts` decodes the element screenshot in Node (`apps/web/e2e/png.ts`), cross-checked
+against Chromium's own PNG decoder on screenshots from both engines by `apps/web/e2e/instrument.spec.ts` (D-052).
+Contrast runs on the phone projects only, because pixel contrast needs deviceScaleFactor >= 2. Form-factor checks read
+`isPhone()` / `scaleOf()` from `apps/web/e2e/project.ts`, never a project name. Safe-area insets are emulated in
+Chromium only (`apps/web/e2e/safe-area.spec.ts`, DevTools protocol); `apps/web/test/safari.test.ts` pins the
+`-webkit-backdrop-filter` twin and viewport-fit=cover. WebKit skips only the test tagged `@engine-agnostic`; the
+fail-closed suite (exit criterion 4) runs in every engine, guarded by `apps/web/test/e2e-coverage.test.ts` (D-051).
+Screenshots are taken through `apps/web/e2e/shot.ts`, which retries ONLY the browser's own "Unable to capture
+screenshot" protocol error, at most twice, never a failed assertion (`apps/web/test/shot.test.ts`). A local run also
+writes its full JSON report to `scratch/e2e-last.json`: the gate log keeps only 25 lines of a failing check, so read
+that file after a red e2e step. The local gate's e2e step takes ~2 min since WebKit joined (2026-10-03).
+**What WebKit here does not prove:** Playwright's WebKit on Windows is not iOS Safari. It paints no backdrop blur,
+cannot emulate safe-area insets, renders Windows fonts, and has no iOS URL bar or Dynamic Type; the owner's iPhone is
+the check for those (`docs/TRAPS.md`). Layer 6 is `scripts/deployed_check.mjs`, run by `.github/workflows/deploy.yml`
+after every Worker deploy; its first run against a live deployment passed on 2026-10-03 (deploy-workers run
+37083632877).
+
+**workers/api tests can count calls inside a Durable Object:** a `vi.mock('@ced/schema', ...)` in a `workers/api` test
+file also replaces the module for the Durable Objects that file's tests call (they run in the test's module graph inside
+workerd); `workers/api/test/fastpath.test.ts` counts the HubDO's real validateEvent calls this way (2026-10-03).
 
 ## Rules
 

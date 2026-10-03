@@ -57,7 +57,7 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   the two DECISIONS rows exist.)
 - [x] **P1.4 Adapters** (done 2026-10-02 in 83ea2b6: `fr.api` and `wh.feeds` registered in
   `packages/adapters/src/registry.ts`, golden fixture tests, NEGATIVE / empty / drift cases, adversarial review fixed;
-  mappings D-034 and D-035. Still open: O1, the `documents_newest` coverage gap in the `docs/SOURCES.md` row `fr.api`.) (needs no account; may run before P1.3; each via the `add-source` skill, pure functions with
+  mappings D-034 and D-035. O1 closed 2026-10-03 (D-047): `documents_newest` reads a whole daily issue in one page, on its own cadence (page size and cadence: `docs/SOURCES.md` row `fr.api`).) (needs no account; may run before P1.3; each via the `add-source` skill, pure functions with
   golden fixture tests): `fr.api` (Public Inspection `current.json` with a cache-buster on every call, and the newest
   `documents.json`) and `wh.feeds` (the `/news/feed/` umbrella, deduped by GUID). Each has its error/empty
   cases: `fr.api` has a NEGATIVE fixture (an HTML 404 from the JSON API); for `wh.feeds`, "no new items" is the same
@@ -68,15 +68,15 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   (Done 2026-10-03: code and tests landed in 83ea2b6 (`workers/api`, rules D-036..D-039, incl. the fixture replay
   through the real adapters in `workers/api/test/replay.test.ts`); deployed 2026-10-03 00:49Z; first live poll 00:53Z:
   fr.api ok (108 documents on public inspection), wh.feeds ok (30 items), 157 events served, no errors.
-  Deferred: workers/api review finding W10 (not the apps/web review W10 in D-040), the HubDO's CPU on a 107-event
-  re-ingest (~10 ms wall in local workerd). Check it with the probe results and Workers Observability cpuTime after the
-  first deploy; the known relief is to skip re-validating events identical to the stored ones.)
+  W10 (workers/api review; not the apps/web review W10 in D-040), the HubDO's CPU on a re-ingest: trimmed 2026-10-03
+  (D-050: copies identical to stored events skip validateEvent; the local measurements are in that row). Still to do:
+  read the HubDO's cpuTime in Workers Observability after the deploy. Per-endpoint cadence, budget and staleness: D-049.)
 - [x] **P1.6 Web v0** on GitHub Pages (the Pages workflow builds `apps/web` instead of `site/`): a single-column,
   phone-first feed. Each row: time, origin chip, title, `official_text`, source link. A header with "last updated" and
   per-source health. Light and dark; polls the API every ~15 s; shows "live data unavailable" when the Worker is down.
   (Done 2026-10-03: code and tests landed in 83ea2b6 (`apps/web`, rules D-040 and D-041, Playwright e2e in the gate);
   the Pages site serves `apps/web` against the live ced-api; the owner checked it on an iPhone over cellular in light
-  and dark (D-044). Not covered yet: WebKit in e2e, see `TESTING.md` layer 5.)
+  and dark (D-044). WebKit joined the e2e suite on 2026-10-03 (D-051; `TESTING.md` layer 5).)
 
 **Exit:** (1) the gate is green locally and in CI, including: the validator rejects a malformed event; each adapter's
 golden test passes; every NEGATIVE fixture emits zero events; re-ingesting a fixture creates no duplicates (fails if

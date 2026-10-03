@@ -84,6 +84,15 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   also store the response's fresh ETag / Last-Modified, then after one site-wide validator change (wh.feeds) every poll
   is a full download. `workers/api` keys accepted bodies by sha-256 + Worker version id and refreshes validators on a
   hash match (D-038).
+- **GovInfo's Federal Register RSS `pubDate` is a package (re)processing time, not when the issue went up** (2026-10-03,
+  `https://www.govinfo.gov/rss/fr.xml`, 100 items). FR-2026-08-24 is stamped 2026-09-29 18:44 ET and FR-2026-09-18 is
+  stamped 2026-09-23; only some packages carry a time on their own issue date (00:47-05:24 ET). Never read an FR issue's
+  posting time from it; measure it from our own first sighting on the FR API (`docs/SOURCES.md` row `fr.api`).
+- **Size a page or a cap on the whole recorded history, not a recent window** (2026-10-03, fr.api review R1). The first
+  `documents_newest` page size came from the FR's daily counts for 2025-01-02..2026-10-02 (n=437, largest 279). That
+  window began three publication days after the largest issue since 1994 (344 on 2024-12-30). Extremes cluster at year
+  end and around a change of administration. The FR's daily facet goes back to 1994 in one ~550 KB request: record it
+  and pin the rule to the fixture (`fixtures/fr.api/2026-10-03/facets_daily_since_1994.json`, D-047).
 
 ## Hosting
 
@@ -167,6 +176,18 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   a deployed Worker's clock only advances on I/O (not measured here). A timing test or log line that works locally can
   therefore read 0 in production. Time CPU work from outside (Node around dispatchFetch) or with Workers Observability
   cpuTime.
+- **Plain Miniflare names a module by its path relative to the process's working directory** (2026-10-03, miniflare
+  5.20261001.0-alpha, verified both ways). A `scriptPath` outside the cwd (e.g. a harness run from a scratch folder
+  against the api Worker's built bundle, dist/index.js) fails to START with
+  `service core:user:ced-api: Uncaught Error: internal error; reference = ...` and `ERR_RUNTIME_FAILURE`, while the
+  identical bytes start fine under the cwd. Run plain-Miniflare
+  checks from the repo directory, or set `modulesRoot` to the bundle's directory.
+- **Miniflare 5's `convertV4MiniflareOptions` silently drops a worker's v4 `durableObjectsPersist`** (2026-10-03,
+  miniflare 5.20261001.0-alpha, Node 26.3.0). With `durableObjectsPersist: <dir>` the run worked but wrote nothing to
+  that directory and raised no error (reading it afterwards: ENOENT); the option name appears nowhere in miniflare 5's
+  dist. The miniflare 5 option is the top-level `resourcePersistencePath: <dir>`: with it, the HubDO's SQLite appeared
+  there (3 `.sqlite` files), survived `dispose()` and a new Miniflare on the same path, and was readable with
+  `node:sqlite`.
 
 ## This machine and harness
 
@@ -233,6 +254,43 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   `perl -pi -e` substitution meant to repair it wrote `FEFF` (cause unverified). A node script that builds the text
   with `String.fromCharCode(92)` worked. Build such characters with `String.fromCharCode(0xfeff)`, and check a written
   file with `grep -c $'\xef\xbb\xbf' <file>`.
+- **Playwright's WebKit on Windows is not iOS Safari** (2026-10-03, WebKit 26.6 / Playwright 1.63). (a) It has no
+  `OffscreenCanvas` ("Can't find variable: OffscreenCanvas"), so an in-page canvas PNG decoder fails;
+  `apps/web/e2e/png.ts` decodes in Node (D-052). (b) It accepts `backdrop-filter` (computed value
+  `blur(20px) saturate(1.8)`, `CSS.supports` true) but paints nothing: a bare overlay screenshots byte-identical with
+  and without it, while Chromium's differ. So default-settings WebKit screenshots show rows printing through the header
+  text, and cannot verify the material. The opaque fallback (D-054) applies only under more contrast, reduced
+  transparency or no backdrop-filter support, so `webkit-scrolled-*.png` still look that way: that is the instrument,
+  not the iPhone. (c) It cannot emulate safe-area insets (always 0). Chromium can, through
+  `Emulation.setSafeAreaInsetsOverride` over a CDP session (`apps/web/e2e/safe-area.spec.ts`). (d) It paints
+  alpha-blended text one level lighter than Chromium (0.55-alpha black on a 234 gray chip: 106 vs 105). That put a
+  4.56:1 word at 4.50:1, so keep at least 5% margin above any contrast bar (D-053). (e) It is ~10x slower per e2e test
+  on this PC (median 2.7 s vs 0.25 s); the local gate's e2e step time is in `TESTING.md` layer 5.
+- **Playwright's WebKit 26.6 does not know `prefers-reduced-transparency`, and Playwright cannot emulate it in any
+  engine** (2026-10-03, probe). In WebKit, `matchMedia('(prefers-reduced-transparency: reduce)')` and
+  `...: no-preference)` both match false, which is how an unknown feature behaves. Chromium knows it (no-preference
+  matches by default) and emulates it over CDP: `Emulation.setEmulatedMedia` with the feature
+  `prefers-reduced-transparency` set to `reduce`, which survives later `page.emulateMedia` calls
+  (`apps/web/e2e/layout.spec.ts` WK4). `prefers-contrast: more` is emulated in both engines with
+  `page.emulateMedia({ contrast: 'more' })`. Whether iOS Safari honours prefers-reduced-transparency is unverified.
+  Related: Chromium answers `CSS.supports('-webkit-backdrop-filter', 'blur(1px)')` false; only WebKit knows the prefix.
+- **A test keyed on a Playwright project NAME silently stops applying to a new project** (2026-10-03).
+  `info.project.name === 'phone'` gave the new `webkit-phone` the desktop 24 px tap bound and skipped its contrast
+  checks, all green. Read the emulated properties instead (`isMobile`, `deviceScaleFactor`: `apps/web/e2e/project.ts`).
+- **`page.clock.install({ time })` keeps running in real time until `pauseAt`** (2026-10-03). Installed only 1 s before
+  the `pauseAt` target, a slow WebKit worker passed it first: "clock.pauseAt: Cannot fast-forward to the past". Install
+  well ahead (`openPaused` uses 60 s, `CLOCK_INSTALL_LEAD_MS` in `apps/web/e2e/mock-api.ts`); the jump fires nothing
+  before the page loads.
+- **Intermittent Chromium "Protocol error (Page.captureScreenshot): Unable to capture screenshot"** (2026-10-03, cause
+  unverified). Seen on a desktop `screens.spec.ts` shot in 2 of 9 e2e runs that included Chromium after WebKit was added
+  (one a Chromium-only run, so not WebKit load); 0 of 4 runs before. `apps/web/e2e/shot.ts` now retries exactly that
+  error, at most twice, never an assertion (`apps/web/test/shot.test.ts`). Separately, one full gate run failed WK4
+  (dark, Chromium desktop) and passed in isolation and in a full rerun; the gate log keeps only 25 lines, so its error
+  text was lost. Every local e2e run now also writes `scratch/e2e-last.json`: read it after a red gate.
+- **`spawnSync`'s default 1 MB output buffer fails on a large git history** (2026-10-03). The gate's secret scan read
+  ~1.5 MB of unpushed fixtures and failed with "spawnSync git ENOBUFS": fail-closed, but a false red. `run()` in
+  `scripts/lib/git.mjs` now passes `maxBuffer` 512 MB; regression test in `tests/harness/gate.test.mjs` (a 4 MB
+  committed file scans clean, and a key committed after it is still caught).
 
 ## Libraries and code
 
@@ -266,3 +324,16 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   A client that keeps resending its cursor after a 4xx is stranded until it reloads: the first Web v0 build did exactly
   that, and its "Retrying every 15 seconds" banner stayed up for good (apps/web review W1). The rule every client needs (the web
   app, later alerts and the iOS app) is in D-040.
+- **@cfworker/json-schema throws on a value JSON has no type for** (2026-10-03, review fuzz: 12,148 of ~199k calls).
+  An undefined member (which survives a Workers RPC structured clone) raised `Instances of "undefined" type are not
+  supported.` instead of returning invalid. `validateEvent` now catches it and returns invalid, "not validatable: ..."
+  (`packages/schema/src/validate.ts`, D-050); the HubDO keeps its own catch as a second line.
+- **merge.ts `canonical()` compares facts; it is not an equality for validity** (2026-10-03, by inspection; pinned by
+  `workers/api/test/fastpath.test.ts`). It drops null and undefined members, so an event that lacks a required null
+  member (times.occurred_at) canonicalizes the same as a valid one with null. Anything that skips validation by
+  comparing to a stored copy must compare strict JSON (`workers/api/src/fastpath.ts` sameJson, D-050).
+- **The Hub stores each row's order key when it writes the row** (2026-10-03, read in `workers/api/src/hub.ts`: the
+  `sort_ms` column is set only on insert and on a rewrite). A change to the order rule (`packages/schema/src/order.ts`,
+  D-048) re-sorts only rows written after the deploy; an unchanged stored row keeps its old key, and the API serves by
+  that column. Changing the rule for existing rows needs a recompute of `sort_ms` (or a store reset; see the
+  "reset API hub" entry above).

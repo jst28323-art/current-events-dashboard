@@ -37,8 +37,9 @@ Apple publishes them as images.
 | `--bg` | `#ffffff` | `#1e1e1e` | content background |
 | `--bg-window` | `#f5f5f7` | `#161617` | page behind panes |
 | `--material` | `rgb(246 246 246 / 0.72)` + `backdrop-filter: blur(20px) saturate(180%)` | `rgb(40 40 40 / 0.68)` + same | sidebar, toolbar, tab bar |
+| `--material-opaque` | `rgb(248 248 248)` | `rgb(37 37 37)` | the toolbar where its blur may not be painted (the material's colour at rest over `--bg`; D-054) |
 | `--label` | `rgb(0 0 0 / 0.85)` | `rgb(255 255 255 / 0.88)` | primary text |
-| `--label-2` | `rgb(0 0 0 / 0.55)` | `rgb(255 255 255 / 0.58)` | secondary text, timestamps |
+| `--label-2` | `rgb(0 0 0 / 0.60)` | `rgb(255 255 255 / 0.58)` | secondary text, timestamps (light was 0.55 until 2026-10-03, D-053) |
 | `--label-3` | `rgb(0 0 0 / 0.30)` | `rgb(255 255 255 / 0.30)` | placeholders, disabled |
 | `--separator` | `rgb(0 0 0 / 0.10)` | `rgb(255 255 255 / 0.10)` | hairlines (1px, or 0.5px on 2x screens) |
 | `--accent` | `#007aff` | `#0a84ff` | selection, links, focus ring |
@@ -99,21 +100,29 @@ precedence) are D-040 and D-041.
   visible, and the full name leads the chip's tooltip.
 - **API unreachable:** the chips are labeled "Last known health, as of <time>"; the ok dot turns gray and every chip
   gets a 1 px dashed `--label-3` outline. Chips are never dimmed with opacity, because the words must stay at least
-  4.5:1: measured 4.56:1 light and 5.01:1 dark for the weakest word (the "ok" state in `--label-2`), checked by
-  `apps/web/e2e/layout.spec.ts`. The "Live data unavailable" banner uses a `--warn` tint, never `--live` red; `--live`
+  4.5:1: measured 5.39:1 light (Chromium and WebKit, 2026-10-03) and 5.01:1 dark (Chromium) for the weakest word (the
+  "ok" state in `--label-2`) over the default material (the opaque fallback's figures: D-054), checked in both engines by `apps/web/e2e/layout.spec.ts` (W3, WK1). The "Live data
+  unavailable" banner uses a `--warn` tint, never `--live` red; `--live`
   is used only for a `status: "live"` row's LIVE chip.
 - **Row anatomy v0:** origin chip(s) on the left and the time on the right (absolute, in the viewer's zone with its
-  abbreviation, labeled "posted" or "first seen" when it is not the event's own time; D-041). Then the title (P0/P1
+  abbreviation, labeled "posted" or "first seen" when it is not the event's own time; D-041). A source that gives only an
+  earlier publication day shows that date with no time of day: "published Sep 30" (D-048). Then the title (P0/P1
   weight 650, P2 500, P3/P4 400 in `--label-2`), `official_text` (`--label-2`, clamped to 4 lines), then the source name
   and the link host with an arrow.
 - **Tap targets:** the `--tap` token is 44 px on the phone scale and 24 px on desktop. A row's source link is that tall,
   with negative block margins so the row layout does not change.
 - **Deferred to later phases:** relative times, the "N new" pill, Lucide kind icons, keyboard navigation, the
-  inspector, WebKit screenshots.
+  inspector.
 
 ## Accessibility and quality bars
 
 - WCAG AA contrast in both themes; visible focus ring in `--accent`; full keyboard use (⌘K or `/` search, J/K to move,
   Enter to open, Esc to close); `aria-live="polite"` for new-item announcements (rate-limited).
-- Test every UI change at 390×844 and 1440×900, light and dark, in Chromium and WebKit (Playwright runs WebKit on
-  Windows, which catches Safari-only `backdrop-filter` issues before the iPhone does).
+- Test every UI change at 390×844 and 1440×900, light and dark, in Chromium and WebKit (`npm run e2e -w apps/web` runs
+  both). Playwright's WebKit on Windows catches WebKit differences in layout, CSS parsing and text painting (it found a
+  4.50:1 chip word that Chromium measured at 4.56:1), but it does NOT paint backdrop-filter and cannot emulate safe-area
+  insets. The material and the notch are checked on a real iPhone (docs/TRAPS.md).
+- **The material degrades to opaque.** The toolbar is translucent only where its blur is painted. With
+  `prefers-contrast: more`, `prefers-reduced-transparency: reduce`, or no `backdrop-filter` support, it is opaque
+  (`--material-opaque`), so rows never show through its text (D-054). Checked by `apps/web/e2e/layout.spec.ts` (WK4) and
+  `apps/web/test/safari.test.ts`.

@@ -10,7 +10,7 @@
 // false) means the full validateEvent. The payload rules that are not about
 // one event's shape (own source, registered affiliation, one dedup_key per payload) run on every event either way
 // (hub.ts checkPayload). Pure functions only.
-import { eventJsonSchema, isRealInstant, sha256Hex, validateEvent, type CedEvent } from '@ced/schema'
+import { VALIDATOR_ID, eventId, eventJsonSchema, isRealInstant, sha256Hex, validateEvent, type CedEvent } from '@ced/schema'
 
 type Json = Record<string, unknown>
 
@@ -107,11 +107,12 @@ export function stampsValid(ev: CedEvent): boolean {
 
 let fingerprint: string | null = null
 
-/** Which validator a stored row's content passed: a hash of the schema text and of the cross-field rules' code. A
+/** Which validator a stored row's content passed: a hash of the library and its version (VALIDATOR_ID), the schema
+ * text, and the cross-field rules' code (validateEvent, isRealInstant, eventId). A
  * deploy that changes either makes every stored copy "not checked" again, so its next re-ingest is fully validated
  * once (and the rows it confirms get the new fingerprint). Computed on first use (only the HubDO needs it). */
 export function validatorFingerprint(): string {
-  fingerprint ??= sha256Hex(`${JSON.stringify(eventJsonSchema)}\n${validateEvent.toString()}\n${isRealInstant.toString()}`).slice(0, 16)
+  fingerprint ??= sha256Hex(`${VALIDATOR_ID}\n${JSON.stringify(eventJsonSchema)}\n${validateEvent.toString()}\n${isRealInstant.toString()}\n${eventId.toString()}`).slice(0, 16)
   return fingerprint
 }
 
