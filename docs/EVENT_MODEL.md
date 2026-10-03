@@ -113,8 +113,8 @@ wire `schema_version` becomes `"0.2"` in one decision row (decision row P21-R2).
 - **Origin labels:** every P2.1 source is `official-nonpartisan`; press-gallery entries carry
   `provenance.confidence: "inferred"` because their type is our keyword reading of staff prose. A gallery result line
   that may alert (P0, D-062) also carries `result.origin_label: "unofficial log"` and says so in its title; the page and
-  alerts show that label (the registered affiliation cannot carry it: D-036 payload rule). The exact rule: the P2.1
-  fix decision row on D-062 (`scratch/phase2/DECISIONS_rows.md` until integration).
+  alerts show that label (the registered affiliation cannot carry it: D-036 payload rule). The exact rule: decision row
+  P21-R18.
 - **Not live (D-058):** the five P2.1 adapters emit these events only in tests (golden fixtures and the Hub replay);
   the "emitted now" column of the event-type table below lists live sources only.
 
@@ -156,7 +156,7 @@ stop the official vote from ever adding its counts). A House floor line links it
 the Clerk's vote link); a press-gallery line carries NO `vote:` key (the gallery prints no roll number, so one cannot be
 derived honestly). Showing such rows once on the page is a P2.2 page rule (decision row P21-R17), and it, like D-062's
 "the official record does not alert again for the same vote", needs a matching rule for gallery lines that is not a
-shared key, decided before either ships (review of 483d7ab, keys F5). Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
+shared key, decided before either ships (decision row P21-R20). Cross-source linking without a shared ID (e.g. a White House EO post ↔ its FR
 filing) uses the normalized-title + date-window rule in the research §2.4. How the Worker applies this rule today (what
 counts as a fact, who may revise, payload rules): D-036.
 

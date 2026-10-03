@@ -393,11 +393,11 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   F3, HubDO repro). `floor_day:senate:{date}#scheduled_convene` for Oct 5, then Oct 6: both rows stay `scheduled`. A
   fixed key would bury the row (D-048 keeps a revised row at its first sighting when its new source time is later), so
   the key stays and the P2.2 page must show only the newest-sighted scheduled convene per chamber as scheduled (decision
-  row, `scratch/phase2/DECISIONS_rows.md`).
+  row P21-R21).
 - **A press-gallery entry key carries its printed clock, so a corrected clock is a new event** (2026-10-03, review of
   483d7ab keys F4, HubDO repro): "3:40 p.m." fixed to "2:40 p.m." leaves both rows, two "logged a floor result" (now
-  possibly two P0 candidates under D-062). There is no stable entry id in the WordPress HTML; the limitation is recorded
-  as a decision row and the Phase 4 alert matching must tolerate it.
+  possibly two P0 candidates under D-062). There is no stable entry id in the WordPress HTML; the limitation is decision
+  row P21-R20 and the Phase 4 alert matching must tolerate it.
 
 ## Hosting
 
