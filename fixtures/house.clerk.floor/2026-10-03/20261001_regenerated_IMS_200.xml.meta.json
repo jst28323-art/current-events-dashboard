@@ -1,0 +1,29 @@
+{
+  "source_id": "house.clerk.floor",
+  "url": "https://clerk.house.gov/floor/20261001.xml",
+  "final_url": "https://clerk.house.gov/floor/20261001.xml",
+  "fetched_at": "2026-10-03T14:18:33.263Z",
+  "status": 200,
+  "elapsed_ms": 180,
+  "bytes": 3770,
+  "sha256": "d5bfecb9315af93af71375fb4ded9a8e8404ec0d4b7c4f40599fc50b35248bf5",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*",
+    "If-Modified-Since": "Sat, 03 Oct 2026 14:00:03 GMT"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "max-age=0, no-cache, no-store",
+    "content-encoding": "gzip",
+    "content-length": "1263",
+    "content-type": "text/xml",
+    "date": "Sat, 03 Oct 2026 14:18:32 GMT",
+    "etag": "\"5b2055954153dd1:0\"",
+    "expires": "Sat, 03 Oct 2026 14:18:32 GMT",
+    "last-modified": "Sat, 03 Oct 2026 14:15:03 GMT",
+    "pragma": "no-cache",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "vary": "Accept-Encoding"
+  }
+}

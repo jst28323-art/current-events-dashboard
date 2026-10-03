@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>House Floor Proceedings</title>
+    <link>https://clerk.house.gov/</link>
+    <description>House Floor proceedings of the previous legislative day, including current legislative days in progress.</description>
+    <item>
+      <guid isPermaLink="false">urn:uuid:https</guid>
+      <title>Legislative Day of 10/01/2026</title>
+      <description>The Speaker announced that the House do now adjourn pursuant to clause 13 of Rule I. The next meeting is scheduled for 4:30 p.m. on October 5, 2026.</description>
+      <pubDate>Thu, 01 Oct 2026 11:33:10 -0400</pubDate>
+      <a10:link href="https://clerk.house.gov/" />
+      <a10:updated>2026-10-01T11:54:00-04:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">urn:uuid:https</guid>
+      <title>Legislative Day of 10/01/2026</title>
+      <description>The House received a message from the Clerk. Pursuant to the permission granted in Clause 2(h) of Rule II of the Rules of the U.S. House of Representatives, the Clerk notified the House that he had received the following message from the Secretary of the Senate on September 28, 2026, at 3:20 p.m.: That the Senate passed S. 3257, S. 3258, Senate agreed to House amendment to S. 240, Senate agreed to House amendment to S. 283, and passed H.R. 2388.</description>
+      <pubDate>Thu, 01 Oct 2026 11:32:30 -0400</pubDate>
+      <a10:link href="https://clerk.house.gov/" />
+      <a10:updated>2026-10-01T11:54:00-04:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">urn:uuid:https</guid>
+      <title>Legislative Day of 10/01/2026</title>
+      <description>PLEDGE OF ALLEGIANCE - The Chair led the House in reciting the Pledge of Allegiance to the Flag.</description>
+      <pubDate>Thu, 01 Oct 2026 11:31:54 -0400</pubDate>
+      <a10:link href="https://clerk.house.gov/" />
+      <a10:updated>2026-10-01T11:32:00-04:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">urn:uuid:https</guid>
+      <title>Legislative Day of 10/01/2026</title>
+      <description>SPEAKER'S APPROVAL OF THE JOURNAL - Pursuant to clause 13 of Rule I, the Journal of the last day's proceedings was approved.</description>
+      <pubDate>Thu, 01 Oct 2026 11:31:04 -0400</pubDate>
+      <a10:link href="https://clerk.house.gov/" />
+      <a10:updated>2026-10-01T11:31:00-04:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">urn:uuid:https</guid>
+      <title>Legislative Day of 10/01/2026</title>
+      <description>Today's prayer was offered by the House Chaplain, Chaplain Margaret Grun Kibben.</description>
+      <pubDate>Thu, 01 Oct 2026 11:30:38 -0400</pubDate>
+      <a10:link href="https://clerk.house.gov/" />
+      <a10:updated>2026-10-01T11:30:00-04:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">urn:uuid:https</guid>
+      <title>Legislative Day of 10/01/2026</title>
+      <description>The Speaker designated the Honorable Dan Newhouse to act as Speaker pro tempore for today.</description>
+      <pubDate>Thu, 01 Oct 2026 11:30:23 -0400</pubDate>
+      <a10:link href="https://clerk.house.gov/" />
+      <a10:updated>2026-10-01T11:30:00-04:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">urn:uuid:https</guid>
+      <title>Legislative Day of 10/01/2026</title>
+      <description>The House convened, starting a new legislative day.</description>
+      <pubDate>Thu, 01 Oct 2026 11:30:00 -0400</pubDate>
+      <a10:link href="https://clerk.house.gov/" />
+      <a10:updated>2026-10-01T11:30:00-04:00</a10:updated>
+    </item>
+  </channel>
+</rss>
