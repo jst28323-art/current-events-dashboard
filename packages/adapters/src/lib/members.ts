@@ -1,4 +1,4 @@
-// Members support module (scratch/phase2/DESIGN.md §2.2, §2.3, §3.6): a build-time generated map of Members of Congress
+// Members support module (docs/design/P2.1.md §2.2, §2.3, §3.6): a build-time generated map of Members of Congress
 // (bioguide -> display name [+ district], Senate LIS id -> bioguide), imported as plain data by the vote adapters.
 // Not a SourceDefinition and never in a source list; reachable only through `@ced/adapters/fixture-only` (D-058).
 //

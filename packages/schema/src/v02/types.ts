@@ -1,4 +1,4 @@
-// EVENT_MODEL v0.2 additions as TypeScript (scratch/phase2/DESIGN.md §1.7, §2.1): the typed `result` of a vote.result
+// EVENT_MODEL v0.2 additions as TypeScript (docs/design/P2.1.md §1.7, §2.1): the typed `result` of a vote.result
 // event and the member-vote side record. The JSON Schemas next to this file are the machine contract;
 // packages/schema/test/v02.test.ts pins that the two agree (required lists, enums), and the compile-time checks at the
 // bottom of this file fail `npm run typecheck` if a required field is added to one list and not the other.

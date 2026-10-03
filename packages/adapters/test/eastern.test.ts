@@ -1,4 +1,4 @@
-// lib/eastern.ts (scratch/phase2/DESIGN.md §1.6): naive America/New_York wall time -> UTC, with the spring-forward gap
+// lib/eastern.ts (docs/design/P2.1.md §1.6): naive America/New_York wall time -> UTC, with the spring-forward gap
 // and the fall-back hour reported instead of guessed. The cases are the design's required list; the first three are
 // real fixture times (roll314, roll009, roll2025_139), the DST pair is the senate.schedule trap.
 import { describe, expect, test } from 'vitest'

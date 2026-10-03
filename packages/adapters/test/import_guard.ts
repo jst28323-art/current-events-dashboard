@@ -1,4 +1,4 @@
-// The D-058 import guard (scratch/phase2/DESIGN.md §4.2), shared by live_list.test.ts and its own bypass test. Two
+// The D-058 import guard (docs/design/P2.1.md §4.2), shared by live_list.test.ts and its own bypass test. Two
 // layers, both fail closed:
 //   1. the REAL module graph: esbuild (the bundler wrangler deploys the Worker with; 0.28.1 via wrangler) bundles each
 //      entry with a metafile, and every input path is checked. Anything it cannot resolve throws, so the test fails.

@@ -1,5 +1,5 @@
 // senate.pressgallery — the Senate Daily Press Gallery's floor log (dailypress.senate.gov WordPress REST): one event per
-// timed log entry, typed by our reading of staff prose (confidence `inferred`). Design: scratch/phase2/DESIGN.md §3.5,
+// timed log entry, typed by our reading of staff prose (confidence `inferred`). Design: docs/design/P2.1.md §3.5,
 // keys §1.4, times §1.3, tiers §1.5; decision row R-9. Scope v1: the Daily gallery only (the Periodical gallery prints
 // no clock times on result lines and is often back-filled; deferred, R-9).
 // FIXTURE-ONLY (D-058): exported through `@ced/adapters/fixture-only`, never in SOURCES.

@@ -1,4 +1,4 @@
-// The P2.1 Congress adapters end to end through a HubDO (scratch/phase2/DESIGN.md §4.4): recorded fixtures through the
+// The P2.1 Congress adapters end to end through a HubDO (docs/design/P2.1.md §4.4): recorded fixtures through the
 // FIXTURE-ONLY adapters (`@ced/adapters/fixture-only`, never polled live: D-058) into a fresh Hub, using the
 // replayTwice / expectNoDuplicates pattern of replay.test.ts. Tests may import the fixture-only modules; workers/api/src
 // may not (packages/adapters/test/live_list.test.ts).

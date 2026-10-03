@@ -1,5 +1,5 @@
 // senate.schedule — the Senate's next floor convene (floor_schedule.json) and its committee meetings (hearings.xml):
-// floor.convened (scheduled), hearing.scheduled and markup.scheduled events. Design: scratch/phase2/DESIGN.md §3.4
+// floor.convened (scheduled), hearing.scheduled and markup.scheduled events. Design: docs/design/P2.1.md §3.4
 // (keys §1.4, times §1.3, tiers §1.5, R-7, R-8, R-12, R-13).
 // FIXTURE-ONLY (D-058): exported through `@ced/adapters/fixture-only`, never in SOURCES.
 //

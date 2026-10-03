@@ -22,6 +22,7 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | What does an event look like (fields, keys, types, tiers)? | `docs/EVENT_MODEL.md` |
 | What should it look and feel like (macOS tokens, layout)? | `docs/DESIGN_LANGUAGE.md` |
 | What was measured about each source (dated evidence)? | `docs/research/` (2026-10-02 snapshot; start with `docs/research/SYNTHESIS.md`) |
+| A phase's written design (dated records; where one differs from DECISIONS, EVENT_MODEL or the code, those win) | `docs/design/` (`docs/design/P2.1.md` is the file D-061..D-088 cite as scratch/phase2/DESIGN.md) |
 | Recorded upstream responses for tests | `fixtures/` (index: `fixtures/README.md`) |
 | The retired placeholder page (Pages now deploys `apps/web`; first home of the design tokens) | `site/index.html` |
 | Event schema code (types, JSON Schema, ids, validator) | `packages/schema/` |

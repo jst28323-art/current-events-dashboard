@@ -1,5 +1,5 @@
 // house.clerk.votes — House roll call votes from the Clerk (clerk.house.gov): one vote.result event + one member-vote
-// side record per roll call, and the listing that names which roll calls to fetch. Design: scratch/phase2/DESIGN.md
+// side record per roll call, and the listing that names which roll calls to fetch. Design: docs/design/P2.1.md
 // §3.1 (mapping, titles, drift checks, tests), §2 (records), §1.3-§1.6 (times, keys, tiers).
 // FIXTURE-ONLY (D-058): exported through `@ced/adapters/fixture-only`, never in SOURCES.
 //

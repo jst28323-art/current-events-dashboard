@@ -1,4 +1,4 @@
-// house.clerk.votes adapter (scratch/phase2/DESIGN.md §3.1, §2): golden output (event + member-vote record) for every
+// house.clerk.votes adapter (docs/design/P2.1.md §3.1, §2): golden output (event + member-vote record) for every
 // recorded roll call, field-by-field expectations read by hand from the fixture bytes, the listing's targets, the
 // negative/empty fixtures, and every fail-closed path on in-memory variants of recorded responses (fixtures are never
 // edited; TESTING.md rule 1).

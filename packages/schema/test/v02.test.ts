@@ -1,4 +1,4 @@
-// @ced/schema/v02 (scratch/phase2/DESIGN.md §1.7, §2.1): the JSON Schemas and the TS lists agree, a good vote event /
+// @ced/schema/v02 (docs/design/P2.1.md §1.7, §2.1): the JSON Schemas and the TS lists agree, a good vote event /
 // member-vote record / pair passes, and every cross-field rule rejects its own mutation. The good House event and
 // record are SYNTHETIC (four positions, built here for the rules, not taken from a fixture); the vote adapters' tests
 // run the same validators over every recorded roll call.

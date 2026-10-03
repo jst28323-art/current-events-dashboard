@@ -1,4 +1,4 @@
-// EVENT_MODEL v0.2 validators (scratch/phase2/DESIGN.md §1.7, §2.1). Like validateEvent they never throw (D-050 rule):
+// EVENT_MODEL v0.2 validators (docs/design/P2.1.md §1.7, §2.1). Like validateEvent they never throw (D-050 rule):
 // a bad value comes back as readable reasons. Imported only by tests and `@ced/adapters/fixture-only` in P2.1; the
 // Worker keeps the unchanged v0.1 `validateEvent` until P2.2 folds this in.
 import { Validator } from '@cfworker/json-schema'

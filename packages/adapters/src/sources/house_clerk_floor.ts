@@ -1,5 +1,5 @@
 // house.clerk.floor — the House Clerk's floor proceedings XML (clerk.house.gov/floor/{YYYYMMDD}.xml): floor convened /
-// adjourned / recess / action events and the next scheduled convene. Design: scratch/phase2/DESIGN.md §3.3 (keys §1.4,
+// adjourned / recess / action events and the next scheduled convene. Design: docs/design/P2.1.md §3.3 (keys §1.4,
 // times §1.3, tiers §1.5, decision row R-6). FIXTURE-ONLY (D-058): exported through `@ced/adapters/fixture-only`, never
 // in SOURCES.
 //

@@ -1,4 +1,4 @@
-// house.clerk.floor adapter (P2.1, fixture-only under D-058; scratch/phase2/DESIGN.md §3.3): goldens for every recorded
+// house.clerk.floor adapter (P2.1, fixture-only under D-058; docs/design/P2.1.md §3.3): goldens for every recorded
 // day file and the feed, field-by-field checks read by hand from the fixture bytes, the "nothing new" replay, the
 // NEGATIVE responses, and every fail-closed rule on in-memory variants of recorded responses (fixtures are never edited;
 // TESTING.md rule 1). Every output passes expectHubPayloadRules (the Hub's payload rules + the P2.1 output contract).

@@ -1,4 +1,4 @@
-// senate.pressgallery adapter (scratch/phase2/DESIGN.md §3.5, keys §1.4, times §1.3; R-9): goldens for every recorded
+// senate.pressgallery adapter (docs/design/P2.1.md §3.5, keys §1.4, times §1.3; R-9): goldens for every recorded
 // Daily Press Gallery payload the design lists, hand-counted entry totals, per-entry typing pins, the session-day
 // resolver, the midnight walk, and every fail-closed path on in-memory variants of the recorded responses (fixtures are
 // never edited; TESTING.md rule 1). Every payload, accepted or refused, goes through expectHubPayloadRules.

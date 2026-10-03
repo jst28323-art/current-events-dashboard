@@ -1,5 +1,5 @@
 // senate.lis.votes — Senate roll call votes from the Legislative Information System (senate.gov LIS): one vote.result
-// event + one member-vote side record per vote. Design: scratch/phase2/DESIGN.md §3.2 (mapping, titles, drift checks,
+// event + one member-vote side record per vote. Design: docs/design/P2.1.md §3.2 (mapping, titles, drift checks,
 // tests), §2 (records), §1.3-§1.6 (times, keys, tiers). FIXTURE-ONLY (D-058): exported through
 // `@ced/adapters/fixture-only`, never in SOURCES.
 //

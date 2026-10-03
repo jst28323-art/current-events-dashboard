@@ -1,4 +1,4 @@
-// lib/xmlscan.ts (scratch/phase2/DESIGN.md §3.0): the forward block scanner, text/entity helpers, the strict attribute
+// lib/xmlscan.ts (docs/design/P2.1.md §3.0): the forward block scanner, text/entity helpers, the strict attribute
 // reader and the envelope check, on real fixtures where one shows the case and in memory otherwise. Note: the Clerk roll
 // XML uses CRLF line endings, so per-block regexes must be whitespace tolerant.
 import { describe, expect, test } from 'vitest'

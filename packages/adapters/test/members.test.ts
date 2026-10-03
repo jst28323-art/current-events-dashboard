@@ -1,4 +1,4 @@
-// lib/members.ts (scratch/phase2/DESIGN.md §2.2, §2.3, §3.6): the generated members map is built only from good input,
+// lib/members.ts (docs/design/P2.1.md §2.2, §2.3, §3.6): the generated members map is built only from good input,
 // fails closed on every bad answer, is append-only within a Congress, and agrees with the Senate's own member list.
 //
 // This file is also the GENERATOR (no .mjs script: Node cannot import the repo's .js-suffixed TS modules):

@@ -1,4 +1,4 @@
-// senate.lis.votes adapter (scratch/phase2/DESIGN.md §3.2, §2): goldens for every vote fixture the design lists, the
+// senate.lis.votes adapter (docs/design/P2.1.md §3.2, §2): goldens for every vote fixture the design lists, the
 // menu's targets, the NEGATIVE fixtures, and every non-default and fail-closed case on in-memory variants of the
 // recorded bytes (fixtures are never edited; TESTING.md rule 1). Every output passes expectHubPayloadRules, which runs
 // validateVoteEvent on vote.result events, validateMemberVotes on records and checkVotePair on each pair; the vote

@@ -1,5 +1,5 @@
 // Test helper (Node only): the Hub's payload rules plus the P2.1 adapter-output contract, for every adapter test
-// (scratch/phase2/DESIGN.md §4.3, §3.0). The Hub (workers/api/src/hub.ts checkPayload) refuses a whole payload when any
+// (docs/design/P2.1.md §4.3, §3.0). The Hub (workers/api/src/hub.ts checkPayload) refuses a whole payload when any
 // event is invalid, cites a source other than the polled one, claims an affiliation other than the registered one, or
 // repeats a dedup_key; an adapter test that only ran validateEvent would lock such a payload into a golden (critique B3:
 // the duplicate scheduled-convene key passed validateEvent). This helper re-states those rules here (the Hub module

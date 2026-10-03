@@ -1,4 +1,4 @@
-// senate.schedule adapter (scratch/phase2/DESIGN.md §3.4): goldens for every recorded floor_schedule.json and
+// senate.schedule adapter (docs/design/P2.1.md §3.4): goldens for every recorded floor_schedule.json and
 // hearings.xml copy, field-by-field checks read by hand from the fixture bytes, every NEGATIVE / empty fixture, and
 // every non-default path on in-memory variants of real recorded bytes (fixtures are never edited; TESTING.md rule 1).
 //

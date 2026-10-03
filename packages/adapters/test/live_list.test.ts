@@ -1,4 +1,4 @@
-// "Not polled live" (owner override D-058; scratch/phase2/DESIGN.md §4.1-§4.2). The P2.1 Congress adapters are built and
+// "Not polled live" (owner override D-058; docs/design/P2.1.md §4.1-§4.2). The P2.1 Congress adapters are built and
 // tested against fixtures while Phase 1 is still being measured, and nothing on the live site may change. A push to main
 // redeploys the Worker (.github/workflows/deploy.yml, no path filter, G-007), so "not live" must mean "the Worker bundle
 // is byte-identical". This file enforces that from four sides:

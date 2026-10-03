@@ -1,4 +1,4 @@
-// Forward block scanner for head-only XML parsing (scratch/phase2/DESIGN.md §0.5, §3.0; the lib/rss.ts pattern). Bulky
+// Forward block scanner for head-only XML parsing (docs/design/P2.1.md §0.5, §3.0; the lib/rss.ts pattern). Bulky
 // parts of a payload (member lists, older floor actions) are cut by string scanning before any XML parser runs: a
 // 94 KB roll call needs only its <vote-metadata> head parsed, and 433 <recorded-vote> blocks are cheapest as slices.
 //

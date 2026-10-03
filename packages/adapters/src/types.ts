@@ -30,7 +30,7 @@ export interface HealthSignal {
   items_seen: number
 }
 
-/** A URL another endpoint's parse asks the poller to fetch (dynamic endpoints; scratch/phase2/DESIGN.md §3.0, R-3). */
+/** A URL another endpoint's parse asks the poller to fetch (dynamic endpoints; docs/design/P2.1.md §3.0, R-3). */
 export interface Target {
   /** The id of the dynamic endpoint this URL belongs to (its `dynamic.from` is the endpoint just parsed). */
   endpoint: string

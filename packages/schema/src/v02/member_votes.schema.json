@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "ced-member-votes-v0.1",
   "title": "CED member-vote side record v0.1",
-  "description": "One record per roll call, never a feed event (docs/EVENT_MODEL.md v0.2, scratch/phase2/DESIGN.md §2.1). Built by a vote adapter from the same response as the vote.result event; served alone by the deferred votes API, so it carries its own identity, which validateMemberVotes checks against ref and vote_key.",
+  "description": "One record per roll call, never a feed event (docs/EVENT_MODEL.md v0.2, docs/design/P2.1.md §2.1). Built by a vote adapter from the same response as the vote.result event; served alone by the deferred votes API, so it carries its own identity, which validateMemberVotes checks against ref and vote_key.",
   "type": "object",
   "additionalProperties": false,
   "required": ["record_type", "record_version", "ref", "vote_key", "chamber", "congress", "session", "roll", "source", "members_map", "counts", "unresolved", "positions"],

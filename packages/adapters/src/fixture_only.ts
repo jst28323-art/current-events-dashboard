@@ -1,5 +1,5 @@
 // @ced/adapters/fixture-only — the P2.1 Congress adapters, built and tested against recorded fixtures and NOT polled
-// live (owner override D-058; scratch/phase2/DESIGN.md §4). The Worker imports `@ced/adapters` (src/index.ts), which
+// live (owner override D-058; docs/design/P2.1.md §4). The Worker imports `@ced/adapters` (src/index.ts), which
 // never reaches this module, the members map or `@ced/schema/v02`; packages/adapters/test/live_list.test.ts pins that,
 // pins SOURCES to [fr.api, wh.feeds], and hash-pins every Worker-imported entry file.
 //

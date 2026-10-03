@@ -1,4 +1,4 @@
-// Naive America/New_York wall times -> UTC, the ONE helper every Congress adapter uses (scratch/phase2/DESIGN.md §1.6,
+// Naive America/New_York wall times -> UTC, the ONE helper every Congress adapter uses (docs/design/P2.1.md §1.6,
 // §0.3 "never guess a time"). Congress sources print Eastern wall clock with no offset; Node's Date.parse would read
 // such a string in the MACHINE's zone (senate.schedule and pressgallery scouts), so a naive string is never parsed by
 // Date. Each source keeps its own TEXT parser (formats differ); they all end here with numbers.

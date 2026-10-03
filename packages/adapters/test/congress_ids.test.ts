@@ -1,4 +1,4 @@
-// lib/congress_ids.ts (scratch/phase2/DESIGN.md §1.4, §3.0, §3.1): the year rule, the closed bill tables (every
+// lib/congress_ids.ts (docs/design/P2.1.md §1.4, §3.0, §3.1): the year rule, the closed bill tables (every
 // legis-num and document_type in the recorded fixtures is covered; anything else is null = drift) and key formatting.
 import { describe, expect, test } from 'vitest'
 import { readFileSync, readdirSync } from 'node:fs'
