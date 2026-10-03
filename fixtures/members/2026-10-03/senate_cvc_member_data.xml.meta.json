@@ -1,0 +1,27 @@
+{
+  "source_id": "members",
+  "url": "https://www.senate.gov/legislative/LIS_MEMBER/cvc_member_data.xml",
+  "final_url": "https://www.senate.gov/legislative/LIS_MEMBER/cvc_member_data.xml",
+  "fetched_at": "2026-10-03T14:22:25.895Z",
+  "status": 200,
+  "elapsed_ms": 169,
+  "bytes": 67615,
+  "sha256": "86847ceca911be7909448ecdf530b522df292a95d264574356b032da05f4724b",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "connection": "keep-alive",
+    "content-encoding": "gzip",
+    "content-length": "5992",
+    "content-type": "text/xml",
+    "date": "Sat, 03 Oct 2026 14:22:24 GMT",
+    "etag": "\"1081f-65cebe9ebbf0e\"",
+    "last-modified": "Sat, 03 Oct 2026 09:02:51 GMT",
+    "server": "Apache",
+    "strict-transport-security": "max-age=31536000",
+    "vary": "Accept-Encoding"
+  }
+}

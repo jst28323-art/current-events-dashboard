@@ -1,0 +1,29 @@
+{
+  "source_id": "members",
+  "url": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+  "final_url": "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+  "fetched_at": "2026-10-03T14:11:19.676Z",
+  "status": 304,
+  "elapsed_ms": 96,
+  "bytes": 0,
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*",
+    "If-Modified-Since": "Thu, 24 Sep 2026 10:21:30 GMT"
+  },
+  "response_headers": {
+    "age": "163",
+    "cache-control": "max-age=600",
+    "date": "Sat, 03 Oct 2026 14:11:18 GMT",
+    "etag": "W/\"6ab4f9aa-166a83\"",
+    "expires": "Sat, 03 Oct 2026 12:15:09 GMT",
+    "vary": "Accept-Encoding",
+    "via": "1.1 varnish",
+    "x-cache": "HIT",
+    "x-cache-hits": "1",
+    "x-fastly-request-id": "b97036d1a5bece35603a3381f80a26f247b9243f",
+    "x-served-by": "cache-chi-klot8100031-CHI",
+    "x-timer": "S1791036678.491781,VS0,VE2"
+  }
+}
