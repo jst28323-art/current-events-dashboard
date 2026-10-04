@@ -5,6 +5,86 @@ entry; correct it with a new one. Rotate the oldest entries to `PROGRESS_ARCHIVE
 
 ---
 
+## #7 — 2026-10-03 — FR "scheduled" fix live; P2.1 Congress adapters built fixture-only and merged; probe closed; White House delay measured
+
+**Asked for:** the canonical resume. Owner answers this session, each asked with a push notification: D-055 (FR documents
+listed early: "Show early as scheduled", against the recommended "hold until their date"), D-056 (stay signed in for the
+Monday task), D-057 (yes to the Cloudflare CPU readout; the click-by-click page is
+<https://claude.ai/artifact/Kuw3yQ4xupbY94jWi4hviV>), D-058 (start P2.1 early on fixtures, look into the White House
+delay, close the probe tonight), D-061 (impeachment verdicts and Speaker elections alert), D-062 (a press-gallery line may
+alert, labeled unofficial).
+
+**FR false drift, found at resume and fixed live.** From 08:15Z Saturday `/api/v1/status` showed fr.api drift + stale:
+the FR API lists the next issue before its publication date (106 documents dated Mon Oct 5, on Saturday), and the
+FR-6 rule threw the whole list away (docs/TRAPS.md). Fix (D-059): a listed document dated after the poll's Eastern day
+(up to 7 days) is `scheduled` ("to be published in the Federal Register on <date>"), and becomes `published` at
+midnight Eastern as a revision; `Endpoint.dayDependent` makes the poller key an unchanged body by its hash AND the
+Eastern day, so the flip needs no upstream change. A three-lens adversarial review (each finding reproduced) led to
+D-060: the page shows "not seen published" for a scheduled row whose date has passed; the D-050 fast path also matches
+a revised row's revision-1 form (106 extra validations per parse before); `/feed.json` item ids are dedup_keys (stable
+across revisions, JSON Feed 1.1); wording and reason codes. Verified: fixture
+`fixtures/fr.api/2026-10-03/documents_newest_next_issue_early.json` recorded live; adapter, poller, Hub-replay and
+fast-path tests, each mutation-checked; gate PASS; deployed 14:32Z; first post-deploy parse 15:15Z: fr.api ok, not
+stale, "500 newest listed documents, 106 of them before their publication date (scheduled)"; the live page looked at
+on a phone viewport in light and dark (Playwright, 390x844) and the "not seen published" chip in the reviewer's
+harness (light, dark).
+
+**P2.1 built early on fixtures (D-058), merged, nothing live changed.** Three workflows: design (6 source scouts that
+recorded edge fixtures, a designer, 3 critics with 31 items, a revision; `scratch/phase2/DESIGN.md`, gitignored),
+build (prep, foundation, 5 adapter builders in their own worktrees, integration with the full gate and a Worker-bundle
+compare), review (fail-closed, time/DST, keys lenses; 21 findings: 17 fixed with regression tests, 2 recorded as
+design decisions, 2 doc fixes; the one high finding: a Senate "Not Confirmed" result read as passed). The five
+adapters (`house.clerk.votes`, `senate.lis.votes`, `house.clerk.floor`, `senate.schedule`, `senate.pressgallery`) and
+the `@ced/schema/v02` subpath are exported only through `@ced/adapters/fixture-only`; an esbuild import-graph test, a
+pin of the live list to [fr.api, wh.feeds] and sha-256 pins of every Worker-imported schema/adapter file keep them out
+of the Worker. Decision rows D-063..D-087. Verified: gate PASS on the branch and on main after the merge; `wrangler
+deploy --dry-run` index.js identical to the deployed bundle (sha-256 1d99fff3…), deployed 18:51Z with SHIPPED-CLEAN.
+Deferred to P2.2 go-live (ROADMAP): the vote inspector, member-vote storage, the page rules Q-P1/Q-P2, poller support
+for dynamic targets, the Jan 3 rollover checklist.
+
+**Harness:** the gate prints every error-looking line of a failing step before its tail (a TypeScript error was hidden
+by wrangler's chatter); `.claude/worktrees/` is gitignored; TRAPS: worktree workflows leave `core.hooksPath` absolute,
+parallel worktree creation failed 4 of 6 agents, the harness Bash drops backslashes from heredoc-written scripts.
+
+**What failed / corrections:** I said "typecheck is clean" after reading only the tail of its output; the gate then
+failed on that TS error (fixed; now a trap and a harness fix). The first gate after the review fixes failed doc-paths on
+backticked folder names in a new trap (reworded). My question for D-055 said "~300 documents"; the recorded reply holds
+106 (corrected in D-059). Four of six design scouts failed before starting (parallel worktree creation); resumed by
+reusing their worktrees. Two scripted edits lost backslashes (the date regex; caught by tests and by reading the line).
+
+**Evening (owner present):** the White House delay watcher (13:33Z-20:28Z, 832 polls, 0 errors) saw no new post all
+day (nor did ced-api); Claude Code then stopped it because the PC ran critically low on memory (aviary training runs on
+it), and it was not restarted. Its finding is in docs/TRAPS.md (a cache-buster does not get a conditional request past
+the White House CDN; 15 of 832 answers were STALE); the 24-minute lag stays n=1, to be measured from the ledger on
+business days. A focused agent closed the P2.1 lead "suspension adoption of a resolution" with a real roll
+(2025 roll 158, H RES 488; D-088), 2 requests. The P2.1 design moved into the repo as `docs/design/P2.1.md`
+(code and docs had pointed at a gitignored scratch file). D-089 (owner): while the probe finished, the owner did the
+Cloudflare readout (D-057; page extended with five daily usage totals for the P2.2 design) and allowed two paper-only
+pieces of later phases: P3.5 research (`docs/research/leadership_press_conferences.md`: 4 source families, each
+verified live by an adversarial re-probe, 423 requests ledgered; no keyless "live now" source; the House Press Gallery
+"News Events on the Hill" block gives 12-17 h notice) and a P2.2 design (`docs/design/P2.2.md`; 4 scouts, 3 critics,
+38 items settled; no code). Owner answers to their questions: D-090 (phone reading for the 2-s exit), D-091 (automatic
+Jan 3 rollover), D-092 (House recess wording), D-093 + G-012 (Google key walkthrough next session).
+**Correction:** the P3.5 research sent 45 requests to YouTube's `/feeds/videos.xml`, which YouTube's robots.txt
+disallows for every agent (I checked it at 23:16Z); three Phase 0 reports recommend that feed. TRAPS now says never
+poll it and to read robots.txt before a host's first request.
+
+**Probe closed (P1.3; Phase 1 exit 5 MET):** ced-probe stopped itself after run 48 (2026-10-04 00:30Z, 928 requests).
+28 of 29 URLs answered usable 2xx on 16/16 tries from Cloudflare; clerk.house.gov's roll XML 15/16 (one 503 error page,
+no Retry-After; the floor file on the same host 16/16). No CPU cut-off at any tested level (0-120 ms, alarms x3, fetch
+and cron x48); alarm delay median 24 ms (n=30). Full JSON `docs/research/probe_2026-10-03.json`, table in SOURCES,
+rows D-094 (no source moves to the home PC) and D-095 (Free CPU limit not binding at the levels tested; the dashboard
+cross-check is the owner's D-057 readout, still to be read at this entry's writing).
+
+**Pushes this session** (each after a gate PASS, deployed by CI): the FR fix and its review fixes; the P2.1 merge;
+then this wind-down (docs and the D-088 adapter change). The Worker bundle stayed byte-identical from the P2.1 merge on.
+
+**Open:** Phase 1 exit 3 (Mon-Tue live latency, `scripts/ledger_report.mjs`); the first live FR midnight flip (Mon
+00:00 ET); Monday's capture task; the D-057 Cloudflare readings and the five daily totals (by ~Mon 7 PM CT, when the
+first probe logs expire); the Google key walkthrough (G-012); the White House lag distribution from the ledger.
+
+---
+
 ## #6 — 2026-10-03 — cold-start r3 PASS on page #2; the 500-document FR page verified live; r3 backlog fixed in the tree
 
 **Cold-start round r3** (page #2, `docs/coldstart/r3/`, tree untouched while it ran): routing PASS (3/3 resumers named
