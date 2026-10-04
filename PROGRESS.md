@@ -58,8 +58,9 @@ it), and it was not restarted. Its finding is in docs/TRAPS.md (a cache-buster d
 the White House CDN; 15 of 832 answers were STALE); the 24-minute lag stays n=1, to be measured from the ledger on
 business days. A focused agent closed the P2.1 lead "suspension adoption of a resolution" with a real roll
 (2025 roll 158, H RES 488; D-088), 2 requests. The P2.1 design moved into the repo as `docs/design/P2.1.md`
-(code and docs had pointed at a gitignored scratch file). D-089 (owner): while the probe finished, the owner did the
-Cloudflare readout (D-057; page extended with five daily usage totals for the P2.2 design) and allowed two paper-only
+(code and docs had pointed at a gitignored scratch file). D-089 (owner): while the probe finished, the owner was to do the
+Cloudflare readout (D-057; page extended with five daily usage totals for the P2.2 design; no readings had reached the
+chat or the repo when this entry was written) and allowed two paper-only
 pieces of later phases: P3.5 research (`docs/research/leadership_press_conferences.md`: 4 source families, each
 verified live by an adversarial re-probe, 423 requests ledgered; no keyless "live now" source; the House Press Gallery
 "News Events on the Hill" block gives 12-17 h notice) and a P2.2 design (`docs/design/P2.2.md`; 4 scouts, 3 critics,

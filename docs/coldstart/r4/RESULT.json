@@ -1,0 +1,300 @@
+{
+  "round": 4,
+  "page_n": 3,
+  "sha": "aac53e8729e9",
+  "date": "2026-10-03",
+  "n_resumers": 3,
+  "routing_verdict": "PASS",
+  "content_verdict": "FAIL",
+  "routing_axes": {
+    "first_actions_agree": true,
+    "compare_note": "All three agents name the same first action, HANDOFF.md NEXT ACTION step 1. Each sends the owner one multiSelect AskUserQuestion together with a PushNotification. Each asks the same two things: the D-057 Cloudflare readings from the readout page, due before Mon 2026-10-05 around 7 PM CT, and the Google API key walkthrough (D-093/G-012). The differences are only wording: agent 1 also notes the session will end with the handoff skill afterward, agent 2 mentions the P2.2 O3 daily totals, and agent 3 lists the two questions in the other order. None of these changes the step, the tool call or what it asks.",
+    "heads_ok": true,
+    "could_execute_all": true,
+    "page_blockers": 0,
+    "resumer_fails": 0
+  },
+  "first_actions": [
+    {
+      "lens": "straight",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification — HANDOFF.md NEXT ACTION step 1: \"Ask first ... one AskUserQuestion (with a PushNotification) for anything the repo does not answer\": (a) the owner's Cloudflare readings (D-057; readout page https://claude.ai/artifact/Kuw3yQ4xupbY94jWi4hviV, incl. Part C = P2.2 O3), before Mon 2026-10-05 ~7 PM CT; (b) the Google API key walkthrough (D-093, G-012)",
+      "what": "Send the owner one multiSelect AskUserQuestion with a PushNotification asking for the D-057 Cloudflare readings (no DECISIONS row records them; D-095 says they are still unread) and whether to do the G-012 Google key walkthrough now. It comes first because the page orders it first, and at Sat 2026-10-03 19:44 CDT none of steps 2-5 has data yet (FR flip from Mon 01:00 ET, capture after Mon 16:30 CT, latency after Tue 18:00 ET). So after asking, the session records what is still waiting and ends with the handoff skill.",
+      "head": "aac53e8",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "skeptic",
+      "cmd": "AskUserQuestion (multiselect) + PushNotification: Cloudflare readout D-057 (+P2.2 O3 five daily totals, page https://claude.ai/artifact/Kuw3yQ4xupbY94jWi4hviV, deadline Mon 2026-10-05 ~7 PM CT) and Google API key walkthrough (D-093, G-012)",
+      "what": "I would send one AskUserQuestion with a PushNotification, as NEXT ACTION step 1 says. It comes first because it is Saturday 2026-10-03 evening, and none of steps 2-4 has data until Mon 01:00 ET or later. The Cloudflare logs the readout needs start expiring around Mon 7 PM CT, and G-012 covers the key walkthrough in this session.",
+      "head": "aac53e8",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "executor",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification, per HANDOFF.md:36-39 NEXT ACTION step 1: \"Ask first, as the canonical prompt says: one AskUserQuestion (with a PushNotification) for anything the repo does not answer\"",
+      "what": "Send the owner one multiselect AskUserQuestion with a PushNotification. It asks about two things: when to do the Google key walkthrough (D-093/G-012), and the Cloudflare readings, because no row after D-095 records them. It comes first because the page orders it first, and because at Sat 2026-10-03 20:44 ET no data exists yet for steps 2-4: the FR flip is checkable from Mon 01:00 ET, the capture after Mon 16:30 CT, and the latency after Tue 18:00 ET.",
+      "head": "aac53e8",
+      "verdict": "PASS-WITH-NOTES"
+    }
+  ],
+  "blocking": [],
+  "blocking_offpage": [
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "PROGRESS #7 says the owner did the Cloudflare readout, and the same entry (and D-095) says it is still to be read. If the owner did send screenshots last session, they were lost, and the re-ask should say so. The page's conditional ('if no DECISIONS row records them yet') still routes correctly to asking.",
+      "where": "PROGRESS.md:61-62 \"while the probe finished, the owner did the Cloudflare readout (D-057; ...)\" vs PROGRESS.md:77 \"the dashboard cross-check is the owner's D-057 readout, still to be read at this entry's writing\" and docs/DECISIONS.md:105 (D-095) \"until it is read\"",
+      "evidence": "docs/DECISIONS.md ends at D-095 (line 105); no row records readings. The readout artifact declares no runtime capabilities and stores no values; it tells the owner to paste screenshots into the chat.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "PROGRESS #7 says the owner did the D-057 Cloudflare readout, then later says the readout is still to be read and lists it as open. No DECISIONS row records readings, and the readout artifact declares no capabilities, so it stores none. HANDOFF's conditional 'if no DECISIONS row records them yet' routes correctly, but a reader could think the numbers exist somewhere.",
+      "where": "PROGRESS.md:61-62 \"while the probe finished, the owner did the Cloudflare readout (D-057; ...)\" vs PROGRESS.md:77 \"the owner's D-057 readout, still to be read at this entry's writing\" and DECISIONS.md:105 D-095 \"until it is read\"",
+      "evidence": "Artifact read of Kuw3yQ4xupbY94jWi4hviV: 'no runtime capabilities declared'; results go to chat as screenshots only. grep D-057 shows no readings row.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "PROGRESS #7 contradicts itself on whether the owner already did the D-057 Cloudflare readout. No DECISIONS row records any readings. The page's conditional routes correctly, but the question has to allow that the owner may already have sent screenshots that were never recorded.",
+      "where": "PROGRESS.md:61-62 \"while the probe finished, the owner did the Cloudflare readout (D-057; page extended with five daily usage totals...)\" vs PROGRESS.md:76-77 \"the dashboard cross-check is the owner's D-057 readout, still to be read at this entry's writing\" and PROGRESS.md:83 \"Open: ... the D-057 Cloudflare readings\"",
+      "evidence": "docs/DECISIONS.md ends at D-095 (line 105) with no amending row. grep of scratch/ finds no readings. The readout artifact declares no runtime capabilities, so nothing is stored on it.",
+      "lens": "executor"
+    }
+  ],
+  "backlog": [
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The page says all of the P2.2 design's owner questions are answered by D-090..D-092. The design lists four (O1-O4), and O3 (five daily usage totals, an add-on to the D-057 readout) has no answer row: it was folded into the still-pending readout page (Part C). Read literally, the claim is incomplete. Step 1 names only 'Cloudflare readings (D-057)', so a resumer who never opens the page might not ask for Part C.",
+      "where": "HANDOFF.md:17 \"(its owner questions are answered: D-090..D-092)\" vs docs/design/P2.2.md:929 \"O3 (add-on to the D-057 dashboard readout, by Tue Oct 6 ...) could you also read five more numbers for ced-api\"",
+      "evidence": "DECISIONS D-090 = O1 (phone 2-s proof), D-091 = O2 (Jan 3 rollover), D-092 = O4 (recess wording); no row for O3. PROGRESS.md:62 says the readout page was 'extended with five daily usage totals for the P2.2 design'. The artifact page's Part C confirms it.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "PROGRESS #7 says the owner did the Cloudflare readout, and the same entry (and D-095) says it is still to be read. If the owner did send screenshots last session, they were lost, and the re-ask should say so. The page's conditional ('if no DECISIONS row records them yet') still routes correctly to asking.",
+      "where": "PROGRESS.md:61-62 \"while the probe finished, the owner did the Cloudflare readout (D-057; ...)\" vs PROGRESS.md:77 \"the dashboard cross-check is the owner's D-057 readout, still to be read at this entry's writing\" and docs/DECISIONS.md:105 (D-095) \"until it is read\"",
+      "evidence": "docs/DECISIONS.md ends at D-095 (line 105); no row records readings. The readout artifact declares no runtime capabilities and stores no values; it tells the owner to paste screenshots into the chat.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "TREE",
+      "what": "The Cloudflare readout deadline is written in two time conventions. The page says Mon Oct 5 ~7 PM CT. Other docs say 'by Tue Oct 6' / '2026-10-06', which is a UTC date. Read in CT, those give a day too much for the first (alarm-level) logs.",
+      "where": "HANDOFF.md:39 \"the probe's first logs expire about Mon 2026-10-05 7 PM CT\" vs docs/ROADMAP.md:61 \"so ask by 2026-10-06\", docs/DECISIONS.md:67 (D-057) \"by ~Tue Oct 6\", docs/DECISIONS.md:105 (D-095) \"about 2026-10-06\", docs/design/P2.2.md:929 \"by Tue Oct 6\"",
+      "evidence": "First loop tests ran ~2026-10-03 01:00Z (readout page: 'Oct 2 around 8 PM CT'); +3 days = 2026-10-06 ~01:00Z = Mon Oct 5 ~8 PM CDT. The page is the precise statement.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "Step 4 asks for the White House lag (first_seen_at minus source_published_at per item, n and median) 'from the same events', but no script computes it. ledger_report.mjs prints only PI latency and WH counts, so the session must write a one-off. TRAPS also wants n >= 20 on business days before acting on it, and two days may give fewer.",
+      "where": "HANDOFF.md:48-49 \"From the same events, the White House lag (first_seen_at minus source_published_at per item, n and median) answers the open question in docs/TRAPS.md\" vs scripts/ledger_report.mjs:29-41 (dayReport computes PI latency only) and docs/TRAPS.md:93-94 \"n >= 20 on business days\"",
+      "evidence": "The field is times.source_published_at (packages/schema/src/types.ts:24); allEvents() is exported from ledger_report.mjs and can be reused.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page rewrite dropped the guard 'only the owner can delete it' from the cloud-routine line. Nothing tells a resumer to delete the routine, so this is not harmful as written, but the caveat is gone from the live page.",
+      "where": "HANDOFF.md:20 \"The disabled cloud routine (D-028) still exists.\" vs HANDOFF_ARCHIVE.md:91 \"The disabled cloud routine from D-028 still exists; only the owner can delete it.\"",
+      "evidence": "Diffed the current page against the archived page #2.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "UTC dates are mixed with the owner's local dates: the probe-close rows and ROADMAP ticks say 2026-10-04, while the same work was committed 2026-10-03 19:33 CDT and the page/PROGRESS say 2026-10-03.",
+      "where": "docs/DECISIONS.md:104-105 D-094/D-095 \"2026-10-04\"; docs/ROADMAP.md:63 \"(Done 2026-10-04\" and :100 \"(5) MET (2026-10-04)\" vs HANDOFF.md:3 \"AS-OF 2026-10-03\" and PROGRESS.md #7 \"2026-10-03\"",
+      "evidence": "git log: ed43732 2026-10-03 19:33:27 -0500.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page restates a number whose home is elsewhere ('106 were scheduled on Saturday'), against the handoff skill's 'never restate a number that lives elsewhere'. The number is correct.",
+      "where": "HANDOFF.md:42 \"(D-059; 106 were scheduled on Saturday)\" vs .claude/skills/handoff/SKILL.md step 4 \"never restate a number that lives elsewhere, link to it instead\"",
+      "evidence": "fixtures/README.md:32: '106 documents dated 2026-10-05'; PROGRESS #7 corrects ~300 to 106.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "PAGE",
+      "what": "HANDOFF says all of the P2.2 design's owner questions are answered by D-090..D-092. O3 (the five daily ced-api usage totals from the dashboard) has no DECISIONS row and is still open. Step 1 names only the D-057 readings, so O3 is reachable only through Part C of the readout page.",
+      "where": "HANDOFF.md:17 \"(its owner questions are answered: D-090..D-092)\" vs docs/design/P2.2.md:929 \"O3 (add-on to the D-057 dashboard readout, by Tue Oct 6 ...) ... five more numbers for ced-api\" and PROGRESS.md:83 \"the D-057 Cloudflare readings and the five daily totals\"",
+      "evidence": "grep for O3 / 'five daily' in docs/DECISIONS.md finds nothing. D-090=O1, D-091=O2, D-092=O4.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "PROGRESS #7 says the owner did the D-057 Cloudflare readout, then later says the readout is still to be read and lists it as open. No DECISIONS row records readings, and the readout artifact declares no capabilities, so it stores none. HANDOFF's conditional 'if no DECISIONS row records them yet' routes correctly, but a reader could think the numbers exist somewhere.",
+      "where": "PROGRESS.md:61-62 \"while the probe finished, the owner did the Cloudflare readout (D-057; ...)\" vs PROGRESS.md:77 \"the owner's D-057 readout, still to be read at this entry's writing\" and DECISIONS.md:105 D-095 \"until it is read\"",
+      "evidence": "Artifact read of Kuw3yQ4xupbY94jWi4hviV: 'no runtime capabilities declared'; results go to chat as screenshots only. grep D-057 shows no readings row.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 2's diagnosis is too strong. Per D-060, a scheduled FR document that the FR stops listing stays 'scheduled' in the API legitimately (the page shows 'not seen published'), so a few leftover scheduled rows do not prove the re-parse failed. The filter also takes in PI events, which carry result.publication_date and are always 'published'. It should filter on event_type fr.published.* or dedup_key #published.",
+      "where": "HANDOFF.md:42-43 \"If any is still scheduled, the once-per-Eastern-day re-parse failed\" vs DECISIONS.md:70 D-060 \"a scheduled FR row the source never confirms stays 'scheduled' for good\"",
+      "evidence": "packages/adapters/src/sources/fr_api.ts:472 sets result.publication_date for PI too; L490 status is 'scheduled' only for documents_newest; D-060 rowStatusChip rule.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The readout deadline appears as Monday 7 PM CT on the page but Tuesday Oct 6 in D-057, D-095, ROADMAP and P2.2. The two can be reconciled (first logs vs last logs), but the earlier Monday deadline governs and only HANDOFF, PROGRESS and the artifact state it.",
+      "where": "HANDOFF.md:38-39 \"the probe's first logs expire about Mon 2026-10-05 7 PM CT\" vs DECISIONS.md:67 D-057 \"so by ~Tue Oct 6\", ROADMAP.md:61 \"so ask by 2026-10-06\", docs/design/P2.2.md:929 \"by Tue Oct 6\"",
+      "evidence": "First probe cron 2026-10-03T01:01Z = Oct 2 20:01 CDT; 3-day retention gives Mon ~8 PM CT for the first logs.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 4 says the Monday-Tuesday White House lag 'answers the open question' in TRAPS, but TRAPS sets a bar of n >= 20 on business days, which two days may not reach. ledger_report.mjs also does not compute the WH lag, so ad-hoc code is needed.",
+      "where": "HANDOFF.md:48-49 \"the White House lag (... n and median) answers the open question in docs/TRAPS.md\" vs docs/TRAPS.md:93-95 \"(first_seen_at minus source_published_at per White House item, n >= 20 on business days)\"",
+      "evidence": "scripts/ledger_report.mjs prints only PI/WH counts and PI latency (L28-41, L80); no source_published_at use in scripts/.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "Caveats were dropped when page #2 was summarised into page #3. 'only the owner can delete it' (the D-028 cloud routine) and 'Do not re-ask what docs/DECISIONS.md settles' are gone. The bare 'still exists' could invite a resumer to delete an owner-only, outward-facing item.",
+      "where": "HANDOFF_ARCHIVE.md:91 \"The disabled cloud routine from D-028 still exists; only the owner can delete it.\" vs HANDOFF.md:20 \"The disabled cloud routine (D-028) still exists.\"; HANDOFF_ARCHIVE.md:111 \"Do not re-ask what `docs/DECISIONS.md` settles.\"",
+      "evidence": "Side-by-side read of archived page #2 and current page #3.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Mixed date conventions. The P1.3 completion and D-094/D-095 are dated 2026-10-04 (UTC), but they were written on 2026-10-03 local time, and the page, PROGRESS and the exit-status header say 2026-10-03. A cold reader on Oct 3 sees work marked done 'tomorrow'.",
+      "where": "docs/ROADMAP.md:63 \"(Done 2026-10-04: ced-probe stopped ...\" and ROADMAP.md:100 \"(5) MET (2026-10-04)\" vs HANDOFF.md:3 \"AS-OF 2026-10-03\" and the ROADMAP 'Exit status (2026-10-03)' header",
+      "evidence": "git log: ed43732 committed 2026-10-03 19:33:27 -0500.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "TREE",
+      "what": "No doc says how the one retrospective videos.list call under D-093 actually runs. The key exists only as a GitHub Actions secret and must never pass through chat, and TRAPS says gh workflow run gets a 403, so the call needs a push-triggered workflow, whose logs are public on this public repo.",
+      "where": "DECISIONS.md:103 D-093 \"adding it as a GitHub Actions secret themselves ... Its first use is the one retrospective videos.list call\" vs docs/TRAPS.md \"so `gh workflow run` fails with 403; to re-run a workflow, push a commit\"",
+      "evidence": "No workflow or design doc names the mechanism (grep of docs/ and .github/).",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "PROGRESS #7 contradicts itself on whether the owner already did the D-057 Cloudflare readout. No DECISIONS row records any readings. The page's conditional routes correctly, but the question has to allow that the owner may already have sent screenshots that were never recorded.",
+      "where": "PROGRESS.md:61-62 \"while the probe finished, the owner did the Cloudflare readout (D-057; page extended with five daily usage totals...)\" vs PROGRESS.md:76-77 \"the dashboard cross-check is the owner's D-057 readout, still to be read at this entry's writing\" and PROGRESS.md:83 \"Open: ... the D-057 Cloudflare readings\"",
+      "evidence": "docs/DECISIONS.md ends at D-095 (line 105) with no amending row. grep of scratch/ finds no readings. The readout artifact declares no runtime capabilities, so nothing is stored on it.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Two deadlines for the Cloudflare readings. The page says the first logs expire Mon Oct 5 7 PM CT. ROADMAP, D-095, D-057 and P2.2 O3 say about Oct 6. Both can be true (first runs vs last runs), but a resumer has to pick one. The earlier one is safer.",
+      "where": "HANDOFF.md:38-39 \"the probe's first logs expire about Mon 2026-10-05 7 PM CT\" vs docs/ROADMAP.md:61 \"so ask by 2026-10-06\" and docs/DECISIONS.md:105 (D-095) \"due before the logs expire about 2026-10-06\"",
+      "evidence": "D-057 (DECISIONS.md:67) says \"by ~Tue Oct 6\". P2.2.md:929 says \"by Tue Oct 6\". The readout page's chip says \"Best by Mon Oct 5, 7 PM CT\".",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "PAGE",
+      "what": "The page says the P2.2 design's owner questions are answered by D-090..D-092. O3 (five daily usage totals, an add-on to the D-057 readout) has no row and is still pending. P2.2's G0 requires those readings. Step 1 names only the D-057 readings. In practice the readout page's Part C covers O3.",
+      "where": "HANDOFF.md:17 \"(its owner questions are answered: D-090..D-092)\" vs docs/design/P2.2.md:929 \"O3 (add-on to the D-057 dashboard readout, by Tue Oct 6...)\" and P2.2.md:519 \"G0 ... D-057 + O3 readings\"",
+      "evidence": "PROGRESS.md:83 lists \"the D-057 Cloudflare readings and the five daily totals\" as open. No DECISIONS row records O3.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "The Google key item names only a walkthrough. D-093 says the key's first use is one videos.list call on 38 ids, with the key stored only as a GitHub Actions secret. No workflow can make that call. The page does not say the secret name, how the call is run and recorded, or whether it is in scope this session, so the executor has to design it (an outward-facing request).",
+      "where": "HANDOFF.md:37 \"the Google API key walkthrough (D-093, grant G-012)\"; docs/DECISIONS.md:103 \"Its first use is the one retrospective `videos.list` call on the 38 ids\"",
+      "evidence": ".github/workflows/ contains only ci.yml, deploy.yml and pages.yml. A grep for YOUTUBE_API / GOOGLE_API finds no code or workflow.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "Step 1 says the readings are recorded as a row that amends D-095. D-057 also routes them into ROADMAP P1.3 and W10 (P1.5, HubDO cpuTime), and the O3 totals have no stated home. A resumer could leave P1.5's 'still to do' open.",
+      "where": "HANDOFF.md:39 \"recorded as a row that amends D-095\" vs docs/DECISIONS.md:67 (D-057) \"the readings go into the P1.3 CPU row (ROADMAP P1.3) and W10 (P1.5)\"",
+      "evidence": "docs/ROADMAP.md P1.5: \"Still to do: read the HubDO's cpuTime in Workers Observability after the deploy.\"",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Step 2 gives no command for the FR flip check, only \"page /api/v1/events as scripts/ledger_report.mjs does\". It is workable because allEvents is exported, so a node -e one-liner works, but it is a guess point.",
+      "where": "HANDOFF.md:41-42 \"in the whole event history (page `/api/v1/events` as `scripts/ledger_report.mjs` does), every `fr.api` event whose `result.publication_date` is 2026-10-05 must have status `published`\"",
+      "evidence": "scripts/ledger_report.mjs exports allEvents(base). result.publication_date is set in packages/adapters/src/sources/fr_api.ts:472. isScheduled applies only to documents_newest (fr_api.ts:443-445).",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The same evening carries two dates. Rows and ROADMAP ticks use the UTC date (2026-10-04), while PROGRESS #7 and the page use local CT (2026-10-03).",
+      "where": "docs/DECISIONS.md:104-105 \"D-094 | 2026-10-04\" / ROADMAP \"(5) MET (2026-10-04)\" vs PROGRESS.md \"## #7 — 2026-10-03\" and HANDOFF.md:3 \"AS-OF 2026-10-03\"",
+      "evidence": "The probe stopped at 2026-10-04T00:30Z, which is Sat 2026-10-03 19:30 CT.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page says the disabled D-028 cloud routine still exists but gives no instruction (keep it, or delete it with the owner's OK). Harmless, but a resumer has to decide whether to raise it.",
+      "where": "HANDOFF.md:20 \"The disabled cloud routine (D-028) still exists.\"",
+      "evidence": "D-033 (DECISIONS.md:43): \"The cloud routine is disabled.\" No later row decides its removal.",
+      "lens": "executor"
+    }
+  ],
+  "would_ask": [
+    "[straight] Cloudflare readout (D-057 + P2.2 O3 / Part C): the repo has no recorded dashboard numbers yet. Please paste screenshots 1-9 from the readout page (or type the numbers) before Mon Oct 5 ~7 PM CT, when the first probe logs expire. If you already sent them last session, please send them again, because they were not saved. Options: sending now / later, before Mon 7 PM CT / skip (the row then records that the cross-check was not made).",
+    "[straight] Google API key walkthrough (D-093, grant G-012): shall we set up the free YouTube Data API v3 key now (~10 min; you paste it into GitHub Secrets yourself; first use is one videos.list call on the 38 ids)? Options: now / later this week / not now.",
+    "[skeptic] Cloudflare readout (D-057 + P2.2 O3): PROGRESS #7 says you already did the readout last session, but no numbers are recorded anywhere, and the readout page stores nothing. Did you take screenshots? Options: paste them now / do Parts A-C of the readout page now / later, before Mon Oct 5 7 PM CT when the first logs expire / skip (D-095 then stays not cross-checked).",
+    "[skeptic] Google API key (D-093, G-012): walk through creating the free YouTube Data API v3 key and adding it as a GitHub secret now, later this session, or postpone? Also, is it OK for the single retrospective 38-id videos.list call to run from a GitHub Actions job? The key never touches this PC; the job log is public on this public repo, with the key masked.",
+    "[skeptic] While Phase 1 waits for Monday and Tuesday's data, should this session stop after these answers, or go through the P3.5 research's other owner questions (docs/research/leadership_press_conferences.md section 6: YouTube access path, House Press Gallery reuse, etc.)?",
+    "[skeptic] The disabled D-028 cloud routine still exists on your claude.ai account and only you can delete it. Leave it, or will you delete it?",
+    "[executor] Google API key walkthrough (D-093, G-012), timing only, since D-093 already settled 'next session': walk me through it now (~10 min) / later this session / postpone? Also: the key will live only as a GitHub Actions secret, and no workflow can make the one 1-unit videos.list call on the 38 ids. May I add a manual-run GitHub Actions workflow that makes that single call and saves the reply as a run artifact, with the secret named e.g. YOUTUBE_API_KEY?",
+    "[executor] Cloudflare readings (D-057 plus the P2.2 O3 five daily totals, readout page Parts A-C): PROGRESS #7 says you did the readout while the probe finished, but no reading was recorded. Did you send screenshots last session? If so, please send them again. Options: sending now / before Mon Oct 5, 7 PM CT (when the first logs expire) / skip it (the row will say the cross-check was not made).",
+    "[executor] The disabled D-028 cloud routine still exists: delete it now (ask-first) or leave it?",
+    "[executor] Until Monday's data arrives: stop after this (Rec.), or something else within the phase gates? P2.2 build work is not offered, because Phase 1 is not closed."
+  ],
+  "content_findings": [
+    {
+      "claim": "the P2.2 design docs/design/P2.2.md (its owner questions are answered: D-090..D-092)",
+      "where": "HANDOFF.md, LATEST #3, 'Paper only (D-089), no code' bullet",
+      "truth": "docs/design/P2.2.md §9 lists four owner questions, O1..O4. D-090 answers O1, D-091 answers O2 and D-092 answers O4. O3 (the add-on to the D-057 readout: five daily usage totals for ced-api, meaning DO requests, rows read/written, GB-seconds and Worker requests) has no answer row. It was added as 'Part C' of the D-057 readout page, and those readings are still pending. PROGRESS #7's own Open list names 'the five daily totals', and P2.2.md §4 G0 needs the 'D-057 + O3 readings' before go-live.",
+      "evidence": "git show aac53e8729e9:docs/design/P2.2.md lines 916-944 (O1..O4; O3 at line 929); docs/DECISIONS.md D-090 (O1), D-091 (O2), D-092 (O4), D-093 (Google key), with no row for O3; PROGRESS.md #7 'Open: ... the D-057 Cloudflare readings and the five daily totals (by ~Mon 7 PM CT ...)'; P2.2.md line 519 'G0 ... D-057 + O3 readings'; artifact Kuw3yQ4xupbY94jWi4hviV 'Part C: five daily totals for ced-api ... added Oct 3 evening'. Suggested fix: '(O1, O2 and O4 answered: D-090..D-092; O3's five daily totals are Part C of the D-057 readout page, still pending)'."
+    }
+  ],
+  "notes": "C:/Users/j/claude/current-events-dashboard/docs/coldstart/r4/ (copied from C:/Users/j/claude/current-events-dashboard/scratch/coldstart/r4/ at record time)"
+}

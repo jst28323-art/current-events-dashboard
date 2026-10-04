@@ -14,10 +14,12 @@ Phase 1 is live; its only open exit criterion (3) needs Monday and Tuesday's liv
   `docs/SOURCES.md` "Cloudflare probe"). The dashboard cross-check is the owner's readout (D-057).
 - **P2.1 built early on fixtures (owner override D-058):** five Congress adapters, merged but NOT polled and NOT in the
   Worker (D-063..D-088; pins in `packages/adapters/test/live_list.test.ts`). Going live is P2.2, after Phase 1 closes.
-- **Paper only (D-089), no code:** the P2.2 design `docs/design/P2.2.md` (its owner questions are answered: D-090..D-092)
-  and the P3.5 research `docs/research/leadership_press_conferences.md`.
+- **Paper only (D-089), no code:** the P2.2 design `docs/design/P2.2.md` (owner questions O1, O2 and O4 answered by
+  D-090..D-092; O3, five daily usage totals, is Part C of the pending D-057 readout) and the P3.5 research
+  `docs/research/leadership_press_conferences.md`.
 - **Still running by itself:** the one-time Windows task that records Monday's pro forma sessions (D-033, D-056: it runs
-  only if the owner is signed in), log `scratch/capture_task.log`. The disabled cloud routine (D-028) still exists.
+  only if the owner is signed in), log `scratch/capture_task.log`. The disabled cloud routine (D-028) still exists; only
+  the owner can delete it.
 
 ## SHIP STATE
 
@@ -34,19 +36,26 @@ fix or ask the owner): do that first. Never reason about the tree from prose.
 
 Each step says when its data exists; do the ones whose data exists, record what is still waiting, and stop there.
 1. **Ask first**, as the canonical prompt says: one AskUserQuestion (with a PushNotification) for anything the repo does
-   not answer. Two known items: the Google API key walkthrough (D-093, grant G-012); and, if no DECISIONS row records
-   them yet, the owner's Cloudflare readings (D-057; page under WHERE THINGS ARE; the probe's first logs expire about
-   Mon 2026-10-05 7 PM CT), recorded as a row that amends D-095.
+   not answer; do not re-ask what `docs/DECISIONS.md` settles. Two known items:
+   - **The Cloudflare readout** (D-057, page under WHERE THINGS ARE: screenshots 1-7 plus Part C, the P2.2 O3 totals),
+     if no DECISIONS row records it yet. No readings reached the repo on 2026-10-03; screenshots pasted into chat are
+     the only channel. The earliest probe logs expire about 2026-10-06 01:00Z (Mon Oct 5, ~8 PM CT; ROADMAP's "by
+     2026-10-06" is that UTC date). Record the CPU times as a row amending D-095 (ROADMAP P1.3), the HubDO's as W10
+     (ROADMAP P1.5), the Part C totals for G0 of `docs/design/P2.2.md` §4; if skipped, a row says the cross-check was not made.
+   - **The Google API key walkthrough** (D-093, grant G-012). The key lives only as a GitHub Actions secret and never
+     passes through chat; how its one retrospective `videos.list` call runs (Actions logs are public) is still to design.
 2. **The first live FR flip**, from Mon 2026-10-05 01:00 ET: in the whole event history (page `/api/v1/events` as
-   `scripts/ledger_report.mjs` does), every `fr.api` event whose `result.publication_date` is 2026-10-05 must have status
-   `published`, none `scheduled` (D-059; 106 were scheduled on Saturday). If any is still
-   scheduled, the once-per-Eastern-day re-parse failed: read fr.api's detail in `/api/v1/status` and docs/TRAPS.md.
+   `scripts/ledger_report.mjs` does), every `fr.published.*` event whose `result.publication_date` is 2026-10-05 should
+   now be `published` (D-059; Public Inspection events carry that field too: leave them out). A row still `scheduled`
+   is a defect only if the FR still lists that document (one the FR dropped stays scheduled, D-060); then the
+   once-per-Eastern-day re-parse failed: read fr.api's detail in `/api/v1/status` and docs/TRAPS.md.
 3. **Monday's recordings (P2.3)**, after Mon 2026-10-05 16:30 CT: read `scratch/capture_task.log` (only once it ends with
    an "exit" line), check the new `fixtures/*/2026-10-05/` files (real responses, no errors posing as data), add their
    rows to `fixtures/README.md`, commit them. If the task did not run, say so in PROGRESS; that data cannot be recorded again.
 4. **Live latency (exit 3)**, after Tue 2026-10-06 18:00 ET: `node scripts/ledger_report.mjs --days 2026-10-05,2026-10-06`;
-   record its PASS/FAIL lines, n and medians in ROADMAP's Phase 1 exit status. From the same events, the White House lag
-   (first_seen_at minus source_published_at per item, n and median) answers the open question in docs/TRAPS.md.
+   record its PASS/FAIL lines, n and medians in ROADMAP's Phase 1 exit status. From the same events, compute the White
+   House lag by hand (first_seen_at minus source_published_at per item, n and median; no script does it): docs/TRAPS.md
+   wants n >= 20 business-day items before acting on it, so if two days give fewer, record n and keep collecting.
 5. When every Phase 1 exit criterion is met, tick it in ROADMAP and ask the owner whether P2.2 starts (go-live of the
    Congress adapters per `docs/design/P2.2.md`; Congress returns Nov 9).
 6. End with the `handoff` skill (`.claude/skills/handoff/SKILL.md`; read it by path if it is not listed).
