@@ -46,7 +46,7 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   `package.json` → `gate.npmScripts` and commit `package-lock.json` (`.github/workflows/ci.yml` runs `npm ci` only
   when that lockfile exists, so without it CI cannot run the new suites). Pick a JSON-Schema validator
   that works inside Workers (`docs/TRAPS.md`).
-- [ ] **P1.3 Probe Worker** (needs P1.1). From Cloudflare's network, fetch every Tier 1–2 source in `docs/SOURCES.md` that needs no key the owner has not yet
+- [x] **P1.3 Probe Worker** (needs P1.1). From Cloudflare's network, fetch every Tier 1–2 source in `docs/SOURCES.md` that needs no key the owner has not yet
   granted (skip e.g. YouTube and DVIDS until their keys exist; list them as skipped)
   and record status, which validator gets a 304, bytes, wall time and head-only parse CPU; also measure the Durable
   Object alarm CPU limit on Free (a deliberate ~20 ms busy loop) and alarm timing jitter. Results go into
@@ -60,6 +60,9 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   plan's Workers Logs keep about 3 days (docs/research/architecture_hosting_frontend.md; unverified for this account),
   so ask by 2026-10-06. If that is missed, write the row from the probe's own started/done evidence and say the
   cross-check was not made.)
+  (Done 2026-10-04: ced-probe stopped after 48 runs; JSON `docs/research/probe_2026-10-03.json`, table in
+  `docs/SOURCES.md` "Cloudflare probe", rows D-094 (no source moves to the home PC) and D-095 (no CPU cut-off at the
+  levels tested; the dashboard cross-check is the owner's D-057 readout, asked 2026-10-03).)
 - [x] **P1.4 Adapters** (done 2026-10-02 in 83ea2b6: `fr.api` and `wh.feeds` registered in
   `packages/adapters/src/registry.ts`, golden fixture tests, NEGATIVE / empty / drift cases, adversarial review fixed;
   mappings D-034 and D-035. O1 closed 2026-10-03 (D-047): `documents_newest` reads a whole daily issue in one page, on its own cadence (page size and cadence: `docs/SOURCES.md` row `fr.api`).) (needs no account; may run before P1.3; each via the `add-source` skill, pure functions with
@@ -94,8 +97,7 @@ Exit status (2026-10-03): (1) MET (gate green locally and in CI; the four named 
 (4) MET (`apps/web/e2e/fail-closed.spec.ts`). (3) OPEN: needs two business days of live polling; the first are
 Mon 2026-10-05 and Tue 2026-10-06 (PI regular filings 08:45 ET). Measure it with `node scripts/ledger_report.mjs --days 2026-10-05,2026-10-06`
 (it pages the whole event history: `/api/v1/status` is a rolling 24 h with no n and cannot answer this; cold-start r3)
-and record its PASS/FAIL lines, n and the medians here. (5) OPEN: ced-probe runs ~24 h from 2026-10-03 01:00Z (48 runs);
-then copy `/results` into `docs/SOURCES.md` "Cloudflare probe" and write the two DECISIONS rows (D-042).
+and record its PASS/FAIL lines, n and the medians here. (5) MET (2026-10-04): the probe table is in `docs/SOURCES.md` "Cloudflare probe" (48 runs; D-094, D-095).
 
 ## Phase 2 — Congress pipelines on fixtures + real-time plumbing
 
