@@ -1,0 +1,276 @@
+{
+  "round": 5,
+  "page_n": 3,
+  "sha": "542603b76200",
+  "date": "2026-10-03",
+  "n_resumers": 3,
+  "routing_verdict": "PASS",
+  "content_verdict": "PASS",
+  "routing_axes": {
+    "first_actions_agree": true,
+    "compare_note": "All three agents name the same first action: send one multiSelect AskUserQuestion with a PushNotification, which is NEXT ACTION step 1 at HANDOFF.md:38-46. Each covers the same two items: (a) the D-057 Cloudflare readout (screenshots 1-7 plus Part C, the P2.2 O3 totals, artifact Kuw3yQ4xupbY94jWi4hviV) and (b) the D-093/G-012 Google API key walkthrough. The differences are wording only. The skeptic asks 'when to do' the walkthrough, and the timestamps are given in different time zones for the same moment. All three give the same reason for doing it first: the data for steps 2-4 is not available until Mon 01:00 ET, Mon 16:30 CT and Tue 18:00 ET. The step, the tool and the order match.",
+    "heads_ok": true,
+    "could_execute_all": true,
+    "page_blockers": 0,
+    "resumer_fails": 0
+  },
+  "first_actions": [
+    {
+      "lens": "straight",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification, per HANDOFF.md:38-46 NEXT ACTION step 1. It asks about (a) the D-057 Cloudflare readout (screenshots 1-7 plus Part C, the P2.2 O3 totals; artifact https://claude.ai/artifact/Kuw3yQ4xupbY94jWi4hviV), due before Mon Oct 5 evening CT, and (b) the Google API key walkthrough (D-093, G-012).",
+      "what": "Send the owner one multiSelect AskUserQuestion with a PushNotification for two things: the D-057 Cloudflare readings plus the Part C/O3 totals (no DECISIONS row records them yet), and the G-012 Google key walkthrough. This is first because the page orders it first, and at Sat 2026-10-03 21:06 ET none of steps 2-5 has data yet: the FR flip is checkable from Mon 01:00 ET, the capture after Mon 16:30 CT, and the latency after Tue 18:00 ET. The readout's logs also start expiring Mon Oct 5 evening CT.",
+      "head": "542603b",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "skeptic",
+      "cmd": "AskUserQuestion (one call, multiSelect) + PushNotification — HANDOFF.md:38-46 NEXT ACTION step 1: (a) the D-057 Cloudflare readout, screenshots 1-7 plus Part C (P2.2 O3 totals), page https://claude.ai/artifact/Kuw3yQ4xupbY94jWi4hviV, before Mon 2026-10-05 ~7 PM CT; (b) the Google API key walkthrough (D-093, G-012)",
+      "what": "Send the owner one multiSelect AskUserQuestion with a PushNotification. It asks for the D-057 Cloudflare readings plus the Part C/O3 totals (no row after D-095 records them, and the logs start expiring Mon evening CT) and when to do the G-012 Google key walkthrough. It comes first because the page orders it first and because at Sat 2026-10-03 20:05 CDT none of steps 2-4 has data yet (FR flip from Mon 01:00 ET, capture after Mon 16:30 CT, latency after Tue 18:00 ET).",
+      "head": "542603b",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "executor",
+      "cmd": "AskUserQuestion (one call, multiselect: D-057 Cloudflare readout incl. Part C at https://claude.ai/artifact/Kuw3yQ4xupbY94jWi4hviV; D-093/G-012 Google API key walkthrough) + PushNotification",
+      "what": "Send one AskUserQuestion with a PushNotification covering the two known step-1 items: the D-057 Cloudflare readout, which no DECISIONS row records yet (Part C is the P2.2 O3 totals), and the D-093/G-012 Google key walkthrough. It is first because at Sat 2026-10-03 20:04 CT it is the only NEXT ACTION step whose data exists; steps 2-4 need Mon 01:00 ET, Mon 16:30 CT and Tue 18:00 ET data.",
+      "head": "542603b",
+      "verdict": "PASS-WITH-NOTES"
+    }
+  ],
+  "blocking": [],
+  "blocking_offpage": [
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The readout deadline is stated as ~8 PM CT on the page but ~7 PM CT in PROGRESS and in the readout artifact. The artifact's own arithmetic is off by an hour: first runs ~8 PM CT plus 3 days gives 8 PM, not 7. D-057 and P2.2 O3 say 'by Tue Oct 6', which read in CT gives a day too much, and the page reconciles only ROADMAP's date. Asking tonight makes it moot, and routing is unaffected.",
+      "where": "HANDOFF.md:42-43 \"The earliest probe logs expire about 2026-10-06 01:00Z (Mon Oct 5, ~8 PM CT\" vs PROGRESS.md:84 \"(by ~Mon 7 PM CT, when the first probe logs expire)\"; artifact Kuw3yQ4xupbY94jWi4hviV \"Best by Mon Oct 5, 7 PM CT\"; DECISIONS.md:67 D-057 \"by ~Tue Oct 6\"; docs/design/P2.2.md:929 \"by Tue Oct 6\"",
+      "evidence": "D-094: the first probe run was 2026-10-03T01:01Z. Plus 3 days = 2026-10-06 01:01Z = Mon 20:01 CDT. The artifact text says 'first loop tests ran on Oct 2 around 8 PM CT, so their entries disappear around Mon Oct 5, 7 PM CT'.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The Cloudflare readout deadline is stated three ways. The page says ~8 PM CT Monday (accurate by arithmetic), the owner's readout page and PROGRESS say 7 PM CT Monday, and D-057 and P2.2 O3 say 'Tue Oct 6'. That is a weekday name, so the page's UTC-date reconciliation (which covers ROADMAP only) does not apply to it.",
+      "where": "HANDOFF.md:42 \"expire about 2026-10-06 01:00Z (Mon Oct 5, ~8 PM CT\" vs artifact Kuw3yQ4xupbY94jWi4hviV \"Best by Mon Oct 5, 7 PM CT\" and PROGRESS.md:84 \"(by ~Mon 7 PM CT\" vs docs/DECISIONS.md:67 (D-057) \"so by ~Tue Oct 6\" and docs/design/P2.2.md:929 \"by Tue Oct 6, logs keep ~3 days\"",
+      "evidence": "First probe cron 2026-10-03 01:01Z (ROADMAP:55) plus 72 h = 2026-10-06 01:01Z = Mon 20:01 CDT. The artifact keeps a 1-h margin. Benign if the resumer quotes the earlier time.",
+      "lens": "skeptic"
+    }
+  ],
+  "backlog": [
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The readout deadline is stated as ~8 PM CT on the page but ~7 PM CT in PROGRESS and in the readout artifact. The artifact's own arithmetic is off by an hour: first runs ~8 PM CT plus 3 days gives 8 PM, not 7. D-057 and P2.2 O3 say 'by Tue Oct 6', which read in CT gives a day too much, and the page reconciles only ROADMAP's date. Asking tonight makes it moot, and routing is unaffected.",
+      "where": "HANDOFF.md:42-43 \"The earliest probe logs expire about 2026-10-06 01:00Z (Mon Oct 5, ~8 PM CT\" vs PROGRESS.md:84 \"(by ~Mon 7 PM CT, when the first probe logs expire)\"; artifact Kuw3yQ4xupbY94jWi4hviV \"Best by Mon Oct 5, 7 PM CT\"; DECISIONS.md:67 D-057 \"by ~Tue Oct 6\"; docs/design/P2.2.md:929 \"by Tue Oct 6\"",
+      "evidence": "D-094: the first probe run was 2026-10-03T01:01Z. Plus 3 days = 2026-10-06 01:01Z = Mon 20:01 CDT. The artifact text says 'first loop tests ran on Oct 2 around 8 PM CT, so their entries disappear around Mon Oct 5, 7 PM CT'.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The Google key item does not say whether designing and running the one retrospective videos.list call is in scope this session. That would be Phase 3 work while Phase 1 is still open, and D-089's override was paper-only. It also does not say whether G-012 lapses if the owner cannot do the walkthrough this session.",
+      "where": "HANDOFF.md:45-46 \"how its one retrospective `videos.list` call runs (Actions logs are public) is still to design\" vs docs/OWNER_GRANTS.md G-012 \"one-time, next session\" and DECISIONS.md:103 D-093 \"Its first use is the one retrospective `videos.list` call\"",
+      "evidence": ".github/workflows has only ci.yml, deploy.yml and pages.yml. TRAPS.md:520 says `gh workflow run` fails with 403. CLAUDE.md directive 4 gates phases.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "No file is named for the HubDO (W10) reading or the Part C/O3 totals. W10 could go in the ROADMAP P1.5 note or a DECISIONS row amending D-050. The O3 totals could go in a DECISIONS row or in the design doc. CLAUDE.md's verbatim-row rule resolves most of it.",
+      "where": "HANDOFF.md:43-44 \"the HubDO's as W10 (ROADMAP P1.5), the Part C totals for G0 of `docs/design/P2.2.md` §4\"",
+      "evidence": "D-050 says 'Cloudflare CPU is unmeasured'. ROADMAP P1.5 says 'Still to do: read the HubDO's cpuTime'. MAP says a design doc loses to DECISIONS.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 2 gives no recipe for checking whether 'the FR still lists that document': the documents_newest list, or the document's own JSON? Either way it is a live request to federalregister.gov. Not needed today.",
+      "where": "HANDOFF.md:50 \"A row still `scheduled` is a defect only if the FR still lists that document\"",
+      "evidence": "TRAPS: a document listed early already has a live 200 page on federalregister.gov, so the document page alone may not show whether it was dropped from the list.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Commit 542603b rewrote PROGRESS #7's text, but the file is append-only and says never to rewrite an old entry. It is the same session's own entry, so this is arguable. The rewrite also left the '~Mon 7 PM CT' line unchanged.",
+      "where": "PROGRESS.md:3-4 \"Never rewrite an old entry; correct it with a new one\" and CLAUDE.md \"PROGRESS.md is append-only\" vs git show 542603b -- PROGRESS.md (lines 61-63 rewritten)",
+      "evidence": "The diff replaces 'the owner did the Cloudflare readout' with 'the owner was to do the Cloudflare readout ...'.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Dates are mixed: the probe close and exit (5) carry UTC dates (2026-10-04), while the page and the exit-status header carry local dates (2026-10-03). r4 already raised this, and it is still present.",
+      "where": "docs/ROADMAP.md:63 \"(Done 2026-10-04\" and :100 \"(5) MET (2026-10-04)\", DECISIONS.md:104-105 D-094/D-095 dated 2026-10-04 vs HANDOFF.md:3 \"AS-OF 2026-10-03\"",
+      "evidence": "git: ed43732 committed 2026-10-03 19:33:27 -0500.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Steps 3 and 6 lead to pushes inside the Mon-Tue latency window, and every CI-passing push redeploys ced-api (deploy.yml has no path filter). D-063 recommended deploying after the window, and P2.2 §4.1 says 'none inside a measurement window'. The page is silent. The bundle stays byte-identical, so the risk is small and it is not harmful.",
+      "where": "HANDOFF.md:52-54 step 3 \"commit them\" + step 6 handoff push vs DECISIONS.md:73 D-063 \"recommended after the Mon-Tue Oct 5-6 latency window\"",
+      "evidence": ".github/workflows/deploy.yml deploys every workers/* on each successful push CI run. D-038: a new Worker version re-parses each endpoint once.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "ROADMAP P2.3 says to record with scripts/record_fixture.mjs. D-033 replaced that with scripts/capture_live.mjs, which imports recordFixture, so the line is indirect rather than wrong.",
+      "where": "docs/ROADMAP.md:137 \"record live fixtures with `scripts/record_fixture.mjs`\" vs DECISIONS.md:43 D-033 \"runs `scripts/capture_live.mjs`\"",
+      "evidence": "scripts/capture_live.mjs:28 imports { recordFixture } from './record_fixture.mjs'. The scheduled task runs capture_task.cmd, which calls capture_live.mjs.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "TREE",
+      "what": "The Cloudflare readout deadline is stated three ways. The page says ~8 PM CT Monday (accurate by arithmetic), the owner's readout page and PROGRESS say 7 PM CT Monday, and D-057 and P2.2 O3 say 'Tue Oct 6'. That is a weekday name, so the page's UTC-date reconciliation (which covers ROADMAP only) does not apply to it.",
+      "where": "HANDOFF.md:42 \"expire about 2026-10-06 01:00Z (Mon Oct 5, ~8 PM CT\" vs artifact Kuw3yQ4xupbY94jWi4hviV \"Best by Mon Oct 5, 7 PM CT\" and PROGRESS.md:84 \"(by ~Mon 7 PM CT\" vs docs/DECISIONS.md:67 (D-057) \"so by ~Tue Oct 6\" and docs/design/P2.2.md:929 \"by Tue Oct 6, logs keep ~3 days\"",
+      "evidence": "First probe cron 2026-10-03 01:01Z (ROADMAP:55) plus 72 h = 2026-10-06 01:01Z = Mon 20:01 CDT. The artifact keeps a 1-h margin. Benign if the resumer quotes the earlier time.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Mixed date conventions, unfixed since r4. The probe-close tick and rows carry the UTC date 2026-10-04, while the page and the exit-status header say 2026-10-03 local. A reader today sees work marked done 'tomorrow'.",
+      "where": "docs/ROADMAP.md:63 \"(Done 2026-10-04: ced-probe stopped\" and :100 \"(5) MET (2026-10-04)\"; docs/DECISIONS.md:104-105 D-094/D-095 \"2026-10-04\" vs HANDOFF.md:3 \"AS-OF 2026-10-03\" and docs/ROADMAP.md:96 \"Exit status (2026-10-03)\"",
+      "evidence": "git log: ed43732 committed 2026-10-03 19:33:27 -0500; `date` now Sat Oct 3 20:05 CDT.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 4 says only to record ledger_report's PASS/FAIL lines. Exit (3) can be met on any >= 2 business days, but the page gives no route if Mon or Tue FAILs (for example a day with no White House post): keep polling and rerun --days with later business days. It is implied by step 5 and 'record what is still waiting' but not stated.",
+      "where": "HANDOFF.md:55-56 \"record its PASS/FAIL lines, n and medians in ROADMAP's Phase 1 exit status\" vs docs/ROADMAP.md:91-93 \"(3) On ≥ 2 business days the ledger shows ≥ 5 Public Inspection documents and ≥ 1 White House item\"",
+      "evidence": "scripts/ledger_report.mjs exit 1 on any failing day. Live /api/v1/status shows wh.feeds items_24h 1, so a quiet WH day is plausible.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Step 3 says to read the capture log once it ends with an 'exit' line but does not say which code means success. capture_live exits 10 when the window closed and the final snapshots were recorded, and 0 when a chunk is done and the window is still open (for a one-time task, an early stop). '==== exit 10' could be misread as a failure.",
+      "where": "HANDOFF.md:52-53 \"read `scratch/capture_task.log` (only once it ends with an \\\"exit\\\" line)\" vs scripts/capture_live.mjs:11 \"Exit: 0 = chunk done, window still open (run again) · 10 = window closed, final snapshots recorded (stop) · 1 = error\"",
+      "evidence": "scripts/capture_task.cmd echoes \"==== exit %ERRORLEVEL%\". The task runs with --max-run-s 7200 over a 1h45m window, so success should be exit 10.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The r4 fix commit rewrote the existing PROGRESS #7 text in place instead of appending a correction, against PROGRESS's own rule and CLAUDE.md's append-only rule. It was the same session's entry from about 20 minutes earlier, so it is arguably allowed, but it sets a precedent.",
+      "where": "git show 542603b -- PROGRESS.md (\"-the owner did the\" / \"+the owner was to do the\") vs PROGRESS.md:3 \"Never rewrite an old entry; correct it with a new one\" and CLAUDE.md:76 \"`PROGRESS.md` is append-only\"",
+      "evidence": "542603b diff: PROGRESS.md 5 lines changed inside entry #7.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The P2.2 design says its agent rows start at 'D-090 onward today', but D-090..D-095 are now taken by owner rulings and probe rows. Its own 'next free at integration' clause covers this.",
+      "where": "docs/design/P2.2.md:882 \"ids = next free at integration, D-090 onward today\" vs docs/DECISIONS.md:100-105 (D-090..D-095 exist)",
+      "evidence": "grep of DECISIONS: the last row is D-095.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page calls the Monday capture task 'still running by itself'. It is armed but has never run.",
+      "where": "HANDOFF.md:20 \"Still running by itself: the one-time Windows task that records Monday's pro forma sessions\"",
+      "evidence": "Get-ScheduledTask: State Ready, LastTaskResult 267011 (has not run), NextRunTime 10/5/2026 2:45 PM; scratch/capture_task.log does not exist yet.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "PAGE",
+      "what": "The log-expiry deadline differs between carriers. HANDOFF says about 8 PM CT Monday. The readout page and PROGRESS say 7 PM CT Monday. P2.2.md §9 O3 and D-057 say 'Tue Oct 6', which reads the UTC date as a local date and is a day late. The page reconciles only ROADMAP's wording.",
+      "where": "HANDOFF.md:42 \"expire about 2026-10-06 01:00Z (Mon Oct 5, ~8 PM CT; ROADMAP's \\\"by 2026-10-06\\\" is that UTC date)\" vs artifact Kuw3yQ4xupbY94jWi4hviV \"their entries disappear around Mon Oct 5, 7 PM CT\" and PROGRESS.md:84 \"by ~Mon 7 PM CT\" vs docs/design/P2.2.md:929 \"O3 (add-on to the D-057 dashboard readout, by Tue Oct 6, logs keep ~3 days)\" and DECISIONS.md:67 (D-057) \"so by ~Tue Oct 6\"",
+      "evidence": "The first cron ran 2026-10-03 01:01Z (ROADMAP:55). Plus 3 days that is 2026-10-06 01:01Z, which is Mon 8:01 PM CDT. The page's time is right, the artifact is 1 h conservative, and P2.2.md and D-057 are a day late. Harmless today because the ask goes out two days early.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The page says what to record but not where. Only the CPU times have a clear home (a row amending D-095). 'The HubDO's as W10' and 'the Part C totals for G0' don't say whether that means a DECISIONS row, an edit to ROADMAP P1.5, or an edit to the P2.2.md G0 cell. I guessed one DECISIONS row, linked from ROADMAP P1.5 and P2.2 G0.",
+      "where": "HANDOFF.md:43-44 \"Record the CPU times as a row amending D-095 (ROADMAP P1.3), the HubDO's as W10 (ROADMAP P1.5), the Part C totals for G0 of `docs/design/P2.2.md` §4\"",
+      "evidence": "ROADMAP:80-81 \"Still to do: read the HubDO's cpuTime in Workers Observability after the deploy.\"; P2.2.md:519 G0 \"D-057 + O3 readings\"; CLAUDE.md:74 every fact in exactly one place.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The scope of the Google-key item this session is unclear. The page says the call design is still to do. It doesn't say whether this session also runs the retrospective videos.list call, where the design gets recorded, or whether running a Phase-3 research call before Phase 1 closes needs a directive-4 override (D-089's override covered paper-only work).",
+      "where": "HANDOFF.md:45-46 \"how its one retrospective `videos.list` call runs (Actions logs are public) is still to design\" vs DECISIONS.md:103 (D-093) \"Its first use is the one retrospective `videos.list` call on the 38 ids\"",
+      "evidence": "No ROADMAP task carries the call. P3.3 says to ask the owner first, and research §6 item 3 lists the ids.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "ROADMAP P3.5 says the research's owner decisions are in §1. They are in §6 'Open questions'; §1 is 'Answer'.",
+      "where": "docs/ROADMAP.md:156-157 \"the owner decisions it needs are in its §3, §4 and §1\" vs docs/research/leadership_press_conferences.md:202-206 \"## 6. Open questions ... **Owner decisions needed**\"",
+      "evidence": "grep of section headings: §1 Answer (line 27), §6 Open questions (line 202).",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page says 'screenshots 1-7 plus Part C', but the readout page numbers Part C's screenshots 8 and 9. The meaning matches; '1-9' would be exact.",
+      "where": "HANDOFF.md:40 \"screenshots 1-7 plus Part C\" vs artifact Part C \"Screenshot 8\" / \"Screenshot 9\"",
+      "evidence": "Artifact read of Kuw3yQ4xupbY94jWi4hviV.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Date conventions are mixed. Probe closure is dated 2026-10-04 (the UTC date) in ROADMAP and D-094/D-095, while the page AS-OF and the commit are 2026-10-03 local time.",
+      "where": "docs/ROADMAP.md:63 \"(Done 2026-10-04: ced-probe stopped\" and :100 \"(5) MET (2026-10-04)\" vs HANDOFF.md:3 \"AS-OF 2026-10-03\"",
+      "evidence": "git log: ed43732 dated 2026-10-03 19:33:27 -0500 (= 2026-10-04 00:33Z).",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Step 2 needs an ad-hoc paging script that doesn't exist, and the page doesn't say whether it goes in scratch/ or gets committed. Its note to leave out Public Inspection events is redundant, because PI events are typed fr.public_inspection, so an fr.published.* filter already drops them. Not today's action.",
+      "where": "HANDOFF.md:47-49 \"page `/api/v1/events` as `scripts/ledger_report.mjs` does ... (D-059; Public Inspection events carry that field too: leave them out)\"",
+      "evidence": "packages/adapters/src/sources/fr_api.ts:489 event_type: isPi ? 'fr.public_inspection' : `fr.published.${d.kind}`",
+      "lens": "executor"
+    }
+  ],
+  "would_ask": [
+    "[straight] Cloudflare readout (D-057 + P2.2 O3 / Part C): no DECISIONS row records it. Paste screenshots 1-9 now, do it before Mon Oct 5 ~7 PM CT, or skip (a row then records that the cross-check was not made)?",
+    "[straight] Google API key walkthrough (D-093, G-012): now, later this session, or not this session? G-012 is scoped 'one-time, next session', so a later session may need a new grant.",
+    "[straight] The one retrospective videos.list call on the 38 ids (D-093): is it in scope this session while Phase 1 is open, and how should it run, given the key is only a GitHub Actions secret, Actions logs are public, and gh workflow run gets 403? Options: a one-off push-triggered workflow that prints only public fields / the owner runs one command locally and pastes the output / defer to Phase 3.",
+    "[straight] (Optional FYI) The disabled D-028 cloud routine still exists, and only you can delete it. Do you want to?",
+    "[skeptic] Cloudflare readout (D-057 + P2.2 O3): can you do screenshots 1-7 and Part C (8-9) now or before Mon Oct 5 ~7 PM CT? Or should we skip it, so a row records that the cross-check was not made? Did you already paste any into last session's chat (none reached the repo)?",
+    "[skeptic] Google API key walkthrough (D-093/G-012): now, later this week, or defer?",
+    "[skeptic] How should the one retrospective videos.list call run, given that Actions logs are public on this public repo: a push-triggered workflow printing only aggregates, defer it to Phase 3, or another way?",
+    "[executor] Have you done the Cloudflare readout on the D-057 page (screenshots 1-9, Part C included)? Options: paste them now / later, before Mon Oct 5 ~7 PM CT when the logs expire / skip it (a row then records that the cross-check was not made).",
+    "[executor] Shall I walk you through creating the free Google API key now (D-093/G-012)? You create it and paste it into GitHub Secrets yourself, and it never goes through chat. Options: now / later this session / not this session.",
+    "[executor] The one retrospective videos.list call on the 38 public video ids would run in GitHub Actions, whose logs are public. The key is masked, but the results (public video metadata) would be visible. Options: a manual-trigger Action that commits the JSON to docs/research / keep the output out of the log (artifact only) / design it now and run it later.",
+    "[executor] Monday and Tuesday's data can't be read before then. After the readout and the key, should this session hand off and stop, as HANDOFF says, or is there other paper-only work you want done first? (optional)"
+  ],
+  "content_findings": [],
+  "notes": "C:/Users/j/claude/current-events-dashboard/docs/coldstart/r5/ (copied from C:/Users/j/claude/current-events-dashboard/scratch/coldstart/r5/ at record time)"
+}
