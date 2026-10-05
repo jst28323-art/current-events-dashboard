@@ -160,7 +160,10 @@ page in < 2 s over the WebSocket; during recess the status page says "in recess 
 - [ ] **P3.5 Research gap:** find sources for congressional leadership press conferences (F3; no source was researched).
   (2026-10-03, paper only by D-089: researched, `docs/research/leadership_press_conferences.md`: no keyless source says
   "live now"; build order, fixtures to record from Nov 9 and the owner decisions it needs are in its §3, §4 and §6.
-  Ticked when Phase 3 builds it.) (2026-10-05: every §6 owner decision answered: D-093, D-097, D-101..D-104.)
+  Ticked when Phase 3 builds it.) (2026-10-05: every §6 owner decision answered: D-093, D-097, D-101..D-104. The
+  retrospective `videos.list` call ran the same day: the office streams most likely became public only after they
+  ended (inferred; checked in session from Nov 9), so "live now" would need the id from a non-YouTube source while
+  live; conclusions in the research's §6, D-105.)
 - [ ] **P3.6 Latency harness:** pre-register the measurement in its own commit, then run it on Nov 9–10.
 
 **Exit:** measured `first_seen − occurred` per source (n ≥ 20 actions and votes per chamber) recorded in

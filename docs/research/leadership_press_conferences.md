@@ -225,6 +225,32 @@ Pre-register this as part of P3.6 in its own commit, before any session data is 
 - Q6. When does the next day's gallery schedule go up (observed bounds: House PG 19:21–21:41 ET, Senate RTV edit at 23:40 ET), and how often is the House PG block empty (F1, F2)?
 - Q7. Do WebSub pushes fire at the unlisted→public flip, and how fast (F4)?
 - Q8. Emmer's YouTube channel id is unknown, and democrats.house.gov (Aguilar) has no feed.
+
+**The retrospective `videos.list` call (2026-10-05, D-097, D-105).** Run 2026-10-05T16:08Z by the owner-triggered
+Action (run 37338433045): one call, 1 quota unit, HTTP 200, every one of the 39 requested ids returned. YouTube's API
+terms allow its data to be kept at most 30 days and forbid publishing it or any aggregate of it (D-105, D-106), so this
+report keeps only engineering conclusions in prose; the encrypted result and its decrypted copy live outside git and
+are deleted by 2026-11-04. Conclusions, from the API's own fields only (`snippet.publishedAt` against
+`liveStreamingDetails`):
+- **Q1, Q4: the office channels' streams most likely became public only after the broadcast ended (INFERRED).** For
+  every stream that is public now, `publishedAt` came after `actualEndTime`, sometimes within minutes and sometimes
+  overnight; the one stream still unlisted carries a `publishedAt` before its start (for an unlisted video the docs
+  define it as the upload time). The docs define `publishedAt` as "the time that the video was made public" for a
+  private video made public later, and say nothing about live broadcasts; read with that rule, the streams were not
+  public while live, which is also what the RSS observations above suggest. The direct check is a `videos.list` call
+  DURING a broadcast (F5, from Nov 9): `status.privacyStatus` and `liveBroadcastContent` while live.
+- **Design consequence for D-101, if that holds:** WebSub gives an after-the-fact "video posted" item only, and a
+  public listing (RSS, WebSub, `search.list eventType=live`) cannot say "live now" for these channels. "Live now"
+  then needs the video id while the broadcast runs, from a non-YouTube source (an office's `/live` page, a release
+  linking `youtube.com/live/<id>`, the gallery schedules of D-102), confirmed by `videos.list` (`liveBroadcastContent`,
+  `actualStartTime`). Q5 (does `/live` switch in time) becomes the question that decides F3's live signal.
+- **Embedding:** the Senate Republican Conference channel's videos are not embeddable (`status.embeddable` false); the
+  other channels' are. Phase 3 links out for that channel (trap 7 above confirmed).
+- **Advance notice:** Speaker Johnson's channel streams carry no `scheduledStartTime`, so the API gives no "upcoming"
+  state for them; the other broadcasts do.
+- **The two extra ids** (ITkB2c573fI, sALqzexDY6Y) have no broadcast metadata: uploads, not streams.
+- Still open: whether 7PjDTlOWJ3Q was a stakeout (its broadcast window does not settle it; the gallery and floor
+  records must), Q2, Q3, Q5-Q7.
 - Q9. Out of scope, noted: gop.gov embeds a Facebook feed plugin with a `data-cff-live` attribute (not examined). Reporters' Bluesky lists would need a curated DID list and an owner ruling on individual journalists.
 
 ---
