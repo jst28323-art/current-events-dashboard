@@ -5,6 +5,26 @@ entry; correct it with a new one. Rotate the oldest entries to `PROGRESS_ARCHIVE
 
 ---
 
+## #8 — 2026-10-05 — Cloudflare readout recorded (D-096); the first live FR midnight flip verified
+
+**Same session as #7, after its handoff (the owner's Monday morning):** the owner read the D-057 dashboard numbers into
+the chat. ced-probe CPU per execution p99/p999 129 ms: the 120 ms test loops really ran about that long on Cloudflare
+and completed, which cross-checks D-095 (the Free plan's 10 ms is not a hard cut-off at these levels). ced-api CPU per
+execution p50 2.63 ms, p99 26.63 ms, p999 59.31 ms; about 1,450 Worker invocations and about 5.5k HubDO requests a day,
+0 errors. Rows, GB-seconds and the HubDO's own CPU were not in the menus found (they fall to P2.2's /ops counters); the
+log search refused the quoted query, so the per-event screenshots were skipped. All in D-096 and the ROADMAP P1.5 note.
+
+**First live FR flip (HANDOFF #3 NEXT ACTION step 2), checked 2026-10-05 14:28Z:** paging the whole event history (the
+`allEvents` export of `scripts/ledger_report.mjs`), all 106 `fr.published.*` events dated 2026-10-05 are `published`
+(each now revision 2; e.g. 2026-20439 "Presidential determination published in the Federal Register on October 5, 2026").
+So the once-per-Eastern-day re-parse (D-059) worked live.
+
+**Push timing:** this docs-only push redeploys ced-api (byte-identical Worker) on a Phase 1 measurement day; it was sent
+at about 10:40 ET, between the 08:45 and 11:15 ET Public Inspection slots, and a redeploy changes no stored
+first_seen_at.
+
+---
+
 ## #7 — 2026-10-03 — FR "scheduled" fix live; P2.1 Congress adapters built fixture-only and merged; probe closed; White House delay measured
 
 **Asked for:** the canonical resume. Owner answers this session, each asked with a push notification: D-055 (FR documents

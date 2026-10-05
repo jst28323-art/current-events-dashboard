@@ -79,6 +79,8 @@ agendas. All four are covered by Phases 1–5 in simple-first order.
   W10 (workers/api review; not the apps/web review W10 in D-040), the HubDO's CPU on a re-ingest: trimmed 2026-10-03
   (D-050: copies identical to stored events skip validateEvent; the local measurements are in that row). Still to do:
   read the HubDO's cpuTime in Workers Observability after the deploy. Per-endpoint cadence, budget and staleness: D-049.)
+  (2026-10-05, D-096: the dashboard showed the Worker's CPU per execution, p50 2.63 ms, p999 59.31 ms, and the HubDO's
+  request count, but no HubDO CPU time; W10 stays unmeasured on Cloudflare and moves to the P2.2 design's /ops counters.)
 - [x] **P1.6 Web v0** on GitHub Pages (the Pages workflow builds `apps/web` instead of `site/`): a single-column,
   phone-first feed. Each row: time, origin chip, title, `official_text`, source link. A header with "last updated" and
   per-source health. Light and dark; polls the API every ~15 s; shows "live data unavailable" when the Worker is down.
