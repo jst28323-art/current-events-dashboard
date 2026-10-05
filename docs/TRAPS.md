@@ -345,6 +345,12 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
   Daily posts are midnight-scheduled shells, 40 recent posts went live on an earlier day than their session day, 29
   Periodical posts were back-filled up to 12 days later, and modified_gmt can be earlier than date_gmt on scheduled
   posts (165481 and 3 more).
+- **A gallery post can go public long after both of its timestamps** (2026-10-05, n=1; `fixtures/senate.pressgallery/
+  2026-10-05/`). Post 167295 ("Monday, October 5": "4:00 p.m. The Senate convened for a pro forma session") carries
+  date 00:03 and modified 16:04 ET, but the list at 21:30:01Z did not contain it (`X-WP-Total` 1,842) and the list at
+  21:33:25Z did (1,843): it went public at about 17:31 ET, 91 minutes after the convene. So the gallery, the Senate's
+  sitting sensor in P2.2 (design §3.3), can report a convene well after a short session ended; never read a post's
+  `date` or `modified` as the time it became visible, and expect "sitting" to be missed live on pro forma days.
 - **Titles are hand-typed and often wrong** (`fixtures/senate.pressgallery/2026-10-02/dailypress_posts.json`: 166515
   "Thursday, September 16" is Sep 17; `periodicalpress_posts_two_posts_one_day_and_wrong_year.json`;
   `dailypress_post_162959_overnight_two_day_title.json`, a two-day title). 21 Daily and 19 Periodical weekday/date

@@ -1,0 +1,23 @@
+{
+  "source_id": "house.floorcast",
+  "url": "https://liveproxy-azapp-prod-eastus2-003.azurewebsites.net/latest/floor",
+  "final_url": "https://liveproxy-azapp-prod-eastus2-003.azurewebsites.net/latest/floor",
+  "fetched_at": "2026-10-05T19:45:01.383Z",
+  "status": 200,
+  "elapsed_ms": 49,
+  "bytes": 4091,
+  "sha256": "f7df8fccb9b6f2dcd8dad10ce3e05161b80a8c236b36c2c7f4dba45fe9f8495a",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "content-encoding": "gzip",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Mon, 05 Oct 2026 19:44:59 GMT",
+    "etag": "W/\"ffb-5nBMi2ih/ufVxUZblBKGGXcQvmg\"",
+    "transfer-encoding": "chunked",
+    "vary": "Origin, Accept-Encoding",
+    "x-powered-by": "Express"
+  }
+}

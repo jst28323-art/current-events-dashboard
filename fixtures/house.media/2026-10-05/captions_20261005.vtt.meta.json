@@ -1,0 +1,30 @@
+{
+  "source_id": "house.media",
+  "url": "https://houseliveprod-f9h4cpb9dyb8gegg.a01.azurefd.net/east/2026-10-05T16-21-00/captions.vtt",
+  "final_url": "https://houseliveprod-f9h4cpb9dyb8gegg.a01.azurefd.net/east/2026-10-05T16-21-00/captions.vtt",
+  "fetched_at": "2026-10-05T21:30:00.832Z",
+  "status": 200,
+  "elapsed_ms": 229,
+  "bytes": 5173,
+  "sha256": "04dabb37663b48e382c715e14a2e43a2d94bbec88994bef6c63c2f519a9f7eb5",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "accept-ranges": "bytes",
+    "access-control-allow-origin": "*",
+    "content-length": "5173",
+    "content-md5": "VcWzFva1ujBNSLEYzr0ZOw==",
+    "content-type": "application/octet-stream",
+    "date": "Mon, 05 Oct 2026 21:30:01 GMT",
+    "etag": "0x8DF23246B81A164",
+    "last-modified": "Mon, 05 Oct 2026 21:05:43 GMT",
+    "x-azure-ref": "20261005T213001Z-r18b65d4fd45rrqqhC1CHIvreg00000001u00000000006du",
+    "x-cache": "CONFIG_NOCACHE",
+    "x-ms-blob-type": "BlockBlob",
+    "x-ms-lease-status": "unlocked",
+    "x-ms-request-id": "2bf00bb3-301e-00d0-6810-555478000000",
+    "x-ms-version": "2009-09-19"
+  }
+}

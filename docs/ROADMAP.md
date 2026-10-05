@@ -137,10 +137,11 @@ median (D-099: n counts documents, but a slot's documents arrive in one poll). (
   (2026-10-03, paper only by D-089: designed and critiqued, `docs/design/P2.2.md`; built after Phase 1 closes, its
   owner questions in §9 and its push order G0..G10 in §4.) (2026-10-05, owner override D-098: built early on a local
   branch; nothing merged, pushed or live until Phase 1 closes and G0 is done.)
-- [ ] **P2.3 Opportunistic, Mon 2026-10-05 ~16:00–17:00 ET:** both chambers hold short pro forma sessions. If one is
+- [x] **P2.3 Opportunistic, Mon 2026-10-05 ~16:00–17:00 ET:** both chambers hold short pro forma sessions. If one is
   running, record live fixtures with `scripts/record_fixture.mjs`: Senate floor caption playlist + segments (they vanish
   after the day), HouseLive `/latest/*`, the Clerk floor XML. (Do this whenever that window falls, whatever phase is
-  current.)
+  current.) (Done 2026-10-05 by the one-time capture task: 146 recordings, 0 errors, all 90 Senate caption segments;
+  reviewed and committed, rows in `fixtures/README.md` "Set recorded 2026-10-05".)
 
 **Exit:** every vote/floor adapter passes golden + NEGATIVE fixture tests (the 200-with-error roll, the HTML "File Not
 Found", double-space Senate dates, naive Eastern times); a fixture event replayed through the Hub reaches an open phone

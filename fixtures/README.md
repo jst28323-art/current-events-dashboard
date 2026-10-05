@@ -63,11 +63,27 @@ re-fetched. Wayback copies (`*_wayback.*`) are byte-exact archived originals who
 | `members` | `senate_cvc_member_data.xml`, `house_clerk_MemberData.xml` | senate.gov's member list (100 senators, LIS id + bioguide id) and the Clerk's `MemberData.xml` (441 seats, with vacancy notes) | the Senate list is a cross-check for the LIS-to-bioguide map; the Clerk list is kept for the later vote inspector (vacancies), not parsed in P2.1 |
 | `members` | `house_roll_2026_090_departed_members_and_party_change.xml`, `senate_vote_119_2_00063_departed_members_S293_S419.xml`, `senate_vote_119_2_00193_vacancy_99_members.xml` | vote XML that tests the member join | House roll 90 (17-Mar-2026): 4 members no longer in the current list, and K000401 printed `R`; Senate 00063 (Mar 23 2026): departed senators S293 and S419; Senate 00193: 99 member rows (a vacancy) |
 
+## Set recorded 2026-10-05 (the pro forma sessions: the one-time capture task, D-033)
+
+Recorded by `scripts/capture_live.mjs` from the Windows scheduled task, 2026-10-05 19:45:00Z-21:30:01Z (log
+`scratch/capture_task.log`: 146 recordings, every one HTTP 200, "90 senate caption segments, 0 errors", exit 10 =
+window closed), plus one gallery list recorded by hand afterwards. Reviewed 2026-10-05 21:35Z: real documents, no
+proxy or error pages.
+
+| source_id | files | what it is | notes |
+|---|---|---|---|
+| `senate.captions` | `stv100526_master.m3u8`, `stv100526_index_1.m3u8`, `stv100526_text_1_<hhmmss>Z.m3u8` (snapshots), `stv100526_text_1_00001.vtt` .. `00090.vtt` | the Senate floor stream's caption playlists and EVERY WebVTT segment of the Mon Oct 5 pro forma (stream up 19:46:01Z; caption playlist gone (404) at 20:33:04Z) | 84 of 90 segments are a bare 57-byte header (`WEBVTT` + `X-TIMESTAMP-MAP`, no cue): the silent stretches; 6 carry cues, e.g. 00077 "COMMUNICATION TO THE SENATE. THE CLERK: WASHINGTON, D.C., OCTOBER 5, 2026." Cue text repeats as it grows (roll-up captions) |
+| `house.floorcast` | `latest_history_start.json`, `latest_{history,floor,transcript,votes}_<hhmmss>Z.json` (9 changes each), `broadcastevents_20261005.json`, `floor_2026-10-05.json`, `transcripts_2026-10-05.json` | HouseLive `/latest/*` each time `/latest/history` changed, then the day's broadcast events, floor and transcript at the end | `latest_votes` is `[]` throughout (no votes at a pro forma) |
+| `house.media` | `captions_20261005.vtt` | the day's House WebVTT captions named by `broadcastevents` | starts with the opening prayer ("THE PRAYER WILL BE OFFERED BY CHAPLAIN GIBBONS") |
+| `house.clerk.floor` | `20261005.xml` | the Clerk's floor XML for the legislative day of Oct 5 | pro forma 4:32-4:33 p.m. ET; `legislative_day_finished` Yes, next day convenes 20261006T16:00 |
+| `senate.schedule` | `floor_schedule_start.json`, `floor_schedule_end.json` | `floor_schedule.json` at the start and end of the window | at the end it already names the next convene, Oct 6 13:30 |
+| `senate.pressgallery` | `dailypress_posts_end.json` (per_page=10, 21:30:01Z), `posts_newest3_after_pro_forma.json` (the production per_page=3 + `_fields` URL, 21:33:25Z) | the Daily gallery's newest posts before and after the Oct 5 post went public | the first does NOT contain post 167295 (`X-WP-Total` 1,842), the second does (1,843): the post went public about 17:31 ET though its date is 00:03 and its modified 16:04 ET (docs/TRAPS.md). 167295 is the first of the three pro forma posts design P2.2 §6 E3 needs (Oct 6 and Oct 9 still to record) |
+
 ## Pending, and not recorded on purpose
 
-**Pending: Mon 2026-10-05.** The one-time Windows scheduled task (D-033) runs `scripts/capture_live.mjs` during the pro
-forma sessions, so `fixtures/<source_id>/2026-10-05/` directories may appear in the working tree, uncommitted. Review
-them before committing (statuses, sizes, no 403 proxy pages, the Senate caption segments) and add their rows here.
+**Pending:** the gallery posts of the Tue Oct 6 (1:30 p.m. ET) and Fri Oct 9 (1:30 p.m. ET) pro formas, for design
+P2.2 §6 E3: record the production newest-3 URL (as `posts_newest3_after_pro_forma.json` above) a while after each
+session, and check the post carries its convene line (posts go public late: docs/TRAPS.md).
 
 Not recorded on purpose: supremecourt.gov RSS (its robots.txt disallows `/rss/`; D-016: never use it),
 C-SPAN (its terms forbid bots and AI use), YouTube (detect-and-embed only), anything that needs an API key.

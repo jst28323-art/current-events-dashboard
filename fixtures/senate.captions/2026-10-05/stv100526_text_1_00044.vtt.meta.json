@@ -1,0 +1,37 @@
+{
+  "source_id": "senate.captions",
+  "url": "https://www-senate-gov-media-srs.akamaized.net/hls/live/2096634/stv/stv100526/master/text_1_00044.vtt",
+  "final_url": "https://www-senate-gov-media-srs.akamaized.net/hls/live/2096634/stv/stv100526/master/text_1_00044.vtt",
+  "fetched_at": "2026-10-05T19:54:02.959Z",
+  "status": 200,
+  "elapsed_ms": 92,
+  "bytes": 57,
+  "sha256": "3d20469c415db5b7a90924176cf759776cdc2ae7132d969f0847c0d3001d206c",
+  "request_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; CurrentEventsDashboard/0.1; +https://github.com/jst28323-art/current-events-dashboard)",
+    "Accept": "*/*"
+  },
+  "response_headers": {
+    "access-control-allow-credentials": "true",
+    "access-control-allow-headers": "origin,range,hdntl,hdnts,CMCD-Request,CMCD-Object,CMCD-Status,CMCD-Session",
+    "access-control-allow-methods": "GET,POST,OPTIONS",
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Server,range,hdntl,hdnts,Akamai-Mon-Iucid-Ing,Akamai-Mon-Iucid-Del,Akamai-Request-BC",
+    "access-control-max-age": "86400",
+    "akamai-mon-iucid-del": "1224520",
+    "akamai-mon-iucid-ing": "2096634",
+    "akamai-path-timestamp": "i=1791230033.190;xi=1791230033.195;xo=1791230036.869;s=1791230036.873;",
+    "cache-control": "no-cache, no-store",
+    "connection": "keep-alive",
+    "content-encoding": "gzip",
+    "content-length": "71",
+    "content-type": "text/vtt",
+    "date": "Mon, 05 Oct 2026 19:54:00 GMT",
+    "expires": "Mon, 05 Oct 2026 19:54:00 GMT",
+    "last-modified": "Mon, 05 Oct 2026 19:53:53 GMT",
+    "pragma": "no-cache",
+    "vary": "Accept-Encoding",
+    "x-akamai-live-origin-qos": "d=12000;t=1791230033.191",
+    "x-akamai-server": "Akamai-SMT"
+  }
+}

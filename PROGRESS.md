@@ -5,6 +5,49 @@ entry; correct it with a new one. Rotate the oldest entries to `PROGRESS_ARCHIVE
 
 ---
 
+## #9 — 2026-10-05 — Owner rulings D-097..D-104; the YouTube key and its one research call (D-105, D-106); P2.2 built early on a local branch (D-098)
+
+**Asked for:** the canonical resume (session 4). Two AskUserQuestion rounds, each with a push notification: D-097 (do
+the Google key walkthrough now), D-098 (build P2.2 now on a local branch: owner override of directive 4 for the build
+only), D-099 (exit 3 counts documents but reports filing-slot sightings, decided before Tuesday's data), D-100 (answer
+the Phase 3 questions now), D-101..D-104 (WebSub + `videos.list`, never RSS polling; both press galleries, labeled;
+PBS NewsHour added as a named third party; one shared request budget per host for multi-agent research).
+
+**YouTube key and call.** The walkthrough page <https://claude.ai/artifact/KzryEjf4wjwUgGRYneuCY6> was written from
+two research workflows (Google/YouTube/GitHub docs, 6 agents, 39/39, 45/46 and 42/43 claims confirmed by their
+checkers; YouTube API terms, researcher + verifier, 31/35 confirmed). The terms finding changed the design before
+anything ran: data fetched with an API key may be kept at most 30 days and must not be disclosed, so the Action
+encrypts its result to `.github/youtube-videos-list.pub.pem` and logs counts only (D-105; D-106 amends it: no
+aggregate of any kind). The research's id list held 37, not 38 (corrected; the call took 39: the two other ids the
+report cites). Verified: `tests/harness/youtube_videos_list.test.mjs` (a stub server echoes the key back; the key
+appears in no URL, file or log line; a planted plaintext write fails two tests). The owner created the key (restricted
+to the YouTube Data API v3, no billing), added the secret and ran the Action: run 37338433045, 2026-10-05T16:08Z,
+HTTP 200, 39 of 39 returned, the log shows only that count. The decrypted copy is in the gitignored
+`scratch/youtube/`; **delete `scratch/youtube/result_2026-10-05.json` and `scratch/youtube/run_37338433045/` by
+2026-11-04** (D-105). Conclusions, in prose only: the research's §6.
+
+**Exit 3 instruments.** `scripts/ledger_report.mjs` now prints each day's filing-slot sightings (D-099) and the White
+House lag with items over 1 h counted apart. Descriptive read at 15:59Z (not the exit record): Monday's 93 PI
+documents came from one 08:45 slot, all in one poll, 46.006 s; one White House item, which turned out to be
+backdated (feed `pubDate` Oct 2, page `dateModified` 21 min before our first sighting; docs/TRAPS.md).
+
+**Monday's recordings (P2.3, HANDOFF #3 step 3).** The one-time Windows task ran 19:45:00Z-21:30:01Z (owner signed
+in, D-056): 146 recordings, every one HTTP 200, all 90 Senate caption segments (6 with cues, e.g. the clerk reading
+"OCTOBER 5, 2026"; 84 bare headers for the silences), HouseLive changes, the House captions file, the Clerk XML and
+the gallery list; exit 10. Reviewed file by file and committed with their `fixtures/README.md` rows. One extra list
+recorded by hand at 21:33Z caught the Oct 5 gallery post going public about 17:31 ET, 91 minutes after the convene,
+though its timestamps say 00:03 and 16:04 ET (`X-WP-Total` 1,842 -> 1,843; docs/TRAPS.md): the Senate "sitting"
+sensor of P2.2 lags on pro forma days. The Windows task has no further run (its one-time trigger ended 17:00 CT,
+last result 0) and is set to delete itself 1 h after that (`DeleteExpiredTaskAfter` PT1H, G-011): it still existed
+at 21:45Z; confirm it is gone next session (`Get-ScheduledTask | ? TaskName -like 'CED*'`).
+
+**Process notes.** The first research workflow (6 agents, per-agent caps of 15 requests) was launched minutes after
+D-104 and predates its shared budget; every later run used one budget file per run. The aviary session asked twice
+for a quiet box (10:15-10:33 and 11:45-~12:20 CDT); heavy work went through a two-slot wrapper
+(`with_slot.mjs` in the session scratchpad), which the orchestrator held during the second window.
+
+---
+
 ## #8 — 2026-10-05 — Cloudflare readout recorded (D-096); the first live FR midnight flip verified
 
 **Same session as #7, after its handoff (the owner's Monday morning):** the owner read the D-057 dashboard numbers into
