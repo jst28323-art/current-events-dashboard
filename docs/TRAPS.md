@@ -93,6 +93,13 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   unexplained; the feed's `max-age=300` alone cannot cause it. Measure the lag distribution from our own ledger
   (first_seen_at minus source_published_at per White House item, n >= 20 on business days) before paying for
   unconditional origin fetches (~480 KB each).
+- **A White House post can carry a publication date days before it went public** (2026-10-05, n=1). "Presidential
+  Message on Down Syndrome Awareness Month" (`/briefings-statements/2026/10/...-6778/`): feed `pubDate` and the page's
+  `datePublished` 2026-10-02T18:30:00Z, `dateModified` 2026-10-05T15:05:23Z, first seen by us 2026-10-05T15:26:37Z.
+  It was not in the feed at our first poll (2026-10-03 00:53Z, which listed items back to Sep 24), so it went public
+  on Oct 5 under a backdated date. Its lag is 69 h from `pubDate` but about 21 min from `dateModified`. So a White
+  House lag median must list items over 1 h apart (`scripts/ledger_report.mjs` prints the count) and check each one's
+  page `dateModified` by hand before calling it a polling delay.
 - **YouTube's robots.txt disallows `/feeds/videos.xml` (the keyless channel RSS) for every user agent** (checked
   2026-10-03 23:16Z). The Phase 0 reports recommend that feed (`docs/research/executive_branch.md` §6.2,
   `docs/research/live_media_transcripts.md`, `docs/research/curation_priorart_future.md`); never poll it. Use WebSub push
@@ -103,10 +110,11 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   owner chose WebSub + `videos.list` and never RSS polling (D-101).
 - **YouTube's API terms limit what we keep and bind the public site** (Developer Policies and API Services Terms, read
   2026-10-05; policies page dated 2026-09-14). Data fetched with only an API key may be kept at most 30 calendar days
-  (III.E.4.d), must not be disclosed or redistributed (III.E.5.c, III.G.1.a), and derived metrics and cross-channel
-  aggregates are restricted (III.E.4.h, III.E.2.a). So nothing from a YouTube API response is committed, printed to an
-  Actions log or put in an unencrypted artifact (D-105). Before Phase 3 shows any YouTube API data publicly, the site
-  needs: a privacy policy that says it uses YouTube API Services, links the Google Privacy Policy and discloses the
+  (III.E.4.d), must be kept confidential (Terms 8) and not disclosed or redistributed (III.E.5.c, III.G.1.a), derived
+  metrics are restricted (III.E.4.h), and any aggregate is forbidden except one content owner's own, shown only to
+  that owner (III.E.2.a). So nothing from a YouTube API response, and no aggregate of it, is committed, printed to an
+  Actions log or put in an unencrypted artifact (D-105, D-106). Showing current API data to the site's users is allowed
+  (III.G); a downloadable dump is not. Before Phase 3 shows any YouTube API data publicly, the site needs: a privacy policy that says it uses YouTube API Services, links the Google Privacy Policy and discloses the
   player's third-party cookies (III.A.2); a link to the YouTube Terms of Service and an "agree to be bound" line in the
   site's own terms (III.A.1); YouTube branding that links to YouTube and no "YouTube" in the site's name (III.F.2, the
   Branding Guidelines); an unmodified embed with no overlays, at least 200x200 px, autoplay off, and no

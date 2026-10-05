@@ -61,11 +61,13 @@ export function slotSightings(piEvents) {
 }
 
 /** The White House lag (docs/TRAPS.md: first_seen_at - source_published_at per item; act on it only at n >= 20
- * business-day items). Items without a source_published_at are counted apart, never guessed. */
+ * business-day items). Items without a source_published_at are counted apart, never guessed. A post can be backdated
+ * (docs/TRAPS.md, 2026-10-05: 69 h from pubDate, ~21 min from its dateModified), so items over 1 h are counted apart too. */
 export function whLag(whEvents) {
   const lag = whEvents.filter((e) => e.times.source_published_at)
     .map((e) => (Date.parse(e.times.first_seen_at) - Date.parse(e.times.source_published_at)) / 1000)
-  return { n: lag.length, no_published_at: whEvents.length - lag.length, median_s: median(lag), max_s: lag.length ? Math.max(...lag) : null }
+  return { n: lag.length, no_published_at: whEvents.length - lag.length, median_s: median(lag), max_s: lag.length ? Math.max(...lag) : null,
+    over_1h: lag.filter((x) => x > 3600).length }
 }
 
 async function getJson(url) {
@@ -109,7 +111,8 @@ async function main() {
     console.log(`  ${d} filing slots seen: ${r.slots.length} (D-099: n counts documents; each slot is one timing)`)
     for (const s of r.slots) console.log(`    slot ${s.slot}: ${s.n} documents, median ${s.median_s ?? '-'} s, in ${s.polls} poll(s)`)
     console.log(`  ${d} White House lag (first_seen - source_published_at): n=${r.wh_lag.n} median=${r.wh_lag.median_s ?? '-'} s max=${r.wh_lag.max_s ?? '-'} s` +
-      (r.wh_lag.no_published_at ? `, ${r.wh_lag.no_published_at} item(s) without source_published_at` : ''))
+      (r.wh_lag.no_published_at ? `, ${r.wh_lag.no_published_at} item(s) without source_published_at` : '') +
+      (r.wh_lag.over_1h ? `, ${r.wh_lag.over_1h} item(s) over 1 h: check each page's dateModified (backdated posts, docs/TRAPS.md)` : ''))
   }
   process.exit(ok ? 0 : 1)
 }
