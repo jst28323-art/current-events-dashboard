@@ -98,7 +98,22 @@ strike it through with a dated note and keep it. Each source trap cites the rese
   `docs/research/live_media_transcripts.md`, `docs/research/curation_priorart_future.md`); never poll it. Use WebSub push
   and the Data API `videos.list` (a free key, ROADMAP P3.3) instead (`docs/research/leadership_press_conferences.md`).
   Research rule this taught: read a host's robots.txt BEFORE the first request to it, in every agent; the P3.5 research
-  sent 45 requests to the disallowed path before it noticed.
+  sent 45 requests to the disallowed path before it noticed. A per-agent cap is not a per-host cap: 8 agents with ~25
+  each sent www.youtube.com 60 requests in one evening, so a multi-agent run shares ONE budget per host (D-104). The
+  owner chose WebSub + `videos.list` and never RSS polling (D-101).
+- **YouTube's API terms limit what we keep and bind the public site** (Developer Policies and API Services Terms, read
+  2026-10-05; policies page dated 2026-09-14). Data fetched with only an API key may be kept at most 30 calendar days
+  (III.E.4.d), must not be disclosed or redistributed (III.E.5.c, III.G.1.a), and derived metrics and cross-channel
+  aggregates are restricted (III.E.4.h, III.E.2.a). So nothing from a YouTube API response is committed, printed to an
+  Actions log or put in an unencrypted artifact (D-105). Before Phase 3 shows any YouTube API data publicly, the site
+  needs: a privacy policy that says it uses YouTube API Services, links the Google Privacy Policy and discloses the
+  player's third-party cookies (III.A.2); a link to the YouTube Terms of Service and an "agree to be bound" line in the
+  site's own terms (III.A.1); YouTube branding that links to YouTube and no "YouTube" in the site's name (III.F.2, the
+  Branding Guidelines); an unmodified embed with no overlays, at least 200x200 px, autoplay off, and no
+  Referrer-Policy that suppresses the Referer (III.I.6, Required Minimum Functionality); a Made For Kids check for each
+  embedded video (III.E.4.j); the latest API state shown, older states only as dated history (III.E.4.f); and the key
+  kept server-side, never in the page's JavaScript (III.D.1.d). One API project per API client (III.D.1.c); a project
+  idle for 90 days may lose access (III.D.4).
 - **GovInfo's Federal Register RSS `pubDate` is a package (re)processing time, not when the issue went up** (2026-10-03,
   `https://www.govinfo.gov/rss/fr.xml`, 100 items). FR-2026-08-24 is stamped 2026-09-29 18:44 ET and FR-2026-09-18 is
   stamped 2026-09-23; only some packages carry a time on their own issue date (00:47-05:24 ET). Never read an FR issue's

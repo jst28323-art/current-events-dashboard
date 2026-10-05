@@ -4,6 +4,8 @@
 // occurred_at is the filing slot) with n and the median. /api/v1/status cannot answer this (a rolling 24 h window with
 // no n; cold-start round r3 backlog), so this pages through the WHOLE event history: one call without `since` to learn
 // the store's cursor epoch, then since=<epoch>.0 with has_more paging (D-037). Read-only; polite (sequential, UA).
+// Beside the criterion it prints each day's filing-slot sightings (D-099: a slot's documents arrive in one poll, so n
+// documents is not n timings) and the White House lag (first_seen_at - source_published_at, docs/TRAPS.md).
 //
 // Usage:  node scripts/ledger_report.mjs --days 2026-10-05,2026-10-06 [--api https://ced-api.usgovfeed.workers.dev]
 // Exit:   0 = every listed day meets the criterion · 1 = at least one does not (or the API failed) · 2 = bad usage
@@ -37,7 +39,33 @@ export function dayReport(events, day) {
     day, pi: pi.length, wh: wh.length, n: lat.length, median_s: med,
     p90_s: lat.length ? [...lat].sort((a, b) => a - b)[Math.min(lat.length - 1, Math.floor(lat.length * 0.9))] : null,
     max_s: lat.length ? Math.max(...lat) : null, negative: lat.filter((x) => x < 0).length, pass,
+    slots: slotSightings(pi), wh_lag: whLag(wh),
   }
+}
+
+/** D-099: a filing slot's documents arrive together, usually in one poll, so n documents is not n independent timings.
+ * One row per distinct occurred_at (the filing slot), oldest first: how many documents, their median latency and how
+ * many distinct first sightings (polls) they came in. Reported beside the criterion; the pass rule does not use it. */
+export function slotSightings(piEvents) {
+  const bySlot = new Map()
+  for (const e of piEvents) {
+    const k = e.times.occurred_at
+    if (!bySlot.has(k)) bySlot.set(k, [])
+    bySlot.get(k).push(e)
+  }
+  return [...bySlot.entries()].sort(([a], [b]) => Date.parse(a) - Date.parse(b)).map(([slot, es]) => ({
+    slot, n: es.length,
+    median_s: median(es.map((e) => (Date.parse(e.times.first_seen_at) - Date.parse(e.times.occurred_at)) / 1000)),
+    polls: new Set(es.map((e) => e.times.first_seen_at)).size,
+  }))
+}
+
+/** The White House lag (docs/TRAPS.md: first_seen_at - source_published_at per item; act on it only at n >= 20
+ * business-day items). Items without a source_published_at are counted apart, never guessed. */
+export function whLag(whEvents) {
+  const lag = whEvents.filter((e) => e.times.source_published_at)
+    .map((e) => (Date.parse(e.times.first_seen_at) - Date.parse(e.times.source_published_at)) / 1000)
+  return { n: lag.length, no_published_at: whEvents.length - lag.length, median_s: median(lag), max_s: lag.length ? Math.max(...lag) : null }
 }
 
 async function getJson(url) {
@@ -78,6 +106,10 @@ async function main() {
     const r = dayReport(events, d)
     ok &&= r.pass
     console.log(`${r.pass ? 'PASS' : 'FAIL'} ${d}: PI ${r.pi}, WH ${r.wh}, latency n=${r.n} median=${r.median_s ?? '-'} s p90=${r.p90_s ?? '-'} s max=${r.max_s ?? '-'} s, negative=${r.negative}`)
+    console.log(`  ${d} filing slots seen: ${r.slots.length} (D-099: n counts documents; each slot is one timing)`)
+    for (const s of r.slots) console.log(`    slot ${s.slot}: ${s.n} documents, median ${s.median_s ?? '-'} s, in ${s.polls} poll(s)`)
+    console.log(`  ${d} White House lag (first_seen - source_published_at): n=${r.wh_lag.n} median=${r.wh_lag.median_s ?? '-'} s max=${r.wh_lag.max_s ?? '-'} s` +
+      (r.wh_lag.no_published_at ? `, ${r.wh_lag.no_published_at} item(s) without source_published_at` : ''))
   }
   process.exit(ok ? 0 : 1)
 }

@@ -99,7 +99,8 @@ Exit status (2026-10-03): (1) MET (gate green locally and in CI; the four named 
 (4) MET (`apps/web/e2e/fail-closed.spec.ts`). (3) OPEN: needs two business days of live polling; the first are
 Mon 2026-10-05 and Tue 2026-10-06 (PI regular filings 08:45 ET). Measure it with `node scripts/ledger_report.mjs --days 2026-10-05,2026-10-06`
 (it pages the whole event history: `/api/v1/status` is a rolling 24 h with no n and cannot answer this; cold-start r3)
-and record its PASS/FAIL lines, n and the medians here. (5) MET (2026-10-04): the probe table is in `docs/SOURCES.md` "Cloudflare probe" (48 runs; D-094, D-095).
+and record its PASS/FAIL lines, n and the medians here, with the number of distinct filing-slot sightings behind each
+median (D-099: n counts documents, but a slot's documents arrive in one poll). (5) MET (2026-10-04): the probe table is in `docs/SOURCES.md` "Cloudflare probe" (48 runs; D-094, D-095).
 
 ## Phase 2 — Congress pipelines on fixtures + real-time plumbing
 
@@ -134,7 +135,8 @@ and record its PASS/FAIL lines, n and the medians here. (5) MET (2026-10-04): th
   `/api/v1/live` over a hibernating WebSocket (falling back to `?since=` polling); calendar-aware staleness (recess,
   weekends, FR publication days).
   (2026-10-03, paper only by D-089: designed and critiqued, `docs/design/P2.2.md`; built after Phase 1 closes, its
-  owner questions in §9 and its push order G0..G10 in §4.)
+  owner questions in §9 and its push order G0..G10 in §4.) (2026-10-05, owner override D-098: built early on a local
+  branch; nothing merged, pushed or live until Phase 1 closes and G0 is done.)
 - [ ] **P2.3 Opportunistic, Mon 2026-10-05 ~16:00–17:00 ET:** both chambers hold short pro forma sessions. If one is
   running, record live fixtures with `scripts/record_fixture.mjs`: Senate floor caption playlist + segments (they vanish
   after the day), HouseLive `/latest/*`, the Clerk floor XML. (Do this whenever that window falls, whatever phase is
@@ -152,12 +154,13 @@ page in < 2 s over the WebSocket; during recess the status page says "in recess 
   D-017).
 - [ ] **P3.3 White House + officials live:** the `wh.live` detector + YouTube `videos.list` (needs a free Google API key:
   ask the owner first) + the embedded official player; a hand-curated officials registry for the wider tracking list (D-020); agency live signals where they exist
-  (Fed calendar, DVIDS, State schedule).
+  (Fed calendar, DVIDS, State schedule). (2026-10-05: the key is being set up under D-097; YouTube's API terms put
+  obligations on the public site before it shows any API data: docs/TRAPS.md, D-105.)
 - [ ] **P3.4 Supreme Court** (D-016): slip-opinion and orders-list HTML pages only (never `/rss/`).
 - [ ] **P3.5 Research gap:** find sources for congressional leadership press conferences (F3; no source was researched).
   (2026-10-03, paper only by D-089: researched, `docs/research/leadership_press_conferences.md`: no keyless source says
   "live now"; build order, fixtures to record from Nov 9 and the owner decisions it needs are in its §3, §4 and §6.
-  Ticked when Phase 3 builds it.)
+  Ticked when Phase 3 builds it.) (2026-10-05: every §6 owner decision answered: D-093, D-097, D-101..D-104.)
 - [ ] **P3.6 Latency harness:** pre-register the measurement in its own commit, then run it on Nov 9–10.
 
 **Exit:** measured `first_seen − occurred` per source (n ≥ 20 actions and votes per chamber) recorded in

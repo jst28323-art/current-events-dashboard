@@ -30,6 +30,8 @@ __pycache__/
 .dev.vars
 *.pem
 *.key
+# the one PUBLIC key the YouTube research Action encrypts its result to (D-105; its private half never enters git)
+!.github/youtube-videos-list.pub.pem
 
 # OS / editor
 .DS_Store

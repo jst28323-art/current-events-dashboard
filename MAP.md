@@ -79,7 +79,8 @@ Rows marked (planned) are created by the phase that needs them (`docs/ROADMAP.md
 | Handoff shape lint | `scripts/handoff_lint.mjs` |
 | Dead-path check for living docs | `scripts/check_paths.mjs` |
 | Record a fixture | `scripts/record_fixture.mjs` |
-| Phase 1 exit criterion 3 from the live API (per business day: PI documents, White House items, PI latency n and median) | `scripts/ledger_report.mjs` |
+| Phase 1 exit criterion 3 from the live API (per business day: PI documents, White House items, PI latency n and median; filing-slot sightings, D-099; White House lag) | `scripts/ledger_report.mjs` |
+| The one YouTube `videos.list` research call (D-093, D-097, D-105): manual-only Action, key in a header, result encrypted (private key in `scratch/youtube/`, never committed) | `scripts/youtube_videos_list.mjs`, `.github/workflows/youtube-videos-list.yml`, `.github/youtube-videos-list.pub.pem` |
 | Record a live congressional session day as fixtures (D-033; `--smoke` checks reachability only) | `scripts/capture_live.mjs` |
 | The wrapper the one-time Windows scheduled task runs (D-033, G-011; log in `scratch/capture_task.log`) | `scripts/capture_task.cmd` |
 | Post-deploy check of the live API (TESTING.md layer 6) | `scripts/deployed_check.mjs` |

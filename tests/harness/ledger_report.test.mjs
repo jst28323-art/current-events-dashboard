@@ -38,6 +38,24 @@ test('failing days: too slow, too few, or no White House item', () => {
   assert.equal(dayReport(fast, '2026-10-05').pass, false) // no White House item
 })
 
+test('D-099: slot sightings group documents by filing slot and count the polls they came in; the pass rule ignores them', () => {
+  const s1 = '2026-10-05T12:45:00Z' // 08:45 EDT, all five seen in one poll
+  const s2 = '2026-10-05T15:15:00Z' // 11:15 EDT special filing, seen across two polls
+  const at = (slot, s) => new Date(Date.parse(slot) + s * 1000).toISOString()
+  const events = [0, 1, 2, 3, 4].map((i) => pi(`2026-2100${i}`, s1, at(s1, 46)))
+  events.push(pi('2026-21100', s2, at(s2, 30)), pi('2026-21101', s2, at(s2, 90)))
+  events.push(wh(1, '2026-10-05T16:00:00Z'))
+  const r = dayReport(events, '2026-10-05')
+  assert.deepEqual(r.slots, [{ slot: s1, n: 5, median_s: 46, polls: 1 }, { slot: s2, n: 2, median_s: 60, polls: 2 }])
+  assert.deepEqual([r.n, r.median_s, r.pass], [7, 46, true]) // n still counts documents (D-099)
+})
+
+test('whLag: first_seen - source_published_at per White House item; an item without source_published_at is counted apart', () => {
+  const w = (id, pub, seen) => ({ ...wh(id, seen), times: { occurred_at: seen, first_seen_at: seen, source_published_at: pub } })
+  const r = dayReport([w(1, '2026-10-05T15:00:00Z', '2026-10-05T15:01:00Z'), w(2, '2026-10-05T16:00:00Z', '2026-10-05T16:24:00Z'), wh(3, '2026-10-05T17:00:00Z')], '2026-10-05')
+  assert.deepEqual(r.wh_lag, { n: 2, no_published_at: 1, median_s: 750, max_s: 1440 })
+})
+
 test('allEvents pages through the whole history from <epoch>.0 and keeps the latest copy of each event', async () => {
   const pages = {
     'limit=1': { cursor: 'ab12.9', events: [], has_more: false },

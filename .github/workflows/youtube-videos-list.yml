@@ -1,0 +1,40 @@
+# The ONE retrospective YouTube Data API v3 videos.list call (D-093, D-097; grant G-012) on the 39 leadership
+# press-conference videos of docs/research/leadership_press_conferences.md. It runs ONLY when the owner clicks
+# "Run workflow" on the Actions tab (workflow_dispatch): never on a push, a schedule or a pull request.
+# The key is the repository secret YOUTUBE_API_KEY, handed to the script in its environment (never on a command line);
+# the script sends it only in the X-Goog-Api-Key header and redacts any echo of it (scripts/youtube_videos_list.mjs).
+# This repo is public and so are its Actions logs and artifacts: nothing here prints the key, a request header or the
+# environment, and the result leaves the runner only ENCRYPTED to .github/youtube-videos-list.pub.pem (its private key
+# lives on the home PC, outside git). YouTube's API terms allow API Data to be kept at most 30 days and forbid
+# disclosing or redistributing it (D-105), so the log shows counts only and nothing from the response is committed.
+# If the key ever shows in a log: delete that run's logs, then rotate the key in Google Cloud (Credentials > the key >
+# Rotate key > Delete the previous key) and paste the new one into the secret.
+name: youtube-videos-list
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: youtube-videos-list
+  cancel-in-progress: false
+jobs:
+  videos-list:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: One videos.list call (1 quota unit)
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: node scripts/youtube_videos_list.mjs --encrypt-to .github/youtube-videos-list.pub.pem --out youtube_result.enc.json
+      - name: Keep the encrypted result for the session to download (3 days)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: youtube-videos-list
+          path: youtube_result.enc.json
+          if-no-files-found: warn
+          retention-days: 3
