@@ -1,0 +1,305 @@
+{
+  "round": 6,
+  "page_n": 4,
+  "sha": "4a6eb33e3c3a",
+  "date": "2026-10-05",
+  "n_resumers": 3,
+  "routing_verdict": "FAIL",
+  "content_verdict": "FAIL",
+  "routing_axes": {
+    "first_actions_agree": true,
+    "compare_note": "All three agents give the same first action: one batched multiselect AskUserQuestion together with a PushNotification, which is NEXT ACTION step 1 in HANDOFF.md. All three give the same reason: it is Monday night ET, and the Tue 2026-10-06 gallery post (~15:30 ET) and the exit-3 ledger report (after 18:00 ET) have no data yet. Their follow-on data commands differ a little. Agent 1 points to the URL in the meta.json file and leaves out --name. Agents 2 and 3 write the URL out in full, add --name, and put the flags in a different order. But all three name the same next step, record_fixture.mjs senate.pressgallery for 2026-10-06, and it is not the first action anyway.",
+    "heads_ok": true,
+    "could_execute_all": true,
+    "page_blockers": 5,
+    "resumer_fails": 0
+  },
+  "first_actions": [
+    {
+      "lens": "straight",
+      "cmd": "AskUserQuestion (multiSelect) + PushNotification  [HANDOFF.md NEXT ACTION step 1; the first data step after it is: node scripts/record_fixture.mjs senate.pressgallery \"<newest-3 URL from fixtures/senate.pressgallery/2026-10-05/posts_newest3_after_pro_forma.json.meta.json>\" --date 2026-10-06, not before Tue 2026-10-06 ~15:30 ET]",
+      "what": "Ask the owner one batched AskUserQuestion (multiselect, with a PushNotification) as NEXT ACTION step 1 says. It comes first because it is now Mon 22:00 ET: step 2 (Oct 6 gallery post, from ~15:30 ET Tue) and step 3 (ledger_report, after 18:00 ET Tue) have no data yet, so nothing else on the page can be done before then.",
+      "head": "4a6eb33",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "skeptic",
+      "cmd": "AskUserQuestion (multiselect) + PushNotification, per HANDOFF.md:38-39 step 1; first data command at/after Tue 2026-10-06 15:30 ET: node scripts/record_fixture.mjs senate.pressgallery \"https://www.dailypress.senate.gov/wp-json/wp/v2/posts?per_page=3&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories\" --date 2026-10-06 --name posts_newest3_after_pro_forma.json",
+      "what": "First, one batched AskUserQuestion with a PushNotification (NEXT ACTION step 1). It comes first because it is Monday about 22:10 ET: the Tuesday gallery post (from about 15:30 ET) and the exit-3 ledger report (after 18:00 ET) have no data yet, so everything else waits on Tuesday and on the owner's choice of how to spend the gap.",
+      "head": "4a6eb33",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "executor",
+      "cmd": "AskUserQuestion (one multiselect call) + PushNotification — HANDOFF.md:38 step 1 \"Ask first\"; then Tue 2026-10-06 >=15:30 ET: node scripts/record_fixture.mjs senate.pressgallery \"https://www.dailypress.senate.gov/wp-json/wp/v2/posts?per_page=3&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories\" --name posts_newest3_after_pro_forma.json --date 2026-10-06",
+      "what": "Send one batched multiselect AskUserQuestion with a PushNotification (NEXT ACTION step 1). It comes first because the page lists it first, and it is the only step whose data exists at Mon 21:57 ET: the gallery post is due Tue ~15:30 ET and exit 3 after Tue 18:00 ET. After asking, I would write down what is still waiting and stop.",
+      "head": "4a6eb33",
+      "verdict": "PASS-WITH-NOTES"
+    }
+  ],
+  "blocking": [
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "PAGE",
+      "what": "The page calls D-097..D-106 owner rulings that were each asked with a push notification. D-105 and D-106 are agent rows that nobody asked the owner about.",
+      "where": "HANDOFF.md:11 \"**Owner rulings D-097..D-106**, each asked with a push notification\" vs docs/DECISIONS.md:115 \"| D-105 | 2026-10-05 | agent |\" and docs/DECISIONS.md:116 \"| D-106 | 2026-10-05 | agent |\"",
+      "evidence": "PROGRESS.md:12-16 correctly lists the owner rounds as D-097..D-104. D-105/D-106 are the agent's YouTube-terms storage rows.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "PAGE",
+      "what": "The page says every P2.2 go-live step on p2.2-final is a 'gated range', but the full gate ran only at G1 and at the top; the other boundaries got typecheck, vitest, harness, check_paths and dry-run only. A caveat was dropped (PROGRESS states it correctly).",
+      "where": "HANDOFF.md:19 \"every go-live step G0..G9 a gated range\" vs p2.2-final:docs/design/P2.2_integration.md §8 \"Checks at every boundary. Commands as in section 2\" / \"Full gate at G1 `af5cfd9`: PASS\" / \"Full gate at the top\"; PROGRESS.md:52-53 \"the full gate PASS at the G1 boundary and at the top\"",
+      "evidence": "The p22-int worktree's .gate/stamps holds only 04e5a17, 057fce1, 2324041, 62b07ec and af5cfd9. There is no stamp at the G2..G9 last shas (d02a915, 83e4c98, 982707e, dc8fb6c, 7d103bc, cabebaf, 3062125).",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "PAGE",
+      "what": "Step 4 credits its four pre-push items to 'the integration notes' pending section'. That section has no rebase item and says the kit is not built. The rebase/re-gate and kit re-creation items actually come from PROGRESS #9 and the kit notes.",
+      "where": "HANDOFF.md:50-51 \"do what the integration notes' pending section lists for that step (rebase onto main and re-gate, the store export, the living-doc rows, the revert kit re-made on the pushed G1)\" vs PROGRESS.md:58-60 \"before G1 the branch must be rebased onto the main of that day and re-gated ... the revert kit re-created on the pushed G1\"",
+      "evidence": "grep -i rebase finds 0 hits in git show p2.2-final:docs/design/P2.2_integration.md. Its §6.2 lists only the store export, the G9 blocker and 'revert kit not built'.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "PAGE",
+      "what": "The page calls D-097..D-106 owner rulings, each asked with a push notification. D-105 and D-106 are agent rows that were never asked.",
+      "where": "HANDOFF.md:11 \"Owner rulings D-097..D-106, each asked with a push notification\" vs DECISIONS.md:115 \"| D-105 | 2026-10-05 | agent |\" and :116 \"| D-106 | 2026-10-05 | agent |\"",
+      "evidence": "PROGRESS.md:8 gets it right: \"Owner rulings D-097..D-104; ... (D-105, D-106)\".",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "CONTRADICTION",
+      "scope": "PAGE",
+      "what": "The page says everything about the P2.2 branches is in the p2.2-final integration notes. That file still says the revert kit is not built. The kit was built later, and its own pending list and proposed rows D-NEW-kit-1..4 are only in p2.2-revert-kit:docs/design/P2.2_revert_kit.md, which no file on main names. This matters at step 4 (the G1 push), not for the first action.",
+      "where": "HANDOFF.md:19-21 \"the local branch `p2.2-revert-kit`. Everything about them, including what each push still needs: `git show p2.2-final:docs/design/P2.2_integration.md`\" vs p2.2-final:docs/design/P2.2_integration.md:512-514 \"G1 push blocked by design §7 Stage 3b: the revert kit ... is not built.\"",
+      "evidence": "git log: p2.2-final tip 2026-10-05 19:29 CDT, p2.2-revert-kit f99daf9 at 20:34 CDT (not a descendant). PROGRESS.md:55 says \"the revert kit's gate PASS\". The kit notes §3 item 5 say its notes and rows go into the integration notes at the G1 push. Grepping the main tree for P2.2_revert_kit finds nothing.",
+      "lens": "executor"
+    }
+  ],
+  "blocking_offpage": [],
+  "backlog": [
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The page sends readers to the integration notes for 'everything ... including what each push still needs'. Their pending section still says the revert kit is not built and blocks G1, but the kit was built later on p2.2-revert-kit. The kit's own pending step (re-create 30f6832 on the pushed G1) is only in P2.2_revert_kit.md, which the page does not point to. A resumer who trusts section 6.2 could rebuild a kit that already exists.",
+      "where": "p2.2-final:docs/design/P2.2_integration.md:512 \"**G1 push blocked by design §7 Stage 3b: the revert kit** (`p2.2-revert-kit`: ...) is not built\" vs HANDOFF.md:20-21 \"the local branch `p2.2-revert-kit`. Everything about them, including what each push still needs: `git show p2.2-final:docs/design/P2.2_integration.md`\"",
+      "evidence": "git log main..p2.2-revert-kit shows f99daf9 'build notes (docs/design/P2.2_revert_kit.md)', 0e9a2be (v2 migration + stub + copy-back, tested), 30f6832. The kit notes are dated ~20:35 CDT, after the integration notes, and their section 3 holds the re-base step.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "'Every go-live step G0..G9 a gated range' overstates the checks: the full gate ran only at G1 and at the top, and the other boundaries had partial checks. The docs also disagree on whether G0 is a push: the design says nothing is pushed, but the integration notes give G0 a 2-commit push range, and the page says to ask 'G0 first'.",
+      "where": "HANDOFF.md:19 \"every go-live step G0..G9 a gated range\" vs p2.2-final:docs/design/P2.2_integration.md section 8 \"Full gate at G1 `af5cfd9`: PASS\" (other rows: typecheck/vitest/harness/check_paths/dry-run only); docs/design/P2.2.md:519 \"G0 | nothing pushed\" vs integration section 8 \"G0 | `6195c59` | `5d85b16` | 2\"",
+      "evidence": "Gate stamps in .claude/worktrees/p22-int/.gate/stamps exist only for af5cfd9 (G1), 057fce1, 04e5a17, 2324041 and 62b07ec (top), not for G2..G9 boundary shas. This does not matter until Phase 1 closes, and the pre-push hook needs a stamp at whatever is pushed.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "'Record what is still waiting' does not say where to record it (PROGRESS via the handoff skill? ROADMAP's exit-status line?).",
+      "where": "HANDOFF.md:37 \"do the ones whose data exists, record what is still waiting, and stop there\"",
+      "evidence": "No file is named. docs/ROADMAP.md:98-103 already marks exit 3 OPEN, so the PROGRESS entry from the handoff skill is the likely home.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Step 4 puts 'rebase onto main and re-gate' among the items the integration notes' pending section lists. Section 6.2 does not list a rebase; PROGRESS #9 and the revert-kit notes do. The page states the step itself, so nothing is lost.",
+      "where": "HANDOFF.md:49-51 \"do what the integration notes' pending section lists for that step (rebase onto main and re-gate, ...)\" vs p2.2-final:docs/design/P2.2_integration.md:506-531 (section 6.2: no rebase item)",
+      "evidence": "grep -i rebase on the integration notes finds nothing in section 6.2. PROGRESS.md:61-62 has 'before G1 the branch must be rebased onto the main of that day and re-gated at the G1 boundary'.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The integration notes' header and section 8 carry stale details: the p22-int worktree now has p2.2-final checked out, not p2.2-int, and main has moved past 781bed7 to 4a6eb33. It is a dated record that says to push from p2.2-final, so this is harmless.",
+      "where": "p2.2-final:docs/design/P2.2_integration.md:8 \"Branch `p2.2-int` (worktree `.claude/worktrees/p22-int`)\"; section 8 \"Since this stack was cut, main has moved to `781bed7`\"",
+      "evidence": "git worktree list: '.claude/worktrees/p22-int 62b07ec [p2.2-final]'; ship_state head 4a6eb33.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "PAGE",
+      "what": "The page says the integration notes hold 'everything' each push needs. Those notes still say the revert kit is not built and that this blocks G1. The kit exists on p2.2-revert-kit with its own notes, and their pending list (the re-base recipe, a re-test at G8 as well as G9, the D-NEW-kit-4 re-forward gap) is named nowhere on the page, in PROGRESS or in the integration notes.",
+      "where": "HANDOFF.md:20-21 \"Everything about them, including what each push still needs: `git show p2.2-final:docs/design/P2.2_integration.md`\" vs integration notes §6.2 (line 512) \"G1 push blocked by design §7 Stage 3b: the revert kit ... is not built\"; p2.2-revert-kit:docs/design/P2.2_revert_kit.md §3 \"Re-test at every G step that changes stored content, not only G1 and G9\"",
+      "evidence": "git log main..p2.2-revert-kit shows f99daf9, 0e9a2be and 30f6832. grep 'revert_kit' finds 0 hits in HANDOFF.md, PROGRESS.md and the integration notes.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The integration notes' pending list, where step 4 sends the resumer, still lists owner questions O1, O3 and O4 as open. DECISIONS answered all three, and D-096 says not to ask again. Re-asking them would waste the owner's time; HANDOFF step 1's 'do not re-ask' mitigates this.",
+      "where": "integration notes §6.2 \"Owner questions O1 (phone E2 check), O3 (dashboard numbers), O4 (the recess wording) from design §9\" vs DECISIONS.md:100 D-090 \"Yes, both (Rec.)\", :102 D-092 \"House 'through Nov 8' (Rec.)\", :106 D-096 \"The D-057 readout is complete: do not ask again.\"",
+      "evidence": "P2.2.md:916-944 maps O1/O3/O4 to those questions. P2.2.md:519 G0 still lists 'D-057 + O3 readings', which D-096 already covers.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The branch record gives the old time for recording the Oct 6 gallery post. The page has the correct later time, per TRAPS.",
+      "where": "integration notes §6.3 prep \"Tue Oct 6 (1:30 p.m. ET): after about 14:30 ET\" vs HANDOFF.md:40 \"from Tue 2026-10-06 ~15:30 ET\" and TRAPS.md:348-352 (the Oct 5 post went public 91 min after the convene)",
+      "evidence": "fixtures/README.md:80 and TRAPS.md:348-352 record the 91-minute lag.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "The page says to check each White House item over 1 h against its page's dateModified, but ledger_report prints only how many there are, not which ones. The resumer has to find them by hand in /api/v1/events.",
+      "where": "HANDOFF.md:45-46 \"check every item over 1 h against its page's `dateModified`\" vs scripts/ledger_report.mjs:116 printing only \"${over_1h} item(s) over 1 h\"",
+      "evidence": "Monday's run printed '1 item(s) over 1 h' and max=248197.459 s, with no item identifier.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page's step range G0..G9 differs from D-098 and the design, which run to G10 (rollover readiness by Dec 15). The page also omits the design's rule that G5 and G6 must be live before Sun Nov 8.",
+      "where": "HANDOFF.md:19 \"every go-live step G0..G9\" vs DECISIONS D-098 \"go-live then follows the gated steps G1..G10 of §4.1\" and P2.2.md:524-529",
+      "evidence": "P2.2.md:524-525 says 'Must be live before Sun Nov 8' for G5 and G6. HANDOFF.md:49 says only 'Congress returns Nov 9'.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The 2026-11-04 YouTube-data deletion deadline appears only in the LATEST block, which the next page replacement archives, and in PROGRESS #9. No ROADMAP item or dated reminder carries it.",
+      "where": "HANDOFF.md:15-16 \"must be deleted by 2026-11-04\"; absent from docs/ROADMAP.md",
+      "evidence": "grep finds no 2026-11-04 in ROADMAP.md. scratch/youtube still holds result_2026-10-05.json and run_37338433045/.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page lists D-104 among the Phase 3 press-conference choices, but D-104 is the shared request-budget rule for multi-agent research.",
+      "where": "HANDOFF.md:13 \"the Phase 3 press-conference choices (D-101..D-104)\" vs DECISIONS.md:114 D-104 \"Research politeness ... share one request budget per website\"",
+      "evidence": "DECISIONS.md:114",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 2 gives no literal command for recording the production newest-3 list. I had to put the record_fixture call together myself: usage from the script header, URL from the adapter constant and the 2026-10-05 meta.json, --name from the README's 'as ... above', and an explicit --date. The step also never says how to tell the post is public yet, what to do if it is not public at ~15:30 ET (the 91-min lag is n=1) or has no convene line, or where 'its row' goes.",
+      "where": "HANDOFF.md:40-42 \"record the production newest-3 list into a new `2026-10-06` folder ... check that the post carries its convene line, add its row, commit\"; fixtures/README.md:84-86",
+      "evidence": "scripts/record_fixture.mjs:4 usage; packages/adapters/src/sources/senate_pressgallery.ts:36 URL; fixtures/senate.pressgallery/2026-10-05/posts_newest3_after_pro_forma.json.meta.json (X-WP-Total 1843); TRAPS.md:348-353 (n=1)",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "'Keep collecting' for the White House lag can be read as keeping Phase 1 open until n >= 20, but exit 3 has no lag clause. Two days giving fewer than 20 is likely: Monday alone gave WH n=7.",
+      "where": "HANDOFF.md:46-47 \"TRAPS wants n >= 20 business-day items before acting on the lag, so if two days give fewer, record n and keep collecting\" vs ROADMAP.md:93-95 exit (3) (PI counts, >=1 WH item, PI median <=90 s; nothing about lag n) and HANDOFF.md:48 \"When every Phase 1 exit criterion is met\"",
+      "evidence": "node scripts/ledger_report.mjs --days 2026-10-05 (descriptive): PASS, WH 7, lag n=7",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "There is no branch for Tuesday failing exit 3 (PI median over 90 s or too few documents). The page does not say which day comes next or how the --days list changes.",
+      "where": "HANDOFF.md:43-47 (step 3) and HANDOFF.md:48 (step 4 starts only when every criterion is met)",
+      "evidence": "ROADMAP.md:93 \"On ≥ 2 business days\" implies any two, so a guess is Wed Oct 7 with --days 2026-10-05,2026-10-07, but the page does not say so.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The integration notes list owner questions O1, O3 and O4 as still open, but DECISIONS settles all three. A resumer working from those notes at go-live could re-ask O3 or O4. HANDOFF's 'do not re-ask' rule prevents that.",
+      "where": "p2.2-final:docs/design/P2.2_integration.md:525 \"Owner questions O1 (phone E2 check), O3 (dashboard numbers), O4 (the recess wording) from design §9.\" vs docs/DECISIONS.md D-090 (\"Yes, both\"), D-092 (\"House 'through Nov 8'\"), D-096 (\"The D-057 readout is complete: do not ask again\")",
+      "evidence": "DECISIONS.md:100,102,106",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "'Tick it in ROADMAP' has no checkbox to tick: every Phase 1 box is already [x], and the exit criteria are a prose 'Exit status' paragraph. It is also unclear whether G0, where nothing is pushed, needs its own owner go, since D-098 lists per-step rows only for G1..G10.",
+      "where": "HANDOFF.md:48-49 \"tick it in ROADMAP and ask the owner whether P2.2 goes live, one step at a time (... G0 first ...)\" vs ROADMAP.md:98-103 and DECISIONS D-098 \"until ... G0 (§4.1) is done; go-live then follows the gated steps G1..G10 of §4.1, each with its own row\"",
+      "evidence": "docs/design/P2.2.md:519 G0 = \"nothing pushed\"",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page asks for a scheduled-task check but says neither where to record the result nor what to do if the task still exists. Removing a task on the owner's PC would be ask-first. The check returned 0 tasks.",
+      "where": "HANDOFF.md:17-18 \"check that `Get-ScheduledTask | ? TaskName -like 'CED*'` (PowerShell) returns nothing\"",
+      "evidence": "Ran it read-only: count 0",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "The Exit status heading is dated 2026-10-03 but holds a 2026-10-04 entry. The integration notes' claim about where main is has gone stale; it is a dated record, and the page requires a rebase anyway.",
+      "where": "ROADMAP.md:98 \"Exit status (2026-10-03):\" vs ROADMAP.md:103 \"(5) MET (2026-10-04)\"; p2.2-final:docs/design/P2.2_integration.md:666 \"main has moved to `781bed7`\" vs ship_state head 4a6eb33",
+      "evidence": "git log --oneline -5 on main",
+      "lens": "executor"
+    }
+  ],
+  "would_ask": [
+    "[straight] Timing: Phase 1's last check needs Tuesday's data (Senate gallery post ~3:30 pm ET, latency report after 6 pm ET) and it is Monday 10 pm ET now. Options: end now and resume Tue after 6 pm ET so one session does both (Rec.) / keep this session open and do each at its time / resume Wednesday morning.",
+    "[straight] While waiting: D-098 lets P2.2 be built on a local branch, but the page says 'stop there'. Options: do nothing until Phase 1 closes / work on P2.2's open items on the local branch only (G9 fastpath sameAsStored exception, T-LEASE and T-PARSE-DIES against the real Hub, rebase p2.2-final onto today's main and re-gate the G1 boundary), with nothing pushed either way.",
+    "[straight] Go-live question timing (optional): ask G0/G1 only after Tuesday's report passes, one step at a time as the page says (Rec.) / ask now, conditional on a PASS, so G1 can land Wed Oct 7 as P2.2.md section 4.1 'Calendar fit' plans.",
+    "[straight] Housekeeping (low priority): about 20 local builder branches (p2.1-*, p2.2-* builders, worktree-wf_*) and 11 worktrees are left from the builds. Options: keep all until P2.2 is merged (Rec.) / prune the P2.1 ones now (local only; never a remote branch or a repo).",
+    "[skeptic] Timing: Tuesday's data arrives from ~15:30 ET (the gallery post) and after 18:00 ET (exit 3). Should I wind down now and resume Tue after 17:00 CT, keep this session alive with check-ins, or run two short sessions (14:30 CT and 17:00 CT)?",
+    "[skeptic] While waiting, should I do local-only P2.2 work under D-098 with nothing pushed? Options: rebase p2.2-final onto today's main and re-gate the G1 boundary / build the G9 blocker (fastpath sameAsStored, design 4.6 B1) / replace one of the 3 skipped E3 Senate tests with the Oct 5 post already recorded / T-LEASE and T-PARSE-DIES against the real Hub / nothing.",
+    "[skeptic] If Tuesday's ledger report PASSes: ask about G1 the same evening, or hold the go-live questions for a session when you can watch G1's 2-hour window? Should I ping you at every G push?",
+    "[skeptic] The D-090 phone reading needs you on a weekday 8:30-9:00 ET once G3 is live. Which mornings suit you?",
+    "[skeptic] Housekeeping: keep or remove the merged local branches and worktrees (p2.1-*, worktree-wf_*, p2.2-int, p2.2-stacked)? Local only, never a remote branch.",
+    "[skeptic] Should the 2026-11-04 YouTube-data deletion go into ROADMAP or a dated reminder, so the next page rotation cannot drop it?",
+    "[skeptic] Is the aviary session using this PC on Tuesday, and are there quiet windows that gate/e2e runs should avoid?",
+    "[executor] Timing: it is Mon ~10 p.m. ET and nothing can be done until Tuesday afternoon. Options: end now and resume Tue after 18:00 ET to do the gallery recording and the exit-3 report together (Rec.) / keep this session open through Tuesday / resume twice, Tue ~15:30 ET for the gallery post and again after 18:00 ET for the ledger.",
+    "[executor] If Tuesday passes exit 3, may I do G0 that evening (local only, nothing pushed: store export, dry-run bundle size, rebase p2.2-final onto that day's main and re-gate) and ask you separately before G1, the first push of P2.2 code (Rec.)? Or should I ask before G0 too?",
+    "[executor] Friday Oct 9 gallery post: a session on Friday afternoon records it (Rec.) / a one-time Windows scheduled task records it (it keeps running on your PC, so it is ask-first like G-011) / skip Oct 9.",
+    "[executor] Optional: delete the decrypted YouTube result in scratch/youtube/ now, since its conclusions are already written in prose, instead of waiting for the 2026-11-04 deadline (D-105) / keep it until the deadline."
+  ],
+  "content_findings": [
+    {
+      "claim": "Owner rulings D-097..D-106, each asked with a push notification",
+      "where": "HANDOFF.md L11 (LATEST #4 bullet 1)",
+      "truth": "Only D-097..D-104 are owner rulings asked with push notifications. D-105 and D-106 are agent rows that nobody asked the owner about.",
+      "evidence": "docs/DECISIONS.md L115-116 at 4a6eb33: D-105 and D-106 have by = agent. PROGRESS.md #9 heading: 'Owner rulings D-097..D-104; the YouTube key and its one research call (D-105, D-106)'. PROGRESS L10-14 lists the two AskUserQuestion rounds as D-097..D-104. Commit d6c98fc: 'Owner rulings D-097..D-104; D-105 YouTube research call'."
+    },
+    {
+      "claim": "Everything about them [p2.2-final and p2.2-revert-kit], including what each push still needs: git show p2.2-final:docs/design/P2.2_integration.md",
+      "where": "HANDOFF.md L20-21 (LATEST #4, P2.2 bullet)",
+      "truth": "The integration notes were committed before the revert kit was built, and they say the kit is not built. The kit's real record and what it still needs before a push exist only in p2.2-revert-kit:docs/design/P2.2_revert_kit.md, which the page never names.",
+      "evidence": "Reflog: p2.2-final last commit 62b07ec at 19:29 CDT; p2.2-revert-kit commits 20:11-20:34 CDT. P2.2_integration.md §6.2: 'G1 push blocked by design §7 Stage 3b: the revert kit (p2.2-revert-kit ...) is not built.' P2.2_revert_kit.md §3 (f99daf9): 'Re-base before use ... re-create 30f6832 against the pushed G1 ... re-run section 2 and the gate', plus re-test at G8 and G9."
+    },
+    {
+      "claim": "Before any push, do what the integration notes' pending section lists for that step (rebase onto main and re-gate, the store export, the living-doc rows, the revert kit re-made on the pushed G1)",
+      "where": "HANDOFF.md L49-51 (NEXT ACTION step 4)",
+      "truth": "The integration notes' pending section (§6) lists only one of the four items: re-running export_store before G1. It does not say to rebase onto main and re-gate. The living-doc rows are in the header and §4-§5, not §6. 'Revert kit re-made on the pushed G1' appears nowhere in the integration notes; §6.2 says the kit is not built. That instruction is in the revert-kit notes §3, and the rebase and re-gate instruction is in PROGRESS #9.",
+      "evidence": "62b07ec:docs/design/P2.2_integration.md: grep for rebase, re-gate or 'pushed G1' finds nothing. §6.2 L521: 're-run scripts/export_store.mjs just before the G1 push'. §8 L666 only notes that main moved to 781bed7 while the base is 5ca8c7b. PROGRESS.md L58-60: 'before G1 the branch must be rebased onto the main of that day and re-gated ... the revert kit re-created on the pushed G1'. f99daf9:docs/design/P2.2_revert_kit.md §3 item 1."
+    },
+    {
+      "claim": "Never merge or push them without the owner's go for that step (D-098)",
+      "where": "HANDOFF.md L22 (LATEST #4, P2.2 bullet)",
+      "truth": "D-098 does not require the owner's go for each step. It says nothing is merged or pushed until Phase 1's exit criteria are met and G0 is done, then G1..G10 follow §4.1, each with its own decision row. The proposed step rows are all by: agent, and G-003 covers gated pushes to main. The page's rule is stricter than the ruling it cites, so the citation is wrong. Low severity: the error leans toward asking the owner.",
+      "evidence": "docs/DECISIONS.md L108 (D-098) binds: 'Nothing from it is merged or pushed to main, and nothing live changes, until Phase 1's exit criteria are met and G0 (§4.1) is done; go-live then follows the gated steps G1..G10 of §4.1, each with its own row.' P2.2_integration.md §4 heading: 'Rows to record (all by: agent ...)'. docs/OWNER_GRANTS.md G-003."
+    }
+  ],
+  "notes": "C:/Users/j/claude/current-events-dashboard/docs/coldstart/r6/ (copied from C:/Users/j/claude/current-events-dashboard/scratch/coldstart/r6/ at record time)"
+}
