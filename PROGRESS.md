@@ -41,10 +41,34 @@ sensor of P2.2 lags on pro forma days. The Windows task has no further run (its 
 last result 0) and is set to delete itself 1 h after that (`DeleteExpiredTaskAfter` PT1H, G-011): it still existed
 at 21:45Z; confirm it is gone next session (`Get-ScheduledTask | ? TaskName -like 'CED*'`).
 
+**P2.2 built early on local branches (D-098); nothing merged, pushed or live.** Three workflows, each run with one
+shared request budget (D-104): round 1 (prep: `scripts/export_store.mjs` + the FR holiday and Senate tentative
+fixtures; contracts: the wire, adapter and Worker contracts and the G7 validator move; a re-quote of every Cloudflare
+claim in the design, verified), round 2 (seven Stage 2 builders in parallel, each in a worktree created one at a time:
+hub, poller, live, calendar, golive, page, latency), round 3 (integrate in go-live order, a three-lens adversarial
+review, fix, restack, revert kit). Result: local branch `p2.2-final`, every go-live step G0..G9 a contiguous range, based
+on main 5ca8c7b; local branch `p2.2-revert-kit` (design §5.4). Verified, in its worktree: the full gate PASS at the
+G1 boundary and at the top (incl. e2e and the new e2e:latency step); E2 at the top: every sample under 2,000 ms, p95
+about 125-156 ms in Chromium and WebKit (n = 30 each, 10 wakes proven), and a planted 2.5-s delay fails it; G1 is
+dormant (40-min scenario against main's own recorded answers: identical except the designed R-3 grid stagger of
+documents_newest); the review's 9 findings (one high: with CALENDAR on, every calendar evaluation re-read about 26 h
+of ledger rows) were each reproduced, fixed with a test that fails without the fix, and gated; the revert kit's gate
+PASS. Everything (all agent rows D-NEW-*, doc lines for the living docs, measurements, push ranges, pending items) is
+in the branch's integration notes: `git show p2.2-final:docs/design/P2.2_integration.md`.
+Not done: G9 is not pushable (the fastpath sameAsStored exception, design §4.6 B1); before G1 the branch must be
+rebased onto the main of that day and re-gated at the G1 boundary, `export_store` re-run, the notes applied to the
+living docs, and the revert kit re-created on the pushed G1 and re-tested; the Oct 6 and Oct 9 gallery posts for the 3
+skipped E3 cases; T-LEASE and T-PARSE-DIES against the real Hub; LIVE_CAP 3,000 rests on dev-PC CPU numbers (the Free
+plan's DO CPU limit is not documented per plan). The branches exist only on this PC.
+
 **Process notes.** The first research workflow (6 agents, per-agent caps of 15 requests) was launched minutes after
-D-104 and predates its shared budget; every later run used one budget file per run. The aviary session asked twice
-for a quiet box (10:15-10:33 and 11:45-~12:20 CDT); heavy work went through a two-slot wrapper
-(`with_slot.mjs` in the session scratchpad), which the orchestrator held during the second window.
+D-104 and predates its shared budget; every later run used one budget file per run. The aviary session asked three
+times for a quiet box (10:15-10:33, 11:45-12:00 and 13:59-14:19 CDT); heavy work went through a two-slot wrapper
+(`with_slot.mjs` in the session scratchpad), which the orchestrator held during the second and third windows.
+Audits: the harness's safety classifier timed out on the round-1 prep builder, so its actions were checked by hand
+(owned files only, 17 GET requests all in the budget file, nothing pushed); two round-3 reviewers ended with a dirty
+tree, so every fix commit was checked file by file (only the files its finding names); the revert-kit agent wrote and
+deleted one temporary file at the main tree's root in a single command.
 
 ---
 

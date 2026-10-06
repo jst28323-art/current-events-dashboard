@@ -136,7 +136,10 @@ median (D-099: n counts documents, but a slot's documents arrive in one poll). (
   weekends, FR publication days).
   (2026-10-03, paper only by D-089: designed and critiqued, `docs/design/P2.2.md`; built after Phase 1 closes, its
   owner questions in §9 and its push order G0..G10 in §4.) (2026-10-05, owner override D-098: built early on a local
-  branch; nothing merged, pushed or live until Phase 1 closes and G0 is done.)
+  branch; nothing merged, pushed or live until Phase 1 closes and G0 is done.) (Built 2026-10-05 on the local branch
+  `p2.2-final`, with the P2.1 items deferred to go-live; each go-live step is a contiguous range, gated; what remains
+  before each push, and every proposed row, is in `git show p2.2-final:docs/design/P2.2_integration.md`. G9 is not
+  pushable yet. The revert kit is the local branch `p2.2-revert-kit`.)
 - [x] **P2.3 Opportunistic, Mon 2026-10-05 ~16:00–17:00 ET:** both chambers hold short pro forma sessions. If one is
   running, record live fixtures with `scripts/record_fixture.mjs`: Senate floor caption playlist + segments (they vanish
   after the day), HouseLive `/latest/*`, the Clerk floor XML. (Do this whenever that window falls, whatever phase is
