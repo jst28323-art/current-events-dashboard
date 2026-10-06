@@ -70,6 +70,14 @@ Audits: the harness's safety classifier timed out on the round-1 prep builder, s
 tree, so every fix commit was checked file by file (only the files its finding names); the revert-kit agent wrote and
 deleted one temporary file at the main tree's root in a single command.
 
+**Addendum (same session, after page #4's cold-start round r6).** The capture task is gone: `Get-ScheduledTask` finds no
+`CED*` task (checked by the round's executor and again at 2026-10-06 ~02:20Z). Round r6 failed routing on five minor page
+contradictions (all three resumers agreed on the first action) and content on four claims: D-105/D-106 are agent
+rows, not owner rulings; the full gate ran only at the G1 boundary and at the top of `p2.2-final`; the integration
+notes predate the revert kit, whose notes live on `p2.2-revert-kit`; D-098 does not require the owner's go per step.
+Fixed in page #4 and the tree (`scripts/ledger_report.mjs` now lists each White House item over 1 h with its link;
+ROADMAP P3.3 carries the 2026-11-04 deletion; an addendum on `p2.2-final`'s integration notes), then re-rounded.
+
 ---
 
 ## #8 — 2026-10-05 — Cloudflare readout recorded (D-096); the first live FR midnight flip verified

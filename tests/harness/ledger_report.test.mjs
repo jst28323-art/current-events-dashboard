@@ -53,10 +53,12 @@ test('D-099: slot sightings group documents by filing slot and count the polls t
 test('whLag: first_seen - source_published_at per White House item; an item without source_published_at is counted apart', () => {
   const w = (id, pub, seen) => ({ ...wh(id, seen), times: { occurred_at: seen, first_seen_at: seen, source_published_at: pub } })
   const r = dayReport([w(1, '2026-10-05T15:00:00Z', '2026-10-05T15:01:00Z'), w(2, '2026-10-05T16:00:00Z', '2026-10-05T16:24:00Z'), wh(3, '2026-10-05T17:00:00Z')], '2026-10-05')
-  assert.deepEqual(r.wh_lag, { n: 2, no_published_at: 1, median_s: 750, max_s: 1440, over_1h: 0 })
+  assert.deepEqual(r.wh_lag, { n: 2, no_published_at: 1, median_s: 750, max_s: 1440, over_1h: 0, over_1h_items: [] })
   // the 2026-10-05 backdated post (docs/TRAPS.md): pubDate Oct 2 18:30Z, first seen Oct 5 15:26:37Z
   const back = dayReport([w(4, '2026-10-02T18:30:00Z', '2026-10-05T15:26:37Z')], '2026-10-05')
   assert.deepEqual([back.wh_lag.n, back.wh_lag.over_1h, back.wh_lag.max_s], [1, 1, 248197])
+  assert.equal(back.wh_lag.over_1h_items[0].lag_s, 248197) // listed with its link, so its page can be checked by hand
+  assert.ok(back.wh_lag.over_1h_items[0].url)
 })
 
 test('allEvents pages through the whole history from <epoch>.0 and keeps the latest copy of each event', async () => {

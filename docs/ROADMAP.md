@@ -158,8 +158,11 @@ page in < 2 s over the WebSocket; during recess the status page says "in recess 
   D-017).
 - [ ] **P3.3 White House + officials live:** the `wh.live` detector + YouTube `videos.list` (needs a free Google API key:
   ask the owner first) + the embedded official player; a hand-curated officials registry for the wider tracking list (D-020); agency live signals where they exist
-  (Fed calendar, DVIDS, State schedule). (2026-10-05: the key is being set up under D-097; YouTube's API terms put
-  obligations on the public site before it shows any API data: docs/TRAPS.md, D-105.)
+  (Fed calendar, DVIDS, State schedule). (2026-10-05: the key exists (D-097) and its one research call ran; YouTube's
+  API terms put obligations on the public site before it shows any API data: docs/TRAPS.md, D-105.)
+  - [ ] **By 2026-11-04 (D-105):** delete `scratch/youtube/result_2026-10-05.json` and the run's downloaded artifact
+    folder in `scratch/youtube/` (YouTube API data may be kept at most 30 days; the call ran 2026-10-05). Keep
+    `scratch/youtube/result_key.pem` only while another encrypted run is planned.
 - [ ] **P3.4 Supreme Court** (D-016): slip-opinion and orders-list HTML pages only (never `/rss/`).
 - [ ] **P3.5 Research gap:** find sources for congressional leadership press conferences (F3; no source was researched).
   (2026-10-03, paper only by D-089: researched, `docs/research/leadership_press_conferences.md`: no keyless source says

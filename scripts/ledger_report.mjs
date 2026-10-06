@@ -64,10 +64,12 @@ export function slotSightings(piEvents) {
  * business-day items). Items without a source_published_at are counted apart, never guessed. A post can be backdated
  * (docs/TRAPS.md, 2026-10-05: 69 h from pubDate, ~21 min from its dateModified), so items over 1 h are counted apart too. */
 export function whLag(whEvents) {
-  const lag = whEvents.filter((e) => e.times.source_published_at)
-    .map((e) => (Date.parse(e.times.first_seen_at) - Date.parse(e.times.source_published_at)) / 1000)
+  const rows = whEvents.filter((e) => e.times.source_published_at)
+    .map((e) => ({ url: e.sources?.[0]?.url ?? e.dedup_key, lag_s: (Date.parse(e.times.first_seen_at) - Date.parse(e.times.source_published_at)) / 1000 }))
+  const lag = rows.map((r) => r.lag_s)
+  const over = rows.filter((r) => r.lag_s > 3600)
   return { n: lag.length, no_published_at: whEvents.length - lag.length, median_s: median(lag), max_s: lag.length ? Math.max(...lag) : null,
-    over_1h: lag.filter((x) => x > 3600).length }
+    over_1h: over.length, over_1h_items: over }
 }
 
 async function getJson(url) {
@@ -113,6 +115,7 @@ async function main() {
     console.log(`  ${d} White House lag (first_seen - source_published_at): n=${r.wh_lag.n} median=${r.wh_lag.median_s ?? '-'} s max=${r.wh_lag.max_s ?? '-'} s` +
       (r.wh_lag.no_published_at ? `, ${r.wh_lag.no_published_at} item(s) without source_published_at` : '') +
       (r.wh_lag.over_1h ? `, ${r.wh_lag.over_1h} item(s) over 1 h: check each page's dateModified (backdated posts, docs/TRAPS.md)` : ''))
+    for (const it of r.wh_lag.over_1h_items) console.log(`    over 1 h: ${it.lag_s} s  ${it.url}`)
   }
   process.exit(ok ? 0 : 1)
 }
