@@ -445,6 +445,11 @@ then recorded as a fixture). The parse rules that answer them are decision rows 
 
 ## Hosting
 
+- **Every push to main redeploys ced-api, so time pushes on a measurement day** (2026-10-05, cold-start r8 lead). Push
+  between Public Inspection slots (08:45, 11:15, 14:00, 16:15, 18:00 ET; `docs/SOURCES.md` row `fr.api`), not within a
+  few minutes of one, and run an exit read such as `scripts/ledger_report.mjs` a few minutes AFTER the last slot of
+  its day, not at it: a redeploy changes no stored first_seen_at, but the first cron after it re-parses every endpoint
+  once and a DO call can fail during the deploy.
 - **GitHub Actions cron cannot drive a live feed**: most scheduled runs never ran in the measurement (D-008).
 - **The Workers Free CPU limit per invocation is tiny** (figures and consequences: `docs/ARCHITECTURE.md`,
   "Constraints that shape the code"). Whether Durable Object alarms get the same limit on Free is undocumented: probe it

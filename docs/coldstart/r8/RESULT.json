@@ -1,0 +1,276 @@
+{
+  "round": 8,
+  "page_n": 4,
+  "sha": "a11bdbe5fabc",
+  "date": "2026-10-05",
+  "n_resumers": 3,
+  "routing_verdict": "PASS",
+  "content_verdict": "PASS",
+  "routing_axes": {
+    "first_actions_agree": true,
+    "compare_note": "All three agents name the same first action: one batched multiselect AskUserQuestion with a PushNotification, which is NEXT ACTION step 1 at HANDOFF.md:39-40. They give the same reason for it: the page lists it first, and on Monday night no data step has its data yet (the gallery post is due from about 15:30 ET Tuesday, and the ledger read runs after 18:00 ET Tuesday). They also name the same first data command, the record_fixture.mjs senate.pressgallery call with the same URL, --date 2026-10-06 and --name posts_newest3_after_pro_forma.json. The differences come only after that first action. The straight and skeptic agents run the handoff skill when they stop, while the executor writes the PROGRESS entry and stops (step 5) without naming the skill. The skeptic also adds a descriptive read that Monday already passes. None of this changes the first action or its order, and the timestamps (22:54, 22:57, 23:05) differ only trivially.",
+    "heads_ok": true,
+    "could_execute_all": true,
+    "page_blockers": 0,
+    "resumer_fails": 0
+  },
+  "first_actions": [
+    {
+      "lens": "straight",
+      "cmd": "AskUserQuestion (multiSelect, one call) + PushNotification [HANDOFF.md:39-40 step 1]; first data command after it, Tue 2026-10-06 >= ~15:30 ET: node scripts/record_fixture.mjs senate.pressgallery \"https://www.dailypress.senate.gov/wp-json/wp/v2/posts?per_page=3&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories\" --date 2026-10-06 --name posts_newest3_after_pro_forma.json",
+      "what": "Send one batched multiselect AskUserQuestion with a PushNotification (NEXT ACTION step 1). It comes first because the page lists it first, and at Mon 2026-10-05 22:57 ET it is the only step whose data exists: the Oct 6 gallery post is due from ~15:30 ET Tuesday and the exit-3 ledger report runs after 18:00 ET. After asking, the session writes steps 2-4 into PROGRESS as waiting, through the handoff skill, and stops.",
+      "head": "a11bdbe",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "skeptic",
+      "cmd": "AskUserQuestion (one multiselect call) + PushNotification (HANDOFF.md:39-40 step 1). First data command after it, at Tue 2026-10-06 >= ~15:30 ET: node scripts/record_fixture.mjs senate.pressgallery \"https://www.dailypress.senate.gov/wp-json/wp/v2/posts?per_page=3&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories\" --date 2026-10-06 --name posts_newest3_after_pro_forma.json",
+      "what": "Send one batched multiselect AskUserQuestion with a PushNotification (NEXT ACTION step 1). It comes first because the page lists it first, and because at Mon 23:05 ET no data step has data yet: the Oct 6 gallery post is due from Tue ~15:30 ET and the exit-3 ledger read after Tue 18:00 ET. A descriptive read shows Monday already passes, so Tuesday alone can close exit 3. After asking, write the PROGRESS entry naming steps 2-4 as waiting, run the handoff skill, and stop.",
+      "head": "a11bdbe",
+      "verdict": "PASS-WITH-NOTES"
+    },
+    {
+      "lens": "executor",
+      "cmd": "AskUserQuestion (one multiselect call) + PushNotification (HANDOFF.md:39-40 step 1). Then at Tue 2026-10-06 >= ~15:30 ET: node scripts/record_fixture.mjs senate.pressgallery \"https://www.dailypress.senate.gov/wp-json/wp/v2/posts?per_page=3&_fields=id,date,date_gmt,modified,modified_gmt,slug,status,type,link,title,content,categories\" --date 2026-10-06 --name posts_newest3_after_pro_forma.json",
+      "what": "Send one batched multiselect AskUserQuestion with a PushNotification (NEXT ACTION step 1). It comes first because the page puts it first, and at Mon 22:54 ET none of the data steps has data yet: the gallery post is due from Tue ~15:30 ET and the exit-3 ledger read runs after Tue 18:00 ET. After asking, write a PROGRESS entry saying steps 2-4 are waiting and stop (step 5).",
+      "head": "a11bdbe",
+      "verdict": "PASS-WITH-NOTES"
+    }
+  ],
+  "blocking": [],
+  "blocking_offpage": [],
+  "backlog": [
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "A session that does step 2 at ~15:30 ET Tuesday and then stops (step 5, the handoff skill) pushes to main before 18:00 ET. Under G-003 that push redeploys ced-api on a Phase 1 measurement day, near the 16:15 and 18:00 ET special-filing slots. The page gives no timing caution, although earlier pushes were timed between slots on purpose.",
+      "where": "HANDOFF.md:37-38 \"do the ones whose data exists, write what is still waiting into the session's PROGRESS entry (step 5), and stop there\" + HANDOFF.md:55 step 5, vs PROGRESS.md #8 \"it was sent at about 10:40 ET, between the 08:45 and 11:15 ET Public Inspection slots\" and docs/design/P2.2.md §4.1 header \"none inside a measurement window\"",
+      "evidence": "CLAUDE.md:50 \"Each push redeploys the public site\"; docs/TRAPS.md:501 \"a DO call can fail on any deploy\"; docs/TRAPS.md:505 \"the first cron after a deploy re-parses every endpoint once\"; docs/SOURCES.md fr.api slots 16:15 and 18:00 ET. Impact on the exit-3 median is small because the 08:45 slot dominates it, but holding the push costs nothing.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 3 says to run the exit-3 report \"after Tue 18:00 ET\", but 18:00 ET is itself a PI special-filing slot. A run right at 18:00 can record PASS/FAIL before that slot's documents are first seen.",
+      "where": "HANDOFF.md:46 \"after Tue 2026-10-06 18:00 ET: `node scripts/ledger_report.mjs --days 2026-10-05,2026-10-06`\" vs docs/SOURCES.md fr.api \"special filings 08:45, 11:15, 14:00, 16:15, 18:00 ET\"",
+      "evidence": "pi_current is polled every 60 s in business hours (docs/SOURCES.md); ledger_report counts PI documents by occurred_at day (scripts/ledger_report.mjs dayReport).",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page says every go-live step G0..G9 is a contiguous range, but G7 has no range of its own: it rides inside G1.",
+      "where": "HANDOFF.md:18 \"the local branch `p2.2-final` (each go-live step G0..G9 a contiguous range\" vs p2.2-final:docs/design/P2.2_integration.md:63 \"G7 rides inside G1 (orchestrator decision, row D-NEW-int-1)\" and section 8 row \"G1 (with G7 `1432d2d`)\"",
+      "evidence": "git show p2.2-final:docs/design/P2.2_integration.md, sections 1 and 8. It does not affect any action before step 4.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Step 2 says to add the new post's row to fixtures/README.md. It does not say to update the README's existing 'still to record' and 'Pending' mentions of the Oct 6 and Oct 9 posts, so a literal reader leaves them stale.",
+      "where": "HANDOFF.md:45 \"Add its row to `fixtures/README.md` and commit\" vs fixtures/README.md:80 \"(Oct 6 and Oct 9 still to record)\" and fixtures/README.md:84-86 \"**Pending:** the gallery posts of the Tue Oct 6 ... and Fri Oct 9 ...\"",
+      "evidence": "Read fixtures/README.md:70-90.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The integration notes say worktree p22-int holds branch p2.2-int, but it now holds p2.2-final. Step 4's rebase of p2.2-final must run inside that worktree, because git refuses to rebase a branch checked out elsewhere. Twelve build worktrees and about 20 local p2.x branches remain, and no doc says what becomes of them.",
+      "where": "p2.2-final:docs/design/P2.2_integration.md:30 \"Branch `p2.2-int` (worktree `.claude/worktrees/p22-int`)\" vs `git worktree list`: \".claude/worktrees/p22-int 79e36c2 [p2.2-final]\"",
+      "evidence": "git worktree list; git branch -a. They are local and harmless; none should be deleted without the owner.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "The P2.2 design still says the build starts after Phase 1 closes. D-098 overrode that, and the build is done.",
+      "where": "docs/design/P2.2.md:18 \"a plan for the build session that starts after Phase 1 closes (earliest Tue 2026-10-06 evening ET\" vs docs/DECISIONS.md:108 D-098 \"OWNER OVERRIDE ... the P2.2 code ... is written and tested now on a local branch\"",
+      "evidence": "MAP.md:25 says DECISIONS wins over a dated design record, and ROADMAP:137-142 carries the override, so routing is unaffected.",
+      "lens": "straight"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 3 says to record 'n and the median' of the White House lag but does not say which median. ledger_report's printed median includes the backdated items over 1 h, while TRAPS says a lag median must list those items apart. Two resumers could record different numbers.",
+      "where": "HANDOFF.md:50-51 \"check each listed item over 1 h against its page's `dateModified` (`docs/TRAPS.md`) and record n and the median in the session's PROGRESS entry\" vs docs/TRAPS.md:100-102 \"So a White House lag median must list items over 1 h apart (`scripts/ledger_report.mjs` prints the count) and check each one's page `dateModified` by hand\"",
+      "evidence": "scripts/ledger_report.mjs whLag() takes the median over all rows. A descriptive run at 2026-10-06T03:02Z printed Monday n=7 median=360.009 s, and that median includes the 248,197 s (69 h) backdated item.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "Carried from r7 and not fixed: the page gives no push timing for Tuesday, the measurement day. Step 2 commits in the afternoon and step 5's handoff pushes, and every push redeploys ced-api before the 18:00 ET exit-3 read.",
+      "where": "HANDOFF.md:45 \"Add its row to `fixtures/README.md` and commit.\" + HANDOFF.md:55 (handoff skill pushes) vs docs/design/P2.2.md:515 \"none inside a measurement window\" and PROGRESS.md #8 \"it was sent at about 10:40 ET, between the 08:45 and 11:15 ET Public Inspection slots\"",
+      "evidence": ".github/workflows/deploy.yml: workflow_run on ci completed, branches [main], event == push runs a deploy of the workers. The risk is low because the Worker is byte-identical and PROGRESS #8 says a redeploy changes no stored first_seen_at.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Carried: step 4 puts 'the revert kit re-made on the pushed G1' among the things to do BEFORE the G1 push, so the timing contradicts itself. The workable reading (re-make it on the rebased G1 sha before pushing) is not stated. The parenthetical also leaves out the addendum's separate bullet to re-read the Cloudflare rollback page on the G1 day. This matters only at step 4.",
+      "where": "HANDOFF.md:53-54 \"Before the G1 push, do the checklist ... (... the revert kit re-made on the pushed G1)\" vs docs/design/P2.2.md:886 \"a tested revert kit exists before G1\"",
+      "evidence": "git show p2.2-final:docs/design/P2.2_integration.md addendum: \"re-create the kit on the pushed G1 and re-test it\"; \"re-read it once more on the G1 day\".",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Carried: 'Friday Oct 9: the same.' sits beside 'stop there'. A Tuesday session stops, so the Friday recording survives only if the next page carries it. The page does not say to carry it.",
+      "where": "HANDOFF.md:45 \"Friday Oct 9: the same.\" vs HANDOFF.md:37-38 \"do the ones whose data exists, write what is still waiting into the session's PROGRESS entry (step 5), and stop there\"",
+      "evidence": "fixtures/README.md:84-86 'Pending' names the Oct 9 post. The Oct 5 fixture post 167295 lists 'Friday, October 9: 1:30 p.m.'",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "Carried from r6/r7 and not fixed: ROADMAP's Phase 1 exit-status heading is dated 2026-10-03 but holds a 2026-10-04 entry. Step 3 writes Tuesday's result under it.",
+      "where": "docs/ROADMAP.md:98 \"Exit status (2026-10-03): (1) MET\" vs docs/ROADMAP.md:103 \"(5) MET (2026-10-04)\"",
+      "evidence": "Read docs/ROADMAP.md:98-103 at a11bdbe.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "Carried: the integration notes still call the Oct 5 gallery post unrecorded. The addendum says it is recorded, but the addendum supersedes only the lines it names, and it does not name these.",
+      "where": "p2.2-final:docs/design/P2.2_integration.md §2 note \"gallery posts of the Oct 5 / 6 / 9 pro formas, not recorded yet\" and §6.2 \"record the gallery posts of the Oct 5 / 6 / 9 pro formas\" vs the addendum \"the Oct 5 post is recorded on main\"",
+      "evidence": "fixtures/senate.pressgallery/2026-10-05/posts_newest3_after_pro_forma.json exists on main (post 167295).",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "Carried: integration notes §8 gives a stale main sha. Main is now 8 commits past the stack base. The addendum's rebase instruction covers it.",
+      "where": "p2.2-final:docs/design/P2.2_integration.md §8 \"Since this stack was cut, main has moved to `781bed7`\" vs ship_state \"head: a11bdbe on main\"",
+      "evidence": "git rev-list --count p2.2-final..main = 8; merge-base = 5ca8c7b.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "New, slightly wasteful: step 3 says to check every listed White House item over 1 h against its dateModified. Monday's one listed item is already checked in TRAPS, but the page does not say so, so a resumer fetches it again (one request).",
+      "where": "HANDOFF.md:50 \"check each listed item over 1 h against its page's `dateModified`\" vs docs/TRAPS.md:96-100 (the -6778 Down Syndrome message: dateModified 2026-10-05T15:05:23Z, about 21 min lag)",
+      "evidence": "ledger_report Monday prints 'over 1 h: 248197.459 s https://www.whitehouse.gov/briefings-statements/2026/10/presidential-message-on-down-syndrome-awareness-month-6778/'.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Carried: 'each go-live step G0..G9 a contiguous range' implies G7 has its own range, but G7 rides inside G1.",
+      "where": "HANDOFF.md:18 \"each go-live step G0..G9 a contiguous range\" vs p2.2-final:docs/design/P2.2_integration.md §1 \"G7 rides inside G1 (orchestrator decision, row D-NEW-int-1)\"",
+      "evidence": "The §8 push-range table lists G0, G1 (with G7), G2..G6, G8, G9 and docs.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "TREE",
+      "what": "Carried: MAP.md, which the page calls the index for everything else, does not list the 11 local .claude/worktrees/p22-* worktrees or the local p2.2-* branches.",
+      "where": "HANDOFF.md:6 \"`MAP.md` says where everything else lives\" vs MAP.md (grep -i 'p2.2|worktree' finds only the types.ts row)",
+      "evidence": "git worktree list shows 12 worktrees; p2.2-final is checked out at .claude/worktrees/p22-int (79e36c2).",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Carried: step 1 says 'as the canonical prompt says' about the PushNotification, but the PushNotification rule is in CLAUDE.md, not in the prompt.",
+      "where": "HANDOFF.md:39 \"**Ask first**, as the canonical prompt says: one AskUserQuestion (with a PushNotification)\" vs CLAUDE.md:86 (the prompt names only AskUserQuestion) and CLAUDE.md:36-38 (the PushNotification rule)",
+      "evidence": "Read CLAUDE.md:36-38 and :86.",
+      "lens": "skeptic"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 2 says to retry with the same --name, so each retry overwrites the earlier 'not yet' recording. That recording is the only lower bound on when Tuesday's post went public, and the E3 cases must state that time.",
+      "where": "HANDOFF.md:43-45 \"--name posts_newest3_after_pro_forma.json ... if not yet, try again later\" vs p2.2-final:docs/design/P2.2_integration.md:27 \"the cases built from the real Oct 5/6/9 posts must state the time each post became visible\"",
+      "evidence": "Monday's visibility bracket came from two separately named files: dailypress_posts_end.json at 21:30:01Z (X-WP-Total 1,842) and posts_newest3_after_pro_forma.json at 21:33:25Z (1,843), per fixtures/README.md:80. scripts/record_fixture.mjs:55 overwrites the file at the same name.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "In the failing-day rule, 'that day' could mean the failing day or the next business day. Also, WH items are counted by first_seen_at day, so a run just after 18:00 ET sees only part of Tuesday's WH items; a WH 0 then would be called a failing day even though a re-run before midnight could pass it.",
+      "where": "HANDOFF.md:48-49 \"A failing day does not count: run it again on the next business day with that day in `--days`\" vs scripts/ledger_report.mjs:33 (wh counted by dayEt(e.times.first_seen_at))",
+      "evidence": "Read as 'replace the failing day' (e.g. --days 2026-10-05,2026-10-07). Monday's descriptive read: WH 7 by 23:04 ET, versus 1 at 15:59Z (PROGRESS.md:30-32), so the WH count grows through the day.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "AMBIGUOUS",
+      "scope": "PAGE",
+      "what": "Step 3 says to record the White House lag n and median, but not which median: the script's raw one (it includes backdated items) or one corrected after the dateModified check.",
+      "where": "HANDOFF.md:50-51 \"check each listed item over 1 h against its page's `dateModified` (`docs/TRAPS.md`) and record n and the median in the session's PROGRESS entry\"",
+      "evidence": "ledger_report --days 2026-10-05 (descriptive, 2026-10-06T03:04Z): n=7 median=360.009 s max=248197.459 s; the one item over 1 h is the backdated Down Syndrome message (TRAPS:96-102, ~21 min from dateModified).",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "MISSING",
+      "scope": "PAGE",
+      "what": "On Tuesday, step 2's commit and the step 5 handoff lead to a G-003 push on Phase 1's measurement day. Every push redeploys ced-api, and the page gives no timing guidance for it. PROGRESS #8 timed such a push between PI slots on purpose.",
+      "where": "HANDOFF.md:45 \"Add its row to `fixtures/README.md` and commit\" + :55 handoff skill (push) vs PROGRESS.md:97-99 \"sent at about 10:40 ET, between the 08:45 and 11:15 ET Public Inspection slots\" and docs/design/P2.2.md:515 \"none inside a measurement window\"",
+      "evidence": ".github/workflows/deploy.yml runs on every CI-passing push to main. PI special slots fall at 14:00, 16:15 and 18:00 ET (docs/SOURCES.md fr.api row), and the gallery window is 15:30-17:30 ET. Low risk, because the Worker is byte-identical and stored first_seen_at does not change.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "Step 2 says 'Add its row to fixtures/README.md' but not where: a new 'Set recorded 2026-10-06' section, or the existing table. The Pending paragraph, which still lists Oct 6 and Oct 9 as to record, also needs an edit.",
+      "where": "HANDOFF.md:45 \"Add its row to `fixtures/README.md` and commit\" vs fixtures/README.md:69 \"## Set recorded 2026-10-05 ...\" and :84-86 \"**Pending:** the gallery posts of the Tue Oct 6 ... and Fri Oct 9 ...\"",
+      "evidence": "The README groups fixtures into sets by recording date.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "NIT",
+      "scope": "PAGE",
+      "what": "The page's four-item summary of the pre-G1 checklist leaves out the addendum's 'besides §6.2' and its rollback-page re-read on the G1 day. The page does route the reader to the addendum. Carried over unchanged from the r7 backlog, and not reachable tonight.",
+      "where": "HANDOFF.md:53-54 \"(rebase and re-gate, the store export, the living-doc rows, the revert kit re-made on the pushed G1)\" vs p2.2-final:docs/design/P2.2_integration.md:15 \"Before the G1 push, besides §6.2\" and :24 \"re-read it once more on the G1 day\"",
+      "evidence": "git show p2.2-final:docs/design/P2.2_integration.md lines 8-29.",
+      "lens": "executor"
+    },
+    {
+      "severity": "MINOR",
+      "kind": "STALE",
+      "scope": "TREE",
+      "what": "Integration notes §8 still says main is at 781bed7. Main is now a11bdbe. The addendum's 'main has moved past 5ca8c7b' covers this.",
+      "where": "p2.2-final:docs/design/P2.2_integration.md §8 \"Since this stack was cut, main has moved to `781bed7`\" vs ship_state head a11bdbe",
+      "evidence": "node scripts/ship_state.mjs: head a11bdbe on main.",
+      "lens": "executor"
+    }
+  ],
+  "would_ask": [
+    "[straight] Session shape: it is Mon ~11 PM ET and nothing can run before Tue afternoon. End now and resume Tue after 6 PM ET, so steps 2 and 3 happen in one sitting and the push that redeploys the live API lands after the last filing slot (Rec.) / resume Tue ~3:30 PM ET for the gallery post, then again after 6 PM / keep this session open and waiting?",
+    "[straight] Oct 9 (and a Tuesday backup) gallery post: may I create ONE self-deleting Windows scheduled task on your PC, like Monday's (G-011 is used up), that records the gallery's newest-3 list a few times between 3:30 and 6:30 PM ET on Oct 6 and Oct 9? A few small requests, no GPU; this is ask-first because it runs on your home PC. Options: yes, both days / Oct 9 only / no, a session will do it by hand.",
+    "[straight] (Step 4: asked only once exit 3 is met; mentioned ahead.) If Tuesday passes, should P2.2's go-live start Wednesday: the G0 checks, then the G1 push of dormant code with a 2-h watch, then later steps on design §4.1's calendar (G5/G6 live before Sun Nov 8)?",
+    "[skeptic] Session timing: it is 11 pm ET Monday and nothing can run until Tue ~15:30 ET. Stop now and you resume Tuesday afternoon (recommended), or keep this session waiting until then?",
+    "[skeptic] Tuesday is the second exit-3 measurement day and every push to main redeploys ced-api. May I push the gallery fixture commit Tuesday afternoon, or hold every push until after the 18:00 ET ledger read (recommended)?",
+    "[skeptic] Conditional go-ahead: if Tuesday passes and exit 3 is MET, may the P2.2 G0 checklist and the dormant G1 push (2-h watch) start Wed Oct 7, as design 4.1 plans? (yes / ask me again after the data / not this week)",
+    "[skeptic] Friday Oct 9's gallery post (the third E3 case): record it in a Friday session, or only carry it on the next page?",
+    "[skeptic] About 10 builder worktrees and about 20 local p2.1-*/p2.2-*/worktree-wf_* branches are left over. Keep them until P2.2 is merged (recommended), or prune the builder ones now (p2.2-final, p2.2-int and p2.2-revert-kit stay)?",
+    "[skeptic] O1 phone check (?debug=latency, 08:30-09:00 ET on a weekday, needed at G3): which weekday morning suits you?",
+    "[executor] When to resume: nothing can run until Tue ~15:30 ET (gallery post) and after 18:00 ET (exit 3). Options: end tonight and resume Tue after 18:00 ET so steps 2+3 run in one session (Rec.) / resume Tue ~15:30 ET and stay until 18:00 / keep this session open and waiting.",
+    "[executor] May I create one more one-time, self-deleting Windows scheduled task (like G-011) that records the gallery newest-3 list every ~15 min from 14:30 to 18:00 ET on Tue Oct 6 and Fri Oct 9? E3 must state when each post became visible, and a single recording only shows it was up by then. Options: yes, both days / Tuesday only / no, record by hand.",
+    "[executor] Step 4, asked early as a condition: if both days pass Tuesday evening, may P2.2 go-live start (the G0 checks, then the G1 push Wed Oct 7 with its 2-h watch; G5/G6 must be live before Nov 8)? Options: yes, start when Phase 1 closes / ask me again then / wait."
+  ],
+  "content_findings": [],
+  "notes": "C:/Users/j/claude/current-events-dashboard/docs/coldstart/r8/ (copied from C:/Users/j/claude/current-events-dashboard/scratch/coldstart/r8/ at record time)"
+}
